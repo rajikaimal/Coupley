@@ -6,3 +6,4 @@ Homestead.json
 .env.*.php
 .env.php
 .env
+public/bundle.js
