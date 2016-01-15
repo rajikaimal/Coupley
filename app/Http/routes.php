@@ -12,7 +12,18 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('init');
+});
+
+
+/*  
+	Login route
+	Handles initial login of a user of Coupley	
+    @author rajikaimal
+*/
+
+Route::get('/login', function() {
+	
 });
 
 /*
@@ -28,4 +39,10 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['web']], function () {
     //
+});
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+
+    Route::get('/home', 'HomeController@index');
 });
