@@ -1,41 +1,33 @@
-var React = require('react');
-var StarterActions = require('../actions/StarterActions');
-var TodoStore = require('../stores/TodoStore');
-var TodoInput = require('./TodoInput');
-var Name = require('./Name.react');
+import React from 'react';
+import AppBar from 'material-ui/lib/app-bar';
+import RaisedButton from 'material-ui/lib/raised-button';
 
-function getAll() {
-	return {
-		alltodos: TodoStore.getAll()
-	}
-}
+import ThemeManager from 'material-ui/lib/styles/theme-manager';
+import MyRawTheme from './customtheme';
 
-var Starter = React.createClass({
-	getInitialState: function() {
-		return getAll();
-	},
+const MySampleAppComponent = React.createClass({
 
-	componentDidMount: function() {
-		TodoStore.addChangeListener(this._onChange);
-	},
+  //the key passed through context must be called "muiTheme"
+  childContextTypes : {
+    muiTheme: React.PropTypes.object,
+  },
 
-	_handleClick: function() {
-		StarterActions.create('Alo alo from component');
-	},
-	_onChange: function() {
-		this.setState(getAll());
-		console.log('State');
-		console.log(this.state.alltodos[0].action.item);
-	},
-	render: function() {
-		return (
-			<div>
-				<h2 onClick={this._handleClick}>Click me </h2>
-				<h3>{this.state.alltodos}</h3>
-				<TodoInput />
-			</div>
-		);
-	}
+  getChildContext() {
+    return {
+      muiTheme: ThemeManager.getMuiTheme(MyRawTheme),
+    };
+  },
+
+  //the app bar and button will receive our theme through
+  //context and style accordingly
+  render () {
+    return (
+      <div>
+        <AppBar title="My AppBar" />
+        <RaisedButton label="My Button" primary={true} />
+      </div>
+    );
+  },
 });
 
-module.exports = Starter;
+export default MySampleAppComponent;
