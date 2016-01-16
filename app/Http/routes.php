@@ -22,8 +22,8 @@ Route::get('/', function () {
     @author rajikaimal
 */
 
-Route::get('/login', function() {
-	
+Route::get('/profile', function() {
+	return view('init');
 });
 
 /*
