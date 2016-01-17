@@ -15,9 +15,9 @@ import Profile from './components/profile/profile.react';
 import $ from 'jquery';
 
 ReactDOM.render((
-  <Router history={browserHistory}>
+  <Router>
     <Route path="/" component={Header}>
-      <Route path="profile" component={Profile} />
+      <Route path="/profile" component={Profile} />
     </Route>
   </Router>
   ),
