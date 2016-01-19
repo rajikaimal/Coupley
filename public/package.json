@@ -52,7 +52,8 @@
     "flux",
     "laravel"
   ],
-  "author": "rajikaimal isurudilhan tharakaromesh madhushikaperera",
+  "author": "rajikaimal",
+  "contributors": ["Isuru Dilhan", "Tharaka Romesh", "Madhushika Perera"],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/rajikaimal/Coupley/issues"
