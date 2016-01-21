@@ -7,22 +7,24 @@ import IconButton from 'material-ui/lib/icon-button';
 import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
 import IconMenu from 'material-ui/lib/menus/icon-menu';
 import MenuItem from 'material-ui/lib/menus/menu-item';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
+//tap-event-plugin
+injectTapEventPlugin();
 
 const iconButtonElement = (
   <IconButton
     touch={true}
     tooltip="more"
     tooltipPosition="bottom-left">
-    <MoreVertIcon color={Colors.grey400} />
+    <MoreVertIcon color={Colors.deepPurple500} />
   </IconButton>
 );
 
 const rightIconMenu = (
   <IconMenu iconButtonElement={iconButtonElement}>
-    <MenuItem>Reply</MenuItem>
-    <MenuItem>Forward</MenuItem>
-    <MenuItem>Delete</MenuItem>
+    <MenuItem>Edit</MenuItem>
+    <MenuItem>Remove</MenuItem>
   </IconMenu>
 );
 

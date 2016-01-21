@@ -9,7 +9,12 @@ const ActivityData = [{
 	"description": "Sample description"
 },{
 	"heading": "Netflix and Chill ?",
-	"time": "06",
+	"time": "07",
+	"date": "2016.03.20",
+	"description": "Sample description"
+},{
+	"heading": "Yayyyyy ?",
+	"time": "08",
 	"date": "2016.03.20",
 	"description": "Sample description"
 }];
@@ -19,14 +24,14 @@ const ActivityFeedContainer = React.createClass({
   _renderActivites: function() {
   	return ActivityData.map((activity) => {
   		return (
-  			<Activity heading={activity.heading} time={activity.time} date={activity.date} description={activity.description} />
+  			<Activity key={activity.time} heading={activity.heading} time={activity.time} date={activity.date} description={activity.description} />
   		);
   	});	
   },
   render: function() {
     return (
       <div>
-		<List subheader="Today">      	
+		<List subheader="Today">
         	{this._renderActivites()}
         </List>
       </div>
