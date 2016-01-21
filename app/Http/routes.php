@@ -27,6 +27,16 @@ Route::get('/profile', function() {
 });
 
 /*
+	Admin route
+	Handles Admin panel of Coupley
+    @author isurudilhan
+*/
+
+Route::get('/cp-admin', function () {
+    return view('init_admin');
+});
+
+/*
 |--------------------------------------------------------------------------
 | Application Routes
 |--------------------------------------------------------------------------

@@ -12,6 +12,7 @@ import Starter from './components/Starter.react';
 import Login from './components/Login.react';
 import Header from './components/base/Header.react';
 import Profile from './components/profile/profile.react';
+import Admin from './components/admin/dashboard.react';
 import $ from 'jquery';
 
 ReactDOM.render((
@@ -19,7 +20,12 @@ ReactDOM.render((
     <Route path="/" component={Header}>
       <Route path="profile" component={Profile} />
     </Route>
+      <Route path="cp-admin" component={Admin} />
   </Router>
   ),
   document.getElementById('content')
 );
+
+
+
+
