@@ -12,8 +12,13 @@ import Starter from './components/Starter.react';
 import Login from './components/Login.react';
 import Header from './components/base/Header.react';
 import Profile from './components/profile/profile.react';
+
+import Admin from './components/admin/dashboard.react';
+import $ from 'jquery';
+
 import ActivityContainer from './components/profile/ActivityFeed/ActivityFeedContainer.react';
 import About from './components/profile/About.react';
+
 
 ReactDOM.render((
   <Router history={hashHistory}>
@@ -23,7 +28,12 @@ ReactDOM.render((
       	<Route path="about" component={About} />
       </Route>
     </Route>
+      <Route path="cp-admin" component={Admin} />
   </Router>
   ),
   document.getElementById('content')
 );
+
+
+
+
