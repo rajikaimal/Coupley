@@ -8,3 +8,4 @@ Homestead.json
 .env
 public/bundle.js
 public/node_modules
+.idea/
