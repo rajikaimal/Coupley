@@ -9,7 +9,7 @@ import NotificationsIcon from 'material-ui/lib/svg-icons/social/notifications';
 const Header = React.createClass({
 	render: function() {
 	    return (
-	    	<div>
+            <div className="hold-transition skin-blue sidebar-mini">
 			  <div className="navbar navbar-inverse">
 				  <div className="container-fluid">
 				    <div className="navbar-header">
