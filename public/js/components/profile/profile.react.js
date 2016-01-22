@@ -23,36 +23,28 @@ const Profile = React.createClass({
   render: function() {
     return (
       <div>
-        <div className="col-lg-9">
-          <div className="panel panel-default">
-            <div className="panel-body">
-              <div>
-                <div className="col-lg-3">
-                  <img src="https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg" style={style} />
-                </div>
-                <div className="col-lg-6">
-                  <h3> Tiffany Hwang </h3>
-                </div>
-                <div className="col-lg-6">
-                  <span> Country etc... </span>
-                </div>
-              </div>
+        <div className="panel-body">
+          <div>
+            <div className="col-lg-3">
+              <img src="https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg" style={style} />
             </div>
-            <Divider />
-            <div style={tabstyle}>
-              <div className="btn-group btn-group-justified btn-group-info">
-                <Link to={`/profile/activityfeed`} className="btn ">My Activity Feed</Link>
-                <Link to={`/profile/about`} className="btn ">About</Link>
-                <Link to={`/profile/photos`} className="btn ">Photos</Link>
-              </div>
+            <div className="col-lg-6">
+              <h3> Tiffany Hwang </h3>
             </div>
-            {this.props.children}
+            <div className="col-lg-6">
+              <span> Country etc... </span>
+            </div>
           </div>
         </div>
-
-        <div className="col-lg-3">
-          content
+        <Divider />
+        <div style={tabstyle}>
+          <div className="btn-group btn-group-justified btn-group-info">
+            <Link to={`/profile/activityfeed`} className="btn ">My Activity Feed</Link>
+            <Link to={`/profile/about`} className="btn ">About</Link>
+            <Link to={`/profile/photos`} className="btn ">Photos</Link>
+          </div>
         </div>
+        {this.props.children}
       </div>
     );    
   }

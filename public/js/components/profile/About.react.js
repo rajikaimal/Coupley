@@ -10,10 +10,21 @@ import MenuItem from 'material-ui/lib/menus/menu-item';
 import Avatar from 'material-ui/lib/avatar';
 
 const details = [{
-  "summary": "Summary of myself",
+  "summary": "Summary of myself !",
   "Age": "Hello !"
 }, {
-  "summary": "What Im doing ?",
+  "summary": "What I'm doing ?",
+  "Age": "Bla bla ..."
+},
+{
+  "summary": "Good at !",
+  "Age": "Bla bla ..."
+},
+{
+  "summary": "Favourite movies, books ...",
+  "Age": "Bla bla ..."
+},{
+  "summary": "Could live never without",
   "Age": "Bla bla ..."
 }];
 
@@ -50,7 +61,7 @@ const About = React.createClass({
                   primaryText={item.summary}
                   onClick={this._toggleEdit.bind(this,item.summary)}
                   secondaryText={item.Age} 
-                  leftAvatar={<Avatar color={Colors.pinkA200} backgroundColor={Colors.transparent}
+                  leftAvatar={<Avatar color={Colors.deepPurple500} backgroundColor={Colors.transparent}
                   style={{left: 8}}>{item.summary.substring(0,1)}</Avatar>} />);
     });
   },
