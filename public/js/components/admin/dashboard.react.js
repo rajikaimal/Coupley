@@ -12,8 +12,9 @@ var Admin = React.createClass({
             <div>
                 <div className="hold-transition skin-blue sidebar-mini">
                     <div className="wrapper">
-                        <Header />
-                        <Sidebar />
+                        <Header/>
+                        <Sidebar/>
+
                         <div className="content-wrapper">
                             <Path/>
                             <section className="content">

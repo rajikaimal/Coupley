@@ -8,7 +8,7 @@ import { Link } from 'react-router';
 var Sidebar = React.createClass({
     render: function () {
         return (
-            <div className="Sidebar">
+            <div>
                 <aside className="main-sidebar">
 
                     <section className="sidebar">
