@@ -18,21 +18,35 @@ const buttonStyle = {
 const Login = React.createClass({
   getInitialState: function() {
     return {
-      value: 1
+      gender: 1,
+      orientation: 1
     }
   },
   _handleRegisterClickEvent: function() {
+    let firstname = this.refs.firstname.getValue();
+    let lastname = this.refs.lastname.getValue();
     let username = this.refs.username.getValue();
+    let email = this.refs.email.getValue();
+    let gender = this.state.gender;
     let password = this.refs.password.getValue();
+    let orientation = this.state.orientation;
     let credentials = {
+      firstname: firstname,
+      lastname: lastname,
       username: username,
-      password: password
+      email: email,
+      gender: gender,
+      password: password,
+      orientation: orientation
     };
     RegisterActions.check(credentials);
     console.log('Done calling !');
   },
-  handleChange: function(e, index, value){
-    this.setState({value: value})
+  handleChangeGender: function(e, index, value){
+    this.setState({gender: value});
+  },
+  handleChangeOrientation: function(e, index, value){
+    this.setState({orientation: value});
   },
   render: function() {
     return (
@@ -42,21 +56,26 @@ const Login = React.createClass({
         </div>
         <div className="col-lg-4">
           <TextField
-            floatingLabelText="username" ref="username"/>
-          <TextField
-            floatingLabelText="email" ref="email"/>
-          <br/>
-          <TextField
             floatingLabelText="firstname" ref="firstname"/>
           <br/>
           <TextField
             floatingLabelText="lastname" ref="lastname"/>
           <br/>
           <TextField
+            floatingLabelText="username" ref="username"/>
+          <br />
+          <TextField
+            floatingLabelText="email" ref="email"/>
+          <br/>
+          <DropDownMenu value={this.state.gender} onChange={this.handleChangeGender}>
+            <MenuItem value={1} primaryText="Male"/>
+            <MenuItem value={2} primaryText="Female"/>
+          </DropDownMenu>
+          <TextField
             type="password"
             floatingLabelText="password" ref="password"/>
           <br/>
-          <DropDownMenu value={this.state.value} onChange={this.handleChange}>
+          <DropDownMenu value={this.state.orientation} onChange={this.handleChangeOrientation}>
             <MenuItem value={1} primaryText="Straight"/>
             <MenuItem value={2} primaryText="Lesbian"/>
             <MenuItem value={3} primaryText="Gay"/>
