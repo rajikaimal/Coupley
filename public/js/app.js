@@ -15,10 +15,12 @@ import ActivityContainer from './components/profile/ActivityFeed/ActivityFeedCon
 import About from './components/profile/About.react';
 import Photos from './components/profile/Photos.react';
 import Search from './components/Search.react';
+import Admin from './components/admin/dashboard.react';
 
 ReactDOM.render((
   <Router history={hashHistory}>
     <Route path="/login" component={Home} />
+    <Route path="/cp-admin" component={Admin} />
     <Route path="/" component={Header}>
       <Route path="/search" component={Search} />
       <Route path="profile" component={Profile} >
