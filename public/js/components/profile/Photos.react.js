@@ -2,8 +2,9 @@ import React from 'react';
 import RaisedButton from 'material-ui/lib/raised-button';
 
 const buttonStyle = {
-  marginTop: 150,
-  marginLeft: 50
+  marginTop: 75,
+  marginLeft: 420,
+  paddingBottom: 150
 };
 
 const Photos = React.createClass({
