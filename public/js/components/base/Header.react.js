@@ -1,13 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router'
-
 import Badge from 'material-ui/lib/badge';
 import IconButton from 'material-ui/lib/icon-button';
 import NotificationsIcon from 'material-ui/lib/svg-icons/social/notifications';
-
 import MockChat from '../profile/MockChat.react';
+import LoginStore from '../../stores/LoginStore';
 
 const Header = React.createClass({
+	getInitialState: function() {
+		return {
+			apitoken: LoginStore.getState()
+		}
+	},
+	componentDidMount: function() {
+		if(this.state.apitoken) {
+	      document.location = "/#/";
+	    }
+	    else {
+	      document.location = "/#/login";
+	    }
+	},
 	_search: function() {
 		document.location = "/#/search";
 	},
