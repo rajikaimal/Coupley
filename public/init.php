@@ -2,7 +2,7 @@
 <html>
 <head>
 	<link rel="stylesheet" href="bootstrap.min.css" type="text/css" >
-	<!-- <link rel="stylesheet" href="base.css" type="text/css" > -->
+	<link rel="stylesheet" href="base.css" type="text/css" >
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 	<link href='dist/css/bootstrap-material-design.min.css' rel='stylesheet' type='text/css'>
 	<link href='dist/css/ripples.min.css' rel='stylesheet' type='text/css'>
