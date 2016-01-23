@@ -20,7 +20,7 @@ import Admin from './components/admin/dashboard.react';
 ReactDOM.render((
   <Router history={hashHistory}>
     <Route path="/login" component={Home} />
-    <Route path="/cp-admin" component={Admin} />
+    <Route path="/dashboard" component={Admin} />
     <Route path="/" component={Header}>
       <Route path="/search" component={Search} />
       <Route path="profile" component={Profile} >

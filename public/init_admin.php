@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet/less" type="text/css" href="dist/css/admin/sidebar.less"/>
+
     <link rel="stylesheet" href="dist/css/admin/bootstrap.min.css" type="text/css">
     <!-- <link rel="stylesheet" href="base.css" type="text/css" > -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
@@ -50,7 +50,7 @@
 <script src="dist/js/admin/bootstrap.min.js"></script>
 <!-- Morris.js charts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="dist/css/admin/plugins/morris/morris.min.js"></script>
+<!--<script src="dist/css/admin/plugins/morris/morris.min.js"></script>-->
 <!-- Sparkline -->
 <script src="dist/css/admin/plugins/sparkline/jquery.sparkline.min.js"></script>
 <!-- jvectormap -->

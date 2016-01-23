@@ -243,7 +243,7 @@ td, th {
     }
 
     .navbar {
-        display: none
+        display: none;
     }
 
     .btn > .caret, .dropup > .btn > .caret {
@@ -4490,7 +4490,7 @@ select[multiple].input-group-sm > .form-control, select[multiple].input-group-sm
 .navbar {
     position: relative;
     min-height: 50px;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     border: 1px solid transparent
 }
 
