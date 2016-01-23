@@ -7,23 +7,23 @@ import { Link } from 'react-router';
 var Header = React.createClass({
     render: function () {
         return (
-            <div className="Header">
+            <div>
                 <header className="main-header">
+                    <div className="">
+                        <a href="#" className="logo">
 
-                    <a href="#" className="logo">
+                            <div className="logo-mini">
+                                <b>A</b>
+                                LT</div>
 
-                        <span className="logo-mini">
-                            <b>A</b>
-                            LT</span>
+                            <div className="logo-lg">
+                                <b>Admin</b>
+                                CP</div>
+                        </a>
+                    </div>
 
-                        <span className="logo-lg">
-                            <b>Admin</b>
-                            CP</span>
-                    </a>
-
-                    <nav className="navbar navbar-static-top" role="navigation">
-
-                        <a href="#" className="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <nav className="nav bar navbar-static-top" role="navigation">
+                        <a href="" className="sidebar-toggle" data-toggle="offcanvas" role="button">
                             <span className="sr-only">Toggle navigation</span>
                         </a>
                         <div className="navbar-custom-menu">
@@ -274,13 +274,14 @@ var Header = React.createClass({
                                 </li>
 
                                 <li>
-                                    <a href="#" data-toggle="control-sidebar">
+                                    <a href="" data-toggle="control-sidebar">
                                         <i className="fa fa-gears"></i>
                                     </a>
                                 </li>
                             </ul>
                         </div>
                     </nav>
+
                 </header>
             </div>
         );
