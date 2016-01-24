@@ -27,11 +27,17 @@ function requireAuth(nextState, replace) {
   }
 }
 
+function signout() {
+  localStorage.removeItem('apitoken');
+  localStorage.removeItem('user');
+  document.location = "/#/login";
+}
+
 ReactDOM.render((
   <Router history={hashHistory}>
     <Route path="/login" component={Home} />
     <Route path="/dashboard" component={Admin} />
-      <Route path="/AdminLogin" component={AdminLogin} />
+    <Route path="/AdminLogin" component={AdminLogin} />
     <Route path="/" component={Header} onEnter={requireAuth}>
       <Route path="/search" component={Search} />
       <Route path="profile" component={Profile} >
@@ -40,6 +46,7 @@ ReactDOM.render((
         <Route path="photos" component={Photos} />
       </Route>
     </Route>
+    <Route path="/signout" onEnter={signout} />
   </Router>
   ),
   document.getElementById('content')
