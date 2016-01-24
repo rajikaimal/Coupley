@@ -10,6 +10,8 @@ use App\User;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
+use DB;
+
 class AuthenticateController extends Controller
 {
 	public function __construct()
@@ -18,8 +20,8 @@ class AuthenticateController extends Controller
 	}
     public function index(Request $request)
     {
-        $users = User::find($request);
-	    return $users;
+        $user = User::where('email', 'tiffany@gmail.com')->get();
+	    return response()->json(['user' => $user]);
     }    
     public function authenticate(Request $request)
     {
