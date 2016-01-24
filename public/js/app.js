@@ -16,11 +16,12 @@ import About from './components/profile/About.react';
 import Photos from './components/profile/Photos.react';
 import Search from './components/Search.react';
 import Admin from './components/admin/dashboard.react';
-
+import AdminLogin from './components/admin/login.react';
 ReactDOM.render((
   <Router history={hashHistory}>
     <Route path="/login" component={Home} />
     <Route path="/dashboard" component={Admin} />
+      <Route path="/AdminLogin" component={AdminLogin} />
     <Route path="/" component={Header}>
       <Route path="/search" component={Search} />
       <Route path="profile" component={Profile} >
