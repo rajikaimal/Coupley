@@ -28,9 +28,9 @@ function requireAuth(nextState, replace) {
 
 ReactDOM.render((
   <Router history={hashHistory}>
-    <Route path="/login" component={Home} />
+    <Route path="/login" component={Home} onEnter={requireAuth} />
     <Route path="/dashboard" component={Admin} />
-    <Route path="/" component={Header} onEnter={requireAuth} >
+    <Route path="/" component={Header} onEnter={requireAuth}>
       <Route path="/search" component={Search} />
       <Route path="profile" component={Profile} >
       	<Route path="activityfeed" component={ActivityContainer} />
