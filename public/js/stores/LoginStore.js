@@ -14,6 +14,9 @@ var LoginStore = assign({}, EventEmitter.prototype, {
   saveEmail: function(email) {
     localStorage.setItem('email', email);
   },
+  storeuserdata: function(data) {
+    localStorage.setItem('user', data);
+  },
   storefirstname: function(firstname) {
     localStorage.setItem('firstname', firstname);
   },
@@ -24,7 +27,7 @@ var LoginStore = assign({}, EventEmitter.prototype, {
     return localStorage.getItem('email');
   },
   getFirstname: function() {
-    return localStorage.getItem('firstname');
+    return localStorage.getItem('user');
   },
   emitChange: function() {
     this.emit(CHANGE_EVENT);
@@ -41,9 +44,12 @@ AppDispatcher.register(function(payload) {
       LoginStore.save(payload.action.token);
       LoginStore.saveEmail(payload.action.email);
       LoginStore.emitChange();
+      break;
     case(LoginConstants.PROPOGATE):
-      LoginStore.storefirstname(payload.action.firstname);
+      console.log('DONE prop');
+      LoginStore.storeuserdata(payload.action.userdata.firstname);
       LoginStore.emitChange();
+      break;
   }
 });
 

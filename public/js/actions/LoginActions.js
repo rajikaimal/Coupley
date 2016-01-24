@@ -10,6 +10,15 @@ var LoginActions = {
 		      token: response.token,
 		      email: credentials.email
 		    });
+        $.get('/api/authenticate?token=' + localStorage.getItem('apitoken') + '&email=' + credentials.email , function(response) {
+          console.log(response.user[0]);
+        
+            AppDispatcher.handleViewAction({
+              actionType: LoginConstants.PROPOGATE,
+              userdata: response.user[0]
+            });
+ 
+        });
 		    console.log('Dispatched');
    			//document.location = "/";
    		}

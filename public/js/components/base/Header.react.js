@@ -10,12 +10,12 @@ import HeaderActions from '../../actions/HeaderActions';
 const Header = React.createClass({
 	getInitialState: function() {
 		return {
-			firstname: "Tiffany"
+			firstname: LoginStore.getFirstname()
 		}
 	}, 
 	componentDidMount: function() {
 		LoginStore.addChangeListener(this._onChange);
-		HeaderActions.getprofilename(LoginStore.getEmail());
+		//HeaderActions.getprofilename(LoginStore.getEmail());
 	},
 	_search: function() {
 		document.location = "/#/search";
