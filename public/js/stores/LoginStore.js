@@ -9,10 +9,10 @@ var apitoken;
 
 var LoginStore = assign({}, EventEmitter.prototype, {
   save: function(token) {
-    apitoken = token
+    localStorage.setItem('apitoken', token);
   },
   getState: function() {
-    return apitoken;
+    return localStorage.getItem('apitoken');
   },
   emitChange: function() {
     this.emit(CHANGE_EVENT);

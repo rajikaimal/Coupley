@@ -11,14 +11,9 @@ const Header = React.createClass({
 		return {
 			apitoken: LoginStore.getState()
 		}
-	},
+	}, 
 	componentDidMount: function() {
-		if(this.state.apitoken) {
-	      document.location = "/#/";
-	    }
-	    else {
-	      document.location = "/#/login";
-	    }
+	
 	},
 	_search: function() {
 		document.location = "/#/search";
