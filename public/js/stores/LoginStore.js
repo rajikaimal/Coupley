@@ -5,14 +5,26 @@ var assign = require('object-assign');
 
 var CHANGE_EVENT = 'change';
 
-var apitoken;
+var email;
 
 var LoginStore = assign({}, EventEmitter.prototype, {
   save: function(token) {
     localStorage.setItem('apitoken', token);
   },
+  saveEmail: function(email) {
+    localStorage.setItem('email', email);
+  },
+  storefirstname: function(firstname) {
+    localStorage.setItem('firstname', firstname);
+  },
   getState: function() {
     return localStorage.getItem('apitoken');
+  },
+  getEmail: function() {
+    return localStorage.getItem('email');
+  },
+  getFirstname: function() {
+    return localStorage.getItem('firstname');
   },
   emitChange: function() {
     this.emit(CHANGE_EVENT);
@@ -27,7 +39,10 @@ AppDispatcher.register(function(payload) {
   switch(payload.action.actionType) {
     case(LoginConstants.LOGIN): 
       LoginStore.save(payload.action.token);
-      console.log(payload.action.token);
+      LoginStore.saveEmail(payload.action.email);
+      LoginStore.emitChange();
+    case(LoginConstants.PROPOGATE):
+      LoginStore.storefirstname(payload.action.firstname);
       LoginStore.emitChange();
   }
 });

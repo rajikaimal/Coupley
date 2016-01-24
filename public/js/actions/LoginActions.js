@@ -7,11 +7,12 @@ var LoginActions = {
     	if(response.token) {
     		AppDispatcher.handleViewAction({
 		      actionType: LoginConstants.LOGIN,
-		      token: response.token
+		      token: response.token,
+		      email: credentials.email
 		    });
 		    console.log('Dispatched');
-//    		document.location = "/";
-    	}
+   			//document.location = "/";
+   		}
     	else {
     		console.log(response);
     	}
