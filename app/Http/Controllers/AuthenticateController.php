@@ -20,7 +20,8 @@ class AuthenticateController extends Controller
 	}
     public function index(Request $request)
     {
-        $user = User::where('email', 'tiffany@gmail.com')->get();
+        $email = $request->email;
+        $user = User::where('email', $email)->get();
 	    return response()->json(['user' => $user]);
     }    
     public function authenticate(Request $request)
