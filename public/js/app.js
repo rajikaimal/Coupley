@@ -17,11 +17,20 @@ import Photos from './components/profile/Photos.react';
 import Search from './components/Search.react';
 import Admin from './components/admin/dashboard.react';
 
+function requireAuth(nextState, replace) {
+  if(! localStorage.getItem('apitoken')) {
+    replace({
+      pathname: '/login',
+      state: { nextPathname: nextState.location.pathname }
+    })
+  }
+}
+
 ReactDOM.render((
   <Router history={hashHistory}>
     <Route path="/login" component={Home} />
     <Route path="/dashboard" component={Admin} />
-    <Route path="/" component={Header}>
+    <Route path="/" component={Header} onEnter={requireAuth} >
       <Route path="/search" component={Search} />
       <Route path="profile" component={Profile} >
       	<Route path="activityfeed" component={ActivityContainer} />
