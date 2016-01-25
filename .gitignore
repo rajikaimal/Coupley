@@ -1,3 +1,4 @@
+/.idea
 /vendor
 /node_modules
 Homestead.yaml
@@ -8,4 +9,8 @@ Homestead.json
 .env
 public/bundle.js
 public/node_modules
+<<<<<<< HEAD
 .idea/
+=======
+.npm-debug.log
+>>>>>>> upstream/master

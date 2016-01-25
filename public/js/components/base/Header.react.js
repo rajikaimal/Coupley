@@ -1,12 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router'
-
 import Badge from 'material-ui/lib/badge';
 import IconButton from 'material-ui/lib/icon-button';
 import NotificationsIcon from 'material-ui/lib/svg-icons/social/notifications';
-
+import MockChat from '../profile/MockChat.react';
+import LoginStore from '../../stores/LoginStore';
+import HeaderActions from '../../actions/HeaderActions';
 
 const Header = React.createClass({
+	getInitialState: function() {
+		return {
+			firstname: LoginStore.getFirstname()
+		}
+	}, 
+	componentDidMount: function() {
+		LoginStore.addChangeListener(this._onChange);
+		//HeaderActions.getprofilename(LoginStore.getEmail());
+	},
+	_search: function() {
+		document.location = "/#/search";
+	},
+	_onChange: function() {
+	    this.setState({ firstname: LoginStore.getFirstname() });
+	},
 	render: function() {
 	    return (
 	    	<div>
@@ -18,7 +34,7 @@ const Header = React.createClass({
 				        <span className="icon-bar"></span>
 				        <span className="icon-bar"></span>
 				      </button>
-				      <a className="navbar-brand" href="javascript:void(0)">Coupley</a>
+				      <a className="navbar-brand" href="/#/">Coupley</a>
 				    </div>
 				    <div className="navbar-collapse collapse navbar-inverse-collapse">
 				      <ul className="nav navbar-nav">
@@ -28,7 +44,7 @@ const Header = React.createClass({
 				      </ul>
 				      <form className="navbar-form navbar-left">
 				        <div className="form-group">
-				          <input type="text" className="form-control col-md-8" placeholder="Search" />
+				          <input type="text" className="form-control col-md-8" placeholder="Search" onKeyDown={this._search} />
 				        </div>
 				      </form>
 				      <ul className="nav navbar-nav navbar-right">
@@ -41,13 +57,22 @@ const Header = React.createClass({
 					   			</Link>
 					   		</Badge>
 					    </li>
-				        <li><Link to={`/profile`}>Profile</Link></li>
+				        <li><Link to={`/profile/activityfeed`}>{this.state.firstname}</Link></li>
 				        <li><Link to={`/signout`}>Sign out</Link></li>
 				      </ul>
 				    </div>
 				  </div>
 				</div>
-				{this.props.children}
+				<div className="col-lg-9">
+		          <div className="panel panel-default">
+		          
+					{this.props.children}
+					
+			      </div>
+        		</div>
+        		<div className="col-lg-3">
+		          <MockChat />
+		        </div>
 			</div>
 		
 		);

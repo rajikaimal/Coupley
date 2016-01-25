@@ -22,8 +22,27 @@ Route::get('/', function () {
     @author rajikaimal
 */
 
-Route::get('/profile', function() {
-	return view('init');
+Route::get('/api/login', function() {
+	return "Done";
+});
+
+Route::group(['prefix' => 'api'], function()
+{
+    //authenticate users with AuthenticateController
+    Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
+    Route::post('authenticate', 'AuthenticateController@authenticate');
+    //Register new users with RegisterConroller@register
+    Route::post('register', 'RegisterController@check');
+});
+
+/*
+	Dashboard route
+	Handles Admin panel of Coupley
+    @author isurudilhan
+*/
+
+Route::get('/cp-admin', function() {
+    return view('init_admin');
 });
 
 /*
