@@ -26,8 +26,8 @@ const style = {
     height:50,
     "text-align":"center",
     "font-size":"20px",
-"font-weight":3000,
-"line-height":14
+    "font-weight":3000,
+    "line-height":14
 
 };
 
