@@ -26,12 +26,21 @@ function requireAuth(nextState, replace) {
     })
   }
 }
+function requireAdminAuth(nextState, replace) {
+    if(! localStorage.getItem('apitoken')) {
+        replace({
+            pathname: '/AdminLogin',
+            state: { nextPathname: nextState.location.pathname }
+        })
+    }
+
+}
 
 ReactDOM.render((
   <Router history={hashHistory}>
     <Route path="/login" component={Home} />
-    <Route path="/dashboard" component={Admin} />
-      <Route path="/AdminLogin" component={AdminLogin} />
+    <Route path="/AdminLogin" component={AdminLogin} />
+      <Route path="/dashboard" component={Admin} onEnter={requireAdminAuth} />
     <Route path="/" component={Header} onEnter={requireAuth}>
       <Route path="/search" component={Search} />
       <Route path="profile" component={Profile} >
