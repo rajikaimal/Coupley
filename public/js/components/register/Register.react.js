@@ -27,9 +27,25 @@ const Login = React.createClass({
     let lastname = this.refs.lastname.getValue();
     let username = this.refs.username.getValue();
     let email = this.refs.email.getValue();
-    let gender = this.state.gender;
+    if(this.state.gender == 1) {
+      var gender = "male";  
+    }
+    else if(this.state.gender == 2) {
+      var gender = "female";
+    }
     let password = this.refs.password.getValue();
-    let orientation = this.state.orientation;
+    if(this.state.orientation == 1) {
+      var orientation = "straight";
+    }
+    else if(this.state.orientation == 2) {
+      var orientation = "lesbian";
+    }
+    else if(this.state.orientation == 3) {
+      var orientation = "gay";
+    }
+    else if(this.state.orientation == 4) {
+      var orientation = "bisexual";
+    }
     let credentials = {
       firstname: firstname,
       lastname: lastname,

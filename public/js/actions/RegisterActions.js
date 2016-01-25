@@ -4,10 +4,12 @@ var RegisterConstants = require('../constants/RegisterConstants');
 var RegisterActions = {
   check: function(credentials) {
   	console.log(credentials);
-  	$.get('/api/login', function(data) {
-  		console.log(data);
+  	$.post('/api/register', credentials, function(data) {
+  		if(data.status === 201) {
+        
+      }
   	});
-//  	document.location = "/";
+  	document.location = "/";
   
   },
   register: function(credentials) {

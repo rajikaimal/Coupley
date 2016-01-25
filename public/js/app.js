@@ -36,6 +36,12 @@ function requireAdminAuth(nextState, replace) {
 
 }
 
+function signout() {
+  localStorage.removeItem('apitoken');
+  localStorage.removeItem('user');
+  document.location = "/#/login";
+}
+
 ReactDOM.render((
   <Router history={hashHistory}>
     <Route path="/login" component={Home} />
@@ -49,6 +55,7 @@ ReactDOM.render((
         <Route path="photos" component={Photos} />
       </Route>
     </Route>
+    <Route path="/signout" onEnter={signout} />
   </Router>
   ),
   document.getElementById('content')
