@@ -18,7 +18,7 @@ class Chat1Migration extends Migration
           $table->integer('cuser_id')->unsigned();
           $table->timestamps();
           $table->integer('status');
-          $table->integer('con_id');
+          $table->integer('con_id')->unsigned();
           $table->foreign('cuser_id')->references('id')->on('users');
           $table->foreign('con_id')->references('chat_id')->on('conversation');
       });
