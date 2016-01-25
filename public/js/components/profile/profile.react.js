@@ -5,8 +5,10 @@ import CardHeader from 'material-ui/lib/card/card-header';
 import FlatButton from 'material-ui/lib/flat-button';
 import CardText from 'material-ui/lib/card/card-text';
 import Divider from 'material-ui/lib/divider';
-
+import ProfilePic from './ProfilePic.react';
 import { Link } from 'react-router'
+import ProfileActions from '../../actions/profile/ProfileActions';
+import ProfileStore from '../../stores/ProfileStore';
 
 const tabstyle = {
   marginTop: 30,
@@ -14,28 +16,22 @@ const tabstyle = {
   marginReft: 50
 };
 
-const style = {
-  width: 200,
-  borderRadius: 20
-};
 
 const Profile = React.createClass({
+  getInitialState: function() {
+    return ProfileStore.getuserdata()
+  },
+  componentDidMount: function() {
+    ProfileActions.getProfileData();
+    ProfileStore.addChangeListener(this._onChange);
+  },
+  _onChange: function() {
+    this.setState(ProfileStore.getuserdata());
+  },
   render: function() {
     return (
       <div>
-        <div className="panel-body">
-          <div>
-            <div className="col-lg-3">
-              <img src="https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg" style={style} />
-            </div>
-            <div className="col-lg-6">
-              <h3> Tiffany Hwang </h3>
-            </div>
-            <div className="col-lg-6">
-              <span> Country etc... </span>
-            </div>
-          </div>
-        </div>
+        <ProfilePic firstname={this.state.firstname} lastname={this.state.lastname} country={this.state.country}/>
         <Divider />
         <div style={tabstyle}>
           <div className="btn-group btn-group-justified btn-group-info">
