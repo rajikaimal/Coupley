@@ -36,20 +36,20 @@ var Sidebar = React.createClass({
 
                         <ul className="sidebar-menu">
                             <li className="header">MAIN NAVIGATION</li>
-                            <li className="active treeview">
-                                <a href="#">
+                            <li>
+                                <Link to={`/dashboard`}>
                                     <i className="fa fa-dashboard"></i>
                                     <span>Dashboard</span>
-                                </a>
+                                </Link>
 
                             </li>
 
                             <li>
-                                <a href="#">
+                                <Link to={`/users`}>
                                     <i className="fa fa-th"></i>
                                     <span>Friends and Enemies</span>
                                     <small className="label pull-right bg-green">new</small>
-                                </a>
+                                </Link>
                             </li>
 
                             <li>
