@@ -32,9 +32,9 @@ var TodoStore = assign({}, EventEmitter.prototype, {
 });
 
 AppDispatcher.register(function(payload) {
-  console.log(payload);
-  _todos.push(payload);
-  TodoStore.emitChange();
+  //console.log(payload);
+  //_todos.push(payload);
+  //TodoStore.emitChange();
 });
 
 module.exports = TodoStore;
