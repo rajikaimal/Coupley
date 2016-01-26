@@ -37,7 +37,7 @@ var Sidebar = React.createClass({
                         <ul className="sidebar-menu">
                             <li className="header">MAIN NAVIGATION</li>
                             <li>
-                                <Link to={`/dashboard`}>
+                                <Link to={`/cards`}>
                                     <i className="fa fa-dashboard"></i>
                                     <span>Dashboard</span>
                                 </Link>
