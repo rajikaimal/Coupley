@@ -17,7 +17,9 @@ import Photos from './components/profile/Photos.react';
 import Search from './components/Search.react';
 import Admin from './components/admin/dashboard.react';
 import AdminLogin from './components/admin/login.react';
-import users from './components/admin/users/users.react';
+import users from './components/admin/users/userHome.react';
+import Cards from './components/admin/Cards.react';
+import Avatar from './components/admin/users/friends.react';
 
 function requireAuth(nextState, replace) {
   if(! localStorage.getItem('apitoken')) {
@@ -47,8 +49,12 @@ ReactDOM.render((
   <Router history={hashHistory}>
     <Route path="/login" component={Home} />
     <Route path="/AdminLogin" component={AdminLogin} />
-      <Route path="/dashboard" component={Admin} onEnter={requireAdminAuth} />
-        <Route path="/users" component={users} />
+      <Route path="/dashboard" component={Admin} onEnter={requireAdminAuth}>
+          <Route path="/users" component={users} >
+              <Route path="friends" component={Avatar} />
+          </Route>
+          <Route path="/cards" component={Cards} />
+      </Route>
     <Route path="/" component={Header} onEnter={requireAuth}>
       <Route path="/search" component={Search} />
       <Route path="profile" component={Profile} >
