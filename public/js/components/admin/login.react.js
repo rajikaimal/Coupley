@@ -13,21 +13,40 @@ import CardText from 'material-ui/lib/card/card-text';
 import TextField from 'material-ui/lib/text-field';
 import RaisedButton from 'material-ui/lib/raised-button';
 import LoginActions from '../../actions/admin/LoginActions';
+import LoginStore from '../../stores/LoginStore';
 
 
 
 const Adminlogin = React.createClass({
     getInitialState: function() {
+        console.log(LoginStore.getState());
         return {
-            username: "",
-            password: ""
+            apitoken: LoginStore.getState()
+        };
+    },
+    componentDidMount: function() {
+        LoginStore.addChangeListener(this._onChange);
+        if(this.state.apitoken) {
+            document.location = "/cp-admin#/dashboard";
+        }
+        else {
+            document.location = "/cp-admin#/AdminLogin";
+        }
+    },
+    _onChange: function() {
+        this.setState({ apitoken: LoginStore.getState() });
+        if(this.state.apitoken) {
+            document.location = "/cp-admin#/dashboard";
+        }
+        else {
+            document.location = "/cp-admin#/AdminLogin";
         }
     },
     _handleLogin: function() {
-        let username = this.refs.username.getValue();
+        let email = this.refs.email.getValue();
         let password = this.refs.password.getValue();
         let credentials = {
-            username: username,
+            email: email,
             password: password
         };
         LoginActions.login(credentials);
@@ -45,7 +64,7 @@ const Adminlogin = React.createClass({
                 <CardTitle title="Welcome Back.." subtitle="Coupley &trade;"/>
                 <CardActions>
                     <TextField
-                        floatingLabelText="username" ref="username" />
+                        floatingLabelText="email" ref="email" />
                     <TextField
                         floatingLabelText="password" ref="password" />
 

@@ -27,5 +27,6 @@ var Admin = React.createClass({
             </div>
         );
     }
+
 });
 export default Admin;

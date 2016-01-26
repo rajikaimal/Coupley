@@ -50,6 +50,12 @@ Route::get('/cp-admin', function() {
     return view('init_admin');
 });
 
+Route::group(['prefix' => 'admin-api'], function()
+{
+    Route::resource('authenticate', 'AdminAuthenticateController', ['only' => ['indexs']]);
+    Route::post('authenticate', 'AdminAuthenticateController@authenticate');
+});
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
