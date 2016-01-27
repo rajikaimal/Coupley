@@ -28,7 +28,7 @@ const Login = React.createClass({
     let username = this.refs.username.getValue();
     let email = this.refs.email.getValue();
     if(this.state.gender == 1) {
-      var gender = "male";  
+      var gender = "male";
     }
     else if(this.state.gender == 2) {
       var gender = "female";
@@ -101,10 +101,10 @@ const Login = React.createClass({
           <RaisedButton label="Register" style={buttonStyle} primary={true} onTouchTap={this._handleRegisterClickEvent} />
         </div>
         <div className="col-lg-4">
-        </div> 
-        </Paper>     
+        </div>
+        </Paper>
       </div>
-    );    
+    );
   }
 
 });
