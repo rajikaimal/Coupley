@@ -18,7 +18,7 @@ class AdminTableSeeder extends Seeder
         DB::table('admins')->delete();
 
         $admins = array(
-            ['firstname' => 'sam', 'lastname' => 'khan','email' => 'sam@gmail.com', 'job' => 'web developer','password' => Hash::make('secret')],
+            ['firstname' => 'tiffany', 'lastname' => 'khan','email' => 'tiffany@gmail.com', 'job' => 'web developer','password' => Hash::make('secret')],
             ['firstname' => 'Chris', 'lastname' => 'morris','email' => 'chris@gmail.com', 'job' => 'ceo','password' => Hash::make('secret')],
             ['firstname' => 'Saint', 'lastname' => 'Cena','email' => 'saint@gmail.com', 'job' => 'manager', 'password' => Hash::make('secret')],
             ['firstname' => 'Chris', 'lastname' => 'jerico','email' => 'jerico@gmail.com', 'job' => 'engineer', 'password' => Hash::make('secret')],

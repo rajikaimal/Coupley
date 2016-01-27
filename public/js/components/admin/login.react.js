@@ -27,7 +27,7 @@ const Adminlogin = React.createClass({
     componentDidMount: function() {
         LoginStore.addChangeListener(this._onChange);
         if(this.state.apitoken) {
-            document.location = "/cp-admin#/dashboard";
+            document.location = "/cp-admin#/cards";
         }
         else {
             document.location = "/cp-admin#/AdminLogin";
@@ -36,7 +36,7 @@ const Adminlogin = React.createClass({
     _onChange: function() {
         this.setState({ apitoken: LoginStore.getState() });
         if(this.state.apitoken) {
-            document.location = "/cp-admin#/dashboard";
+            document.location = "/cp-admin#/cards";
         }
         else {
             document.location = "/cp-admin#/AdminLogin";
