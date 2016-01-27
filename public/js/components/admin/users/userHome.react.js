@@ -12,12 +12,14 @@ import Divider from 'material-ui/lib/divider';
 const tilesData = [
     {
         img: 'https://cdn2.iconfinder.com/data/icons/metallic-people/512/people_group_users_friends-512.png',
-        title: 'Friends'
+        title: 'Friends',
+        path: '#/users/friends'
 
     },
     {
         img: 'https://cdn1.iconfinder.com/data/icons/rcons-user-action/512/block_users_group-512.png',
-        title: 'Enemies'
+        title: 'Enemies',
+        path: '#/users/enemies'
 
     }
 
@@ -32,10 +34,10 @@ const style = {
 
 const tileElements = tilesData.map(tile => <GridTile
     key={tile.img}
-    title={<FlatButton label={tile.title} secondary={true} style={style} linkButton={true} href="#/users/friends" />}
+    title={<FlatButton label={tile.title} secondary={true} style={style} linkButton={true} href={tile.path} />}
 
 ><img src={tile.img} /></GridTile>);
-const gridListStyle = {width: 600, height: 500, overflowY: 'auto', marginBottom: 24};
+const gridListStyle = {width: 600, height: 220, overflowY: 'auto'};
 
 var GridListExampleSimple = React.createClass({
     render: function () {
