@@ -26,7 +26,7 @@ const ActivityFeedContainer = React.createClass({
   		return (
   			<Activity key={activity.time} heading={activity.heading} time={activity.time} date={activity.date} description={activity.description} />
   		);
-  	});	
+  	});
   },
   render: function() {
     return (

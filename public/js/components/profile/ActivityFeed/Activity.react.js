@@ -42,9 +42,9 @@ const Activity = React.createClass({
 		              {this.props.description}
 		            </p>
 		          }
-		          secondaryTextLines={2} 
+		          secondaryTextLines={2}
 		          rightIconButton={rightIconMenu} />
-		        <Divider inset={true} />			
+		        <Divider inset={true} />
 			</div>
 		);
 	}
