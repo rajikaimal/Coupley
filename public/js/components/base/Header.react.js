@@ -12,13 +12,17 @@ const Header = React.createClass({
 		return {
 			firstname: LoginStore.getFirstname()
 		}
-	}, 
+	},
 	componentDidMount: function() {
 		LoginStore.addChangeListener(this._onChange);
 		//HeaderActions.getprofilename(LoginStore.getEmail());
 	},
-	_search: function() {
+	_changeURL: function() {
 		document.location = "/#/search";
+	},
+	_search: function() {
+		let searchkey = this.refs.search.value;
+		HeaderActions.getsearchresults(searchkey);
 	},
 	_onChange: function() {
 	    this.setState({ firstname: LoginStore.getFirstname() });
@@ -44,7 +48,7 @@ const Header = React.createClass({
 				      </ul>
 				      <form className="navbar-form navbar-left">
 				        <div className="form-group">
-				          <input type="text" className="form-control col-md-8" placeholder="Search" onKeyDown={this._search} />
+				          <input type="text" className="form-control col-md-8" placeholder="Search" onClick={this._changeURL} onKeyUp={this._search} ref="search"/>
 				        </div>
 				      </form>
 				      <ul className="nav navbar-nav navbar-right">
@@ -74,7 +78,6 @@ const Header = React.createClass({
 		          <MockChat />
 		        </div>
 			</div>
-		
 		);
 	}
 });

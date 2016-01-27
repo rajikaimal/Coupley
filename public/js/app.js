@@ -14,7 +14,7 @@ import Profile from './components/profile/profile.react';
 import ActivityContainer from './components/profile/ActivityFeed/ActivityFeedContainer.react';
 import About from './components/profile/About.react';
 import Photos from './components/profile/Photos.react';
-import Search from './components/Search.react';
+import Search from './components/search/Search.react';
 import Admin from './components/admin/dashboard.react';
 import AdminLogin from './components/admin/login.react';
 import users from './components/admin/users/userHome.react';
@@ -70,7 +70,13 @@ ReactDOM.render((
       	<Route path="about" component={About} />
         <Route path="photos" component={Photos} />
       </Route>
+      <Route path="/:username" component={Profile} >
+        <Route path="activityfeed" component={ActivityContainer} />
+        <Route path="about" component={About} />
+        <Route path="photos" component={Photos} />
+      </Route>
     </Route>
+
     <Route path="/signout" onEnter={signout} />
       <Route path="/AdminSignout" onEnter={AdminSignout} />
   </Router>

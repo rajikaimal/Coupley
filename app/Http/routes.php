@@ -33,6 +33,11 @@ Route::group(['prefix' => 'api'], function()
     Route::post('authenticate', 'AuthenticateController@authenticate');
     //Register new users with RegisterConroller@register
     Route::post('register', 'RegisterController@check');
+    //Return profile data
+    Route::get('profile', 'ProfileController@profile');
+    //Return userslist for search
+    Route::get('search', 'SearchController@search');
+    
 });
 
 /*

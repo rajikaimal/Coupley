@@ -38,7 +38,6 @@ var LoginStore = assign({}, EventEmitter.prototype, {
 });
 
 AppDispatcher.register(function(payload) {
-  console.log(payload.action);
   switch(payload.action.actionType) {
     case(LoginConstants.LOGIN): 
       LoginStore.save(payload.action.token);
@@ -46,7 +45,6 @@ AppDispatcher.register(function(payload) {
       LoginStore.emitChange();
       break;
     case(LoginConstants.PROPOGATE):
-      console.log('DONE prop');
       LoginStore.storeuserdata(payload.action.userdata.firstname);
       LoginStore.emitChange();
       break;
