@@ -27,7 +27,7 @@ const Adminlogin = React.createClass({
     componentDidMount: function() {
         LoginStore.addChangeListener(this._onChange);
         if(this.state.apitoken) {
-            document.location = "/cp-admin#/dashboard";
+            document.location = "/cp-admin#/cards";
         }
         else {
             document.location = "/cp-admin#/AdminLogin";
@@ -36,7 +36,7 @@ const Adminlogin = React.createClass({
     _onChange: function() {
         this.setState({ apitoken: LoginStore.getState() });
         if(this.state.apitoken) {
-            document.location = "/cp-admin#/dashboard";
+            document.location = "/cp-admin#/cards";
         }
         else {
             document.location = "/cp-admin#/AdminLogin";
@@ -50,7 +50,16 @@ const Adminlogin = React.createClass({
             password: password
         };
         LoginActions.login(credentials);
-        console.log('Done calling !');
+        console.log('Done calling!');
+
+        if (email.trim() == "") {
+            alert("Email field is empty, Please fill the email!");
+            this.refs.email.focus();
+        }
+        else if (password.trim() == "") {
+            alert("Password field is empty, Please fill the password!");
+            this.refs.password.focus();
+        }
     },
     render: function() {
         return (
@@ -64,9 +73,9 @@ const Adminlogin = React.createClass({
                 <CardTitle title="Welcome Back.." subtitle="Coupley &trade;"/>
                 <CardActions>
                     <TextField
-                        floatingLabelText="email" ref="email" />
+                        floatingLabelText="Enter your email" ref="email" />
                     <TextField
-                        floatingLabelText="password" ref="password" />
+                        floatingLabelText="Enter your password" ref="password" type="password" />
 
                 </CardActions>
                 <CardText>

@@ -41,7 +41,6 @@ function requireAdminAuth(nextState, replace) {
 }
 
 function signout() {
-  console.log('Removing token ...');
   localStorage.removeItem('apitoken');
   localStorage.removeItem('user');
   document.location = "/#/login";
@@ -51,7 +50,7 @@ ReactDOM.render((
   <Router history={hashHistory}>
     <Route path="/login" component={Home} />
     <Route path="/AdminLogin" component={AdminLogin} />
-    <Route path="/dashboard" component={Admin} onEnter={requireAdminAuth} />
+      <Route path="/dashboard" component={Admin} onEnter={requireAdminAuth} />
     <Route path="/" component={Header} onEnter={requireAuth}>
       <Route path="/search" component={Search} />
       <Route path="profile" component={Profile} >
