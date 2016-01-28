@@ -37,7 +37,8 @@ Route::group(['prefix' => 'api'], function()
     Route::get('profile', 'ProfileController@profile');
     //Return userslist for search
     Route::get('search', 'SearchController@search');
-    
+    //Return visitor profile data
+    Route::get('visitorprofile', 'ProfileController@visitor');
 });
 
 /*
