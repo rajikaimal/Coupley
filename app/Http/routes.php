@@ -57,6 +57,7 @@ Route::group(['prefix' => 'admin-api'], function()
     Route::post('authenticate', 'AdminAuthenticateController@authenticate');
     //Return userslist
     Route::get('search', 'UsersController@friends');
+    Route::get('blocked', 'UsersController@blocked');
 });
 
 /*

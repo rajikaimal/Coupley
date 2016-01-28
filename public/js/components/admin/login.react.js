@@ -15,7 +15,8 @@ import RaisedButton from 'material-ui/lib/raised-button';
 import LoginActions from '../../actions/admin/LoginActions';
 import LoginStore from '../../stores/LoginStore';
 
-
+const err = {"color": "red"};
+var validEmail = /\S+@\S+\.\S+/;
 
 const Adminlogin = React.createClass({
     getInitialState: function() {
@@ -53,12 +54,27 @@ const Adminlogin = React.createClass({
         console.log('Done calling!');
 
         if (email.trim() == "") {
-            alert("Email field is empty, Please fill the email!");
+            document.getElementById('email').innerHTML = "Email field is empty, Please enter the email!";
+            document.getElementById('password').innerHTML = "";
             this.refs.email.focus();
+            return false;
         }
         else if (password.trim() == "") {
-            alert("Password field is empty, Please fill the password!");
+            document.getElementById('password').innerHTML = "Password field is empty, Please enter the password!";
+            document.getElementById('email').innerHTML = "";
             this.refs.password.focus();
+            return false;
+        }
+        else {
+            if (!email.match(validEmail)) {
+                document.getElementById('password').innerHTML = "";
+                document.getElementById('email').innerHTML = "Email is invalid, Please enter the a correct email!";
+                this.refs.email.focus();
+            }
+            else {
+                document.getElementById('email').innerHTML = "";
+                document.getElementById('password').innerHTML = "";
+            }
         }
     },
     render: function() {
@@ -74,8 +90,10 @@ const Adminlogin = React.createClass({
                 <CardActions>
                     <TextField
                         floatingLabelText="Enter your email" ref="email" />
+                    <div style={err} id="email" onChange={this._handleLogin}></div>
                     <TextField
                         floatingLabelText="Enter your password" ref="password" type="password" />
+                    <div id="password" style={err} onChange={this._handleLogin}></div>
 
                 </CardActions>
                 <CardText>
