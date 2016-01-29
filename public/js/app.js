@@ -55,36 +55,20 @@ function signout() {
 }
 
 ReactDOM.render((
-    <Router history={hashHistory}>
-      <Route path="/login" component={Login} />
-      <Route path="/register" component={Register} />
-      <Route path="/AdminLogin" component={AdminLogin} />
-      <Route path="/dashboard" component={Admin} onEnter={requireAdminAuth} />
-      <Route path="/" component={Header} onEnter={requireAuth}>
-        <Route path="/search" component={Search} />
-        <Route path="threads" component={Threads} />
-        <Route path="profile" component={Profile} >
-        	<Route path="activityfeed" component={ActivityContainer} />
-        	<Route path="about" component={About} />
-          <Route path="photos" component={Photos} />
-        </Route>
-        <Route path="/:username" component={ProfileVisitor} >
-          <Route path="activityfeed" component={ActivityContainerVisitor} />
-          <Route path="about" component={AboutVisitor} />
-          <Route path="photos" component={PhotosVisitor} />
-        </Route>
   <Router history={hashHistory}>
-    <Route path="/login" component={Home} />
-      <Route path="/AdminLogin" component={AdminLogin} />
-      <Route path="/dashboard" component={Admin} onEnter={requireAdminAuth}>
-          <Route path="/users" component={users} >
-              <Route path="friends" component={friends} />
-              <Route path="enemies" component={enemies} />
-          </Route>
-          <Route path="/cards" component={Cards} />
-      </Route>
+    <Route path="/login" component={Login} />
+    <Route path="/register" component={Register} />
+    <Route path="/AdminLogin" component={AdminLogin} />
+    <Route path="/dashboard" component={Admin} onEnter={requireAdminAuth}>
+        <Route path="/users" component={users} >
+            <Route path="friends" component={friends} />
+            <Route path="enemies" component={enemies} />
+        </Route>
+        <Route path="/cards" component={Cards} />
+    </Route>
     <Route path="/" component={Header} onEnter={requireAuth}>
       <Route path="/search" component={Search} />
+      <Route path="/threads" component={Threads} />
       <Route path="profile" component={Profile} >
       	<Route path="activityfeed" component={ActivityContainer} />
       	<Route path="about" component={About} />
@@ -95,9 +79,9 @@ ReactDOM.render((
         <Route path="about" component={AboutVisitor} />
         <Route path="photos" component={PhotosVisitor} />
       </Route>
-
+    </Route>
       <Route path="/signout" onEnter={signout} />
-    </Router>
+  </Router>
   ),
   document.getElementById('content')
 );
