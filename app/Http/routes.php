@@ -16,9 +16,9 @@ Route::get('/', function () {
 });
 
 
-/*  
+/*
 	Login route
-	Handles initial login of a user of Coupley	
+	Handles initial login of a user of Coupley
     @author rajikaimal
 */
 
@@ -33,6 +33,7 @@ Route::group(['prefix' => 'api'], function()
     Route::post('authenticate', 'AuthenticateController@authenticate');
     //Register new users with RegisterConroller@register
     Route::post('register', 'RegisterController@check');
+    Route::post('chat', 'ChatController@addmessage');
 });
 
 /*

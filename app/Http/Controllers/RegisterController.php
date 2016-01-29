@@ -29,7 +29,7 @@ class RegisterController extends Controller
 	    		return response()->json(["status" => 201], 201);
 	    	}
 	    	else {
-	    		return response()->json(["status" => 404], 404);	
+	    		return response()->json(["status" => 404], 404);
 	    	}
 		}
 		else {
@@ -38,6 +38,6 @@ class RegisterController extends Controller
 	}
     public function register(Request $request)
     {
-    	
+
     }
 }

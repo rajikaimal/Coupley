@@ -18,6 +18,7 @@ import Search from './components/Search.react';
 import Admin from './components/admin/dashboard.react';
 import AdminLogin from './components/admin/login.react';
 import MainChat from './components/chat/ChatMain.react';
+import MainActivity from './components/activityfeed/activityMain.react';
 
 function requireAuth(nextState, replace) {
   if(! localStorage.getItem('apitoken')) {
@@ -41,6 +42,7 @@ ReactDOM.render((
     <Route path="chat" component={MainChat}/>
     <Route path="/AdminLogin" component={AdminLogin} />
     <Route path="/" component={Header} onEnter={requireAuth}>
+<Route path="activity" component={MainActivity}/>
       <Route path="/search" component={Search} />
       <Route path="profile" component={Profile} >
       	<Route path="activityfeed" component={ActivityContainer} />
