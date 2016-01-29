@@ -41,6 +41,10 @@ Route::group(['prefix' => 'api'], function()
     Route::get('visitorprofile', 'ProfileController@visitor');
 });
 
+Route::get('socket', 'SocketController@index');
+Route::post('sendmessage', 'SocketController@sendMessage');
+Route::get('writemessage', 'SocketController@writemessage');
+
 /*
 	Dashboard route
 	Handles Admin panel of Coupley

@@ -6,6 +6,18 @@ import MenuItem from 'material-ui/lib/menus/menu-item';
 import RegisterActions from '../../actions/RegisterActions';
 import Paper from 'material-ui/lib/paper';
 
+import CardTitle from 'material-ui/lib/card/card-title';
+import Card from 'material-ui/lib/card/card';
+import CardActions from 'material-ui/lib/card/card-actions';
+import FlatButton from 'material-ui/lib/flat-button';
+import CardText from 'material-ui/lib/card/card-text';
+
+import Table from 'material-ui/lib/table/table';
+import TableRow from 'material-ui/lib/table/table-row';
+import TableRowColumn from 'material-ui/lib/table/table-row-column';
+import TableBody from 'material-ui/lib/table/table-body';
+import Colors from 'material-ui/lib/styles/colors';
+
 const registerStyle = {
   marginTop: 50,
   marginLeft: 500
@@ -13,6 +25,99 @@ const registerStyle = {
 
 const buttonStyle = {
   marginTop: 25
+}
+
+const styles = {
+  errorStyle: {
+    color: Colors.pink500,
+  }
+};
+
+function validatefirstname(firstname) {
+  if(firstname.length >= 50) {
+    return {
+      "error": "Firstname is too long"
+    }
+  }
+  else if(! /^\w+$/i.test(firstname)) {
+    return {
+      "error": "Firstname cannot contain special characters"
+    }  
+  }
+  else {
+    return true;
+  }
+}
+
+function validatelastname(lastname) {
+  if(firstname.length >= 50) {
+    return {
+      "error": "Lastname is too long"
+    }
+  }
+  else if(! /^\w+$/i.test(lastname)) {
+    return {
+      "error": "Lastname cannot contain special characters"
+    }  
+  } 
+  else {
+    return true;
+  }
+}
+
+function validateusername(username) {
+  if(firstname.length >= 20) {
+    return {
+      "error": "Username is too long"
+    }
+  }
+  else if(! /^\w+$/i.test(firstname)) {
+    return {
+      "error": "Username cannot contain special characters"
+    }  
+  }
+  else {
+    return true;
+  }
+}
+
+function validateEmail(email) {
+  let re = /\S+@\S+\.\S+/;
+  if(re.test(email)) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+function validatePassword(password) {
+  if(password.length < 6) {
+    return {
+      "error": "Password length must be 6 or more"
+    }
+  }
+  let re = /[0-9]/;
+  if(!re.test(password)) {
+    return {
+      "error": "Password must contain a number"
+    }
+  }
+  re = /[a-z]/;
+  if(!re.test(password)) {
+    return {
+      "error": "Password must contain a lowercase letter"
+    }
+  }
+  re = /[A-Z]/;
+  if(!re.test(password)) {
+    return {
+      "error": "Password must contain a uppercase letter"
+    }
+  }
+  else {
+    return true;
+  }
 }
 
 const Login = React.createClass({
@@ -46,6 +151,21 @@ const Login = React.createClass({
     else if(this.state.orientation == 4) {
       var orientation = "bisexual";
     }
+    if(validatefirstname(firstname).error) {
+      document.getElementById('firstname').innerHTML = validatefirstname(firstname).error; 
+    }
+    if(validatelastname(lastname).error) {
+      document.getElementById('lastname').innerHTML = validatelastname(lastname).error; 
+    }
+    // if(validateusername(username).error) {
+    //   document.getElementById('username').innerHTML = validateusername(username).error; 
+    // }
+    if(! validateEmail(email)) {
+      document.getElementById('email').innerHTML = 'Invalid Email !'; 
+    }
+    if(validatePassword(password).error) {
+      document.getElementById('password').innerHTML = validatePassword(password).error; 
+    }
     let credentials = {
       firstname: firstname,
       lastname: lastname,
@@ -55,7 +175,7 @@ const Login = React.createClass({
       password: password,
       orientation: orientation
     };
-    RegisterActions.check(credentials);
+   RegisterActions.check(credentials);
     console.log('Done calling !');
   },
   handleChangeGender: function(e, index, value){
@@ -70,37 +190,52 @@ const Login = React.createClass({
         <Paper  zDepth={2}>
         <div className="col-lg-4">
         </div>
-        <div className="col-lg-4">
-          <TextField
-            floatingLabelText="firstname" ref="firstname"/>
-          <br/>
-          <TextField
-            floatingLabelText="lastname" ref="lastname"/>
-          <br/>
-          <TextField
-            floatingLabelText="username" ref="username"/>
-          <br />
-          <TextField
-            floatingLabelText="email" ref="email"/>
-          <br/>
-          <DropDownMenu value={this.state.gender} onChange={this.handleChangeGender}>
-            <MenuItem value={1} primaryText="Male"/>
-            <MenuItem value={2} primaryText="Female"/>
-          </DropDownMenu>
-          <TextField
-            type="password"
-            floatingLabelText="password" ref="password"/>
-          <br/>
-          <DropDownMenu value={this.state.orientation} onChange={this.handleChangeOrientation}>
-            <MenuItem value={1} primaryText="Straight"/>
-            <MenuItem value={2} primaryText="Lesbian"/>
-            <MenuItem value={3} primaryText="Gay"/>
-            <MenuItem value={4} primaryText="Bisexual"/>
-          </DropDownMenu>
-          <br/>
-          <RaisedButton label="Register" style={buttonStyle} primary={true} onTouchTap={this._handleRegisterClickEvent} />
+        <div className="col-lg-2">
+          
+          
         </div>
-        <div className="col-lg-4">
+        <div className="col-lg-6">
+          <Card>
+            <CardTitle title="Register" />
+            <CardText>
+              <TextField
+                hintText="Firstname" hintStyle={styles.errorStyle} fullwidth={true} ref="firstname"/>
+              <br />
+              <span id="firstname"> </span>
+              <TextField
+                hintText="Lastname" hintStyle={styles.errorStyle} fullwidth={true} ref="lastname"/>
+              <br />
+              <span id="lastname"> </span>
+              <TextField
+                hintText="Username" hintStyle={styles.errorStyle} fullwidth={true} ref="username"/>
+              <br />
+              <span id="username"> </span>
+              <TextField
+                hintText="Email" hintStyle={styles.errorStyle} fullwidth={true} ref="email"/>
+              <br />
+              <span id="email"> </span>
+              <br/>
+              <label>Gender </label><DropDownMenu value={this.state.gender} onChange={this.handleChangeGender}>
+                <MenuItem value={1} primaryText="Male"/>
+                <MenuItem value={2} primaryText="Female"/>
+              </DropDownMenu>
+              <TextField
+                type="password"
+                hintText="Password" ref="password" hintStyle={styles.errorStyle} fullwidth={true}/>
+              <br />
+              <span id="password"> </span>
+              <label>Sexual Orientation</label><DropDownMenu value={this.state.orientation} onChange={this.handleChangeOrientation}>
+                <MenuItem value={1} primaryText="Straight"/>
+                <MenuItem value={2} primaryText="Lesbian"/>
+                <MenuItem value={3} primaryText="Gay"/>
+                <MenuItem value={4} primaryText="Bisexual"/>
+              </DropDownMenu>
+                   
+            </CardText>
+            <CardActions>
+              <RaisedButton label="Register" style={buttonStyle} primary={true} onTouchTap={this._handleRegisterClickEvent} />
+            </CardActions>
+          </Card>  
         </div> 
         </Paper>     
       </div>

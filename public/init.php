@@ -12,6 +12,7 @@
 <body>
 	<div id="content"></div>
 	<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+	<script src="https://cdn.socket.io/socket.io-1.3.4.js"></script>
 	<script src="bundle.js"></script>
 	<script src="dist/js/material.min.js"></script>
 	<script src="dist/js/ripples.min.js"></script>
