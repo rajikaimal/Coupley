@@ -24,4 +24,19 @@ class ProfileController extends Controller
     	$userdetails = User::where('email', $email)->get();
     	return response()->json(['user' => $userdetails]);
     }
+    /*
+        returns visitor profile data for GET request
+        @return json
+    **/
+    public function visitor(Request $request)
+    {
+        $username = $request->username;
+        if($userdetails = User::where('firstname', $username)->get()) {
+            return response()->json(['user' => $userdetails, 'status' => 200], 200);
+        }
+        else {
+            return response()->json(['user' => $userdetails, 'status' => 505], 505);
+        }
+        
+    }
 }
