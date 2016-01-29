@@ -17,11 +17,11 @@ const colors = styles.Colors;
 
 var AvatarExampleSimple = React.createClass({
     getInitialState: function () {
-        if (SearchStore.empty()) {
-            return {
+
+        return {
                 results: SearchStore.getresults()
             }
-        }
+
     },
     componentDidMount: function () {
         SearchStore.addChangeListener(this._onChange);
