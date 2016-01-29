@@ -23,31 +23,35 @@ const iconButtonElement = (
 
 const rightIconMenu = (
   <IconMenu iconButtonElement={iconButtonElement}>
-    <MenuItem>Edit</MenuItem>
-    <MenuItem>Remove</MenuItem>
+    <MenuItem>Block user</MenuItem>
   </IconMenu>
 );
 
-const Search = React.createClass({
+const SearchItem = React.createClass({
+  _redirect: function() {
+    document.location = "/#/" + this.props.username;
+  },
   render: function() {
     return (
       <div>
-            <ListItem
-              leftAvatar={<Avatar src="https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg" />}
-              primaryText={this.props.heading}
-              secondaryText={
-                <p>
-                  <b> {this.props.date} {this.props.time} </b><br/>
-                  <span style={{color: Colors.darkBlack}}>Brendan Lim</span> --
-                  {this.props.description}
-                </p>
-              }
-              secondaryTextLines={2} 
-              rightIconButton={rightIconMenu} />
-            <Divider inset={true} />      
+        <ListItem
+          leftAvatar={<Avatar src="https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg" />}
+          primaryText={this.props.heading}
+          secondaryText={
+            <p>
+              <b> {this.props.firstname} {this.props.lastname} </b><br/>
+              <span style={{color: Colors.darkBlack}}>{this.props.gender}</span>
+          
+
+            </p>
+          }
+          secondaryTextLines={2} 
+          rightIconButton={rightIconMenu} 
+          onTouchTap={this._redirect} />
+        <Divider inset={true} />      
       </div>
     );
   }
 });
 
-export default Search;
+export default SearchItem;

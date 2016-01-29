@@ -13,25 +13,69 @@ import CardText from 'material-ui/lib/card/card-text';
 import TextField from 'material-ui/lib/text-field';
 import RaisedButton from 'material-ui/lib/raised-button';
 import LoginActions from '../../actions/admin/LoginActions';
+import LoginStore from '../../stores/LoginStore';
 
-
+const err = {"color": "red"};
+var validEmail = /\S+@\S+\.\S+/;
 
 const Adminlogin = React.createClass({
     getInitialState: function() {
+        console.log(LoginStore.getState());
         return {
-            username: "",
-            password: ""
+            apitoken: LoginStore.getState()
+        };
+    },
+    componentDidMount: function() {
+        LoginStore.addChangeListener(this._onChange);
+        if(this.state.apitoken) {
+            document.location = "/cp-admin#/cards";
+        }
+        else {
+            document.location = "/cp-admin#/AdminLogin";
+        }
+    },
+    _onChange: function() {
+        this.setState({ apitoken: LoginStore.getState() });
+        if(this.state.apitoken) {
+            document.location = "/cp-admin#/cards";
+        }
+        else {
+            document.location = "/cp-admin#/AdminLogin";
         }
     },
     _handleLogin: function() {
-        let username = this.refs.username.getValue();
+        let email = this.refs.email.getValue();
         let password = this.refs.password.getValue();
         let credentials = {
-            username: username,
+            email: email,
             password: password
         };
         LoginActions.login(credentials);
-        console.log('Done calling !');
+        console.log('Done calling!');
+
+        if (email.trim() == "") {
+            document.getElementById('email').innerHTML = "Email field is empty, Please enter the email!";
+            document.getElementById('password').innerHTML = "";
+            this.refs.email.focus();
+            return false;
+        }
+        else if (password.trim() == "") {
+            document.getElementById('password').innerHTML = "Password field is empty, Please enter the password!";
+            document.getElementById('email').innerHTML = "";
+            this.refs.password.focus();
+            return false;
+        }
+        else {
+            if (!email.match(validEmail)) {
+                document.getElementById('password').innerHTML = "";
+                document.getElementById('email').innerHTML = "Email is invalid, Please enter the a correct email!";
+                this.refs.email.focus();
+            }
+            else {
+                document.getElementById('email').innerHTML = "";
+                document.getElementById('password').innerHTML = "";
+            }
+        }
     },
     render: function() {
         return (
@@ -45,9 +89,11 @@ const Adminlogin = React.createClass({
                 <CardTitle title="Welcome Back.." subtitle="Coupley &trade;"/>
                 <CardActions>
                     <TextField
-                        floatingLabelText="username" ref="username" />
+                        floatingLabelText="Enter your email" ref="email" />
+                    <div style={err} id="email" onChange={this._handleLogin}></div>
                     <TextField
-                        floatingLabelText="password" ref="password" />
+                        floatingLabelText="Enter your password" ref="password" type="password" />
+                    <div id="password" style={err} onChange={this._handleLogin}></div>
 
                 </CardActions>
                 <CardText>

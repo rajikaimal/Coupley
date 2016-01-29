@@ -10,7 +10,6 @@ var RegisterActions = {
       }
   	});
   	document.location = "/";
-  
   },
   register: function(credentials) {
     console.log('Action register');

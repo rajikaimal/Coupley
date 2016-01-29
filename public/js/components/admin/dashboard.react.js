@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router';
 import Header from './Header.react';
 import Sidebar from './Sidebar.react';
-import Cards from './Cards.react';
 import Settings from './Settings.react';
 import Path from './path.react';
 
@@ -18,7 +17,8 @@ var Admin = React.createClass({
                         <div className="content-wrapper">
                             <Path/>
                             <section className="content">
-                                <Cards/>
+
+                                 {this.props.children}
                             </section>
                         </div>
                         <Settings />
@@ -27,5 +27,6 @@ var Admin = React.createClass({
             </div>
         );
     }
+
 });
 export default Admin;

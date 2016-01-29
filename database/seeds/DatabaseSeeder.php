@@ -18,10 +18,10 @@ class DatabaseSeeder extends Seeder
 	        DB::table('users')->delete();
 
 	        $users = array(
-	                ['firstname' => 'Ryan', 'lastname' => ' Chenkie','email' => 'ryanchenkie@gmail.com', 'gender' => 'male' ,'username' => 'ryan', 'orientation' => 'straight' ,'password' => Hash::make('secret')],
-	                ['firstname' => 'Chris', 'lastname' => ' Chenkie','email' => 'chris@gmail.com', 'gender' => 'male', 'username' => 'chris', 'orientation' => 'straight' ,'password' => Hash::make('secret')],
-	                ['firstname' => 'Alo', 'lastname' => ' Chenkie','email' => 'alo@gmail.com', 'gender' => 'male', 'username' => 'alo', 'orientation' => 'straight' ,'password' => Hash::make('secret')],
-	                ['firstname' => 'Tiffany', 'lastname' => ' Chenkie','email' => 'tiffany@gmail.com', 'gender' => 'male', 'username' => 'tiffany', 'orientation' => 'straight' ,'password' => Hash::make('secret')],
+	                ['firstname' => 'Ryan', 'lastname' => ' Chenkie','email' => 'ryanchenkie@gmail.com', 'gender' => 'male' ,'username' => 'ryan', 'orientation' => 'straight','birthday' => '1994-08-01' ,'country' => 'Sri Lanka' ,'password' => Hash::make('secret')],
+	                ['firstname' => 'Chris', 'lastname' => ' Chenkie','email' => 'chris@gmail.com', 'gender' => 'male', 'username' => 'chris', 'orientation' => 'straight','birthday' => '1994-08-01','country' => 'Sri Lanka' ,'password' => Hash::make('secret')],
+	                ['firstname' => 'Alo', 'lastname' => ' Chenkie','email' => 'alo@gmail.com', 'gender' => 'male', 'username' => 'alo', 'orientation' => 'straight','birthday' => '1994-08-01','country' => 'Sri Lanka' ,'password' => Hash::make('secret')],
+	                ['firstname' => 'Tiffany', 'lastname' => ' Chenkie','email' => 'tiffany@gmail.com', 'gender' => 'male', 'username' => 'tiffany', 'orientation' => 'straight','birthday' => '1994-08-01','country' => 'Sri Lanka' ,'password' => Hash::make('secret')],
 	        );
 	            
 	        // Loop through each user above and create the record for them in the database

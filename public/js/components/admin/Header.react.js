@@ -23,7 +23,7 @@ var Header = React.createClass({
                     </div>
 
                     <nav className="nav bar navbar-static-top" role="navigation">
-                        <a href="" className="sidebar-toggle" data-toggle="offcanvas" role="button">
+                        <a className="sidebar-toggle" data-toggle="offcanvas" role="button">
                             <span className="sr-only">Toggle navigation</span>
                         </a>
                         <div className="navbar-custom-menu">
@@ -267,14 +267,16 @@ var Header = React.createClass({
                                                 <a href="#" className="btn btn-default btn-flat">Profile</a>
                                             </div>
                                             <div className="pull-right">
-                                                <a href="#" className="btn btn-default btn-flat">Sign out</a>
+                                                <Link to={`/AdminSignout`}>
+                                                    <a className="btn btn-default btn-flat">Sign out</a>
+                                                </Link>
                                             </div>
                                         </li>
                                     </ul>
                                 </li>
 
                                 <li>
-                                    <a href="" data-toggle="control-sidebar">
+                                    <a data-toggle="control-sidebar">
                                         <i className="fa fa-gears"></i>
                                     </a>
                                 </li>

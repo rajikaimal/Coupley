@@ -6,7 +6,6 @@ Matchmaking Web application
 Start dev-server 
 ```
 $ composer install
-$ composer update
 $ php -S localhost:3000 -t public
 $ cd public
 $ npm install
