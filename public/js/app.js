@@ -49,6 +49,11 @@ function signout() {
   localStorage.removeItem('user');
   document.location = "/#/login";
 }
+function AdminSignout() {
+    localStorage.removeItem('apitoken');
+    localStorage.removeItem('email');
+    document.location = "/cp-admin#/AdminLogin";
+}
 
 ReactDOM.render((
   <Router history={hashHistory}>
