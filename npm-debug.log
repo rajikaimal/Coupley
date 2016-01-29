@@ -1,19 +1,22 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'start' ]
-2 info using npm@2.14.12
-3 info using node@v4.2.4
-4 verbose stack Error: ENOENT: no such file or directory, open '/var/www/html/Coupley/package.json'
-4 verbose stack     at Error (native)
-5 verbose cwd /var/www/html/Coupley
-6 error Linux 3.16.0-30-generic
-7 error argv "/usr/bin/nodejs" "/usr/bin/npm" "start"
-8 error node v4.2.4
-9 error npm  v2.14.12
-10 error path /var/www/html/Coupley/package.json
-11 error code ENOENT
-12 error errno -2
-13 error syscall open
-14 error enoent ENOENT: no such file or directory, open '/var/www/html/Coupley/package.json'
-14 error enoent This is most likely not a problem with npm itself
-14 error enoent and is related to npm not being able to find a file.
-15 verbose exit [ -2, true ]
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'start' ]
+2 info using npm@2.14.7
+3 info using node@v4.2.1
+4 verbose config Skipping project config: C:\Users\Madushika Perera/.npmrc. (matches userconfig)
+5 verbose stack Error: ENOENT: no such file or directory, open 'C:\Users\Madushika Perera\package.json'
+5 verbose stack     at Error (native)
+6 verbose cwd C:\Users\Madushika Perera\Desktop\SEP_Project\Coupley
+7 error Windows_NT 6.3.9600
+8 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "start"
+9 error node v4.2.1
+10 error npm  v2.14.7
+11 error path C:\Users\Madushika Perera\package.json
+12 error code ENOENT
+13 error errno -4058
+14 error syscall open
+15 error enoent ENOENT: no such file or directory, open 'C:\Users\Madushika Perera\package.json'
+15 error enoent This is most likely not a problem with npm itself
+15 error enoent and is related to npm not being able to find a file.
+16 verbose exit [ -4058, true ]

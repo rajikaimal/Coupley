@@ -33,6 +33,7 @@ Route::group(['prefix' => 'api'], function()
     Route::post('authenticate', 'AuthenticateController@authenticate');
     //Register new users with RegisterConroller@register
     Route::post('register', 'RegisterController@check');
+    Route::post('status', 'ActivityFeedController@addstatus');
 });
 
 /*
