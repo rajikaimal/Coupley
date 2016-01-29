@@ -10,7 +10,9 @@ import { Router, Route, Link, hashHistory } from 'react-router';
 
 import Header from './components/base/Header.react';
 import Home from './components/Home.react';
+import Login from './components/login/Login.react';
 import Profile from './components/profile/profile.react';
+import Register from './components/register/Register.react';
 import ActivityContainer from './components/profile/ActivityFeed/ActivityFeedContainer.react';
 import About from './components/profile/About.react';
 import Photos from './components/profile/visitor/Photos.react';
@@ -21,6 +23,7 @@ import PhotosVisitor from './components/profile/visitor/Photos.react';
 import Search from './components/search/Search.react';
 import Admin from './components/admin/dashboard.react';
 import AdminLogin from './components/admin/login.react';
+import Threads from './components/chat/Threads.react';
 
 function requireAuth(nextState, replace) {
   if(! localStorage.getItem('apitoken')) {
@@ -30,6 +33,7 @@ function requireAuth(nextState, replace) {
     })
   }
 }
+
 function requireAdminAuth(nextState, replace) {
     if(! localStorage.getItem('apitoken')) {
         replace({
@@ -37,36 +41,38 @@ function requireAdminAuth(nextState, replace) {
             state: { nextPathname: nextState.location.pathname }
         })
     }
-
 }
 
 function signout() {
+  console.log('Sign out !');
   localStorage.removeItem('apitoken');
   localStorage.removeItem('user');
   document.location = "/#/login";
 }
 
 ReactDOM.render((
-  <Router history={hashHistory}>
-    <Route path="/login" component={Home} />
-    <Route path="/AdminLogin" component={AdminLogin} />
+    <Router history={hashHistory}>
+      <Route path="/login" component={Login} />
+      <Route path="/register" component={Register} />
+      <Route path="/AdminLogin" component={AdminLogin} />
       <Route path="/dashboard" component={Admin} onEnter={requireAdminAuth} />
-    <Route path="/" component={Header} onEnter={requireAuth}>
-      <Route path="/search" component={Search} />
-      <Route path="profile" component={Profile} >
-      	<Route path="activityfeed" component={ActivityContainer} />
-      	<Route path="about" component={About} />
-        <Route path="photos" component={Photos} />
+      <Route path="/" component={Header} onEnter={requireAuth}>
+        <Route path="/search" component={Search} />
+        <Route path="threads" component={Threads} />
+        <Route path="profile" component={Profile} >
+        	<Route path="activityfeed" component={ActivityContainer} />
+        	<Route path="about" component={About} />
+          <Route path="photos" component={Photos} />
+        </Route>
+        <Route path="/:username" component={ProfileVisitor} >
+          <Route path="activityfeed" component={ActivityContainerVisitor} />
+          <Route path="about" component={AboutVisitor} />
+          <Route path="photos" component={PhotosVisitor} />
+        </Route>
       </Route>
-      <Route path="/:username" component={ProfileVisitor} >
-        <Route path="activityfeed" component={ActivityContainerVisitor} />
-        <Route path="about" component={AboutVisitor} />
-        <Route path="photos" component={PhotosVisitor} />
-      </Route>
-    </Route>
 
-    <Route path="/signout" onEnter={signout} />
-  </Router>
+      <Route path="/signout" onEnter={signout} />
+    </Router>
   ),
   document.getElementById('content')
 );
