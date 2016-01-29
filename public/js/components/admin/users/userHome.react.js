@@ -11,13 +11,13 @@ import Divider from 'material-ui/lib/divider';
 
 const tilesData = [
     {
-        img: 'https://cdn2.iconfinder.com/data/icons/metallic-people/512/people_group_users_friends-512.png',
+        img: '../../../../img/people_group_users_friends-512.png',
         title: 'Friends',
         path: '#/users/friends'
 
     },
     {
-        img: 'https://cdn1.iconfinder.com/data/icons/rcons-user-action/512/block_users_group-512.png',
+        img: '../../../../img/block_users_group-512.png',
         title: 'Enemies',
         path: '#/users/enemies'
 

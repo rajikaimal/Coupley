@@ -23,7 +23,14 @@ import PhotosVisitor from './components/profile/visitor/Photos.react';
 import Search from './components/search/Search.react';
 import Admin from './components/admin/dashboard.react';
 import AdminLogin from './components/admin/login.react';
+<<<<<<< HEAD
 import Threads from './components/chat/Threads.react';
+=======
+import users from './components/admin/users/userHome.react';
+import friends from './components/admin/users/friends.react';
+import enemies from './components/admin/users/enemies.react';
+import Cards from './components/admin/Cards.react';
+>>>>>>> df45e38ee55b228820a4a64ee31fa69731dffac4
 
 function requireAuth(nextState, replace) {
   if(! localStorage.getItem('apitoken')) {
@@ -51,6 +58,7 @@ function signout() {
 }
 
 ReactDOM.render((
+<<<<<<< HEAD
     <Router history={hashHistory}>
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
@@ -69,6 +77,29 @@ ReactDOM.render((
           <Route path="about" component={AboutVisitor} />
           <Route path="photos" component={PhotosVisitor} />
         </Route>
+=======
+  <Router history={hashHistory}>
+    <Route path="/login" component={Home} />
+      <Route path="/AdminLogin" component={AdminLogin} />
+      <Route path="/dashboard" component={Admin} onEnter={requireAdminAuth}>
+          <Route path="/users" component={users} >
+              <Route path="friends" component={friends} />
+              <Route path="enemies" component={enemies} />
+          </Route>
+          <Route path="/cards" component={Cards} />
+      </Route>
+    <Route path="/" component={Header} onEnter={requireAuth}>
+      <Route path="/search" component={Search} />
+      <Route path="profile" component={Profile} >
+      	<Route path="activityfeed" component={ActivityContainer} />
+      	<Route path="about" component={About} />
+        <Route path="photos" component={Photos} />
+      </Route>
+      <Route path="/:username" component={ProfileVisitor} >
+        <Route path="activityfeed" component={ActivityContainerVisitor} />
+        <Route path="about" component={AboutVisitor} />
+        <Route path="photos" component={PhotosVisitor} />
+>>>>>>> df45e38ee55b228820a4a64ee31fa69731dffac4
       </Route>
 
       <Route path="/signout" onEnter={signout} />

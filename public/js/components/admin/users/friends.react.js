@@ -17,9 +17,11 @@ const colors = styles.Colors;
 
 var AvatarExampleSimple = React.createClass({
     getInitialState: function () {
+
         return {
-            results: SearchStore.getresults()
-        }
+                results: SearchStore.getresults()
+            }
+
     },
     componentDidMount: function () {
         SearchStore.addChangeListener(this._onChange);
@@ -46,22 +48,6 @@ var AvatarExampleSimple = React.createClass({
             </div>
         );
     }
-    //render: function () {
-    //    return (
-    //        <div className="pull-left col-lg-6">
-    //            <List>
-    //                <ListItem
-    //                    disabled={true}
-    //                    leftAvatar={
-    //                        <Avatar src="http://www.belgraviacentre.com/wp-content/uploads/2013/03/1047918111-Happy-man.jpg" />
-    //                        }
-    //                >
-    //                    Image Avatar
-    //                </ListItem>
-    //            </List>
-    //        </div>
-    //    );
-    //}
 
 });
 
