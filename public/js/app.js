@@ -58,7 +58,6 @@ function AdminSignout() {
     localStorage.removeItem('email');
     document.location = "/cp-admin#/AdminLogin";
 }
-
 ReactDOM.render((
   <Router history={hashHistory}>
     <Route path="/login" component={Login} />
@@ -70,7 +69,9 @@ ReactDOM.render((
             <Route path="enemies" component={enemies} />
         </Route>
         <Route path="/cards" component={Cards} />
+        <Route path="/settings" component={Cards} />
     </Route>
+      <Route path="/AdminSignout" onEnter={AdminSignout} />
     <Route path="/" component={Header} onEnter={requireAuth}>
       <Route path="/search" component={Search} />
       <Route path="/threads" component={Threads} />
