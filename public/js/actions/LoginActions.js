@@ -10,7 +10,10 @@ var LoginActions = {
 		      token: response.token,
 		      email: credentials.email
 		    });
-        $.get('/api/authenticate?token=' + localStorage.getItem('apitoken') + '&email=' + credentials.email , function(response) {
+        $.get('/api/authenticate?token=' + localStorage.getItem('apitoken') + '&email=' + credentials.email , function(response, statusText, xhr) {
+          if(xhr.status === 401) {
+            console.log('Failed');
+          }
           console.log(response.user[0]);
         
             AppDispatcher.handleViewAction({
