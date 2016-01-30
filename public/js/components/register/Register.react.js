@@ -124,7 +124,7 @@ function validatePassword(password) {
   }
 }
 
-const Login = React.createClass({
+const Register = React.createClass({
   getInitialState: function() {
     return {
       gender: 1,
@@ -259,4 +259,4 @@ const Login = React.createClass({
 
 });
 
-export default Login;
+export default Register;
