@@ -17,5 +17,6 @@ class SocketController extends Controller
 	public function sendMessage(Request $request){
 		$redis = LRedis::connection();
 		$redis->publish('message', $request->message);
+    
 	}
 }

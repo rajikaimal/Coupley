@@ -12,7 +12,7 @@ const Threads = React.createClass({
     }
   },
   socketio: function() {
-    var socket = io.connect('http://localhost:6379');
+    var socket = io.connect('http://127.0.0.1:6379');
     socket.on('message', function (data) {
       console.log('DATA from threads');
       this.setState({threads: data});

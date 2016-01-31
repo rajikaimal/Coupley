@@ -43,6 +43,9 @@ Route::group(['prefix' => 'api'], function()
     //Return visitor profile data
     Route::get('visitorprofile', 'ProfileController@visitor');
 
+
+
+
 });
 
 Route::get('socket', 'SocketController@index');
@@ -88,4 +91,3 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/home', 'HomeController@index');
 });
-s

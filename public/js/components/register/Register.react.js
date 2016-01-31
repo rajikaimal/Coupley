@@ -156,7 +156,6 @@ const Login = React.createClass({
     var val = true;
     if(validatefirstname(firstname).error) {
       document.getElementById('firstname').innerHTML = validatefirstname(firstname).error;
-<<<<<<< HEAD
     }
     if(validatelastname(lastname).error) {
       document.getElementById('lastname').innerHTML = validatelastname(lastname).error;
@@ -169,7 +168,7 @@ const Login = React.createClass({
     }
     if(validatePassword(password).error) {
       document.getElementById('password').innerHTML = validatePassword(password).error;
-=======
+
       val = false;
     }
     if(validatelastname(lastname).error) {
@@ -177,12 +176,12 @@ const Login = React.createClass({
       val = false;
     }
     if(validateusername(username).error) {
-      document.getElementById('username').innerHTML = validateusername(username).error; 
+      document.getElementById('username').innerHTML = validateusername(username).error;
       val = false;
     }
     if(! validateEmail(email)) {
-      document.getElementById('email').innerHTML = 'Invalid Email !'; 
-      val = false;  
+      document.getElementById('email').innerHTML = 'Invalid Email !';
+      val = false;
     }
     if(validatePassword(password).error) {
       document.getElementById('password').innerHTML = validatePassword(password).error;
@@ -190,7 +189,7 @@ const Login = React.createClass({
     }
     else {
       val = true;
->>>>>>> da17a21e6d7fc7f14cece20e40fbb80d0ecb8ee2
+
     }
     let credentials = {
       firstname: firstname,
@@ -218,8 +217,6 @@ const Login = React.createClass({
         <div className="col-lg-4">
         </div>
         <div className="col-lg-2">
-
-
         </div>
         <div className="col-lg-4">
         </div>
@@ -265,16 +262,9 @@ const Login = React.createClass({
             <CardActions>
               <RaisedButton label="Register" style={buttonStyle} primary={true} onTouchTap={this._handleRegisterClickEvent} />
             </CardActions>
-<<<<<<< HEAD
           </Card>
         </div>
-        </Paper>
-=======
-            <span style={error} id="serverstatus"> </span>
-          </Card>  
-        </div> 
-        </Paper>     
->>>>>>> da17a21e6d7fc7f14cece20e40fbb80d0ecb8ee2
+
       </div>
     );
   }
@@ -282,3 +272,12 @@ const Login = React.createClass({
 });
 
 export default Login;
+
+
+/*
+</Paper>
+      <span style={error} id="serverstatus"> </span>
+    </Card>
+  </div>
+  </Paper>
+*/
