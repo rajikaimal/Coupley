@@ -72,7 +72,7 @@
 <!-- AdminLTE App -->
 <script src="dist/js/admin/app.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/admin/dashboard.js"></script>
+<!--<script src="dist/js/admin/dashboard.js"></script>-->
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/admin/demo.js"></script>
 <!--	<script>-->

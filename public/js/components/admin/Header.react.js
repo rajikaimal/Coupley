@@ -10,7 +10,8 @@ var Header = React.createClass({
             <div>
                 <header className="main-header">
                     <div className="">
-                        <a href="#" className="logo">
+                        <Link to={`/Cards`}>
+                            <a className="logo">
 
                             <div className="logo-mini">
                                 <b>A</b>
@@ -20,6 +21,7 @@ var Header = React.createClass({
                                 <b>Admin</b>
                                 CP</div>
                         </a>
+                        </Link>
                     </div>
 
                     <nav className="nav bar navbar-static-top" role="navigation">
