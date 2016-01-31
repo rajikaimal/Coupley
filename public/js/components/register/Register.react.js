@@ -19,7 +19,7 @@ import TableBody from 'material-ui/lib/table/table-body';
 import Colors from 'material-ui/lib/styles/colors';
 
 const registerStyle = {
-  marginTop: 50,
+  marginTop: 25,
   marginLeft: 500
 };
 
@@ -29,8 +29,12 @@ const buttonStyle = {
 
 const styles = {
   errorStyle: {
-    color: Colors.pink500,
+    color: Colors.lightBlue500,
   }
+};
+
+const error = {
+  color: Colors.red500
 };
 
 function validatefirstname(firstname) {
@@ -50,7 +54,7 @@ function validatefirstname(firstname) {
 }
 
 function validatelastname(lastname) {
-  if(firstname.length >= 50) {
+  if(lastname.length >= 50) {
     return {
       "error": "Lastname is too long"
     }
@@ -66,12 +70,12 @@ function validatelastname(lastname) {
 }
 
 function validateusername(username) {
-  if(firstname.length >= 20) {
+  if(username.length >= 60) {
     return {
       "error": "Username is too long"
     }
   }
-  else if(! /^\w+$/i.test(firstname)) {
+  else if(! /^\w+$/i.test(username)) {
     return {
       "error": "Username cannot contain special characters"
     }  
@@ -120,7 +124,7 @@ function validatePassword(password) {
   }
 }
 
-const Login = React.createClass({
+const Register = React.createClass({
   getInitialState: function() {
     return {
       gender: 1,
@@ -151,20 +155,29 @@ const Login = React.createClass({
     else if(this.state.orientation == 4) {
       var orientation = "bisexual";
     }
+    var val = true;
     if(validatefirstname(firstname).error) {
-      document.getElementById('firstname').innerHTML = validatefirstname(firstname).error; 
+      document.getElementById('firstname').innerHTML = validatefirstname(firstname).error;
+      val = false;
     }
     if(validatelastname(lastname).error) {
-      document.getElementById('lastname').innerHTML = validatelastname(lastname).error; 
+      document.getElementById('lastname').innerHTML = validatelastname(lastname).error;
+      val = false;
     }
-    // if(validateusername(username).error) {
-    //   document.getElementById('username').innerHTML = validateusername(username).error; 
-    // }
+    if(validateusername(username).error) {
+      document.getElementById('username').innerHTML = validateusername(username).error; 
+      val = false;
+    }
     if(! validateEmail(email)) {
       document.getElementById('email').innerHTML = 'Invalid Email !'; 
+      val = false;  
     }
     if(validatePassword(password).error) {
-      document.getElementById('password').innerHTML = validatePassword(password).error; 
+      document.getElementById('password').innerHTML = validatePassword(password).error;
+      val = false;
+    }
+    else {
+      val = true;
     }
     let credentials = {
       firstname: firstname,
@@ -175,8 +188,9 @@ const Login = React.createClass({
       password: password,
       orientation: orientation
     };
-   RegisterActions.check(credentials);
-    console.log('Done calling !');
+    if(val) {
+      RegisterActions.check(credentials);
+    }
   },
   handleChangeGender: function(e, index, value){
     this.setState({gender: value});
@@ -201,19 +215,19 @@ const Login = React.createClass({
               <TextField
                 hintText="Firstname" hintStyle={styles.errorStyle} fullwidth={true} ref="firstname"/>
               <br />
-              <span id="firstname"> </span>
+              <span style={error} id="firstname"> </span>
               <TextField
                 hintText="Lastname" hintStyle={styles.errorStyle} fullwidth={true} ref="lastname"/>
               <br />
-              <span id="lastname"> </span>
+              <span style={error} id="lastname"> </span>
               <TextField
                 hintText="Username" hintStyle={styles.errorStyle} fullwidth={true} ref="username"/>
               <br />
-              <span id="username"> </span>
+              <span style={error} id="username"> </span>
               <TextField
                 hintText="Email" hintStyle={styles.errorStyle} fullwidth={true} ref="email"/>
               <br />
-              <span id="email"> </span>
+              <span style={error} id="email"> </span>
               <br/>
               <label>Gender </label><DropDownMenu value={this.state.gender} onChange={this.handleChangeGender}>
                 <MenuItem value={1} primaryText="Male"/>
@@ -223,7 +237,7 @@ const Login = React.createClass({
                 type="password"
                 hintText="Password" ref="password" hintStyle={styles.errorStyle} fullwidth={true}/>
               <br />
-              <span id="password"> </span>
+              <span style={error} id="password"> </span>
               <label>Sexual Orientation</label><DropDownMenu value={this.state.orientation} onChange={this.handleChangeOrientation}>
                 <MenuItem value={1} primaryText="Straight"/>
                 <MenuItem value={2} primaryText="Lesbian"/>
@@ -235,6 +249,7 @@ const Login = React.createClass({
             <CardActions>
               <RaisedButton label="Register" style={buttonStyle} primary={true} onTouchTap={this._handleRegisterClickEvent} />
             </CardActions>
+            <span style={error} id="serverstatus"> </span>
           </Card>  
         </div> 
         </Paper>     
@@ -244,4 +259,4 @@ const Login = React.createClass({
 
 });
 
-export default Login;
+export default Register;

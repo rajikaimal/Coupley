@@ -9,4 +9,4 @@ Homestead.json
 .env
 public/bundle.js
 public/node_modules
-.npm-debug.log
+npm-debug.log
