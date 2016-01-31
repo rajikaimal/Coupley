@@ -5,14 +5,14 @@ var assign = require('object-assign');
 
 var CHANGE_EVENT = 'change';
 
-var search = [];
+var searchresults = [];
 
 var SearchStore = assign({}, EventEmitter.prototype, {
     getresults: function () {
-        return search;
+        return searchresults;
     },
     saveresults: function (results) {
-        search = results;
+        searchresults = results;
     },
     emitChange: function () {
         this.emit(CHANGE_EVENT);

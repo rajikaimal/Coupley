@@ -18,7 +18,7 @@ const tilesData = [
     },
     {
         img: '../../../../img/block_users_group-512.png',
-        title: 'Enemies',
+        title: 'Blocked',
         path: '#/users/enemies'
 
     }
@@ -58,6 +58,7 @@ var GridListExampleSimple = React.createClass({
                 {this.props.children}
 
                 </section>
+
             </div>
         );
     }
