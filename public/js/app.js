@@ -23,16 +23,14 @@ import PhotosVisitor from './components/profile/visitor/Photos.react';
 import Search from './components/search/Search.react';
 import Admin from './components/admin/dashboard.react';
 import AdminLogin from './components/admin/login.react';
-<<<<<<< HEAD
 import MainChat from './components/chat/ChatMain.react';
 import MainActivity from './components/activityfeed/activityMain.react';
-=======
 import Threads from './components/chat/Threads.react';
 import users from './components/admin/users/userHome.react';
 import friends from './components/admin/users/friends.react';
 import enemies from './components/admin/users/enemies.react';
 import Cards from './components/admin/Cards.react';
->>>>>>> 0a0a2794d6fc99b2a26d6c598c1bbdc5c4496505
+
 
 function requireAuth(nextState, replace) {
   if(! localStorage.getItem('apitoken')) {
@@ -61,14 +59,11 @@ function signout() {
 
 ReactDOM.render((
   <Router history={hashHistory}>
-<<<<<<< HEAD
     <Route path="/login" component={Home} />
     <Route path="/dashboard" component={Admin} />
     <Route path="chat" component={MainChat}/>
-=======
     <Route path="/login" component={Login} />
     <Route path="/register" component={Register} />
->>>>>>> 0a0a2794d6fc99b2a26d6c598c1bbdc5c4496505
     <Route path="/AdminLogin" component={AdminLogin} />
     <Route path="/dashboard" component={Admin} onEnter={requireAdminAuth}>
         <Route path="/users" component={users} >

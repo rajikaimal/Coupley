@@ -5,13 +5,11 @@ import DropDownMenu from 'material-ui/lib/DropDownMenu';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import RegisterActions from '../../actions/RegisterActions';
 import Paper from 'material-ui/lib/paper';
-
 import CardTitle from 'material-ui/lib/card/card-title';
 import Card from 'material-ui/lib/card/card';
 import CardActions from 'material-ui/lib/card/card-actions';
 import FlatButton from 'material-ui/lib/flat-button';
 import CardText from 'material-ui/lib/card/card-text';
-
 import Table from 'material-ui/lib/table/table';
 import TableRow from 'material-ui/lib/table/table-row';
 import TableRowColumn from 'material-ui/lib/table/table-row-column';
@@ -42,7 +40,7 @@ function validatefirstname(firstname) {
   else if(! /^\w+$/i.test(firstname)) {
     return {
       "error": "Firstname cannot contain special characters"
-    }  
+    }
   }
   else {
     return true;
@@ -58,8 +56,8 @@ function validatelastname(lastname) {
   else if(! /^\w+$/i.test(lastname)) {
     return {
       "error": "Lastname cannot contain special characters"
-    }  
-  } 
+    }
+  }
   else {
     return true;
   }
@@ -74,7 +72,7 @@ function validateusername(username) {
   else if(! /^\w+$/i.test(firstname)) {
     return {
       "error": "Username cannot contain special characters"
-    }  
+    }
   }
   else {
     return true;
@@ -152,19 +150,19 @@ const Login = React.createClass({
       var orientation = "bisexual";
     }
     if(validatefirstname(firstname).error) {
-      document.getElementById('firstname').innerHTML = validatefirstname(firstname).error; 
+      document.getElementById('firstname').innerHTML = validatefirstname(firstname).error;
     }
     if(validatelastname(lastname).error) {
-      document.getElementById('lastname').innerHTML = validatelastname(lastname).error; 
+      document.getElementById('lastname').innerHTML = validatelastname(lastname).error;
     }
     // if(validateusername(username).error) {
-    //   document.getElementById('username').innerHTML = validateusername(username).error; 
+    //   document.getElementById('username').innerHTML = validateusername(username).error;
     // }
     if(! validateEmail(email)) {
-      document.getElementById('email').innerHTML = 'Invalid Email !'; 
+      document.getElementById('email').innerHTML = 'Invalid Email !';
     }
     if(validatePassword(password).error) {
-      document.getElementById('password').innerHTML = validatePassword(password).error; 
+      document.getElementById('password').innerHTML = validatePassword(password).error;
     }
     let credentials = {
       firstname: firstname,
@@ -191,14 +189,12 @@ const Login = React.createClass({
         <div className="col-lg-4">
         </div>
         <div className="col-lg-2">
-          
-          
+
+
         </div>
-<<<<<<< HEAD
         <div className="col-lg-4">
         </div>
         </Paper>
-=======
         <div className="col-lg-6">
           <Card>
             <CardTitle title="Register" />
@@ -235,15 +231,14 @@ const Login = React.createClass({
                 <MenuItem value={3} primaryText="Gay"/>
                 <MenuItem value={4} primaryText="Bisexual"/>
               </DropDownMenu>
-                   
+
             </CardText>
             <CardActions>
               <RaisedButton label="Register" style={buttonStyle} primary={true} onTouchTap={this._handleRegisterClickEvent} />
             </CardActions>
-          </Card>  
-        </div> 
-        </Paper>     
->>>>>>> 0a0a2794d6fc99b2a26d6c598c1bbdc5c4496505
+          </Card>
+        </div>
+        </Paper>
       </div>
     );
   }

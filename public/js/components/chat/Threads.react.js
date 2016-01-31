@@ -12,7 +12,7 @@ const Threads = React.createClass({
     }
   },
   socketio: function() {
-    var socket = io.connect('http://localhost:8890');
+    var socket = io.connect('http://localhost:6379');
     socket.on('message', function (data) {
       console.log('DATA from threads');
       this.setState({threads: data});
@@ -42,7 +42,7 @@ const Threads = React.createClass({
           <FlatButton label="Send message" />
         </CardActions>
       </Card>
-    );    
+    );
   }
 
 });
