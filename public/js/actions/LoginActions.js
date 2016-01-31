@@ -28,13 +28,13 @@ var LoginActions = {
     	else {
     		console.log(response);
     	}
-    	
-    }) 
+
+    })
   },
-  resetpassword: function(email) {
-    $.post('/api/resetemail', email, function(response) {
-      
-    });
+    resetpassword: function (email) {
+        $.post('/api/resetemail', email, function (response) {
+
+        });
   }
 };
 
