@@ -3,27 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use App\User;
 
 class ProfileController extends Controller
 {
-	public function __construct()
+    public function __construct()
     {
         //$this->middleware('jwt.auth', ['except' => ['authenticate']]);
     }
+
     /*
-		returns profile data for GET request
-		@return json
+        returns profile data for GET request
+        @return json
     **/
     public function profile(Request $request)
     {
-    	$email = $request->email;
-    	$userdetails = User::where('email', $email)->get();
-    	return response()->json(['user' => $userdetails]);
+        $email = $request->email;
+        $userdetails = User::where('email', $email)->get();
+
+        return response()->json(['user' => $userdetails]);
     }
+
     /*
         returns visitor profile data for GET request
         @return json
@@ -31,12 +31,10 @@ class ProfileController extends Controller
     public function visitor(Request $request)
     {
         $username = $request->username;
-        if($userdetails = User::where('firstname', $username)->get()) {
+        if ($userdetails = User::where('firstname', $username)->get()) {
             return response()->json(['user' => $userdetails, 'status' => 200], 200);
-        }
-        else {
+        } else {
             return response()->json(['user' => $userdetails, 'status' => 505], 505);
         }
-        
     }
 }

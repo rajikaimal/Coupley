@@ -22,15 +22,20 @@ var LoginActions = {
     	else{
         console.log('Something unusual happened ...');
     	}
+<<<<<<< HEAD
     	
     }).fail(function() {
       document.getElementById('server-error').innerHTML = "Invalid credentials";
     });  
+=======
+
+    })
+>>>>>>> 680d5256573c3b42d69c6afe223110bbda197b69
   },
-  resetpassword: function(email) {
-    $.post('/api/resetemail', email, function(response) {
-      
-    });
+    resetpassword: function (email) {
+        $.post('/api/resetemail', email, function (response) {
+
+        });
   }
 };
 

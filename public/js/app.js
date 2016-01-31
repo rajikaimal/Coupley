@@ -29,7 +29,9 @@ import users from './components/admin/users/userHome.react';
 import friends from './components/admin/users/friends.react';
 import enemies from './components/admin/users/enemies.react';
 import Cards from './components/admin/Cards.react';
+import settings from './components/admin/settings/settings.react';
 import Forgot from './components/Forgot.react';
+
 
 function requireAuth(nextState, replace) {
   if(! localStorage.getItem('apitoken')) {
@@ -55,11 +57,15 @@ function signout() {
   localStorage.removeItem('user');
   document.location = "/#/login";
 }
-
+function AdminSignout() {
+    localStorage.removeItem('apitoken');
+    localStorage.removeItem('email');
+    document.location = "/cp-admin#/AdminLogin";
+}
 ReactDOM.render((
   <Router history={hashHistory}>
     <Route path="/login" component={Login} />
-    <Route path="/forgotpwd" component={Forgot} />
+      <Route path="/forgotpwd" component={Forgot} />
     <Route path="/register" component={Register} />
     <Route path="/quiz" component={Quiz} />
     <Route path="/AdminLogin" component={AdminLogin} />
@@ -69,7 +75,9 @@ ReactDOM.render((
             <Route path="enemies" component={enemies} />
         </Route>
         <Route path="/cards" component={Cards} />
+        <Route path="/settings" component={settings} />
     </Route>
+      <Route path="/AdminSignout" onEnter={AdminSignout} />
     <Route path="/" component={Header} onEnter={requireAuth}>
       <Route path="/search" component={Search} />
       <Route path="/threads" component={Threads} />

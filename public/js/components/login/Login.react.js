@@ -13,8 +13,8 @@ import Colors from 'material-ui/lib/styles/colors';
 var imgUrl = 'http://sp2.cinedor.es/728/foto-andrew-garfield-y-emma-stone-en-the-amazing-spider-man-3-781.jpg';
 
 const loginStyle = {
-  backgroundImage: 'url(/img/home.jpg)',
-  minHeight: '100%'
+    backgroundImage: 'url(/img/home.jpg)',
+    minHeight: '100%'
 };
 
 const buttonStyle = {
@@ -27,8 +27,8 @@ const textStyle = {
 };
 
 const homeStyle = {
-  marginTop: '75',
-  minHeight: '100%'
+    marginTop: '75',
+    minHeight: '100%'
 }
 
 const error = {
@@ -106,6 +106,7 @@ const Login = React.createClass({
   },
   render: function() {
     return (
+<<<<<<< HEAD
       <div style={loginStyle}>
         <div className="container-fluid" style={homeStyle}>
           <div className="row-fluid">
@@ -126,9 +127,30 @@ const Login = React.createClass({
                 </CardActions>
                 <span id="server-error" style={error}> </span>
               </Card>    
+=======
+        <div style={loginStyle}>
+            <div className="container-fluid" style={homeStyle}>
+                <div className="row-fluid">
+                    <div className="col-sm-6 col-md-6 col-md-offset-6 col-lg-4 col-lg-offset-8">
+                        <Card>
+                            <CardTitle title="Login" />
+                            <CardText>
+                                <TextField
+                                    floatingLabelText="email" ref="email" fullwidth={true}/>
+                                <span id="emailval"> </span>
+                                <TextField
+                                    floatingLabelText="password" type="password" ref="password" fullwidth={true}/>
+                                <span id="passwordval"> </span>
+                            </CardText>
+                            <CardActions>
+                                <RaisedButton label="Signin" style={buttonStyle} primary={true} onTouchTap={this._handleLogin} />
+                                <a href="/#/forgotpwd"> Forgot password ? </a>
+                            </CardActions>
+                        </Card>
+                    </div>
+                </div>
+>>>>>>> 680d5256573c3b42d69c6afe223110bbda197b69
             </div>
-          </div>
-        </div>  
       </div>
     );    
   }

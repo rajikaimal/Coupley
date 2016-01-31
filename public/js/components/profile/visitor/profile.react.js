@@ -26,8 +26,8 @@ const Profile = React.createClass({
     }
   },
   componentDidMount: function() {
-    let str = window.location.hash;
-    let username = str.split(/[\/?]/)[1];
+      let str = window.location.hash;
+      let username = str.split(/[\/?]/)[1];
     VisitorStore.addChangeListener(this._onChange);
     ProfileVisitorActions.loadprofiledata(username);
   },

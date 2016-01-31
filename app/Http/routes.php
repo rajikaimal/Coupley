@@ -15,19 +15,17 @@ Route::get('/', function () {
     return view('init');
 });
 
-
 /*  
-	Login route
-	Handles initial login of a user of Coupley	
+    Login route
+    Handles initial login of a user of Coupley	
     @author rajikaimal
 */
 
-Route::get('/api/login', function() {
-	return "Done";
+Route::get('/api/login', function () {
+    return 'Done';
 });
 
-Route::group(['prefix' => 'api'], function()
-{
+Route::group(['prefix' => 'api'], function () {
     //authenticate users with AuthenticateController
     Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
     Route::post('authenticate', 'AuthenticateController@authenticate');
@@ -46,22 +44,23 @@ Route::post('sendmessage', 'SocketController@sendMessage');
 Route::get('writemessage', 'SocketController@writemessage');
 
 /*
-	Dashboard route
-	Handles Admin panel of Coupley
+    Dashboard route
+    Handles Admin panel of Coupley
     @author isurudilhan
 */
 
-Route::get('/cp-admin', function() {
+Route::get('/cp-admin', function () {
     return view('init_admin');
 });
 
-Route::group(['prefix' => 'admin-api'], function()
-{
-    Route::resource('authenticate', 'AdminAuthenticateController', ['only' => ['indexs']]);
-    Route::post('authenticate', 'AdminAuthenticateController@authenticate');
+Route::group(['prefix' => 'admin-api'], function () {
+    Route::resource('authenticates', 'AdminAuthenticateController', ['only' => ['index']]);
+    Route::post('authenticates', 'AdminAuthenticateController@authenticate');
     //Return userslist
     Route::get('search', 'UsersController@friends');
     Route::get('blocked', 'UsersController@blocked');
+    //Register new admins with RegisterConroller@register
+    Route::post('registerAdmin', 'AdminRegisterController@checks');
 });
 
 /*
