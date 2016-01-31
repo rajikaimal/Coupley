@@ -30,6 +30,7 @@ import users from './components/admin/users/userHome.react';
 import friends from './components/admin/users/friends.react';
 import enemies from './components/admin/users/enemies.react';
 import Cards from './components/admin/Cards.react';
+import Forgot from './components/Forgot.react';
 
 
 function requireAuth(nextState, replace) {
@@ -63,6 +64,7 @@ ReactDOM.render((
     <Route path="/dashboard" component={Admin} />
     <Route path="chat" component={MainChat}/>
     <Route path="/login" component={Login} />
+    <Route path="/forgotpwd" component={Forgot} />
     <Route path="/register" component={Register} />
     <Route path="/AdminLogin" component={AdminLogin} />
     <Route path="/dashboard" component={Admin} onEnter={requireAdminAuth}>
