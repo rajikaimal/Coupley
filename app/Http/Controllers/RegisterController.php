@@ -29,11 +29,11 @@ class RegisterController extends Controller
 	    		return response()->json(["status" => 201], 201);
 	    	}
 	    	else {
-	    		return response()->json(["status" => 404], 404);	
+	    		return response()->json(["status" => 505], 505);
 	    	}
 		}
 		else {
-			return response("exists", 200);
+			return response()->json(["status", 200], 200);
 		}
 	}
     public function register(Request $request)
