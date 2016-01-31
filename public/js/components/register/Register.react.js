@@ -5,13 +5,11 @@ import DropDownMenu from 'material-ui/lib/DropDownMenu';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import RegisterActions from '../../actions/RegisterActions';
 import Paper from 'material-ui/lib/paper';
-
 import CardTitle from 'material-ui/lib/card/card-title';
 import Card from 'material-ui/lib/card/card';
 import CardActions from 'material-ui/lib/card/card-actions';
 import FlatButton from 'material-ui/lib/flat-button';
 import CardText from 'material-ui/lib/card/card-text';
-
 import Table from 'material-ui/lib/table/table';
 import TableRow from 'material-ui/lib/table/table-row';
 import TableRowColumn from 'material-ui/lib/table/table-row-column';
