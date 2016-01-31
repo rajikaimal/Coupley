@@ -31,8 +31,6 @@ class RegisterController extends Controller
             return response('exists', 200);
         }
     }
-
-<<<<<<< HEAD
 	    	if($user->save()) {
 	    		return response()->json(["status" => 201], 201);
 	    	}
@@ -44,8 +42,6 @@ class RegisterController extends Controller
 			return response()->json(["status", 200], 200);
 		}
 	}
-=======
->>>>>>> 680d5256573c3b42d69c6afe223110bbda197b69
     public function register(Request $request)
     {
     }

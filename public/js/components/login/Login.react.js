@@ -106,7 +106,6 @@ const Login = React.createClass({
   },
   render: function() {
     return (
-<<<<<<< HEAD
       <div style={loginStyle}>
         <div className="container-fluid" style={homeStyle}>
           <div className="row-fluid">
@@ -126,31 +125,10 @@ const Login = React.createClass({
                   <a href="/#/forgotpwd"> Forgot password ? </a>
                 </CardActions>
                 <span id="server-error" style={error}> </span>
-              </Card>    
-=======
-        <div style={loginStyle}>
-            <div className="container-fluid" style={homeStyle}>
-                <div className="row-fluid">
-                    <div className="col-sm-6 col-md-6 col-md-offset-6 col-lg-4 col-lg-offset-8">
-                        <Card>
-                            <CardTitle title="Login" />
-                            <CardText>
-                                <TextField
-                                    floatingLabelText="email" ref="email" fullwidth={true}/>
-                                <span id="emailval"> </span>
-                                <TextField
-                                    floatingLabelText="password" type="password" ref="password" fullwidth={true}/>
-                                <span id="passwordval"> </span>
-                            </CardText>
-                            <CardActions>
-                                <RaisedButton label="Signin" style={buttonStyle} primary={true} onTouchTap={this._handleLogin} />
-                                <a href="/#/forgotpwd"> Forgot password ? </a>
-                            </CardActions>
-                        </Card>
-                    </div>
-                </div>
->>>>>>> 680d5256573c3b42d69c6afe223110bbda197b69
+              </Card> 
             </div>
+          </div>
+        </div>  
       </div>
     );    
   }
