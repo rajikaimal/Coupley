@@ -18,7 +18,7 @@ class AdminAuthenticateController extends Controller
 	}
     public function index(Request $request)
     {
-        $admins = Admin::find($request);
+        $admins = Admin::find($request)->where('role','admin');
 	    return $admins;
 
     }    

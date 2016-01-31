@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Admin;
+use App\User;
 
 class AdminRegisterController extends Controller
 {
@@ -14,13 +14,14 @@ class AdminRegisterController extends Controller
     public function checks(Request $request)
     {
         $email = $request->email;
-        $admin = Admin::where('email', $email)->first();
+        $admin = User::where('email', $email)->first();
         if ($admin == null) {
-            $admin = new Admin;
+            $admin = new User;
             $admin->firstname = $request->firstname;
             $admin->lastname = $request->lastname;
             $admin->job = $request->job;
             $admin->email = $request->email;
+            $admin->role = "admin";
             $admin->password = \Hash::make($request->password);
             if ($admin->save()) {
                 return response()->json(["status" => 201], 201);
