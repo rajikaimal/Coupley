@@ -62,6 +62,8 @@ Route::group(['prefix' => 'admin-api'], function()
     //Return userslist
     Route::get('search', 'UsersController@friends');
     Route::get('blocked', 'UsersController@blocked');
+    //Register new admins with RegisterConroller@register
+    Route::post('registerAdmin', 'AdminRegisterController@checks');
 });
 
 /*

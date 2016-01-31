@@ -28,6 +28,7 @@ import users from './components/admin/users/userHome.react';
 import friends from './components/admin/users/friends.react';
 import enemies from './components/admin/users/enemies.react';
 import Cards from './components/admin/Cards.react';
+import settings from './components/admin/settings/settings.react';
 
 function requireAuth(nextState, replace) {
   if(! localStorage.getItem('apitoken')) {
@@ -69,7 +70,7 @@ ReactDOM.render((
             <Route path="enemies" component={enemies} />
         </Route>
         <Route path="/cards" component={Cards} />
-        <Route path="/settings" component={Cards} />
+        <Route path="/settings" component={settings} />
     </Route>
       <Route path="/AdminSignout" onEnter={AdminSignout} />
     <Route path="/" component={Header} onEnter={requireAuth}>
