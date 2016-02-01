@@ -3,8 +3,22 @@
  */
 import React from 'react';
 import { Link } from 'react-router';
+import LoginStore from '../../stores/LoginStore';
+import HeaderActions from '../../actions/HeaderActions';
 
 var Header = React.createClass({
+    getInitialState: function() {
+        return {
+            firstname: LoginStore.getFirstname()
+        }
+    },
+    componentDidMount: function() {
+        LoginStore.addChangeListener(this._onChange);
+        //HeaderActions.getprofilename(LoginStore.getEmail());
+    },
+    _onChange: function() {
+        this.setState({ firstname: LoginStore.getFirstname() });
+    },
     render: function () {
         return (
             <div>
@@ -240,7 +254,7 @@ var Header = React.createClass({
                                 <li className="dropdown user user-menu">
                                     <a href="#" className="dropdown-toggle" data-toggle="dropdown">
                                         <img src="dist/img/user2-160x160.jpg" className="user-image" alt="User Image"/>
-                                        <span className="hidden-xs">Isuru Dilhan</span>
+                                        <span className="hidden-xs">{this.state.firstname}</span>
                                     </a>
                                     <ul className="dropdown-menu">
 
