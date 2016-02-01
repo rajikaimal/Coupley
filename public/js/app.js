@@ -13,6 +13,7 @@ import Home from './components/Home.react';
 import Login from './components/login/Login.react';
 import Profile from './components/profile/profile.react';
 import Register from './components/register/Register.react';
+import Quiz from './components/quiz/Quiz.react';
 import ActivityContainer from './components/profile/ActivityFeed/ActivityFeedContainer.react';
 import About from './components/profile/About.react';
 import Photos from './components/profile/visitor/Photos.react';
@@ -66,6 +67,7 @@ ReactDOM.render((
     <Route path="/login" component={Login} />
       <Route path="/forgotpwd" component={Forgot} />
     <Route path="/register" component={Register} />
+    <Route path="/quiz" component={Quiz} />
     <Route path="/AdminLogin" component={AdminLogin} />
     <Route path="/dashboard" component={Admin} onEnter={requireAdminAuth}>
         <Route path="/users" component={users} >

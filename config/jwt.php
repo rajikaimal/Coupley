@@ -64,9 +64,7 @@ return [
     |
     */
 
-
     'user' => 'App\User',
-
 
     /*
     |--------------------------------------------------------------------------
@@ -163,8 +161,8 @@ return [
 
         'storage' => function ($app) {
             return new Tymon\JWTAuth\Providers\Storage\IlluminateCacheAdapter($app['cache']);
-        }
+        },
 
-    ]
+    ],
 
 ];

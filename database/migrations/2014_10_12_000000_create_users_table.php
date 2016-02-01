@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->date('birthday');
             $table->string('country');
             $table->string('role');
-            $table->string('status')->default("active");
+            $table->string('status')->default('active');
             $table->string('password', 60);
             $table->rememberToken();
             $table->timestamps();

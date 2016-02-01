@@ -8,12 +8,14 @@ var RegisterActions = {
           console.log(response.status);
           if (response.status === 505) {
               document.getElementById('serverstatus').innerHTML = "Something happened, please try again ...";
-      }
+          }
           else if (response.status === 200) {
               document.getElementById('serverstatus').innerHTML = "An account with the give email exists";
           }
           else if (response.status === 201) {
-              document.location = "/";
+              let email = credentials.email;
+              localStorage.setItem('email', email);
+              document.location = "/#/quiz";
           }
   	});
 
