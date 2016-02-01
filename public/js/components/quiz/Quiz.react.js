@@ -1,25 +1,23 @@
 import React from 'react';
 import List from 'material-ui/lib/lists/list';
 import Question from './Question.react';
-import FlatButton from 'material-ui/lib/flat-button';
+import RaisedButton from 'material-ui/lib/raised-button';
 import Paper from 'material-ui/lib/paper';
+import QuestionBank from './QuestionBank';
 
-const question = [
-	"Would you go for a movie on saturday night ?",
-	"Would you go for a movie on saturday night ?",
-	"Would you go for a movie on saturday night ?",
-	"Would you go for a movie on saturday night ?",
-	"Would you go for a movie on saturday night ?"
-];
+const question = QuestionBank.StraightQuestions;
 
 const style = {
 	"size": "20"
 };
 
 const Quiz = React.createClass({
+  componentDidMount: function() {
+  
+  },
   _renderquestion: function() {
   	return question.map((question) => {
-  		return (<Question question={question} />);
+  		return (<Question id={question.id} question={question.question} />);
   	});
   },
   render: function() {
@@ -31,7 +29,7 @@ const Quiz = React.createClass({
 					{this._renderquestion()}
 				</List>
 				<Paper zDepth={1}>
-					<FlatButton label="Done !" primary={true} />
+					<RaisedButton label="Done !" secondary={true} style={style} />
 				</Paper>
 			</div>
 		</div>         
