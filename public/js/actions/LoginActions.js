@@ -10,26 +10,21 @@ var LoginActions = {
 		      token: response.token,
 		      email: credentials.email
 		    });
-        $.get('/api/authenticate?token=' + localStorage.getItem('apitoken') + '&email=' + credentials.email , function(response, statusText, xhr) {
-          if(xhr.status === 401) {
-            console.log('Failed');
-          }
-          console.log(response.user[0]);
-        
-            AppDispatcher.handleViewAction({
-              actionType: LoginConstants.PROPOGATE,
-              userdata: response.user[0]
-            });
- 
+        $.get('/api/authenticate?token=' + localStorage.getItem('apitoken') + '&email=' + credentials.email , function(response) {
+          AppDispatcher.handleViewAction({
+            actionType: LoginConstants.PROPOGATE,
+            userdata: response.user[0]
+          });
         });
 		    console.log('Dispatched');
    			//document.location = "/";
    		}
-    	else {
-    		console.log(response);
+    	else{
+        console.log('Something unusual happened ...');
     	}
-
-    })
+    }).fail(function() {
+      document.getElementById('server-error').innerHTML = "Invalid credentials";
+      });
   },
     resetpassword: function (email) {
         $.post('/api/resetemail', email, function (response) {
