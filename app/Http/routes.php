@@ -64,11 +64,13 @@ Route::get('/cp-admin', function() {
 
 Route::group(['prefix' => 'admin-api'], function()
 {
-    Route::resource('authenticate', 'AdminAuthenticateController', ['only' => ['indexs']]);
-    Route::post('authenticate', 'AdminAuthenticateController@authenticate');
+    Route::resource('authenticates', 'AdminAuthenticateController', ['only' => ['index']]);
+    Route::post('authenticates', 'AdminAuthenticateController@authenticate');
     //Return userslist
     Route::get('search', 'UsersController@friends');
     Route::get('blocked', 'UsersController@blocked');
+    //Register new admins with RegisterConroller@register
+    Route::post('registerAdmin', 'AdminRegisterController@checks');
 });
 
 /*

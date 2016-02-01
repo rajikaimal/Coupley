@@ -10,7 +10,11 @@ Homestead.json
 public/bundle.js
 public/node_modules
 <<<<<<< HEAD
+<<<<<<< HEAD
 .idea/
 =======
 .npm-debug.log
 >>>>>>> upstream/master
+=======
+npm-debug.log
+>>>>>>> 4fda1b5015df5b2bc6f273eb22c7429886ccf052
