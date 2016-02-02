@@ -8,6 +8,9 @@
     <link href='dist/css/bootstrap-material-design.min.css' rel='stylesheet' type='text/css'>
     <link href='dist/css/ripples.min.css' rel='stylesheet' type='text/css'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--    Sweet Alerts-->
+    <script src="dist/js/admin/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="dist/css/admin/sweetalert.css">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
