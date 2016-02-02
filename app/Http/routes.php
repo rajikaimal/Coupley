@@ -37,6 +37,8 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('search', 'SearchController@search');
     //Return visitor profile data
     Route::get('visitorprofile', 'ProfileController@visitor');
+    //Like a user
+    Route::post('like', 'ProfileController@like');
 });
 
 Route::get('socket', 'SocketController@index');
