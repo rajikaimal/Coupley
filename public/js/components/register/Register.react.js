@@ -155,38 +155,12 @@ const Register = React.createClass({
     }
       var val = true;
     if(validatefirstname(firstname).error) {
-
-      document.getElementById('firstname').innerHTML = validatefirstname(firstname).error;
-    }
-    if(validatelastname(lastname).error) {
-      document.getElementById('lastname').innerHTML = validatelastname(lastname).error;
-    }
-    // if(validateusername(username).error) {
-    //   document.getElementById('username').innerHTML = validateusername(username).error;
-    // }
-    if(! validateEmail(email)) {
-      document.getElementById('email').innerHTML = 'Invalid Email !';
-    }
-    if(validatePassword(password).error) {
-      document.getElementById('password').innerHTML = validatePassword(password).error;
-
-      val = false;
-    }
-    if(validatelastname(lastname).error) {
-      document.getElementById('lastname').innerHTML = validatelastname(lastname).error;
-      val = false;
-    }
-    if(validateusername(username).error) {
-      document.getElementById('username').innerHTML = validateusername(username).error;
-      val = false;
-
         document.getElementById('firstname').innerHTML = validatefirstname(firstname).error;
         val = false;
     }
     if(validatelastname(lastname).error) {
         document.getElementById('lastname').innerHTML = validatelastname(lastname).error;
         val = false;
-
     }
       if (validateusername(username).error) {
           document.getElementById('username').innerHTML = validateusername(username).error;
@@ -194,23 +168,14 @@ const Register = React.createClass({
       }
     if(! validateEmail(email)) {
       document.getElementById('email').innerHTML = 'Invalid Email !';
-
-      val = false;
-
         val = false;
-
     }
     if(validatePassword(password).error) {
         document.getElementById('password').innerHTML = validatePassword(password).error;
         val = false;
     }
     else {
-
-      val = true;
-
-
         val = true;
-
     }
     let credentials = {
       firstname: firstname,
@@ -238,10 +203,9 @@ const Register = React.createClass({
         <div className="col-lg-4">
         </div>
         <div className="col-lg-2">
+
+
         </div>
-        <div className="col-lg-4">
-        </div>
-        </Paper>
         <div className="col-lg-6">
           <Card>
             <CardTitle title="Register" />
@@ -283,31 +247,14 @@ const Register = React.createClass({
             <CardActions>
               <RaisedButton label="Register" style={buttonStyle} primary={true} onTouchTap={this._handleRegisterClickEvent} />
             </CardActions>
-
-          </Card>
-        </div>
-
-
               <span style={error} id="serverstatus"> </span>
           </Card>
         </div>
         </Paper>
-
       </div>
     );
   }
 
 });
-
-export default Login;
-
-
-/*
-</Paper>
-      <span style={error} id="serverstatus"> </span>
-    </Card>
-  </div>
-  </Paper>
-*/
 
 export default Register;

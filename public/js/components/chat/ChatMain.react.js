@@ -18,6 +18,10 @@ const Mystyle={
      right:0
 }
 
+const style={
+    margin:500
+
+}
 
 
 const ChatMain=React.createClass({
@@ -41,8 +45,10 @@ const ChatMain=React.createClass({
           <Messages/>
          </div>
          <div className='col-xs-8' >
-           <div><Chatbox/>
-           <ChatCard/></div>
+           <div >
+           <Chatbox/>
+           <ChatCard/>
+           </div>
        </div>
          <div style={Mystyle} className='col-xs-1'>
          <div className='col-sm-10'></div><div className='col-sm-2'></div><div className='col-sm-6'></div>

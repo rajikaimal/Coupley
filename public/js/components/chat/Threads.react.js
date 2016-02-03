@@ -12,7 +12,7 @@ const Threads = React.createClass({
     }
   },
   socketio: function() {
-    var socket = io.connect('http://127.0.0.1:6379');
+    var socket = io.connect('http://localhost:8890');
     socket.on('message', function (data) {
       console.log('DATA from threads');
       this.setState({threads: data});
@@ -20,11 +20,14 @@ const Threads = React.createClass({
   },
   _sendmessage: function() {
     let message = this.refs.message.value;
+    let token=localStorage.getItem('apitoken')
     let chat = {
-      message: message
+      message: message,
+      token:token
     }
     $.post('/sendmessage',chat ,function(res) {
       console.log('Sent ... response');
+      console.log();
     });
   },
   render: function() {

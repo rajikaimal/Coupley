@@ -15,15 +15,15 @@ Route::get('/', function () {
     return view('init');
 });
 
-<<<<<<< HEAD
+
 
 /*
 	Login route
 	Handles initial login of a user of Coupley
 =======
-/*  
+/*
     Login route
-    Handles initial login of a user of Coupley	
+    Handles initial login of a user of Coupley
 >>>>>>> b0504640741c074b5d955e7021387a3d1600042e
     @author rajikaimal
 */
