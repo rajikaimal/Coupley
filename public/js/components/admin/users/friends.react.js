@@ -35,7 +35,7 @@ var AvatarExampleSimple = React.createClass({
         console.log(this.state.results);
         return this.state.results.map((result) => {
             return (<div className="col-lg-3">
-                <SearchItem key={result.id} username={result.username} firstname={result.firstname} lastname={result.lastname} gender={result.gender} />
+                <SearchItem key={result} username={result.username} firstname={result.firstname} lastname={result.lastname} gender={result.gender} id={result.id} />
             </div>);
         });
     },

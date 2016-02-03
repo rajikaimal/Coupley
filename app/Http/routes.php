@@ -47,10 +47,15 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('search', 'SearchController@search');
     //Return visitor profile data
     Route::get('visitorprofile', 'ProfileController@visitor');
+<<<<<<< HEAD
 
 
 
 
+=======
+    //Like a user
+    Route::post('like', 'ProfileController@like');
+>>>>>>> fe96c6a1edcdc7229e65212d5143fd2fb7f72b4a
 });
 
 Route::get('socket', 'SocketController@index');
@@ -75,6 +80,10 @@ Route::group(['prefix' => 'admin-api'], function () {
     Route::get('blocked', 'UsersController@blocked');
     //Register new admins with RegisterConroller@register
     Route::post('registerAdmin', 'AdminRegisterController@checks');
+    //block certain user
+    Route::post('blockuser', 'UsersController@block');
+    //unblock certain user
+    Route::post('unblockuser', 'UsersController@Unblock');
 });
 
 /*

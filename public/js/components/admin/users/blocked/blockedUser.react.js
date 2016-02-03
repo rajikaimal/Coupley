@@ -8,7 +8,7 @@ import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
 import IconMenu from 'material-ui/lib/menus/icon-menu';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-
+import UnBlockActions from '../../../../actions/admin/UnblockUserActions';
 //tap-event-plugin
 injectTapEventPlugin();
 
@@ -27,7 +27,30 @@ const rightIconMenu = (
     </IconMenu>
 );
 
-const SearchItem = React.createClass({
+const blocked = React.createClass({
+    _handleUserId: function() {
+        //alert(this.props.id);
+        let credentials = {
+            id:this.props.id
+        };
+        swal({  title: "Are you sure?",
+                text: "Do you really want to unblock this user?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, Unblock!",
+                cancelButtonText: "No, Cancel!",
+                closeOnConfirm: false,
+                closeOnCancel: false },
+            function(isConfirm){
+                if (isConfirm) {
+                    swal("Unblocked!", "This person has been unblocked.", "success");
+                    UnBlockActions.Unblock(credentials);
+                } else {
+                    swal("Cancelled", "This person is still blocked.", "error");
+                } });
+
+    },
     _redirect: function () {
         document.location = "/#/" + this.props.username;
     },
@@ -48,7 +71,9 @@ const SearchItem = React.createClass({
                         </p>
                         }
                     secondaryTextLines={2}
-                    rightIconButton={rightIconMenu}
+                    rightIconButton={<IconMenu iconButtonElement={iconButtonElement} >
+                        <MenuItem  onTouchTap={this._handleUserId}>Unblock user</MenuItem>
+                    </IconMenu>}
                     onTouchTap={this._redirect} />
                 <Divider inset={true} />
             </div>
@@ -56,4 +81,4 @@ const SearchItem = React.createClass({
     }
 });
 
-export default SearchItem;
+export default blocked;

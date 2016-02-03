@@ -1,6 +1,7 @@
 0 info it worked if it ends with ok
 1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
 1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+<<<<<<< HEAD
 1 verbose cli   'install' ]
 2 info using npm@2.14.7
 3 info using node@v4.2.1
@@ -21,3 +22,23 @@
 16 error package.json This is most likely not a problem with npm itself.
 16 error package.json npm can't find a package.json file in your current directory.
 17 verbose exit [ -4058, true ]
+=======
+1 verbose cli   'start' ]
+2 info using npm@2.14.4
+3 info using node@v4.1.2
+4 verbose stack Error: ENOENT: no such file or directory, open 'F:\Coupley\package.json'
+4 verbose stack     at Error (native)
+5 verbose cwd F:\Coupley
+6 error Windows_NT 10.0.10240
+7 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "start"
+8 error node v4.1.2
+9 error npm  v2.14.4
+10 error path F:\Coupley\package.json
+11 error code ENOENT
+12 error errno -4058
+13 error syscall open
+14 error enoent ENOENT: no such file or directory, open 'F:\Coupley\package.json'
+14 error enoent This is most likely not a problem with npm itself
+14 error enoent and is related to npm not being able to find a file.
+15 verbose exit [ -4058, true ]
+>>>>>>> fe96c6a1edcdc7229e65212d5143fd2fb7f72b4a

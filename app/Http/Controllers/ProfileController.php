@@ -37,4 +37,16 @@ class ProfileController extends Controller
             return response()->json(['user' => $userdetails, 'status' => 505], 505);
         }
     }
+    /*
+        handles POST request from client
+        adds a like to profile
+        @return json ... status of action
+    **/
+    public function like(Request $request)
+    {
+        $likedUsername = $request->likedUsername;
+        $gotLikedUsername = $request->gotLikedUsername;
+
+        
+    }
 }
