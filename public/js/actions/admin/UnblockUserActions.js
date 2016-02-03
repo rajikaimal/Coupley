@@ -9,7 +9,8 @@ var UnblockActions = {
 
             }
         });
-        document.location = "/cp-admin#/users/friends";
+
+        setTimeout(document.location = "/cp-admin#/users/enemies", 2000);
     }
 };
 

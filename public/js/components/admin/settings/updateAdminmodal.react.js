@@ -15,12 +15,41 @@ import Paper from 'material-ui/lib/paper';
 import CardText from 'material-ui/lib/card/card-text';
 import DropDownMenu from 'material-ui/lib/DropDownMenu';
 import MenuItem from 'material-ui/lib/menus/menu-item';
+import GridList from 'material-ui/lib/grid-list/grid-list';
+import GridTile from 'material-ui/lib/grid-list/grid-tile';
 
 import Table from 'material-ui/lib/table/table';
 import TableRow from 'material-ui/lib/table/table-row';
 import TableRowColumn from 'material-ui/lib/table/table-row-column';
 import TableBody from 'material-ui/lib/table/table-body';
 import Colors from 'material-ui/lib/styles/colors';
+
+const tilesData = [
+    {
+        img: '../../../../img/edit.png',
+        title: 'Update Profile',
+
+    }
+
+];
+const style = {
+    width: 300,
+    height:50,
+    fontSize: "20px"
+
+};
+const newdiv = {
+    marginLeft: 300
+
+};
+
+const tileElements = tilesData.map(tile => <GridTile
+    key={tile.img}
+    title={<FlatButton label={tile.title} secondary={true} style={style} linkButton={true}  />}
+
+><img src={tile.img} /></GridTile>);
+const gridListStyle = {width: 600, height: 220, overflowY: 'auto'};
+
 const customContentStyle = {
     width: '100%'
 
@@ -236,20 +265,25 @@ var Header = React.createClass({
             />,
         ];
         return (
-            <div className="raw">
-                <div className="col-lg-3"></div>
-                <div className="col-lg-6">
-                    <RaisedButton
-                        label="Update Your Profile"
-                        style={styles.button}
-                        fullWidth={true}
-                        onTouchTap={this.handleOpen}
-                    >
+            <div className="" style={{"margin-left": "38%", "position": "relative",
+                "min-height": "1px",
+                "padding-right": "15px",
+                "padding-left": "15px"}}>
 
-                    </RaisedButton>
+                <div className="">
+                    <div >
+                {/* Basic grid list with mostly default options */}
+                        <GridList
+                            cellHeight={200}
+                            style={gridListStyle}
+                            onTouchTap={this.handleOpen}
+                        >
+                  {tileElements}
+                        </GridList>
+                    </div>
 
                 </div>
-                <div className="col-lg-3"></div>
+
 
              {/* modal content */}
                 <Dialog

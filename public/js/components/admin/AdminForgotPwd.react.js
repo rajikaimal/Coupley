@@ -12,71 +12,39 @@ import FlatButton from 'material-ui/lib/flat-button';
 import CardText from 'material-ui/lib/card/card-text';
 import TextField from 'material-ui/lib/text-field';
 import RaisedButton from 'material-ui/lib/raised-button';
+
 import LoginActions from '../../actions/admin/LoginActions';
 import LoginStore from '../../stores/LoginStore';
 
 const err = {"color": "red"};
 var validEmail = /\S+@\S+\.\S+/;
 
-const Adminlogin = React.createClass({
-    getInitialState: function() {
-        console.log(LoginStore.getState());
-        return {
-            apitoken: LoginStore.getState()
-        };
-    },
-    componentDidMount: function() {
-        LoginStore.addChangeListener(this._onChange);
-        if(this.state.apitoken) {
-            document.location = "/cp-admin#/cards";
-        }
-        else {
-            document.location = "/cp-admin#/AdminLogin";
-        }
-    },
-    _onChange: function() {
-        this.setState({ apitoken: LoginStore.getState() });
-        if(this.state.apitoken) {
-            document.location = "/cp-admin#/cards";
-        }
-        else {
-            document.location = "/cp-admin#/AdminLogin";
-        }
-    },
-    _handleLogin: function() {
+const AdminForgot = React.createClass({
+    sendemail: function () {
         let email = this.refs.email.getValue();
-        let password = this.refs.password.getValue();
-        let credentials = {
-            email: email,
-            password: password
-        };
-        LoginActions.login(credentials);
-        console.log('Done calling!');
+        let resetemail = {
+            email: email
+        }
+        LoginActions.resetpassword(resetemail);
 
         if (email.trim() == "") {
             document.getElementById('email').innerHTML = "*Email field is empty, Please enter the email!";
-            document.getElementById('password').innerHTML = "";
             this.refs.email.focus();
-            return false;
-        }
-        else if (password.trim() == "") {
-            document.getElementById('password').innerHTML = "*Password field is empty, Please enter the password!";
-            document.getElementById('email').innerHTML = "";
-            this.refs.password.focus();
             return false;
         }
         else {
             if (!email.match(validEmail)) {
-                document.getElementById('password').innerHTML = "";
                 document.getElementById('email').innerHTML = "*Email is invalid, Please enter a correct email!";
                 this.refs.email.focus();
+                return false;
             }
             else {
                 document.getElementById('email').innerHTML = "";
-                document.getElementById('password').innerHTML = "";
+
             }
         }
     },
+
     render: function() {
         return (
             <div>
@@ -90,16 +58,13 @@ const Adminlogin = React.createClass({
                 <CardActions>
                     <TextField
                         floatingLabelText="Enter your email" ref="email" />
-                    <div style={err} id="email" onChange={this._handleLogin}></div>
-                    <TextField
-                        floatingLabelText="Enter your password" ref="password" type="password" />
-                    <div id="password" style={err} onChange={this._handleLogin}></div>
+                    <div style={err} id="email" onChange={this.sendemail}></div>
 
                 </CardActions>
                 <CardText>
                     <span id="server-error" style={err}> </span> <br/>
-                    <RaisedButton label="Signin"  primary={true} onTouchTap={this._handleLogin} />
-                    <a href="/cp-admin#/Adminforgotpwd"> Forgot password ? </a>
+                    <RaisedButton label="Ok"  primary={true} onTouchTap={this.sendemail} />
+                    <a href="/cp-admin#/AdminLogin"> Back to Login </a>
                 </CardText>
 
             </Card>
@@ -112,4 +77,4 @@ const Adminlogin = React.createClass({
 
 });
 
-export default Adminlogin;
+export default AdminForgot;
