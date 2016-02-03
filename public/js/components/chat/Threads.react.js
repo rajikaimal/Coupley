@@ -5,17 +5,18 @@ import CardTitle from 'material-ui/lib/card/card-title';
 import FlatButton from 'material-ui/lib/flat-button';
 import CardText from 'material-ui/lib/card/card-text';
 
+var socket = io.connect('http://localhost:8081');
+
 const Threads = React.createClass({
   getInitialState: function() {
     return {
-      threads: ''
+      threads: []
     }
   },
   socketio: function() {
-    var socket = io.connect('http://localhost:8890');
-    socket.on('message', function (data) {
-      console.log('DATA from threads');
-      this.setState({threads: data});
+    socket.on('chat', function (data) {
+      console.log(data.message);
+      this.setState({threads: data.message});
     }.bind(this));
   },
   _sendmessage: function() {
@@ -23,9 +24,11 @@ const Threads = React.createClass({
     let chat = {
       message: message
     }
-    $.post('/sendmessage',chat ,function(res) {
-      console.log('Sent ... response');
-    });
+    console.log('Emiting ...');
+    
+    socket.emit('message', chat);
+    console.log('Done ...');
+
   },
   render: function() {
     return (
@@ -34,7 +37,11 @@ const Threads = React.createClass({
         <CardTitle title="Threads" subtitle="" />
         <CardText>
           Message threads
-          {this.state.threads}
+          {
+            this.state.threads.map(function(item) {
+              return (<li>{item.message}</li>);
+            })
+          }
           <input type="text" ref="message" />
           <input type="button" onClick={this._sendmessage} value="Send message" />
         </CardText>
