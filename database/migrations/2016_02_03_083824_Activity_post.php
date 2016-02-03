@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ActivityFPost extends Migration
+class ActivityPost extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,13 @@ class ActivityFPost extends Migration
     public function up()
     {
         Schema::create('posts', function (Blueprint $table) {
-            $table->increments('post_id');
-            $table->integer('user_id')->unsigned();
-            $table->integer('post_type');
+            $table->increments('id');
+            $table->string('email');
+            $table->integer('post_type')->default('0');
             $table->string('post_text');
             $table->string('attachment');
-            $table->timestamp();
-            //$table->date('post_date');
-            $table->foreign('user_id')->references('id')->on('users');
-        });
+            $table->timestamps();
+            });
     }
 
     /**

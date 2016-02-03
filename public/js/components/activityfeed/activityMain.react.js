@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from './activityComp1.react';
 import Paper from './newPaper.react';
+//import ImageUpload from './UploadAnImage.react';
 
   const ActivityMain=React.createClass({
 

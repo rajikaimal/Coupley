@@ -19,7 +19,7 @@ const commentSimple = React.createClass({
               console.log(this.refs.commentBox.getValue());
               var comment = this.refs.commentBox.getValue();
               let save_comment={
-                 Comment: status
+                 Comment: comment
               };
               ActivityFeedActions.save_comment(save_comment);
       }

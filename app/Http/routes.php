@@ -33,16 +33,14 @@ Route::group(['prefix' => 'api'], function()
     Route::post('authenticate', 'AuthenticateController@authenticate');
     //Register new users with RegisterConroller@register
     Route::post('register', 'RegisterController@check');
-<<<<<<< HEAD
     Route::post('status', 'ActivityFeedController@addstatus');
-=======
+    //Route::post('email', 'ActivityFeedController@addstatus');
     //Return profile data
     Route::get('profile', 'ProfileController@profile');
     //Return userslist for search
     Route::get('search', 'SearchController@search');
     //Return visitor profile data
     Route::get('visitorprofile', 'ProfileController@visitor');
->>>>>>> 0a0a2794d6fc99b2a26d6c598c1bbdc5c4496505
 });
 
 Route::get('socket', 'SocketController@index');
