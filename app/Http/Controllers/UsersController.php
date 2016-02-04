@@ -110,6 +110,13 @@ class UsersController extends Controller
             echo 'Message has been sent';
         }
     }
+    public function Adminprofile(Request $request)
+    {
+        $email = $request->email;
+        $admindetails = User::where('email', $email)->get();
+
+        return response()->json(['admin' => $admindetails]);
+    }
 }
 
 

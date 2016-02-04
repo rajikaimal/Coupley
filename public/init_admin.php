@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+    <script src="https://cdn.socket.io/socket.io-1.3.4.js"></script>
     <link rel="stylesheet" href="dist/css/admin/bootstrap.min.css" type="text/css">
     <!-- <link rel="stylesheet" href="base.css" type="text/css" > -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>

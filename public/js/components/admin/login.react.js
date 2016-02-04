@@ -13,7 +13,7 @@ import CardText from 'material-ui/lib/card/card-text';
 import TextField from 'material-ui/lib/text-field';
 import RaisedButton from 'material-ui/lib/raised-button';
 import LoginActions from '../../actions/admin/LoginActions';
-import LoginStore from '../../stores/LoginStore';
+import LoginStore from '../../stores/admin/LoginStore';
 
 const err = {"color": "red"};
 var validEmail = /\S+@\S+\.\S+/;
@@ -51,6 +51,7 @@ const Adminlogin = React.createClass({
             password: password
         };
         LoginActions.login(credentials);
+        localStorage.setItem('emails', email);
         console.log('Done calling!');
 
         if (email.trim() == "") {

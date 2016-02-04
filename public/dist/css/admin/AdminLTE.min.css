@@ -555,6 +555,7 @@ a:focus {
 }
 .sidebar-menu li.active > .treeview-menu {
     display: block;
+    background-color: #f00;
 }
 .sidebar-menu .treeview-menu {
     display: none;
