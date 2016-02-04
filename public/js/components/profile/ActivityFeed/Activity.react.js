@@ -23,12 +23,15 @@ const iconButtonElement = (
 
 const rightIconMenu = (
   <IconMenu iconButtonElement={iconButtonElement}>
-    <MenuItem>Edit</MenuItem>
+    <MenuItem >Edit</MenuItem>
     <MenuItem>Remove</MenuItem>
   </IconMenu>
 );
 
 const Activity = React.createClass({
+	_handleItemTouch: function() {
+		console.log('Click ....');
+	},	
 	render: function() {
 		return (
 			<div>
