@@ -5,5 +5,7 @@ module.exports = keyMirror({
   VISITOR: null,
   VISITORREMOVE: null,
   LIKESTATUS: null,
-  LIKEBACKSTATUS: null
+  LIKEBACKSTATUS: null,
+  BLOCKSTATUS: null,
+  PROPPERMISSION: null
 });

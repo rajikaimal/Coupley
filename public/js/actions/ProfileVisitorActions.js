@@ -15,6 +15,26 @@ var LoginActions = {
       actionType: ProfileConstants.VISITORREMOVE
     });
   },
+  getpermission: function() {
+    let str = window.location.hash;
+    let visitorusername = str.split(/[\/?]/)[1];
+    let request = {
+      username: localStorage.getItem('username'),
+      visitorusername: visitorusername,
+      token: localStorage.getItem('apitoken')
+    };
+    $.post('/api/profilepermission', request, function(response){
+      if(response.status == 200) {
+        console.log('GOT PERMISSIONS');
+        AppDispatcher.handleViewAction({
+          actionType: ProfileConstants.PROPPERMISSION,
+          permission: response.permission
+        });
+      }
+    }).fail(function(error) {
+      console.log(error);
+    });
+  },
   getlikestatus: function() {
     let str = window.location.hash;
     let username = str.split(/[\/?]/)[1];
@@ -73,6 +93,63 @@ var LoginActions = {
         actionType: ProfileConstants.LIKEBACKSTATUS,
         likedbackstatus: response.liked
       });
+    }).fail(function(error) {
+      console.log(error);
+    });
+  },
+  getblockstatus: function() {
+    let str = window.location.hash;
+    let visitorusername = str.split(/[\/?]/)[1];
+    let request = {
+      username: localStorage.getItem('username'),
+      visitorusername: visitorusername,
+      token: localStorage.getItem('apitoken')
+    };
+    $.post('/api/blockstatus', request, function(response){
+      AppDispatcher.handleViewAction({
+        actionType: ProfileConstants.BLOCKSTATUS,
+        blockstatus: response.blockstatus
+      });
+    }).fail(function(error) {
+      console.log(error);
+    });
+  },
+  block: function() {
+    let str = window.location.hash;
+    let visitorusername = str.split(/[\/?]/)[1];
+    let request = {
+      username: localStorage.getItem('username'),
+      visitorusername: visitorusername,
+      token: localStorage.getItem('apitoken')
+    };
+    $.post('/api/blockuser', request, function(response){
+      if(response.status == 200) {
+        console.log('Done change ...');
+        AppDispatcher.handleViewAction({
+          actionType: ProfileConstants.BLOCKSTATUS,
+          blockstatus: true
+        });
+      }
+    }).fail(function(error) {
+      console.log(error);
+    });
+  },
+  unblock: function() {
+    let str = window.location.hash;
+    let visitorusername = str.split(/[\/?]/)[1];
+    let request = {
+      username: localStorage.getItem('username'),
+      visitorusername: visitorusername,
+      token: localStorage.getItem('apitoken')
+    };
+    $.post('/api/unblockuser', request, function(response){
+      if(response.status == 200) {
+        console.log('Done change ...');
+        AppDispatcher.handleViewAction({
+          actionType: ProfileConstants.BLOCKSTATUS,
+          blockstatus: false
+        });
+      }
     }).fail(function(error) {
       console.log(error);
     });

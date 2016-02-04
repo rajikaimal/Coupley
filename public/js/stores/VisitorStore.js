@@ -8,8 +8,14 @@ var CHANGE_EVENT = 'change';
 var visitor = {};
 var likestatus;
 var likedbackstatus;
+var blockstatus;
+var permission;
 
 var VisitorStore = assign({}, EventEmitter.prototype, {
+  savepermission: function(data) {
+    console.log('INIDIDE SOTER'+ data);
+    permission = data;
+  },
   saveuserdata: function(data) {
     visitor = data;
   },
@@ -17,12 +23,19 @@ var VisitorStore = assign({}, EventEmitter.prototype, {
     likestatus = data;
   },
   savelikedbackstatus: function(data) {
-    console.log('DATA FROM VISITOR SOTRE' + data);
     likedbackstatus = data;
-    console.log("LIKEDBACK <><><><><><>" + likedbackstatus);
+  },
+  saveblockstatus: function(data) {
+    console.log('STORE :: changing status ' + data);
+    blockstatus = data;
+  },
+  getpermission: function() {
+    return permission;
+  },
+  getblockstatus: function() {
+    return blockstatus;
   },
   getlikedbackstatus: function() {
-    console.log("RETURNUNG BACJ" + likedbackstatus);
     return likedbackstatus;
   },
   getlikestatus: function() {
@@ -44,6 +57,10 @@ var VisitorStore = assign({}, EventEmitter.prototype, {
 
 AppDispatcher.register(function(payload) {
   switch(payload.action.actionType) {
+    case(ProfileConstants.PROPPERMISSION):
+      VisitorStore.savepermission(payload.action.permission);
+      VisitorStore.emitChange();
+      break;
     case(ProfileConstants.LIKESTATUS):
       VisitorStore.savelikestatus(payload.action.likestatus);
       VisitorStore.emitChange();
@@ -58,6 +75,10 @@ AppDispatcher.register(function(payload) {
       break;
     case(ProfileConstants.VISITORREMOVE):
       VisitorStore.saveuserdata(payload.action.userdata);
+      VisitorStore.emitChange();
+      break;
+    case(ProfileConstants.BLOCKSTATUS):
+      VisitorStore.saveblockstatus(payload.action.blockstatus);
       VisitorStore.emitChange();
       break;
   }

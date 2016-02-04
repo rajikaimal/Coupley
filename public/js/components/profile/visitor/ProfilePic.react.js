@@ -17,13 +17,16 @@ const ProfilePic = React.createClass({
     return {
       liked: VisitorStore.getlikestatus(),
       likedback: VisitorStore.getlikedbackstatus(),
-      blocked: false
+      blocked: VisitorStore.getblockstatus(),
+      permission: VisitorStore.getpermission()
     }
   },
   componentDidMount: function() {
     VisitorStore.addChangeListener(this._onChange);
+    ProfileVisitorActions.getpermission();
     ProfileVisitorActions.getlikestatus();
     ProfileVisitorActions.getlikedbackstatus();
+    ProfileVisitorActions.getblockstatus();
   },
   _onChange: function() {
     if(VisitorStore.getlikestatus() == "false") {
@@ -38,6 +41,14 @@ const ProfilePic = React.createClass({
         likedback: VisitorStore.getlikedbackstatus()
       });
     }
+
+    this.setState({
+      blocked: VisitorStore.getblockstatus()
+    });
+
+    this.setState({
+      permission: VisitorStore.getpermission()
+    });
   },
   _changeLikeState: function() {
     if(! this.state.liked) {
@@ -55,10 +66,10 @@ const ProfilePic = React.createClass({
     }
   },
   _handleBlock: function() {
-    if(this.state.blocked) {
-      ProfileVisitorActions.block(); 
+    if(! this.state.blocked) {
+      ProfileVisitorActions.block();
     }
-    else if(! this.state.blocked) {
+    else if(this.state.blocked) {
       ProfileVisitorActions.unblock();
     }
     this.setState({
@@ -76,18 +87,21 @@ const ProfilePic = React.createClass({
             <div className="col-lg-3">
               <h3> {this.props.firstname} {this.props.lastname} </h3>
               <span> {this.props.country} </span>
-              <IconButton onClick={this._changeLikeState} tooltip={this.state.liked ? "Unlike" : "Like"} touch={true} tooltipPosition="bottom-right">
-                {this.state.liked ? <FavIcon onClick={this._changeLikeState} viewBox="0 0 20 30" color={Colors.red500} /> : 
-                          <FavIconBorder viewBox="0 0 20 30" color={Colors.red500} />}
-              </IconButton>
+              {this.state.permission ?  
+                <IconButton onClick={this._changeLikeState} tooltip={this.state.liked ? "Unlike" : "Like"} touch={true} tooltipPosition="bottom-right">
+                  {this.state.liked ? <FavIcon onClick={this._changeLikeState} viewBox="0 0 20 30" color={Colors.red500} /> : 
+                            <FavIconBorder viewBox="0 0 20 30" color={Colors.red500} />}
+                </IconButton>
+              : ''}
+              
               <br/>
               {
-                this.state.likedback ? this.props.firstname + " has liked you": this.state.lastname
+                this.state.likedback ? "😇 " + this.props.firstname + " has liked you": this.state.lastname
               }
             </div>
             <div className="col-lg-3 col-lg-offset-3">
-              { this.state.blocked ? <FlatButton onClick={this._handleBlock} label="Block user" primary={true} /> : 
-                        <FlatButton onClick={this._handleBlock} label="Unblock user" primary={true} />
+              { this.state.permission ? (this.state.blocked ? <FlatButton onClick={this._handleBlock} label="Unblock user" primary={true} /> : 
+                                      <FlatButton onClick={this._handleBlock} label="Block user" primary={true} /> ) : ''
               }
             </div>
           </div>
