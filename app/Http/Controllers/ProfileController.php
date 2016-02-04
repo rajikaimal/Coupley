@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Likes;
 
 class ProfileController extends Controller
 {
@@ -22,6 +23,22 @@ class ProfileController extends Controller
         $userdetails = User::where('email', $email)->get();
 
         return response()->json(['user' => $userdetails]);
+    }
+
+    public function getlikestatus(Request $request)
+    {
+        $visitorusername = $request->visitorusername;
+        $username = $request->username;
+
+        $result = Likes::where('user1', $visitorusername)
+                    ->where('user2', $username)->get();
+        //return "false";
+        if($result->isEmpty())
+        {
+            return "false";
+        } else {
+            return "true";
+        }
     }
 
     /*
@@ -47,6 +64,67 @@ class ProfileController extends Controller
         $likedUsername = $request->likedUsername;
         $gotLikedUsername = $request->gotLikedUsername;
 
-        
+        $result1 = Likes::where('user1', $likedUsername)
+                    ->where('user2', $gotLikedUsername)->get();
+        $result2 = Likes::where('user1', $gotLikedUsername)
+                    ->where('user2', $likedUsername)->get();
+
+        if($result1->isEmpty() && $result2->isEmpty())
+        {
+            $user1ID = User::where('username', $likedUsername)->get(['id']);
+            $user2ID = User::where('username', $gotLikedUsername)->get(['id']);
+            $like = new Likes;
+            $like->likeduser = $user1ID[0]->id;
+            $like->gotliked = $user2ID[0]->id;
+            $like->user1 = $likedUsername;
+            $like->user2 = $gotLikedUsername;
+            //$like->save();
+            if($like->save()) {
+                return response()->json(['status' => 200], 200);
+            }
+            else {
+                return response()->json(['status' => 505], 505);
+            }
+        } else {
+            return response()->json(['status' => 505], 505);
+        }
+    }
+    public function unlike(Request $request)
+    {
+        $unlikedUsername = $request->unlikedUsername;
+        $gotunLikedUsername = $request->gotunLikedUsername;
+
+        $result1 = Likes::where('user1', $unlikedUsername)
+                    ->where('user2', $gotunLikedUsername)->get();
+        $result2 = Likes::where('user1', $gotunLikedUsername)
+                    ->where('user2', $unlikedUsername)->get();
+
+        if($result1 !== null && $result2 !== null)
+        {
+            Likes::where('user1', $unlikedUsername)
+                    ->where('user2', $gotunLikedUsername)
+                    ->delete();
+            return response()->json(['status' => 200], 200);
+        } else {
+            return response()->json(['status' => 505], 505);
+        }
+    }
+    /* 
+        Returns liked back status
+    **/
+    public function likedbackstatus(Request $request)
+    {   
+        $username = $request->username;
+        $visitorusername = $request->visitorusername;
+
+        $result = Likes::where('user1', $visitorusername)
+                    ->where('user2', $username)->get();
+
+        if($result !== null)
+        {
+            return response()->json(['liked' => true], 200);
+        } else {
+            return response()->json(['liked' => false], 200);
+        }
     }
 }
