@@ -69,6 +69,8 @@ Route::group(['prefix' => 'admin-api'], function () {
     Route::post('blockuser', 'UsersController@block');
     //unblock certain user
     Route::post('unblockuser', 'UsersController@Unblock');
+    //Return Admin profile data
+    Route::get('adminprofile', 'UsersController@Adminprofile');
 });
 
 /*

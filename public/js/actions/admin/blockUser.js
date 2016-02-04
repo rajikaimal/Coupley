@@ -10,7 +10,7 @@ var BlockActions = {
             }
         });
 
-        setTimeout(document.location = "/cp-admin#/users/friends", 1000);
+        document.location = "/cp-admin#/users/enemies";
     }
 };
 

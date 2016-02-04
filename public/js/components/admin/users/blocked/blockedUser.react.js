@@ -74,7 +74,7 @@ const blocked = React.createClass({
                     rightIconButton={<IconMenu iconButtonElement={iconButtonElement} >
                         <MenuItem  onTouchTap={this._handleUserId}>Unblock user</MenuItem>
                     </IconMenu>}
-                    onTouchTap={this._redirect} />
+                     />
                 <Divider inset={true} />
             </div>
         );

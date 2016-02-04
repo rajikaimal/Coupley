@@ -4,8 +4,20 @@
 
 import React from 'react';
 import { Link } from 'react-router';
+import ProfileActions from '../../actions/admin/ProfileActions';
+import ProfileStore from '../../stores/admin/ProfileStore';
 
 var Sidebar = React.createClass({
+    getInitialState: function() {
+        return ProfileStore.getuserdata()
+    },
+    componentDidMount: function() {
+        ProfileActions.getAdminProfileData();
+        ProfileStore.addChangeListener(this._onChange);
+    },
+    _onChange: function() {
+        this.setState(ProfileStore.getuserdata());
+    },
     render: function () {
         return (
             <div>
@@ -18,7 +30,7 @@ var Sidebar = React.createClass({
                                 <img src="dist/img/user2-160x160.jpg" className="img-circle" alt="User Image"/>
                             </div>
                             <div className="pull-left info">
-                                <p>Isuru Dilhan</p>
+                                <p>{this.state.firstname} {this.state.lastname}</p>
                                 <a>
                                     <i className="fa fa-circle text-success"></i>
                                     Online</a>
