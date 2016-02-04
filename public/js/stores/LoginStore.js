@@ -17,6 +17,9 @@ var LoginStore = assign({}, EventEmitter.prototype, {
   storeuserdata: function(data) {
     localStorage.setItem('user', data);
   },
+  storeusername: function(username) {
+    localStorage.setItem('username', username);
+  },
   storefirstname: function(firstname) {
     localStorage.setItem('firstname', firstname);
   },
@@ -46,6 +49,7 @@ AppDispatcher.register(function(payload) {
       break;
     case(LoginConstants.PROPOGATE):
       LoginStore.storeuserdata(payload.action.userdata.firstname);
+      LoginStore.storeusername(payload.action.userdata.username);
       LoginStore.emitChange();
       break;
   }

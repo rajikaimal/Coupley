@@ -37,8 +37,22 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('search', 'SearchController@search');
     //Return visitor profile data
     Route::get('visitorprofile', 'ProfileController@visitor');
+    //Returns like status of two profiles
+    Route::get('likestatus', 'ProfileController@getlikestatus');
     //Like a user
     Route::post('like', 'ProfileController@like');
+    //Unlike a user
+    Route::post('unlike', 'ProfileController@unlike');
+    //Return likedback status
+    Route::post('likedbackstatus', 'ProfileController@likedbackstatus');
+    //Blocks a certain user
+    Route::post('blockuser', 'ProfileController@block');
+    //Unblocks a certain user
+    Route::post('unblockuser', 'ProfileController@unblock');
+    //Returns block status
+    Route::post('blockstatus', 'ProfileController@blockstatus');
+    //Returns permission for viewing a profile
+    Route::post('profilepermission', 'ProfileController@profilepermission');
 });
 
 Route::get('socket', 'SocketController@index');

@@ -20,6 +20,7 @@ class LikedMigration extends Migration
             $table->foreign('gotliked')->references('id')->on('users');
             $table->string('user1');
             $table->string('user2');
+            $table->boolean('likeback');
             $table->timestamps();
         });
     }

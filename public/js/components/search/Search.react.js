@@ -1,6 +1,11 @@
 import React from 'react';
 import SearchItem from './SearchItem.react';
 import SearchStore from '../../stores/SearchStore';
+import Paper from 'material-ui/lib/paper';
+
+const style = {
+	marginLeft: "40"
+}
 
 const Search = React.createClass({
 	getInitialState: function() {
@@ -24,8 +29,10 @@ const Search = React.createClass({
 	},
 	render: function() {
 		return (
-		  <div>
-			{this._renderSearchItem()}
+		  <div style={style}>
+		  	<Paper zDepth={2}>
+				{this._renderSearchItem()}
+			</Paper>
 		  </div>
 		);
 	}
