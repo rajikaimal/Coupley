@@ -21,23 +21,14 @@ const Threads = React.createClass({
   },
   _sendmessage: function() {
     let message = this.refs.message.value;
-    let token=localStorage.getItem('apitoken')
     let chat = {
-      message: message,
-      token:token
+      message: message
     }
-<<<<<<< HEAD
-    $.post('/sendmessage',chat ,function(res) {
-      console.log('Sent ... response');
-      console.log();
-    });
-=======
     console.log('Emiting ...');
     
     socket.emit('message', chat);
     console.log('Done ...');
 
->>>>>>> fe96c6a1edcdc7229e65212d5143fd2fb7f72b4a
   },
   render: function() {
     return (
@@ -58,7 +49,7 @@ const Threads = React.createClass({
           <FlatButton label="Send message" />
         </CardActions>
       </Card>
-    );
+    );    
   }
 
 });
