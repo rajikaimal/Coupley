@@ -45,6 +45,14 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('unlike', 'ProfileController@unlike');
     //Return likedback status
     Route::post('likedbackstatus', 'ProfileController@likedbackstatus');
+    //Blocks a certain user
+    Route::post('blockuser', 'ProfileController@block');
+    //Unblocks a certain user
+    Route::post('unblockuser', 'ProfileController@unblock');
+    //Returns block status
+    Route::post('blockstatus', 'ProfileController@blockstatus');
+    //Returns permission for viewing a profile
+    Route::post('profilepermission', 'ProfileController@profilepermission');
 });
 
 Route::get('socket', 'SocketController@index');

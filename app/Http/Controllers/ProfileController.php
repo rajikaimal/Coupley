@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Likes;
+use App\Blocks;
 
 class ProfileController extends Controller
 {
@@ -125,6 +126,106 @@ class ProfileController extends Controller
             return response()->json(['liked' => true], 200);
         } else {
             return response()->json(['liked' => false], 200);
+        }
+    }
+    /* 
+        Returns @json block status
+    **/
+    public function blockstatus(Request $request)
+    {
+        $visitorusername = $request->visitorusername;
+        $username = $request->username;
+
+        $user1ID = User::where('username', $username)->get(['id']);
+        $user2ID = User::where('username', $visitorusername)->get(['id']);
+
+        $result = Blocks::where('user_id', $user1ID[0]->id)
+                ->where('blocked_user_id', $user2ID[0]->id)
+                ->get();
+
+        if($result->isEmpty())
+        {
+            return response()->json(['blockstatus' => false], 200); 
+        } else {
+            return response()->json(['blockstatus' => true], 200); 
+        }
+
+    }
+    /* 
+        Returns @int status after blocking
+    **/
+    public function block(Request $request)
+    {
+        $visitorusername = $request->visitorusername;
+        $username = $request->username;
+
+        $user1ID = User::where('username', $username)->get(['id']);
+        $user2ID = User::where('username', $visitorusername)->get(['id']);
+
+        $result1 = Blocks::where('user_id', $user1ID[0]->id)
+                ->where('blocked_user_id', $user2ID[0]->id)
+                ->get();
+        
+        if($result1->isEmpty())
+        {
+            if($result1->isEmpty())
+            {
+                $block = new Blocks;
+                $block->user_id = $user1ID[0]->id;
+                $block->blocked_user_id = $user2ID[0]->id;
+                if($block->save())
+                {
+                    return response()->json(['status' => 200], 200);
+                } else {
+                    return response()->json(['status' => 505], 505);
+                }
+            }
+        } else {
+            return response()->json(['status' => 500], 500);
+        }
+    }
+    /* 
+        Returns @int status after blocking
+    **/
+    public function unblock(Request $request)
+    {
+        $visitorusername = $request->visitorusername;
+        $username = $request->username;
+
+
+        $user1ID = User::where('username', $username)->get(['id']);
+        $user2ID = User::where('username', $visitorusername)->get(['id']);
+
+        if(Blocks::where('user_id', $user1ID[0]->id)
+                    ->where('blocked_user_id', $user2ID[0]->id)
+                    ->delete()) {
+            return response()->json(['status' => 200], 200);
+        } else {
+            return response()->json(['status' => 505], 505);
+        }
+    }
+    /*
+        Returns @json profilepermission
+    **/
+    public function profilepermission(Request $request)
+    {
+        $visitorusername = $request->visitorusername;
+        $username = $request->username;
+
+        $user1ID = User::where('username', $username)->get(['id']);
+        $user2ID = User::where('username', $visitorusername)->get(['id']);
+        
+        $result = Blocks::where('user_id', $user2ID[0]->id)
+                ->where('blocked_user_id', $user1ID[0]->id)
+                ->get();
+
+        if(!$result->isEmpty())
+        {   
+            return response()->json(['permission' => false, 'status' => 200], 200);
+        } else if($result->isEmpty()) {
+            return response()->json(['permission' => true, 'status' => 200], 200);
+        } else {
+            return response()->json(['status' => 200], 200);
         }
     }
 }
