@@ -1,15 +1,17 @@
 import React from 'react';
-import Card from './activityComp1.react';
 import Paper from './newPaper.react';
-//import ImageUpload from './UploadAnImage.react';
+import Card from './activityComp1.react'
+import ActivityContainer from './activityContainer.react';
+import ActivityList from './activityListComp.react';
+import CommentBox from './CommentBox.react';
 
   const ActivityMain=React.createClass({
 
          render:function(){
            return(
                    <div>
-                   <div className='col-xs-4'><Paper/></div>
-                   <div className='col-xs-7'><Card/></div>
+                   <div><Paper/></div>
+                   <div><ActivityContainer/></div>
                    </div>
 
            );

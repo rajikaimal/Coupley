@@ -34,7 +34,10 @@ Route::group(['prefix' => 'api'], function()
     //Register new users with RegisterConroller@register
     Route::post('register', 'RegisterController@check');
     Route::post('status', 'ActivityFeedController@addstatus');
-    //Route::post('email', 'ActivityFeedController@addstatus');
+    Route::get('getstatus', 'ActivityFeedController@getstatus');
+    Route::post('likes', 'ActivityFeedController@addlikes');
+    Route::post('comment','ActivityFeedController@addcomment');
+    Route::post('share','ActivityFeedController@addshare');
     //Return profile data
     Route::get('profile', 'ProfileController@profile');
     //Return userslist for search

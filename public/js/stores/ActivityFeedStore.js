@@ -1,10 +1,35 @@
-/*var AppDispatcher = require('../dispatcher/AppDispatcher');
+var AppDispatcher = require('../dispatcher/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
-var ActivityFeedConstants = require('../constants/ActionFeedConstants');
+var ActivityFeedConstants = require('../constants/ActivityFeedConstants');
 var assign = require('object-assign');
 
 var CHANGE_EVENT = 'change';
 
-var _activityFeeds = {}; 
+var searchresults = []; 
 
-module.exports = ActivityFeedStore;*/
+var ActivityFeedStore = assign({},EventEmitter.prototype, {
+    getStatusData: function() {
+      return searchresults;
+    },
+    saveStatusData: function(results) {
+      searchresults = results;
+    },
+    emitChange: function() {
+      this.emit(CHANGE_EVENT);
+    },
+    addChangeListener: function(callback) {
+      this.on(CHANGE_EVENT, callback);
+    }
+});
+
+AppDispatcher.register(function(payload) {
+	switch(payload.action.actionType) {
+		case(ActivityFeedConstants.GETDATA):
+      console.log(payload.action.statusdata);
+      ActivityFeedStore.saveStatusData(payload.action.statusdata);
+      ActivityFeedStore.emitChange();
+      break;
+	}
+});
+
+module.exports = ActivityFeedStore;

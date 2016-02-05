@@ -1,34 +1,37 @@
 import React from 'react';
 import TextField from 'material-ui/lib/text-field';
 import Paper from 'material-ui/lib/paper';
-import ActivityFeedActions from '../../actions/ActivityFeedActions';
+import ActionAndroid from 'material-ui/lib/svg-icons/action/android';
+import CommentAction from '../../actions/ActivityFeed/CommentAction';
+import LoginStore from '../../stores/LoginStore';
 
 const style = {
-  height: 100,
-  width: 100,
-  margin: 20,
-  textAlign: 'center',
-  display: 'inline-block',
+  width: 1000,
+  margin: 40,
 };
 
-const commentSimple = React.createClass({
+const CommentBox = React.createClass({
 
   EnterKey(e){
       if (e.key ==='Enter') {
               console.log();
               console.log(this.refs.commentBox.getValue());
               var comment = this.refs.commentBox.getValue();
-              let save_comment={
-                 Comment: comment
+              var email= LoginStore.getEmail(); 
+              var firstname = LoginStore.getFirstname();
+              let add_comment={
+                 Comment: comment,
+                 Email: email,
+                 Fname: firstname
               };
-              ActivityFeedActions.save_comment(save_comment);
+              CommentAction.add_comment(add_comment);
       }
    },
 
    render:function(){
        return (
-         <div>
-          <Paper zDepth={1}>
+         <div style={style}>
+          <Paper>
             <TextField hintText="Write a comment..." multiLine={false} fullWidth={true} onKeyPress={this.EnterKey} ref="commentBox"/>
           </Paper>
          </div>
@@ -36,4 +39,4 @@ const commentSimple = React.createClass({
    }
 });
   
-export default commentSimple;
+export default CommentBox;

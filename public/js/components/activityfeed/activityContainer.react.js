@@ -1,38 +1,41 @@
-/*import React from 'react';
-import ActivityMain from './activityMain.react';
-import CardActions from 'material-ui/lib/card/card-actions';
-import CardHeader from 'material-ui/lib/card/card-header';
-import CardMedia from 'material-ui/lib/card/card-media';
-import CardTitle from 'material-ui/lib/card/card-title';
-import FlatButton from 'material-ui/lib/flat-button';
-import CardText from 'material-ui/lib/card/card-text';
-
-const ActivityData = [{
-
-},{
-
-},{
-
-}];
-
+import React from 'react';
+import List from 'material-ui/lib/lists/list';
+import ListItem from 'material-ui/lib/lists/list-item';
+import ActivityFeedActions from '../../actions/ActivityFeed/ActivityFeedActions';
+import ActivityFeedStore from '../../stores/ActivityFeedStore';
+import ActivityList from './activityListComp.react';
 
 const activityContainer = React.createClass({
-  _renderActivites: function() {
-  	return ActivityData.map((activity) => {
-  		return (
-  			<Activity key={activity.time} heading={activity.heading} time={activity.time} date={activity.date} description={activity.description} />
-  		);
-  	});	
+
+  getInitialState: function() {
+    return {
+      results: ActivityFeedStore.getStatusData()
+      }
   },
+  componentDidMount: function() {
+    ActivityFeedStore.addChangeListener(this._onChange);
+    ActivityFeedActions.getstatus();
+  },
+  _search: function () {
+    ActivityFeedActions.getstatus();
+  },
+  _onChange: function() {
+    this.setState({results: ActivityFeedStore.getStatusData()});        
+  },
+  _renderSearchItem: function () {
+        console.log(this.state.results); 
+        return this.state.results.map((result) => {
+            return (<ActivityList key={result.post_text} post_text={result.post_text} />);
+        });
+  },
+
   render: function() {
     return (
-      <div>
-		    <Card>
-        	{this._renderActivites()}
-        </Card>
-      </div>
+     <div>
+      {this._renderSearchItem()}
+     </div>
     );
   }
 });
 
-export default activityContainer;*/
+export default activityContainer;
