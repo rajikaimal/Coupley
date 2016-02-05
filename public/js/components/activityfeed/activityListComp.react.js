@@ -65,10 +65,10 @@ const ActivityList = React.createClass({
 			<div style={style}>
 		        <ListItem
 		          leftAvatar={<Avatar src="https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg" />}
-		          primaryText="Tiffany"
+		          primaryText={this.props.firstname}
 		          secondaryText={
 		            <p>
-		              <b>"2016.02.05"</b><br/>
+		              <b>{this.props.created_at}</b><br/>
               			{this.props.post_text}
 		            </p>
 		          }

@@ -9,10 +9,8 @@ var ActivityFeedActions = {
   },
 
  getstatus: function() {
-    console.log('Insideaction');
     $.get('/api/getstatus' , function(response) {
       console.log(response);
-      console.log('<><><><>');
       if (response.status == 200) {
             AppDispatcher.handleViewAction({
             actionType: ActivityFeedConstants.GETDATA,

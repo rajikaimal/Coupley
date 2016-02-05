@@ -25,7 +25,7 @@ const activityContainer = React.createClass({
   _renderSearchItem: function () {
         console.log(this.state.results); 
         return this.state.results.map((result) => {
-            return (<ActivityList key={result.post_text} post_text={result.post_text} />);
+            return (<ActivityList key={result.id} firstname={result.firstname} post_text={result.post_text} created_at={result.created_at}/>);
         });
   },
 

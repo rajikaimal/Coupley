@@ -30,7 +30,7 @@ class ActivityFeedController extends Controller
 
     public function getstatus(Request $request){
     /*	$id=$request->key;**/
-     if($posts=\DB::select('select post_text from posts')) {
+     if($posts=\DB::select('select id,firstname,post_text,created_at from posts')) {
         return response()->json(['posts' => $posts, 'status' => 200],200);
       }
       else {
@@ -58,7 +58,7 @@ class ActivityFeedController extends Controller
       $comment->post_id = '1';
       $comment->email = $request->Email;
       $comment->firstname = $request->Fname;
-      $comment->comment_txt = $request->Status;
+      $comment->comment_txt = $request->Comment;
      
       if($comment->save()) {
       return response()->json(["status" => 201], 201);
