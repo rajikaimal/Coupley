@@ -39,7 +39,7 @@ var LoginStore = assign({}, EventEmitter.prototype, {
 
 AppDispatcher.register(function(payload) {
   switch(payload.action.actionType) {
-    case(LoginConstants.LOGIN): 
+    case(LoginConstants.LOGIN):
       LoginStore.save(payload.action.token);
       LoginStore.saveEmail(payload.action.email);
       LoginStore.emitChange();

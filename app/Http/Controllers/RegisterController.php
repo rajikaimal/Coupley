@@ -7,7 +7,7 @@ use App\User;
 
 class RegisterController extends Controller
 {
-<<<<<<< HEAD
+
 	//checks whether user is already registered
 	public function check(Request $request)
 	{
@@ -37,7 +37,6 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
 
-=======
     //checks whether user is already registered
     public function check(Request $request)
     {
@@ -61,6 +60,6 @@ class RegisterController extends Controller
         } else {
             return response('exists', 200);
         }
->>>>>>> b0504640741c074b5d955e7021387a3d1600042e
+
     }
 }

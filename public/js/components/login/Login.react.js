@@ -66,7 +66,7 @@ function validatePassword(password) {
 const Login = React.createClass({
   getInitialState: function() {
     console.log(LoginStore.getState());
-    return { 
+    return {
       apitoken: LoginStore.getState()
     };
   },
@@ -118,19 +118,19 @@ const Login = React.createClass({
                   <span id="emailval"> </span>
                 <TextField
                   floatingLabelText="password" type="password" ref="password" fullwidth={true}/>
-                  <span id="passwordval"> </span>          
+                  <span id="passwordval"> </span>
                 </CardText>
                 <CardActions>
                   <RaisedButton label="Signin" style={buttonStyle} primary={true} onTouchTap={this._handleLogin} />
                   <a href="/#/forgotpwd"> Forgot password ? </a>
                 </CardActions>
                 <span id="server-error" style={error}> </span>
-              </Card> 
+              </Card>
             </div>
           </div>
-        </div>  
+        </div>
       </div>
-    );    
+    );
   }
 
 });

@@ -8,7 +8,7 @@ var connection = mysql.createConnection({
   password : '',
   database : 'Coupley'
 });
- 
+
 connection.connect();
 
 server.listen(8081);
@@ -19,8 +19,8 @@ io.on('connection', function (socket) {
   socket.on('message', function (chat) {
     console.log(chat);
     post = {
-      user1: 'rajika',
-      user2: 'tiffany',
+      user1: chat.user1,
+      user2: chat.user2,
       message: chat.message
     };
     connection.query('INSERT INTO chats SET ?', post, function(err, result) {
