@@ -24,7 +24,9 @@ import TableRowColumn from 'material-ui/lib/table/table-row-column';
 import TableBody from 'material-ui/lib/table/table-body';
 import Colors from 'material-ui/lib/styles/colors';
 
-import RegisterActions from '../../../actions/admin/AdminRegisterActions';
+import ProfileActions from '../../../actions/admin/ProfileActions';
+import ProfileStore from '../../../stores/admin/ProfileStore';
+import PwdActions from '../../../actions/admin/AdminPwdResetActions';
 
 const tilesData = [
     {
@@ -54,10 +56,6 @@ const customContentStyle = {
 
 };
 const err = {"color": "red"};
-const registerStyle = {
-    marginTop: 50,
-    marginLeft: 500
-};
 
 const styles = {
     button: {
@@ -68,9 +66,6 @@ const styles = {
         color: Colors.pink500
     }
 };
-const buttonStyle = {
-    marginTop: 25
-}
 
 
 function validatePassword(password) {
@@ -115,12 +110,20 @@ function validateRePassword(Repassword, password) {
     }
 }
 
-var Header = React.createClass({
+var Reset = React.createClass({
     getInitialState: function () {
         return {
             open: false,
-            opens: false
+            opens: false,
+            data:ProfileStore.getuserdata()
         };
+    },
+    componentDidMount: function() {
+        ProfileActions.getAdminProfileData(); ProfileStore.addChangeListener(this._onChange)
+
+    },
+    _onChange: function() {
+        this.setState(ProfileStore.getuserdata());
     },
     handleOpen: function () {
         this.setState({open: true, opens: false});
@@ -135,64 +138,48 @@ var Header = React.createClass({
 
     },
     handleBoth: function () {
-        if (this._handleRegisterClickEvent()) {
+        if (this._handleResetClickEvent()) {
             this.handleTouchTap();
             this.handleClose();
         }
     },
     reEnterPwd: function () {
-        let password = this.refs.password.getValue();
+        let newpassword = this.refs.newpassword.getValue();
         let RePass = this.refs.repassword.getValue();
-        if (validateRePassword(RePass, password).error) {
-            document.getElementById('repassword').innerHTML = validateRePassword(RePass, password).error;
+        if (validateRePassword(RePass, newpassword).error) {
+            document.getElementById('repassword').innerHTML = validateRePassword(RePass, newpassword).error;
             document.getElementById('repassword').style.color = "#ff6666";
         }
         else {
-            document.getElementById('repassword').innerHTML = validateRePassword(RePass, password).success;
+            document.getElementById('repassword').innerHTML = validateRePassword(RePass, newpassword).success;
             document.getElementById('repassword').style.color = "#66cc66";
         }
     }
 
     ,
-    _handleRegisterClickEvent: function () {
-        let firstname = this.refs.firstname.getValue();
-        let lastname = this.refs.lastname.getValue();
-        let job = this.refs.job.getValue();
-        let email = this.refs.email.getValue();
-        let password = this.refs.password.getValue();
+    _handleResetClickEvent: function () {
+        let newpassword = this.refs.newpassword.getValue();
+        let oldpassword = this.refs.oldpassword.getValue();
 
-        if (validatefirstname(firstname).error) {
-            document.getElementById('firstname').innerHTML = validatefirstname(firstname).error;
-            return false;
-        }
-        else if (validatelastname(lastname).error) {
-            document.getElementById('lastname').innerHTML = validatelastname(lastname).error;
-            return false;
-        }
-        else if (validatejobname(job).error) {
-            document.getElementById('job').innerHTML = validatejobname(job).error;
-            return false;
-        }
-        else if (!validateEmail(email)) {
-            document.getElementById('email').innerHTML = '*Invalid Email !';
-            return false;
-        }
-        else if (validatePassword(password).error) {
-            document.getElementById('password').innerHTML = validatePassword(password).error;
+        if (validatePassword(newpassword).error) {
+            document.getElementById('newpassword').innerHTML = validatePassword(newpassword).error;
             return false;
         }
         else {
             let credentials = {
-                firstname: firstname,
-                lastname: lastname,
-                job: job,
-                email: email,
-                password: password
+                email:this.state.email,
+                newpassword: newpassword,
+                password: oldpassword
             };
-            RegisterActions.checks(credentials);
-            console.log('Done calling !');
-
+            PwdActions.reset(credentials);
+            console.log(this.state.email);
         }
+    },
+    eleminateErrors :function(){
+        document.getElementById('oldpassword').innerHTML = " ";
+        document.getElementById('newpassword').innerHTML = " ";
+        document.getElementById('repassword').innerHTML = " ";
+
     },
 
     render: function () {
@@ -246,28 +233,28 @@ var Header = React.createClass({
                             <div className="col-lg-12">
                                 <Card>
 
-                                    <CardText>
+                                    <CardText onFocus={this.eleminateErrors}>
                                         <div className="col-lg-12 text-center">
 
                                             <TextField
                                                 type="password"
-                                                hintText="Current Password" ref="password" hintStyle={styles.errorStyle} fullwidth={true}/>
+                                                hintText="Current Password" floatingLabelText="Current Password" ref="oldpassword" hintStyle={styles.errorStyle} fullwidth={true}/>
                                             <br />
-                                            <span id="password" style={err}> </span>
-                                            <br />
-                                            <br />
-                                            <TextField
-                                                type="password"
-                                                hintText="New Password" ref="repassword" hintStyle={styles.errorStyle} fullwidth={true} onChange={this.reEnterPwd}/>
-                                            <br />
-                                            <span id="repassword"> </span>
+                                            <span id="oldpassword" style={err}> </span>
                                             <br />
                                             <br />
                                             <TextField
                                                 type="password"
-                                                hintText="Retype New Password" ref="repassword" hintStyle={styles.errorStyle} fullwidth={true} onChange={this.reEnterPwd}/>
+                                                hintText="New Password" floatingLabelText="New Password" ref="newpassword" hintStyle={styles.errorStyle} fullwidth={true} onChange={this.reEnterPwd}/>
                                             <br />
-                                            <span id="repassword"> </span>
+                                            <span id="newpassword" style={err}> </span>
+                                            <br />
+                                            <br />
+                                            <TextField
+                                                type="password"
+                                                hintText="Retype New Password" floatingLabelText="Retype New Password" ref="repassword" hintStyle={styles.errorStyle} fullwidth={true} onChange={this.reEnterPwd}/>
+                                            <br />
+                                            <span id="repassword" style={err}> </span>
                                             <br />
                                             <br />
                                         </div>
@@ -284,7 +271,7 @@ var Header = React.createClass({
                 </Dialog>
                 <Snackbar
                     open={this.state.opens}
-                    message="Successfully added a New Administrator to your system"
+                    message="Successfully updated the password"
                     autoHideDuration={4000}
                     onRequestClose={this.handleRequestClose}
                 />
@@ -294,4 +281,4 @@ var Header = React.createClass({
     }
 });
 
-export default Header;
+export default Reset;

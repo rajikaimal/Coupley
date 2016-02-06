@@ -79,6 +79,8 @@ Route::group(['prefix' => 'admin-api'], function () {
     Route::post('registerAdmin', 'AdminRegisterController@checks');
     //Update admins
     Route::post('updateAdmin', 'AdminRegisterController@update');
+    //update admin passwords
+    Route::post('reset', 'AdminPwdController@reset');
     //recover password
     Route::post('recoverpwd', 'UsersController@recover');
     //block certain user

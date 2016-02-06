@@ -152,7 +152,7 @@ function validateEmail(email) {
     }
 }
 
-var Header = React.createClass({
+var Update = React.createClass({
     getInitialState: function () {
         return {
             open: false,
@@ -338,4 +338,4 @@ eleminateErrors :function(){
     }
 });
 
-export default Header;
+export default Update;
