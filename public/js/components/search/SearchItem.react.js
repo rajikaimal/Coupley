@@ -36,7 +36,7 @@ const SearchItem = React.createClass({
             
               <GridTile
                 key={this.props.firstname}
-                title={<a href="" onClick={this._redirect} id="username-a">{this.props.firstname + this.props.lastname}</a>}
+                title={<a href="" onClick={this._redirect} id="username-a">{this.props.firstname + " " +this.props.lastname}</a>}
                 subtitle={this.props.gender}
                 actionIcon={<IconButton></IconButton>}
               >
