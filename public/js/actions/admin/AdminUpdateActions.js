@@ -1,25 +1,25 @@
 var AppDispatcher = require('../../dispatcher/AppDispatcher');
 var RegisterConstants = require('../../constants/RegisterConstants');
 
-var RegisterActions = {
+var UpdateActions = {
     checks: function (credentials) {
         console.log(credentials);
-        $.post('/admin-api/registerAdmin', credentials, function (data) {
+        $.post('/admin-api/updateAdmin', credentials, function (data) {
 
-            if (data.status === 201) {
-                
-                swal("Good job!", "New Administrator added to the system", "success");
+            if (data.status === 200) {
+                swal("Good job!", "Updated your profile", "success")
             }
 
             else {
                 swal("Error","An account with the same email exists already", "error");
             }
         }).fail(function () {
-            swal("Error","An account with the same email exists already", "error");
+            swal("Error","Something went wrong, Please try again later", "error");
         });
 
-
+        document.location = "/cp-admin#/settings";
     }
+
 };
 
-module.exports = RegisterActions;
+module.exports = UpdateActions;

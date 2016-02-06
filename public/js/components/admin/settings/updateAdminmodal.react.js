@@ -24,10 +24,15 @@ import TableRowColumn from 'material-ui/lib/table/table-row-column';
 import TableBody from 'material-ui/lib/table/table-body';
 import Colors from 'material-ui/lib/styles/colors';
 
+import ProfileActions from '../../../actions/admin/ProfileActions';
+import ProfileStore from '../../../stores/admin/ProfileStore';
+
+import UpdateActions from '../../../actions/admin/AdminUpdateActions';
+
 const tilesData = [
     {
         img: '../../../../img/edit.png',
-        title: 'Update Profile',
+        title: 'Update Profile'
 
     }
 
@@ -80,6 +85,11 @@ function validatefirstname(firstname) {
             "error": "*Firstname is too long"
         }
     }
+    else if (firstname.trim() == "") {
+        return {
+            "error": "*Firstname cannot be empty"
+        }
+    }
     else if (!/^\w+$/i.test(firstname)) {
         return {
             "error": "*Firstname cannot contain special characters"
@@ -91,9 +101,14 @@ function validatefirstname(firstname) {
 }
 
 function validatelastname(lastname) {
-    if (firstname.length >= 50) {
+    if (lastname.length >= 50) {
         return {
             "error": "*Lastname is too long"
+        }
+    }
+    else if (lastname.trim() == "") {
+        return {
+            "error": "*Lastname cannot be empty"
         }
     }
     else if (!/^\w+$/i.test(lastname)) {
@@ -112,9 +127,9 @@ function validatejobname(job) {
             "error": "*Jobname is too long"
         }
     }
-    else if (!/^\w+$/i.test(job)) {
+    else if (job.trim() == "") {
         return {
-            "error": "*Jobname cannot contain special characters"
+            "error": "*Jobname cannot be empty"
         }
     }
     else {
@@ -127,50 +142,13 @@ function validateEmail(email) {
     if (re.test(email)) {
         return true;
     }
+    else if (email.trim() == "") {
+        return {
+            "error": "*Email cannot be empty"
+        }
+    }
     else {
         return false;
-    }
-}
-
-function validatePassword(password) {
-    if (password.length < 6) {
-        return {
-            "error": "*Password length must be 6 or more"
-        }
-    }
-    let re = /[0-9]/;
-    if (!re.test(password)) {
-        return {
-            "error": "*Password must contain a number"
-        }
-    }
-    re = /[a-z]/;
-    if (!re.test(password)) {
-        return {
-            "error": "*Password must contain a lowercase letter"
-        }
-    }
-    re = /[A-Z]/;
-    if (!re.test(password)) {
-        return {
-            "error": "*Password must contain a uppercase letter"
-        }
-    }
-    else {
-        return true;
-    }
-}
-function validateRePassword(Repassword, password) {
-    if (!(Repassword == password)) {
-        return {
-            "error": "*Password Doesnt match"
-        }
-    }
-    else {
-
-        return {
-            "success": "*Password matches"
-        }
     }
 }
 
@@ -178,8 +156,16 @@ var Header = React.createClass({
     getInitialState: function () {
         return {
             open: false,
-            opens: false
+            opens: false,
+            data:ProfileStore.getuserdata()
         };
+    },
+    componentDidMount: function() {
+        ProfileActions.getAdminProfileData(); ProfileStore.addChangeListener(this._onChange)
+
+    },
+    _onChange: function() {
+        this.setState(ProfileStore.getuserdata());
     },
     handleOpen: function () {
         this.setState({open: true, opens: false});
@@ -199,57 +185,52 @@ var Header = React.createClass({
             this.handleClose();
         }
     },
-    reEnterPwd: function () {
-        let password = this.refs.password.getValue();
-        let RePass = this.refs.repassword.getValue();
-        if (validateRePassword(RePass, password).error) {
-            document.getElementById('repassword').innerHTML = validateRePassword(RePass, password).error;
-            document.getElementById('repassword').style.color = "#ff6666";
-        }
-        else {
-            document.getElementById('repassword').innerHTML = validateRePassword(RePass, password).success;
-            document.getElementById('repassword').style.color = "#66cc66";
-        }
-    }
 
-    ,
     _handleRegisterClickEvent: function () {
         let firstname = this.refs.firstname.getValue();
         let lastname = this.refs.lastname.getValue();
         let job = this.refs.job.getValue();
         let email = this.refs.email.getValue();
 
-        let password = this.refs.password.getValue();
 
         if (validatefirstname(firstname).error) {
             document.getElementById('firstname').innerHTML = validatefirstname(firstname).error;
+            return false;
         }
         if (validatelastname(lastname).error) {
             document.getElementById('lastname').innerHTML = validatelastname(lastname).error;
+            return false;
         }
         if (validatejobname(job).error) {
             document.getElementById('job').innerHTML = validatejobname(job).error;
+
+            return false;
         }
         if (!validateEmail(email)) {
             document.getElementById('email').innerHTML = '*Invalid Email !';
+            return false;
         }
-        if (validatePassword(password).error) {
-            document.getElementById('password').innerHTML = validatePassword(password).error;
-        }
+
         else {
             let credentials = {
+                id: this.state.id,
                 firstname: firstname,
                 lastname: lastname,
                 job: job,
-                email: email,
-                password: password
+                email: email
+
             };
-            //RegisterActions.check(credentials);
+            UpdateActions.checks(credentials);
             console.log('Done calling !');
-            return true;
+
         }
     },
-
+eleminateErrors :function(){
+    document.getElementById('firstname').innerHTML = " ";
+    document.getElementById('lastname').innerHTML = " ";
+    document.getElementById('job').innerHTML = " ";
+    document.getElementById('email').innerHTML = " ";
+},
     render: function () {
         const actions = [
             <FlatButton
@@ -287,7 +268,7 @@ var Header = React.createClass({
 
              {/* modal content */}
                 <Dialog
-                    title="Update"
+                    title="Update Your Profile"
                     actions={actions}
                     modal={false}
                     open={this.state.open}
@@ -302,49 +283,37 @@ var Header = React.createClass({
                             <div className="col-lg-12">
                                 <Card>
 
-                                    <CardText>
+                                    <CardText onFocus={this.eleminateErrors}>
                                         <div className="col-lg-6">
                                             <TextField
-                                                hintText="Firstname" hintStyle={styles.errorStyle} fullwidth={true} ref="firstname"/>
+                                                hintText="Firstname" hintStyle={styles.errorStyle} floatingLabelText="Firstname" fullwidth={true} ref="firstname" defaultValue={this.state.firstname}/>
                                             <br />
                                             <span id="firstname" style={err}> </span>
                                             <br/>
                                             <br/>
                                             <TextField
-                                                hintText="Job Position" hintStyle={styles.errorStyle} fullwidth={true} ref="job"/>
+                                                hintText="Job Position" hintStyle={styles.errorStyle} floatingLabelText="Job Position" fullwidth={true} ref="job" defaultValue={this.state.job}/>
                                             <br />
                                             <span id="job" style={err}> </span>
                                             <br />
                                             <br />
-                                            <TextField
-                                                type="password"
-                                                hintText="Password" ref="password" hintStyle={styles.errorStyle} fullwidth={true}/>
-                                            <br />
-                                            <span id="password" style={err}> </span>
-                                            <br />
-                                            <br />
+
                                         </div>
                                         <div className="col-lg-6">
                                             <TextField
-                                                hintText="Lastname" hintStyle={styles.errorStyle} fullwidth={true} ref="lastname"/>
+                                                hintText="Lastname" hintStyle={styles.errorStyle} floatingLabelText="Lastname" fullwidth={true} ref="lastname" defaultValue={this.state.lastname}/>
                                             <br />
                                             <span id="lastname" style={err}> </span>
                                             <br />
                                             <br />
                                             <TextField
-                                                hintText="Email" hintStyle={styles.errorStyle} fullwidth={true} ref="email"/>
+                                                hintText="Email" hintStyle={styles.errorStyle} floatingLabelText="Email" fullwidth={true} ref="email" defaultValue={this.state.email}/>
                                             <br />
 
                                             <span id="email" style={err}> </span>
                                             <br />
                                             <br />
-                                            <TextField
-                                                type="password"
-                                                hintText="ReEnter Password" ref="repassword" hintStyle={styles.errorStyle} fullwidth={true} onChange={this.reEnterPwd}/>
-                                            <br />
-                                            <span id="repassword"> </span>
-                                            <br />
-                                            <br />
+
                                         </div>
 
                                     </CardText>

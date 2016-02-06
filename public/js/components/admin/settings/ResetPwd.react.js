@@ -1,5 +1,5 @@
 /**
- * Created by Isuru 1 on 30/01/2016.
+ * Created by Isuru 1 on 06/02/2016.
  */
 import React from 'react';
 import Dialog from 'material-ui/lib/dialog';
@@ -28,8 +28,8 @@ import RegisterActions from '../../../actions/admin/AdminRegisterActions';
 
 const tilesData = [
     {
-        img: '../../../../img/add_users_group-512.png',
-        title: 'New Administrator',
+        img: '../../../../img/lock.png',
+        title: 'Reset Password'
 
     }
 
@@ -72,64 +72,6 @@ const buttonStyle = {
     marginTop: 25
 }
 
-
-function validatefirstname(firstname) {
-    if (firstname.length >= 50) {
-        return {
-            "error": "*Firstname is too long"
-        }
-    }
-    else if (!/^\w+$/i.test(firstname)) {
-        return {
-            "error": "*Firstname cannot contain special characters"
-        }
-    }
-    else {
-        return true;
-    }
-}
-
-function validatelastname(lastname) {
-    if (firstname.length >= 50) {
-        return {
-            "error": "*Lastname is too long"
-        }
-    }
-    else if (!/^\w+$/i.test(lastname)) {
-        return {
-            "error": "*Lastname cannot contain special characters"
-        }
-    }
-    else {
-        return true;
-    }
-}
-
-function validatejobname(job) {
-    if (firstname.length >= 20) {
-        return {
-            "error": "*Jobname is too long"
-        }
-    }
-    else if (!/^\w+$/i.test(job)) {
-        return {
-            "error": "*Jobname cannot contain special characters"
-        }
-    }
-    else {
-        return true;
-    }
-}
-
-function validateEmail(email) {
-    let re = /\S+@\S+\.\S+/;
-    if (re.test(email)) {
-        return true;
-    }
-    else {
-        return false;
-    }
-}
 
 function validatePassword(password) {
     if (password.length < 6) {
@@ -268,7 +210,7 @@ var Header = React.createClass({
             />,
         ];
         return (
-            <div className="" style={{"margin-left": "86%","top": "-218px", "position": "relative",
+            <div className="" style={{"margin-left": "37%","top": "-218px", "position": "relative",
                 "min-height": "1px",
                 "padding-right": "15px",
                 "padding-left": "15px"}}>
@@ -289,7 +231,7 @@ var Header = React.createClass({
 
              {/* modal content */}
                 <Dialog
-                    title="Add New Administrator"
+                    title="Reset Password"
                     actions={actions}
                     modal={false}
                     open={this.state.open}
@@ -305,45 +247,25 @@ var Header = React.createClass({
                                 <Card>
 
                                     <CardText>
-                                        <div className="col-lg-6">
-                                            <TextField
-                                                hintText="Firstname" hintStyle={styles.errorStyle} fullwidth={true} ref="firstname"/>
-                                            <br />
-                                            <span id="firstname" style={err}> </span>
-                                            <br/>
-                                            <br/>
-                                            <TextField
-                                                hintText="Job Position" hintStyle={styles.errorStyle} fullwidth={true} ref="job"/>
-                                            <br />
-                                            <span id="job" style={err}> </span>
-                                            <br />
-                                            <br />
-                                            <snack/>
+                                        <div className="col-lg-12 text-center">
+
                                             <TextField
                                                 type="password"
-                                                hintText="Password" ref="password" hintStyle={styles.errorStyle} fullwidth={true}/>
+                                                hintText="Current Password" ref="password" hintStyle={styles.errorStyle} fullwidth={true}/>
                                             <br />
                                             <span id="password" style={err}> </span>
                                             <br />
                                             <br />
-                                        </div>
-                                        <div className="col-lg-6">
                                             <TextField
-                                                hintText="Lastname" hintStyle={styles.errorStyle} fullwidth={true} ref="lastname"/>
+                                                type="password"
+                                                hintText="New Password" ref="repassword" hintStyle={styles.errorStyle} fullwidth={true} onChange={this.reEnterPwd}/>
                                             <br />
-                                            <span id="lastname" style={err}> </span>
-                                            <br />
-                                            <br />
-                                            <TextField
-                                                hintText="Email" hintStyle={styles.errorStyle} fullwidth={true} ref="email"/>
-                                            <br />
-
-                                            <span id="email" style={err}> </span>
+                                            <span id="repassword"> </span>
                                             <br />
                                             <br />
                                             <TextField
                                                 type="password"
-                                                hintText="ReEnter Password" ref="repassword" hintStyle={styles.errorStyle} fullwidth={true} onChange={this.reEnterPwd}/>
+                                                hintText="Retype New Password" ref="repassword" hintStyle={styles.errorStyle} fullwidth={true} onChange={this.reEnterPwd}/>
                                             <br />
                                             <span id="repassword"> </span>
                                             <br />
