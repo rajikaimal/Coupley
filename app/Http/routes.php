@@ -53,6 +53,8 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('blockstatus', 'ProfileController@blockstatus');
     //Returns permission for viewing a profile
     Route::post('profilepermission', 'ProfileController@profilepermission');
+    //Returns acitivity feed for specific user
+    Route::get('profile/feed', 'ProfileController@getposts');
 });
 
 Route::get('socket', 'SocketController@index');

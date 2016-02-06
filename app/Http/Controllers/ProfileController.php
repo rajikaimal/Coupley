@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Likes;
 use App\Blocks;
+use App\ActivityFeed;
 
 class ProfileController extends Controller
 {
@@ -226,6 +227,29 @@ class ProfileController extends Controller
             return response()->json(['permission' => true, 'status' => 200], 200);
         } else {
             return response()->json(['status' => 200], 200);
+        }
+    }
+    /*
+        Returns @json activity feed
+    **/
+    public function getposts(Request $request)
+    {
+        $username = $request->username;
+        $userID = User::where('username', $username)->get(['id']);
+
+        try {
+            $results = ActivityFeed::where('user_id', $userID[0]->id)->get();
+            if(!$results->isEmpty())
+            {
+                return response()->json(['status' => 200, 'data' => $results], 200);
+            }
+            else
+            {
+                return response()->json(['status' => 200, 'data' => null], 200);
+            }
+            
+        } catch(Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 505], 505);
         }
     }
 }
