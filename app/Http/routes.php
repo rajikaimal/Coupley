@@ -77,6 +77,10 @@ Route::group(['prefix' => 'admin-api'], function () {
     Route::get('blocked', 'UsersController@blocked');
     //Register new admins with RegisterConroller@register
     Route::post('registerAdmin', 'AdminRegisterController@checks');
+    //Update admins
+    Route::post('updateAdmin', 'AdminRegisterController@update');
+    //update admin passwords
+    Route::post('reset', 'AdminPwdController@reset');
     //recover password
     Route::post('recoverpwd', 'UsersController@recover');
     //block certain user

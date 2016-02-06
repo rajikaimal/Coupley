@@ -37,8 +37,9 @@
 </head>
 <body>
 <div id="content"></div>
-<script src="bundle.js"></script>
 <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+<script src="bundle.js"></script>
+
 <script src="dist/js/material.min.js"></script>
 <script src="dist/js/ripples.min.js"></script>
 <!-- jQuery 2.1.4 -->

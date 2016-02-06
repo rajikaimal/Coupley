@@ -1,5 +1,5 @@
 /**
- * Created by Isuru 1 on 30/01/2016.
+ * Created by Isuru 1 on 06/02/2016.
  */
 import React from 'react';
 import Dialog from 'material-ui/lib/dialog';
@@ -24,12 +24,14 @@ import TableRowColumn from 'material-ui/lib/table/table-row-column';
 import TableBody from 'material-ui/lib/table/table-body';
 import Colors from 'material-ui/lib/styles/colors';
 
-import RegisterActions from '../../../actions/admin/AdminRegisterActions';
+import ProfileActions from '../../../actions/admin/ProfileActions';
+import ProfileStore from '../../../stores/admin/ProfileStore';
+import PwdActions from '../../../actions/admin/AdminPwdResetActions';
 
 const tilesData = [
     {
-        img: '../../../../img/add_users_group-512.png',
-        title: 'New Administrator',
+        img: '../../../../img/lock.png',
+        title: 'Reset Password'
 
     }
 
@@ -54,10 +56,6 @@ const customContentStyle = {
 
 };
 const err = {"color": "red"};
-const registerStyle = {
-    marginTop: 50,
-    marginLeft: 500
-};
 
 const styles = {
     button: {
@@ -68,68 +66,7 @@ const styles = {
         color: Colors.pink500
     }
 };
-const buttonStyle = {
-    marginTop: 25
-}
 
-
-function validatefirstname(firstname) {
-    if (firstname.length >= 50) {
-        return {
-            "error": "*Firstname is too long"
-        }
-    }
-    else if (!/^\w+$/i.test(firstname)) {
-        return {
-            "error": "*Firstname cannot contain special characters"
-        }
-    }
-    else {
-        return true;
-    }
-}
-
-function validatelastname(lastname) {
-    if (firstname.length >= 50) {
-        return {
-            "error": "*Lastname is too long"
-        }
-    }
-    else if (!/^\w+$/i.test(lastname)) {
-        return {
-            "error": "*Lastname cannot contain special characters"
-        }
-    }
-    else {
-        return true;
-    }
-}
-
-function validatejobname(job) {
-    if (firstname.length >= 20) {
-        return {
-            "error": "*Jobname is too long"
-        }
-    }
-    else if (!/^\w+$/i.test(job)) {
-        return {
-            "error": "*Jobname cannot contain special characters"
-        }
-    }
-    else {
-        return true;
-    }
-}
-
-function validateEmail(email) {
-    let re = /\S+@\S+\.\S+/;
-    if (re.test(email)) {
-        return true;
-    }
-    else {
-        return false;
-    }
-}
 
 function validatePassword(password) {
     if (password.length < 6) {
@@ -173,12 +110,20 @@ function validateRePassword(Repassword, password) {
     }
 }
 
-var Header = React.createClass({
+var Reset = React.createClass({
     getInitialState: function () {
         return {
             open: false,
-            opens: false
+            opens: false,
+            data:ProfileStore.getuserdata()
         };
+    },
+    componentDidMount: function() {
+        ProfileActions.getAdminProfileData(); ProfileStore.addChangeListener(this._onChange)
+
+    },
+    _onChange: function() {
+        this.setState(ProfileStore.getuserdata());
     },
     handleOpen: function () {
         this.setState({open: true, opens: false});
@@ -193,64 +138,48 @@ var Header = React.createClass({
 
     },
     handleBoth: function () {
-        if (this._handleRegisterClickEvent()) {
+        if (this._handleResetClickEvent()) {
             this.handleTouchTap();
             this.handleClose();
         }
     },
     reEnterPwd: function () {
-        let password = this.refs.password.getValue();
+        let newpassword = this.refs.newpassword.getValue();
         let RePass = this.refs.repassword.getValue();
-        if (validateRePassword(RePass, password).error) {
-            document.getElementById('repassword').innerHTML = validateRePassword(RePass, password).error;
+        if (validateRePassword(RePass, newpassword).error) {
+            document.getElementById('repassword').innerHTML = validateRePassword(RePass, newpassword).error;
             document.getElementById('repassword').style.color = "#ff6666";
         }
         else {
-            document.getElementById('repassword').innerHTML = validateRePassword(RePass, password).success;
+            document.getElementById('repassword').innerHTML = validateRePassword(RePass, newpassword).success;
             document.getElementById('repassword').style.color = "#66cc66";
         }
     }
 
     ,
-    _handleRegisterClickEvent: function () {
-        let firstname = this.refs.firstname.getValue();
-        let lastname = this.refs.lastname.getValue();
-        let job = this.refs.job.getValue();
-        let email = this.refs.email.getValue();
-        let password = this.refs.password.getValue();
+    _handleResetClickEvent: function () {
+        let newpassword = this.refs.newpassword.getValue();
+        let oldpassword = this.refs.oldpassword.getValue();
 
-        if (validatefirstname(firstname).error) {
-            document.getElementById('firstname').innerHTML = validatefirstname(firstname).error;
-            return false;
-        }
-        else if (validatelastname(lastname).error) {
-            document.getElementById('lastname').innerHTML = validatelastname(lastname).error;
-            return false;
-        }
-        else if (validatejobname(job).error) {
-            document.getElementById('job').innerHTML = validatejobname(job).error;
-            return false;
-        }
-        else if (!validateEmail(email)) {
-            document.getElementById('email').innerHTML = '*Invalid Email !';
-            return false;
-        }
-        else if (validatePassword(password).error) {
-            document.getElementById('password').innerHTML = validatePassword(password).error;
+        if (validatePassword(newpassword).error) {
+            document.getElementById('newpassword').innerHTML = validatePassword(newpassword).error;
             return false;
         }
         else {
             let credentials = {
-                firstname: firstname,
-                lastname: lastname,
-                job: job,
-                email: email,
-                password: password
+                email:this.state.email,
+                newpassword: newpassword,
+                password: oldpassword
             };
-            RegisterActions.checks(credentials);
-            console.log('Done calling !');
-
+            PwdActions.reset(credentials);
+            console.log(this.state.email);
         }
+    },
+    eleminateErrors :function(){
+        document.getElementById('oldpassword').innerHTML = " ";
+        document.getElementById('newpassword').innerHTML = " ";
+        document.getElementById('repassword').innerHTML = " ";
+
     },
 
     render: function () {
@@ -268,7 +197,7 @@ var Header = React.createClass({
             />,
         ];
         return (
-            <div className="" style={{"margin-left": "86%","top": "-218px", "position": "relative",
+            <div className="" style={{"margin-left": "37%","top": "-218px", "position": "relative",
                 "min-height": "1px",
                 "padding-right": "15px",
                 "padding-left": "15px"}}>
@@ -289,7 +218,7 @@ var Header = React.createClass({
 
              {/* modal content */}
                 <Dialog
-                    title="Add New Administrator"
+                    title="Reset Password"
                     actions={actions}
                     modal={false}
                     open={this.state.open}
@@ -304,48 +233,28 @@ var Header = React.createClass({
                             <div className="col-lg-12">
                                 <Card>
 
-                                    <CardText>
-                                        <div className="col-lg-6">
-                                            <TextField
-                                                hintText="Firstname" hintStyle={styles.errorStyle} fullwidth={true} ref="firstname"/>
-                                            <br />
-                                            <span id="firstname" style={err}> </span>
-                                            <br/>
-                                            <br/>
-                                            <TextField
-                                                hintText="Job Position" hintStyle={styles.errorStyle} fullwidth={true} ref="job"/>
-                                            <br />
-                                            <span id="job" style={err}> </span>
-                                            <br />
-                                            <br />
-                                            <snack/>
-                                            <TextField
-                                                type="password"
-                                                hintText="Password" ref="password" hintStyle={styles.errorStyle} fullwidth={true}/>
-                                            <br />
-                                            <span id="password" style={err}> </span>
-                                            <br />
-                                            <br />
-                                        </div>
-                                        <div className="col-lg-6">
-                                            <TextField
-                                                hintText="Lastname" hintStyle={styles.errorStyle} fullwidth={true} ref="lastname"/>
-                                            <br />
-                                            <span id="lastname" style={err}> </span>
-                                            <br />
-                                            <br />
-                                            <TextField
-                                                hintText="Email" hintStyle={styles.errorStyle} fullwidth={true} ref="email"/>
-                                            <br />
+                                    <CardText onFocus={this.eleminateErrors}>
+                                        <div className="col-lg-12 text-center">
 
-                                            <span id="email" style={err}> </span>
+                                            <TextField
+                                                type="password"
+                                                hintText="Current Password" floatingLabelText="Current Password" ref="oldpassword" hintStyle={styles.errorStyle} fullwidth={true}/>
+                                            <br />
+                                            <span id="oldpassword" style={err}> </span>
                                             <br />
                                             <br />
                                             <TextField
                                                 type="password"
-                                                hintText="ReEnter Password" ref="repassword" hintStyle={styles.errorStyle} fullwidth={true} onChange={this.reEnterPwd}/>
+                                                hintText="New Password" floatingLabelText="New Password" ref="newpassword" hintStyle={styles.errorStyle} fullwidth={true} onChange={this.reEnterPwd}/>
                                             <br />
-                                            <span id="repassword"> </span>
+                                            <span id="newpassword" style={err}> </span>
+                                            <br />
+                                            <br />
+                                            <TextField
+                                                type="password"
+                                                hintText="Retype New Password" floatingLabelText="Retype New Password" ref="repassword" hintStyle={styles.errorStyle} fullwidth={true} onChange={this.reEnterPwd}/>
+                                            <br />
+                                            <span id="repassword" style={err}> </span>
                                             <br />
                                             <br />
                                         </div>
@@ -362,7 +271,7 @@ var Header = React.createClass({
                 </Dialog>
                 <Snackbar
                     open={this.state.opens}
-                    message="Successfully added a New Administrator to your system"
+                    message="Successfully updated the password"
                     autoHideDuration={4000}
                     onRequestClose={this.handleRequestClose}
                 />
@@ -372,4 +281,4 @@ var Header = React.createClass({
     }
 });
 
-export default Header;
+export default Reset;
