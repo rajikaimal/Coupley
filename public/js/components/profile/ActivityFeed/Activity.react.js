@@ -37,12 +37,12 @@ const Activity = React.createClass({
 			<div>
 		        <ListItem
 		          leftAvatar={<Avatar src="https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg" />}
-		          primaryText={this.props.heading}
+		          primaryText={ "@" + localStorage.getItem('user')}
 		          secondaryText={
 		            <p>
-		              <b> {this.props.date} {this.props.time} </b><br/>
-		              <span style={{color: Colors.darkBlack}}>Brendan Lim</span> --
-		              {this.props.description}
+		            	<span style={{color: Colors.darkBlack}}>{this.props.post}</span>
+		           		<br/>
+		           		<b>{this.props.time}</b>
 		            </p>
 		          }
 		          secondaryTextLines={2} 

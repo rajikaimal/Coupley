@@ -39,12 +39,14 @@ const ActivityFeedContainer = React.createClass({
     })
   },
   _renderActivites: function() {
-  	console.log(this.state.feed);
-   //  return Array.from(this.state.feed).map((activity) => {
-  	// 	return (
-  	// 		<Activity key={activity.id} />
-  	// 	);
-  	// });
+    console.log('Loggin feed ...');
+    console.log(this.state.feed);
+
+    return this.state.feed.map((activity) => {
+  		return (
+  			<Activity post={activity.post} time={activity.created_at} />
+  		);
+  	});
   },
   render: function() {
     return (

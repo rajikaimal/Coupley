@@ -5,12 +5,14 @@ var assign = require('object-assign');
 
 var CHANGE_EVENT = 'change';
 
-var feed;
+var feed = [];
 
 var ActivityFeedStore = assign({}, EventEmitter.prototype, {
   savefeed: function(data) {
-    console.log('Saving savefeed ' + data);
     feed = data;
+    console.log('SAVED');
+    console.log(feed.length);
+    console.log(typeof feed);
   },
   getfeed: function() {
     return feed;
