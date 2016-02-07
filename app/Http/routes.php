@@ -55,6 +55,10 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('profilepermission', 'ProfileController@profilepermission');
     //Returns acitivity feed for specific user
     Route::get('profile/feed', 'ProfileController@getposts');
+    //Returns about data
+    Route::get('profile/about', 'ProfileController@getabout');
+    //Edit About section
+    Route::put('profile/edit/summary', 'ProfileController@editsummary');
 });
 
 Route::get('socket', 'SocketController@index');
