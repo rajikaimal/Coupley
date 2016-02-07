@@ -7,6 +7,7 @@ use App\User;
 use App\Likes;
 use App\Blocks;
 use App\ActivityFeed;
+use App\About;
 
 class ProfileController extends Controller
 {
@@ -248,6 +249,40 @@ class ProfileController extends Controller
                 return response()->json(['status' => 200, 'data' => null], 200);
             }
             
+        } catch(Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 505], 505);
+        }
+    }
+    public function getabout(Request $request)
+    {
+        $email = $request->email;
+        try {
+            $userID = User::where('email', $email)->get(['id']);
+            $results = About::where('user_id', $userID[0]->id)->get();
+            return response()->json(['status' => 200, 'data' => $results], 200);
+
+        } catch(Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 505], 505);
+        }
+    }
+    /*
+        Return @json edits about ... summary
+    **/
+    public function editsummary(Request $request)
+    {
+        $email = $request->email;
+        $summary = $request->summary;
+
+        try {
+            $userID = User::where('email', $email)->get(['id']);
+            if(About::where('user_id', $userID[0]->id)
+              ->update(['selfsummary' => $summary])) {
+                return response()->json(['status' => 200], 200);
+            }
+            else {
+                return response()->json(['status' => 505], 505);
+            }
+
         } catch(Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 505], 505);
         }
