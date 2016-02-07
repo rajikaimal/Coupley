@@ -33,6 +33,7 @@ import Settings from './components/admin/settings/settings.react';
 import Forgot from './components/Forgot.react';
 import AdminForgot from './components/admin/AdminForgotPwd.react'
 import Feedback from './components/admin/feedback/FeedbackHome.react';
+import Timeline from './components/admin/feedback/timeline.react';
 
 
 function requireAuth(nextState, replace) {
@@ -79,10 +80,7 @@ ReactDOM.render((
         </Route>
         <Route path="/feedback" component={Feedback}>
             <Route path="timeline" component={Timeline} />
-            <Route path="activity" component={ActivityFeed} />
-            <Route path="privacy" component={Privacy} />
-            <Route path="chat" component={Chat} />
-            <Route path="other" component={Other} />
+
         </Route>
         <Route path="/cards" component={Cards} />
         <Route path="/settings" component={Settings} />

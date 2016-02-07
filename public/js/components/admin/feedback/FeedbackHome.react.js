@@ -11,34 +11,34 @@ import Divider from 'material-ui/lib/divider';
 
 const tilesData = [
     {
-        img: 'https://cdn3.iconfinder.com/data/icons/flat-stroke-vol-2/354/Timeline_Flowchart_Graph_Diagram_Flowsheet_Chart_Draft-512.png',
+        img: 'https://cdn4.iconfinder.com/data/icons/business-conceptual-part3/513/time-512.png',
         title: 'Timeline',
-        path: '#/feedback/friends'
+        path: '#/feedback/timeline'
 
     },
     {
-        img: 'https://cdn0.iconfinder.com/data/icons/business-cool-vector-2/128/52-512.png',
+        img: 'https://cdn0.iconfinder.com/data/icons/business-and-ecommerce/512/notepad_ok-512.png',
         title: 'ActivityFeed',
         path: '#/users/enemies'
 
     }
     ,
     {
-        img: 'https://cdn3.iconfinder.com/data/icons/seo-line-optimisation/512/security_web_lock_privacy-512.png',
+        img: 'https://cdn4.iconfinder.com/data/icons/business-conceptual-part3/513/protection-512.png',
         title: 'Privacy',
         path: '#/users/enemies'
 
     }
     ,
     {
-        img: 'https://cdn2.iconfinder.com/data/icons/bold-outline-mix/128/valentines_day-57-512.png',
+        img: 'https://cdn0.iconfinder.com/data/icons/social-icons-rounded/110/Chat-Notification-512.png',
         title: 'Chat',
         path: '#/users/enemies'
 
     }
     ,
     {
-        img: 'https://cdn1.iconfinder.com/data/icons/flat-and-simple-part-1/128/filter-512.png',
+        img: 'https://cdn1.iconfinder.com/data/icons/random-flat-2/64/info_information_i_more-512.png',
         title: 'Other',
         path: '#/users/enemies'
 
@@ -48,8 +48,8 @@ const tilesData = [
 const style = {
     width: 200,
     height:50,
-    fontSize: "20px"
-
+    fontSize: "20px",
+    color:"white"
 
 };
 

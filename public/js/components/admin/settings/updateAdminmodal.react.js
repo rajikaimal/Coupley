@@ -40,8 +40,8 @@ const tilesData = [
 const style = {
     width: 300,
     height:50,
-    fontSize: "20px"
-
+    fontSize: "20px",
+    color:"white"
 };
 const newdiv = {
     marginLeft: 300
