@@ -1,4 +1,5 @@
 import React from 'react';
+import Card from 'material-ui/lib/card/card';
 import ListItem from 'material-ui/lib/lists/list-item';
 import Divider from 'material-ui/lib/divider';
 import Avatar from 'material-ui/lib/avatar';
@@ -13,6 +14,9 @@ import CommentBox from './CommentBox.react';
 import LikesActions from '../../actions/ActivityFeed/LikesActions';
 import ShareActions from '../../actions/ActivityFeed/ShareActions';
 import LoginStore from '../../stores/LoginStore';
+import ActivityFeedStore from '../../stores/ActivityFeedStore'
+import ActivityFeedActions from '../../actions/ActivityFeed/ActivityFeedActions';
+//import CommentBox from '../comments/CommentBox.react';
 
 const iconButtonElement = (
   <IconButton
@@ -25,9 +29,9 @@ const iconButtonElement = (
 
 const rightIconMenu = (
   <IconMenu iconButtonElement={iconButtonElement}>
-    <MenuItem>Edit</MenuItem>
-    <MenuItem>Remove</MenuItem>
-    <MenuItem>Block</MenuItem>
+    <MenuItem primaryText="Edit" />
+    <MenuItem primaryText="Remove"/>
+    <MenuItem primaryText="Block" />
   </IconMenu>
 );
 
@@ -39,20 +43,38 @@ const style = {
 
 const ActivityList = React.createClass({
 
-	addlike:function(){
+     editStatus:function(){
+        var postId= this.props.id;
+        var post_text= this.props.post_text;
+     },
+
+     deleteStatus:function(){
+        var postId= this.props.id;
+        let delete_status={
+          PostId: postId
+        };
+        ActivityFeedActions.delete_status(delete_status);
+     },
+
+	   addlike:function(){
+        var postId= this.props.id;
+        console.log(postId);
         var email= LoginStore.getEmail(); 
         var firstname = LoginStore.getFirstname();
         let add_likes={
+            PostId: postId,
             Email: email,
             Fname: firstname
         };
         LikesActions.add_likes(add_likes);
-	},
+	   },
 
   	addshare:function(){
+        var postId= this.props.id;
         var email= LoginStore.getEmail(); 
         var firstname = LoginStore.getFirstname();
         let add_share={
+            PostId: postId,
             Email: email,
             Fname: firstname
         };
@@ -63,6 +85,7 @@ const ActivityList = React.createClass({
 		return (
 			<div>
 			<div style={style}>
+      <Card>
 		        <ListItem
 		          leftAvatar={<Avatar src="https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg" />}
 		          primaryText={this.props.firstname}
@@ -77,9 +100,10 @@ const ActivityList = React.createClass({
 		           	<FlatButton label="Like" onClick={this.addlike}/>
           			<FlatButton label="Comment" />
           			<FlatButton label="Share" onClick={this.addshare}/>
-		        <Divider inset={true} />			
+		        <Divider inset={true} />	
+            </Card>		
 			</div>
-				<div><CommentBox/></div>
+				<div><CommentBox /></div>
 			</div>
 		);
 	}

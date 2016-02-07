@@ -21,6 +21,12 @@ var ActivityFeedActions = {
             console.log('Error 505');
       }
     });
+  },
+
+  delete_status: function(postId){
+    $.post('api/deleteStatus', postId, function(response) {
+      console.log(response);
+      });
   }
 
   /*ImageUpload: function(imageupload){

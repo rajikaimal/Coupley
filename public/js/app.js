@@ -29,6 +29,7 @@ import users from './components/admin/users/userHome.react';
 import friends from './components/admin/users/friends.react';
 import enemies from './components/admin/users/enemies.react';
 import Cards from './components/admin/Cards.react';
+import CommentBox from './components/comments/CommentBox.react';
 
 function requireAuth(nextState, replace) {
   if(! localStorage.getItem('apitoken')) {
@@ -63,6 +64,7 @@ ReactDOM.render((
     <Route path="/login" component={Login} />
     <Route path="/register" component={Register} />
     <Route path="/AdminLogin" component={AdminLogin} />
+    <Route path="commentBox" component={CommentBox}/>
     <Route path="/dashboard" component={Admin} onEnter={requireAdminAuth}>
         <Route path="/users" component={users} >
             <Route path="friends" component={friends} />

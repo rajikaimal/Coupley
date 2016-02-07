@@ -35,9 +35,11 @@ Route::group(['prefix' => 'api'], function()
     Route::post('register', 'RegisterController@check');
     Route::post('status', 'ActivityFeedController@addstatus');
     Route::get('getstatus', 'ActivityFeedController@getstatus');
-    Route::post('likes', 'ActivityFeedController@addlikes');
-    Route::post('comment','ActivityFeedController@addcomment');
+    Route::post('likes', 'LikeController@addlikes');
+    Route::post('comment','CommentController@addcomment');
+    Route::post('getcomments','CommentController@getcomment');
     Route::post('share','ActivityFeedController@addshare');
+    Route::post('deleteStatus','ActivityFeedController@deleteStatus');
     //Return profile data
     Route::get('profile', 'ProfileController@profile');
     //Return userslist for search

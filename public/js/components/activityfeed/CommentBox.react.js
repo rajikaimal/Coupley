@@ -4,6 +4,7 @@ import Paper from 'material-ui/lib/paper';
 import ActionAndroid from 'material-ui/lib/svg-icons/action/android';
 import CommentAction from '../../actions/ActivityFeed/CommentAction';
 import LoginStore from '../../stores/LoginStore';
+import ActivityList from './activityListComp.react';
 
 const style = {
   width: 1000,
@@ -20,6 +21,7 @@ const CommentBox = React.createClass({
               var email= LoginStore.getEmail(); 
               var firstname = LoginStore.getFirstname();
               let add_comment={
+                 PostId: postId,
                  Comment: comment,
                  Email: email,
                  Fname: firstname

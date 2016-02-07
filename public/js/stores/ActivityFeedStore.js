@@ -9,9 +9,11 @@ var searchresults = [];
 
 var ActivityFeedStore = assign({},EventEmitter.prototype, {
     getStatusData: function() {
+      console.log(searchresults);
       return searchresults;
     },
     saveStatusData: function(results) {
+      console.log(results);
       searchresults = results;
     },
     emitChange: function() {

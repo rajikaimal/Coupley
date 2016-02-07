@@ -37,40 +37,10 @@ class ActivityFeedController extends Controller
         return response()->json(['status' => 505],505);
       }
     }
-
-    public function addlikes(Request $request) {
-      $like = new Like;
-      $like->post_id = '1';
-      $like->email = $request->Email;
-      $like->firstname = $request->Fname;
-      $like->status = '1';
-     
-      if($like->save()) {
-      return response()->json(["status" => 201], 201);
-    }
-    else {
-      return response()->json(["status" => 404], 404);  
-    }
-    }
     
-    public function addcomment(Request $request) {
-      $comment = new Comment;
-      $comment->post_id = '1';
-      $comment->email = $request->Email;
-      $comment->firstname = $request->Fname;
-      $comment->comment_txt = $request->Comment;
-     
-      if($comment->save()) {
-      return response()->json(["status" => 201], 201);
-    }
-    else {
-      return response()->json(["status" => 404], 404);  
-    }
-    }
-
     public function addshare(Request $request) {
       $share = new Share;
-      $share->post_id = '1';
+      $share->post_id = $request->PostId;
       $share->email = $request->Email;
       $share->firstname = $request->Fname;
      
@@ -80,5 +50,17 @@ class ActivityFeedController extends Controller
     else {
       return response()->json(["status" => 404], 404);  
     }
+    }
+
+    public function deleteStatus(Request $request) {
+      $id=$request->PostId;
+      $posts=\DB::table('posts')->where('id', '=', $id);
+
+      if($posts->delete()) {
+      return response()->json(["status" => 201], 201);
+      }
+      else {
+      return response()->json(["status" => 404], 404);  
+      }
     }
 }

@@ -12,7 +12,7 @@ class ActivityLike extends Migration
      */
     public function up()
     {
-         Schema::create('likes', function (Blueprint $table) {
+        Schema::create('likes', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('post_id');
             $table->string('email');
