@@ -25,13 +25,14 @@ import Search from './components/search/Search.react';
 import Admin from './components/admin/dashboard.react';
 import AdminLogin from './components/admin/login.react';
 import Threads from './components/chat/Threads.react';
-import users from './components/admin/users/userHome.react';
-import friends from './components/admin/users/friends.react';
-import enemies from './components/admin/users/enemies.react';
+import Users from './components/admin/users/userHome.react';
+import Friends from './components/admin/users/friends.react';
+import Enemies from './components/admin/users/enemies.react';
 import Cards from './components/admin/Cards.react';
-import settings from './components/admin/settings/settings.react';
+import Settings from './components/admin/settings/settings.react';
 import Forgot from './components/Forgot.react';
 import AdminForgot from './components/admin/AdminForgotPwd.react'
+import Feedback from './components/admin/feedback/FeedbackHome.react';
 
 
 function requireAuth(nextState, replace) {
@@ -72,12 +73,19 @@ ReactDOM.render((
     <Route path="/AdminLogin" component={AdminLogin} />
       <Route path="/Adminforgotpwd" component={AdminForgot} />
     <Route path="/dashboard" component={Admin} onEnter={requireAdminAuth}>
-        <Route path="/users" component={users}>
-            <Route path="friends" component={friends} />
-            <Route path="enemies" component={enemies} />
+        <Route path="/users" component={Users}>
+            <Route path="friends" component={Friends} />
+            <Route path="enemies" component={Enemies} />
+        </Route>
+        <Route path="/feedback" component={Feedback}>
+            <Route path="timeline" component={Timeline} />
+            <Route path="activity" component={ActivityFeed} />
+            <Route path="privacy" component={Privacy} />
+            <Route path="chat" component={Chat} />
+            <Route path="other" component={Other} />
         </Route>
         <Route path="/cards" component={Cards} />
-        <Route path="/settings" component={settings} />
+        <Route path="/settings" component={Settings} />
     </Route>
       <Route path="/AdminSignout" onEnter={AdminSignout} />
     <Route path="/" component={Header} onEnter={requireAuth}>
