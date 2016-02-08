@@ -26,7 +26,8 @@ var CommentStore = assign({},EventEmitter.prototype, {
 
 AppDispatcher.register(function(payload) {
 	switch(payload.action.actionType) {
-		case(CommentConstants.GETDATA):
+		case(CommentConstants.GETCOMMENT):
+      console.log('withinstore');
       console.log(payload.action.commentdata);
       CommentStore.saveCommentsData(payload.action.commentdata);
       CommentStore.emitChange();

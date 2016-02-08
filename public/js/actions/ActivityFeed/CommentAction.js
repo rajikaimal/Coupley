@@ -1,5 +1,5 @@
 var AppDispatcher = require('../../dispatcher/AppDispatcher');
-var ActivityFeedConstants = require('../../constants/ActivityFeedConstants');
+var CommentConstants = require('../../constants/CommentConstants');
 
 var CommentAction = {
   add_comment: function(comment){
@@ -9,11 +9,12 @@ var CommentAction = {
   },
 
   getcomments: function() {
-    $.get('/api/getcomments' , function(response) {
+    $.get('/api/getcomment' , function(response) {
+      console.log('Comments ....');
       console.log(response);
       if (response.status == 200) {
-            AppDispatcher.handleViewAction({
-            actionType: CommentConstants.GETDATA,
+          AppDispatcher.handleViewAction({
+            actionType: CommentConstants.GETCOMMENT,
             commentdata: response.comments
           });
       }

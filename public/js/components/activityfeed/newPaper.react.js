@@ -8,7 +8,7 @@ import ActivityFeedActions from '../../actions/ActivityFeed/ActivityFeedActions'
 import LoginStore from '../../stores/LoginStore';
 
 const style = {
-  width: 1000,
+  width: 800,
   margin: 40,
 };
 

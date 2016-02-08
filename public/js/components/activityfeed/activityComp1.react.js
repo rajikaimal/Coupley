@@ -26,7 +26,7 @@ const AvatarExampleSimple = () => (
 );
 
 const style = {
-  width: 1000,
+  width: 800,
   margin: 40,
 };
 

@@ -9,7 +9,6 @@ var CommentBox = React.createClass({
     return (
       <div>
         <CommentList />
-        <CommentForm />
       </div>
     );
   }

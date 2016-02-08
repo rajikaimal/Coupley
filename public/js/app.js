@@ -29,7 +29,6 @@ import users from './components/admin/users/userHome.react';
 import friends from './components/admin/users/friends.react';
 import enemies from './components/admin/users/enemies.react';
 import Cards from './components/admin/Cards.react';
-import CommentBox from './components/comments/CommentBox.react';
 
 function requireAuth(nextState, replace) {
   if(! localStorage.getItem('apitoken')) {
@@ -60,11 +59,9 @@ ReactDOM.render((
   <Router history={hashHistory}>
     <Route path="/login" component={Home} />
     <Route path="/dashboard" component={Admin} />
-    <Route path="activity" component={MainActivity}/>
     <Route path="/login" component={Login} />
     <Route path="/register" component={Register} />
     <Route path="/AdminLogin" component={AdminLogin} />
-    <Route path="commentBox" component={CommentBox}/>
     <Route path="/dashboard" component={Admin} onEnter={requireAdminAuth}>
         <Route path="/users" component={users} >
             <Route path="friends" component={friends} />
@@ -73,9 +70,9 @@ ReactDOM.render((
         <Route path="/cards" component={Cards} />
     </Route>
     <Route path="/" component={Header} onEnter={requireAuth}>
-
       <Route path="/search" component={Search} />
       <Route path="/threads" component={Threads} />
+      <Route path="activity" component={MainActivity}/>
       <Route path="profile" component={Profile} >
         <Route path="activityfeed" component={ActivityContainer} />
         <Route path="about" component={About} />
@@ -83,6 +80,7 @@ ReactDOM.render((
       </Route>
       <Route path="/:username" component={ProfileVisitor} >
         <Route path="activityfeed" component={ActivityContainerVisitor} />
+
         <Route path="about" component={AboutVisitor} />
         <Route path="photos" component={PhotosVisitor} />
       </Route>

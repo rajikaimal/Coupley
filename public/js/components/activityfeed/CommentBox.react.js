@@ -7,11 +7,14 @@ import LoginStore from '../../stores/LoginStore';
 import ActivityList from './activityListComp.react';
 
 const style = {
-  width: 1000,
-  margin: 40,
+  width: 800,
+  
 };
 
 const CommentBox = React.createClass({
+
+
+
 
   EnterKey(e){
       if (e.key ==='Enter') {

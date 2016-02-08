@@ -10,7 +10,7 @@ import CommentBox from './CommentBox.react';
          render:function(){
            return(
                    <div>
-                   <div><Paper/></div>
+                   <div><Paper/></div> 
                    <div><ActivityContainer/></div>
                    </div>
 

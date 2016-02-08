@@ -37,7 +37,7 @@ class ActivityFeedController extends Controller
         return response()->json(['status' => 505],505);
       }
     }
-    
+
     public function addshare(Request $request) {
       $share = new Share;
       $share->post_id = $request->PostId;

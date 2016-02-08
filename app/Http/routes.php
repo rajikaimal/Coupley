@@ -37,7 +37,7 @@ Route::group(['prefix' => 'api'], function()
     Route::get('getstatus', 'ActivityFeedController@getstatus');
     Route::post('likes', 'LikeController@addlikes');
     Route::post('comment','CommentController@addcomment');
-    Route::post('getcomments','CommentController@getcomment');
+    Route::get('getcomment','CommentController@getcomments');
     Route::post('share','ActivityFeedController@addshare');
     Route::post('deleteStatus','ActivityFeedController@deleteStatus');
     //Return profile data

@@ -12,7 +12,7 @@ class CommentController extends Controller
 {
     public function addcomment(Request $request) {
       $comment = new Comment;
-      $comment->post_id = '1';
+      $comment->post_id = $request->PId;
       $comment->email = $request->Email;
       $comment->firstname = $request->Fname;
       $comment->comment_txt = $request->Comment;
@@ -25,7 +25,7 @@ class CommentController extends Controller
     }
     }
 
-    public function getcomment(Request $request){
+    public function getcomments(Request $request){
     /*  $id=$request->key;**/
      if($comments=\DB::select('select id,firstname,comment_txt from comments')) {
         return response()->json(['comments' => $comments, 'status' => 200],200);

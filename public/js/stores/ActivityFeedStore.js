@@ -8,6 +8,7 @@ var CHANGE_EVENT = 'change';
 var searchresults = []; 
 
 var ActivityFeedStore = assign({},EventEmitter.prototype, {
+
     getStatusData: function() {
       console.log(searchresults);
       return searchresults;
