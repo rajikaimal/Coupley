@@ -3,14 +3,29 @@
  */
 import React from 'react';
 import { Link } from 'react-router';
+import LoginStore from '../../stores/LoginStore';
+import HeaderActions from '../../actions/HeaderActions';
+import ProfileActions from '../../actions/admin/ProfileActions';
+import ProfileStore from '../../stores/admin/ProfileStore';
 
 var Header = React.createClass({
+    getInitialState: function() {
+            return ProfileStore.getuserdata()
+        },
+            componentDidMount: function() {
+            ProfileActions.getAdminProfileData();
+            ProfileStore.addChangeListener(this._onChange);
+        },
+        _onChange: function() {
+            this.setState(ProfileStore.getuserdata());
+        },
     render: function () {
         return (
             <div>
                 <header className="main-header">
                     <div className="">
-                        <a href="#" className="logo">
+                        <Link to={`/Cards`}>
+                            <a className="logo">
 
                             <div className="logo-mini">
                                 <b>A</b>
@@ -20,6 +35,7 @@ var Header = React.createClass({
                                 <b>Admin</b>
                                 CP</div>
                         </a>
+                        </Link>
                     </div>
 
                     <nav className="nav bar navbar-static-top" role="navigation">
@@ -238,19 +254,19 @@ var Header = React.createClass({
                                 <li className="dropdown user user-menu">
                                     <a href="#" className="dropdown-toggle" data-toggle="dropdown">
                                         <img src="dist/img/user2-160x160.jpg" className="user-image" alt="User Image"/>
-                                        <span className="hidden-xs">Isuru Dilhan</span>
+                                        <span className="hidden-xs">{this.state.firstname}</span>
                                     </a>
                                     <ul className="dropdown-menu">
 
                                         <li className="user-header">
                                             <img src="dist/img/user2-160x160.jpg" className="img-circle" alt="User Image"/>
                                             <p>
-                                                Isuru Dilhan - Web Developer
-                                                <small>Member since Nov. 2012</small>
+                                                {this.state.firstname} {this.state.lastname} - {this.state.job}
+                                                <small>Member since {this.state.created_at}</small>
                                             </p>
                                         </li>
 
-                                        <li className="user-body">
+                                    {/*      <li className="user-body">
                                             <div className="col-xs-4 text-center">
                                                 <a href="#">Followers</a>
                                             </div>
@@ -260,7 +276,7 @@ var Header = React.createClass({
                                             <div className="col-xs-4 text-center">
                                                 <a href="#">Friends</a>
                                             </div>
-                                        </li>
+                                        </li> */}
 
                                         <li className="user-footer">
                                             <div className="pull-left">

@@ -13,7 +13,7 @@ import Paper from 'material-ui/lib/paper';
 import LikesActions from '../../actions/ActivityFeed/LikesActions';
 import ShareActions from '../../actions/ActivityFeed/ShareActions';
 import LoginStore from '../../stores/LoginStore';
-import ActivityFeedStore from '../../stores/ActivityFeedStore';
+import StatusStore from '../../stores/StatusStore';
 import ActivityFeedActions from '../../actions/ActivityFeed/ActivityFeedActions';
 import CommentAction from '../../actions/ActivityFeed/CommentAction';
 import CommentStore from '../../stores/CommentStore';

@@ -13,6 +13,7 @@ import Home from './components/Home.react';
 import Login from './components/login/Login.react';
 import Profile from './components/profile/profile.react';
 import Register from './components/register/Register.react';
+import Quiz from './components/quiz/Quiz.react';
 import ActivityContainer from './components/profile/ActivityFeed/ActivityFeedContainer.react';
 import About from './components/profile/About.react';
 import Photos from './components/profile/visitor/Photos.react';
@@ -29,6 +30,10 @@ import users from './components/admin/users/userHome.react';
 import friends from './components/admin/users/friends.react';
 import enemies from './components/admin/users/enemies.react';
 import Cards from './components/admin/Cards.react';
+import settings from './components/admin/settings/settings.react';
+import Forgot from './components/Forgot.react';
+import AdminForgot from './components/admin/AdminForgotPwd.react'
+
 
 function requireAuth(nextState, replace) {
   if(! localStorage.getItem('apitoken')) {
@@ -54,21 +59,30 @@ function signout() {
   localStorage.removeItem('user');
   document.location = "/#/login";
 }
-
+function AdminSignout() {
+    localStorage.removeItem('apitoken');
+    localStorage.removeItem('email');
+    document.location = "/cp-admin#/AdminLogin";
+}
 ReactDOM.render((
   <Router history={hashHistory}>
     <Route path="/login" component={Home} />
     <Route path="/dashboard" component={Admin} />
     <Route path="/login" component={Login} />
+      <Route path="/forgotpwd" component={Forgot} />
     <Route path="/register" component={Register} />
+    <Route path="/quiz" component={Quiz} />
     <Route path="/AdminLogin" component={AdminLogin} />
+      <Route path="/Adminforgotpwd" component={AdminForgot} />
     <Route path="/dashboard" component={Admin} onEnter={requireAdminAuth}>
-        <Route path="/users" component={users} >
+        <Route path="/users" component={users}>
             <Route path="friends" component={friends} />
             <Route path="enemies" component={enemies} />
         </Route>
         <Route path="/cards" component={Cards} />
+        <Route path="/settings" component={settings} />
     </Route>
+      <Route path="/AdminSignout" onEnter={AdminSignout} />
     <Route path="/" component={Header} onEnter={requireAuth}>
       <Route path="/search" component={Search} />
       <Route path="/threads" component={Threads} />

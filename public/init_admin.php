@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+    <script src="https://cdn.socket.io/socket.io-1.3.4.js"></script>
     <link rel="stylesheet" href="dist/css/admin/bootstrap.min.css" type="text/css">
     <!-- <link rel="stylesheet" href="base.css" type="text/css" > -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link href='dist/css/bootstrap-material-design.min.css' rel='stylesheet' type='text/css'>
     <link href='dist/css/ripples.min.css' rel='stylesheet' type='text/css'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--    Sweet Alerts-->
+    <script src="dist/js/admin/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="dist/css/admin/sweetalert.css">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -34,8 +37,9 @@
 </head>
 <body>
 <div id="content"></div>
-<script src="bundle.js"></script>
 <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+<script src="bundle.js"></script>
+
 <script src="dist/js/material.min.js"></script>
 <script src="dist/js/ripples.min.js"></script>
 <!-- jQuery 2.1.4 -->
@@ -72,7 +76,7 @@
 <!-- AdminLTE App -->
 <script src="dist/js/admin/app.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/admin/dashboard.js"></script>
+<!--<script src="dist/js/admin/dashboard.js"></script>-->
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/admin/demo.js"></script>
 <!--	<script>-->

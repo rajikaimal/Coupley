@@ -13,24 +13,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-            Model::unguard();
+        Model::unguard();
 
-	        DB::table('users')->delete();
+        DB::table('users')->delete();
 
-	        $users = array(
-	                ['firstname' => 'Ryan', 'lastname' => ' Chenkie','email' => 'ryanchenkie@gmail.com', 'gender' => 'male' ,'username' => 'ryan', 'orientation' => 'straight','birthday' => '1994-08-01' ,'country' => 'Sri Lanka' ,'password' => Hash::make('secret')],
-	                ['firstname' => 'Chris', 'lastname' => ' Chenkie','email' => 'chris@gmail.com', 'gender' => 'male', 'username' => 'chris', 'orientation' => 'straight','birthday' => '1994-08-01','country' => 'Sri Lanka' ,'password' => Hash::make('secret')],
-	                ['firstname' => 'Alo', 'lastname' => ' Chenkie','email' => 'alo@gmail.com', 'gender' => 'male', 'username' => 'alo', 'orientation' => 'straight','birthday' => '1994-08-01','country' => 'Sri Lanka' ,'password' => Hash::make('secret')],
-	                ['firstname' => 'Tiffany', 'lastname' => ' Chenkie','email' => 'tiffany@gmail.com', 'gender' => 'male', 'username' => 'tiffany', 'orientation' => 'straight','birthday' => '1994-08-01','country' => 'Sri Lanka' ,'password' => Hash::make('secret')],
-	        );
-	            
-	        // Loop through each user above and create the record for them in the database
-	        foreach ($users as $user)
-	        {
-	            User::create($user);
-	        }
+        $users = [
+                    ['firstname' => 'Ryan', 'lastname' => ' Chenkie', 'email' => 'ryanchenkie@gmail.com', 'gender' => 'male', 'username' => 'ryan', 'orientation' => 'straight', 'birthday' => '1994-08-01', 'country' => 'Sri Lanka', 'role' => 'user', 'password' => Hash::make('secret')],
+                    ['firstname' => 'Chris', 'lastname' => ' Chenkie', 'email' => 'chris@gmail.com', 'gender' => 'male', 'username' => 'chris', 'orientation' => 'straight', 'birthday' => '1994-08-01', 'country' => 'Sri Lanka', 'role' => 'user', 'password' => Hash::make('secret')],
+                    ['firstname' => 'Alo', 'lastname' => ' Chenkie', 'email' => 'alo@gmail.com', 'gender' => 'male', 'username' => 'alo', 'orientation' => 'straight', 'birthday' => '1994-08-01', 'country' => 'Sri Lanka', 'role' => 'user', 'password' => Hash::make('secret')],
+                    ['firstname' => 'Tiffany', 'lastname' => ' Chenkie', 'email' => 'tiffany@gmail.com', 'gender' => 'male', 'username' => 'tiffany', 'orientation' => 'straight', 'birthday' => '1994-08-01', 'country' => 'Sri Lanka', 'role' => 'user', 'password' => Hash::make('secret')],
+                    ['firstname' => 'Isuru', 'lastname' => ' Dilhan', 'email' => 'isuru.dilhan@yahoo.com', 'job' => 'Web developer', 'role' => 'admin', 'password' => Hash::make('Secret123/')]
+            ];
 
-	        Model::reguard();
-	    
+            // Loop through each user above and create the record for them in the database
+            foreach ($users as $user) {
+                User::create($user);
+            }
+
+        Model::reguard();
     }
 }

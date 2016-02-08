@@ -13,7 +13,7 @@ import CardText from 'material-ui/lib/card/card-text';
 import TextField from 'material-ui/lib/text-field';
 import RaisedButton from 'material-ui/lib/raised-button';
 import LoginActions from '../../actions/admin/LoginActions';
-import LoginStore from '../../stores/LoginStore';
+import LoginStore from '../../stores/admin/LoginStore';
 
 const err = {"color": "red"};
 var validEmail = /\S+@\S+\.\S+/;
@@ -51,16 +51,17 @@ const Adminlogin = React.createClass({
             password: password
         };
         LoginActions.login(credentials);
+        localStorage.setItem('emails', email);
         console.log('Done calling!');
 
         if (email.trim() == "") {
-            document.getElementById('email').innerHTML = "Email field is empty, Please enter the email!";
+            document.getElementById('email').innerHTML = "*Email field is empty, Please enter the email!";
             document.getElementById('password').innerHTML = "";
             this.refs.email.focus();
             return false;
         }
         else if (password.trim() == "") {
-            document.getElementById('password').innerHTML = "Password field is empty, Please enter the password!";
+            document.getElementById('password').innerHTML = "*Password field is empty, Please enter the password!";
             document.getElementById('email').innerHTML = "";
             this.refs.password.focus();
             return false;
@@ -68,7 +69,7 @@ const Adminlogin = React.createClass({
         else {
             if (!email.match(validEmail)) {
                 document.getElementById('password').innerHTML = "";
-                document.getElementById('email').innerHTML = "Email is invalid, Please enter the a correct email!";
+                document.getElementById('email').innerHTML = "*Email is invalid, Please enter a correct email!";
                 this.refs.email.focus();
             }
             else {
@@ -97,8 +98,11 @@ const Adminlogin = React.createClass({
 
                 </CardActions>
                 <CardText>
+                    <span id="server-error" style={err}> </span> <br/>
                     <RaisedButton label="Signin"  primary={true} onTouchTap={this._handleLogin} />
+                    <a href="/cp-admin#/Adminforgotpwd"> Forgot password ? </a>
                 </CardText>
+
             </Card>
             </div>
 

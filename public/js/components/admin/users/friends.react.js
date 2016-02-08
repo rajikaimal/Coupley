@@ -2,8 +2,8 @@
  * Created by Isuru 1 on 26/01/2016.
  */
 
-import SearchItem from '../../search/SearchItem.react';
-import SearchStore from '../../../stores/SearchStore';
+import SearchItem from './friends/friend.react';
+import SearchStore from '../../../stores/admin/SearchStore';
 import UserActions from '../../../actions/admin/UsersActions';
 import React from 'react';
 import Avatar from 'material-ui/lib/avatar';
@@ -17,19 +17,15 @@ const colors = styles.Colors;
 
 var AvatarExampleSimple = React.createClass({
     getInitialState: function () {
-
         return {
-                results: SearchStore.getresults()
-            }
-
+            results: SearchStore.getresults()
+        }
     },
     componentDidMount: function () {
+        UserActions.getsearchresults();
         SearchStore.addChangeListener(this._onChange);
     },
-    _search: function () {
 
-        UserActions.getsearchresults();
-    },
     _onChange: function () {
         this.setState({
             results: SearchStore.getresults()
@@ -38,12 +34,15 @@ var AvatarExampleSimple = React.createClass({
     _renderSearchItem: function () {
         console.log(this.state.results);
         return this.state.results.map((result) => {
-            return (<SearchItem key={result.id} username={result.username} firstname={result.firstname} lastname={result.lastname} gender={result.gender} />);
+            return (<div className="col-lg-3">
+                <SearchItem key={result} username={result.username} firstname={result.firstname} lastname={result.lastname} gender={result.gender} id={result.id} />
+            </div>);
         });
     },
     render: function () {
         return (
-            <div onLoad={this._search()}>
+            <div>
+                <h1>Friends</h1>
 			{this._renderSearchItem()}
             </div>
         );

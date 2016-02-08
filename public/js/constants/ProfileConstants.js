@@ -2,5 +2,11 @@ var keyMirror = require('keymirror');
 
 module.exports = keyMirror({
   GETDATA: null,
-  VISITOR: null
+  VISITOR: null,
+  VISITORREMOVE: null,
+  LIKESTATUS: null,
+  LIKEBACKSTATUS: null,
+  BLOCKSTATUS: null,
+  PROPPERMISSION: null,
+  FEED: null
 });

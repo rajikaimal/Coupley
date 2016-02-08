@@ -2,25 +2,25 @@ import React from 'react';
 import List from 'material-ui/lib/lists/list';
 import ListItem from 'material-ui/lib/lists/list-item';
 import ActivityFeedActions from '../../actions/ActivityFeed/ActivityFeedActions';
-import ActivityFeedStore from '../../stores/ActivityFeedStore';
+import StatusStore from '../../stores/StatusStore';
 import ActivityList from './activityListComp.react';
 
 const activityContainer = React.createClass({
 
   getInitialState: function() {
     return {
-      results: ActivityFeedStore.getStatusData()
+      results: StatusStore.getStatusData()
       }
   },
   componentDidMount: function() {
-    ActivityFeedStore.addChangeListener(this._onChange);
+    StatusStore.addChangeListener(this._onChange);
     ActivityFeedActions.getstatus();
   },
   _search: function () {
     ActivityFeedActions.getstatus();
   },
   _onChange: function() {
-    this.setState({results: ActivityFeedStore.getStatusData()});        
+    this.setState({results: StatusStore.getStatusData()});        
   },
   _renderSearchItem: function () {
         console.log(this.state.results); 

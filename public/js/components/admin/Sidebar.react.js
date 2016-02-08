@@ -4,8 +4,20 @@
 
 import React from 'react';
 import { Link } from 'react-router';
+import ProfileActions from '../../actions/admin/ProfileActions';
+import ProfileStore from '../../stores/admin/ProfileStore';
 
 var Sidebar = React.createClass({
+    getInitialState: function() {
+        return ProfileStore.getuserdata()
+    },
+    componentDidMount: function() {
+        ProfileActions.getAdminProfileData();
+        ProfileStore.addChangeListener(this._onChange);
+    },
+    _onChange: function() {
+        this.setState(ProfileStore.getuserdata());
+    },
     render: function () {
         return (
             <div>
@@ -18,8 +30,8 @@ var Sidebar = React.createClass({
                                 <img src="dist/img/user2-160x160.jpg" className="img-circle" alt="User Image"/>
                             </div>
                             <div className="pull-left info">
-                                <p>Isuru Dilhan</p>
-                                <a href="#">
+                                <p>{this.state.firstname} {this.state.lastname}</p>
+                                <a>
                                     <i className="fa fa-circle text-success"></i>
                                     Online</a>
                             </div>
@@ -47,24 +59,31 @@ var Sidebar = React.createClass({
                             <li>
                                 <Link to={`/users`}>
                                     <i className="fa fa-th"></i>
-                                    <span>Friends and Enemies</span>
+                                    <span>Privacy</span>
                                     <small className="label pull-right bg-green">new</small>
                                 </Link>
                             </li>
 
                             <li>
-                                <a href="#">
+                                <Link to={`/settings`}>
                                     <i className="fa fa-calendar"></i>
                                     <span>Feedbacks</span>
                                     <small className="label pull-right bg-red">3</small>
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a href="#">
+                                <Link to={`/settings`}>
                                     <i className="fa fa-envelope"></i>
                                     <span>Mailbox</span>
                                     <small className="label pull-right bg-yellow">12</small>
-                                </a>
+                                </Link>
+                            </li>
+                            <li className="treeview">
+                                <Link to={`/settings`}>
+                                    <i className="fa ion-ios-gear"></i>
+                                    <span>Settings</span>
+                                </Link>
+
                             </li>
 
                         </ul>

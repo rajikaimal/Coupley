@@ -3,19 +3,18 @@ import TextField from 'material-ui/lib/text-field';
 import RaisedButton from 'material-ui/lib/raised-button';
 import LoginActions from '../../actions/LoginActions';
 import LoginStore from '../../stores/LoginStore';
-
 import CardTitle from 'material-ui/lib/card/card-title';
 import Card from 'material-ui/lib/card/card';
 import CardActions from 'material-ui/lib/card/card-actions';
 import FlatButton from 'material-ui/lib/flat-button';
 import CardText from 'material-ui/lib/card/card-text';
-
+import Colors from 'material-ui/lib/styles/colors';
 
 var imgUrl = 'http://sp2.cinedor.es/728/foto-andrew-garfield-y-emma-stone-en-the-amazing-spider-man-3-781.jpg';
 
 const loginStyle = {
-  backgroundImage: 'url(' + imgUrl + ')',
-  width:'100'
+    backgroundImage: 'url(/img/home.jpg)',
+    minHeight: '100%'
 };
 
 const buttonStyle = {
@@ -28,10 +27,13 @@ const textStyle = {
 };
 
 const homeStyle = {
-  backgroundImage: 'url(/img/home.jpg)',
-  backgroundSize: '1400',
-  backgroundRepeat: 'no-repeat'
+    marginTop: '75',
+    minHeight: '100%'
 }
+
+const error = {
+  color: Colors.red500
+};
 
 function validateEmail(email) {
   let re = /\S+@\S+\.\S+/;
@@ -101,32 +103,32 @@ const Login = React.createClass({
       password: password
     };
     LoginActions.login(credentials);
-    console.log('Done calling !');
   },
   render: function() {
     return (
-      <div style={homeStyle}>
-        <div className="col-lg-4">
-        </div>
-        <div className="col-lg-4">
-        
-        </div>
-        <div className="col-lg-4">
-          <Card>
-            <CardTitle title="Login" />
-            <CardText>
-              <TextField
-              floatingLabelText="email" ref="email" fullwidth={true}/>
-              <span id="emailval"> </span>
-            <TextField
-              floatingLabelText="password" type="password" ref="password" fullwidth={true}/>
-              <span id="passwordval"> </span>          
-            </CardText>
-            <CardActions>
-              <RaisedButton label="Signin" style={buttonStyle} primary={true} onTouchTap={this._handleLogin} />
-            </CardActions>
-          </Card>    
-        </div>
+      <div style={loginStyle}>
+        <div className="container-fluid" style={homeStyle}>
+          <div className="row-fluid">
+            <div className="col-sm-6 col-md-6 col-md-offset-6 col-lg-4 col-lg-offset-8">
+              <Card>
+                <CardTitle title="Login" />
+                <CardText>
+                  <TextField
+                  floatingLabelText="email" ref="email" fullwidth={true}/>
+                  <span id="emailval"> </span>
+                <TextField
+                  floatingLabelText="password" type="password" ref="password" fullwidth={true}/>
+                  <span id="passwordval"> </span>          
+                </CardText>
+                <CardActions>
+                  <RaisedButton label="Signin" style={buttonStyle} primary={true} onTouchTap={this._handleLogin} />
+                  <a href="/#/forgotpwd"> Forgot password ? </a>
+                </CardActions>
+                <span id="server-error" style={error}> </span>
+              </Card> 
+            </div>
+          </div>
+        </div>  
       </div>
     );    
   }
