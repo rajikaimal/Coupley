@@ -8,7 +8,7 @@ var connection = mysql.createConnection({
   password : '',
   database : 'Coupley'
 });
-  var connectedUser=[];
+  var connectedUser={};
   var Likedusers=[];
   var ThisUserEmail;
 
@@ -22,10 +22,18 @@ io.on('connection', function (socket) {
   console.log(' Client Connected !');
 
   socket.on('LoggedUser',function(data){
-    if(connectedUser.indexOf(data)== -1){
+
+// (connectedUser.indexOf(data)== -1) && (data!=null)
+
+    if((!(data in connectedUser)) && (data != null)){
        socket.username=data;
-       connectedUser.push(socket.username);
-       console.log("log wechcha eka add una!"+data);
+       connectedUser[socket.username]=socket.id;
+      console.log(connectedUser);
+       console.log(socket.username+" menna socket name eka!");
+       console.log("log wechcha eka add una! "+data);
+     }
+     else{
+         console.log("log wela hitpu ekek awa "+data);
      }
   });
 
@@ -54,10 +62,19 @@ io.on('connection', function (socket) {
 
     });
 
+//  console.log(connectedUser[0].chat.user2+" ta yawanne");
+
+
+
 
     connection.query('INSERT INTO chats SET ?', post, function(err, result) {
       connection.query('SELECT message from chats', function(err, result) {
-            socket.emit('chat', { message: result });
+      //      socket.emit('chat', { message: result });
+    //      io.sockets.connected[connectedUser[chat.user2]].emit('chat', { message: result });
+     socket.broadcast.to(connectedUser[chat.user2]).emit('chat', { message: result });
+    //      io.sockets.connected[connectedUser[chat.user2]].emit('chat', { message: result });
+        //  io.to(connectedUser[chat.user2]).emit('chat',{message:result});
+          console.log("send unaaaa!");
       });
     });
 
