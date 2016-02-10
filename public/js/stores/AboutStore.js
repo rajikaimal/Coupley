@@ -26,7 +26,7 @@ var AboutStore = assign({}, EventEmitter.prototype, {
     return summary;
   },
   savelife: function(data) {
-    summary = data;
+    life = data;
   },
   getlife: function() {
     return life;
@@ -66,6 +66,22 @@ AppDispatcher.register(function(payload) {
       break;
     case(AboutConstants.SUMMARY):
       AboutStore.savesummary(payload.action.summary);
+      AboutStore.emitChange();
+      break;
+    case(AboutConstants.LIFE):
+      AboutStore.savelife(payload.action.life);
+      AboutStore.emitChange();
+      break;
+    case(AboutConstants.GOODAT):
+      AboutStore.savegoodat(payload.action.goodat);
+      AboutStore.emitChange();
+      break;
+    case(AboutConstants.THINKING):
+      AboutStore.savespendtime(payload.action.thinkingof);
+      AboutStore.emitChange();
+      break;
+    case(AboutConstants.FAVS):
+      AboutStore.savefavs(payload.action.favs);
       AboutStore.emitChange();
       break;
   }
