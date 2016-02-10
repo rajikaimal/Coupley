@@ -12,7 +12,7 @@ class UsersController extends Controller
 {
     public function friends()
     {
-        if ($users = \DB::select('select * from users where status="active" and role="user"')) {
+        if ($users = \DB::select('SELECT r.id as rowId, CONCAT(u1.firstname,"",u1.lastname) AS user, CONCAT(u2.firstname,"",u2.lastname) AS reported, r.description,r.reported_user_id FROM reported r JOIN users AS u1 ON r.user_id = u1.id JOIN users AS u2 ON r.reported_user_id= u2.id where r.status="pending"')) {
 
             return response()->json(['users' => $users, 'status' => 200], 200);
         } else {
@@ -34,8 +34,12 @@ class UsersController extends Controller
     public function block(Request $request)
     {
         $id = $request->id;
+        $rowId= $request->rowId;
         if ($users = \DB::table('users')->where('id', $id)->update(['status' => 'deactive'])) {
-            return response()->json(['status' => 201], 201);
+
+                \DB::table('reported')->where('id', $rowId)->update(['status' => 'reviewed']);
+                return response()->json(['status' => 201], 201);
+
         } else {
             return response()->json(['status' => 404], 404);
         }

@@ -12,13 +12,13 @@ import Divider from 'material-ui/lib/divider';
 const tilesData = [
     {
         img: '../../../../img/User_group_man_people_users_male.png',
-        title: 'Friends',
+        title: 'Reported Users',
         path: '#/users/friends'
 
     },
     {
         img: '../../../../img/lock_user_man_secure-256.png',
-        title: 'Blocked',
+        title: 'Blocked Users',
         path: '#/users/enemies'
 
     }
