@@ -59,6 +59,11 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('profile/about', 'ProfileController@getabout');
     //Edit About section
     Route::put('profile/edit/summary', 'ProfileController@editsummary');
+     
+    Route::put('profile/edit/life', 'ProfileController@editlife');
+    Route::put('profile/edit/goodat', 'ProfileController@editgoodat');
+    Route::put('profile/edit/thinkingof ', 'ProfileController@editthinkingof');
+    Route::put('profile/edit/favs ', 'ProfileController@editfavs');
 });
 
 Route::get('socket', 'SocketController@index');

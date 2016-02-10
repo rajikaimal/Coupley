@@ -287,4 +287,92 @@ class ProfileController extends Controller
             return response()->json(['status' => 505], 505);
         }
     }
+    /*
+        Return @json edits about ... summary
+    **/
+    public function editlife(Request $request)
+    {
+        $email = $request->email;
+        $life = $request->life;
+
+        try {
+            $userID = User::where('email', $email)->get(['id']);
+            if(About::where('user_id', $userID[0]->id)
+              ->update(['life' => $life])) {
+                return response()->json(['status' => 200], 200);
+            }
+            else {
+                return response()->json(['status' => 505], 505);
+            }
+
+        } catch(Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 505], 505);
+        }
+    }
+    /*
+        Return @json edits about ... summary
+    **/
+    public function editgoodat(Request $request)
+    {
+        $email = $request->email;
+        $goodat = $request->goodat;
+
+        try {
+            $userID = User::where('email', $email)->get(['id']);
+            if(About::where('user_id', $userID[0]->id)
+              ->update(['goodat' => $goodat])) {
+                return response()->json(['status' => 200], 200);
+            }
+            else {
+                return response()->json(['status' => 505], 505);
+            }
+
+        } catch(Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 505], 505);
+        }
+    }
+    /*
+        Return @json edits about ... summary
+    **/
+    public function editthinkingof(Request $request)
+    {
+        $email = $request->email;
+        $thinkingof = $request->thinkingof;
+
+        try {
+            $userID = User::where('email', $email)->get(['id']);
+            if(About::where('user_id', $userID[0]->id)
+              ->update(['thinkingof' => $thinkingof])) {
+                return response()->json(['status' => 200], 200);
+            }
+            else {
+                return response()->json(['status' => 505], 505);
+            }
+
+        } catch(Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 505], 505);
+        }
+    }
+    /*
+        Return @json edits about ... summary
+    **/
+    public function editfavs(Request $request)
+    {
+        $email = $request->email;
+        $favs = $request->favs;
+
+        try {
+            $userID = User::where('email', $email)->get(['id']);
+            if(About::where('user_id', $userID[0]->id)
+              ->update(['favourites' => $favs])) {
+                return response()->json(['status' => 200], 200);
+            }
+            else {
+                return response()->json(['status' => 505], 505);
+            }
+
+        } catch(Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 505], 505);
+        }
+    }
 }
