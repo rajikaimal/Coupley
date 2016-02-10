@@ -11,36 +11,36 @@ import Divider from 'material-ui/lib/divider';
 
 const tilesData = [
     {
-        img: 'https://cdn4.iconfinder.com/data/icons/business-conceptual-part3/513/time-512.png',
+        img: '../../../../img/time-512.png',
         title: 'Timeline',
         path: '#/feedback/timeline'
 
     },
     {
-        img: 'https://cdn0.iconfinder.com/data/icons/business-and-ecommerce/512/notepad_ok-512.png',
+        img: '../../../../img/notepad_ok-512.png',
         title: 'ActivityFeed',
-        path: '#/users/enemies'
+        path: '#/feedback/activity'
 
     }
     ,
     {
-        img: 'https://cdn4.iconfinder.com/data/icons/business-conceptual-part3/513/protection-512.png',
+        img: '../../../../img/protection-512.png',
         title: 'Privacy',
-        path: '#/users/enemies'
+        path: '#/feedback/privacy'
 
     }
     ,
     {
-        img: 'https://cdn0.iconfinder.com/data/icons/social-icons-rounded/110/Chat-Notification-512.png',
+        img: '../../../../img/Chat-Notification-512.png',
         title: 'Chat',
-        path: '#/users/enemies'
+        path: '#/feedback/chat'
 
     }
     ,
     {
-        img: 'https://cdn1.iconfinder.com/data/icons/random-flat-2/64/info_information_i_more-512.png',
+        img: '../../../../img/info_information_i_more-512.png',
         title: 'Other',
-        path: '#/users/enemies'
+        path: '#/feedback/others'
 
     }
 

@@ -1,12 +1,15 @@
 var AppDispatcher = require('../../dispatcher/AppDispatcher');
-var RegisterConstants = require('../../constants/RegisterConstants');
-
+var ProfileConstants = require('../../constants/ProfileConstants');
 var UpdateActions = {
     checks: function (credentials) {
         console.log(credentials);
         $.post('/admin-api/updateAdmin', credentials, function (data) {
 
             if (data.status === 200) {
+                AppDispatcher.handleViewAction({
+                    actionType: ProfileConstants.GETDATA,
+                    userdata: credentials
+                });
                 swal("Good job!", "Updated your profile", "success")
             }
 

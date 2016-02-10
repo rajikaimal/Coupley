@@ -1,18 +1,18 @@
 var AppDispatcher = require('../../dispatcher/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
-var SearchConstants = require('../../constants/SearchConstants');
+var FeedConstants = require('../../constants/FeedConstants');
 var assign = require('object-assign');
 
 var CHANGE_EVENT = 'change';
 
-var Results = [];
+var FeedResults = [];
 
-var Store = assign({}, EventEmitter.prototype, {
+var FeedStore = assign({}, EventEmitter.prototype, {
     getresults: function () {
-        return Results;
+        return FeedResults;
     },
     saveresults: function (results) {
-        Results = results;
+        FeedResults = results;
     },
     emitChange: function () {
         this.emit(CHANGE_EVENT);
@@ -24,13 +24,13 @@ var Store = assign({}, EventEmitter.prototype, {
 
 AppDispatcher.register(function (payload) {
     switch (payload.action.actionType) {
-        case(SearchConstants.SEARCH):
+        case(FeedConstants.SEARCH):
             console.log(payload.action.timelineFeed);
-            Store.saveresults(payload.action.timelineFeed);
-            Store.emitChange();
+            FeedStore.saveresults(payload.action.timelineFeed);
+            FeedStore.emitChange();
             break;
 
     }
 });
 
-module.exports = Store;
+module.exports = FeedStore;

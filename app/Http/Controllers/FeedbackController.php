@@ -19,62 +19,41 @@ class FeedbackController extends Controller
             return response()->json(['status' => 505], 505);
         }
     }
-
-    public function blocked()
+    public function activityFeed()
     {
+        if ($feeds = \DB::select('select * from feedback where category="activity"')) {
 
-        if ($users = \DB::select('select * from users where status="deactive" and role="user"')) {
-
-            return response()->json(['users' => $users, 'status' => 200], 200);
+            return response()->json(['feeds' => $feeds, 'status' => 200], 200);
         } else {
             return response()->json(['status' => 505], 505);
         }
     }
-
-    public function block(Request $request)
+    public function privacy()
     {
-        $id = $request->id;
-        if ($users = \DB::table('users')->where('id', $id)->update(['status' => 'deactive'])) {
-            return response()->json(['status' => 201], 201);
+        if ($feeds = \DB::select('select * from feedback where category="privacy"')) {
+
+            return response()->json(['feeds' => $feeds, 'status' => 200], 200);
         } else {
-            return response()->json(['status' => 404], 404);
+            return response()->json(['status' => 505], 505);
         }
     }
-
-    public function Unblock(Request $request)
+    public function chat()
     {
-        $id = $request->id;
-        if ($users = \DB::table('users')->where('id', $id)->update(['status' => 'active'])) {
-            return response()->json(['status' => 201], 201);
+        if ($feeds = \DB::select('select * from feedback where category="chat"')) {
+
+            return response()->json(['feeds' => $feeds, 'status' => 200], 200);
         } else {
-            return response()->json(['status' => 404], 404);
+            return response()->json(['status' => 505], 505);
         }
     }
-
-    public function recover(Request $request)
+    public function other()
     {
-        $email = $request->email;
-        $admin = User::where('email', $email)->first();
-        if ($admin) {
-            $newpwd = $this->random_str(10);
-            $pwdHashed = \Hash::make($newpwd);
-            \DB::table('users')->where('email', $email)->update(['password' => $pwdHashed]);
-            $this->SendMail($email, $admin->firstname, $newpwd);
-           // return response()->json(['status' => 200], 200);
+        if ($feeds = \DB::select('select * from feedback where category="other"')) {
+
+            return response()->json(['feeds' => $feeds, 'status' => 200], 200);
         } else {
-            return response()->json(['status' => 201], 201);
+            return response()->json(['status' => 505], 505);
         }
-
-    }
-
-    public function random_str($length, $keyspace = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
-    {
-        $str = '';
-        $max = mb_strlen($keyspace, '8bit') - 1;
-        for ($i = 0; $i < $length; ++$i) {
-            $str .= $keyspace[random_int(0, $max)];
-        }
-        return $str;
     }
 
     public function SendMail($email, $user, $pwd)

@@ -92,6 +92,10 @@ Route::group(['prefix' => 'admin-api'], function () {
 
     //feedbacks
     Route::get('timeline', 'FeedbackController@timeline');
+    Route::get('activity', 'FeedbackController@activityFeed');
+    Route::get('privacy', 'FeedbackController@privacy');
+    Route::get('chat', 'FeedbackController@chat');
+    Route::get('others', 'FeedbackController@other');
 });
 
 /*

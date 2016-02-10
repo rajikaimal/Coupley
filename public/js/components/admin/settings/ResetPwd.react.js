@@ -30,7 +30,7 @@ import PwdActions from '../../../actions/admin/AdminPwdResetActions';
 
 const tilesData = [
     {
-        img: 'https://cdn4.iconfinder.com/data/icons/allicons-basic/512/lock-256.png',
+        img: '../../../../img/lock-256.png',
         title: 'Reset Password'
 
     }

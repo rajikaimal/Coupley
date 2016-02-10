@@ -17,6 +17,7 @@ const colors = styles.Colors;
 
 var AvatarExampleSimple = React.createClass({
     getInitialState: function () {
+
         return {
             results: SearchStore.getresults()
         }

@@ -3,15 +3,73 @@
  */
 var AppDispatcher = require('../../dispatcher/AppDispatcher');
 var LoginConstants = require('../../constants/LoginConstants');
-var SearchConstants = require('../../constants/SearchConstants');
+var FeedConstants = require('../../constants/FeedConstants');
 
 var FeedActions = {
 
-    timelineFeed: function () {
+    timelineFeeds: function () {
         $.get('/admin-api/timeline', function (response) {
             if (response.status == 200) {
                 AppDispatcher.handleViewAction({
-                    actionType: SearchConstants.SEARCH,
+                    actionType: FeedConstants.SEARCH,
+                    timelineFeed: response.feeds
+                });
+            }
+            else if (response.status == 505) {
+                console.log('Error 505');
+
+            }
+        });
+    }
+,
+    activityFeeds: function () {
+        $.get('/admin-api/activity', function (response) {
+            if (response.status == 200) {
+                AppDispatcher.handleViewAction({
+                    actionType: FeedConstants.SEARCH,
+                    timelineFeed: response.feeds
+                });
+            }
+            else if (response.status == 505) {
+                console.log('Error 505');
+
+            }
+        });
+    }
+    ,
+    privacyFeeds: function () {
+        $.get('/admin-api/privacy', function (response) {
+            if (response.status == 200) {
+                AppDispatcher.handleViewAction({
+                    actionType: FeedConstants.SEARCH,
+                    timelineFeed: response.feeds
+                });
+            }
+            else if (response.status == 505) {
+                console.log('Error 505');
+
+            }
+        });
+    },
+    chatFeeds: function () {
+        $.get('/admin-api/chat', function (response) {
+            if (response.status == 200) {
+                AppDispatcher.handleViewAction({
+                    actionType: FeedConstants.SEARCH,
+                    timelineFeed: response.feeds
+                });
+            }
+            else if (response.status == 505) {
+                console.log('Error 505');
+
+            }
+        });
+    },
+    otherFeeds: function () {
+        $.get('/admin-api/others', function (response) {
+            if (response.status == 200) {
+                AppDispatcher.handleViewAction({
+                    actionType: FeedConstants.SEARCH,
                     timelineFeed: response.feeds
                 });
             }

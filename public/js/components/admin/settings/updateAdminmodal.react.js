@@ -31,7 +31,7 @@ import UpdateActions from '../../../actions/admin/AdminUpdateActions';
 
 const tilesData = [
     {
-        img: 'https://cdn3.iconfinder.com/data/icons/window-ui-elements-and-conditions/512/pencil-round-window-write-edit-512.png',
+        img: '../../../../img/pencil-round-window-write-edit-512.png',
         title: 'Update Profile'
 
     }

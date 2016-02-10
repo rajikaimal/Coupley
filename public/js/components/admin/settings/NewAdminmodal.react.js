@@ -28,7 +28,7 @@ import RegisterActions from '../../../actions/admin/AdminRegisterActions';
 
 const tilesData = [
     {
-        img: 'https://cdn2.iconfinder.com/data/icons/perfect-flat-icons-2/256/Add_users_plus_group_people_friends.png',
+        img: '../../../../img/Add_users_plus_group_people_friends.png',
         title: 'New Administrator',
 
     }

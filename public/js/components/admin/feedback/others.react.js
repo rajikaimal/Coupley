@@ -20,7 +20,7 @@ const Tables = React.createClass({
         }
     },
     componentDidMount: function() {
-        FeedActions.timelineFeeds();
+        FeedActions.otherFeeds();
         FeedStore.addChangeListener(this._onChange);
     },
     _onChange: function() {
@@ -37,7 +37,7 @@ const Tables = React.createClass({
     render: function () {
         return (
             <div>
-                    <h1>Timeline Feedback </h1>
+                    <h1>Other Feedback </h1>
             <table className="table table-striped table-hover">
                 <thead>
                     <tr>
