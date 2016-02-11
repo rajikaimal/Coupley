@@ -15,7 +15,7 @@ const ELSE='No any feedbacks regaurding chat.';
 
 const Tables = React.createClass({
     getInitialState: function() {
-        console.log('hy');
+
         return {
             results: FeedStore.getresults()
         }

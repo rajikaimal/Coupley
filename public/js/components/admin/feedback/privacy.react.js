@@ -15,7 +15,7 @@ const ELSE=' No any feedbacks ragarding privacy.';
 
 const Tables = React.createClass({
     getInitialState: function() {
-        console.log('hy');
+
         return {
             results: FeedStore.getresults()
         }

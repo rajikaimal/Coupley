@@ -15,7 +15,7 @@ import Feed from '../feedback/feed.react'
 const ELSE='No any timeline feeds';
 const Tables = React.createClass({
     getInitialState: function() {
-        console.log('hy');
+
         return {
             results: FeedStore.getresults()
         }

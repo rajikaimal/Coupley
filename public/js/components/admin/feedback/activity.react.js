@@ -14,7 +14,7 @@ import Feed from '../feedback/feed.react';
 const ELSE='No any feedbacks regaurding activity feed.';
 const Tables = React.createClass({
     getInitialState: function() {
-        console.log('hy');
+
         return {
             results: FeedStore.getresults()
         }
