@@ -11,6 +11,7 @@ import TableBody from 'material-ui/lib/table/table-body';
 import FeedActions from '../../../actions/admin/FeedbackActions';
 import FeedStore from '../../../stores/admin/FeedbackStore';
 import Feed from '../feedback/feed.react'
+const ELSE='No any other feedbacks.';
 
 const Tables = React.createClass({
     getInitialState: function() {
@@ -24,17 +25,28 @@ const Tables = React.createClass({
         FeedStore.addChangeListener(this._onChange);
     },
     _onChange: function() {
-        this.setState({
-            results: FeedStore.getresults()
-        });
+        if(this.isMounted()) {
+            this.setState({
+                results: FeedStore.getresults()
+            })
+        }
     },
     _renderFeedItem: function() {
         console.log(this.state.results);
+        if(this.state.results){
         return this.state.results.map((result) => {
             return (<Feed key={result.id} id={result.id} user={result.user} description={result.description} />);
-        });
+        })}
+        else {
+            return (<Feed
+                id={ELSE}
+            />
+
+           );
+        }
     },
     render: function () {
+
         return (
             <div>
                     <h1>Other Feedback </h1>
@@ -54,6 +66,7 @@ const Tables = React.createClass({
             </table>
             </div>
         );
+
     }
 });
 
