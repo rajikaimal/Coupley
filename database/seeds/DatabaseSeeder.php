@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
+use App\Feedback;
 
 class DatabaseSeeder extends Seeder
 {
@@ -29,6 +30,19 @@ class DatabaseSeeder extends Seeder
             foreach ($users as $user) {
                 User::create($user);
             }
+        $feedbacks = [
+            ['user' => 'Ryan', 'category' => 'timeline', 'description' => 'Awsome'],
+            ['user' => 'Chris', 'category' => 'activity', 'description' => 'Superb'],
+            ['user' => 'Alo', 'category' => 'chat', 'description' => 'nice emojies'],
+            ['user' => 'Tiffany', 'category' => 'privacy', 'description' => 'She is annoying'],
+            ['user' => 'Isuru', 'category' => 'other', 'description' => 'Nice quiz']
+        ];
+
+
+        foreach ($feedbacks as $feedback) {
+            Feedback::create($feedback);
+        }
+
 
         Model::reguard();
     }

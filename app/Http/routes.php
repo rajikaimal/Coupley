@@ -100,6 +100,13 @@ Route::group(['prefix' => 'admin-api'], function () {
     Route::post('unblockuser', 'UsersController@Unblock');
     //Return Admin profile data
     Route::get('adminprofile', 'UsersController@Adminprofile');
+
+    //feedbacks
+    Route::get('timeline', 'FeedbackController@timeline');
+    Route::get('activity', 'FeedbackController@activityFeed');
+    Route::get('privacy', 'FeedbackController@privacy');
+    Route::get('chat', 'FeedbackController@chat');
+    Route::get('others', 'FeedbackController@other');
 });
 
 /*

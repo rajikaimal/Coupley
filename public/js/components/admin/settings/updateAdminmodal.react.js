@@ -31,7 +31,7 @@ import UpdateActions from '../../../actions/admin/AdminUpdateActions';
 
 const tilesData = [
     {
-        img: '../../../../img/edit.png',
+        img: '../../../../img/pencil-round-window-write-edit-512.png',
         title: 'Update Profile'
 
     }
@@ -40,8 +40,8 @@ const tilesData = [
 const style = {
     width: 300,
     height:50,
-    fontSize: "20px"
-
+    fontSize: "20px",
+    color:"white"
 };
 const newdiv = {
     marginLeft: 300

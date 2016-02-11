@@ -28,7 +28,7 @@ import RegisterActions from '../../../actions/admin/AdminRegisterActions';
 
 const tilesData = [
     {
-        img: '../../../../img/add_users_group-512.png',
+        img: '../../../../img/Add_users_plus_group_people_friends.png',
         title: 'New Administrator',
 
     }
@@ -37,8 +37,8 @@ const tilesData = [
 const style = {
     width: 300,
     height:50,
-    fontSize: "20px"
-
+    fontSize: "20px",
+    color:"white"
 };
 
 const tileElements = tilesData.map(tile => <GridTile
