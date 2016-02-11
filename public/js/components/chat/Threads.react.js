@@ -82,13 +82,14 @@ const Threads = React.createClass({
 
             this.state.threads.map(function(item) {
               //return (<li>{item.message}</li>);
+                /*  {item.message}.replace(':)',<img src="../../../img/smileys/smile53893.gif"/>); */
 
               return(<ListItem
                leftAvatar={<Avatar src="profile pic" />}
                primaryText="Name"
                secondaryText={
               <p>
-             {item.message}
+                {item.message}
              </p>
               }
                secondaryTextLines={2}
