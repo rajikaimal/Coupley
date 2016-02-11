@@ -58,7 +58,7 @@ const Tables = React.createClass({
                 </thead>
                 <tbody style={{fontSize: "18px"}}>
 
-{this._renderFeedItem()}
+                    {this._renderFeedItem()}
 
                </tbody>
             </table>
