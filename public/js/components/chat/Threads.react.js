@@ -1,4 +1,5 @@
 import React from 'react';
+import Messages from './Messages.react';
 import Card from 'material-ui/lib/card/card';
 import Paper from 'material-ui/lib/paper';
 import CardActions from 'material-ui/lib/card/card-actions';
@@ -27,6 +28,13 @@ const Sty1={
   height:550,
   overflow:'auto'
 }
+
+const Sty2={
+  height:100,
+   'margin-top':0
+
+}
+
 
  socket.emit('LoggedUser',User1);
 
@@ -99,12 +107,14 @@ const Threads = React.createClass({
             })
           }
           </div>
+          <Paper style={Sty2} >
           <input type="text" ref="message1" />
           <input type="text" ref="message2" />
           <input type="button" onClick={this._sendmessage} value="Send message" />
+          </Paper>
         </CardText>
         <CardActions>
-          <FlatButton label="Send message" />
+
         </CardActions>
       </Paper>
     );

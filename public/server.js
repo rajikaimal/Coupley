@@ -13,7 +13,6 @@ var connection = mysql.createConnection({
   var ThisUserEmail;
 
 
-
 connection.connect();
 
 server.listen(8081);
@@ -66,7 +65,8 @@ socket.on('message', function (chat) {
 
        connection.query('INSERT INTO chats SET ?', post, function(err, result) {
                        connection.query("SELECT message FROM chats WHERE 	user1 IN ('"+post.user1+"','"+post.user2+"') AND user2 IN ('"+post.user1+"','"+post.user2+"') ", function(err, result) {
-                                       socket.broadcast.to(connectedUser[chat.user2]).emit('chat', { message: result });
+
+                                       socket.broadcast.to(connectedUser[chat.user2]).emit('chat', { message:result});
                                                       console.log("send unaaaa!");
                        });
       });
