@@ -19,7 +19,7 @@ const tabstyle = {
 
 const Profile = React.createClass({
   getInitialState: function() {
-    return ProfileStore.getuserdata()
+    return ProfileStore.getuserdata();
   },
   componentDidMount: function() {
     ProfileActions.getProfileData();

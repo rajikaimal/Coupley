@@ -24,6 +24,7 @@ import PhotosVisitor from './components/profile/visitor/Photos.react';
 import Search from './components/search/Search.react';
 import Admin from './components/admin/dashboard.react';
 import AdminLogin from './components/admin/login.react';
+import MainActivity from './components/activityfeed/activityMain.react';
 import Threads from './components/chat/Threads.react';
 import Users from './components/admin/users/userHome.react';
 import Friends from './components/admin/users/friends.react';
@@ -71,6 +72,8 @@ function AdminSignout() {
 }
 ReactDOM.render((
   <Router history={hashHistory}>
+    <Route path="/login" component={Home} />
+    <Route path="/dashboard" component={Admin} />
     <Route path="/login" component={Login} />
       <Route path="/forgotpwd" component={Forgot} />
     <Route path="/register" component={Register} />
@@ -97,13 +100,15 @@ ReactDOM.render((
     <Route path="/" component={Header} onEnter={requireAuth}>
       <Route path="/search" component={Search} />
       <Route path="/threads" component={Threads} />
+      <Route path="activity" component={MainActivity}/>
       <Route path="profile" component={Profile} >
-      	<Route path="activityfeed" component={ActivityContainer} />
-      	<Route path="about" component={About} />
+        <Route path="activityfeed" component={ActivityContainer} />
+        <Route path="about" component={About} />
         <Route path="photos" component={Photos} />
       </Route>
       <Route path="/:username" component={ProfileVisitor} >
         <Route path="activityfeed" component={ActivityContainerVisitor} />
+
         <Route path="about" component={AboutVisitor} />
         <Route path="photos" component={PhotosVisitor} />
       </Route>
@@ -113,3 +118,4 @@ ReactDOM.render((
   ),
   document.getElementById('content')
 );
+
