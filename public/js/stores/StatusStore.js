@@ -5,7 +5,8 @@ var assign = require('object-assign');
 
 var CHANGE_EVENT = 'change';
 
-var searchresults = []; 
+var searchresults = [];
+var searchID; 
 
 var StatusStore = assign({},EventEmitter.prototype, {
 
@@ -16,6 +17,14 @@ var StatusStore = assign({},EventEmitter.prototype, {
     saveStatusData: function(results) {
       console.log(results);
       searchresults = results;
+    },
+    getStatusID:function() {
+      console.log(searchID);
+      return searchID;
+    },
+    saveStatusID: function(id) {
+      console.log(id);
+      searchID = id;
     },
     emitChange: function() {
       this.emit(CHANGE_EVENT);
@@ -30,6 +39,11 @@ AppDispatcher.register(function(payload) {
 		case(ActivityFeedConstants.GETDATA):
       console.log(payload.action.statusdata);
       StatusStore.saveStatusData(payload.action.statusdata);
+      StatusStore.emitChange();
+      break;
+    case(ActivityFeedConstants.GETID):
+      console.log(payload.action.id);
+      StatusStore.saveStatusID(payload.action.id);
       StatusStore.emitChange();
       break;
 	}

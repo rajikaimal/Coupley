@@ -23,8 +23,30 @@ var ActivityFeedActions = {
     });
   },
 
+  getpostId: function() {
+    $.get('/api/getpostId' , function(response) {
+      console.log(response);
+      if (response.status == 200) {
+            AppDispatcher.handleViewAction({
+            actionType: ActivityFeedConstants.GETID,
+            id: response.posts
+          });
+      }
+      else if (response.status == 505) {
+            console.log('Error 505');
+      }
+    });
+  },
+
+
   delete_status: function(postId){
     $.post('api/deleteStatus', postId, function(response) {
+      console.log(response);
+      });
+  },
+
+  editstatus:function(txt){
+   $.post('api/edit_status',txt , function(response) {
       console.log(response);
       });
   }
