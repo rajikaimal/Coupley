@@ -38,6 +38,7 @@ var ProfileStore = assign({}, EventEmitter.prototype, {
   },
   addChangeListener: function(callback) {
     this.on(CHANGE_EVENT, callback);
+      console.log('cahnged dude');
   }
 });
 
@@ -46,8 +47,9 @@ AppDispatcher.register(function(payload) {
   switch(payload.action.actionType) {
     case(ProfileConstants.GETDATA):
         console.log("emit");
-        console.log('');
+
       ProfileStore.saveuserdata(payload.action.userdata);
+        console.log(payload.action.userdata);
       ProfileStore.emitChange();
         console.log("change");
       break;

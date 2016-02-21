@@ -31,6 +31,18 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('authenticate', 'AuthenticateController@authenticate');
     //Register new users with RegisterConroller@register
     Route::post('register', 'RegisterController@check');
+    Route::post('status', 'ActivityFeedController@addstatus');
+    Route::get('getstatus', 'ActivityFeedController@getstatus');
+    Route::get('getpostId', 'ActivityFeedController@getpostId');
+    Route::post('likes', 'LikeController@addlikes');
+    Route::post('likepost', 'LikeController@like');
+    Route::post('unlikepost', 'LikeController@unlike');
+    Route::get('getlikestatus', 'LikeController@getlikestatus');
+    Route::post('comment','CommentController@addcomment');
+    Route::get('getcomment','CommentController@getcomments');
+    Route::post('share','ActivityFeedController@addshare');
+    Route::post('deleteStatus','ActivityFeedController@deleteStatus');
+    Route::post('edit_status','ActivityFeedController@editStatus');
     //Return profile data
     Route::get('profile', 'ProfileController@profile');
     //Return userslist for search
@@ -102,6 +114,13 @@ Route::group(['prefix' => 'admin-api'], function () {
     Route::post('unblockuser', 'UsersController@Unblock');
     //Return Admin profile data
     Route::get('adminprofile', 'UsersController@Adminprofile');
+
+    //feedbacks
+    Route::get('timeline', 'FeedbackController@timeline');
+    Route::get('activity', 'FeedbackController@activityFeed');
+    Route::get('privacy', 'FeedbackController@privacy');
+    Route::get('chat', 'FeedbackController@chat');
+    Route::get('others', 'FeedbackController@other');
 });
 
 /*

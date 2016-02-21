@@ -1,39 +1,36 @@
 var AppDispatcher = require('../../dispatcher/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
-var SearchConstants = require('../../constants/SearchConstants');
+var FeedConstants = require('../../constants/FeedConstants');
 var assign = require('object-assign');
 
 var CHANGE_EVENT = 'change';
 
-var searchresults = [];
+var FeedResults = [];
 
-var SearchStore = assign({}, EventEmitter.prototype, {
+var FeedStore = assign({}, EventEmitter.prototype, {
     getresults: function () {
-        return searchresults;
+        return FeedResults;
     },
     saveresults: function (results) {
-        searchresults = results;
+        FeedResults = results;
     },
     emitChange: function () {
         this.emit(CHANGE_EVENT);
     },
     addChangeListener: function (callback) {
         this.on(CHANGE_EVENT, callback);
-    },
-    removeChangeListener :function(callback){
-        this.removeListener(CHANGE_EVENT, callback);
     }
 });
 
 AppDispatcher.register(function (payload) {
     switch (payload.action.actionType) {
-        case(SearchConstants.SEARCH):
-            console.log(payload.action.search);
-            SearchStore.saveresults(payload.action.search);
-            SearchStore.emitChange();
+        case(FeedConstants.SEARCH):
+            console.log(payload.action.timelineFeed);
+            FeedStore.saveresults(payload.action.timelineFeed);
+            FeedStore.emitChange();
             break;
 
     }
 });
 
-module.exports = SearchStore;
+module.exports = FeedStore;

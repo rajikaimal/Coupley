@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ChatMigration extends Migration
+class ActivityPost extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,15 @@ class ChatMigration extends Migration
      */
     public function up()
     {
-        Schema::create('chats', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('user1');
-            $table->string('user2');
-            $table->string('message');
+            $table->string('email');
+            $table->string('firstname');
+            $table->integer('post_type')->default('0');
+            $table->string('post_text');
+            $table->string('attachment');
             $table->timestamps();
-        });
+            });
     }
 
     /**
@@ -28,6 +30,6 @@ class ChatMigration extends Migration
      */
     public function down()
     {
-        Schema::drop('chats');
+        Schema::drop('posts');
     }
 }

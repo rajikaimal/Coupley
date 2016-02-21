@@ -13,8 +13,9 @@ var Header = React.createClass({
             return ProfileStore.getuserdata()
         },
             componentDidMount: function() {
-            ProfileActions.getAdminProfileData();
+
             ProfileStore.addChangeListener(this._onChange);
+                ProfileActions.getAdminProfileData();
         },
         _onChange: function() {
             this.setState(ProfileStore.getuserdata());

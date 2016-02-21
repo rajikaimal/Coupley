@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ChatMigration extends Migration
+class ActivityShare extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,13 @@ class ChatMigration extends Migration
      */
     public function up()
     {
-        Schema::create('chats', function (Blueprint $table) {
+         Schema::create('shares', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('user1');
-            $table->string('user2');
-            $table->string('message');
+            $table->integer('post_id');
+            $table->string('email');
+            $table->string('firstname');
             $table->timestamps();
-        });
+            });
     }
 
     /**
@@ -28,6 +28,6 @@ class ChatMigration extends Migration
      */
     public function down()
     {
-        Schema::drop('chats');
+        Schema::drop('shares');
     }
 }

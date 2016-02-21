@@ -25,7 +25,9 @@ var AvatarExampleSimple = React.createClass({
         UserActions.getsearchresults();
         SearchStore.addChangeListener(this._onChange);
     },
-
+    componentWillUnmount:function(){
+        SearchStore.removeChangeListener(this._onChange);
+    },
     _onChange: function () {
         this.setState({
             results: SearchStore.getresults()
@@ -33,16 +35,23 @@ var AvatarExampleSimple = React.createClass({
     },
     _renderSearchItem: function () {
         console.log(this.state.results);
+        if(this.state.results){
         return this.state.results.map((result) => {
-            return (<div className="col-lg-3">
-                <SearchItem key={result} username={result.username} firstname={result.firstname} lastname={result.lastname} gender={result.gender} id={result.id} />
+            return (<div className="col-lg-4">
+                <SearchItem key={result} rowId={result.rowId} user={result.user} reported={result.reported}  description={result.description} id={result.reported_user_id} />
             </div>);
         });
+    }
+        else {
+            return (<div className="col-lg-4">
+                No any reported users found.
+            </div>);
+        }
     },
     render: function () {
         return (
             <div>
-                <h1>Friends</h1>
+                <h1>Reported Users</h1>
 			{this._renderSearchItem()}
             </div>
         );
