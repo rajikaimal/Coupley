@@ -253,6 +253,36 @@ class ProfileController extends Controller
             return response()->json(['status' => 505], 505);
         }
     }
+    /*
+        Return @json edits activity ///\\\\
+    **/
+    public function editactivity(Request $request)
+    {
+        $email = $request->email;
+        $editActvity = $request->editActvity;
+
+        try {
+            $userID = User::where('email', $email)->get(['id']);
+            if(About::where('user_id', $userID[0]->id)
+              ->update(['post' => $editActvity])) {
+                $results = ActivityFeed::where('user_id', $userID[0]->id)->get();
+                if(!$results->isEmpty())
+                {
+                    return response()->json(['status' => 200, 'data' => $results], 200);
+                }
+                else
+                {
+                    return response()->json(['status' => 200, 'data' => null], 200);
+                }
+            }
+            else {
+                return response()->json(['status' => 505], 505);
+            }
+
+        } catch(Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 505], 505);
+        }
+    }
     public function getabout(Request $request)
     {
         $email = $request->email;
