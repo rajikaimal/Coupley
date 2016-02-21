@@ -64,6 +64,8 @@ Route::group(['prefix' => 'api'], function () {
     Route::put('profile/edit/goodat', 'ProfileController@editgoodat');
     Route::put('profile/edit/thinkingof ', 'ProfileController@editthinkingof');
     Route::put('profile/edit/favs ', 'ProfileController@editfavs');
+    Route::put('profile/edit/activity ', 'ProfileController@editactivity');
+    
 });
 
 Route::get('socket', 'SocketController@index');
