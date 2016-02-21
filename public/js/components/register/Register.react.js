@@ -71,7 +71,7 @@ function validatelastname(lastname) {
     return {
       "error": "*invalid lastname"
     }  
-  }
+  } 
   else {
     return true;
   }
@@ -157,7 +157,7 @@ const Register = React.createClass({
     let username = this.refs.username.getValue();
     let email = this.refs.email.getValue();
     if(this.state.gender == 1) {
-      var gender = "male";
+      var gender = "male";  
     }
     else if(this.state.gender == 2) {
       var gender = "female";
@@ -363,48 +363,7 @@ const Register = React.createClass({
               </TableBody>
             <CardText>                
 
-        <div className="col-lg-4">
-        </div>
-        <div className="col-lg-2">
-
-
-        </div>
-        <div className="col-lg-6">
-          <Card>
-            <CardTitle title="Register" />
-            <CardText>
-              <TextField
-                hintText="Firstname" hintStyle={styles.errorStyle} fullwidth={true} ref="firstname"/>
-              <br />
-                <span style={error} id="firstname"> </span>
-              <TextField
-                hintText="Lastname" hintStyle={styles.errorStyle} fullwidth={true} ref="lastname"/>
-              <br />
-                <span style={error} id="lastname"> </span>
-              <TextField
-                hintText="Username" hintStyle={styles.errorStyle} fullwidth={true} ref="username"/>
-              <br />
-                <span style={error} id="username"> </span>
-              <TextField
-                hintText="Email" hintStyle={styles.errorStyle} fullwidth={true} ref="email"/>
-              <br />
-                <span style={error} id="email"> </span>
-              <br/>
-              <label>Gender </label><DropDownMenu value={this.state.gender} onChange={this.handleChangeGender}>
-                <MenuItem value={1} primaryText="Male"/>
-                <MenuItem value={2} primaryText="Female"/>
-              </DropDownMenu>
-              <TextField
-                type="password"
-                hintText="Password" ref="password" hintStyle={styles.errorStyle} fullwidth={true}/>
-              <br />
-                <span style={error} id="password"> </span>
-              <label>Sexual Orientation</label><DropDownMenu value={this.state.orientation} onChange={this.handleChangeOrientation}>
-                <MenuItem value={1} primaryText="Straight"/>
-                <MenuItem value={2} primaryText="Lesbian"/>
-                <MenuItem value={3} primaryText="Gay"/>
-                <MenuItem value={4} primaryText="Bisexual"/>
-              </DropDownMenu>
+                   
             </CardText>
             </Table>
             <CardActions>
@@ -413,9 +372,9 @@ const Register = React.createClass({
               <span style={error} id="serverstatus"> </span>
           </Card>  
         </div>
-        </Paper>
+        </Paper>     
       </div>
-    );
+    );    
   }
 
 });
