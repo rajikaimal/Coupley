@@ -45,9 +45,9 @@ const Activity = React.createClass({
 		           		<b>{this.props.time}</b>
 		            </p>
 		          }
-		          secondaryTextLines={2} 
+		          secondaryTextLines={2}
 		          rightIconButton={rightIconMenu} />
-		        <Divider inset={true} />			
+		        <Divider inset={true} />
 			</div>
 		);
 	}

@@ -44,7 +44,7 @@ function validatefirstname(firstname) {
   else if(! /^\w+$/i.test(firstname)) {
     return {
       "error": "Firstname cannot contain special characters"
-    }  
+    }
   }
   else {
     return true;
@@ -60,8 +60,8 @@ function validatelastname(lastname) {
   else if(! /^\w+$/i.test(lastname)) {
     return {
       "error": "Lastname cannot contain special characters"
-    }  
-  } 
+    }
+  }
   else {
     return true;
   }
@@ -76,7 +76,7 @@ function validateusername(username) {
     else if (!/^\w+$/i.test(username)) {
     return {
       "error": "Username cannot contain special characters"
-    }  
+    }
   }
   else {
     return true;
@@ -135,7 +135,7 @@ const Register = React.createClass({
     let username = this.refs.username.getValue();
     let email = this.refs.email.getValue();
     if(this.state.gender == 1) {
-      var gender = "male";  
+      var gender = "male";
     }
     else if(this.state.gender == 2) {
       var gender = "female";
@@ -203,8 +203,8 @@ const Register = React.createClass({
         <div className="col-lg-4">
         </div>
         <div className="col-lg-2">
-          
-          
+
+
         </div>
         <div className="col-lg-6">
           <Card>
@@ -242,17 +242,17 @@ const Register = React.createClass({
                 <MenuItem value={3} primaryText="Gay"/>
                 <MenuItem value={4} primaryText="Bisexual"/>
               </DropDownMenu>
-                   
+
             </CardText>
             <CardActions>
               <RaisedButton label="Register" style={buttonStyle} primary={true} onTouchTap={this._handleRegisterClickEvent} />
             </CardActions>
               <span style={error} id="serverstatus"> </span>
-          </Card>  
-        </div> 
-        </Paper>     
+          </Card>
+        </div>
+        </Paper>
       </div>
-    );    
+    );
   }
 
 });

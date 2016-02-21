@@ -24,6 +24,7 @@ import PhotosVisitor from './components/profile/visitor/Photos.react';
 import Search from './components/search/Search.react';
 import Admin from './components/admin/dashboard.react';
 import AdminLogin from './components/admin/login.react';
+import MainChat from './components/chat/ChatMain.react';
 import MainActivity from './components/activityfeed/activityMain.react';
 import Threads from './components/chat/Threads.react';
 import Users from './components/admin/users/userHome.react';
@@ -74,6 +75,8 @@ ReactDOM.render((
   <Router history={hashHistory}>
     <Route path="/login" component={Home} />
     <Route path="/dashboard" component={Admin} />
+    <Route path="chat" component={MainChat}/>
+
     <Route path="/login" component={Login} />
       <Route path="/forgotpwd" component={Forgot} />
     <Route path="/register" component={Register} />
@@ -98,6 +101,7 @@ ReactDOM.render((
     </Route>
       <Route path="/AdminSignout" onEnter={AdminSignout} />
     <Route path="/" component={Header} onEnter={requireAuth}>
+<Route path="activity" component={MainActivity}/>
       <Route path="/search" component={Search} />
       <Route path="/threads" component={Threads} />
       <Route path="activity" component={MainActivity}/>
@@ -118,4 +122,3 @@ ReactDOM.render((
   ),
   document.getElementById('content')
 );
-
