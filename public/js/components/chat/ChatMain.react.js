@@ -2,7 +2,7 @@ import React from 'react';
 import Messages from './Messages.react';
 import Chatbox from './ChatBox.react';
 import ChatCard from './chatCard.react';
-import FloatButton from './FloatButton.react';
+import FloatButton from './Floatbutton.react';
 import List from 'material-ui/lib/lists/list';
 import TextField from 'material-ui/lib/text-field';
 import Card from 'material-ui/lib/card/card';
