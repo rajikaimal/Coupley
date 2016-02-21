@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Routes File
@@ -10,21 +9,17 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
 Route::get('/', function () {
     return view('init');
 });
-
 /*  
     Login route
     Handles initial login of a user of Coupley	
     @author rajikaimal
 */
-
 Route::get('/api/login', function () {
     return 'Done';
 });
-
 Route::group(['prefix' => 'api'], function () {
     //authenticate users with AuthenticateController
     Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
@@ -81,21 +76,17 @@ Route::group(['prefix' => 'api'], function () {
     Route::put('profile/edit/activity ', 'ProfileController@editactivity');
     
 });
-
 Route::get('socket', 'SocketController@index');
 Route::post('sendmessage', 'SocketController@sendMessage');
 Route::get('writemessage', 'SocketController@writemessage');
-
 /*
     Dashboard route
     Handles Admin panel of Coupley
     @author isurudilhan
 */
-
 Route::get('/cp-admin', function () {
     return view('init_admin');
 });
-
 Route::group(['prefix' => 'admin-api'], function () {
     Route::resource('authenticates', 'AdminAuthenticateController', ['only' => ['index']]);
     Route::post('authenticates', 'AdminAuthenticateController@authenticate');
@@ -124,7 +115,6 @@ Route::group(['prefix' => 'admin-api'], function () {
     Route::get('chat', 'FeedbackController@chat');
     Route::get('others', 'FeedbackController@other');
 });
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -135,13 +125,10 @@ Route::group(['prefix' => 'admin-api'], function () {
 | kernel and includes session state, CSRF protection, and more.
 |
 */
-
 Route::group(['middleware' => ['web']], function () {
     //
 });
-
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
-
     Route::get('/home', 'HomeController@index');
 });

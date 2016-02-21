@@ -73,6 +73,7 @@ const Activity = React.createClass({
 	            ref="editActvity"  style={textStyle} defaultValue={this.props.post} /><FlatButton onClick={this._editActvity} label="Save changes" primary={true} /><FlatButton label="Cancel" onClick={this._cancelEdit}/>
 	              </div> : ''}
 		        <Divider inset={true} />			
+
 			</div>
 		);
 	}

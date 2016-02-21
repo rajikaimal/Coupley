@@ -100,7 +100,7 @@ const Login = React.createClass({
     //   // });
     // }, 3000);
     console.log(LoginStore.getState());
-    return { 
+    return {
       apitoken: LoginStore.getState()
     };
   },
@@ -160,7 +160,7 @@ const Login = React.createClass({
                   <span id="emailval"> </span>
                 <TextField
                   floatingLabelText="password" type="password" ref="password" fullwidth={true}/>
-                  <span id="passwordval"> </span>          
+                  <span id="passwordval"> </span>
                 </CardText>
                 <CardActions>
                   <RaisedButton label="Signin" style={buttonStyle} primary={true} onTouchTap={this._handleLogin} />
@@ -177,9 +177,9 @@ const Login = React.createClass({
               </Card> 
             </div>
           </div>
-        </div>  
+        </div>
       </div>
-    );    
+    );
   }
 
 });
