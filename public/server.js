@@ -27,13 +27,13 @@ io.on('connection', function (socket) {
            socket.username=data;
            connectedUser[socket.username]=socket.id;
            console.log(connectedUser);
-           console.log(socket.username+" menna socket name eka!");
-           console.log("log wechcha user list ekata add una! "+data);
+           console.log("Logged User :"+socket.username);
+
 
 
        }
        else{
-         console.log("log wela hitpu ekek awa "+data);
+         console.log(data+ "Logged again!");
 
 
 
@@ -46,19 +46,19 @@ io.on('connection', function (socket) {
 
      connection.query("SELECT id FROM users WHERE email='"+data+"' ", function(err, result) {
                      var ID = result[0].id;
-                     console.log("Menna userge id :"+ID);
+                     console.log("Logged users id :"+ID);
                      connection.query("SELECT user2 FROM liked WHERE likeduser='"+ID+"' ",function(err,result){
-                                     for(var i=0;i<result.length;i++){
-                                          Likedusers[i]=result[i].user2;
-                                        }
+                                            for(var i=0;i<result.length;i++){
+                                                 Likedusers[i]=result[i].user2;
+                                                }
                                         console.log("List of users liked by this user :"+Likedusers);
 
-                    });
+                                    });
 
-     });
+                     });
 
 
-   });
+            });
 
 
 
