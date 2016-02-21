@@ -15,9 +15,9 @@ import TableRow from 'material-ui/lib/table/table-row';
 import TableRowColumn from 'material-ui/lib/table/table-row-column';
 import TableBody from 'material-ui/lib/table/table-body';
 import Colors from 'material-ui/lib/styles/colors';
+import Countries from './countries.js';
 
 const registerStyle = {
-    marginTop: 25,
   marginLeft: 500
 };
 
@@ -38,12 +38,17 @@ const error = {
 function validatefirstname(firstname) {
   if(firstname.length >= 50) {
     return {
-      "error": "Firstname is too long"
+      "error": "*firstname is too long"
+    }
+  }
+  else if(firstname === "") {
+    return {
+      "error": "*firstname cannot be empty"
     }
   }
   else if(! /^\w+$/i.test(firstname)) {
     return {
-      "error": "Firstname cannot contain special characters"
+      "error": "*invalid firstname"
     }  
   }
   else {
@@ -54,12 +59,17 @@ function validatefirstname(firstname) {
 function validatelastname(lastname) {
     if (lastname.length >= 50) {
     return {
-      "error": "Lastname is too long"
+      "error": "*lastname is too long"
+    }
+  }
+  else if(lastname === "") {
+    return {
+      "error": "*lastname cannot be empty"
     }
   }
   else if(! /^\w+$/i.test(lastname)) {
     return {
-      "error": "Lastname cannot contain special characters"
+      "error": "*invalid lastname"
     }  
   } 
   else {
@@ -68,15 +78,26 @@ function validatelastname(lastname) {
 }
 
 function validateusername(username) {
-    if (username.length >= 60) {
+  let re = /[0-9]/;
+  if (username.length >= 50) {
     return {
-      "error": "Username is too long"
+      "error": "*username is too long"
     }
   }
-    else if (!/^\w+$/i.test(username)) {
+  else if(username === "") {
     return {
-      "error": "Username cannot contain special characters"
+      "error": "*username cannot be empty"
+    }
+  }
+  else if (!/^\w+$/i.test(username)) {
+    return {
+      "error": "*invalid username"
     }  
+  }
+  else if(re.test(username)) {
+    return {
+      "error": "*invalid username"
+    }
   }
   else {
     return true;
@@ -96,25 +117,25 @@ function validateEmail(email) {
 function validatePassword(password) {
   if(password.length < 6) {
     return {
-      "error": "Password length must be 6 or more"
+      "error": "password length <br/> must be 6 or more"
     }
   }
   let re = /[0-9]/;
   if(!re.test(password)) {
     return {
-      "error": "Password must contain a number"
+      "error": "password must <br/> contain a number"
     }
   }
   re = /[a-z]/;
   if(!re.test(password)) {
     return {
-      "error": "Password must contain a lowercase letter"
+      "error": "password must <br/> contain a lowercase letter"
     }
   }
   re = /[A-Z]/;
   if(!re.test(password)) {
     return {
-      "error": "Password must contain a uppercase letter"
+      "error": "password must <br/> contain a uppercase letter"
     }
   }
   else {
@@ -125,8 +146,9 @@ function validatePassword(password) {
 const Register = React.createClass({
   getInitialState: function() {
     return {
-      gender: 1,
-      orientation: 1
+      gender: 0,
+      orientation: 0,
+      country: 0
     }
   },
   _handleRegisterClickEvent: function() {
@@ -153,29 +175,42 @@ const Register = React.createClass({
     else if(this.state.orientation == 4) {
       var orientation = "bisexual";
     }
-      var val = true;
+    let country = this.state.country;
+    var val = true;
     if(validatefirstname(firstname).error) {
-        document.getElementById('firstname').innerHTML = validatefirstname(firstname).error;
-        val = false;
+      document.getElementById('firstname').innerHTML = validatefirstname(firstname).error;
+      val = false;
     }
     if(validatelastname(lastname).error) {
-        document.getElementById('lastname').innerHTML = validatelastname(lastname).error;
-        val = false;
+      document.getElementById('lastname').innerHTML = validatelastname(lastname).error;
+      val = false;
     }
-      if (validateusername(username).error) {
-          document.getElementById('username').innerHTML = validateusername(username).error;
-          val = false;
-      }
+    if (validateusername(username).error) {
+      document.getElementById('username').innerHTML = validateusername(username).error;
+      val = false;
+    }
     if(! validateEmail(email)) {
       document.getElementById('email').innerHTML = 'Invalid Email !';
-        val = false;
+      val = false;
     }
-    if(validatePassword(password).error) {
-        document.getElementById('password').innerHTML = validatePassword(password).error;
-        val = false;
+    if(! validatePassword(password)) {
+      val = false;
+      document.getElementById('password').innerHTML = validatePassword(password).error; 
+    }
+    if(this.state.country == 0) {
+      val = false;
+      document.getElementById('country').innerHTML = "*select an option";
+    }
+    if(this.state.orientation == 0) {
+      val = false;
+      document.getElementById('orientation').innerHTML = "*select an option";
+    }
+    if(this.state.gender == 0) {
+      val = false;
+      document.getElementById('gender').innerHTML = "*select an option";
     }
     else {
-        val = true;
+      val = true;
     }
     let credentials = {
       firstname: firstname,
@@ -184,11 +219,12 @@ const Register = React.createClass({
       email: email,
       gender: gender,
       password: password,
+      country: country,
       orientation: orientation
     };
-      if (val) {
-          RegisterActions.check(credentials);
-      }
+    if (val) {
+      RegisterActions.check(credentials);
+    }
   },
   handleChangeGender: function(e, index, value){
     this.setState({gender: value});
@@ -196,60 +232,146 @@ const Register = React.createClass({
   handleChangeOrientation: function(e, index, value){
     this.setState({orientation: value});
   },
+  handleChangeCountry: function(e, index, value) {
+    this.setState({country: value});
+  },
+  _checkFullname: function() {
+    let firstname = this.refs.firstname.getValue();
+    if(validatefirstname(firstname).error) {
+        document.getElementById('firstname').innerHTML = validatefirstname(firstname).error;
+    }
+    else {
+        document.getElementById('firstname').innerHTML = "";
+    }
+  },
+  _checkLastname: function() {
+    let lastname = this.refs.lastname.getValue();
+    if(validatelastname(lastname).error) {
+        document.getElementById('lastname').innerHTML = validatelastname(lastname).error;
+    }
+    else {
+        document.getElementById('lastname').innerHTML = "";
+    }
+  },
+  _checkUsername: function() {
+    let username = this.refs.username.getValue();
+    if(validateusername(username).error) {
+        document.getElementById('username').innerHTML = validateusername(username).error;
+    }
+    RegisterActions.checkUsername(username);
+  },
+  _checkEmail: function() {
+    let email = this.refs.email.getValue();
+    if(!validateEmail(email)) {
+        document.getElementById('email').innerHTML = "*invalid email";
+    }
+    else {
+        RegisterActions.checkEmail(email);
+    }
+  },
   render: function() {
     return (
       <div style={registerStyle}>
         <Paper  zDepth={2}>
-        <div className="col-lg-4">
-        </div>
-        <div className="col-lg-2">
-          
-          
-        </div>
-        <div className="col-lg-6">
+        <div className="col-xs-6 col-sm-6 col-md-7 col-md-offset-5 col-lg-7 col-lg-offset-5">
           <Card>
             <CardTitle title="Register" />
-            <CardText>
-              <TextField
-                hintText="Firstname" hintStyle={styles.errorStyle} fullwidth={true} ref="firstname"/>
-              <br />
-                <span style={error} id="firstname"> </span>
-              <TextField
-                hintText="Lastname" hintStyle={styles.errorStyle} fullwidth={true} ref="lastname"/>
-              <br />
-                <span style={error} id="lastname"> </span>
-              <TextField
-                hintText="Username" hintStyle={styles.errorStyle} fullwidth={true} ref="username"/>
-              <br />
-                <span style={error} id="username"> </span>
-              <TextField
-                hintText="Email" hintStyle={styles.errorStyle} fullwidth={true} ref="email"/>
-              <br />
-                <span style={error} id="email"> </span>
-              <br/>
-              <label>Gender </label><DropDownMenu value={this.state.gender} onChange={this.handleChangeGender}>
-                <MenuItem value={1} primaryText="Male"/>
-                <MenuItem value={2} primaryText="Female"/>
-              </DropDownMenu>
-              <TextField
-                type="password"
-                hintText="Password" ref="password" hintStyle={styles.errorStyle} fullwidth={true}/>
-              <br />
-                <span style={error} id="password"> </span>
-              <label>Sexual Orientation</label><DropDownMenu value={this.state.orientation} onChange={this.handleChangeOrientation}>
-                <MenuItem value={1} primaryText="Straight"/>
-                <MenuItem value={2} primaryText="Lesbian"/>
-                <MenuItem value={3} primaryText="Gay"/>
-                <MenuItem value={4} primaryText="Bisexual"/>
-              </DropDownMenu>
+            <Table>
+              <TableBody displayRowCheckbox={false}>
+              <TableRow hoverable={false} hovered={false} selectable={false}>
+                <TableRowColumn>Fullname</TableRowColumn>
+                <TableRowColumn hoverable={false}> 
+                  <TextField onKeyUp={this._checkFullname}
+                  floatingLabelText="Firstname" hintStyle={styles.errorStyle} fullwidth={true} ref="firstname"/>
+                  <br/><span style={error} id="firstname"> </span>
+                </TableRowColumn>
+              </TableRow>
+              <TableRow hoverable={false} hovered={false} selectable={false}>
+                <TableRowColumn>Lastname</TableRowColumn>
+                <TableRowColumn> 
+                  <TextField onKeyUp={this._checkLastname}
+                floatingLabelText="Lastname" hintStyle={styles.errorStyle} fullwidth={true} ref="lastname"/>
+                <br/><span style={error} id="lastname"> </span>
+                </TableRowColumn>
+              </TableRow>
+              <TableRow hoverable={false} hovered={false} selectable={false}>
+                <TableRowColumn>Username</TableRowColumn>
+                <TableRowColumn> 
+                  <TextField onKeyUp={this._checkUsername}
+                floatingLabelText="Username" hintStyle={styles.errorStyle} fullwidth={true} ref="username"/>
+                <br/><span style={error} id="username"> </span>
+                </TableRowColumn>
+              </TableRow>
+              <TableRow hoverable={false} hovered={false} selectable={false}>
+                <TableRowColumn>Email</TableRowColumn>
+                <TableRowColumn> 
+                  <TextField onKeyUp={this._checkEmail}
+                floatingLabelText="Email" hintStyle={styles.errorStyle} fullwidth={true} ref="email"/>
+              
+                <br/><span style={error} id="email"> </span>
+                </TableRowColumn>
+              </TableRow>
+              <TableRow hoverable={false} hovered={false} selectable={false}> 
+                <TableRowColumn>Gender</TableRowColumn>
+                <TableRowColumn> 
+                  <DropDownMenu value={this.state.gender} onChange={this.handleChangeGender}>
+                  <MenuItem value={0} primaryText="Select value"/>
+                  <MenuItem value={1} primaryText="Male"/>
+                  <MenuItem value={2} primaryText="Female"/>
+                </DropDownMenu>
+                <br/><span style={error} id="gender"> </span>
+                </TableRowColumn>
+              </TableRow>
+              <TableRow hoverable={false} hovered={false} selectable={false}>
+                <TableRowColumn>Sexual orientation</TableRowColumn>
+                <TableRowColumn> 
+                  <DropDownMenu value={this.state.orientation} onChange={this.handleChangeOrientation}>
+                    <MenuItem value={0} primaryText="Select value"/>
+                    <MenuItem value={1} primaryText="Straight"/>
+                    <MenuItem value={2} primaryText="Lesbian"/>
+                    <MenuItem value={3} primaryText="Gay"/>
+                    <MenuItem value={4} primaryText="Bisexual"/>
+                  </DropDownMenu>
+                  <br/><span style={error} id="orientation"> </span>
+                </TableRowColumn>
+              </TableRow>
+              <TableRow hoverable={false} hovered={false} selectable={false}>
+                <TableRowColumn>Country</TableRowColumn>
+                <TableRowColumn> 
+                <DropDownMenu value={this.state.country} onChange={this.handleChangeCountry}>
+                  <MenuItem value={0} primaryText="Select value"/>
+                {
+                  Countries.map((cntry) => {
+                    return (<MenuItem value={cntry.code} primaryText={cntry.name}/>);    
+                  })
+                }
+                
+               </DropDownMenu>
+               <br/><span style={error} id="country"> </span>
+                </TableRowColumn>
+              </TableRow>
+              <TableRow hoverable={false} hovered={false} selectable={false}>
+                <TableRowColumn>Password</TableRowColumn>
+                <TableRowColumn> 
+                  <TextField onKeyUp={this._checkPassword}
+                  type="password"
+                  floatingLabelText="Password" ref="password" hintStyle={styles.errorStyle} fullwidth={true}/>
+                
+                  <br/><span style={error} id="password"> </span>
+                </TableRowColumn>
+              </TableRow>
+              </TableBody>
+            <CardText>                
+
                    
             </CardText>
+            </Table>
             <CardActions>
               <RaisedButton label="Register" style={buttonStyle} primary={true} onTouchTap={this._handleRegisterClickEvent} />
             </CardActions>
               <span style={error} id="serverstatus"> </span>
           </Card>  
-        </div> 
+        </div>
         </Paper>     
       </div>
     );    

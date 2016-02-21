@@ -8,5 +8,6 @@ module.exports = keyMirror({
   LIKEBACKSTATUS: null,
   BLOCKSTATUS: null,
   PROPPERMISSION: null,
+  EDITACTIVITY: null,
   FEED: null
 });

@@ -72,11 +72,10 @@ function AdminSignout() {
 }
 ReactDOM.render((
   <Router history={hashHistory}>
-    <Route path="/login" component={Home} />
+    <Route path="/login" component={Login} />
     <Route path="/logout" onEnter={logout} />
     <Route path="/dashboard" component={Admin} />
-    <Route path="/login" component={Login} />
-      <Route path="/forgotpwd" component={Forgot} />
+    <Route path="/forgotpwd" component={Forgot} />
     <Route path="/register" component={Register} />
     <Route path="/quiz" component={Quiz} />
     <Route path="/AdminLogin" component={AdminLogin} />

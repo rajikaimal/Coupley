@@ -17,26 +17,6 @@ import AboutStore from '../../stores/AboutStore';
 //tap-event-plugin
 injectTapEventPlugin();
 
-const details = [{
-  "summary": "Summary of myself !",
-  "Age": "Hello !"
-}, {
-  "summary": "What I'm doing ?",
-  "Age": "Bla bla ..."
-},
-{
-  "summary": "Good at !",
-  "Age": "Bla bla ..."
-},
-{
-  "summary": "Favourite movies, books ...",
-  "Age": "Bla bla ..."
-},{
-  "summary": "Could live never without",
-  "Age": "Bla bla ..."
-}];
-
-
 const iconButtonElement = (
   <IconButton
     touch={true}
