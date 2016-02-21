@@ -1,6 +1,8 @@
 import React from 'react';
 import Activity from './Activity.react';
 import List from 'material-ui/lib/lists/list';
+import ActivityFeedStore from '../../../stores/ActivityFeedStore';
+import ActivityFeedActions from '../../../actions/profile/ActivityFeedActions';
 
 const ActivityData = [{
 	"heading": "Brunch for this weekday ? ",
@@ -21,17 +23,35 @@ const ActivityData = [{
 
 
 const ActivityFeedContainer = React.createClass({
+  getInitialState: function() {
+    return {
+      feed: ActivityFeedStore.getfeed()
+    }
+  },
+  componentDidMount: function() {    
+    ActivityFeedStore.addChangeListener(this._onChange);
+    ActivityFeedActions.getfeed();
+
+  },
+  _onChange: function() {
+    this.setState({
+      feed: ActivityFeedStore.getfeed()
+    })
+  },
   _renderActivites: function() {
-  	return ActivityData.map((activity) => {
+    console.log('Loggin feed ...');
+    console.log(this.state.feed);
+
+    return this.state.feed.map((activity) => {
   		return (
-  			<Activity key={activity.time} heading={activity.heading} time={activity.time} date={activity.date} description={activity.description} />
+  			<Activity post={activity.post} time={activity.created_at} />
   		);
   	});
   },
   render: function() {
     return (
       <div>
-		<List subheader="Today">
+		  <List subheader="Today">
         	{this._renderActivites()}
         </List>
       </div>

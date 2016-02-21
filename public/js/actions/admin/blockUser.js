@@ -9,6 +9,7 @@ var BlockActions = {
 
             }
         });
+
         document.location = "/cp-admin#/users/enemies";
     }
 };

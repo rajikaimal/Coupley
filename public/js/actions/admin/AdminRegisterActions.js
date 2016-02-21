@@ -5,16 +5,20 @@ var RegisterActions = {
     checks: function (credentials) {
         console.log(credentials);
         $.post('/admin-api/registerAdmin', credentials, function (data) {
+
             if (data.status === 201) {
-
+                
+                swal("Good job!", "New Administrator added to the system", "success");
             }
-        });
-        document.location = "/cp-admin#/settings";
-    },
-    register: function (credentials) {
-        console.log('Action register');
 
-        document.location = "/cp-admin#/settings";
+            else {
+                swal("Error","An account with the same email exists already", "error");
+            }
+        }).fail(function () {
+            swal("Error","An account with the same email exists already", "error");
+        });
+
+
     }
 };
 

@@ -11,14 +11,14 @@ import Divider from 'material-ui/lib/divider';
 
 const tilesData = [
     {
-        img: '../../../../img/people_group_users_friends-512.png',
-        title: 'Friends',
+        img: '../../../../img/User_group_man_people_users_male.png',
+        title: 'Reported Users',
         path: '#/users/friends'
 
     },
     {
-        img: '../../../../img/block_users_group-512.png',
-        title: 'Blocked',
+        img: '../../../../img/lock_user_man_secure-256.png',
+        title: 'Blocked Users',
         path: '#/users/enemies'
 
     }
@@ -27,8 +27,8 @@ const tilesData = [
 const style = {
     width: 300,
     height:50,
-    fontSize: "20px"
-
+    fontSize: "20px",
+    color:"white"
 
 };
 

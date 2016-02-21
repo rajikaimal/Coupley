@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+    <script src="https://cdn.socket.io/socket.io-1.3.4.js"></script>
     <link rel="stylesheet" href="dist/css/admin/bootstrap.min.css" type="text/css">
     <!-- <link rel="stylesheet" href="base.css" type="text/css" > -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
@@ -37,8 +37,9 @@
 </head>
 <body>
 <div id="content"></div>
-<script src="bundle.js"></script>
 <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+<script src="bundle.js"></script>
+
 <script src="dist/js/material.min.js"></script>
 <script src="dist/js/ripples.min.js"></script>
 <!-- jQuery 2.1.4 -->

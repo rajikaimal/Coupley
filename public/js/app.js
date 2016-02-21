@@ -27,12 +27,19 @@ import AdminLogin from './components/admin/login.react';
 import MainChat from './components/chat/ChatMain.react';
 import MainActivity from './components/activityfeed/activityMain.react';
 import Threads from './components/chat/Threads.react';
-import users from './components/admin/users/userHome.react';
-import friends from './components/admin/users/friends.react';
-import enemies from './components/admin/users/enemies.react';
+import Users from './components/admin/users/userHome.react';
+import Friends from './components/admin/users/friends.react';
+import Enemies from './components/admin/users/enemies.react';
 import Cards from './components/admin/Cards.react';
-import settings from './components/admin/settings/settings.react';
+import Settings from './components/admin/settings/settings.react';
 import Forgot from './components/Forgot.react';
+import AdminForgot from './components/admin/AdminForgotPwd.react'
+import Feedback from './components/admin/feedback/FeedbackHome.react';
+import Timeline from './components/admin/feedback/timeline.react';
+import ActivityFeed from './components/admin/feedback/activity.react';
+import Privacy from './components/admin/feedback/privacy.react';
+import ChatFeed from './components/admin/feedback/chat.react'
+import OthersFeed from './components/admin/feedback/others.react'
 
 
 function requireAuth(nextState, replace) {
@@ -69,31 +76,43 @@ ReactDOM.render((
     <Route path="/login" component={Home} />
     <Route path="/dashboard" component={Admin} />
     <Route path="chat" component={MainChat}/>
+
     <Route path="/login" component={Login} />
       <Route path="/forgotpwd" component={Forgot} />
     <Route path="/register" component={Register} />
     <Route path="/quiz" component={Quiz} />
     <Route path="/AdminLogin" component={AdminLogin} />
+      <Route path="/Adminforgotpwd" component={AdminForgot} />
     <Route path="/dashboard" component={Admin} onEnter={requireAdminAuth}>
-        <Route path="/users" component={users} >
-            <Route path="friends" component={friends} />
-            <Route path="enemies" component={enemies} />
+        <Route path="/users" component={Users}>
+            <Route path="friends" component={Friends} />
+            <Route path="enemies" component={Enemies} />
+        </Route>
+        <Route path="/feedback" component={Feedback}>
+            <Route path="timeline" component={Timeline} />
+            <Route path="activity" component={ActivityFeed} />
+            <Route path="privacy" component={Privacy} />
+            <Route path="chat" component={ChatFeed} />
+            <Route path="others" component={OthersFeed} />
+
         </Route>
         <Route path="/cards" component={Cards} />
-        <Route path="/settings" component={settings} />
+        <Route path="/settings" component={Settings} />
     </Route>
       <Route path="/AdminSignout" onEnter={AdminSignout} />
     <Route path="/" component={Header} onEnter={requireAuth}>
 <Route path="activity" component={MainActivity}/>
       <Route path="/search" component={Search} />
       <Route path="/threads" component={Threads} />
+      <Route path="activity" component={MainActivity}/>
       <Route path="profile" component={Profile} >
-      	<Route path="activityfeed" component={ActivityContainer} />
-      	<Route path="about" component={About} />
+        <Route path="activityfeed" component={ActivityContainer} />
+        <Route path="about" component={About} />
         <Route path="photos" component={Photos} />
       </Route>
       <Route path="/:username" component={ProfileVisitor} >
         <Route path="activityfeed" component={ActivityContainerVisitor} />
+
         <Route path="about" component={AboutVisitor} />
         <Route path="photos" component={PhotosVisitor} />
       </Route>

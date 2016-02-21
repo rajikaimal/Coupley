@@ -58,7 +58,7 @@ class RegisterController extends Controller
                 return response()->json(['status' => 404], 404);
             }
         } else {
-            return response('exists', 200);
+            return response()->json(['status' => 200, 'exists' => true], 200);
         }
 
     }

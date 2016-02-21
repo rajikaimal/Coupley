@@ -27,7 +27,8 @@ const Friend = React.createClass({
     _handleUserId: function() {
        //alert(this.props.id);
         let credentials = {
-            id:this.props.id
+            id:this.props.id,
+            rowId:this.props.rowId
         };
         swal({  title: "Are you sure?",
                 text: "Do you really want to block this user?",
@@ -55,15 +56,19 @@ const Friend = React.createClass({
         return (
             <div>
                 <ListItem
-                    style={{backgroundColor: Colors.pink50}}
+                    style={{backgroundColor: Colors.pink50 ,height:150}}
                     leftAvatar={<Avatar src="https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg" />}
-                    primaryText={this.props.heading}
+                    primaryText={
+                        <p> {this.props.reported}<br/>
+                            <h4>{this.props.description} <br/>
+                        </h4>
+
+                    </p>
+                        }
                     secondaryText={
                         <p>
-                            <b> {this.props.firstname} {this.props.lastname} </b>
-                            <br/>
-                            <span style={{color: Colors.darkBlack}}>{this.props.gender}</span>
 
+                            Reported by {this.props.user}
 
                         </p>
                         }
@@ -71,7 +76,7 @@ const Friend = React.createClass({
                     rightIconButton={<IconMenu iconButtonElement={iconButtonElement} >
                         <MenuItem  onTouchTap={this._handleUserId}>Block user</MenuItem>
                     </IconMenu>}
-                    onTouchTap={this._redirect} />
+                     />
                 <Divider inset={true} />
 
             </div>

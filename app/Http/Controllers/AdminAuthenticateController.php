@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Admin;
+use App\User;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
+
 
 class AdminAuthenticateController extends Controller
 {
@@ -16,7 +18,7 @@ class AdminAuthenticateController extends Controller
 
     public function index(Request $request)
     {
-        $admins = Admin::find($request)->where('role', 'admin');
+        $admins = User::find($request)->where('role', 'admin');
 
         return $admins;
     }
@@ -37,5 +39,8 @@ class AdminAuthenticateController extends Controller
 
         // if no errors are encountered we can return a JWT
         return response()->json(compact('token'));
+
+
     }
+
 }

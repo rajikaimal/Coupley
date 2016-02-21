@@ -4,8 +4,37 @@
 
 import React from 'react';
 import { Link } from 'react-router';
+import TextField from 'material-ui/lib/text-field';
+import ProfileActions from '../../actions/admin/ProfileActions';
+import ProfileStore from '../../stores/admin/ProfileStore';
 
+const formcontol={
+    display: 'block',
+    width: '100%',
+    height: '34px',
+    padding: '2px 12px',
+    'fontSize': '14px',
+    'lineHeight': '1.42857143',
+    color: '#555',
+    'backgroundColor': '#fff',
+    'backgroundImage': 'none',
+    'WebkitBoxShadow': 'inset 0 1px 1px rgba(0, 0, 0, .075)',
+    'boxShadow': 'inset 0 1px 1px rgba(0, 0, 0, .075)',
+    'WebkitTransition': 'border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s',
+    'OTransition': 'border-color ease-in-out .15s, box-shadow ease-in-out .15s',
+    transition: 'border-color ease-in-out .15s, box-shadow ease-in-out .15s'
+}
 var Sidebar = React.createClass({
+    getInitialState: function() {
+        return ProfileStore.getuserdata()
+    },
+    componentDidMount: function() {
+        ProfileActions.getAdminProfileData();
+        ProfileStore.addChangeListener(this._onChange);
+    },
+    _onChange: function() {
+        this.setState(ProfileStore.getuserdata());
+    },
     render: function () {
         return (
             <div>
@@ -18,7 +47,7 @@ var Sidebar = React.createClass({
                                 <img src="dist/img/user2-160x160.jpg" className="img-circle" alt="User Image"/>
                             </div>
                             <div className="pull-left info">
-                                <p>Isuru Dilhan</p>
+                                <p>{this.state.firstname} {this.state.lastname}</p>
                                 <a>
                                     <i className="fa fa-circle text-success"></i>
                                     Online</a>
@@ -27,7 +56,9 @@ var Sidebar = React.createClass({
 
                         <form action="#" method="get" className="sidebar-form">
                             <div className="input-group">
-                                <input type="text" className="form-control" placeholder="Search.."/>
+                                <TextField
+                                    hintText="Hint Text" style={formcontol} fullWidth={true}
+                                />
                                 <span className="input-group-addon">
                                     <i className="fa fa-search"></i>
                                 </span>
@@ -53,7 +84,7 @@ var Sidebar = React.createClass({
                             </li>
 
                             <li>
-                                <Link to={`/settings`}>
+                                <Link to={`/feedback`}>
                                     <i className="fa fa-calendar"></i>
                                     <span>Feedbacks</span>
                                     <small className="label pull-right bg-red">3</small>

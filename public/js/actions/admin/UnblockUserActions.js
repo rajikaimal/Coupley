@@ -9,6 +9,7 @@ var UnblockActions = {
 
             }
         });
+
         document.location = "/cp-admin#/users/friends";
     }
 };

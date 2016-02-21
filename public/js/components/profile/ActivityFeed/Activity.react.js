@@ -23,23 +23,26 @@ const iconButtonElement = (
 
 const rightIconMenu = (
   <IconMenu iconButtonElement={iconButtonElement}>
-    <MenuItem>Edit</MenuItem>
+    <MenuItem >Edit</MenuItem>
     <MenuItem>Remove</MenuItem>
   </IconMenu>
 );
 
 const Activity = React.createClass({
+	_handleItemTouch: function() {
+		console.log('Click ....');
+	},	
 	render: function() {
 		return (
 			<div>
 		        <ListItem
 		          leftAvatar={<Avatar src="https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg" />}
-		          primaryText={this.props.heading}
+		          primaryText={ "@" + localStorage.getItem('user')}
 		          secondaryText={
 		            <p>
-		              <b> {this.props.date} {this.props.time} </b><br/>
-		              <span style={{color: Colors.darkBlack}}>Brendan Lim</span> --
-		              {this.props.description}
+		            	<span style={{color: Colors.darkBlack}}>{this.props.post}</span>
+		           		<br/>
+		           		<b>{this.props.time}</b>
 		            </p>
 		          }
 		          secondaryTextLines={2}

@@ -28,6 +28,6 @@ class ChatMigration extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('chats');
     }
 }

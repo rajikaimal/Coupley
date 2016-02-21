@@ -5,20 +5,21 @@ import React from 'react';
 import { Link } from 'react-router';
 import LoginStore from '../../stores/LoginStore';
 import HeaderActions from '../../actions/HeaderActions';
+import ProfileActions from '../../actions/admin/ProfileActions';
+import ProfileStore from '../../stores/admin/ProfileStore';
 
 var Header = React.createClass({
     getInitialState: function() {
-        return {
-            firstname: LoginStore.getFirstname()
-        }
-    },
-    componentDidMount: function() {
-        LoginStore.addChangeListener(this._onChange);
-        //HeaderActions.getprofilename(LoginStore.getEmail());
-    },
-    _onChange: function() {
-        this.setState({ firstname: LoginStore.getFirstname() });
-    },
+            return ProfileStore.getuserdata()
+        },
+            componentDidMount: function() {
+
+            ProfileStore.addChangeListener(this._onChange);
+                ProfileActions.getAdminProfileData();
+        },
+        _onChange: function() {
+            this.setState(ProfileStore.getuserdata());
+        },
     render: function () {
         return (
             <div>
@@ -261,12 +262,12 @@ var Header = React.createClass({
                                         <li className="user-header">
                                             <img src="dist/img/user2-160x160.jpg" className="img-circle" alt="User Image"/>
                                             <p>
-                                                Isuru Dilhan - Web Developer
-                                                <small>Member since Nov. 2012</small>
+                                                {this.state.firstname} {this.state.lastname} - {this.state.job}
+                                                <small>Member since {this.state.created_at}</small>
                                             </p>
                                         </li>
 
-                                        <li className="user-body">
+                                    {/*      <li className="user-body">
                                             <div className="col-xs-4 text-center">
                                                 <a href="#">Followers</a>
                                             </div>
@@ -276,7 +277,7 @@ var Header = React.createClass({
                                             <div className="col-xs-4 text-center">
                                                 <a href="#">Friends</a>
                                             </div>
-                                        </li>
+                                        </li> */}
 
                                         <li className="user-footer">
                                             <div className="pull-left">

@@ -3,7 +3,7 @@
  */
 var AppDispatcher = require('../../dispatcher/AppDispatcher');
 var LoginConstants = require('../../constants/LoginConstants');
-var SearchConstants = require('../../constants/SearchConstants');
+var SearchConstants = require('../../constants/FeedConstants');
 
 var UsersActions = {
 

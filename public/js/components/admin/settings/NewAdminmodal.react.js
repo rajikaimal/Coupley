@@ -15,6 +15,8 @@ import Paper from 'material-ui/lib/paper';
 import CardText from 'material-ui/lib/card/card-text';
 import DropDownMenu from 'material-ui/lib/DropDownMenu';
 import MenuItem from 'material-ui/lib/menus/menu-item';
+import GridList from 'material-ui/lib/grid-list/grid-list';
+import GridTile from 'material-ui/lib/grid-list/grid-tile';
 
 import Table from 'material-ui/lib/table/table';
 import TableRow from 'material-ui/lib/table/table-row';
@@ -23,6 +25,29 @@ import TableBody from 'material-ui/lib/table/table-body';
 import Colors from 'material-ui/lib/styles/colors';
 
 import RegisterActions from '../../../actions/admin/AdminRegisterActions';
+
+const tilesData = [
+    {
+        img: '../../../../img/Add_users_plus_group_people_friends.png',
+        title: 'New Administrator',
+
+    }
+
+];
+const style = {
+    width: 300,
+    height:50,
+    fontSize: "20px",
+    color:"white"
+};
+
+const tileElements = tilesData.map(tile => <GridTile
+    key={tile.img}
+    title={<FlatButton label={tile.title} secondary={true} style={style} linkButton={true}  />}
+
+><img src={tile.img} /></GridTile>);
+const gridListStyle = {width: 600, height: 220, overflowY: 'auto'};
+
 
 const customContentStyle = {
     width: '100%'
@@ -192,23 +217,27 @@ var Header = React.createClass({
         let lastname = this.refs.lastname.getValue();
         let job = this.refs.job.getValue();
         let email = this.refs.email.getValue();
-
         let password = this.refs.password.getValue();
 
         if (validatefirstname(firstname).error) {
             document.getElementById('firstname').innerHTML = validatefirstname(firstname).error;
+            return false;
         }
-        if (validatelastname(lastname).error) {
+        else if (validatelastname(lastname).error) {
             document.getElementById('lastname').innerHTML = validatelastname(lastname).error;
+            return false;
         }
-        if (validatejobname(job).error) {
+        else if (validatejobname(job).error) {
             document.getElementById('job').innerHTML = validatejobname(job).error;
+            return false;
         }
-        if (!validateEmail(email)) {
+        else if (!validateEmail(email)) {
             document.getElementById('email').innerHTML = '*Invalid Email !';
+            return false;
         }
-        if (validatePassword(password).error) {
+        else if (validatePassword(password).error) {
             document.getElementById('password').innerHTML = validatePassword(password).error;
+            return false;
         }
         else {
             let credentials = {
@@ -220,7 +249,7 @@ var Header = React.createClass({
             };
             RegisterActions.checks(credentials);
             console.log('Done calling !');
-            return true;
+
         }
     },
 
@@ -239,21 +268,24 @@ var Header = React.createClass({
             />,
         ];
         return (
-            <div className="raw">
-                <div className="col-lg-3"></div>
-                <div className="col-lg-6">
+            <div className="" style={{"margin-left": "86%","top": "-218px", "position": "relative",
+                "min-height": "1px",
+                "padding-right": "15px",
+                "padding-left": "15px"}}>
 
+                <div className="">
 
-                    <RaisedButton
-                        label="Add New Administrator"
-                        style={styles.button}
-                        fullWidth={true}
-                        onTouchTap={this.handleOpen}
-                    >
+                    <div>
 
-                    </RaisedButton>
+                        <GridList
+                            cellHeight={200}
+                            style={gridListStyle}
+                            onTouchTap={this.handleOpen}
+                        >
+                  {tileElements}
+                        </GridList>
+                    </div>
                 </div>
-                <div className="col-lg-3"></div>
 
              {/* modal content */}
                 <Dialog
@@ -286,6 +318,7 @@ var Header = React.createClass({
                                             <span id="job" style={err}> </span>
                                             <br />
                                             <br />
+                                            <snack/>
                                             <TextField
                                                 type="password"
                                                 hintText="Password" ref="password" hintStyle={styles.errorStyle} fullwidth={true}/>
