@@ -22,6 +22,7 @@ import ThreadStore from '../../stores/ThreadStore';
 
 var socket = io.connect('http://localhost:8081');
 var User1 = LoginStore.getFirstname();
+var User1Email=LoginStore.getEmail();
 
 
 const Sty1={
@@ -37,6 +38,7 @@ const Sty2={
 
 
  socket.emit('LoggedUser',User1);
+ socket.emit('LoggedUserEmail',User1Email);
 
 const Threads = React.createClass({
 

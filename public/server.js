@@ -23,17 +23,47 @@ io.on('connection', function (socket) {
   socket.on('LoggedUser',function(data){
             console.log(data in connectedUser);
      if((data !=null)){
-       //(!(data in connectedUser)) &&
+
            socket.username=data;
            connectedUser[socket.username]=socket.id;
            console.log(connectedUser);
            console.log(socket.username+" menna socket name eka!");
-             console.log("log wechcha user list ekata add una! "+data);
+           console.log("log wechcha user list ekata add una! "+data);
+
+
        }
        else{
          console.log("log wela hitpu ekek awa "+data);
+
+
+
+
       }
   });
+
+
+   socket.on('LoggedUserEmail',function(data){
+
+     connection.query("SELECT id FROM users WHERE email='"+data+"' ", function(err, result) {
+                     var ID = result[0].id;
+                     console.log("Menna userge id :"+ID);
+                     connection.query("SELECT user2 FROM liked WHERE likeduser='"+ID+"' ",function(err,result){
+                                     for(var i=0;i<result.length;i++){
+                                          Likedusers[i]=result[i].user2;
+                                        }
+                                        console.log("List of users liked by this user :"+Likedusers);
+
+                    });
+
+     });
+
+
+   });
+
+
+
+
+
 
 
 
@@ -47,31 +77,22 @@ socket.on('message', function (chat) {
                   };
 
 
-       connection.query("SELECT id FROM users WHERE email='"+ThisUserEmail+"' ", function(err, result) {
-                       var ID = result[0].id;
-                       console.log("Menna id eka like karapu ekage "+ID);
-                       connection.query("SELECT user2 FROM liked WHERE likeduser='"+ID+"' ",post,function(err,result){
-                                       for(var i=0;i<result.length;i++){
-                                            Likedusers[i]=result[i].user2;
-                                          }
-                                          console.log("menna user "+Likedusers);
 
-                      });
-
-       });
 
 
 
 
        connection.query('INSERT INTO chats SET ?', post, function(err, result) {
-                       connection.query("SELECT message FROM chats WHERE 	user1 IN ('"+post.user1+"','"+post.user2+"') AND user2 IN ('"+post.user1+"','"+post.user2+"') ", function(err, result) {
+                       connection.query("SELECT message,user1 FROM chats WHERE 	user1 IN ('"+post.user1+"','"+post.user2+"') AND user2 IN ('"+post.user1+"','"+post.user2+"') ", function(err, result) {
 
-                                       socket.broadcast.to(connectedUser[chat.user2]).emit('chat', { message:result});
+                                      socket.broadcast.to(connectedUser[chat.user2]).emit('chat', { message:result});
                                                       console.log("send unaaaa!");
                        });
       });
 
    });
+
+
   socket.on('disconnect', function(){
           console.log('user disconnected');
   });
