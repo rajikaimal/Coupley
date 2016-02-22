@@ -27,7 +27,7 @@ const ProfilePic = React.createClass({
   getInitialState: function() {
     return {
       editing: false,
-      files: '',
+      files: {},
       preview: ''
     }
   },
@@ -51,9 +51,28 @@ const ProfilePic = React.createClass({
       files: ''
     });
   },
+  _saveImage: function() {
+    var data = this.state.files[0];
+    $.ajax({
+        type:'POST',
+        url: '/api/profile/profilepic',
+        data:data,
+        cache:false,
+        contentType: false,
+        processData: false,
+        success:function(data){
+            console.log("success");
+            console.log(data);
+        },
+        error: function(data){
+            console.log("error");
+            console.log(data);
+        }
+    });
+  },
   renderSave: function() {
     return (
-      this.state.preview ? <div><RaisedButton label="Save" primary={true} style={style}/> <RaisedButton label="Cancel" onClick={this._cancelEdit} style={style} /></div>: ''
+      this.state.preview ? <div><RaisedButton onClick={this._saveImage} label="Save" primary={true} style={style}/> <RaisedButton label="Cancel" onClick={this._cancelEdit} style={style} /></div>: ''
     );
   },
   render: function() {
