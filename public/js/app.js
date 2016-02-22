@@ -36,8 +36,10 @@ import Feedback from './components/admin/feedback/FeedbackHome.react';
 import Timeline from './components/admin/feedback/timeline.react';
 import ActivityFeed from './components/admin/feedback/activity.react';
 import Privacy from './components/admin/feedback/privacy.react';
-import ChatFeed from './components/admin/feedback/chat.react'
-import OthersFeed from './components/admin/feedback/others.react'
+import ChatFeed from './components/admin/feedback/chat.react';
+import OthersFeed from './components/admin/feedback/others.react';
+import Graph from './components/admin/graphs/graph.react';
+import PieGraph from './components/admin/graphs/piechart.react';
 
 
 function requireAuth(nextState, replace) {
@@ -88,11 +90,12 @@ ReactDOM.render((
             <Route path="privacy" component={Privacy} />
             <Route path="chat" component={ChatFeed} />
             <Route path="others" component={OthersFeed} />
-
         </Route>
         <Route path="/cards" component={Cards} />
         <Route path="/settings" component={Settings} />
     </Route>
+      <Route path="/graph" component={Graph} />
+      <Route path="/piegraph" component={PieGraph} />
       <Route path="/AdminSignout" onEnter={AdminSignout} />
     <Route path="/" component={Header} onEnter={requireAuth}>
       <Route path="/search" component={Search} />

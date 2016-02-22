@@ -3,6 +3,8 @@
  */
 import React from 'react';
 import { Link } from 'react-router';
+import CustomerGraph from './graphs/customers.react';
+import PieGraph from './graphs/pieChartCustomers.react';
 
 const Cards = React.createClass({
     render: function () {
@@ -70,7 +72,12 @@ const Cards = React.createClass({
                         </a>
                     </div>
                 </div>
+
+                <CustomerGraph/>
+                <PieGraph/>
+
             </div>
+
         );
     }
 });

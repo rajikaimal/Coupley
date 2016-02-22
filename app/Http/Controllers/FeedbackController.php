@@ -19,6 +19,7 @@ class FeedbackController extends Controller
             return response()->json(['status' => 505], 505);
         }
     }
+
     public function activityFeed()
     {
         if ($feeds = \DB::select('select * from feedback where category="activity"')) {
@@ -28,6 +29,7 @@ class FeedbackController extends Controller
             return response()->json(['status' => 505], 505);
         }
     }
+
     public function privacy()
     {
         if ($feeds = \DB::select('select * from feedback where category="privacy"')) {
@@ -37,6 +39,7 @@ class FeedbackController extends Controller
             return response()->json(['status' => 505], 505);
         }
     }
+
     public function chat()
     {
         if ($feeds = \DB::select('select * from feedback where category="chat"')) {
@@ -46,6 +49,7 @@ class FeedbackController extends Controller
             return response()->json(['status' => 505], 505);
         }
     }
+
     public function other()
     {
         if ($feeds = \DB::select('select * from feedback where category="other"')) {
@@ -54,6 +58,20 @@ class FeedbackController extends Controller
         } else {
             return response()->json(['status' => 505], 505);
         }
+    }
+
+    public function markfeed(Request $request)
+    {
+
+        $id = $request->id;
+        if ($feeds = \DB::table('feedback')->where('id', $id)->delete()) {
+
+            return response()->json(['status' => 201], 201);
+
+        } else {
+            return response()->json(['status' => 404], 404);
+        }
+
     }
 
     public function SendMail($email, $user, $pwd)
@@ -89,13 +107,7 @@ class FeedbackController extends Controller
             echo 'Message has been sent';
         }
     }
-    public function Adminprofile(Request $request)
-    {
-        $email = $request->email;
-        $admindetails = User::where('email', $email)->get();
 
-        return response()->json(['admin' => $admindetails]);
-    }
 }
 
 
