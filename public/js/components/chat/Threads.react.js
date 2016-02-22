@@ -32,13 +32,15 @@ const Sty1={
 
 const Sty2={
   height:100,
-   'margin-top':0
+  marginTop:0
 
 }
 
 
  socket.emit('LoggedUser',User1);
  socket.emit('LoggedUserEmail',User1Email);
+
+
 
 const Threads = React.createClass({
 
@@ -56,6 +58,7 @@ const Threads = React.createClass({
     });
 
   },
+
   socketio: function() {
 
     socket.on('chat', function (data) {

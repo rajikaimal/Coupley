@@ -27,7 +27,7 @@ io.on('connection', function (socket) {
            socket.username=data;
            connectedUser[socket.username]=socket.id;
            console.log(connectedUser);
-           console.log("Logged User :"+socket.username);
+           console.log("Logged User's Name :"+socket.username);
 
 
 
@@ -46,13 +46,15 @@ io.on('connection', function (socket) {
 
      connection.query("SELECT id FROM users WHERE email='"+data+"' ", function(err, result) {
                      var ID = result[0].id;
-                     console.log("Logged users id :"+ID);
+                     console.log("Logged users ID :"+ID);
                      connection.query("SELECT user2 FROM liked WHERE likeduser='"+ID+"' ",function(err,result){
                                             for(var i=0;i<result.length;i++){
                                                  Likedusers[i]=result[i].user2;
                                                 }
                                         console.log("List of users liked by this user :"+Likedusers);
 
+                            socket.broadcast.to(connectedUser[socket.username]).emit('chatList', {Userlist:Likedusers});
+                                            console.log("Liked list sent to "+socket.username);
                                     });
 
                      });
