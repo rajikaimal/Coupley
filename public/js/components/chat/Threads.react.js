@@ -58,7 +58,12 @@ const Threads = React.createClass({
     });
 
   },
-
+  userlistio:function(){
+    socket.on('chatList',function(data){
+        console.log(data.Userlist);
+        this.setState({MyOnlineList:data.Userlist});
+    }.bind(this));
+ },
   socketio: function() {
 
     socket.on('chat', function (data) {
@@ -78,7 +83,6 @@ const Threads = React.createClass({
       emailusr1:Eml
     }
     console.log('Emiting ...');
-
     socket.emit('message', chat);
     console.log('Done ...');
 
@@ -86,7 +90,7 @@ const Threads = React.createClass({
   render: function() {
     return (
       <Paper zDepth={1} style={Sty1}>
-        {this.socketio()}
+        {this.socketio()} {this.userlistio()}
         <CardTitle title="Threads" subtitle="" />
         <CardText>
           Message threads
@@ -94,8 +98,6 @@ const Threads = React.createClass({
           {
 
             this.state.threads.map(function(item) {
-              //return (<li>{item.message}</li>);
-                /*  {item.message}.replace(':)',<img src="../../../img/smileys/smile53893.gif"/>); */
 
               return(<ListItem
                leftAvatar={<Avatar src="profile pic" />}
