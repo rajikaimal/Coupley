@@ -5,19 +5,19 @@ const StraightQuestions = [
 	},
 	{
 		"id": 2,
-		"question": "Would you go out for a movie on saturday night ?",
+		"question": "Are you messy ?",
 	},
 	{
 		"id": 3,
-		"question": "Would you go out for a movie on saturday night ?",
+		"question": "Have you cheated anyone ?",
 	},
 	{
 		"id": 4,
-		"question": "Would you go out for a movie on saturday night ?",
+		"question": "Looking for a long term relationship ?",
 	},
 	{
 		"id": 5,
-		"question": "Would you go out for a movie on saturday night ?",
+		"question": "Netflix and chill ?",
 	}
 	
 ];

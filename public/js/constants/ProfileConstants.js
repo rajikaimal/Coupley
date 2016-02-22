@@ -7,5 +7,7 @@ module.exports = keyMirror({
   LIKESTATUS: null,
   LIKEBACKSTATUS: null,
   BLOCKSTATUS: null,
-  PROPPERMISSION: null
+  PROPPERMISSION: null,
+  EDITACTIVITY: null,
+  FEED: null
 });

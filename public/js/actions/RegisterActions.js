@@ -24,6 +24,33 @@ var RegisterActions = {
     console.log('Action register');
     
     document.location = "/";
+  },
+  checkUsername: function(username) {
+    console.log('Sending username' + username);
+    $.get('/api/register/checkusername?username=' + username, function(response) {
+      console.log(response);
+      if(response.status === 201) {
+        if(response.exists == true) {
+          document.getElementById('username').innerHTML = "*already exists";
+        }
+        if(response.exists == false) {
+          document.getElementById('username').innerHTML = "";
+        }
+      }
+    });
+  },
+  checkEmail: function(email) {
+    $.get('/api/register/checkemail?email=' + email, function(response) {
+      console.log(response);
+      if(response.status === 201) {
+        if(response.exists == true) {
+          document.getElementById('email').innerHTML = "*already exists";
+        }
+        if(response.exists == false) {
+          document.getElementById('email').innerHTML = "";
+        }
+      }
+    });
   }
 };
 
