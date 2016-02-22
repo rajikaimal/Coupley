@@ -12,7 +12,7 @@ class Smilies extends Migration
      */
     public function up()
     {
-      Schema::create('smilies', function (Blueprint $table) {
+        Schema::create('smilies', function (Blueprint $table) {
           $table->increments('id');
           $table->string('symbol');
           $table->string('image_name');

@@ -23,7 +23,7 @@ class RegisterController extends Controller
             $user->password = \Hash::make($request->password);
             $user->orientation = $request->orientation;
             $user->role = 'user';
-            
+
             if ($user->save()) {
                 return response()->json(['status' => 201], 201);
             } else {
@@ -32,29 +32,32 @@ class RegisterController extends Controller
         } else {
             return response()->json(['status' => 200, 'exists' => true], 200);
         }
-
     }
+
     /*
         Returns @json
         Checks username exists or not 
     **/
-    public function checkusername(Request $request) {
+    public function checkusername(Request $request)
+    {
         $username = $request->username;
         $user = User::where('username', $username)->first();
-        if($user != null) {
+        if ($user != null) {
             return response()->json(['status' => 201, 'exists' => true], 201);
         } else {
             return response()->json(['status' => 201, 'exists' => false], 201);
         }
     }
+
     /*
         Returns @json
         Checks email exists or not 
     **/
-    public function checkemail(Request $request) {
+    public function checkemail(Request $request)
+    {
         $email = $request->email;
         $user = User::where('email', $email)->first();
-        if($user != null) {
+        if ($user != null) {
             return response()->json(['status' => 201, 'exists' => true], 201);
         } else {
             return response()->json(['status' => 201, 'exists' => false], 201);
