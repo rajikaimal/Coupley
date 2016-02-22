@@ -6,7 +6,17 @@ var LoginConstants = require('../../constants/LoginConstants');
 var FeedConstants = require('../../constants/FeedConstants');
 
 var FeedActions = {
+    MarkAsDone: function (credentials) {
 
+        $.post('/admin-api/markfeed', credentials, function (data) {
+            if (data.status === 201) {
+
+            }
+        });
+
+        document.location = "/cp-admin#/feedback/";
+    }
+    ,
     timelineFeeds: function () {
         $.get('/admin-api/timeline', function (response) {
             if (response.status == 200) {
@@ -21,7 +31,7 @@ var FeedActions = {
             }
         });
     }
-,
+    ,
     activityFeeds: function () {
         $.get('/admin-api/activity', function (response) {
             if (response.status == 200) {

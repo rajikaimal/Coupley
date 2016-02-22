@@ -119,6 +119,8 @@ Route::group(['prefix' => 'admin-api'], function () {
     Route::get('privacy', 'FeedbackController@privacy');
     Route::get('chat', 'FeedbackController@chat');
     Route::get('others', 'FeedbackController@other');
+    //mark feedbacks
+    Route::post('markfeed', 'FeedbackController@markfeed');
 });
 /*
 |--------------------------------------------------------------------------

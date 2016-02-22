@@ -14,44 +14,44 @@ import RaisedButton from 'material-ui/lib/raised-button';
 import FloatingActionButton from 'material-ui/lib/floating-action-button';
 
 const iconButtonElement = (
-  <IconButton
-    touch={true}
-    tooltip="more"
-    tooltipPosition="bottom-left">
-    <MoreVertIcon color={Colors.grey400} />
-  </IconButton>
+    <IconButton
+        touch={true}
+        tooltip="more"
+        tooltipPosition="bottom-left">
+        <MoreVertIcon color={Colors.grey400} />
+    </IconButton>
 );
 
 const rightIconMenu = (
-  <IconMenu iconButtonElement={iconButtonElement}>
-    <MenuItem>Delete</MenuItem>
-    <MenuItem>Status</MenuItem>
-  </IconMenu>
+    <IconMenu iconButtonElement={iconButtonElement}>
+        <MenuItem>Delete</MenuItem>
+        <MenuItem>Status</MenuItem>
+    </IconMenu>
 );
 
 
-
-const Messagesbox=React.createClass({
-     render:function(){
-       return(
-         <div>
-             <List subheader="Today">
-               <ListItem
-                 leftAvatar={<Avatar src="http://vignette1.wikia.nocookie.net/family-guy-fanverse/images/d/d7/Stewie-griffin.gif/revision/latest?cb=20140215140724" />}
-                 rightIconButton={rightIconMenu}
-                 primaryText="Brendan Lim"
-                 secondaryText={
-                   <p>
-                     <span style={{color: Colors.darkBlack}}>Brunch this weekend?</span><br/>
-                     I&apos;ll be in your neighborhood doing errands this weekend. Do you want to grab brunch?
-                   </p>
-                 }
-                 secondaryTextLines={2} />
-               <Divider inset={true} />
-             </List>
-         </div>
-       );
-     }
+const Messagesbox = React.createClass({
+    render: function () {
+        return (
+            <div>
+                <List subheader="Today">
+                    <ListItem
+                        leftAvatar={<Avatar src="http://vignette1.wikia.nocookie.net/family-guy-fanverse/images/d/d7/Stewie-griffin.gif/revision/latest?cb=20140215140724" />}
+                        rightIconButton={rightIconMenu}
+                        primaryText="Brendan Lim"
+                        secondaryText={
+                            <p>
+                                <span style={{color: Colors.darkBlack}}>Brunch this weekend?</span>
+                                <br/>
+                                I&apos;ll be in your neighborhood doing errands this weekend. Do you want to grab brunch?
+                            </p>
+                            }
+                        secondaryTextLines={2} />
+                    <Divider inset={true} />
+                </List>
+            </div>
+        );
+    }
 });
 
 

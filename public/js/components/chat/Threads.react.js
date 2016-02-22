@@ -24,53 +24,53 @@ var socket = io.connect('http://localhost:8081');
 var User1 = LoginStore.getFirstname();
 
 
-const Sty1={
-  height:550,
-  overflow:'auto'
+const Sty1 = {
+    height: 550,
+    overflow: 'auto'
 }
 
-const Sty2={
-  height:100,
-   'margin-top':0
+const Sty2 = {
+    height: 100,
+    'margin-top': 0
 
 }
 
 
- socket.emit('LoggedUser',User1);
+socket.emit('LoggedUser', User1);
 
 const Threads = React.createClass({
 
   getInitialState: function() {
     return {
-      threads: ThreadStore.getmessages()
+        threads: ThreadStore.getmessages()
     }
   },
-  componentDidMount: function() {
-    ThreadStore.addChangeListener(this._onChange);
-  },
-  _onChange: function() {
-    this.setState({
-        threads: ThreadStore.getmessages()
-    });
+    componentDidMount: function () {
+        ThreadStore.addChangeListener(this._onChange);
+    },
+    _onChange: function () {
+        this.setState({
+            threads: ThreadStore.getmessages()
+        });
 
-  },
+    },
   socketio: function() {
 
     socket.on('chat', function (data) {
       console.log(data.message);
-      console.log(data.user2);
+        console.log(data.user2);
       this.setState({threads: data.message});
     }.bind(this));
   },
   _sendmessage: function() {
-    let message = this.refs.message2.value;
-    let User2 =this.refs.message1.value;
-    let Eml=LoginStore.getEmail();
+      let message = this.refs.message2.value;
+      let User2 = this.refs.message1.value;
+      let Eml = LoginStore.getEmail();
     let chat = {
-      message: message,
-      user1:User1,
-      user2:User2,
-      emailusr1:Eml
+        message: message,
+        user1: User1,
+        user2: User2,
+        emailusr1: Eml
     }
     console.log('Emiting ...');
 
@@ -80,43 +80,43 @@ const Threads = React.createClass({
   },
   render: function() {
     return (
-      <Paper zDepth={1} style={Sty1}>
+        <Paper zDepth={1} style={Sty1}>
         {this.socketio()}
         <CardTitle title="Threads" subtitle="" />
         <CardText>
           Message threads
-          <div>
+            <div>
           {
 
             this.state.threads.map(function(item) {
-              //return (<li>{item.message}</li>);
+                //return (<li>{item.message}</li>);
                 /*  {item.message}.replace(':)',<img src="../../../img/smileys/smile53893.gif"/>); */
 
-              return(<ListItem
-               leftAvatar={<Avatar src="profile pic" />}
-               primaryText="Name"
-               secondaryText={
-              <p>
+                return (<ListItem
+                    leftAvatar={<Avatar src="profile pic" />}
+                    primaryText="Name"
+                    secondaryText={
+                        <p>
                 {item.message}
-             </p>
-              }
-               secondaryTextLines={2}
-              />
-                   );
+                        </p>
+                        }
+                    secondaryTextLines={2}
+                />
+                );
 
             })
           }
-          </div>
-          <Paper style={Sty2} >
-          <input type="text" ref="message1" />
-          <input type="text" ref="message2" />
+            </div>
+            <Paper style={Sty2} >
+                <input type="text" ref="message1" />
+                <input type="text" ref="message2" />
           <input type="button" onClick={this._sendmessage} value="Send message" />
-          </Paper>
+            </Paper>
         </CardText>
         <CardActions>
 
         </CardActions>
-      </Paper>
+        </Paper>
     );
   }
 

@@ -26,7 +26,8 @@ class AdminPwdController extends Controller
         }
 
         // if no errors update the new password
-        {   $this->SendMail($mail, 'Administrator', $newpassword);
+        {
+            $this->SendMail($mail, 'Administrator', $newpassword);
             $hashed = \Hash::make($newpassword);
             \DB::table('users')
                 ->where('email', $mail)
@@ -58,12 +59,12 @@ class AdminPwdController extends Controller
 //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
         $mail->isHTML(true);                                  // Set email format to HTML
         $mail->Subject = 'COUPLEY password update';
-        $mail->Body = 'Dear '.$user.', your updated password is '.$pwd;
+        $mail->Body = 'Dear ' . $user . ', your updated password is ' . $pwd;
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
-        if (! $mail->send()) {
+        if (!$mail->send()) {
             echo 'Message could not be sent.';
-            echo 'Mailer Error: '.$mail->ErrorInfo;
+            echo 'Mailer Error: ' . $mail->ErrorInfo;
         } else {
             echo 'Message has been sent';
         }
