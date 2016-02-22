@@ -12,9 +12,9 @@ class ThreadController extends Controller
 {
   public function sendMessage(Request $request){
     $chat=new Thread;
-    $chat->user1=$request
-    $chat->user2=$request
-    $chat->message=$request
+    $chat->user1=$request;
+    $chat->user2=$request;
+    $chat->message=$request;
     $chat->save();
   }
 
