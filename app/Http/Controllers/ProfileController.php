@@ -26,7 +26,7 @@ class ProfileController extends Controller
         try {
             $userdetails = User::where('email', $email)->get();
 
-            return response()->json(['user' => $userdetails]);
+            return response()->json(['user' => $userdetails, 'status' => 200]);
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 505], 505);
         }
