@@ -250,7 +250,7 @@ class ProfileController extends Controller
                 ->where('blocked_user_id', $user1ID[0]->id)
                 ->get();
 
-            if (!$result->isEmpty()) {
+            if (! $result->isEmpty()) {
                 return response()->json(['permission' => false, 'status' => 200], 200);
             } elseif ($result->isEmpty()) {
                 return response()->json(['permission' => true, 'status' => 200], 200);
@@ -272,7 +272,7 @@ class ProfileController extends Controller
 
         try {
             $results = ActivityFeed::where('user_id', $userID[0]->id)->get();
-            if (!$results->isEmpty()) {
+            if (! $results->isEmpty()) {
                 return response()->json(['status' => 200, 'data' => $results], 200);
             } else {
                 return response()->json(['status' => 200, 'data' => null], 200);
@@ -304,7 +304,7 @@ class ProfileController extends Controller
                 ->update(['post' => $editActvity])
             ) {
                 $results = ActivityFeed::where('user_id', $userID[0]->id)->get();
-                if (!$results->isEmpty()) {
+                if (! $results->isEmpty()) {
                     return response()->json(['status' => 200, 'data' => $results], 200);
                 } else {
                     return response()->json(['status' => 200, 'data' => null], 200);

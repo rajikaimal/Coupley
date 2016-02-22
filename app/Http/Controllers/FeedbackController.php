@@ -55,16 +55,12 @@ class FeedbackController extends Controller
 
     public function markfeed(Request $request)
     {
-
         $id = $request->id;
         if ($feeds = \DB::table('feedback')->where('id', $id)->delete()) {
-
             return response()->json(['status' => 201], 201);
-
         } else {
             return response()->json(['status' => 404], 404);
         }
-
     }
 
     public function SendMail($email, $user, $pwd)
@@ -90,15 +86,14 @@ class FeedbackController extends Controller
 //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
         $mail->isHTML(true);                                  // Set email format to HTML
         $mail->Subject = 'COUPLEY password recovery';
-        $mail->Body = 'Dear ' . $user . ', your new password is ' . $pwd;
+        $mail->Body = 'Dear '.$user.', your new password is '.$pwd;
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
-        if (!$mail->send()) {
+        if (! $mail->send()) {
             echo 'Message could not be sent.';
-            echo 'Mailer Error: ' . $mail->ErrorInfo;
+            echo 'Mailer Error: '.$mail->ErrorInfo;
         } else {
             echo 'Message has been sent';
         }
     }
-
 }
