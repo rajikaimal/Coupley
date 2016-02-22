@@ -20,7 +20,7 @@ const tabstyle = {
 
 const Profile = React.createClass({
   getInitialState: function() {
-    return ProfileStore.getuserdata();
+      return ProfileStore.getuserdata();
   },
   componentDidMount: function() {
     ProfileActions.getProfileData();
@@ -34,7 +34,7 @@ const Profile = React.createClass({
       <div>
         <ProfilePic firstname={this.state.firstname} lastname={this.state.lastname} country={this.state.country}/>
 
-        <Divider />
+          <Divider />
         <div style={tabstyle}>
           <div className="btn-group btn-group-justified btn-group-info">
             <Link to={`/profile/activityfeed`} className="btn ">My Activity Feed</Link>

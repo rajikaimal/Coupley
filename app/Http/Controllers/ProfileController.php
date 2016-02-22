@@ -81,7 +81,7 @@ class ProfileController extends Controller
             $result1 = Likes::where('user1', $likedUsername)
                     ->where('user2', $gotLikedUsername)->get();
             $result2 = Likes::where('user1', $gotLikedUsername)
-                        ->where('user2', $likedUsername)->get();
+                ->where('user2', $likedUsername)->get();
 
             if ($result1->isEmpty() && $result2->isEmpty()) {
                 $user1ID = User::where('username', $likedUsername)->get(['id']);
@@ -113,12 +113,12 @@ class ProfileController extends Controller
             $result1 = Likes::where('user1', $unlikedUsername)
                     ->where('user2', $gotunLikedUsername)->get();
             $result2 = Likes::where('user1', $gotunLikedUsername)
-                        ->where('user2', $unlikedUsername)->get();
+                ->where('user2', $unlikedUsername)->get();
 
             if ($result1 !== null && $result2 !== null) {
                 Likes::where('user1', $unlikedUsername)
-                        ->where('user2', $gotunLikedUsername)
-                        ->delete();
+                    ->where('user2', $gotunLikedUsername)
+                    ->delete();
 
                 return response()->json(['status' => 200], 200);
             } else {
@@ -163,8 +163,8 @@ class ProfileController extends Controller
             $user2ID = User::where('username', $visitorusername)->get(['id']);
 
             $result = Blocks::where('user_id', $user1ID[0]->id)
-                    ->where('blocked_user_id', $user2ID[0]->id)
-                    ->get();
+                ->where('blocked_user_id', $user2ID[0]->id)
+                ->get();
 
             if ($result->isEmpty()) {
                 return response()->json(['blockstatus' => false], 200);
@@ -188,8 +188,8 @@ class ProfileController extends Controller
             $user2ID = User::where('username', $visitorusername)->get(['id']);
 
             $result1 = Blocks::where('user_id', $user1ID[0]->id)
-                    ->where('blocked_user_id', $user2ID[0]->id)
-                    ->get();
+                ->where('blocked_user_id', $user2ID[0]->id)
+                ->get();
 
             if ($result1->isEmpty()) {
                 if ($result1->isEmpty()) {
@@ -223,8 +223,9 @@ class ProfileController extends Controller
             $user2ID = User::where('username', $visitorusername)->get(['id']);
 
             if (Blocks::where('user_id', $user1ID[0]->id)
-                        ->where('blocked_user_id', $user2ID[0]->id)
-                        ->delete()) {
+                ->where('blocked_user_id', $user2ID[0]->id)
+                ->delete()
+            ) {
                 return response()->json(['status' => 200], 200);
             } else {
                 return response()->json(['status' => 505], 505);
@@ -246,10 +247,10 @@ class ProfileController extends Controller
             $user2ID = User::where('username', $visitorusername)->get(['id']);
 
             $result = Blocks::where('user_id', $user2ID[0]->id)
-                    ->where('blocked_user_id', $user1ID[0]->id)
-                    ->get();
+                ->where('blocked_user_id', $user1ID[0]->id)
+                ->get();
 
-            if (! $result->isEmpty()) {
+            if (!$result->isEmpty()) {
                 return response()->json(['permission' => false, 'status' => 200], 200);
             } elseif ($result->isEmpty()) {
                 return response()->json(['permission' => true, 'status' => 200], 200);
@@ -271,7 +272,7 @@ class ProfileController extends Controller
 
         try {
             $results = ActivityFeed::where('user_id', $userID[0]->id)->get();
-            if (! $results->isEmpty()) {
+            if (!$results->isEmpty()) {
                 return response()->json(['status' => 200, 'data' => $results], 200);
             } else {
                 return response()->json(['status' => 200, 'data' => null], 200);
@@ -300,9 +301,10 @@ class ProfileController extends Controller
         try {
             $userID = User::where('email', $email)->get(['id']);
             if (About::where('user_id', $userID[0]->id)
-              ->update(['post' => $editActvity])) {
+                ->update(['post' => $editActvity])
+            ) {
                 $results = ActivityFeed::where('user_id', $userID[0]->id)->get();
-                if (! $results->isEmpty()) {
+                if (!$results->isEmpty()) {
                     return response()->json(['status' => 200, 'data' => $results], 200);
                 } else {
                     return response()->json(['status' => 200, 'data' => null], 200);
@@ -339,7 +341,8 @@ class ProfileController extends Controller
         try {
             $userID = User::where('email', $email)->get(['id']);
             if (About::where('user_id', $userID[0]->id)
-              ->update(['selfsummary' => $summary])) {
+                ->update(['selfsummary' => $summary])
+            ) {
                 return response()->json(['status' => 200], 200);
             } else {
                 return response()->json(['status' => 505], 505);
@@ -360,7 +363,8 @@ class ProfileController extends Controller
         try {
             $userID = User::where('email', $email)->get(['id']);
             if (About::where('user_id', $userID[0]->id)
-              ->update(['life' => $life])) {
+                ->update(['life' => $life])
+            ) {
                 return response()->json(['status' => 200], 200);
             } else {
                 return response()->json(['status' => 505], 505);
@@ -381,7 +385,8 @@ class ProfileController extends Controller
         try {
             $userID = User::where('email', $email)->get(['id']);
             if (About::where('user_id', $userID[0]->id)
-              ->update(['goodat' => $goodat])) {
+                ->update(['goodat' => $goodat])
+            ) {
                 return response()->json(['status' => 200], 200);
             } else {
                 return response()->json(['status' => 505], 505);
@@ -402,7 +407,8 @@ class ProfileController extends Controller
         try {
             $userID = User::where('email', $email)->get(['id']);
             if (About::where('user_id', $userID[0]->id)
-              ->update(['thinkingof' => $thinkingof])) {
+                ->update(['thinkingof' => $thinkingof])
+            ) {
                 return response()->json(['status' => 200], 200);
             } else {
                 return response()->json(['status' => 505], 505);
@@ -423,7 +429,8 @@ class ProfileController extends Controller
         try {
             $userID = User::where('email', $email)->get(['id']);
             if (About::where('user_id', $userID[0]->id)
-              ->update(['favourites' => $favs])) {
+                ->update(['favourites' => $favs])
+            ) {
                 return response()->json(['status' => 200], 200);
             } else {
                 return response()->json(['status' => 505], 505);

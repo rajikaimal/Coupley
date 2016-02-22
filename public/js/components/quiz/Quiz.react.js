@@ -16,22 +16,22 @@ var startTime,
 
 const Quiz = React.createClass({
   componentDidMount: function() {
-    document.body.style.background = 'url(/img/quiz.jpg)';
-    startTime = new Date();
+      document.body.style.background = 'url(/img/quiz.jpg)';
+      startTime = new Date();
   },
-  componentWillUnmount: function() {
-    document.body.style.background = '';
-  },
+    componentWillUnmount: function () {
+        document.body.style.background = '';
+    },
   _renderquestion: function() {
   	return question.map((question) => {
   		return (<Question id={question.id} question={question.question} />);
   	});
   },
-  _handleSubmit: function() {
-    endTime = new Date();
-    let totalTime = endTime - startTime;
-    document.location = "/#/";
-  },
+    _handleSubmit: function () {
+        endTime = new Date();
+        let totalTime = endTime - startTime;
+        document.location = "/#/";
+    },
   render: function() {
     return (
       <div className="container-fluid">
@@ -41,7 +41,7 @@ const Quiz = React.createClass({
 					{this._renderquestion()}
 				</List>
 				<Paper zDepth={1}>
-					<RaisedButton label="Done !" onClick={this._handleSubmit} secondary={true} style={style} />
+                    <RaisedButton label="Done !" onClick={this._handleSubmit} secondary={true} style={style} />
 				</Paper>
 			</div>
 		</div>         
