@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Blocks extends Model
 {
-    protected $table = "blocked";
+    protected $table = 'blocked';
 }

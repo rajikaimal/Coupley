@@ -11,53 +11,67 @@ class RegisterController extends Controller
     public function check(Request $request)
     {
         $email = $request->email;
-        $user = User::where('email', $email)->first();
-        if ($user == null) {
-            $user = new User;
-            $user->firstname = $request->firstname;
-            $user->lastname = $request->lastname;
-            $user->username = $request->username;
-            $user->email = $request->email;
-            $user->gender = $request->gender;
-            $user->country = $request->country;
-            $user->password = \Hash::make($request->password);
-            $user->orientation = $request->orientation;
-            $user->role = 'user';
-            
-            if ($user->save()) {
-                return response()->json(['status' => 201], 201);
+        try {
+            $user = User::where('email', $email)->first();
+            if ($user == null) {
+                $user = new User;
+                $user->firstname = $request->firstname;
+                $user->lastname = $request->lastname;
+                $user->username = $request->username;
+                $user->email = $request->email;
+                $user->gender = $request->gender;
+                $user->country = $request->country;
+                $user->password = \Hash::make($request->password);
+                $user->orientation = $request->orientation;
+                $user->role = 'user';
+                if ($user->save()) {
+                    return response()->json(['status' => 201], 201);
+                } else {
+                    return response()->json(['status' => 404], 404);
+                }
             } else {
-                return response()->json(['status' => 404], 404);
+                return response()->json(['status' => 200, 'exists' => true], 200);
             }
-        } else {
-            return response()->json(['status' => 200, 'exists' => true], 200);
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 505], 505);
         }
-
     }
+
     /*
         Returns @json
         Checks username exists or not 
     **/
-    public function checkusername(Request $request) {
+    public function checkusername(Request $request)
+    {
         $username = $request->username;
-        $user = User::where('username', $username)->first();
-        if($user != null) {
-            return response()->json(['status' => 201, 'exists' => true], 201);
-        } else {
-            return response()->json(['status' => 201, 'exists' => false], 201);
+        try {
+            $user = User::where('username', $username)->first();
+            if ($user != null) {
+                return response()->json(['status' => 201, 'exists' => true], 201);
+            } else {
+                return response()->json(['status' => 201, 'exists' => false], 201);
+            }
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 505], 505);
         }
     }
+
     /*
         Returns @json
         Checks email exists or not 
     **/
-    public function checkemail(Request $request) {
+    public function checkemail(Request $request)
+    {
         $email = $request->email;
-        $user = User::where('email', $email)->first();
-        if($user != null) {
-            return response()->json(['status' => 201, 'exists' => true], 201);
-        } else {
-            return response()->json(['status' => 201, 'exists' => false], 201);
+        try {
+            $user = User::where('email', $email)->first();
+            if ($user != null) {
+                return response()->json(['status' => 201, 'exists' => true], 201);
+            } else {
+                return response()->json(['status' => 201, 'exists' => false], 201);
+            }
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 505], 505);
         }
     }
 }
