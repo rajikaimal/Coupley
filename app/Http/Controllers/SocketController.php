@@ -8,17 +8,13 @@ use LRedis;
 class SocketController extends Controller
 {
     public function __construct()
+    {
+        $this->middleware('guest');
+    }
 
-	{
-		$this->middleware('guest');
-	}
-	public function sendMessage(Request $request){
-		$redis = LRedis::connection();
-		$redis->publish('message', $request->message);
-    
-
-	}
-
-
-
+    public function sendMessage(Request $request)
+    {
+        $redis = LRedis::connection();
+        $redis->publish('message', $request->message);
+    }
 }

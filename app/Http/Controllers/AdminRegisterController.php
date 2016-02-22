@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use JWTAuth;
-use Tymon\JWTAuth\Exceptions\JWTException;
 
 class AdminRegisterController extends Controller
 {
@@ -34,21 +32,21 @@ class AdminRegisterController extends Controller
 
     public function update(Request $request)
     {
-        $email=$request->email;
-        $id=$request->id;
-        $job=$request->job;
-        $firstname=$request->firstname;
-        $lastname=$request->lastname;
+        $email = $request->email;
+        $id = $request->id;
+        $job = $request->job;
+        $firstname = $request->firstname;
+        $lastname = $request->lastname;
         //checks whether new email is already in the database //old and new email can be similler for the selected admin only
-        $admin= \DB::select('SELECT email FROM users WHERE email = "'.$email.'" not in (select email from users where id!='.$id.')');
-        if($admin==null){
+        $admin = \DB::select('SELECT email FROM users WHERE email = "'.$email.'" not in (select email from users where id!='.$id.')');
+        if ($admin == null) {
             //update
             \DB::table('users')
                 ->where('id', $id)
-                ->update(['firstname' => $firstname,'lastname' => $lastname,'job' => $job,'email' => $email]);
+                ->update(['firstname' => $firstname, 'lastname' => $lastname, 'job' => $job, 'email' => $email]);
+
             return response()->json(['you can use this email' => $admin, 'status' => 200], 200);
-        }
-        else{
+        } else {
             return response()->json(['email' => 'email already exists', 'status' => 201], 201);
         }
     }
