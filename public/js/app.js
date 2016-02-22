@@ -75,13 +75,13 @@ function AdminSignout() {
 ReactDOM.render((
   <Router history={hashHistory}>
     <Route path="/login" component={Login} />
-    <Route path="/logout" onEnter={logout} />
-    <Route path="/dashboard" component={Admin} />
-    <Route path="/forgotpwd" component={Forgot} />
+      <Route path="/logout" onEnter={logout} />
+      <Route path="/dashboard" component={Admin} />
+      <Route path="/forgotpwd" component={Forgot} />
     <Route path="/register" component={Register} />
     <Route path="/quiz" component={Quiz} />
     <Route path="/AdminLogin" component={AdminLogin} />
-    <Route path="/Adminforgotpwd" component={AdminForgot} />
+      <Route path="/Adminforgotpwd" component={AdminForgot} />
     <Route path="/dashboard" component={Admin} onEnter={requireAdminAuth}>
         <Route path="/users" component={Users}>
             <Route path="friends" component={Friends} />
@@ -103,10 +103,10 @@ ReactDOM.render((
     <Route path="/" component={Header} onEnter={requireAuth}>
       <Route path="/search" component={Search} />
       <Route path="/threads" component={Threads} />
-      <Route path="activity" component={MainActivity}/>
+        <Route path="activity" component={MainActivity}/>
       <Route path="profile" component={Profile} >
-        <Route path="activityfeed" component={ActivityContainer} />
-        <Route path="about" component={About} />
+          <Route path="activityfeed" component={ActivityContainer} />
+          <Route path="about" component={About} />
         <Route path="photos" component={Photos} />
       </Route>
       <Route path="/:username" component={ProfileVisitor} >
@@ -116,7 +116,7 @@ ReactDOM.render((
         <Route path="photos" component={PhotosVisitor} />
       </Route>
     </Route>
-      
+
   </Router>
   ),
   document.getElementById('content')

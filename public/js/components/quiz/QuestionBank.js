@@ -5,19 +5,19 @@ const StraightQuestions = [
 	},
 	{
 		"id": 2,
-		"question": "Are you messy ?",
+        "question": "Are you messy ?",
 	},
 	{
 		"id": 3,
-		"question": "Have you cheated anyone ?",
+        "question": "Have you cheated anyone ?",
 	},
 	{
 		"id": 4,
-		"question": "Looking for a long term relationship ?",
+        "question": "Looking for a long term relationship ?",
 	},
 	{
 		"id": 5,
-		"question": "Netflix and chill ?",
+        "question": "Netflix and chill ?",
 	}
 	
 ];

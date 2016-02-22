@@ -13,7 +13,7 @@ class LikeController extends Controller
         $email = $request->Email;
 
         $result = Like::where('post_id', $id)
-                    ->where('email', $email)->get();
+            ->where('email', $email)->get();
 
         if ($result->isEmpty()) {
             return 'false';
@@ -42,7 +42,7 @@ class LikeController extends Controller
         $id = $request->PostId;
         $email = $request->Email;
         $posts = \DB::table('likes')->where('post_id', '=', $id)
-                                  ->where('email', '=', $email);
+            ->where('email', '=', $email);
 
         if ($posts->delete()) {
             return response()->json(['status' => 201], 201);

@@ -19,7 +19,7 @@ const CustomerGraphs = React.createClass({
                     "paddingRight": "15px",
                     "paddingLeft": "550px"
                 }}>
-                    <img src="https://esdal.dft.gov.uk/Content/Images/Common/gallery-dark-loading.gif" alt="" />
+                    <img src="../../../../img/default-50x50.gif" alt="Loading.." />
                 </div>
                 <div  onLoad={this.preload} className="" id="chartContainer1" style={ {
                     "height": "300px",
