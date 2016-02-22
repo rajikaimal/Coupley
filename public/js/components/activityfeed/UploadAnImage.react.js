@@ -15,7 +15,7 @@
 
 //     _handleSubmit: function(e) {
 //     e.preventDefault();
-    
+
 //     console.log(this.state.file.getValue());
 //     var imageupload = this.state.file.getValue();  
 //     let ImageUpload={

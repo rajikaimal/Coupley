@@ -20,7 +20,7 @@ class ActivityPost extends Migration
             $table->string('post_text');
             $table->string('attachment');
             $table->timestamps();
-            });
+        });
     }
 
     /**

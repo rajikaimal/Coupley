@@ -26,7 +26,8 @@ class AdminPwdController extends Controller
         }
 
         // if no errors update the new password
-        {   $this->SendMail($mail, 'Administrator', $newpassword);
+        {
+            $this->SendMail($mail, 'Administrator', $newpassword);
             $hashed = \Hash::make($newpassword);
             \DB::table('users')
                 ->where('email', $mail)

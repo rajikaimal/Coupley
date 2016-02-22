@@ -53,6 +53,16 @@ class FeedbackController extends Controller
         }
     }
 
+    public function markfeed(Request $request)
+    {
+        $id = $request->id;
+        if ($feeds = \DB::table('feedback')->where('id', $id)->delete()) {
+            return response()->json(['status' => 201], 201);
+        } else {
+            return response()->json(['status' => 404], 404);
+        }
+    }
+
     public function SendMail($email, $user, $pwd)
     {
         $mail = new PHPMailer;
@@ -85,13 +95,5 @@ class FeedbackController extends Controller
         } else {
             echo 'Message has been sent';
         }
-    }
-
-    public function Adminprofile(Request $request)
-    {
-        $email = $request->email;
-        $admindetails = User::where('email', $email)->get();
-
-        return response()->json(['admin' => $admindetails]);
     }
 }

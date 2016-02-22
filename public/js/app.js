@@ -37,8 +37,10 @@ import Feedback from './components/admin/feedback/FeedbackHome.react';
 import Timeline from './components/admin/feedback/timeline.react';
 import ActivityFeed from './components/admin/feedback/activity.react';
 import Privacy from './components/admin/feedback/privacy.react';
-import ChatFeed from './components/admin/feedback/chat.react'
-import OthersFeed from './components/admin/feedback/others.react'
+import ChatFeed from './components/admin/feedback/chat.react';
+import OthersFeed from './components/admin/feedback/others.react';
+import Graph from './components/admin/graphs/graph.react';
+import PieGraph from './components/admin/graphs/piechart.react';
 
 
 function requireAuth(nextState, replace) {
@@ -73,13 +75,13 @@ function AdminSignout() {
 ReactDOM.render((
   <Router history={hashHistory}>
     <Route path="/login" component={Login} />
-    <Route path="/logout" onEnter={logout} />
-    <Route path="/dashboard" component={Admin} />
-    <Route path="/forgotpwd" component={Forgot} />
+      <Route path="/logout" onEnter={logout} />
+      <Route path="/dashboard" component={Admin} />
+      <Route path="/forgotpwd" component={Forgot} />
     <Route path="/register" component={Register} />
     <Route path="/quiz" component={Quiz} />
     <Route path="/AdminLogin" component={AdminLogin} />
-    <Route path="/Adminforgotpwd" component={AdminForgot} />
+      <Route path="/Adminforgotpwd" component={AdminForgot} />
     <Route path="/dashboard" component={Admin} onEnter={requireAdminAuth}>
         <Route path="/users" component={Users}>
             <Route path="friends" component={Friends} />
@@ -91,19 +93,20 @@ ReactDOM.render((
             <Route path="privacy" component={Privacy} />
             <Route path="chat" component={ChatFeed} />
             <Route path="others" component={OthersFeed} />
-
         </Route>
         <Route path="/cards" component={Cards} />
         <Route path="/settings" component={Settings} />
     </Route>
-    <Route path="/AdminSignout" onEnter={AdminSignout} />
+      <Route path="/graph" component={Graph} />
+      <Route path="/piegraph" component={PieGraph} />
+      <Route path="/AdminSignout" onEnter={AdminSignout} />
     <Route path="/" component={Header} onEnter={requireAuth}>
       <Route path="/search" component={Search} />
       <Route path="/threads" component={Threads} />
-      <Route path="activity" component={MainActivity}/>
+        <Route path="activity" component={MainActivity}/>
       <Route path="profile" component={Profile} >
-        <Route path="activityfeed" component={ActivityContainer} />
-        <Route path="about" component={About} />
+          <Route path="activityfeed" component={ActivityContainer} />
+          <Route path="about" component={About} />
         <Route path="photos" component={Photos} />
       </Route>
       <Route path="/:username" component={ProfileVisitor} >
@@ -113,7 +116,7 @@ ReactDOM.render((
         <Route path="photos" component={PhotosVisitor} />
       </Route>
     </Route>
-      
+
   </Router>
   ),
   document.getElementById('content')

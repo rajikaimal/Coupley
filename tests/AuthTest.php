@@ -5,19 +5,19 @@ class AuthTest extends TestCase
 {
     public function testAuth()
     {
-         	/*
-            Initial authentication success
-    	**/
+        /*
+       Initial authentication success
+   **/
         $this->post('/api/authenticate', ['email' => 'tiffany@gmail.com', 'password' => 'secret'])
              ->seeJsonStructure([
-                 'token'
+                 'token',
              ]);
         /*
             Initial authentication failure
     	**/
         $this->post('/api/authenticate', ['email' => 'tiffany@gmail.com', 'password' => 'credentials'])
              ->seeJsonStructure([
-                 'error'
+                 'error',
              ]);
     }
 }
