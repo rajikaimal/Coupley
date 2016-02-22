@@ -12,7 +12,7 @@ class ActivityShare extends Migration
      */
     public function up()
     {
-         Schema::create('shares', function (Blueprint $table) {
+        Schema::create('shares', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('post_id');
             $table->string('email');

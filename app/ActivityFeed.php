@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class ActivityFeed extends Model
 {
-    protected $table = "feed";
+    protected $table = 'feed';
 }

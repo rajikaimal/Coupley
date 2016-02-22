@@ -35,11 +35,11 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('likepost', 'LikeController@like');
     Route::post('unlikepost', 'LikeController@unlike');
     Route::get('getlikestatus', 'LikeController@getlikestatus');
-    Route::post('comment','CommentController@addcomment');
-    Route::get('getcomment','CommentController@getcomments');
-    Route::post('share','ActivityFeedController@addshare');
-    Route::post('deleteStatus','ActivityFeedController@deleteStatus');
-    Route::post('edit_status','ActivityFeedController@editStatus');
+    Route::post('comment', 'CommentController@addcomment');
+    Route::get('getcomment', 'CommentController@getcomments');
+    Route::post('share', 'ActivityFeedController@addshare');
+    Route::post('deleteStatus', 'ActivityFeedController@deleteStatus');
+    Route::post('edit_status', 'ActivityFeedController@editStatus');
     //Return profile data
     Route::get('profile', 'ProfileController@profile');
     //Return userslist for search
@@ -70,13 +70,13 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('profile/about', 'ProfileController@getabout');
     //Edit About section
     Route::put('profile/edit/summary', 'ProfileController@editsummary');
-     
+
     Route::put('profile/edit/life', 'ProfileController@editlife');
     Route::put('profile/edit/goodat', 'ProfileController@editgoodat');
     Route::put('profile/edit/thinkingof ', 'ProfileController@editthinkingof');
     Route::put('profile/edit/favs ', 'ProfileController@editfavs');
     Route::put('profile/edit/activity ', 'ProfileController@editactivity');
-    
+
 });
 Route::get('socket', 'SocketController@index');
 Route::post('sendmessage', 'SocketController@sendMessage');

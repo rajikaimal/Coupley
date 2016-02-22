@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
                     ['firstname' => 'Chris', 'lastname' => ' Chenkie', 'email' => 'chris@gmail.com', 'gender' => 'male', 'username' => 'chris', 'orientation' => 'straight', 'birthday' => '1994-08-01', 'country' => 'Sri Lanka', 'role' => 'user', 'password' => Hash::make('secret')],
                     ['firstname' => 'Alo', 'lastname' => ' Chenkie', 'email' => 'alo@gmail.com', 'gender' => 'male', 'username' => 'alo', 'orientation' => 'straight', 'birthday' => '1994-08-01', 'country' => 'Sri Lanka', 'role' => 'user', 'password' => Hash::make('secret')],
                     ['firstname' => 'Tiffany', 'lastname' => ' Chenkie', 'email' => 'tiffany@gmail.com', 'gender' => 'male', 'username' => 'tiffany', 'orientation' => 'straight', 'birthday' => '1994-08-01', 'country' => 'Sri Lanka', 'role' => 'user', 'password' => Hash::make('secret')],
-                    ['firstname' => 'Isuru', 'lastname' => ' Dilhan', 'email' => 'isuru.dilhan@yahoo.com', 'job' => 'Web developer', 'role' => 'admin', 'password' => Hash::make('Secret123/')]
+                    ['firstname' => 'Isuru', 'lastname' => ' Dilhan', 'email' => 'isuru.dilhan@yahoo.com', 'job' => 'Web developer', 'role' => 'admin', 'password' => Hash::make('Secret123/')],
             ];
 
             // Loop through each user above and create the record for them in the database
@@ -35,14 +35,12 @@ class DatabaseSeeder extends Seeder
             ['user' => 'Chris', 'category' => 'activity', 'description' => 'Superb'],
             ['user' => 'Alo', 'category' => 'chat', 'description' => 'nice emojies'],
             ['user' => 'Tiffany', 'category' => 'privacy', 'description' => 'She is annoying'],
-            ['user' => 'Isuru', 'category' => 'other', 'description' => 'Nice quiz']
+            ['user' => 'Isuru', 'category' => 'other', 'description' => 'Nice quiz'],
         ];
-
 
         foreach ($feedbacks as $feedback) {
             Feedback::create($feedback);
         }
-
 
         Model::reguard();
     }
