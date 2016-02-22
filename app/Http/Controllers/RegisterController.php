@@ -1,7 +1,10 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\User;
+
 class RegisterController extends Controller
 {
     //checks whether user is already registered
@@ -29,11 +32,11 @@ class RegisterController extends Controller
             } else {
                 return response()->json(['status' => 200, 'exists' => true], 200);
             }
-        } catch(Illuminate\Database\QueryException $e) {
+        } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 505], 505);
         }
-        
     }
+
     /*
         Returns @json
         Checks username exists or not 
@@ -48,10 +51,11 @@ class RegisterController extends Controller
             } else {
                 return response()->json(['status' => 201, 'exists' => false], 201);
             }
-        } catch(Illuminate\Database\QueryException $e) {
+        } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 505], 505);
         }
     }
+
     /*
         Returns @json
         Checks email exists or not 
@@ -66,7 +70,7 @@ class RegisterController extends Controller
             } else {
                 return response()->json(['status' => 201, 'exists' => false], 201);
             }
-        } catch(Illuminate\Database\QueryException $e) {
+        } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 505], 505);
         }
     }
