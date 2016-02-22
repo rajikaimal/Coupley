@@ -6,7 +6,8 @@ import FlatButton from 'material-ui/lib/flat-button';
 import CardText from 'material-ui/lib/card/card-text';
 import Divider from 'material-ui/lib/divider';
 import ProfilePic from './ProfilePic.react';
-import { Link } from 'react-router'
+import { Link } from 'react-router';
+
 import ProfileActions from '../../actions/profile/ProfileActions';
 import ProfileStore from '../../stores/ProfileStore';
 
@@ -32,6 +33,7 @@ const Profile = React.createClass({
     return (
       <div>
         <ProfilePic firstname={this.state.firstname} lastname={this.state.lastname} country={this.state.country}/>
+
         <Divider />
         <div style={tabstyle}>
           <div className="btn-group btn-group-justified btn-group-info">
