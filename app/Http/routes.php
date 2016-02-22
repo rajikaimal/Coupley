@@ -28,6 +28,9 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('register', 'RegisterController@check');
     Route::get('register/checkusername', 'RegisterController@checkusername');
     Route::get('register/checkemail', 'RegisterController@checkemail');
+    //update admin passwords
+    Route::post('recoverpwd', 'AuthenticateController@reset');
+
     Route::post('status', 'ActivityFeedController@addstatus');
     Route::get('getstatus', 'ActivityFeedController@getstatus');
     Route::get('getpostId', 'ActivityFeedController@getpostId');
