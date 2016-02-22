@@ -17,7 +17,7 @@ class SearchController extends Controller
             } else {
                 return response()->json(['status' => 505], 505);
             }
-        } catch(Illuminate\Database\QueryException $e) {
+        } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 505], 505);
         }
     }
