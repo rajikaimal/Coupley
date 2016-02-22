@@ -38,7 +38,7 @@ class AdminRegisterController extends Controller
         $firstname = $request->firstname;
         $lastname = $request->lastname;
         //checks whether new email is already in the database //old and new email can be similler for the selected admin only
-        $admin = \DB::select('SELECT email FROM users WHERE email = "' . $email . '" not in (select email from users where id!=' . $id . ')');
+        $admin = \DB::select('SELECT email FROM users WHERE email = "'.$email.'" not in (select email from users where id!='.$id.')');
         if ($admin == null) {
             //update
             \DB::table('users')
