@@ -62,7 +62,9 @@ const Header = React.createClass({
 					   		</Badge>
 					    </li>
 				        <li><Link to={`/profile/activityfeed`}>{this.state.firstname}</Link></li>
-				        <li><Link to={`/signout`}>Sign out</Link></li>
+                          <li>
+                              <Link to={`/logout`}>Sign out</Link>
+                          </li>
 				      </ul>
 				    </div>
 				  </div>

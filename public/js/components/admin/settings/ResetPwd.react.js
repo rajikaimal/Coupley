@@ -30,7 +30,7 @@ import PwdActions from '../../../actions/admin/AdminPwdResetActions';
 
 const tilesData = [
     {
-        img: '../../../../img/lock.png',
+        img: '../../../../img/lock-256.png',
         title: 'Reset Password'
 
     }
@@ -39,8 +39,8 @@ const tilesData = [
 const style = {
     width: 300,
     height:50,
-    fontSize: "20px"
-
+    fontSize: "20px",
+    color:"white"
 };
 
 const tileElements = tilesData.map(tile => <GridTile

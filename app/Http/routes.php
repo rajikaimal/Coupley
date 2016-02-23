@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Routes File
@@ -10,27 +9,28 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
 Route::get('/', function () {
     return view('init');
 });
-
 /*  
     Login route
     Handles initial login of a user of Coupley	
     @author rajikaimal
 */
-
 Route::get('/api/login', function () {
     return 'Done';
 });
-
 Route::group(['prefix' => 'api'], function () {
     //authenticate users with AuthenticateController
     Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
     Route::post('authenticate', 'AuthenticateController@authenticate');
     //Register new users with RegisterConroller@register
     Route::post('register', 'RegisterController@check');
+    Route::get('register/checkusername', 'RegisterController@checkusername');
+    Route::get('register/checkemail', 'RegisterController@checkemail');
+    //update admin passwords
+    Route::post('recoverpwd', 'AuthenticateController@reset');
+
     Route::post('status', 'ActivityFeedController@addstatus');
     Route::get('getstatus', 'ActivityFeedController@getstatus');
     Route::get('getpostId', 'ActivityFeedController@getpostId');
@@ -38,11 +38,11 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('likepost', 'LikeController@like');
     Route::post('unlikepost', 'LikeController@unlike');
     Route::get('getlikestatus', 'LikeController@getlikestatus');
-    Route::post('comment','CommentController@addcomment');
-    Route::get('getcomment','CommentController@getcomments');
-    Route::post('share','ActivityFeedController@addshare');
-    Route::post('deleteStatus','ActivityFeedController@deleteStatus');
-    Route::post('edit_status','ActivityFeedController@editStatus');
+    Route::post('comment', 'CommentController@addcomment');
+    Route::get('getcomment', 'CommentController@getcomments');
+    Route::post('share', 'ActivityFeedController@addshare');
+    Route::post('deleteStatus', 'ActivityFeedController@deleteStatus');
+    Route::post('edit_status', 'ActivityFeedController@editStatus');
     //Return profile data
     Route::get('profile', 'ProfileController@profile');
     //Return userslist for search
@@ -67,26 +67,31 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('profilepermission', 'ProfileController@profilepermission');
     //Returns acitivity feed for specific user
     Route::get('profile/feed', 'ProfileController@getposts');
+    //Upload profile pic
+    Route::post('profile/profilepic', 'ProfileController@uploadpic');
     //Returns about data
     Route::get('profile/about', 'ProfileController@getabout');
     //Edit About section
     Route::put('profile/edit/summary', 'ProfileController@editsummary');
-});
 
+    Route::put('profile/edit/life', 'ProfileController@editlife');
+    Route::put('profile/edit/goodat', 'ProfileController@editgoodat');
+    Route::put('profile/edit/thinkingof ', 'ProfileController@editthinkingof');
+    Route::put('profile/edit/favs ', 'ProfileController@editfavs');
+    Route::put('profile/edit/activity ', 'ProfileController@editactivity');
+
+});
 Route::get('socket', 'SocketController@index');
 Route::post('sendmessage', 'SocketController@sendMessage');
 Route::get('writemessage', 'SocketController@writemessage');
-
 /*
     Dashboard route
     Handles Admin panel of Coupley
     @author isurudilhan
 */
-
 Route::get('/cp-admin', function () {
     return view('init_admin');
 });
-
 Route::group(['prefix' => 'admin-api'], function () {
     Route::resource('authenticates', 'AdminAuthenticateController', ['only' => ['index']]);
     Route::post('authenticates', 'AdminAuthenticateController@authenticate');
@@ -107,8 +112,16 @@ Route::group(['prefix' => 'admin-api'], function () {
     Route::post('unblockuser', 'UsersController@Unblock');
     //Return Admin profile data
     Route::get('adminprofile', 'UsersController@Adminprofile');
-});
 
+    //feedbacks
+    Route::get('timeline', 'FeedbackController@timeline');
+    Route::get('activity', 'FeedbackController@activityFeed');
+    Route::get('privacy', 'FeedbackController@privacy');
+    Route::get('chat', 'FeedbackController@chat');
+    Route::get('others', 'FeedbackController@other');
+    //mark feedbacks
+    Route::post('markfeed', 'FeedbackController@markfeed');
+});
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -119,13 +132,10 @@ Route::group(['prefix' => 'admin-api'], function () {
 | kernel and includes session state, CSRF protection, and more.
 |
 */
-
 Route::group(['middleware' => ['web']], function () {
     //
 });
-
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
-
     Route::get('/home', 'HomeController@index');
 });

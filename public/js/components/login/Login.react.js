@@ -13,8 +13,11 @@ import Colors from 'material-ui/lib/styles/colors';
 var imgUrl = 'http://sp2.cinedor.es/728/foto-andrew-garfield-y-emma-stone-en-the-amazing-spider-man-3-781.jpg';
 
 const loginStyle = {
-    backgroundImage: 'url(/img/home.jpg)',
-    minHeight: '100%'
+   maxWidth: '100%',
+   maxHeight: '100%',
+   backgroundRepeat:'no-repeat',
+   backgroundSize:'cover'
+
 };
 
 const buttonStyle = {
@@ -27,13 +30,30 @@ const textStyle = {
 };
 
 const homeStyle = {
-    marginTop: '75',
-    minHeight: '100%'
+    marginTop: '45',
+    height: '100%'
+}
+
+const loginRowStyle = {
+    marginBottom: '45',
+    height: '100%'
+}
+
+const logoStyle = {
+    color: 'white',
+    fontSize: '50'
 }
 
 const error = {
   color: Colors.red500
 };
+
+const signupStyle = {
+    color: 'black',
+    marginTop: '25'
+}
+
+const images = ['url(/img/slide1.jpg)', 'url(/img/slide2.jpg)', 'url(/img/slide3.jpg)'];
 
 function validateEmail(email) {
   let re = /\S+@\S+\.\S+/;
@@ -65,8 +85,22 @@ function validatePassword(password) {
 
 const Login = React.createClass({
   getInitialState: function() {
+    let current = 0;
+    let lenArr = images.length;
+    // setInterval(function() {
+    //   if(current != (lenArr)) {
+    //     current++;
+    //   }
+    //   if(current == (lenArr)) {
+    //     current = 0;
+    //   }
+    //   document.body.style.background = images[current];
+    //   // $('body .img').fadeOut('slow', function() {
+    //   //   document.body.style.background = images[current];
+    //   // });
+    // }, 3000);
     console.log(LoginStore.getState());
-    return { 
+    return {
       apitoken: LoginStore.getState()
     };
   },
@@ -78,6 +112,9 @@ const Login = React.createClass({
     else {
       document.location = "/#/login";
     }
+  },
+  componentWillUnmount: function() {
+    document.body.style.background = '';
   },
   _onChange: function() {
     this.setState({ apitoken: LoginStore.getState() });
@@ -108,6 +145,11 @@ const Login = React.createClass({
     return (
       <div style={loginStyle}>
         <div className="container-fluid" style={homeStyle}>
+          <div className="row-fluid" style={loginRowStyle}>
+            <div className="col-md-12 col-lg-12">
+              <span id="logo-login" style={logoStyle}> Coupley </span>
+            </div>
+          </div>
           <div className="row-fluid">
             <div className="col-sm-6 col-md-6 col-md-offset-6 col-lg-4 col-lg-offset-8">
               <Card>
@@ -118,7 +160,7 @@ const Login = React.createClass({
                   <span id="emailval"> </span>
                 <TextField
                   floatingLabelText="password" type="password" ref="password" fullwidth={true}/>
-                  <span id="passwordval"> </span>          
+                  <span id="passwordval"> </span>
                 </CardText>
                 <CardActions>
                   <RaisedButton label="Signin" style={buttonStyle} primary={true} onTouchTap={this._handleLogin} />
@@ -126,11 +168,18 @@ const Login = React.createClass({
                 </CardActions>
                 <span id="server-error" style={error}> </span>
               </Card> 
+
+              <Card style={signupStyle}>
+                <CardText>
+                  Don't have an account ?
+                  <a href="/#/register"> Sign up </a> for free ! 
+                </CardText>
+              </Card> 
             </div>
           </div>
-        </div>  
+        </div>
       </div>
-    );    
+    );
   }
 
 });

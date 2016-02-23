@@ -27,52 +27,52 @@ import LikeStatusStore from '../../stores/LikeStatusStore';
 import Snackbar from 'material-ui/lib/snackbar';
 
 const iconButtonElement = (
-  <IconButton
-    touch={true}
-    tooltip="more"
-    tooltipPosition="bottom-left">
-    <MoreVertIcon color={Colors.deepPurple500} />
-  </IconButton>
+    <IconButton
+        touch={true}
+        tooltip="more"
+        tooltipPosition="bottom-left">
+        <MoreVertIcon color={Colors.deepPurple500} />
+    </IconButton>
 );
 
 const style1 = {
-  width: 800,
-  margin: 40,
+    width: 800,
+    margin: 40,
 };
 
 const style2 = {
-  width: 800,
+    width: 800,
 };
 
-var a=1;
+var a = 1;
 
 const ActivityList = React.createClass({
 
-     deleteStatus:function(){
-        var postId= this.props.id;
-        let delete_status={
-          PostId: postId
+    deleteStatus: function () {
+        var postId = this.props.id;
+        let delete_status = {
+            PostId: postId
         };
         ActivityFeedActions.delete_status(delete_status);
-     },
+    },
 
-  	addshare:function(){
-        var postId= this.props.id;
-        var email= LoginStore.getEmail(); 
+    addshare: function () {
+        var postId = this.props.id;
+        var email = LoginStore.getEmail();
         var firstname = LoginStore.getFirstname();
-        let add_share={
+        let add_share = {
             PostId: postId,
             Email: email,
             Fname: firstname
         };
         ShareActions.add_share(add_share);
-  	},
+    },
 
-    setFocusToTextBox:function(){
+    setFocusToTextBox: function () {
         document.getElementById("mytext").focus();
     },
 
-    getInitialState: function() {
+    getInitialState: function () {
         return {
             open: false,
             liked: LikeStatusStore.getlikes(),
@@ -80,59 +80,59 @@ const ActivityList = React.createClass({
         };
     },
 
-    componentDidMount: function() {
-      LikeStatusStore.addChangeListener(this._onChange);
-      LikesActions.getlikestatus();
+    componentDidMount: function () {
+        LikeStatusStore.addChangeListener(this._onChange);
+        LikesActions.getlikestatus();
 
-      StatusStore.addChangeListener(this._onChange);
-      ActivityFeedActions.getpostId();
+        StatusStore.addChangeListener(this._onChange);
+        ActivityFeedActions.getpostId();
     },
 
-    _onChange: function() {
-      this.setState({ postId: StatusStore.getStatusID()});
-      this.setState({liked: LikeStatusStore.getlikes()}); 
+    _onChange: function () {
+        this.setState({postId: StatusStore.getStatusID()});
+        this.setState({liked: LikeStatusStore.getlikes()});
 
-     if(LikeStatusStore.getlikes() == "false") {
-      this.setState({
-        liked: false,
-      });  
-     }
-     if(LikeStatusStore.getlikes() == "true") {
-      this.setState({
-        liked: true,
-      });
-     }
+        if (LikeStatusStore.getlikes() == "false") {
+            this.setState({
+                liked: false,
+            });
+        }
+        if (LikeStatusStore.getlikes() == "true") {
+            this.setState({
+                liked: true,
+            });
+        }
     },
 
-    _changeLikeState: function() {
+    _changeLikeState: function () {
 
-          var postId= this.props.id;
-          console.log(postId);
-          var email= LoginStore.getEmail(); 
-          var firstname = LoginStore.getFirstname();
-          let add_likes={
+        var postId = this.props.id;
+        console.log(postId);
+        var email = LoginStore.getEmail();
+        var firstname = LoginStore.getFirstname();
+        let add_likes = {
             PostId: postId,
             Email: email,
             Fname: firstname
-          };
+        };
 
-        if(! this.state.liked) {
-          console.log('like');
-          this.setState({ liked: ! this.state.liked });
-          LikesActions.like(add_likes);
+        if (!this.state.liked) {
+            console.log('like');
+            this.setState({liked: !this.state.liked});
+            LikesActions.like(add_likes);
         }
         else {
-        console.log('Unlike');
-        this.setState({ liked: ! this.state.liked });
-        LikesActions.unlike(add_likes);
+            console.log('Unlike');
+            this.setState({liked: !this.state.liked});
+            LikesActions.unlike(add_likes);
         }
-     },
-  
-    handleOpen:function(){
-      this.setState({open: true});
     },
 
-    handleClose:function(){
+    handleOpen: function () {
+        this.setState({open: true});
+    },
+
+    handleClose: function () {
         this.setState({open: false});
     },
 
@@ -155,25 +155,25 @@ const ActivityList = React.createClass({
           this.handleClose();
     },
 
-    EnterKey_comment(e){
-      if (e.key ==='Enter') {
-              console.log();
-              console.log(this.refs.commentBox.getValue());
-              var postId= this.props.id;
-              var comment = this.refs.commentBox.getValue();
-              var email= LoginStore.getEmail(); 
-              var firstname = LoginStore.getFirstname();
-              let add_comment={
-                 PId: postId,
-                 Comment: comment,
-                 Email: email,
-                 Fname: firstname
-              };
-              CommentAction.add_comment(add_comment);
-      }
+    EnterKey_comment(e) {
+        if (e.key === 'Enter') {
+            console.log();
+            console.log(this.refs.commentBox.getValue());
+            var postId = this.props.id;
+            var comment = this.refs.commentBox.getValue();
+            var email = LoginStore.getEmail();
+            var firstname = LoginStore.getFirstname();
+            let add_comment = {
+                PId: postId,
+                Comment: comment,
+                Email: email,
+                Fname: firstname
+            };
+            CommentAction.add_comment(add_comment);
+        }
     },
 
-	  render: function() {
+	render: function() {
      const actions = [
       <FlatButton
         label="Update"

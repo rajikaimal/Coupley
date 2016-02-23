@@ -8,7 +8,6 @@ use App\User;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
-
 class AdminAuthenticateController extends Controller
 {
     public function __construct()
@@ -39,8 +38,5 @@ class AdminAuthenticateController extends Controller
 
         // if no errors are encountered we can return a JWT
         return response()->json(compact('token'));
-
-
     }
-
 }
