@@ -53,9 +53,11 @@ io.on('connection', function (socket) {
                                                 }
                                         console.log("List of users liked by this user :"+Likedusers);
                                    for(var i=0;i<Likedusers.length;i++){
-                                     
+
                                    }
-                            socket.broadcast.to(connectedUser[socket.username]).emit('chatList', {Userlist:Likedusers});
+                    //        socket.broadcast.to(connectedUser[chat.user2]).emit('chat', { message:result});
+                          //  socket.broadcast.to(connectedUser[socket.username]).emit
+                             io.emit('chatList', {Userlist:Likedusers});
                                             console.log("Liked list sent to "+socket.username);
                                     });
 
@@ -64,7 +66,10 @@ io.on('connection', function (socket) {
 
             });
 
+app.get('/threads/list', function(req, res) {
 
+    res.json(connectedUser);
+});
 
 
 

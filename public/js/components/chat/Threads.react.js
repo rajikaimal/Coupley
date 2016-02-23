@@ -7,7 +7,7 @@ import CardTitle from 'material-ui/lib/card/card-title';
 import FlatButton from 'material-ui/lib/flat-button';
 import CardText from 'material-ui/lib/card/card-text';
 import LoginStore from '../../stores/LoginStore';
-
+import TextField from 'material-ui/lib/text-field';
 import List from 'material-ui/lib/lists/list';
 import ListItem from 'material-ui/lib/lists/list-item';
 import Divider from 'material-ui/lib/divider';
@@ -19,7 +19,7 @@ import IconMenu from 'material-ui/lib/menus/icon-menu';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 //import ThreadActions from '../../actions/Thread/ThreadActions';
 import ThreadStore from '../../stores/ThreadStore';
-
+import Emojis from './emojis';
 var socket = io.connect('http://localhost:8081');
 var User1 = LoginStore.getFirstname();
 var User1Email=LoginStore.getEmail();
@@ -52,14 +52,17 @@ const Threads = React.createClass({
   },
 
   userlistio:function(){
+      console.log(" awooooo");
     socket.on('chatList',function(data){
-        console.log(data.Userlist);
-        this.setState({MyOnlineList:data.Userlist});
+        console.log(data.Userlist+" awa!");
     }.bind(this));
  },
 
     componentDidMount: function () {
         ThreadStore.addChangeListener(this._onChange);
+        // $.get('http://localhost:8081/threads/list', function(response) {
+        //   alert(response);
+        // });
     },
     _onChange: function () {
         this.setState({
@@ -91,13 +94,32 @@ const Threads = React.createClass({
     console.log('Done ...');
 
   },
+  test : function() {
+    var item = {
+    	message: ':) hello :) hello :) hello :)'
+    }
+
+    console.log(Emojis)
+  	var texts = item.message.split(/:\)/g);
+    var content = [];
+    for(var i = 0; i < texts.length - 1; i++) {
+    	content.push(texts[i]);
+      content.push(<img src={Emojis[0].uri}/>);
+    }
+    return content.map(function(emoji) {
+      return (<span> {emoji} </span>)
+    })
+  },
   render: function() {
     return (
       <Paper zDepth={1} style={Sty1}>
+        {this.userlistio()}
         {this.socketio()}
+
         <CardTitle title="Threads" subtitle="" />
         <CardText>
           Message threads
+          {this.test()}
             <div>
           {
 
@@ -123,6 +145,9 @@ const Threads = React.createClass({
                 <input type="text" ref="message2" />
           <input type="button" onClick={this._sendmessage} value="Send message" />
             </Paper>
+
+
+
         </CardText>
         <CardActions>
 
