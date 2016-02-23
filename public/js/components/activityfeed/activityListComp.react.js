@@ -77,9 +77,6 @@ const ActivityList = React.createClass({
             open: false,
             liked: LikeStatusStore.getlikes(),
             postId: StatusStore.getStatusID(),
-            autoHideDuration: 4000,
-            message: "Do you want to update this status? ",
-            opens: false,
         };
     },
 
@@ -139,9 +136,11 @@ const ActivityList = React.createClass({
         this.setState({open: false});
     },
 
-    handleBoth: function () {
-          this.handleClose();
-    },
+   /* handleBoth: function () {
+        if(this._handleRegisterClickEvent()) {
+           this.setState({open: false});
+        }
+    },**/
 
     _handleRegisterClickEvent: function () {
         let post_text= this.refs.EditBox.getValue();
@@ -153,22 +152,7 @@ const ActivityList = React.createClass({
           };
           ActivityFeedActions.editstatus(editstatus);
           console.log('Done calling !');
-    },
-
-    handleTouchTap:function () {
-       this.setState({opens: true});
-    },
-
-    handleActionTouchTap:function () {
-        if (this._handleRegisterClickEvent()) {
-          this.handleBoth();
-        }
-        this.setState({opens: false});
-        alert("Updated your Status");
-    },
-
-    handleRequestClose:function () {
-      this.setState({opens: false});
+          this.handleClose();
     },
 
     EnterKey_comment(e){
@@ -195,7 +179,7 @@ const ActivityList = React.createClass({
         label="Update"
         primary={true}
         keyboardFocused={true}
-        onTouchTap={this.handleTouchTap}/>,
+        onTouchTap={this._handleRegisterClickEvents}/>,
 
       <FlatButton
         label="Close"
@@ -209,11 +193,11 @@ const ActivityList = React.createClass({
       <Card>
 		        <ListItem
 		          leftAvatar={<Avatar src="https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg" />}
-		          primaryText={this.props.firstname}
+		          primaryText={this.state.firstname}
 		          secondaryText={
 		            <p>
-		              <b>{this.props.created_at}</b><br/>
-              			{this.props.post_text}
+		              <b>{this.state.created_at}</b><br/>
+              			{this.state.post_text}
 		            </p>
 		          }
 		          secondaryTextLines={2} 
@@ -243,12 +227,6 @@ const ActivityList = React.createClass({
           onRequestClose={this.handleClose}>
           <TextField hintText="Update your status" multiLine={false} fullWidth={true} ref="EditBox" defaultValue={this.props.post_text}/>
       </Dialog>
-          <Snackbar
-          open={this.state.opens}
-          message={this.state.message}
-          action="Ok"
-          onActionTouchTap={this.handleActionTouchTap}
-          onRequestClose={this.handleRequestClose}/>
 			</div>
         <div><CommentList /></div>
 				<div style={style2}>

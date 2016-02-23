@@ -9,7 +9,7 @@ var ActivityFeedActions = {
   },
 
  getstatus: function() {
-    $.get('/api/getstatus' , function(response) {
+    $.get('/api/getstatus', function(response) {
       console.log(response);
       if (response.status == 200) {
             AppDispatcher.handleViewAction({
