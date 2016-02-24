@@ -5,22 +5,18 @@ import UpAdminModal from './updateAdminmodal.react';
 import PwdModal from './ResetPwd.react';
 import Divider from 'material-ui/lib/divider';
 const div = {
-    "float":"left"
+  float:'left',
 
 };
 var AdminSettings = React.createClass({
-    render: function () {
-        return (
-            <div>
-                <div style={div}>
-
-                    <UpAdminModal/> <NewAdminModal/> <PwdModal/>
-
-
-                </div>
-
-            </div>
-        );
-    }
+  render: function () {
+    return (
+        <div>
+          <div style={div}>
+            <UpAdminModal/> <NewAdminModal/> <PwdModal/>
+          </div>
+        </div>
+    );
+  },
 });
 export default AdminSettings;

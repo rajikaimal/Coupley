@@ -7,21 +7,19 @@ var SearchConstants = require('../../constants/FeedConstants');
 
 var UsersActions = {
 
-    getsearchresults: function () {
-        $.get('/admin-api/search', function (response) {
-            if (response.status == 200) {
-                AppDispatcher.handleViewAction({
-                    actionType: SearchConstants.SEARCH,
-                    search: response.users
-                });
-            }
-            else if (response.status == 505) {
-                console.log('Error 505');
-                document.location = "/#/search/err"
-            }
+  getsearchresults: function () {
+    $.get('/admin-api/search', function (response) {
+      if (response.status == 200) {
+        AppDispatcher.handleViewAction({
+          actionType: SearchConstants.SEARCH,
+          search: response.users,
         });
-    }
-
+      }      else if (response.status == 505) {
+        console.log('Error 505');
+        document.location = '/#/search/err';
+      }
+    });
+  },
 
 };
 

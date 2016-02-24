@@ -10,7 +10,6 @@ import MenuItem from 'material-ui/lib/menus/menu-item';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import BlockActions from '../../../../actions/admin/blockUser';
 
-
 //tap-event-plugin
 injectTapEventPlugin();
 
@@ -24,64 +23,61 @@ const iconButtonElement = (
 );
 
 const Friend = React.createClass({
-    _handleUserId: function() {
-       //alert(this.props.id);
-        let credentials = {
-            id:this.props.id,
-            rowId:this.props.rowId
-        };
-        swal({  title: "Are you sure?",
-                text: "Do you really want to block this user?",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Yes, Block!",
-                cancelButtonText: "No, Cancel!",
-                closeOnConfirm: false,
-                closeOnCancel: false },
-            function(isConfirm){
-                if (isConfirm) {
-                    swal("Blocked!", "This person has been blocked.", "success");
-                    BlockActions.block(credentials);
-                } else {
-                    swal("Cancelled", "This person has not been blocked.", "error");
-                } });
+  _handleUserId: function () {
+    //alert(this.props.id);
+    let credentials = {
+      id:this.props.id,
+      rowId:this.props.rowId,
+    };
+    swal({ title: 'Are you sure?',
+            text: 'Do you really want to block this user?',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#DD6B55',
+            confirmButtonText: 'Yes, Block!',
+            cancelButtonText: 'No, Cancel!',
+            closeOnConfirm: false,
+            closeOnCancel: false, },
+            function (isConfirm) {
+              if (isConfirm) {
+                swal('Blocked!', 'This person has been blocked.', 'success');
+                BlockActions.block(credentials);
+              } else {
+                swal('Cancelled', 'This person has not been blocked.', 'error');
+              } });
 
-    },
-    _redirect: function () {
-        const path = "/#/" + this.props.username;
-    },
+  },
 
-    render: function () {
-        return (
-            <div>
+  _redirect: function () {
+    const path = '/#/' + this.props.username;
+  },
+
+  render: function () {
+    return (
+        <div>
                 <ListItem
-                    style={{backgroundColor: Colors.pink50 ,height:150}}
-                    leftAvatar={<Avatar src="https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg" />}
-                    primaryText={
-                        <p> {this.props.reported}<br/>
-                            <h4>{this.props.description} <br/>
-                        </h4>
-
+                style={{ backgroundColor: Colors.pink50, height:150 }}
+                leftAvatar={<Avatar src="https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg" />}
+                primaryText={
+                    <p> {this.props.reported}<br/>
+                    <h4>{this.props.description} <br/></h4>
                     </p>
-                        }
-                    secondaryText={
-                        <p>
+                    }
+                secondaryText={
+                    <p>
+                      Reported by {this.props.user}
+                    </p>
+                    }
+                secondaryTextLines={2}
+                rightIconButton={<IconMenu iconButtonElement={iconButtonElement} >
+                                            <MenuItem  onTouchTap={this._handleUserId}>Block user</MenuItem>
+                                 </IconMenu>}
+                 />
+                            <Divider inset={true} />
 
-                            Reported by {this.props.user}
-
-                        </p>
-                        }
-                    secondaryTextLines={2}
-                    rightIconButton={<IconMenu iconButtonElement={iconButtonElement} >
-                        <MenuItem  onTouchTap={this._handleUserId}>Block user</MenuItem>
-                    </IconMenu>}
-                     />
-                <Divider inset={true} />
-
-            </div>
-        );
-    }
+        </div>
+    );
+  },
 });
 
 export default Friend;
