@@ -23,6 +23,10 @@ var Header = React.createClass({
     this.setState(ProfileStore.getuserdata());
   },
 
+  update:function () {
+    location.reload();
+  },
+
   render: function () {
     return (
       <div>
@@ -43,7 +47,7 @@ var Header = React.createClass({
           </div>
 
           <nav className="nav bar navbar-static-top" role="navigation">
-            <a className="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <a className="sidebar-toggle" data-toggle="offcanvas" role="button" onClick={this.update}>
               <span className="sr-only">Toggle navigation</span>
             </a>
             <div className="navbar-custom-menu">
