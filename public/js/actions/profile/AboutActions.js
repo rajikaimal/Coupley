@@ -2,119 +2,146 @@ var AppDispatcher = require('../../dispatcher/AppDispatcher');
 var AboutConstants = require('../../constants/AboutConstants');
 
 var AboutActions = {
-  fetchAll: function() {
-    $.get('/api/profile/about?token=' + localStorage.getItem('apitoken') + '&email=' + localStorage.getItem('email'), function(response) {
+  fetchAll: function () {
+    $.get('/api/profile/about?token=' + localStorage.getItem('apitoken') + '&email=' + localStorage.getItem('email'), function (response) {
       console.log(response);
-      if(response.status === 200) {
+      if (response.status === 200) {
         AppDispatcher.handleViewAction({
           actionType: AboutConstants.FETCH,
-          data: response.data[0]
+          data: response.data[0],
         });
-      }
-      else {
+      } else {
         console.log('Somthing happened ...');
       }
 
-    }).fail(function(error) {
-      console.log('Somthing happened');
+    }).fail(function () {
+      AppDispatcher.handleViewAction({
+        actionType: AboutConstants.FETCH,
+        error: true,
+      });
     });
   },
-  updatesummary: function(summary) {
-  	$.ajax({
+
+  updatesummary: function (summary) {
+    $.ajax({
       url: '/api/profile/edit/summary',
       type: 'PUT',
-      data: "email=" + localStorage.getItem('email') + "&summary=" + summary,
-      success: function(response) {
+      data: 'email=' + localStorage.getItem('email') + '&summary=' + summary,
+      success: function (response) {
         console.log('DOne ... ' + response);
-        if(response.status === 200) {
+        if (response.status === 200) {
           AppDispatcher.handleViewAction({
             actionType: AboutConstants.SUMMARY,
-            summary: summary
+            summary: summary,
           });
-        } 
-        else {
+        } else {
           console.log('Somthing happened');
         }
-      }
+      },
+    }).fail(function() {
+      AppDispatcher.handleViewAction({
+        actionType: AboutConstants.SUMMARY,
+        error: true,
+      });
     });
   },
-  updatelife: function(life) {
+
+  updatelife: function (life) {
     $.ajax({
       url: '/api/profile/edit/life',
       type: 'PUT',
-      data: "email=" + localStorage.getItem('email') + "&life=" + life,
-      success: function(response) {
+      data: 'email=' + localStorage.getItem('email') + '&life=' + life,
+      success: function (response) {
         console.log('DOne ... ' + response);
-        if(response.status === 200) {
+        if (response.status === 200) {
           AppDispatcher.handleViewAction({
             actionType: AboutConstants.LIFE,
-            life: life
+            life: life,
           });
-        } 
-        else {
+        } else {
           console.log('Somthing happened');
         }
-      }
-    });
+      },
+    }).fail(function() {
+      AppDispatcher.handleViewAction({
+        actionType: AboutConstants.LIFE,
+        error: true,
+      });
+    });;
   },
-  updategoodat: function(goodat) {
+
+  updategoodat: function (goodat) {
     console.log('Goodat ' + goodat);
     $.ajax({
       url: '/api/profile/edit/goodat',
       type: 'PUT',
-      data: "email=" + localStorage.getItem('email') + "&goodat=" + goodat,
-      success: function(response) {
+      data: 'email=' + localStorage.getItem('email') + '&goodat=' + goodat,
+      success: function (response) {
         console.log('DOne ... ' + response);
-        if(response.status === 200) {
+        if (response.status === 200) {
           AppDispatcher.handleViewAction({
             actionType: AboutConstants.GOODAT,
-            goodat: goodat
+            goodat: goodat,
           });
-        } 
-        else {
+        } else {
           console.log('Somthing happened');
         }
-      }
-    });
+      },
+    }).fail(function() {
+      AppDispatcher.handleViewAction({
+        actionType: AboutConstants.GOODAT,
+        error: true,
+      });
+    });;
   },
-  updatethinkingof: function(thinkingof) {
+
+  updatethinkingof: function (thinkingof) {
     $.ajax({
       url: '/api/profile/edit/thinkingof',
       type: 'PUT',
-      data: "email=" + localStorage.getItem('email') + "&thinkingof=" + thinkingof,
-      success: function(response) {
+      data: 'email=' + localStorage.getItem('email') + '&thinkingof=' + thinkingof,
+      success: function (response) {
         console.log('DOne ... ' + response);
-        if(response.status === 200) {
+        if (response.status === 200) {
           AppDispatcher.handleViewAction({
             actionType: AboutConstants.THINKING,
-            thinkingof: thinkingof
+            thinkingof: thinkingof,
           });
-        } 
-        else {
+        } else {
           console.log('Somthing happened');
         }
-      }
-    });
+      },
+    }).fail(function() {
+      AppDispatcher.handleViewAction({
+        actionType: AboutConstants.THINKING,
+        error: true,
+      });
+    });;
   },
-  updatefavs: function(favs) {
+
+  updatefavs: function (favs) {
     $.ajax({
       url: '/api/profile/edit/favs',
       type: 'PUT',
-      data: "email=" + localStorage.getItem('email') + "&favs=" + favs,
-      success: function(response) {
+      data: 'email=' + localStorage.getItem('email') + '&favs=' + favs,
+      success: function (response) {
         console.log('DOne ... ' + response);
-        if(response.status === 200) {
+        if (response.status === 200) {
           AppDispatcher.handleViewAction({
             actionType: AboutConstants.FAVS,
-            favs: favs
+            favs: favs,
           });
-        } 
-        else {
+        } else {
           console.log('Somthing happened');
         }
-      }
-    });
-  }
+      },
+    }).fail(function() {
+      AppDispatcher.handleViewAction({
+        actionType: AboutConstants.FAVS,
+        error: true,
+      });
+    });;
+  },
 };
 
 module.exports = AboutActions;

@@ -5,6 +5,7 @@
 //es6 imports
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 //Router components
 import { Router, Route, Link, hashHistory } from 'react-router';
 
@@ -34,7 +35,7 @@ import Enemies from './components/admin/users/enemies.react';
 import Cards from './components/admin/Cards.react';
 import Settings from './components/admin/settings/settings.react';
 import Forgot from './components/Forgot.react';
-import AdminForgot from './components/admin/AdminForgotPwd.react'
+import AdminForgot from './components/admin/AdminForgotPwd.react';
 import Feedback from './components/admin/feedback/FeedbackHome.react';
 import Timeline from './components/admin/feedback/timeline.react';
 import ActivityFeed from './components/admin/feedback/activity.react';
@@ -44,36 +45,37 @@ import OthersFeed from './components/admin/feedback/others.react';
 import Graph from './components/admin/graphs/graph.react';
 import PieGraph from './components/admin/graphs/piechart.react';
 
-
 function requireAuth(nextState, replace) {
-  if(! localStorage.getItem('apitoken')) {
+  if (!localStorage.getItem('apitoken')) {
     replace({
       pathname: '/login',
-      state: { nextPathname: nextState.location.pathname }
-    })
+      state: { nextPathname: nextState.location.pathname },
+    });
   }
 }
 
 function requireAdminAuth(nextState, replace) {
-    if(! localStorage.getItem('apitoken')) {
-        replace({
-            pathname: '/AdminLogin',
-            state: { nextPathname: nextState.location.pathname }
-        })
-    }
+  if (!localStorage.getItem('apitoken')) {
+    replace({
+      pathname: '/AdminLogin',
+      state: { nextPathname: nextState.location.pathname },
+    });
+  }
 }
 
 function logout() {
   console.log('Sign out !');
   localStorage.removeItem('apitoken');
   localStorage.removeItem('user');
-  document.location = "/#/login";
+  document.location = '/#/login';
 }
+
 function AdminSignout() {
-    localStorage.removeItem('apitoken');
-    localStorage.removeItem('email');
-    document.location = "/cp-admin#/AdminLogin";
+  localStorage.removeItem('apitoken');
+  localStorage.removeItem('email');
+  document.location = '/cp-admin#/AdminLogin';
 }
+
 ReactDOM.render((
   <Router history={hashHistory}>
     <Route path="/login" component={Login} />

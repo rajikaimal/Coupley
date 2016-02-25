@@ -3,39 +3,45 @@ var LoginConstants = require('../constants/LoginConstants');
 var SearchConstants = require('../constants/SearchConstants');
 
 var HeaderActions = {
-  getprofilename: function(email) {
+  getprofilename: function (email) {
     console.log(email);
-  	$.get('/api/authenticate?token=' + localStorage.getItem('apitoken'), function(response) {
-  	  if(response.token) {
+    $.get('/api/authenticate?token=' + localStorage.getItem('apitoken'), function (response) {
+      if (response.token) {
         AppDispatcher.handleViewAction({
           actionType: LoginConstants.PROPOGATE,
-          firstname: response.user[0].firstname
+          firstname: response.user[0].firstname,
         });
-      }
-      else {
+      } else {
         console.log(response);
       }
     });
   },
-  getsearchresults: function(searchkey) {
-    if(searchkey == "") {
+
+  getsearchresults: function (searchkey) {
+    if (searchkey == '') {
       console.log('Null searchkey');
-    }
-    else {
-      $.get('/api/search?token=' + localStorage.getItem('apitoken') + '&key=' + searchkey, function(response) {
-        if(response.status == 200) {
+    } else {
+      $.get('/api/search?token=' + localStorage.getItem('apitoken') + '&key=' + searchkey, function (response) {
+        if (response.status == 201 && response.users) {
           AppDispatcher.handleViewAction({
             actionType: SearchConstants.SEARCH,
-            search: response.users
+            search: response.users,
+          });
+        } else if (response.status == 200) {
+          AppDispatcher.handleViewAction({
+            actionType: SearchConstants.SEARCH,
+            search: '',
           });
         }
-        else if(response.status == 505) {
-          console.log('Error 505');
-        }
-      });  
+      }).fail(function () {
+        AppDispatcher.handleViewAction({
+            actionType: SearchConstants.SEARCH,
+            search: 'err',
+          });
+      });
     }
-    
-  }
+
+  },
 };
 
 module.exports = HeaderActions;
