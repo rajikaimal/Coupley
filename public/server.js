@@ -56,7 +56,7 @@ io.on('connection', function (socket) {
 
                                    }
                     //        socket.broadcast.to(connectedUser[chat.user2]).emit('chat', { message:result});
-                          //  socket.broadcast.to(connectedUser[socket.username]).emit
+                        //    socket.broadcast.to(connectedUser[Tiffany]).emit('chatList', {Userlist:Likedusers});
                              io.emit('chatList', {Userlist:Likedusers});
                                             console.log("Liked list sent to "+socket.username);
                                     });

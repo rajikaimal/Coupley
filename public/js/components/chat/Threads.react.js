@@ -60,9 +60,7 @@ const Threads = React.createClass({
 
     componentDidMount: function () {
         ThreadStore.addChangeListener(this._onChange);
-        // $.get('http://localhost:8081/threads/list', function(response) {
-        //   alert(response);
-        // });
+
     },
     _onChange: function () {
         this.setState({
@@ -94,13 +92,12 @@ const Threads = React.createClass({
     console.log('Done ...');
 
   },
-  test : function() {
+  test : function(item) {
     var item = {
     	message: ':) hello :) hello :) hello :)'
     }
-
-    console.log(Emojis)
   	var texts = item.message.split(/:\)/g);
+    console.log(texts);
     var content = [];
     for(var i = 0; i < texts.length - 1; i++) {
     	content.push(texts[i]);
@@ -130,7 +127,7 @@ const Threads = React.createClass({
                     primaryText="Name"
                     secondaryText={
                         <p>
-                {item.message}
+                        {item.message}
                         </p>
                         }
                     secondaryTextLines={2}
