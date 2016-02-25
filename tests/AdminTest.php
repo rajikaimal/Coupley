@@ -50,9 +50,7 @@ class AdminTest extends TestCase
         );
 
         $this->assertEquals(200, $response->getStatusCode());
-
-        $data = (array) json_decode($response->getBody());
-
+        $data = (array)json_decode($response->getBody());
         $this->assertArrayHasKey('admin', $data);
         $this->assertArrayHasKey('status', $data);
     }
@@ -66,11 +64,8 @@ class AdminTest extends TestCase
     {
         $client = new Client(['base_uri' => 'http://localhost:3000/admin-api/']);
         $response = $client->request('GET', 'search');
-
         $this->assertEquals(200, $response->getStatusCode());
-
         $data = (array) json_decode($response->getBody());
-
         $this->assertArrayHasKey('users', $data);
         $this->assertArrayHasKey('status', $data);
     }
@@ -84,11 +79,8 @@ class AdminTest extends TestCase
     {
         $client = new Client(['base_uri' => 'http://localhost:3000/admin-api/']);
         $response = $client->request('GET', 'blocked');
-
         $this->assertEquals(200, $response->getStatusCode());
-
         $data = (array) json_decode($response->getBody());
-
         $this->assertArrayHasKey('users', $data);
         $this->assertArrayHasKey('status', $data);
     }
@@ -102,11 +94,8 @@ class AdminTest extends TestCase
     {
         $client = new Client(['base_uri' => 'http://localhost:3000/admin-api/']);
         $response = $client->request('GET', 'timeline');
-
         $this->assertEquals(200, $response->getStatusCode());
-
         $data = (array) json_decode($response->getBody());
-
         $this->assertArrayHasKey('feeds', $data);
         $this->assertArrayHasKey('status', $data);
     }
