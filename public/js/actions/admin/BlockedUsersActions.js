@@ -14,7 +14,7 @@ var UsersActions = {
           actionType: SearchConstants.SEARCH,
           search: response.users,
         });
-      }      else if (response.status == 505) {
+      }else if (response.status == 505) {
         console.log('Error 505');
         document.location = '/#/search/err';
       }
