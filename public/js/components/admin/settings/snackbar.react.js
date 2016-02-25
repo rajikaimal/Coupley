@@ -8,39 +8,42 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
 var SnackbarExampleSimple = React.createClass({
-    getInitialState: function () {
-        return {
-            open: false
-        };
-    },
-    handleTouchTap: function () {
-        this.setState({
-            open: true
-        });
+  getInitialState: function () {
+    return {
+      open: false,
+    };
+  },
 
-    },
-    handleRequestClose: function () {
-        this.setState({
-            open: false
-        });
+  handleTouchTap: function () {
+    this.setState({
+      open: true,
+    });
 
-    },
-    render: function () {
-        return (
-            <div>
-                <RaisedButton
-                    onTouchTap={this.handleTouchTap}
-                    label="Add to my calendar"
-                />
-                <Snackbar
-                    open={this.state.open}
-                    message="Event added to your calendar"
-                    autoHideDuration={4000}
-                    onRequestClose={this.handleRequestClose}
-                />
-            </div>
-        );
-    }
+  },
+
+  handleRequestClose: function () {
+    this.setState({
+      open: false,
+    });
+
+  },
+
+  render: function () {
+    return (
+        <div>
+          <RaisedButton
+              onTouchTap={this.handleTouchTap}
+              label="Add to my calendar"
+            />
+          <Snackbar
+              open={this.state.open}
+              message="Event added to your calendar"
+              autoHideDuration={4000}
+              onRequestClose={this.handleRequestClose}
+            />
+        </div>
+    );
+  },
 });
 
 export default SnackbarExampleSimple;

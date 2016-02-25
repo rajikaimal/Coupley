@@ -8,43 +8,51 @@ var CHANGE_EVENT = 'change';
 var email;
 
 var LoginStore = assign({}, EventEmitter.prototype, {
-  save: function(token) {
+  save: function (token) {
     localStorage.setItem('apitoken', token);
   },
-  saveEmail: function(email) {
+
+  saveEmail: function (email) {
     localStorage.setItem('email', email);
   },
-  storeuserdata: function(data) {
+
+  storeuserdata: function (data) {
     localStorage.setItem('user', data);
   },
-  storefirstname: function(firstname) {
+
+  storefirstname: function (firstname) {
     localStorage.setItem('firstname', firstname);
   },
-  getState: function() {
+
+  getState: function () {
     return localStorage.getItem('apitoken');
   },
-  getEmail: function() {
+
+  getEmail: function () {
     return localStorage.getItem('email');
   },
-  getFirstname: function() {
+
+  getFirstname: function () {
     return localStorage.getItem('user');
   },
-  emitChange: function() {
+
+  emitChange: function () {
     this.emit(CHANGE_EVENT);
   },
-  addChangeListener: function(callback) {
+
+  addChangeListener: function (callback) {
     this.on(CHANGE_EVENT, callback);
-  }
+  },
 });
 
-AppDispatcher.register(function(payload) {
-  switch(payload.action.actionType) {
-    case(LoginConstants.LOGIN): 
+AppDispatcher.register(function (payload) {
+  switch (payload.action.actionType) {
+    case (LoginConstants.LOGIN):
       LoginStore.save(payload.action.token);
       LoginStore.saveEmail(payload.action.email);
       LoginStore.emitChange();
       break;
-    case(LoginConstants.PROPOGATE):
+    case (LoginConstants.PROPOGATE):
       LoginStore.storeuserdata(payload.action.userdata.firstname);
       LoginStore.emitChange();
       break;

@@ -16,39 +16,41 @@ import ListItem from 'material-ui/lib/lists/list-item';
 const colors = styles.Colors;
 
 var AvatarExampleSimple = React.createClass({
-    getInitialState: function () {
-        return {
-            results: SearchStore.getresults()
-        }
-    },
-    componentDidMount: function () {
-        UserActions.getsearchresults();
-        SearchStore.addChangeListener(this._onChange);
-    },
+  getInitialState: function () {
+    return {
+      results: SearchStore.getresults(),
+    };
+  },
 
-    _onChange: function () {
-        this.setState({
-            results: SearchStore.getresults()
-        });
-    },
-    _renderSearchItem: function () {
-        console.log(this.state.results);
-        return this.state.results.map((result) => {
-            return (<div className="col-lg-3">
-                <SearchItem key={result.id} username={result.username} firstname={result.firstname} lastname={result.lastname} gender={result.gender} id={result.id} />
-            </div>);
-        });
-    },
-    render: function () {
-        return (
-            <div>
-                <h1>Blocked Users</h1>
+  componentDidMount: function () {
+    UserActions.getsearchresults();
+    SearchStore.addChangeListener(this._onChange);
+  },
+
+  _onChange: function () {
+    this.setState({
+      results: SearchStore.getresults(),
+    });
+  },
+
+  _renderSearchItem: function () {
+    console.log(this.state.results);
+    return this.state.results.map((result) => {
+      return (<div className="col-lg-3">
+                          <SearchItem key={result.id} username={result.username} firstname={result.firstname} lastname={result.lastname} gender={result.gender} id={result.id} />
+                  </div>);
+    });
+  },
+
+  render: function () {
+    return (
+        <div>
+            <h1>Blocked Users</h1>
 			{this._renderSearchItem()}
-            </div>
-        );
-    }
+        </div>
+    );
+  },
 
 });
-
 
 export default AvatarExampleSimple;
