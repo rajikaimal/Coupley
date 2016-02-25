@@ -1,14 +1,11 @@
 <?php
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use GuzzleHttp\Client;
 
 class AdminTest extends TestCase
 {
     /**
-     * Test AdminAuthenticateController@authenticate
+     * Test AdminAuthenticateController@authenticate.
      *
      * @return void
      */
@@ -54,7 +51,7 @@ class AdminTest extends TestCase
 
         $this->assertEquals(200, $response->getStatusCode());
 
-        $data = (array)json_decode($response->getBody());
+        $data = (array) json_decode($response->getBody());
 
         $this->assertArrayHasKey('admin', $data);
         $this->assertArrayHasKey('status', $data);
@@ -72,7 +69,7 @@ class AdminTest extends TestCase
 
         $this->assertEquals(200, $response->getStatusCode());
 
-        $data = (array)json_decode($response->getBody());
+        $data = (array) json_decode($response->getBody());
 
         $this->assertArrayHasKey('users', $data);
         $this->assertArrayHasKey('status', $data);
@@ -90,14 +87,14 @@ class AdminTest extends TestCase
 
         $this->assertEquals(200, $response->getStatusCode());
 
-        $data = (array)json_decode($response->getBody());
+        $data = (array) json_decode($response->getBody());
 
         $this->assertArrayHasKey('users', $data);
         $this->assertArrayHasKey('status', $data);
     }
 
     /**
-     * Test FeedbackController@timeline
+     * Test FeedbackController@timeline.
      *
      * @return void
      */
@@ -108,10 +105,9 @@ class AdminTest extends TestCase
 
         $this->assertEquals(200, $response->getStatusCode());
 
-        $data = (array)json_decode($response->getBody());
+        $data = (array) json_decode($response->getBody());
 
         $this->assertArrayHasKey('feeds', $data);
         $this->assertArrayHasKey('status', $data);
     }
-
 }
