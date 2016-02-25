@@ -108,12 +108,12 @@ class UsersController extends Controller
 //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
         $mail->isHTML(true);                                  // Set email format to HTML
         $mail->Subject = 'COUPLEY password recovery';
-        $mail->Body = 'Dear ' . $user . ', your new password is ' . $pwd;
+        $mail->Body = 'Dear '.$user.', your new password is '.$pwd;
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
-        if (!$mail->send()) {
+        if (! $mail->send()) {
             echo 'Message could not be sent.';
-            echo 'Mailer Error: ' . $mail->ErrorInfo;
+            echo 'Mailer Error: '.$mail->ErrorInfo;
         } else {
             echo 'Message has been sent';
         }
@@ -124,6 +124,7 @@ class UsersController extends Controller
         $email = $request->email;
         try {
             $admindetails = User::where('email', $email)->get();
+
             return response()->json(['admin' => $admindetails, 'status' => 200]);
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 505], 505);
