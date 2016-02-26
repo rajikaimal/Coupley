@@ -52,12 +52,27 @@ var a = 1;
 
 const ActivityList = React.createClass({
 
+    editstatus: function () {
+        let post_text= this.refs.EditBox.getValue();
+        let postId= this.props.id;
+
+        let editstatus={
+          PostId: postId,
+          Status: post_text
+          };
+          ActivityFeedActions.editstatus(editstatus);
+          console.log('Done calling !');
+          this.handleClose();
+    },
+
     deleteStatus: function () {
         var postId = this.props.id;
         let delete_status = {
             PostId: postId
         };
         ActivityFeedActions.delete_status(delete_status);
+        console.log('Done deleting');
+        this.handleClose();
     },
 
     addshare: function () {
@@ -140,11 +155,11 @@ const ActivityList = React.createClass({
         this.setState({open: false});
     },
 
-   /* handleBoth: function () {
+   /** handleBoth: function () {
         if(this._handleRegisterClickEvent()) {
            this.setState({open: false});
         }
-    },**/
+    },
 
     _handleUpdateClickEvent: function () {
 
@@ -155,6 +170,8 @@ const ActivityList = React.createClass({
           PostId: postId,
           Status: post_text
           };
+          ActivityFeedActions.editstatus(editstatus);
+          console.log('Done calling !');
 
         swal({  title: "Are you sure?",
                 text: "Do you really want to update this post?",
@@ -174,7 +191,7 @@ const ActivityList = React.createClass({
                     swal("Cancelled", "This post isn't  still updated.", "error");
                 } });
          this.handleClose();
-    },
+    },*/
 
     EnterKey_comment(e) {
         if (e.key === 'Enter') {
@@ -200,7 +217,7 @@ const ActivityList = React.createClass({
         label="Update"
         primary={true}
         keyboardFocused={true}
-        onTouchTap={this._handleUpdateClickEvent}/>,
+        onTouchTap={this.editstatus}/>,
 
       <FlatButton
         label="Close"

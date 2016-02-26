@@ -22,7 +22,7 @@ var CommentList = React.createClass({
     _renderSearchItem: function () {
         console.log(this.state.data);
         return this.state.data.map((comment) => {
-            return (<Comment key={comment.id} cid={comment.id} fname={comment.firstname} comment_txt={comment.comment_txt} />);
+            return (<Comment key={comment.id} cid={comment.id} fname={comment.firstname} comment_txt={comment.comment_txt} post_id={comment.post_id}/>);
         });
     },
 

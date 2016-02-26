@@ -60,12 +60,46 @@ var ActivityFeedActions = {
   delete_status: function(postId){
     $.post('api/deleteStatus', postId, function(response) {
       console.log(response);
+      if(response.status == 201) {
+        $.get('/api/getstatus', function(response) {
+        console.log(response);
+          if (response.status == 200) {
+            AppDispatcher.handleViewAction({
+            actionType: ActivityFeedConstants.GETDATA,
+            statusdata: response.posts
+            });
+          }
+          else if (response.status == 505) {
+            console.log('Error 505');
+          }
+        });
+      }
+      else if(response.status == 404) {
+        console.log('Error 404');
+      }
       });
   },
 
   editstatus:function(txt){
    $.post('api/edit_status',txt , function(response) {
       console.log(response);
+      if(response.status == 201) {
+      $.get('/api/getstatus', function(response) {
+      console.log(response);
+          if (response.status == 200) {
+            AppDispatcher.handleViewAction({
+            actionType: ActivityFeedConstants.GETDATA,
+            statusdata: response.posts
+            });
+          }
+          else if (response.status == 505) {
+            console.log('Error 505');
+          }
+        });
+      }
+      else if(response.status == 404) {
+        console.log('Error 404');
+      }
       });
   }
 

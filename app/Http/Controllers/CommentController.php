@@ -25,7 +25,7 @@ class CommentController extends Controller
     public function getcomments(Request $request)
     {
         /*  $id=$request->key;**/
-     if ($comments = \DB::select('select id,firstname,comment_txt from comments')) {
+     if ($comments = \DB::select('select id,firstname,comment_txt,post_id from comments')) {
          return response()->json(['comments' => $comments, 'status' => 200], 200);
      } else {
          return response()->json(['status' => 505], 505);
