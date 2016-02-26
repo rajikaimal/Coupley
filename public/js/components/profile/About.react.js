@@ -13,6 +13,8 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import FlatButton from 'material-ui/lib/flat-button';
 import AboutActions from '../../actions/profile/AboutActions';
 import AboutStore from '../../stores/AboutStore';
+import ErrorStore from '../../stores/ErrorStore';
+import Snackbar from 'material-ui/lib/snackbar';
 
 //tap-event-plugin
 injectTapEventPlugin();
@@ -46,6 +48,7 @@ const About = React.createClass({
         editingGoodat: false,
         editingThinkingof: false,
         editingFavs: false,
+        error: false,
         summary: AboutStore.getsummary(),
         life: AboutStore.getlife(),
         goodat: AboutStore.getgoodat(),
@@ -56,6 +59,7 @@ const About = React.createClass({
     componentDidMount: function () {
         AboutActions.fetchAll();
         AboutStore.addChangeListener(this._onChange);
+        ErrorStore.addChangeListener(this._onChange);
   },
     _onChange: function () {
         this.setState({
@@ -63,7 +67,8 @@ const About = React.createClass({
             life: AboutStore.getlife(),
             goodat: AboutStore.getgoodat(),
             spendtime: AboutStore.getspendtime(),
-            favs: AboutStore.getfavs()
+            favs: AboutStore.getfavs(),
+            error: ErrorStore.getabouterr()
     });
   },
     _toggle: function () {
@@ -123,7 +128,7 @@ const About = React.createClass({
     },
   render: function() {
     return (
-      <div>        
+      <div>      
         <List>
             <ListItem key="Self summary"
                 primaryText="Self summary"
@@ -207,6 +212,11 @@ const About = React.createClass({
                 <FlatButton label="Cancel" onClick={this._editSummary}/>
             </div> : ''}
         </List>
+        <Snackbar
+            open={this.state.error}
+            message="Error occured, please try again later"
+            autoHideDuration={4000}
+            onRequestClose={this.handleRequestClose} />
       </div>  
     );    
   }
