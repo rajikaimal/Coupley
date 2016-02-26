@@ -11,7 +11,11 @@ var UpdateActions = {
           userdata: credentials,
         });
         swal('Good job!', 'Updated your profile', 'success');
-      }      else {
+      }
+
+      if (data.status === 400) {
+        swal('Error', 'Please check your internet connection and retry', 'error');
+      } else {
         swal('Error', 'An account with the same email exists already', 'error');
       }
     }).fail(function () {

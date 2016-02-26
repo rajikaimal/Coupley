@@ -48,7 +48,7 @@ const tileElements = tilesData.map(tile => <GridTile
     title={<FlatButton label={tile.title} secondary={true} style={style} linkButton={true}  />}
 
 ><img src={tile.img} /></GridTile>);
-const gridListStyle = { width: 600, height: 220, overflowY: 'auto' };
+const gridListStyle = { width:600, height: 220, overflowY: 'auto' };
 
 const customContentStyle = {
   width: '100%',
@@ -202,7 +202,7 @@ var Reset = React.createClass({
         />,
     ];
     return (
-        <div className="" style={{ 'margin-left': '37%', top: '-218px', position: 'relative',
+        <div className="" style={{ 'margin-left': '38%', top: '-218px', position: 'relative',
             'min-height': '1px',
             'padding-right': '15px',
             'padding-left': '15px', }}>

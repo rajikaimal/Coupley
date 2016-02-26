@@ -93,13 +93,6 @@ var Sidebar = React.createClass({
                   <small className="label pull-right bg-red">3</small>
                 </Link>
               </li>
-              <li>
-                <Link to={`/settings`}>
-                  <i className="fa fa-envelope"></i>
-                  <span>Mailbox</span>
-                  <small className="label pull-right bg-yellow">12</small>
-                </Link>
-              </li>
               <li className="treeview">
                 <Link to={`/settings`}>
                   <i className="fa ion-ios-gear"></i>
