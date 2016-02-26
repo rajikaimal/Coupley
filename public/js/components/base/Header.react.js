@@ -70,11 +70,11 @@ const Header = React.createClass({
 				  </div>
 				</div>
 				<div className="col-lg-9">
-		          <div className="panel panel-default">
+		          
 		          
 					{this.props.children}
 					
-			      </div>
+			      
         		</div>
         		<div className="col-lg-3">
 		          <MockChat />
