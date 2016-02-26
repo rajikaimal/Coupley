@@ -25,6 +25,10 @@ import RaisedButton from 'material-ui/lib/raised-button';
 import TextField from 'material-ui/lib/text-field';
 import LikeStatusStore from '../../stores/LikeStatusStore';
 import Snackbar from 'material-ui/lib/snackbar';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
+//tap-event-plugin
+injectTapEventPlugin();
 
 const iconButtonElement = (
     <IconButton
@@ -142,7 +146,8 @@ const ActivityList = React.createClass({
         }
     },**/
 
-    _handleRegisterClickEvent: function () {
+    _handleUpdateClickEvent: function () {
+
         let post_text= this.refs.EditBox.getValue();
         let postId= this.props.id;
 
@@ -150,9 +155,25 @@ const ActivityList = React.createClass({
           PostId: postId,
           Status: post_text
           };
-          ActivityFeedActions.editstatus(editstatus);
-          console.log('Done calling !');
-          this.handleClose();
+
+        swal({  title: "Are you sure?",
+                text: "Do you really want to update this post?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, Update!",
+                cancelButtonText: "No, Cancel!",
+                closeOnConfirm: false,
+                closeOnCancel: false },
+            function(isConfirm){
+                if (isConfirm) {
+                    swal("Updated!", "This post has been updated.", "success");
+                    ActivityFeedActions.editstatus(editstatus);
+                    console.log('Done calling !');
+                } else {
+                    swal("Cancelled", "This post isn't  still updated.", "error");
+                } });
+         this.handleClose();
     },
 
     EnterKey_comment(e) {
@@ -179,7 +200,7 @@ const ActivityList = React.createClass({
         label="Update"
         primary={true}
         keyboardFocused={true}
-        onTouchTap={this._handleRegisterClickEvents}/>,
+        onTouchTap={this._handleUpdateClickEvent}/>,
 
       <FlatButton
         label="Close"
@@ -190,14 +211,14 @@ const ActivityList = React.createClass({
 		return (
 			<div style={style1}>
 			<div >
-      <Card>
+            <Card>
 		        <ListItem
 		          leftAvatar={<Avatar src="https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg" />}
-		          primaryText={this.state.firstname}
+		          primaryText={this.props.firstname}
 		          secondaryText={
 		            <p>
-		              <b>{this.state.created_at}</b><br/>
-              			{this.state.post_text}
+		              <b>{this.props.created_at}</b><br/>
+              			{this.props.post_text}
 		            </p>
 		          }
 		          secondaryTextLines={2} 
@@ -218,22 +239,22 @@ const ActivityList = React.createClass({
           			<FlatButton label="Comment" onClick={this.setFocusToTextBox} />
           			<FlatButton label="Share" onClick={this.addshare}/>
 		        <Divider inset={true} />	   
-      </Card>	
-      <Dialog
-          title="Modify Your Status"
-          actions={actions}
-          modal={false}
-          open={this.state.open}
-          onRequestClose={this.handleClose}>
-          <TextField hintText="Update your status" multiLine={false} fullWidth={true} ref="EditBox" defaultValue={this.props.post_text}/>
-      </Dialog>
+            </Card>	
+                <Dialog
+                     title="Modify Your Status"
+                     actions={actions}
+                     modal={false}
+                     open={this.state.open}
+                     onRequestClose={this.handleClose}>
+                    <TextField hintText="Update your status" multiLine={false} fullWidth={true} ref="EditBox" defaultValue={this.props.post_text}/>
+                </Dialog>
 			</div>
-        <div><CommentList /></div>
-				<div style={style2}>
-          <Paper>
-            <TextField hintText="Write a comment..." multiLine={false} fullWidth={true} onKeyPress={this.EnterKey_comment} ref="commentBox" id="mytext"/>
-          </Paper>
-        </div>
+            <div><CommentList /></div>
+			<div style={style2}>
+              <Paper>
+                <TextField hintText="Write a comment..." multiLine={false} fullWidth={true} onKeyPress={this.EnterKey_comment} ref="commentBox" id="mytext"/>
+              </Paper>
+            </div>
 			</div>
 		);
 	}
