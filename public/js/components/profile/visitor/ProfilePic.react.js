@@ -12,6 +12,11 @@ const style = {
   borderRadius: 20
 };
 
+const iconButtonStyle = {
+  width: 500,
+  height: 500
+}
+
 const ProfilePic = React.createClass({
   getInitialState: function() {
     return {
@@ -88,8 +93,8 @@ const ProfilePic = React.createClass({
               <h3> {this.props.firstname} {this.props.lastname} </h3>
               <span> {this.props.country} </span>
               {this.state.permission ?  
-                <IconButton onClick={this._changeLikeState} tooltip={this.state.liked ? "Unlike" : "Like"} touch={true} tooltipPosition="bottom-right">
-                  {this.state.liked ? <FavIcon onClick={this._changeLikeState} viewBox="0 0 20 30" color={Colors.red500} /> : 
+                <IconButton style={iconButtonStyle} onClick={this._changeLikeState} tooltip={this.state.liked ? "Unlike" : "Like"} touch={true} tooltipPosition="bottom-right">
+                  {this.state.liked ? <FavIcon onClick={this._changeLikeState} viewBox="0 0 5 10" color={Colors.red500} /> : 
                             <FavIconBorder viewBox="0 0 20 30" color={Colors.red500} />}
                 </IconButton>
               : ''}

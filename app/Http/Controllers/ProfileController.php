@@ -8,6 +8,7 @@ use App\Likes;
 use App\Blocks;
 use App\ActivityFeed;
 use App\About;
+use Illuminate\Http\Exception;
 
 class ProfileController extends Controller
 {
@@ -283,11 +284,27 @@ class ProfileController extends Controller
     }
 
     /*
-        Return @json uploads profile pic
+       @return @json uploads profile pic
     **/
     public function uploadpic(Request $request)
     {
-        return $request->data;
+        $destination = 'img/profilepics';
+        try {
+            $apitoken = $request->input('apitoken');
+            $email = $request->input('email');
+            $username = $request->input('user');
+            $file = $request->file('file')->move($destination, $username);
+            $ext = $request->file('file')->getClientOriginalExtension();
+
+            $userID = User::where('username', $username)->get(['id']);
+
+            About::where('user_id', $userID[0]->id)
+                ->update(['profilepic' => $username.'.'.$ext]);
+
+            return response()->json(['status' => 200, 'done' => true], 200);
+        } catch (Exception $e) {
+            return response()->json(['status' => 200, 'done' => false], 200);
+        }
     }
 
     /*
