@@ -50,7 +50,7 @@ class AdminTest extends TestCase
         );
 
         $this->assertEquals(200, $response->getStatusCode());
-        $data = (array)json_decode($response->getBody());
+        $data = (array) json_decode($response->getBody());
         $this->assertArrayHasKey('admin', $data);
         $this->assertArrayHasKey('status', $data);
     }
