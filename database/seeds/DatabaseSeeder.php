@@ -19,10 +19,10 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->delete();
 
         $users = [
-                    ['firstname' => 'Ryan', 'lastname' => ' Chenkie', 'email' => 'ryanchenkie@gmail.com', 'gender' => 'male', 'username' => 'ryan', 'orientation' => 'straight', 'birthday' => '1994-08-01', 'country' => 'Sri Lanka', 'role' => 'user', 'password' => Hash::make('secret')],
-                    ['firstname' => 'Chris', 'lastname' => ' Chenkie', 'email' => 'chris@gmail.com', 'gender' => 'male', 'username' => 'chris', 'orientation' => 'straight', 'birthday' => '1994-08-01', 'country' => 'Sri Lanka', 'role' => 'user', 'password' => Hash::make('secret')],
-                    ['firstname' => 'Alo', 'lastname' => ' Chenkie', 'email' => 'alo@gmail.com', 'gender' => 'male', 'username' => 'alo', 'orientation' => 'straight', 'birthday' => '1994-08-01', 'country' => 'Sri Lanka', 'role' => 'user', 'password' => Hash::make('secret')],
-                    ['firstname' => 'Tiffany', 'lastname' => ' Chenkie', 'email' => 'tiffany@gmail.com', 'gender' => 'male', 'username' => 'tiffany', 'orientation' => 'straight', 'birthday' => '1994-08-01', 'country' => 'Sri Lanka', 'role' => 'user', 'password' => Hash::make('secret')],
+                    ['firstname' => 'Ryan', 'lastname' => ' Reylnolds', 'email' => 'ryanchenkie@gmail.com', 'gender' => 'male', 'username' => 'ryan', 'orientation' => 'straight', 'birthday' => '1994-08-01', 'country' => 'Sri Lanka', 'role' => 'user', 'password' => Hash::make('secret')],
+                    ['firstname' => 'Chris', 'lastname' => 'james', 'email' => 'chris@gmail.com', 'gender' => 'male', 'username' => 'chris', 'orientation' => 'straight', 'birthday' => '1994-08-01', 'country' => 'Sri Lanka', 'role' => 'user', 'password' => Hash::make('cC123456')],
+                    ['firstname' => 'Han', 'lastname' => 'Solo', 'email' => 'alo@gmail.com', 'gender' => 'male', 'username' => 'alo', 'orientation' => 'straight', 'birthday' => '1994-08-01', 'country' => 'Sri Lanka', 'role' => 'user', 'password' => Hash::make('secret')],
+                    ['firstname' => 'Tiffany', 'lastname' => 'Hwang', 'email' => 'tiffany@gmail.com', 'gender' => 'male', 'username' => 'tiffany', 'orientation' => 'straight', 'birthday' => '1994-08-01', 'country' => 'Sri Lanka', 'role' => 'user', 'password' => Hash::make('tT123456')],
             ['firstname' => 'Isuru', 'lastname' => ' Dilhan', 'email' => 'isuru.dilhan@yahoo.com', 'job' => 'Web developer', 'role' => 'admin', 'password' => Hash::make('Secret123/')],
             ];
 
