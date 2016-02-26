@@ -5,8 +5,9 @@ import IconButton from 'material-ui/lib/icon-button';
 import RaisedButton from 'material-ui/lib/raised-button';
 import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-
+import ProfileActions from '../../actions/profile/ProfileActions';
 import Dropzone from 'react-dropzone';
+
 //tap-event-plugin
 injectTapEventPlugin();
 
@@ -23,14 +24,30 @@ const previewStyle = {
     width: 196
 };
 
+const containerStyle = {
+  position: 'relative'
+}
+
+const uploadButtonStyle = {
+  position: 'absolute',
+  marginBottom: 50
+};
+
 const ProfilePic = React.createClass({
     getInitialState: function () {
         return {
             editing: false,
             files: {},
-            preview: ''
+            preview: '',
+            mouseover: false,
+            picture: ''
         }
     },
+
+    componentDidMount: function() {
+      ProfileActions.fetchProfilePicture(localStorage.getItem('apitoken'), localStorage.getItem('username'));
+    },
+
     _edit: function () {
         this.setState({
             editing: true
@@ -42,6 +59,8 @@ const ProfilePic = React.createClass({
             files: files,
             preview: files[0].preview
         });
+        
+
 
     },
     _cancelEdit: function () {
@@ -52,17 +71,28 @@ const ProfilePic = React.createClass({
         });
     },
     _saveImage: function () {
-        var data = this.state.files[0];
+        var fd = new FormData();
+        var self = this;
+        fd.append('apitoken', localStorage.getItem('apitoken'));
+        fd.append('file', this.state.files[0]);
+        fd.append('email', localStorage.getItem('email'));
+        fd.append('user', localStorage.getItem('username'));
         $.ajax({
             type: 'POST',
             url: '/api/profile/profilepic',
-            data: data,
-            cache: false,
+            data: fd,
             contentType: false,
             processData: false,
             success: function (data) {
                 console.log("success");
                 console.log(data);
+                if(data.done == true) {
+                  self.setState({
+                    editing: false
+                  });
+                } else {
+
+                }
             },
             error: function (data) {
                 console.log("error");
@@ -78,6 +108,16 @@ const ProfilePic = React.createClass({
             </div> : ''
         );
     },
+    _showUpload: function() {
+      this.setState({
+        mouseover: true
+      });      
+    },
+    _hideUpload: function() {
+      this.setState({
+        mouseover: false
+      });
+    },
   render: function() {
     return (
       <div>
@@ -90,13 +130,12 @@ const ProfilePic = React.createClass({
                         <img style={previewStyle} src={this.state.preview} />
                     </Dropzone>
                 {this.renderSave()}
-                </div> : <div className="col-sm-3 col-md-3 col-lg-3">
-              <img src="https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg" style={style} />
-            </div>
+                </div> : <div className="col-sm-3 col-md-3 col-lg-3" >
+                            <img onMouseOver={this._showUpload} style={containerStyle} onMouseLeave={this._hideUpload} src={this.state.picture} style={style} />
+                            {this.state.mouseover ? <RaisedButton style={uploadButtonStyle} label="Change picture" onClick={this._cancelEdit}  /> : ''}
+                          </div>
 
-                }
-
-
+            }
               <div className="col-sm-3 col-md-3 col-lg-3">
               <h3> {this.props.firstname} {this.props.lastname} </h3>
               <span> {this.props.country} </span>
