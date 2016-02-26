@@ -25,6 +25,10 @@ import RaisedButton from 'material-ui/lib/raised-button';
 import TextField from 'material-ui/lib/text-field';
 import LikeStatusStore from '../../stores/LikeStatusStore';
 import Snackbar from 'material-ui/lib/snackbar';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
+//tap-event-plugin
+injectTapEventPlugin();
 
 const iconButtonElement = (
     <IconButton
@@ -77,9 +81,6 @@ const ActivityList = React.createClass({
             open: false,
             liked: LikeStatusStore.getlikes(),
             postId: StatusStore.getStatusID(),
-            autoHideDuration: 4000,
-            message: "Do you want to update this status? ",
-            opens: false,
         };
     },
 
@@ -139,36 +140,40 @@ const ActivityList = React.createClass({
         this.setState({open: false});
     },
 
-    handleBoth: function () {
-        this.handleClose();
-    },
-
-    _handleRegisterClickEvent: function () {
-        let post_text = this.refs.EditBox.getValue();
-        let postId = this.props.id;
-
-        let editstatus = {
-            PostId: postId,
-            Status: post_text
-        };
-        ActivityFeedActions.editstatus(editstatus);
-        console.log('Done calling !');
-    },
-
-    handleTouchTap: function () {
-        this.setState({opens: true});
-    },
-
-    handleActionTouchTap: function () {
-        if (this._handleRegisterClickEvent()) {
-            this.handleBoth();
+   /* handleBoth: function () {
+        if(this._handleRegisterClickEvent()) {
+           this.setState({open: false});
         }
-        this.setState({opens: false});
-        alert("Updated your Status");
-    },
+    },**/
 
-    handleRequestClose: function () {
-        this.setState({opens: false});
+    _handleUpdateClickEvent: function () {
+
+        let post_text= this.refs.EditBox.getValue();
+        let postId= this.props.id;
+
+        let editstatus={
+          PostId: postId,
+          Status: post_text
+          };
+
+        swal({  title: "Are you sure?",
+                text: "Do you really want to update this post?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, Update!",
+                cancelButtonText: "No, Cancel!",
+                closeOnConfirm: false,
+                closeOnCancel: false },
+            function(isConfirm){
+                if (isConfirm) {
+                    swal("Updated!", "This post has been updated.", "success");
+                    ActivityFeedActions.editstatus(editstatus);
+                    console.log('Done calling !');
+                } else {
+                    swal("Cancelled", "This post isn't  still updated.", "error");
+                } });
+         this.handleClose();
     },
 
     EnterKey_comment(e) {
@@ -189,79 +194,70 @@ const ActivityList = React.createClass({
         }
     },
 
-    render: function () {
-        const actions = [
-            <FlatButton
-                label="Update"
-                primary={true}
-                keyboardFocused={true}
-                onTouchTap={this.handleTouchTap}/>,
+	render: function() {
+     const actions = [
+      <FlatButton
+        label="Update"
+        primary={true}
+        keyboardFocused={true}
+        onTouchTap={this._handleUpdateClickEvent}/>,
 
-            <FlatButton
-                label="Close"
-                secondary={true}
-                onTouchTap={this.handleClose}/>,
-        ];
+      <FlatButton
+        label="Close"
+        secondary={true}
+        onTouchTap={this.handleClose}/>,
+    ];
 
-        return (
-            <div style={style1}>
-                <div >
-                    <Card>
-                        <ListItem
-                            leftAvatar={<Avatar src="https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg" />}
-                            primaryText={this.props.firstname}
-                            secondaryText={
-                                <p>
-                                    <b>{this.props.created_at}</b>
-                                    <br/>
+		return (
+			<div style={style1}>
+			<div >
+            <Card>
+		        <ListItem
+		          leftAvatar={<Avatar src="https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg" />}
+		          primaryText={this.props.firstname}
+		          secondaryText={
+		            <p>
+		              <b>{this.props.created_at}</b><br/>
               			{this.props.post_text}
-                                </p>
-                                }
-                            secondaryTextLines={2}
-                            rightIconButton={
-                                <IconMenu iconButtonElement={iconButtonElement}>
-                                    <MenuItem primaryText="Edit" onClick={this.handleOpen}/>
-                                    <MenuItem primaryText="Remove" onClick={this.deleteStatus}/>
-                                    <MenuItem primaryText="Block" />
-                                </IconMenu> } />
-
-
-                        <IconButton onClick={this._changeLikeState} tooltip={this.state.liked ? "Unlike" : "Like"} touch={true} tooltipPosition="bottom-right">
-                  {this.state.liked ? <FavIcon onClick={this._changeLikeState} viewBox="0 0 20 30" color={Colors.red500} /> :
-                      <FavIconBorder viewBox="0 0 20 30" color={Colors.red500} />}
-                        </IconButton>
-
-
-                        <FlatButton label="Comment" onClick={this.setFocusToTextBox} />
-                        <FlatButton label="Share" onClick={this.addshare}/>
-                        <Divider inset={true} />
-                    </Card>
-                    <Dialog
-                        title="Modify Your Status"
-                        actions={actions}
-                        modal={false}
-                        open={this.state.open}
-                        onRequestClose={this.handleClose}>
-                        <TextField hintText="Update your status" multiLine={false} fullWidth={true} ref="EditBox" defaultValue={this.props.post_text}/>
-                    </Dialog>
-                    <Snackbar
-                        open={this.state.opens}
-                        message={this.state.message}
-                        action="Ok"
-                        onActionTouchTap={this.handleActionTouchTap}
-                        onRequestClose={this.handleRequestClose}/>
-                </div>
-                <div>
-                    <CommentList />
-                </div>
-                <div style={style2}>
-                    <Paper>
-                        <TextField hintText="Write a comment..." multiLine={false} fullWidth={true} onKeyPress={this.EnterKey_comment} ref="commentBox" id="mytext"/>
-                    </Paper>
-                </div>
+		            </p>
+		          }
+		          secondaryTextLines={2} 
+		          rightIconButton={
+                 <IconMenu iconButtonElement={iconButtonElement}>
+                    <MenuItem primaryText="Edit" onClick={this.handleOpen}/>
+                    <MenuItem primaryText="Remove" onClick={this.deleteStatus}/>
+                    <MenuItem primaryText="Block" />
+                  </IconMenu> } />
+		           	
+             
+                <IconButton onClick={this._changeLikeState} tooltip={this.state.liked ? "Unlike" : "Like"} touch={true} tooltipPosition="bottom-right">
+                  {this.state.liked ? <FavIcon onClick={this._changeLikeState} viewBox="0 0 20 30" color={Colors.red500} /> : 
+                            <FavIconBorder viewBox="0 0 20 30" color={Colors.red500} />}
+                </IconButton>
+               
+    
+          			<FlatButton label="Comment" onClick={this.setFocusToTextBox} />
+          			<FlatButton label="Share" onClick={this.addshare}/>
+		        <Divider inset={true} />	   
+            </Card>	
+                <Dialog
+                     title="Modify Your Status"
+                     actions={actions}
+                     modal={false}
+                     open={this.state.open}
+                     onRequestClose={this.handleClose}>
+                    <TextField hintText="Update your status" multiLine={false} fullWidth={true} ref="EditBox" defaultValue={this.props.post_text}/>
+                </Dialog>
+			</div>
+            <div><CommentList /></div>
+			<div style={style2}>
+              <Paper>
+                <TextField hintText="Write a comment..." multiLine={false} fullWidth={true} onKeyPress={this.EnterKey_comment} ref="commentBox" id="mytext"/>
+              </Paper>
             </div>
-        );
-    }
+			</div>
+		);
+	}
 });
 
 export default ActivityList;

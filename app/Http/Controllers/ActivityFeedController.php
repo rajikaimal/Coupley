@@ -16,8 +16,8 @@ class ActivityFeedController extends Controller
         $post->post_text = $request->Status;
         $post->attachment = 'txt';
 
-        if ($post->save()) {
-            return response()->json(['status' => 201], 201);
+        if ($posts=$post->save()) {
+            return response()->json(['posts' => $posts,'status' => 201], 201);
         } else {
             return response()->json(['status' => 404], 404);
         }

@@ -5,12 +5,30 @@ var ActivityFeedActions = {
   add_status: function(status){
     $.post('api/status', status, function(response) {
       console.log(response);
+      if(response.status == 201) {
+            $.get('/api/getstatus', function(response) {
+            console.log(response);
+          if (response.status == 200) {
+            AppDispatcher.handleViewAction({
+            actionType: ActivityFeedConstants.GETDATA,
+            statusdata: response.posts
+            });
+          }
+          else if (response.status == 505) {
+            console.log('Error 505');
+          }
+        });
+      }
+      else if(response.status == 404) {
+        console.log('Error 404');
+      }
       });
   },
 
  getstatus: function() {
-    $.get('/api/getstatus' , function(response) {
+    $.get('/api/getstatus', function(response) {
       console.log(response);
+      console.log('view status ');
       if (response.status == 200) {
             AppDispatcher.handleViewAction({
             actionType: ActivityFeedConstants.GETDATA,
