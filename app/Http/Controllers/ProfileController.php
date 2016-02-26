@@ -8,7 +8,6 @@ use App\Likes;
 use App\Blocks;
 use App\ActivityFeed;
 use App\About;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Illuminate\Http\Exception;
 
 class ProfileController extends Controller
@@ -298,12 +297,12 @@ class ProfileController extends Controller
             $ext = $request->file('file')->getClientOriginalExtension();
 
             $userID = User::where('username', $username)->get(['id']);
-            
+
             About::where('user_id', $userID[0]->id)
-                ->update(['profilepic' => $username . '.' . $ext]);
+                ->update(['profilepic' => $username.'.'.$ext]);
 
             return response()->json(['status' => 200, 'done' => true], 200);
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             return response()->json(['status' => 200, 'done' => false], 200);
         }
     }
