@@ -1,33 +1,32 @@
 import React from 'react';
-import Card from 'material-ui/lib/card/card';
-import CardActions from 'material-ui/lib/card/card-actions';
-import CardTitle from 'material-ui/lib/card/card-title';
-import FlatButton from 'material-ui/lib/flat-button';
-import CardText from 'material-ui/lib/card/card-text';
-import TextField from 'material-ui/lib/text-field';
-import RaisedButton from 'material-ui/lib/raised-button';
+import Paper from 'material-ui/lib/paper';
+import ChatCC from './ChatCC.react'
 
 
-const style = {
-    margin: 12,
+const Paperstyle1 = {
+  height:535,
+  width: 650,
+};
+
+const Paperstyle2 = {
+  height:635,
+  width: 650,
+  marginLeft:5,
+  textAlign: 'center',
+  display: 'inline-block',
 };
 
 
-var ChatCard = React.createClass({
+ const MainThread=React.createClass({
+       render:function(){
+          return(
+            <div>
+            <Paper style={Paperstyle2} zDepth={2}>
+            <ChatCC/>
+            </Paper>
+            </div>
+          )
+       }
+ });
 
-    render: function () {
-        return (
-            <Card>
-                <CardTitle title="" subtitle="" />
-                <CardText>
-                    <TextField hintText="Message" fullWidth={true}/>
-                </CardText>
-                <CardActions>
-                    <FlatButton label="Send message"  style={this.style}/>
-                </CardActions>
-            </Card>
-        );
-    }
-});
-
-export default ChatCard;
+export default MainThread;

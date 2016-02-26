@@ -28,7 +28,8 @@ import AdminLogin from './components/admin/login.react';
 import MainActivity from './components/activityfeed/activityMain.react';
 import Threads from './components/chat/Threads.react';
 import ChatCC from './components/chat/ChatCC.react';
-import ChatCC1 from './components/chat/ChatPrevious.react';
+import ChatCC1 from './components/chat/ChatPreviousContainer.react';
+import ChatCC2 from './components/chat/chatCard.react';
 import Users from './components/admin/users/userHome.react';
 import Friends from './components/admin/users/friends.react';
 import Enemies from './components/admin/users/enemies.react';
@@ -106,6 +107,7 @@ ReactDOM.render((
       <Route path="/AdminSignout" onEnter={AdminSignout} />
                   <Route path="/chatcc" component={ChatCC}/>
                   <Route path="/chatcc1" component={ChatCC1}/>
+                  <Route path="/chatcc2" components={ChatCC2}/>
     <Route path="/" component={Header} onEnter={requireAuth}>
       <Route path="/search" component={Search} />
       <Route path="/threads" component={Threads} />

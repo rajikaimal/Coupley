@@ -20,17 +20,31 @@ var ThreadStore = assign({}, EventEmitter.prototype, {
     },
     addChangeListener: function (callback) {
         this.on(CHAT_EVENT, callback);
+    },
+    getpreviousmessage:function(){
+         return Thread;
+         console.log("Badu awa :D");
+         console.log(Thread);
+
+    },
+    savepreviousmessage:function(results){
+         console.log(results);
+         Thread=results;
     }
+
 });
 
 AppDispatcher.register(function (payload) {
     console.log('payload');
     console.log(payload);
     switch (payload.action.actionType) {
-        case(ThreadConstants.SAVE):
-            ThreadStore.savemessage(payload.action.chatmessage);
+        case(ThreadConstants.RETRIVEOLD):
+        console.log(payload.action.previousmessage);
+            ThreadStore.savepreviousmessage(payload.action.previousmessage);
+            console.log("Badu awa :D 1");
             ThreadStore.emitChange();
             break;
+
     }
 });
 

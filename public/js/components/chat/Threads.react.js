@@ -68,7 +68,11 @@ const Threads = React.createClass({
         });
 
     },
-
+  //  socketR:function(){
+  //    socket.on('cameback',function(data1){
+  //      this.setState({threads: data1.message2});
+  //    }.bind(this));
+  // },
   socketio: function() {
 
     socket.on('chat', function (data) {
@@ -92,11 +96,12 @@ const Threads = React.createClass({
     console.log('Done ...');
 
   },
-  test : function(item) {
+  test : function() {
     var item = {
     	message: ':) hello :) hello :) hello :)'
     }
-  	var texts = item.message.split(/:\)/g);
+    console.log("smiliy awo");
+  	var texts = item1.split(/:\)/g);
     console.log(texts);
     var content = [];
     for(var i = 0; i < texts.length - 1; i++) {
@@ -112,11 +117,9 @@ const Threads = React.createClass({
       <Paper zDepth={1} style={Sty1}>
         {this.userlistio()}
         {this.socketio()}
-
         <CardTitle title="Threads" subtitle="" />
         <CardText>
           Message threads
-          {this.test()}
             <div>
           {
 
@@ -124,12 +127,14 @@ const Threads = React.createClass({
 
                 return (<ListItem
                     leftAvatar={<Avatar src="profile pic" />}
-                    primaryText="Name"
+                    primaryText={item.user1}
                     secondaryText={
-                        <p>
+                        <span>
                         {item.message}
-                        </p>
+                        {item.created_at}
+                        </span>
                         }
+
                     secondaryTextLines={2}
                 />
                 );
