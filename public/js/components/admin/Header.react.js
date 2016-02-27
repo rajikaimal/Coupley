@@ -57,7 +57,7 @@ var Header = React.createClass({
               <ul className="nav navbar-nav">
 
                 <li className="dropdown messages-menu">
-                  <a href="#" className="dropdown-toggle" data-toggle="dropdown">
+                  <a  className="dropdown-toggle" data-toggle="dropdown">
                     <i className="fa fa-envelope-o"></i>
                     <span className="label label-success">4</span>
                   </a>
@@ -67,7 +67,7 @@ var Header = React.createClass({
 
                       <ul className="menu">
                         <li>
-                          <a href="#">
+                          <a >
                             <div className="pull-left">
                               <img src="dist/img/user2-160x160.jpg" className="img-circle" alt="User Image"/>
                             </div>
@@ -81,7 +81,7 @@ var Header = React.createClass({
                           </a>
                         </li>
                         <li>
-                          <a href="#">
+                          <a >
                             <div className="pull-left">
                               <img src="dist/img/user3-128x128.jpg" className="img-circle" alt="User Image"/>
                             </div>
@@ -95,7 +95,7 @@ var Header = React.createClass({
                           </a>
                         </li>
                         <li>
-                          <a href="#">
+                          <a>
                             <div className="pull-left">
                               <img src="dist/img/user4-128x128.jpg" className="img-circle" alt="User Image"/>
                             </div>
@@ -109,7 +109,7 @@ var Header = React.createClass({
                           </a>
                         </li>
                         <li>
-                          <a href="#">
+                          <a>
                             <div className="pull-left">
                               <img src="dist/img/user3-128x128.jpg" className="img-circle" alt="User Image"/>
                             </div>
@@ -123,7 +123,7 @@ var Header = React.createClass({
                           </a>
                         </li>
                         <li>
-                          <a href="#">
+                          <a >
                             <div className="pull-left">
                               <img src="dist/img/user4-128x128.jpg" className="img-circle" alt="User Image"/>
                             </div>
@@ -139,13 +139,13 @@ var Header = React.createClass({
                       </ul>
                     </li>
                     <li className="footer">
-                      <a href="#">See All Messages</a>
+                      <a >See All Messages</a>
                     </li>
                   </ul>
                 </li>
 
                 <li className="dropdown notifications-menu">
-                  <a href="#" className="dropdown-toggle" data-toggle="dropdown">
+                  <a  className="dropdown-toggle" data-toggle="dropdown">
                     <i className="fa fa-bell-o"></i>
                     <span className="label label-warning">10</span>
                   </a>
@@ -155,31 +155,31 @@ var Header = React.createClass({
 
                       <ul className="menu">
                         <li>
-                          <a href="#">
+                          <a >
                             <i className="fa fa-users text-aqua"></i>
                             5 new members joined today
                           </a>
                         </li>
                         <li>
-                          <a href="#">
+                          <a >
                             <i className="fa fa-warning text-yellow"></i>
                             Very long description here that may not fit into the page and may cause design problems
                           </a>
                         </li>
                         <li>
-                          <a href="#">
+                          <a >
                             <i className="fa fa-users text-red"></i>
                             5 new members joined
                           </a>
                         </li>
                         <li>
-                          <a href="#">
+                          <a >
                             <i className="fa fa-shopping-cart text-green"></i>
                             25 sales made
                           </a>
                         </li>
                         <li>
-                          <a href="#">
+                          <a >
                             <i className="fa fa-user text-red"></i>
                             You changed your username
                           </a>
@@ -187,13 +187,13 @@ var Header = React.createClass({
                       </ul>
                     </li>
                     <li className="footer">
-                      <a href="#">View all</a>
+                      <a >View all</a>
                     </li>
                   </ul>
                 </li>
 
                 <li className="dropdown tasks-menu">
-                  <a href="#" className="dropdown-toggle" data-toggle="dropdown">
+                  <a  className="dropdown-toggle" data-toggle="dropdown">
                     <i className="fa fa-flag-o"></i>
                     <span className="label label-danger">9</span>
                   </a>
@@ -203,7 +203,7 @@ var Header = React.createClass({
 
                       <ul className="menu">
                         <li>
-                          <a href="#">
+                          <a >
                             <h3>
                               Design some buttons
                               <small className="pull-right">20%</small>
@@ -216,7 +216,7 @@ var Header = React.createClass({
                           </a>
                         </li>
                         <li>
-                          <a href="#">
+                          <a >
                             <h3>
                               Create a nice theme
                               <small className="pull-right">40%</small>
@@ -229,7 +229,7 @@ var Header = React.createClass({
                           </a>
                         </li>
                         <li>
-                          <a href="#">
+                          <a >
                             <h3>
                               Some task I need to do
                               <small className="pull-right">60%</small>
@@ -242,7 +242,7 @@ var Header = React.createClass({
                           </a>
                         </li>
                         <li>
-                          <a href="#">
+                          <a >
                             <h3>
                               Make beautiful transitions
                               <small className="pull-right">80%</small>
@@ -257,13 +257,13 @@ var Header = React.createClass({
                       </ul>
                     </li>
                     <li className="footer">
-                      <a href="#">View all tasks</a>
+                      <a >View all tasks</a>
                     </li>
                   </ul>
                 </li>
 
                 <li className="dropdown user user-menu">
-                  <a href="#" className="dropdown-toggle" data-toggle="dropdown">
+                  <a  className="dropdown-toggle" data-toggle="dropdown">
                     <img src="dist/img/user2-160x160.jpg" className="user-image" alt="User Image"/>
                     <span className="hidden-xs">{this.state.firstname}</span>
                   </a>
@@ -278,7 +278,7 @@ var Header = React.createClass({
                     </li>
                     <li className="user-footer">
                       <div className="pull-left">
-                        <a href="#" className="btn btn-default btn-flat">Profile</a>
+                        <a  className="btn btn-default btn-flat">Profile</a>
                       </div>
                       <div className="pull-right">
                         <Link to={`/AdminSignout`}>
