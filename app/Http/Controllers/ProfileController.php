@@ -32,6 +32,7 @@ class ProfileController extends Controller
             return response()->json(['status' => 505], 505);
         }
     }
+
     /*
         returns profile picture for GET request
         @return json
@@ -41,11 +42,10 @@ class ProfileController extends Controller
         $username = $request->username;
         try {
             $profilepic = User::where('username', $username)->get(['profilepic']);
+
             return response()->json(['status' => 200, 'image' => '/img/profilepics/'.$profilepic[0]->profilepic]);
         } catch (Illuminate\Database\QueryException $e) {
-
         }
-        
     }
 
     public function getlikestatus(Request $request)
@@ -312,7 +312,7 @@ class ProfileController extends Controller
             $ext = $request->file('file')->getClientOriginalExtension();
 
             User::where('username', $username)
-                ->update(['profilepic' => $username]);;
+                ->update(['profilepic' => $username]);
 
             // About::where('user_id', $userID[0]->id)
             //     ->update(['profilepic' => $username]);
@@ -375,15 +375,13 @@ class ProfileController extends Controller
         $country = $request->country;
         $currentusername = $request->currentusername;
         try {
-            if(User::where('username', $currentusername)
+            if (User::where('username', $currentusername)
                 ->update(['firstname' => $firstname, 'lastname' => $lastname, 'country' => $country])) {
-               return response()->json(['status' => 200], 200); 
+                return response()->json(['status' => 200], 200);
             }
-            
-        } catch(Illuminate\Database\QueryException $e) {
+        } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 200], 200);
         }
-
     }
 
     /*

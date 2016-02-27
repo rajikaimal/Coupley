@@ -73,7 +73,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('profile/profilepic', 'ProfileController@uploadpic');
     //Returns about data
     Route::get('profile/about', 'ProfileController@getabout');
-    
+
     Route::put('profile/edit/updatebasics', 'ProfileController@editbasics');
 
     //Edit About section

@@ -17,64 +17,62 @@ class SearchController extends Controller
             $data = User::where('username', $username)->get(['orientation', 'gender']);
             $orientation = $data[0]->orientation;
             $gender = $data[0]->gender;
-            if($orientation == "straight" && $gender == "female")
-            {
-                $gender = "male";
+            if ($orientation == 'straight' && $gender == 'female') {
+                $gender = 'male';
                 if ($users = \DB::table('users')
                     ->where('firstname', 'like', $firstname.'%')
                     ->where('orientation', $orientation)
                     ->where('gender', $gender)
-                    ->where('username', '<>',$username)
+                    ->where('username', '<>', $username)
                     ->get()) {
                     return response()->json(['users' => $users, 'status' => 201], 201);
                 } else {
                     return response()->json(['status' => 200], 200);
                 }
-            } else if($orientation == "straight" && $gender == "male") {
-                $gender = "male";
+            } elseif ($orientation == 'straight' && $gender == 'male') {
+                $gender = 'male';
                 if ($users = \DB::table('users')
                     ->where('firstname', 'like', $firstname.'%')
                     ->where('orientation', $orientation)
                     ->where('gender', $gender)
-                    ->where('username', '<>',$username)
+                    ->where('username', '<>', $username)
                     ->get()) {
                     return response()->json(['users' => $users, 'status' => 201], 201);
                 } else {
                     return response()->json(['status' => 200], 200);
                 }
-            } else if($orientation == "lesbian" && $gender == "female") {
+            } elseif ($orientation == 'lesbian' && $gender == 'female') {
                 if ($users = \DB::table('users')
                     ->where('firstname', 'like', $firstname.'%')
                     ->where('orientation', $orientation)
-                    ->where('username', '<>',$username)
-                    ->where('gender', $gender)
-                    ->get()) {
-                    return response()->json(['users' => $users, 'status' => 201], 201);
-                } else {
-                    return response()->json(['status' => 200], 200);
-                }
-            } else if($orientation == "gay" && $gender == "male") {
-                if ($users = \DB::table('users')
-                    ->where('firstname', 'like', $firstname.'%')
-                    ->where('orientation', $orientation)
-                    ->where('username', '<>',$username)
+                    ->where('username', '<>', $username)
                     ->where('gender', $gender)
                     ->get()) {
                     return response()->json(['users' => $users, 'status' => 201], 201);
                 } else {
                     return response()->json(['status' => 200], 200);
                 }
-            } else if($orientation == "bisexual") {
+            } elseif ($orientation == 'gay' && $gender == 'male') {
                 if ($users = \DB::table('users')
                     ->where('firstname', 'like', $firstname.'%')
-                    ->where('username', '<>',$username)
+                    ->where('orientation', $orientation)
+                    ->where('username', '<>', $username)
+                    ->where('gender', $gender)
+                    ->get()) {
+                    return response()->json(['users' => $users, 'status' => 201], 201);
+                } else {
+                    return response()->json(['status' => 200], 200);
+                }
+            } elseif ($orientation == 'bisexual') {
+                if ($users = \DB::table('users')
+                    ->where('firstname', 'like', $firstname.'%')
+                    ->where('username', '<>', $username)
                     ->get()) {
                     return response()->json(['users' => $users, 'status' => 201], 201);
                 } else {
                     return response()->json(['status' => 200], 200);
                 }
             }
-            
         } catch (QueryException $e) {
             return response()->json(['status' => 505], 505);
         }
