@@ -16,6 +16,38 @@ var ProfileActions = {
       }
     });
   },
+
+  fetchProfilePicture: function (apitoken, username) {
+    let data = {
+      apitoken: apitoken,
+      username: username,
+    };
+    $.get('/api/getProfilePic', data, function (response) {
+      if (response.status == 200) {
+        AppDispatcher.handleViewAction({
+          actionType: ProfileConstants.PROFILEPIC,
+          profilepic: response.image,
+        });
+      } else {
+        console.log('Error');
+      }
+    });
+  },
+
+  updatechanges: function (data) {
+    $.ajax({
+      url: '/api/profile/edit/updatebasics',
+      type: 'PUT',
+      data: 'firstname='+ data.firstname + '&lastname=' + data.lastname + '&country=' + data.country + '&currentusername=' + data.username,
+      success: function (response) {
+        AppDispatcher.handleViewAction({
+          actionType: ProfileConstants.GETDATA,
+          userdata: data
+        });
+        location.reload();
+      },
+    });
+  },
 };
 
 module.exports = ProfileActions;

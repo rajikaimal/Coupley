@@ -6,6 +6,8 @@ import IconButton from 'material-ui/lib/icon-button';
 import FlatButton from 'material-ui/lib/flat-button';
 import ProfileVisitorActions from '../../../actions/ProfileVisitorActions';
 import VisitorStore from '../../../stores/VisitorStore';
+import GridTile from 'material-ui/lib/grid-list/grid-tile';
+import GridList from 'material-ui/lib/grid-list/grid-list';
 
 const style = {
   width: 200,
@@ -13,9 +15,18 @@ const style = {
 };
 
 const iconButtonStyle = {
-  width: 500,
-  height: 500
+
 }
+
+const styles = {
+  root: {
+
+  },
+  gridList: {
+    width: 425,
+    height: 250,
+  },
+};
 
 const ProfilePic = React.createClass({
   getInitialState: function() {
@@ -23,7 +34,8 @@ const ProfilePic = React.createClass({
       liked: VisitorStore.getlikestatus(),
       likedback: VisitorStore.getlikedbackstatus(),
       blocked: VisitorStore.getblockstatus(),
-      permission: VisitorStore.getpermission()
+      permission: VisitorStore.getpermission(),
+      picture: VisitorStore.getprofilepic()
     }
   },
   componentDidMount: function() {
@@ -32,6 +44,8 @@ const ProfilePic = React.createClass({
     ProfileVisitorActions.getlikestatus();
     ProfileVisitorActions.getlikedbackstatus();
     ProfileVisitorActions.getblockstatus();
+
+    ProfileVisitorActions.fetchProfilePicture();
   },
   _onChange: function() {
     if(VisitorStore.getlikestatus() == "false") {
@@ -53,6 +67,10 @@ const ProfilePic = React.createClass({
 
     this.setState({
       permission: VisitorStore.getpermission()
+    });
+
+    this.setState({
+      picture: VisitorStore.getprofilepic()
     });
   },
   _changeLikeState: function() {
@@ -86,15 +104,22 @@ const ProfilePic = React.createClass({
       <div>
       	<div className="panel-body">
           <div>
-            <div className="col-lg-3">
-              <img src="/img/emma.jpg" style={style} />
+            <div className="col-sm-3 col-md-3 col-lg-3">
+                <GridList
+                  cellHeight={200}
+                  style={styles.gridList}
+                >
+                  <GridTile>
+                    <img src={this.state.picture} />
+                  </GridTile>
+                </GridList>
             </div>
             <div className="col-lg-3">
               <h3> {this.props.firstname} {this.props.lastname} </h3>
               <span> {this.props.country} </span>
               {this.state.permission ?  
                 <IconButton style={iconButtonStyle} onClick={this._changeLikeState} tooltip={this.state.liked ? "Unlike" : "Like"} touch={true} tooltipPosition="bottom-right">
-                  {this.state.liked ? <FavIcon onClick={this._changeLikeState} viewBox="0 0 5 10" color={Colors.red500} /> : 
+                  {this.state.liked ? <FavIcon onClick={this._changeLikeState} viewBox="0 0 20 30" color={Colors.red500} /> : 
                             <FavIconBorder viewBox="0 0 20 30" color={Colors.red500} />}
                 </IconButton>
               : ''}
