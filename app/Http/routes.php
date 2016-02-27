@@ -45,6 +45,8 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('edit_status', 'ActivityFeedController@editStatus');
     //Return profile data
     Route::get('profile', 'ProfileController@profile');
+    //Return profile picture
+    Route::get('getProfilePic', 'ProfileController@getProfilePic');
     //Return userslist for search
     Route::get('search', 'SearchController@search');
     //Return visitor profile data
@@ -71,9 +73,11 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('profile/profilepic', 'ProfileController@uploadpic');
     //Returns about data
     Route::get('profile/about', 'ProfileController@getabout');
+    
+    Route::put('profile/edit/updatebasics', 'ProfileController@editbasics');
+
     //Edit About section
     Route::put('profile/edit/summary', 'ProfileController@editsummary');
-
     Route::put('profile/edit/life', 'ProfileController@editlife');
     Route::put('profile/edit/goodat', 'ProfileController@editgoodat');
     Route::put('profile/edit/thinkingof ', 'ProfileController@editthinkingof');
