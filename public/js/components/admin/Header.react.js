@@ -14,9 +14,9 @@ var Header = React.createClass({
   },
 
   componentDidMount: function () {
-
     ProfileStore.addChangeListener(this._onChange);
     ProfileActions.getAdminProfileData();
+    document.getElementById('rerender').click();
   },
 
   _onChange: function () {
@@ -24,16 +24,20 @@ var Header = React.createClass({
   },
 
   update:function () {
-    location.reload();
+    setTimeout(function () {
+      if (window.location.href.substr(-2) !== '?r') {
+        window.location = window.location.href + '?r';
+        history.go(0);
+      }
+    }, 400);
   },
 
   render: function () {
     return (
       <div>
         <header className="main-header">
-          <div className="">
-            <Link to={`/Cards`}>
-              <a className="logo">
+          <div>
+              <a className="logo" role="button" id="rerender" onCick={this.update}>
 
                 <div className="logo-mini">
                   <b>A</b>
@@ -43,11 +47,10 @@ var Header = React.createClass({
                   <b>Admin</b>
                   CP</div>
               </a>
-            </Link>
           </div>
 
           <nav className="nav bar navbar-static-top" role="navigation">
-            <a className="sidebar-toggle" data-toggle="offcanvas" role="button" onClick={this.update}>
+            <a  className="sidebar-toggle" data-toggle="offcanvas" role="button" >
               <span className="sr-only">Toggle navigation</span>
             </a>
             <div className="navbar-custom-menu">
