@@ -68,11 +68,6 @@ const Threads = React.createClass({
         });
 
     },
-  //  socketR:function(){
-  //    socket.on('cameback',function(data1){
-  //      this.setState({threads: data1.message2});
-  //    }.bind(this));
-  // },
   socketio: function() {
 
     socket.on('chat', function (data) {
@@ -96,13 +91,8 @@ const Threads = React.createClass({
     console.log('Done ...');
 
   },
-  test : function() {
-    var item = {
-    	message: ':) hello :) hello :) hello :)'
-    }
-    console.log("smiliy awo");
-  	var texts = item1.split(/:\)/g);
-    console.log(texts);
+  test: function(item1) {
+  	var texts = item1.message.split(/:\)/g);
     var content = [];
     for(var i = 0; i < texts.length - 1; i++) {
     	content.push(texts[i]);
@@ -110,7 +100,7 @@ const Threads = React.createClass({
     }
     return content.map(function(emoji) {
       return (<span> {emoji} </span>)
-    })
+    }.bind(this));
   },
   render: function() {
     return (
@@ -123,18 +113,12 @@ const Threads = React.createClass({
             <div>
           {
 
-            this.state.threads.map(function(item) {
+            this.state.threads.map(item => {
 
                 return (<ListItem
                     leftAvatar={<Avatar src="profile pic" />}
                     primaryText={item.user1}
-                    secondaryText={
-                        <span>
-                        {item.message}
-                        {item.created_at}
-                        </span>
-                        }
-
+                    secondaryText={this.test(item)}
                     secondaryTextLines={2}
                 />
                 );

@@ -86,7 +86,7 @@ socket.on('message', function (chat) {
                   };
 
        connection.query('INSERT INTO chats SET ?', post, function(err, result) {
-                       connection.query("SELECT message,user1,created_at FROM chats WHERE 	user1 IN ('"+post.user1+"','"+post.user2+"') AND user2 IN ('"+post.user1+"','"+post.user2+"') ", function(err, result) {
+                       connection.query("SELECT message,user1 FROM chats WHERE 	user1 IN ('"+post.user1+"','"+post.user2+"') AND user2 IN ('"+post.user1+"','"+post.user2+"') ", function(err, result) {
 
                                   socket.broadcast.to(connectedUser[chat.user2]).emit('chat', { message:result});
 
