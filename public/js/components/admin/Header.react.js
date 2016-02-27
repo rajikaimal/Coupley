@@ -48,7 +48,7 @@ var Header = React.createClass({
               </a>
           </div>
           <nav className="nav bar navbar-static-top" role="navigation">
-            <a  className="sidebar-toggle" data-toggle="offcanvas" role="button" id="rerender" onCick={this.update}>
+            <a  className="sidebar-toggle" data-toggle="offcanvas" id="rerender" onCick={this.update} role="button" >
               <span className="sr-only">Toggle navigation</span>
             </a>
             <div className="navbar-custom-menu">
