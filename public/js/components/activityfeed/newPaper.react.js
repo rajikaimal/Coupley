@@ -9,7 +9,7 @@ import LoginStore from '../../stores/LoginStore';
 
 const style = {
     width: 800,
-    margin: 40,
+    marginLeft: 40,
 };
 
 const PaperExampleSimple = React.createClass({

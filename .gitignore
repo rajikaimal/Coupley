@@ -10,6 +10,6 @@ Homestead.json
 public/bundle.js
 public/node_modules
 .idea/
-.npm-debug.log
+npm-debug.log
 /Coupley.iml
 

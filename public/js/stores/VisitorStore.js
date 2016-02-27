@@ -10,75 +10,100 @@ var likestatus;
 var likedbackstatus;
 var blockstatus;
 var permission;
+var image;
 
 var VisitorStore = assign({}, EventEmitter.prototype, {
-  savepermission: function(data) {
-    console.log('INIDIDE SOTER'+ data);
+  savepermission: function (data) {
+    console.log('INIDIDE SOTER' + data);
     permission = data;
   },
-  saveuserdata: function(data) {
+
+  saveuserdata: function (data) {
     visitor = data;
   },
-  savelikestatus: function(data) {
+
+  savelikestatus: function (data) {
     likestatus = data;
   },
-  savelikedbackstatus: function(data) {
+
+  savelikedbackstatus: function (data) {
     likedbackstatus = data;
   },
-  saveblockstatus: function(data) {
+
+  saveblockstatus: function (data) {
     console.log('STORE :: changing status ' + data);
     blockstatus = data;
   },
-  getpermission: function() {
+
+  saveprofilepic: function(data) {
+    image = data;
+  },
+
+  getpermission: function () {
     return permission;
   },
-  getblockstatus: function() {
+
+  getblockstatus: function () {
     return blockstatus;
   },
-  getlikedbackstatus: function() {
+
+  getlikedbackstatus: function () {
     return likedbackstatus;
   },
-  getlikestatus: function() {
+
+  getlikestatus: function () {
     return likestatus;
   },
-  getuserdata: function() {
+
+  getuserdata: function () {
     return visitor;
   },
-  removeuserdata: function() {
+
+  removeuserdata: function () {
     visitor = {};
   },
-  emitChange: function() {
+
+  getprofilepic: function() {
+    return image;
+  },
+
+  emitChange: function () {
     this.emit(CHANGE_EVENT);
   },
-  addChangeListener: function(callback) {
+
+  addChangeListener: function (callback) {
     this.on(CHANGE_EVENT, callback);
-  }
+  },
 });
 
-AppDispatcher.register(function(payload) {
-  switch(payload.action.actionType) {
-    case(ProfileConstants.PROPPERMISSION):
+AppDispatcher.register(function (payload) {
+  switch (payload.action.actionType) {
+    case (ProfileConstants.PROPPERMISSION):
       VisitorStore.savepermission(payload.action.permission);
       VisitorStore.emitChange();
       break;
-    case(ProfileConstants.LIKESTATUS):
+    case (ProfileConstants.LIKESTATUS):
       VisitorStore.savelikestatus(payload.action.likestatus);
       VisitorStore.emitChange();
       break;
-    case(ProfileConstants.LIKEBACKSTATUS):
+    case (ProfileConstants.LIKEBACKSTATUS):
       VisitorStore.savelikedbackstatus(payload.action.likedbackstatus);
       VisitorStore.emitChange();
       break;
-    case(ProfileConstants.VISITOR):
+    case (ProfileConstants.VISITOR):
       VisitorStore.saveuserdata(payload.action.userdata);
       VisitorStore.emitChange();
       break;
-    case(ProfileConstants.VISITORREMOVE):
+    case (ProfileConstants.VISITORREMOVE):
       VisitorStore.saveuserdata(payload.action.userdata);
       VisitorStore.emitChange();
       break;
-    case(ProfileConstants.BLOCKSTATUS):
+    case (ProfileConstants.BLOCKSTATUS):
       VisitorStore.saveblockstatus(payload.action.blockstatus);
+      VisitorStore.emitChange();
+      break;
+    case (ProfileConstants.VISITORPROFILEPIC):
+      VisitorStore.saveprofilepic(payload.action.profilepic);
       VisitorStore.emitChange();
       break;
   }
