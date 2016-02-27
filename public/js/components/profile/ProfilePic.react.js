@@ -15,9 +15,62 @@ import TextField from 'material-ui/lib/text-field';
 import FlatButton from 'material-ui/lib/flat-button';
 import Countries from '../register/countries.js';
 import DropDownMenu from 'material-ui/lib/DropDownMenu';
+import Colors from 'material-ui/lib/styles/colors';
 
 //tap-event-plugin
 injectTapEventPlugin();
+
+function validatefirstname(firstname) {
+  if(firstname.length >= 50) {
+    return {
+      "error": "*firstname is too long"
+    }
+  }
+  else if(firstname === "") {
+    return {
+      "error": "*firstname cannot be empty"
+    }
+  }
+  else if(! /^\w+$/i.test(firstname)) {
+    return {
+      "error": "*invalid firstname"
+    }  
+  }
+  else if(firstname.match(/\d+/g)) {
+    return {
+      "error": "*cannot contain numbers"
+    }  
+  }
+  else {
+    return true;
+  }
+}
+
+function validatelastname(lastname) {
+  if (lastname.length >= 50) {
+    return {
+      "error": "*lastname is too long"
+    }
+  }
+  else if(lastname === "") {
+    return {
+      "error": "*lastname cannot be empty"
+    }
+  }
+  else if(! /^\w+$/i.test(lastname)) {
+    return {
+      "error": "*invalid lastname"
+    }  
+  }
+  else if(lastname.match(/\d+/g)) {
+    return {
+      "error": "*cannot contain numbers"
+    }  
+  }
+  else {
+    return true;
+  }
+}
 
 const style = {
   borderRadius: 20,
@@ -47,6 +100,11 @@ const styles = {
     width: 425,
     height: 250,
   },
+};
+
+const error = {
+    color: Colors.red500,
+    fontSize: 15
 };
 
 const ProfilePic = React.createClass({
@@ -148,6 +206,7 @@ const ProfilePic = React.createClass({
       });
     },
     _saveChanges: function() {
+      let val = true;
       let firstname = this.refs.firstname.getValue();
       let lastname = this.refs.lastname.getValue();
       let currentusername = localStorage.getItem('username');
@@ -160,12 +219,18 @@ const ProfilePic = React.createClass({
         username: currentusername
       }
 
-      ProfileActions.updatechanges(data);
-      // this.setState({
-      //   editingProfile: false
-      // });
+      if(validatefirstname(firstname).error) {
+        document.getElementById('firstname').innerHTML = validatefirstname(firstname).error;
+        val = false;
+      }
+      if(validatelastname(lastname).error) {
+        document.getElementById('lastname').innerHTML = validatelastname(lastname).error;
+        val = false;
+      }
 
-      this.forceUpdate();
+      if(val) {
+        ProfileActions.updatechanges(data);  
+      }
     },
 
     handleChangeCountry: function(e, index, value) {
@@ -199,15 +264,15 @@ const ProfilePic = React.createClass({
             }
             
               <div className="col-sm-3 col-md-3 col-lg-3">
-              <h3> {this.state.editingProfile ? <TextField
+              <h3> {this.state.editingProfile ? <div><TextField
                     ref="firstname" hintText="firstname" defaultValue={this.props.firstname} />
-                     : this.props.firstname} 
+                    <span style={error} id="firstname"> </span></div> : this.props.firstname} 
 
                     { ' ' }
 
-                     {this.state.editingProfile ? <TextField
+                     {this.state.editingProfile ? <div><TextField
                       ref="lastname" hintText="lastname" defaultValue={this.props.lastname} />
-                     : this.props.lastname} </h3>
+                    <span style={error} id="lastname"> </span></div> : this.props.lastname} </h3>
               <span> { this.state.editingProfile ? ''
                        : '@' + this.props.username} </span> <br/>
               <span> {this.state.editingProfile ? 
