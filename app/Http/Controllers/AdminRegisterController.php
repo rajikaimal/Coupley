@@ -50,6 +50,22 @@ class AdminRegisterController extends Controller
             return response()->json(['email' => 'email already exists', 'status' => 201], 201);
         }
     }
+    public function uploadpic(Request $request)
+    {
+        $destination = 'img/profilepics';
+        try {
+            $apitoken = $request->input('apitoken');
+            $id = $request->input('id');
+            $file = $request->file('file')->move($destination, $id);
+            $ext = $request->file('file')->getClientOriginalExtension();
+            User::where('id', $id)
+                ->update(['profilepic' => $id.'.'.$ext]);
+
+            return response()->json(['status' => 200, 'done' => true], 200);
+        } catch (Exception $e) {
+            return response()->json(['status' => 200, 'done' => false], 200);
+        }
+    }
     public function SendMail($email, $user, $pwd)
     {
         $mail = new PHPMailer;

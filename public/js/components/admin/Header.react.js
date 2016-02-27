@@ -7,7 +7,7 @@ import LoginStore from '../../stores/LoginStore';
 import HeaderActions from '../../actions/HeaderActions';
 import ProfileActions from '../../actions/admin/ProfileActions';
 import ProfileStore from '../../stores/admin/ProfileStore';
-
+const path = '../../../../img/profilepics/';
 var Header = React.createClass({
   getInitialState: function () {
     return ProfileStore.getuserdata();
@@ -37,8 +37,7 @@ var Header = React.createClass({
       <div>
         <header className="main-header">
           <div>
-              <a className="logo" role="button" id="rerender" onCick={this.update}>
-
+              <a className="logo" role="button" >
                 <div className="logo-mini">
                   <b>A</b>
                   LT</div>
@@ -48,9 +47,8 @@ var Header = React.createClass({
                   CP</div>
               </a>
           </div>
-
           <nav className="nav bar navbar-static-top" role="navigation">
-            <a  className="sidebar-toggle" data-toggle="offcanvas" role="button" >
+            <a  className="sidebar-toggle" data-toggle="offcanvas" role="button" id="rerender" onCick={this.update}>
               <span className="sr-only">Toggle navigation</span>
             </a>
             <div className="navbar-custom-menu">
@@ -64,7 +62,6 @@ var Header = React.createClass({
                   <ul className="dropdown-menu">
                     <li className="header">You have 4 messages</li>
                     <li>
-
                       <ul className="menu">
                         <li>
                           <a >
@@ -200,7 +197,6 @@ var Header = React.createClass({
                   <ul className="dropdown-menu">
                     <li className="header">You have 9 tasks</li>
                     <li>
-
                       <ul className="menu">
                         <li>
                           <a >
@@ -264,13 +260,13 @@ var Header = React.createClass({
 
                 <li className="dropdown user user-menu">
                   <a  className="dropdown-toggle" data-toggle="dropdown">
-                    <img src="dist/img/user2-160x160.jpg" className="user-image" alt="User Image"/>
+                    <img src={path + this.state.id} className="user-image" alt="User Image"/>
                     <span className="hidden-xs">{this.state.firstname}</span>
                   </a>
                   <ul className="dropdown-menu">
 
                     <li className="user-header">
-                      <img src="dist/img/user2-160x160.jpg" className="img-circle" alt="User Image"/>
+                      <img src={path + this.state.id} className="img-circle" alt="User Image"/>
                       <p>
                                                 {this.state.firstname} {this.state.lastname} - {this.state.job}
                         <small>Member since {this.state.created_at}</small>

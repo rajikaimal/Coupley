@@ -17,17 +17,15 @@ import DropDownMenu from 'material-ui/lib/DropDownMenu';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import GridList from 'material-ui/lib/grid-list/grid-list';
 import GridTile from 'material-ui/lib/grid-list/grid-tile';
-
 import Table from 'material-ui/lib/table/table';
 import TableRow from 'material-ui/lib/table/table-row';
 import TableRowColumn from 'material-ui/lib/table/table-row-column';
 import TableBody from 'material-ui/lib/table/table-body';
 import Colors from 'material-ui/lib/styles/colors';
-
 import ProfileActions from '../../../actions/admin/ProfileActions';
 import ProfileStore from '../../../stores/admin/ProfileStore';
-
 import UpdateActions from '../../../actions/admin/AdminUpdateActions';
+var Dropzone = require('react-dropzone');
 
 const tilesData = [
     {
@@ -77,7 +75,20 @@ const styles = {
 const buttonStyle = {
   marginTop: 25,
 };
+const previewStyle = {
+  width: 196,
+  height:200,
+};
 
+const containerStyle = {
+  position: 'relative',
+};
+
+const uploadButtonStyle = {
+  position: 'absolute',
+  marginBottom: 50,
+};
+const path = '../../../../../img/profilepics/';
 function validatefirstname(firstname) {
   if (firstname.length >= 50) {
     return {
@@ -142,10 +153,16 @@ function validateEmail(email) {
 }
 
 var Update = React.createClass({
+
   getInitialState: function () {
     return {
       open: false,
       opens: false,
+      editing: false,
+      files: {},
+      preview: '',
+      mouseover: false,
+      picture: '',
       data:ProfileStore.getuserdata(),
     };
   },
@@ -179,6 +196,81 @@ var Update = React.createClass({
       this.handleTouchTap();
       this.handleClose();
     }
+  },
+
+  _edit: function () {
+    this.setState({
+      editing: true,
+    });
+  },
+
+  onDrop: function (files) {
+    console.log(files);
+    this.setState({
+      files: files,
+      preview: files[0].preview,
+    });
+
+  },
+
+  _cancelEdit: function () {
+    this.setState({
+      editing: false,
+      preview: '',
+      files: '',
+    });
+  },
+
+  _saveImage: function () {
+    var fd = new FormData();
+    var self = this;
+    fd.append('apitoken', localStorage.getItem('apitoken'));
+    fd.append('file', this.state.files[0]);
+    fd.append('id', localStorage.getItem('id'));
+    $.ajax({
+      type: 'POST',
+      url: '/admin-api/profilepic',
+      data: fd,
+      contentType: false,
+      processData: false,
+      success: function (data) {
+        console.log('success');
+        console.log(data);
+        if (data.done == true) {
+          self.setState({
+            editing: false,
+          });
+        } else {
+
+        }
+      },
+
+      error: function (data) {
+        console.log('error');
+        console.log(data);
+      },
+    });
+  },
+
+  renderSave: function () {
+    return (
+        this.state.preview ? <div>
+          <RaisedButton onClick={this._saveImage} label="Save" primary={true} />
+          <RaisedButton label="Cancel" onClick={this._cancelEdit}  />
+        </div> : ''
+    );
+  },
+
+  _showUpload: function () {
+    this.setState({
+      mouseover: true,
+    });
+  },
+
+  _hideUpload: function () {
+    this.setState({
+      mouseover: false,
+    });
   },
 
   _handleRegisterClickEvent: function () {
@@ -217,7 +309,6 @@ var Update = React.createClass({
       };
       UpdateActions.checks(credentials);
       console.log('Done calling !');
-
     }
   },
 
@@ -246,7 +337,8 @@ var Update = React.createClass({
         <div className="" style={{ 'margin-left': '38%', position: 'relative',
             'min-height': '1px',
             'padding-right': '15px',
-            'padding-left': '15px', }}>
+            'padding-left': '15px',
+             }}>
 
           <div className="">
             <div >
@@ -259,17 +351,16 @@ var Update = React.createClass({
               </GridList>
             </div>
           </div>
-          {/* modal content */}
           <Dialog
               title="Update Your Profile"
               actions={actions}
-              modal={false}
+              modal={true}
               open={this.state.open}
               onRequestClose={this.handleClose}
-              contentStyle={customContentStyle}
+              contentStyle={{ height:1000 }}
             >
             <div>
-              <div>
+              <div style={{ height:500 }}>
                 <div className="col-lg-12">
                   <Card>
                     <CardText onFocus={this.eleminateErrors}>
@@ -284,6 +375,23 @@ var Update = React.createClass({
                             hintText="Job Position" hintStyle={styles.errorStyle} floatingLabelText="Job Position" fullwidth={true} ref="job" defaultValue={this.state.job}/>
                         <br />
                         <span id="job" style={err}> </span>
+
+                        {
+                          this.state.editing ? <div className="">
+                            <Dropzone onDrop={this.onDrop} onMouseLeave={this.state.editing = false} style={{ width: '10px', height: '10px' }}>
+                              <div style={{ width: '300px' }}>Click to add a profile picture</div>
+                              <img style={{ width: '100px', height: '100px' }} src={this.state.preview} alt="Click to add a profile picture"/>
+                            </Dropzone>
+                            {this.renderSave()}
+                          </div> : <div className="" >
+                            <img onMouseOver={this._showUpload} style={{ width: '100px', height: '100px' }}  onMouseLeave={this._hideUpload} src={path + this.state.id} style={{ width: '100px', height: '100px' }} />
+                            {this.state.mouseover ? <RaisedButton style={uploadButtonStyle} label="Change picture" onClick={this.state.editing = true} /> : ''}
+                          </div>
+
+                        }
+                        <br />
+                        <br />
+                        <span id="drop" style={err}> </span>
                         <br />
                         <br />
                       </div>

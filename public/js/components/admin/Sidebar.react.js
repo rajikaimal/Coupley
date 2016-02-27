@@ -8,6 +8,7 @@ import TextField from 'material-ui/lib/text-field';
 import ProfileActions from '../../actions/admin/ProfileActions';
 import ProfileStore from '../../stores/admin/ProfileStore';
 
+const path = '../../../../img/profilepics/';
 const formcontol = {
   display: 'block',
   width: '100%',
@@ -42,21 +43,20 @@ var Sidebar = React.createClass({
     return (
       <div>
         <aside className="main-sidebar">
-
           <section className="sidebar">
-
             <div className="user-panel">
               <div className="pull-left image">
-                <img src="dist/img/user2-160x160.jpg" className="img-circle" alt="User Image"/>
+                <img src={path + this.state.id} className="img-circle" alt="User Image"/>
               </div>
               <div className="pull-left info">
-                <p>{this.state.firstname} {this.state.lastname}</p>
-                <a>
-                  <i className="fa fa-circle text-success"></i>
-                  Online</a>
+                <p>
+                  <a>
+                    <i className="fa fa-circle text-success"></i>
+                  </a>
+                   {this.state.firstname} {this.state.lastname}
+                </p>
               </div>
             </div>
-
             <form action="#" method="get" className="sidebar-form">
               <div className="input-group">
                 <TextField
@@ -67,7 +67,6 @@ var Sidebar = React.createClass({
                 </span>
               </div>
             </form>
-
             <ul className="sidebar-menu">
               <li className="header">MAIN NAVIGATION</li>
               <li>
@@ -95,7 +94,7 @@ var Sidebar = React.createClass({
               </li>
               <li className="treeview">
                 <Link to={`/settings`}>
-                  <i className="fa ion-ios-gear"></i>
+                  <i className="fa fa-gears"></i>
                   <span>Settings</span>
                 </Link>
 

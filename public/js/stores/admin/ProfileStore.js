@@ -21,17 +21,20 @@ var ProfileStore = assign({}, EventEmitter.prototype, {
         lastname: '',
         job:'',
         email:'',
+        profilepic:'',
         created_at:'',
 
       };
     }
 
+    localStorage.setItem('id', admin[0].id);
     return {
       id: admin[0].id,
       firstname: admin[0].firstname,
       lastname: admin[0].lastname,
       job:admin[0].job,
       email:admin[0].email,
+      profilepic:admin[0].profilepic,
       created_at:admin[0].created_at,
     };
   },
