@@ -38,11 +38,11 @@ var ProfileActions = {
     $.ajax({
       url: '/api/profile/edit/updatebasics',
       type: 'PUT',
-      data: 'firstname='+ data.firstname + '&lastname=' + data.lastname + '&country=' + data.country + '&currentusername=' + data.username,
+      data: 'firstname=' + data.firstname + '&lastname=' + data.lastname + '&country=' + data.country + '&currentusername=' + data.username,
       success: function (response) {
         AppDispatcher.handleViewAction({
           actionType: ProfileConstants.GETDATA,
-          userdata: data
+          userdata: data,
         });
         location.reload();
       },
