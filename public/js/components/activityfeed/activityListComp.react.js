@@ -24,11 +24,7 @@ import Dialog from 'material-ui/lib/dialog';
 import RaisedButton from 'material-ui/lib/raised-button';
 import TextField from 'material-ui/lib/text-field';
 import LikeStatusStore from '../../stores/LikeStatusStore';
-import Snackbar from 'material-ui/lib/snackbar';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-
-//tap-event-plugin
-injectTapEventPlugin();
+import ShareStatusStore from '../../stores/ShareStatusStore';
 
 const iconButtonElement = (
     <IconButton
@@ -48,9 +44,55 @@ const style2 = {
     width: 800,
 };
 
-var a = 1;
-
 const ActivityList = React.createClass({
+
+    getInitialState: function () {
+        return {
+            open: false,
+            liked: LikeStatusStore.getlikes(),
+            shared: ShareStatusStore.getshares(),
+            postId: StatusStore.getStatusID(),
+        };
+    },
+
+    componentDidMount: function () {
+        LikeStatusStore.addChangeListener(this._onChange);
+        LikesActions.getlikestatus();
+
+        ShareStatusStore.addChangeListener(this._onChange);
+        ShareActions.getsharestatus();
+
+        StatusStore.addChangeListener(this._onChange);
+        ActivityFeedActions.getpostId();
+    },
+
+    _onChange: function () {
+        this.setState({postId: StatusStore.getStatusID()});
+        this.setState({liked: LikeStatusStore.getlikes()});
+        this.setState({shared: ShareStatusStore.getshares()});
+
+        if (LikeStatusStore.getlikes() == "false") {
+            this.setState({
+                liked: false,
+            });
+        }
+        if (LikeStatusStore.getlikes() == "true") {
+            this.setState({
+                liked: true,
+            });
+        }
+
+        if (ShareStatusStore.getshares() == "false") {
+            this.setState({
+                shared: false,
+            });
+        }
+        if (ShareStatusStore.getshares() == "true") {
+            this.setState({
+                shared: true,
+            });
+        }
+    },
 
     editstatus: function () {
         let post_text= this.refs.EditBox.getValue();
@@ -75,7 +117,8 @@ const ActivityList = React.createClass({
         this.handleClose();
     },
 
-    addshare: function () {
+    _changeShareState:function() {
+
         var postId = this.props.id;
         var email = LoginStore.getEmail();
         var firstname = LoginStore.getFirstname();
@@ -84,43 +127,21 @@ const ActivityList = React.createClass({
             Email: email,
             Fname: firstname
         };
-        ShareActions.add_share(add_share);
+
+        if (!this.state.shared) {
+            console.log('share');
+            this.setState({shared: !this.state.shared});
+            ShareActions.add_share(add_share);
+        }
+        else {
+            console.log('Unshare');
+            this.setState({shared: !this.state.shared});
+            ShareActions.del_share(add_share);
+        }
     },
 
     setFocusToTextBox: function () {
         document.getElementById("mytext").focus();
-    },
-
-    getInitialState: function () {
-        return {
-            open: false,
-            liked: LikeStatusStore.getlikes(),
-            postId: StatusStore.getStatusID(),
-        };
-    },
-
-    componentDidMount: function () {
-        LikeStatusStore.addChangeListener(this._onChange);
-        LikesActions.getlikestatus();
-
-        StatusStore.addChangeListener(this._onChange);
-        ActivityFeedActions.getpostId();
-    },
-
-    _onChange: function () {
-        this.setState({postId: StatusStore.getStatusID()});
-        this.setState({liked: LikeStatusStore.getlikes()});
-
-        if (LikeStatusStore.getlikes() == "false") {
-            this.setState({
-                liked: false,
-            });
-        }
-        if (LikeStatusStore.getlikes() == "true") {
-            this.setState({
-                liked: true,
-            });
-        }
     },
 
     _changeLikeState: function () {
@@ -135,7 +156,7 @@ const ActivityList = React.createClass({
             Fname: firstname
         };
 
-        if (!this.state.liked) {
+        if (! this.state.liked) {
             console.log('like');
             this.setState({liked: !this.state.liked});
             LikesActions.like(add_likes);
@@ -154,44 +175,6 @@ const ActivityList = React.createClass({
     handleClose: function () {
         this.setState({open: false});
     },
-
-   /** handleBoth: function () {
-        if(this._handleRegisterClickEvent()) {
-           this.setState({open: false});
-        }
-    },
-
-    _handleUpdateClickEvent: function () {
-
-        let post_text= this.refs.EditBox.getValue();
-        let postId= this.props.id;
-
-        let editstatus={
-          PostId: postId,
-          Status: post_text
-          };
-          ActivityFeedActions.editstatus(editstatus);
-          console.log('Done calling !');
-
-        swal({  title: "Are you sure?",
-                text: "Do you really want to update this post?",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Yes, Update!",
-                cancelButtonText: "No, Cancel!",
-                closeOnConfirm: false,
-                closeOnCancel: false },
-            function(isConfirm){
-                if (isConfirm) {
-                    swal("Updated!", "This post has been updated.", "success");
-                    ActivityFeedActions.editstatus(editstatus);
-                    console.log('Done calling !');
-                } else {
-                    swal("Cancelled", "This post isn't  still updated.", "error");
-                } });
-         this.handleClose();
-    },*/
 
     EnterKey_comment(e) {
         if (e.key === 'Enter') {
@@ -254,7 +237,7 @@ const ActivityList = React.createClass({
                
     
           			<FlatButton label="Comment" onClick={this.setFocusToTextBox} />
-          			<FlatButton label="Share" onClick={this.addshare}/>
+          			<FlatButton label="Share" onClick={this._changeShareState}  secondary={this.state.shared ? true : false}/>
 		        <Divider inset={true} />	   
             </Card>	
                 <Dialog

@@ -34,13 +34,14 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('status', 'ActivityFeedController@addstatus');
     Route::get('getstatus', 'ActivityFeedController@getstatus');
     Route::get('getpostId', 'ActivityFeedController@getpostId');
-    Route::post('likes', 'LikeController@addlikes');
     Route::post('likepost', 'LikeController@like');
     Route::post('unlikepost', 'LikeController@unlike');
     Route::get('getlikestatus', 'LikeController@getlikestatus');
+    Route::post('sharepost', 'ShareController@share');
+    Route::post('unsharepost', 'ShareController@unshare');
+    Route::get('getsharestatus', 'ShareController@getsharestatus');
     Route::post('comment', 'CommentController@addcomment');
     Route::get('getcomment', 'CommentController@getcomments');
-    Route::post('share', 'ActivityFeedController@addshare');
     Route::post('deleteStatus', 'ActivityFeedController@deleteStatus');
     Route::post('edit_status', 'ActivityFeedController@editStatus');
     //Return profile data

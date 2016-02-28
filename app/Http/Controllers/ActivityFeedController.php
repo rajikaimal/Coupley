@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
-use App\Share;
 
 class ActivityFeedController extends Controller
 {
@@ -41,7 +40,7 @@ class ActivityFeedController extends Controller
         }
     }
 
-    public function addshare(Request $request)
+    /*public function addshare(Request $request)
     {
         $share = new Share;
         $share->post_id = $request->PostId;
@@ -53,7 +52,7 @@ class ActivityFeedController extends Controller
         } else {
             return response()->json(['status' => 404], 404);
         }
-    }
+    }**/
 
     public function deleteStatus(Request $request)
     {
