@@ -18,13 +18,12 @@ class AdminPwdController extends Controller
         try {
             // verify the credentials and create a token for the user
             if (! $token = JWTAuth::attempt($credentials)) {
-                return response()->json(['error' => 'invalid_credentials'], 401);
+                return response()->json(['error' => 'invalid_credentials','status' => 201], 201);
             }
         } catch (JWTException $e) {
             // something went wrong
-            return response()->json(['error' => 'could_not_create_token'], 500);
+            return response()->json(['error' => 'could_not_create_token','status' => 500], 500);
         }
-
         // if no errors update the new password
         {
             if($this->CheckInternet()) {
@@ -33,18 +32,19 @@ class AdminPwdController extends Controller
                 \DB::table('users')
                     ->where('email', $mail)
                     ->update(['password' => $hashed]);
-                //return response()->json(['password' => 'uptodate'], 201);
+                return response()->json(['password' => 'uptodate','status' => 200], 200);
             }
             else{
-                return response()->json(['error' => 'No_network'], 203);
+                return response()->json(['error' => 'No_network','status' => 203], 203);
             }
         }
+
     }
 
     public function SendMail($email, $user, $pwd)
     {
         $mail = new PHPMailer;
-        $mail->SMTPDebug = 1;                               // Enable verbose debug output
+        // Enable verbose debug output
         $mail->isSMTP();                                      // Set mailer to use SMTP
         $mail->Host = 'ssl://smtp.gmail.com';  // Specify main and backup SMTP servers
         $mail->SMTPAuth = true;                               // Enable SMTP authentication
@@ -63,19 +63,19 @@ class AdminPwdController extends Controller
         $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
         if (! $mail->send()) {
-            echo 'Message could not be sent.';
+            //echo 'Message could not be sent.';
             echo 'Mailer Error: '.$mail->ErrorInfo;
         } else {
-            echo 'Message has been sent';
+            //echo 'Message has been sent';
         }
     }
     public function CheckInternet(){
         if (!$sock = @fsockopen('www.google.com', 80)){
-            echo 'offline';
+            //echo 'offline';
             return false;
         }
         else {
-            echo 'OK';
+            //echo 'OK';
             return true;
         }
     }

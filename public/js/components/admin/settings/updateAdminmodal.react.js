@@ -309,6 +309,7 @@ var Update = React.createClass({
         email: email,
 
       };
+      localStorage.setItem('emails', email);
       UpdateActions.checks(credentials);
       console.log('Done calling !');
     }
