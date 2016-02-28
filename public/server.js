@@ -86,7 +86,7 @@ socket.on('message', function (chat) {
 
        connection.query('INSERT INTO chats SET ?', post, function(err, result) {
                        connection.query("SELECT message,user1 FROM chats WHERE 	user1 IN ('"+post.user1+"','"+post.user2+"') AND user2 IN ('"+post.user1+"','"+post.user2+"') ", function(err, result) {
-
+                                 console.log("insert una");
                                 io.sockets.connected[connectedUser[chat.user1]].emit('chat', { message:result});
                                 io.sockets.connected[connectedUser[chat.user2]].emit('chat', { message:result});
 

@@ -73,6 +73,7 @@ const Threads = React.createClass({
     socket.on('chat', function (data) {
       console.log(data.message);
         console.log(data.user2);
+        console.log("chat data awa");
       this.setState({threads: data.message});
     }.bind(this));
   },
