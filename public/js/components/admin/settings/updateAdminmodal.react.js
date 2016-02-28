@@ -148,7 +148,9 @@ function validateEmail(email) {
       error: '*Email cannot be empty',
     };
   }  else {
-    return false;
+    return {
+      error: '*Invalid Email',
+    };
   }
 }
 
@@ -295,8 +297,8 @@ var Update = React.createClass({
       return false;
     }
 
-    if (!validateEmail(email)) {
-      document.getElementById('email').innerHTML = '*Invalid Email !';
+    if (validateEmail(email).error) {
+      document.getElementById('email').innerHTML = validateEmail(email).error;
       return false;
     }    else {
       let credentials = {

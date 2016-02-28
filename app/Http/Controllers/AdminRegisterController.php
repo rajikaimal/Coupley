@@ -7,7 +7,7 @@ use App\User;
 
 class AdminRegisterController extends Controller
 {
-    //checks whether user is already registered
+    //checks whether user is already registered and save data
     public function checks(Request $request)
     {
         $email = $request->email;
@@ -77,16 +77,11 @@ class AdminRegisterController extends Controller
         $mail->Password = 'COUPLEY123';                           // SMTP password
         $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
         $mail->Port = 465;                                    // TCP port to connect to
-
         $mail->From = 'coupleyteam@gmail.com';
         $mail->FromName = 'COUPLEY';
         $mail->addAddress($email, $user);     // Add a recipient
-//$mail->addAddress('ellen@example.com');               // Name is optional
         $mail->addReplyTo('coupleyteam@gmail', 'COUPLEY');
-//$mail->addCC('cc@example.com');
         $mail->addBCC('bcc@example.com');
-//$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-//$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
         $mail->isHTML(true);                                  // Set email format to HTML
         $mail->Subject = 'COUPLEY New Administrator';
         $mail->Body = 'Dear '.$user.', You are assigned as an administrator of the CoupleyTeam. Your Username: '.$email.' Password: '.$pwd;

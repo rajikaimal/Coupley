@@ -6,11 +6,10 @@ var BlockActions = {
     console.log(credentials);
     $.post('/admin-api/blockuser', credentials, function (data) {
       if (data.status === 201) {
-
+        location.reload(true);
       }
     });
 
-    document.location = '/cp-admin#/users/enemies';
   },
 };
 

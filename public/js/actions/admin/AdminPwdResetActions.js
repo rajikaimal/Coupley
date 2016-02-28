@@ -7,18 +7,16 @@ var PwdActions = {
     $.post('/admin-api/reset', credentials, function (data) {
 
       if (data.status === 500) {
-
-        swal('Error', 'Password incorrect', 'error');
-      }
-
-      if (data.status === 400) {
+        swal('Error', 'Entered current Password is incorrect', 'error');
+      } else if (data.status === 203) {
         swal('Error', 'Please check your internet connection and retry', 'error');
       } else {
-        document.location.reload();
+        location.reload(true);
         swal('Good job!', 'Updated your password', 'success');
+        return true;
       }
     }).fail(function () {
-      swal('Error', 'Password incorrect', 'error');
+      swal('Something Went Wrong', 'Please check your internet connection and retry', 'error');
     });
 
   },

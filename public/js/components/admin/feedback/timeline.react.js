@@ -50,22 +50,20 @@ const Tables = React.createClass({
 
     return (
         <div>
-                                    <h1>Timeline Feedback </h1>
-                    <table className="table table-striped table-hover">
-                            <thead>
-                                    <tr>
-                                            <th><h2>Id</h2></th>
-                                            <th><h2>User</h2></th>
-                                            <th><h2>Description</h2></th>
-                                    </tr>
-                            </thead>
-                            <tbody style={{ fontSize: '18px' }}>
-
-                                    {this._renderFeedItem()}
-
-                          </tbody>
-                    </table>
-                    </div>
+          <h1>Timeline Feedback </h1>
+          <table className="table table-striped table-hover">
+            <thead>
+            <tr>
+              <th><h2>Id</h2></th>
+              <th><h2>User</h2></th>
+              <th><h2>Description</h2></th>
+            </tr>
+            </thead>
+            <tbody style={{ fontSize: '18px' }}>
+            {this._renderFeedItem()}
+            </tbody>
+          </table>
+        </div>
     );
   },
 

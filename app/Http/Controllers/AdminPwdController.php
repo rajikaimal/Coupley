@@ -27,12 +27,17 @@ class AdminPwdController extends Controller
 
         // if no errors update the new password
         {
-            $this->SendMail($mail, 'Administrator', $newpassword);
-            $hashed = \Hash::make($newpassword);
-            \DB::table('users')
-                ->where('email', $mail)
-                ->update(['password' => $hashed]);
-            //return response()->json(['password' => 'uptodate'], 201);
+            if($this->CheckInternet()) {
+                $this->SendMail($mail, 'Administrator', $newpassword);
+                $hashed = \Hash::make($newpassword);
+                \DB::table('users')
+                    ->where('email', $mail)
+                    ->update(['password' => $hashed]);
+                //return response()->json(['password' => 'uptodate'], 201);
+            }
+            else{
+                return response()->json(['error' => 'No_network'], 203);
+            }
         }
     }
 
@@ -47,16 +52,11 @@ class AdminPwdController extends Controller
         $mail->Password = 'COUPLEY123';                           // SMTP password
         $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
         $mail->Port = 465;                                    // TCP port to connect to
-
         $mail->From = 'coupleyteam@gmail.com';
         $mail->FromName = 'COUPLEY';
         $mail->addAddress($email, $user);     // Add a recipient
-//$mail->addAddress('ellen@example.com');               // Name is optional
         $mail->addReplyTo('coupleyteam@gmail', 'COUPLEY');
-//$mail->addCC('cc@example.com');
         $mail->addBCC('bcc@example.com');
-//$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-//$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
         $mail->isHTML(true);                                  // Set email format to HTML
         $mail->Subject = 'COUPLEY password update';
         $mail->Body = 'Dear '.$user.', your updated password is '.$pwd;
@@ -67,6 +67,16 @@ class AdminPwdController extends Controller
             echo 'Mailer Error: '.$mail->ErrorInfo;
         } else {
             echo 'Message has been sent';
+        }
+    }
+    public function CheckInternet(){
+        if (!$sock = @fsockopen('www.google.com', 80)){
+            echo 'offline';
+            return false;
+        }
+        else {
+            echo 'OK';
+            return true;
         }
     }
 }

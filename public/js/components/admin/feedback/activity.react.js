@@ -11,7 +11,7 @@ import TableBody from 'material-ui/lib/table/table-body';
 import FeedActions from '../../../actions/admin/FeedbackActions';
 import FeedStore from '../../../stores/admin/FeedbackStore';
 import Feed from '../feedback/feed.react';
-const ELSE = 'No any feedbacks regaurding activity feed.';
+const ELSE = 'No any feedbacks regarding activity feed.';
 const Tables = React.createClass({
   getInitialState: function () {
 

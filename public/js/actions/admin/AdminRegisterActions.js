@@ -7,7 +7,7 @@ var RegisterActions = {
     $.post('/admin-api/registerAdmin', credentials, function (data) {
 
       if (data.status === 201) {
-        document.location.reload();
+        location.reload(true);
         swal('Good job!', 'New Administrator added to the system', 'success');
       } else {
         swal('Error', 'An account with the same email exists already', 'error');

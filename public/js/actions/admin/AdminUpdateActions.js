@@ -10,7 +10,7 @@ var UpdateActions = {
           actionType: ProfileConstants.GETDATA,
           userdata: credentials,
         });
-        document.location.reload();
+        location.reload(true);
         swal('Good job!', 'Updated your profile', 'success');
       } else if (data.status === 400) {
         swal('Error', 'Please check your internet connection and retry', 'error');
