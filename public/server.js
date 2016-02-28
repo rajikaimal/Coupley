@@ -55,9 +55,8 @@ io.on('connection', function (socket) {
                                    for(var i=0;i<Likedusers.length;i++){
 
                                    }
-                    //        socket.broadcast.to(connectedUser[chat.user2]).emit('chat', { message:result});
-                        //    socket.broadcast.to(connectedUser[Tiffany]).emit('chatList', {Userlist:Likedusers});
-                             io.emit('chatList', {Userlist:Likedusers});
+
+                         io.sockets.connected[connectedUser[socket.username]].emit('chatList', {Userlist:Likedusers});
                                             console.log("Liked list sent to "+socket.username);
                                     });
 
@@ -88,7 +87,9 @@ socket.on('message', function (chat) {
        connection.query('INSERT INTO chats SET ?', post, function(err, result) {
                        connection.query("SELECT message,user1 FROM chats WHERE 	user1 IN ('"+post.user1+"','"+post.user2+"') AND user2 IN ('"+post.user1+"','"+post.user2+"') ", function(err, result) {
 
-                                  socket.broadcast.to(connectedUser[chat.user2]).emit('chat', { message:result});
+                                io.sockets.connected[connectedUser[chat.user1]].emit('chat', { message:result});
+                                io.sockets.connected[connectedUser[chat.user2]].emit('chat', { message:result});
+
 
                                                       console.log("send unaaaa!");
                        });

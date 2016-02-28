@@ -18,7 +18,14 @@ class ThreadController extends Controller
 
     public function getPreviousMessage()
     {
-      if ($pmessage = \DB::select('select id,user2,	message,created_at from chats')) {
+      if (
+      $pmessage = \DB::select(\DB::raw("SELECT user2,message,created_at
+      FROM (SELECT user2,message,created_at FROM chats WHERE user1 ='Tiffany'
+      UNION SELECT user1,message,created_at FROM chats WHERE user2 = 'Tiffany'
+      IN ( SELECT distinct user2 FROM chats WHERE user1 = 'Tiffany'
+      union SELECT distinct user1 FROM chats WHERE user2 = 'Tiffany'))
+      WHERE user2 !='Tiffany'
+      group by user2")){
           return response()->json(['pmessage' => $pmessage, 'status' => 200], 200);
       } else {
           return response()->json(['status' => 505], 505);
