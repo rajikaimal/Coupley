@@ -7,6 +7,7 @@ var CHANGE_EVENT = 'change';
 
 var searchresults = [];
 var searchID; 
+var checkuserzPost;
 
 var StatusStore = assign({},EventEmitter.prototype, {
 
@@ -22,9 +23,17 @@ var StatusStore = assign({},EventEmitter.prototype, {
       console.log(searchID);
       return searchID;
     },
-    saveStatusID: function(id) {
-      console.log(id);
-      searchID = id;
+    saveStatusID: function(results) {
+      console.log(results);
+      searchID = results;
+    },
+    getcheckStatus: function() {
+      return checkuserzPost;
+    },
+    savecheckStatus: function(results) {
+      console.log("ssssssssssssssssssssssssssssssssssssss");
+      console.log(results);
+      checkuserzPost = results;
     },
     emitChange: function() {
       this.emit(CHANGE_EVENT);
@@ -42,8 +51,14 @@ AppDispatcher.register(function(payload) {
       StatusStore.emitChange();
       break;
     case(ActivityFeedConstants.GETID):
-      console.log(payload.action.id);
-      StatusStore.saveStatusID(payload.action.id);
+      console.log(payload.action.pid);
+      StatusStore.saveStatusID(payload.action.pid);
+      StatusStore.emitChange();
+      break;
+    case(ActivityFeedConstants.CHECKSTATUS):
+      console.log('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb');
+      console.log(payload.action.checkStatus);
+      StatusStore.savecheckStatus(payload.action.checkStatus);
       StatusStore.emitChange();
       break;
 	}

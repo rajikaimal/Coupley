@@ -7,6 +7,10 @@ use App\share;
 
 class ShareController extends Controller
 {
+    /*
+        returns share status for GET request
+        @return json
+    **/
     public function getsharestatus(Request $request)
     {
         $id = $request->PostId;
@@ -22,6 +26,11 @@ class ShareController extends Controller
         }
     }
 
+    /*
+        handles POST request from client
+        adds a share status to activityfeed
+        @return json ... status of action
+    **/
     public function share(Request $request)
     {
         $share = new Share;
@@ -36,6 +45,11 @@ class ShareController extends Controller
         }
     }
 
+    /*
+        handles POST request from client
+        deletes a share status 
+        @return json ... status of action
+    **/
     public function unshare(Request $request)
     {
         $id = $request->PostId;

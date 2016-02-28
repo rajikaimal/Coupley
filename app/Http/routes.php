@@ -30,19 +30,33 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('register/checkemail', 'RegisterController@checkemail');
     //update admin passwords
     Route::post('recoverpwd', 'AuthenticateController@reset');
-
+    //Add a status
     Route::post('status', 'ActivityFeedController@addstatus');
+    //Return status
     Route::get('getstatus', 'ActivityFeedController@getstatus');
+    //Return status ID (PostID)
     Route::get('getpostId', 'ActivityFeedController@getpostId');
+    //Add a like to the status
     Route::post('likepost', 'LikeController@like');
+    //Unlike the status
     Route::post('unlikepost', 'LikeController@unlike');
+    //Return likes status
     Route::get('getlikestatus', 'LikeController@getlikestatus');
+    //Add a share
     Route::post('sharepost', 'ShareController@share');
+    //Unshare the status
     Route::post('unsharepost', 'ShareController@unshare');
+    //Return share status
     Route::get('getsharestatus', 'ShareController@getsharestatus');
+    //Add a comment to the status
     Route::post('comment', 'CommentController@addcomment');
+    //Return comments data
     Route::get('getcomment', 'CommentController@getcomments');
+
+    Route::get('checkpost','ActivityFeedController@checkpost');
+    //Delete a status
     Route::post('deleteStatus', 'ActivityFeedController@deleteStatus');
+    //Edit a status 
     Route::post('edit_status', 'ActivityFeedController@editStatus');
     //Return profile data
     Route::get('profile', 'ProfileController@profile');

@@ -7,6 +7,11 @@ use App\Comment;
 
 class CommentController extends Controller
 {
+    /*
+        handles POST request from client
+        adds a comment to activityfeed
+        @return json ... status of action
+    **/
     public function addcomment(Request $request)
     {
         $comment = new Comment;
@@ -22,6 +27,10 @@ class CommentController extends Controller
         }
     }
 
+    /*
+        returns comment data for GET request
+        @return json
+    **/
     public function getcomments(Request $request)
     {
         /*  $id=$request->key;**/

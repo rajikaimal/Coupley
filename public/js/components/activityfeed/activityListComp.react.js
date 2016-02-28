@@ -48,10 +48,11 @@ const ActivityList = React.createClass({
 
     getInitialState: function () {
         return {
-            open: false,
+            opens: false,
             liked: LikeStatusStore.getlikes(),
             shared: ShareStatusStore.getshares(),
             postId: StatusStore.getStatusID(),
+            Checked: StatusStore.getcheckStatus(),
         };
     },
 
@@ -62,14 +63,16 @@ const ActivityList = React.createClass({
         ShareStatusStore.addChangeListener(this._onChange);
         ShareActions.getsharestatus();
 
-        StatusStore.addChangeListener(this._onChange);
+        //StatusStore.addChangeListener(this._onChange);
         ActivityFeedActions.getpostId();
+        ActivityFeedActions.checkPost();
     },
 
     _onChange: function () {
         this.setState({postId: StatusStore.getStatusID()});
         this.setState({liked: LikeStatusStore.getlikes()});
         this.setState({shared: ShareStatusStore.getshares()});
+        this.setState({checked: StatusStore.getcheckStatus()});
 
         if (LikeStatusStore.getlikes() == "false") {
             this.setState({
@@ -92,7 +95,29 @@ const ActivityList = React.createClass({
                 shared: true,
             });
         }
+
+        if (StatusStore.getcheckStatus() == "false") {
+            this.setState({
+                Checked: false,
+            });
+        }
+        if (StatusStore.getcheckStatus() == "true") {
+            this.setState({
+                Checked: true,
+            });
+        }
     },
+
+    /**checkloggedUserzPost:function(){
+        var email = LoginStore.getEmail();
+        var postId = this.props.id;
+        let checkPost = {
+            PId: postId,
+            Email: email,
+        };
+        ActivityFeedActions.checkPost(checkPost);
+        console.log('Done checking');
+    },*/
 
     editstatus: function () {
         let post_text= this.refs.EditBox.getValue();
@@ -100,7 +125,7 @@ const ActivityList = React.createClass({
 
         let editstatus={
           PostId: postId,
-          Status: post_text
+          Status: post_text,
           };
           ActivityFeedActions.editstatus(editstatus);
           console.log('Done calling !');
@@ -147,7 +172,6 @@ const ActivityList = React.createClass({
     _changeLikeState: function () {
 
         var postId = this.props.id;
-        console.log(postId);
         var email = LoginStore.getEmail();
         var firstname = LoginStore.getFirstname();
         let add_likes = {
@@ -169,11 +193,11 @@ const ActivityList = React.createClass({
     },
 
     handleOpen: function () {
-        this.setState({open: true});
+        this.setState({opens: true});
     },
 
     handleClose: function () {
-        this.setState({open: false});
+        this.setState({opens: false});
     },
 
     EnterKey_comment(e) {
@@ -223,7 +247,7 @@ const ActivityList = React.createClass({
 		          }
 		          secondaryTextLines={2} 
 		          rightIconButton={
-                 <IconMenu iconButtonElement={iconButtonElement}>
+                 <IconMenu iconButtonElement={iconButtonElement} closeOnItemTouchTap={this.state.Checked ? false : true}>
                     <MenuItem primaryText="Edit" onClick={this.handleOpen}/>
                     <MenuItem primaryText="Remove" onClick={this.deleteStatus}/>
                     <MenuItem primaryText="Block" />
@@ -244,7 +268,7 @@ const ActivityList = React.createClass({
                      title="Modify Your Status"
                      actions={actions}
                      modal={false}
-                     open={this.state.open}
+                     open={this.state.opens}
                      onRequestClose={this.handleClose}>
                     <TextField hintText="Update your status" multiLine={false} fullWidth={true} ref="EditBox" defaultValue={this.props.post_text}/>
                 </Dialog>

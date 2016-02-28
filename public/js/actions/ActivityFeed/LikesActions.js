@@ -6,11 +6,15 @@ import StatusStore from '../../stores/StatusStore';
 var LikesActions ={
   getlikestatus: function() {
     let pid = StatusStore.getStatusID();
+    console.log('Actionnnnnnnn');
+    console.log(pid);
     let email= LoginStore.getEmail(); 
+    console.log(email);
     let getlike = {
       PostId: pid,
       Email: email,
     };
+    console.log(getlike);
     $.get('/api/getlikestatus', function(response) {
       console.log("likeaction");
       console.log(response);

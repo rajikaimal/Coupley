@@ -7,6 +7,10 @@ use App\Like;
 
 class LikeController extends Controller
 {
+    /*
+        returns likes status for GET request
+        @return json
+    **/
     public function getlikestatus(Request $request)
     {
         $id = $request->PostId;
@@ -22,6 +26,11 @@ class LikeController extends Controller
         }
     }
 
+    /*
+        handles POST request from client
+        add a like to status
+        @return json ... status of action
+    **/
     public function like(Request $request)
     {
         $like = new Like;
@@ -37,6 +46,11 @@ class LikeController extends Controller
         }
     }
 
+    /*
+        handles POST request from client
+        delete a like status to activityfeed
+        @return json ... status of action
+    **/
     public function unlike(Request $request)
     {
         $id = $request->PostId;

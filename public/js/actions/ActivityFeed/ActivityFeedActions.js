@@ -1,5 +1,7 @@
 var AppDispatcher = require('../../dispatcher/AppDispatcher');
 var ActivityFeedConstants = require('../../constants/ActivityFeedConstants');
+import LoginStore from '../../stores/LoginStore';
+import StatusStore from '../../stores/StatusStore';
 
 var ActivityFeedActions = {
   add_status: function(status){
@@ -47,7 +49,7 @@ var ActivityFeedActions = {
       if (response.status == 200) {
             AppDispatcher.handleViewAction({
             actionType: ActivityFeedConstants.GETID,
-            id: response.posts
+            pid: response.posts
           });
       }
       else if (response.status == 505) {
@@ -101,6 +103,27 @@ var ActivityFeedActions = {
         console.log('Error 404');
       }
       });
+  },
+
+  checkPost:function(){
+    var email = LoginStore.getEmail();
+    var postId = StatusStore.getStatusID();
+    let checkPost = {
+            PId: postId,
+            Email: email,
+          };
+    $.get('/api/checkpost' , function(response) {
+      console.log(response);
+      if (response.status == 200) {
+            AppDispatcher.handleViewAction({
+            actionType: ActivityFeedConstants.CHECKSTATUS,
+            checkStatus: response.posts,
+          });
+      }
+      else if (response.status == 505) {
+            console.log('Error 505');
+      }
+    });
   }
 
   /*ImageUpload: function(imageupload){

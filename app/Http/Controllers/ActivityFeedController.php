@@ -7,6 +7,11 @@ use App\Post;
 
 class ActivityFeedController extends Controller
 {
+    /*
+        handles POST request from client
+        adds a status to activityfeed
+        @return json ... status of action
+    **/
     public function addstatus(Request $request)
     {
         $post = new Post;
@@ -22,6 +27,10 @@ class ActivityFeedController extends Controller
         }
     }
 
+    /*
+        returns status data for GET request
+        @return json
+    **/
     public function getstatus(Request $request)
     {
         if ($posts = \DB::select('select id,firstname,post_text,created_at from posts')) {
@@ -31,6 +40,10 @@ class ActivityFeedController extends Controller
         }
     }
 
+    /*
+        returns post id for GET request
+        @return json
+    **/
     public function getpostId(Request $request)
     {
         if ($posts = \DB::select('select id from posts')) {
@@ -40,19 +53,21 @@ class ActivityFeedController extends Controller
         }
     }
 
-    /*public function addshare(Request $request)
+    public function checkpost(Request $request)
     {
-        $share = new Share;
-        $share->post_id = $request->PostId;
-        $share->email = $request->Email;
-        $share->firstname = $request->Fname;
+        $id = $request->PId;
+        $email = $request->Email;
 
-        if ($share->save()) {
-            return response()->json(['status' => 201], 201);
+        $result = Post::where('id', $id)
+            ->where('email', $email)->get();
+
+        if ($result->isEmpty()) {
+            return 'false';
         } else {
-            return response()->json(['status' => 404], 404);
+            return 'true';
         }
-    }**/
+
+    }
 
     public function deleteStatus(Request $request)
     {

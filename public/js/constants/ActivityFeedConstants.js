@@ -5,4 +5,5 @@ module.exports = keyMirror({
     EMAIL: null,
     GETDATA: null,
     GETID: null,
+    CHECKSTATUS: null,
 });
