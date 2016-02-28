@@ -145,7 +145,7 @@ class ProfileController extends Controller
         }
     }
 
-    /* 
+    /*
         Returns liked back status
     **/
     public function likedbackstatus(Request $request)
@@ -167,7 +167,7 @@ class ProfileController extends Controller
         }
     }
 
-    /* 
+    /*
         Returns @json block status
     **/
     public function blockstatus(Request $request)
@@ -192,7 +192,7 @@ class ProfileController extends Controller
         }
     }
 
-    /* 
+    /*
         Returns @int status after blocking
     **/
     public function block(Request $request)
@@ -226,7 +226,7 @@ class ProfileController extends Controller
         }
     }
 
-    /* 
+    /*
         Returns @int status after blocking
     **/
     public function unblock(Request $request)
