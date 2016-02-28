@@ -18,19 +18,42 @@ class ThreadController extends Controller
 
     public function getPreviousMessage()
     {
-      if (
-      $pmessage = \DB::select(\DB::raw("SELECT user2,message,created_at
-      FROM (SELECT user2,message,created_at FROM chats WHERE user1 ='Tiffany'
-      UNION SELECT user1,message,created_at FROM chats WHERE user2 = 'Tiffany'
-      IN ( SELECT distinct user2 FROM chats WHERE user1 = 'Tiffany'
-      union SELECT distinct user1 FROM chats WHERE user2 = 'Tiffany'))
-      WHERE user2 !='Tiffany'
-      group by user2")){
-          return response()->json(['pmessage' => $pmessage, 'status' => 200], 200);
-      } else {
-          return response()->json(['status' => 505], 505);
-      }
+      if ($pmessage = \DB::select("select user2,message,created_at
+   from (select user2,message,created_at from chats where user1 ='Tiffany'
+   union select user1,message,created_at from chats where user2 ='Tiffany'
+   in ( select distinct user2 from chats where user1 ='Tiffany'
+   union select distinct user1 from chats where user2 ='Tiffany' ))
+   where user2 != 'Tiffany'
+   group by user2")) {
+       return response()->json(['pmessage' => $pmessage, 'status' => 200], 200);
+   } else {
+       return response()->json(['status' => 505], 505);
+   }
     }
+
+    // public function getPreviousMessage()
+    // {
+    //   if ($pmessage=\DB::select('select * from chats where user1=?',['Tiffany'])){
+    //       return response()->json(['pmessage' => $pmessage, 'status' => 200], 200);
+    //   } else {
+    //       return response()->json(['status' => 505], 505);
+    //   }
+    // }
+
+
+    // public function getPreviousMessage(Request $request)
+    //   {
+    //       $user1=$request->User1;
+    //       $user2=$request->User2;
+    //       $Mu2=\DB::table('chats')->select('user2,message,created_at')->where('user1','=',$user1)->get();
+    //       $Mu = DB::table('chats')->select('user1,message,created_at')->where('user2','=',$user2)->union($Mu2);
+    //     if ($Mu->get()){
+    //         return response()->json(['pmessage' => $pmessage, 'status' => 200], 200);
+    //     } else {
+    //         return response()->json(['status' => 505], 505);
+    //     }
+    //   }
+
 
     public function deletemessage(Request $request )
     {
