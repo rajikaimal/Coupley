@@ -18,7 +18,7 @@ const CustomerGraphs = React.createClass({
                   position: 'relative',
                   minHeight: '1px',
                   paddingRight: '15px',
-                  paddingLeft: '550px',
+                  paddingLeft: '540px',
                 }}>
                     <img src="../../../../img/default-50x50.gif" alt="Loading.." />
                 </div>

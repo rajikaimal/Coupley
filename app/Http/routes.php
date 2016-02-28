@@ -108,6 +108,8 @@ Route::group(['prefix' => 'admin-api'], function () {
     Route::post('updateAdmin', 'AdminRegisterController@update');
     //update admin passwords
     Route::post('reset', 'AdminPwdController@reset');
+    //upload profile picture
+    Route::post('profilepic', 'AdminRegisterController@uploadpic');
     //recover password
     Route::post('recoverpwd', 'UsersController@recover');
     //block certain user

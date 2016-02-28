@@ -19,7 +19,7 @@ const Cards = React.createClass({
             <div className="icon">
               <i className="ion ion-bag"></i>
             </div>
-            <a href="#" className="small-box-footer">More info
+            <a className="small-box-footer">More info
               <i className="fa fa-arrow-circle-right"></i>
             </a>
           </div>
@@ -36,7 +36,7 @@ const Cards = React.createClass({
             <div className="icon">
               <i className="ion ion-stats-bars"></i>
             </div>
-            <a href="#" className="small-box-footer">More info
+            <a  className="small-box-footer">More info
               <i className="fa fa-arrow-circle-right"></i>
             </a>
           </div>
@@ -51,7 +51,7 @@ const Cards = React.createClass({
             <div className="icon">
               <i className="ion ion-person-add"></i>
             </div>
-            <a href="#" className="small-box-footer">More info
+            <a  className="small-box-footer">More info
               <i className="fa fa-arrow-circle-right"></i>
             </a>
           </div>
@@ -66,7 +66,7 @@ const Cards = React.createClass({
             <div className="icon">
               <i className="ion ion-pie-graph"></i>
             </div>
-            <a href="#" className="small-box-footer">More info
+            <a  className="small-box-footer">More info
               <i className="fa fa-arrow-circle-right"></i>
             </a>
           </div>

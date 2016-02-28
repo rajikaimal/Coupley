@@ -9,8 +9,12 @@ var PwdActions = {
       if (data.status === 500) {
 
         swal('Error', 'Password incorrect', 'error');
-      }      else {
+      }
 
+      if (data.status === 400) {
+        swal('Error', 'Please check your internet connection and retry', 'error');
+      } else {
+        document.location.reload();
         swal('Good job!', 'Updated your password', 'success');
       }
     }).fail(function () {

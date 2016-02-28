@@ -23,7 +23,7 @@ const AdminForgot = React.createClass({
   sendemail: function () {
     let email = this.refs.email.getValue();
     let resetemail = {
-      email: email,
+      email: email, 
     };
     LoginActions.resetpassword(resetemail);
 
