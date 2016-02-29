@@ -48,7 +48,7 @@ var ActivityFeedActions = {
       console.log(response);
       if(response.status == 201) {
         $.get('/api/getstatus', function(response) {
-        console.log(response);
+         console.log(response);
           if (response.status == 200) {
             AppDispatcher.handleViewAction({
             actionType: ActivityFeedConstants.GETDATA,
@@ -91,7 +91,7 @@ var ActivityFeedActions = {
 
   checkPost:function(request){
     $.get('/api/checkpost' , function(response) {
-      console.log('nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn');
+      console.log('status actionnnnnnnnn');
       console.log(response);
       if (response.status == 200) {
             AppDispatcher.handleViewAction({

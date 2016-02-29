@@ -5,8 +5,8 @@ import StatusStore from '../../stores/StatusStore';
 
 var LikesActions ={
   getlikestatus: function(request) {
-    $.get('/api/getlikestatus', function(response) {
-      console.log("likeaction");
+    $.get('/api/getlikestatus',function(response) {
+      console.log("likeactionnnnnnnnnnn");
       console.log(response);
       if (response.status == 200) {
       	AppDispatcher.handleViewAction({
