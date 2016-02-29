@@ -20,10 +20,14 @@ class AdminRegisterController extends Controller
             $admin->email = $request->email;
             $admin->role = 'admin';
             $admin->password = \Hash::make($request->password);
-            if ($admin->save()) {
-                return response()->json(['status' => 201], 201);
-            } else {
-                return response()->json(['status' => 404], 404);
+            if($this->CheckInternet()){
+                if ($admin->save()) {
+                    return response()->json(['status' => 201], 201);
+                } else {
+                    return response()->json(['status' => 404], 404);
+                }
+            }else{
+                return response()->json(['status' => 203], 203);
             }
         } else {
             return response()->json(['status' => 200], 200);
@@ -63,13 +67,12 @@ class AdminRegisterController extends Controller
 
             return response()->json(['status' => 200, 'done' => true], 200);
         } catch (Exception $e) {
-            return response()->json(['status' => 200, 'done' => false], 200);
+            return response()->json(['status' => 201, 'done' => false], 200);
         }
     }
     public function SendMail($email, $user, $pwd)
     {
         $mail = new PHPMailer;
-        $mail->SMTPDebug = 1;                               // Enable verbose debug output
         $mail->isSMTP();                                      // Set mailer to use SMTP
         $mail->Host = 'ssl://smtp.gmail.com';  // Specify main and backup SMTP servers
         $mail->SMTPAuth = true;                               // Enable SMTP authentication
@@ -91,7 +94,17 @@ class AdminRegisterController extends Controller
             echo 'Message could not be sent.';
             echo 'Mailer Error: '.$mail->ErrorInfo;
         } else {
-            echo 'Message has been sent';
+            //echo 'Message has been sent';
+        }
+    }
+    public function CheckInternet(){
+        if (!$sock = @fsockopen('www.google.com', 80)){
+            //echo 'offline';
+            return false;
+        }
+        else {
+            //echo 'OK';
+            return true;
         }
     }
 }

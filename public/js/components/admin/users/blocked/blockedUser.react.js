@@ -12,7 +12,7 @@ import UnBlockActions from '../../../../actions/admin/UnblockUserActions';
 
 //tap-event-plugin
 injectTapEventPlugin();
-
+const path = '../../../../../../img/profilepics/';
 const iconButtonElement = (
     <IconButton
         touch={true}
@@ -61,14 +61,13 @@ const blocked = React.createClass({
     return (
         <div>
           <ListItem
-              style={{ backgroundColor: Colors.yellow100 }}
-              leftAvatar={<Avatar src="https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg" />}
-              primaryText={this.props.heading}
+              style={{ backgroundColor: Colors.yellow100, height:120 }}
+              leftAvatar={<Avatar size="80" src={path + this.props.profilepic} />}
               secondaryText={
                    <p>
-                      <b> {this.props.firstname} {this.props.lastname} </b>
+                      <b> &#160;&#160;&#160;&#160;&#160;&#160;{this.props.firstname} {this.props.lastname} </b>
                       <br/>
-                      <span style={{ color: Colors.darkBlack }}>{this.props.gender}</span>
+                      <span style={{ color: Colors.darkBlack }}>&#160;&#160;&#160;&#160;&#160;&#160;{this.props.gender}</span>
                     </p>
                     }
               secondaryTextLines={2}

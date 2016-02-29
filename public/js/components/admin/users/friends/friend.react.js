@@ -12,7 +12,7 @@ import BlockActions from '../../../../actions/admin/blockUser';
 
 //tap-event-plugin
 injectTapEventPlugin();
-
+const path = '../../../../../../img/profilepics/';
 const iconButtonElement = (
     <IconButton
         touch={true}
@@ -57,15 +57,15 @@ const Friend = React.createClass({
         <div>
                 <ListItem
                 style={{ backgroundColor: Colors.pink50, height:150 }}
-                leftAvatar={<Avatar src="https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg" />}
+                leftAvatar={<Avatar size="60" src={path + this.props.profilepic} />}
                 primaryText={
-                    <p> {this.props.reported}<br/>
-                    <h4>{this.props.description} <br/></h4>
+                    <p> {this.props.reported}<br/><br/><br/>
+                    <h4>{this.props.description}</h4>
                     </p>
                     }
                 secondaryText={
                     <p>
-                      Reported by {this.props.user}
+                      -Reported by {this.props.user}
                     </p>
                     }
                 secondaryTextLines={2}
