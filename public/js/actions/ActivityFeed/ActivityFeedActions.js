@@ -3,42 +3,39 @@ var ActivityFeedConstants = require('../../constants/ActivityFeedConstants');
 import LoginStore from '../../stores/LoginStore';
 import StatusStore from '../../stores/StatusStore';
 
-var ActivityFeedActions = {
-  add_status: function(status){
-    $.post('api/status', status, function(response) {
+var ActivityfeedActions = {
+  add_status: function (status) {
+    $.post('api/status', status, function (response) {
       console.log(response);
-      if(response.status == 201) {
-            $.get('/api/getstatus', function(response) {
-            console.log(response);
+      if (response.status == 201) {
+        $.get('/api/getstatus', function (response) {
+          console.log(response);
           if (response.status == 200) {
             AppDispatcher.handleViewAction({
-            actionType: ActivityFeedConstants.GETDATA,
-            statusdata: response.posts
+              actionType: ActivityFeedConstants.GETDATA,
+              statusdata: response.posts,
             });
-          }
-          else if (response.status == 505) {
+          } else if (response.status == 505) {
             console.log('Error 505');
           }
         });
-      }
-      else if(response.status == 404) {
+      } else if (response.status == 404) {
         console.log('Error 404');
       }
-      });
+    });
   },
 
- getstatus: function() {
-    $.get('/api/getstatus', function(response) {
+  getstatus: function () {
+    $.get('/api/getstatus', function (response) {
       console.log(response);
       console.log('view status ');
       if (response.status == 200) {
-            AppDispatcher.handleViewAction({
+        AppDispatcher.handleViewAction({
             actionType: ActivityFeedConstants.GETDATA,
-            statusdata: response.posts
+            statusdata: response.posts,
           });
-      }
-      else if (response.status == 505) {
-            console.log('Error 505');
+      } else if (response.status == 505) {
+        console.log('Error 505');
       }
     });
   },
@@ -66,8 +63,8 @@ var ActivityFeedActions = {
       });
   },
 
-  editstatus:function(txt){
-   $.post('api/edit_status',txt , function(response) {
+  editstatus:function (txt) {
+    $.post('api/edit_status', txt, function (response) {
       console.log(response);
       if(response.status == 201) {
       $.get('/api/getstatus', function(response) {
@@ -103,14 +100,8 @@ var ActivityFeedActions = {
             console.log('Error 505');
       }
     });
-  }
+  },
 
-  /*ImageUpload: function(imageupload){
-    $.post('api/imageupload', imageupload, function(response) {
-      console.log(response);
-      });
-  },*/
-  
 };
 
-module.exports = ActivityFeedActions;
+module.exports = ActivityfeedActions;

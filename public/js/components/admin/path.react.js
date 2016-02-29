@@ -15,7 +15,7 @@ const Path = React.createClass({
           </h1>
           <ol className="breadcrumb">
             <li>
-              <a href="#">
+              <a >
                 <i className="fa fa-dashboard"></i>
                 Home</a>
             </li>

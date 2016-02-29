@@ -5,13 +5,16 @@ var UpdateActions = {
     console.log(credentials);
     $.post('/admin-api/updateAdmin', credentials, function (data) {
 
-      if (data.status === 200) {
+      if (data.status == 200) {
         AppDispatcher.handleViewAction({
           actionType: ProfileConstants.GETDATA,
           userdata: credentials,
         });
+        document.location.reload();
         swal('Good job!', 'Updated your profile', 'success');
-      }      else {
+      } else if (data.status === 400) {
+        swal('Error', 'Please check your internet connection and retry', 'error');
+      } else {
         swal('Error', 'An account with the same email exists already', 'error');
       }
     }).fail(function () {

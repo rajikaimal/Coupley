@@ -33,6 +33,21 @@ class ProfileController extends Controller
         }
     }
 
+    /*
+        returns profile picture for GET request
+        @return json
+    **/
+    public function getProfilePic(Request $request)
+    {
+        $username = $request->username;
+        try {
+            $profilepic = User::where('username', $username)->get(['profilepic']);
+
+            return response()->json(['status' => 200, 'image' => '/img/profilepics/'.$profilepic[0]->profilepic]);
+        } catch (Illuminate\Database\QueryException $e) {
+        }
+    }
+
     public function getlikestatus(Request $request)
     {
         $visitorusername = $request->visitorusername;
@@ -130,7 +145,7 @@ class ProfileController extends Controller
         }
     }
 
-    /* 
+    /*
         Returns liked back status
     **/
     public function likedbackstatus(Request $request)
@@ -152,7 +167,7 @@ class ProfileController extends Controller
         }
     }
 
-    /* 
+    /*
         Returns @json block status
     **/
     public function blockstatus(Request $request)
@@ -177,7 +192,7 @@ class ProfileController extends Controller
         }
     }
 
-    /* 
+    /*
         Returns @int status after blocking
     **/
     public function block(Request $request)
@@ -211,7 +226,7 @@ class ProfileController extends Controller
         }
     }
 
-    /* 
+    /*
         Returns @int status after blocking
     **/
     public function unblock(Request $request)
@@ -296,10 +311,11 @@ class ProfileController extends Controller
             $file = $request->file('file')->move($destination, $username);
             $ext = $request->file('file')->getClientOriginalExtension();
 
-            $userID = User::where('username', $username)->get(['id']);
+            User::where('username', $username)
+                ->update(['profilepic' => $username]);
 
-            About::where('user_id', $userID[0]->id)
-                ->update(['profilepic' => $username.'.'.$ext]);
+            // About::where('user_id', $userID[0]->id)
+            //     ->update(['profilepic' => $username]);
 
             return response()->json(['status' => 200, 'done' => true], 200);
         } catch (Exception $e) {
@@ -344,6 +360,27 @@ class ProfileController extends Controller
             return response()->json(['status' => 200, 'data' => $results], 200);
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 505], 505);
+        }
+    }
+
+    /*
+        Updates basic information
+        @Return json
+    **/
+
+    public function editbasics(Request $request)
+    {
+        $firstname = $request->firstname;
+        $lastname = $request->lastname;
+        $country = $request->country;
+        $currentusername = $request->currentusername;
+        try {
+            if (User::where('username', $currentusername)
+                ->update(['firstname' => $firstname, 'lastname' => $lastname, 'country' => $country])) {
+                return response()->json(['status' => 200], 200);
+            }
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 200], 200);
         }
     }
 

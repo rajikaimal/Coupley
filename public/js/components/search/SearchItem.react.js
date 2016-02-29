@@ -21,6 +21,10 @@ const styles = {
   },
 };
 
+const linkStyle = {
+  color: 'white'
+};
+
 const SearchItem = React.createClass({
   _redirect: function() {
     document.location = "/#/" + this.props.username;
@@ -36,11 +40,11 @@ const SearchItem = React.createClass({
             
               <GridTile
                 key={this.props.firstname}
-                title={<a href="" onClick={this._redirect} id="username-a">{this.props.firstname + " " +this.props.lastname}</a>}
+                title={<a href="" onClick={this._redirect} id="username-a" style={linkStyle}>{this.props.firstname + " " +this.props.lastname}</a>}
                 subtitle={this.props.gender}
                 actionIcon={<IconButton></IconButton>}
               >
-                <img src='https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg' />
+                <img src={'/img/profilepics/' + this.props.image} />
               </GridTile>
     
           </GridList>

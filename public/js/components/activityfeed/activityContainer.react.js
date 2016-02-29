@@ -1,7 +1,7 @@
 import React from 'react';
 import List from 'material-ui/lib/lists/list';
 import ListItem from 'material-ui/lib/lists/list-item';
-import ActivityFeedActions from '../../actions/ActivityFeed/ActivityFeedActions';
+import ActivityfeedActions from '../../actions/ActivityFeed/ActivityfeedActions';
 import StatusStore from '../../stores/StatusStore';
 import ActivityList from './activityListComp.react';
 

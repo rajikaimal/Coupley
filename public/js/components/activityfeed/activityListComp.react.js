@@ -16,7 +16,7 @@ import LikesActions from '../../actions/ActivityFeed/LikesActions';
 import ShareActions from '../../actions/ActivityFeed/ShareActions';
 import LoginStore from '../../stores/LoginStore';
 import StatusStore from '../../stores/StatusStore';
-import ActivityFeedActions from '../../actions/ActivityFeed/ActivityFeedActions';
+import ActivityfeedActions from '../../actions/ActivityFeed/ActivityfeedActions';
 import CommentAction from '../../actions/ActivityFeed/CommentAction';
 import CommentStore from '../../stores/CommentStore';
 import CommentList from '../comments/CommentList.react';

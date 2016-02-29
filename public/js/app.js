@@ -26,6 +26,7 @@ import Search from './components/search/Search.react';
 import Admin from './components/admin/dashboard.react';
 import AdminLogin from './components/admin/login.react';
 import MainActivity from './components/activityfeed/activityMain.react';
+import MainActivityProfile from './components/profile/activityfeed/activityMain.react';
 import Threads from './components/chat/Threads.react';
 import Users from './components/admin/users/userHome.react';
 import Friends from './components/admin/users/friends.react';
@@ -70,7 +71,7 @@ function logout() {
 
 function AdminSignout() {
   localStorage.removeItem('apitoken');
-  localStorage.removeItem('email');
+  localStorage.removeItem('emails');
   document.location = '/cp-admin#/AdminLogin';
 }
 
@@ -107,7 +108,7 @@ ReactDOM.render((
       <Route path="/threads" component={Threads} />
         <Route path="activity" component={MainActivity}/>
       <Route path="profile" component={Profile} >
-          <Route path="activityfeed" component={ActivityContainer} />
+          <Route path="activityfeed" component={MainActivityProfile} />
           <Route path="about" component={About} />
         <Route path="photos" component={Photos} />
       </Route>

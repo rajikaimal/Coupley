@@ -21,7 +21,7 @@ var HeaderActions = {
     if (searchkey == '') {
       console.log('Null searchkey');
     } else {
-      $.get('/api/search?token=' + localStorage.getItem('apitoken') + '&key=' + searchkey, function (response) {
+      $.get('/api/search?token=' + localStorage.getItem('apitoken') + '&key=' + searchkey + '&username=' + localStorage.getItem('username'), function (response) {
         if (response.status == 201 && response.users) {
           AppDispatcher.handleViewAction({
             actionType: SearchConstants.SEARCH,

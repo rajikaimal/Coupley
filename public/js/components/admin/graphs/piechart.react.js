@@ -46,8 +46,8 @@ const Cards = React.createClass({
   render: function () {
     return (
         <div>
-                            <div onLoad={this.graph(this)}></div>
-                    </div>
+          <div onLoad={this.graph(this)}></div>
+        </div>
 
     );
   },

@@ -11,8 +11,7 @@ var AdminLoginActions = {
           token: response.token,
         });
         console.log('Dispatched');
-
-        //document.location = "/cp-admin#dashboard";
+        history.go(0);
         swal('Welcome Back!', 'Login Successful.', 'success');
       }      else {
         console.log(response);

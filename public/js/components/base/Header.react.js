@@ -4,6 +4,7 @@ import Badge from 'material-ui/lib/badge';
 import IconButton from 'material-ui/lib/icon-button';
 import NotificationsIcon from 'material-ui/lib/svg-icons/social/notifications';
 import MockChat from '../profile/MockChat.react';
+import MessageIcon from 'material-ui/lib/svg-icons/action/speaker-notes';
 import LoginStore from '../../stores/LoginStore';
 import HeaderActions from '../../actions/HeaderActions';
 
@@ -61,6 +62,15 @@ const Header = React.createClass({
 					   			</Link>
 					   		</Badge>
 					    </li>
+				        <li>
+				        	<Badge
+						      badgeContent={3}
+						      primary={true}>
+						    	<Link to={`/threads`}>
+						      		<MessageIcon />
+					   			</Link>
+					   		</Badge>
+				        </li>
 				        <li><Link to={`/profile/activityfeed`}>{this.state.firstname}</Link></li>
                           <li>
                               <Link to={`/logout`}>Sign out</Link>

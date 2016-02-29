@@ -4,12 +4,12 @@ import Paper from 'material-ui/lib/paper';
 
 import FontIcon from 'material-ui/lib/font-icon';
 import ActionAndroid from 'material-ui/lib/svg-icons/action/android';
-import ActivityFeedActions from '../../actions/ActivityFeed/ActivityFeedActions';
+import ActivityfeedActions from '../../actions/ActivityFeed/ActivityfeedActions';
 import LoginStore from '../../stores/LoginStore';
 
 const style = {
     width: 800,
-    margin: 40,
+    marginLeft: 40,
 };
 
 const PaperExampleSimple = React.createClass({

@@ -12,9 +12,9 @@
 Route::get('/', function () {
     return view('init');
 });
-/*  
+/*
     Login route
-    Handles initial login of a user of Coupley	
+    Handles initial login of a user of Coupley
     @author rajikaimal
 */
 Route::get('/api/login', function () {
@@ -60,6 +60,8 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('edit_status', 'ActivityFeedController@editStatus');
     //Return profile data
     Route::get('profile', 'ProfileController@profile');
+    //Return profile picture
+    Route::get('getProfilePic', 'ProfileController@getProfilePic');
     //Return userslist for search
     Route::get('search', 'SearchController@search');
     //Return visitor profile data
@@ -86,9 +88,11 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('profile/profilepic', 'ProfileController@uploadpic');
     //Returns about data
     Route::get('profile/about', 'ProfileController@getabout');
+
+    Route::put('profile/edit/updatebasics', 'ProfileController@editbasics');
+
     //Edit About section
     Route::put('profile/edit/summary', 'ProfileController@editsummary');
-
     Route::put('profile/edit/life', 'ProfileController@editlife');
     Route::put('profile/edit/goodat', 'ProfileController@editgoodat');
     Route::put('profile/edit/thinkingof ', 'ProfileController@editthinkingof');
@@ -119,6 +123,8 @@ Route::group(['prefix' => 'admin-api'], function () {
     Route::post('updateAdmin', 'AdminRegisterController@update');
     //update admin passwords
     Route::post('reset', 'AdminPwdController@reset');
+    //upload profile picture
+    Route::post('profilepic', 'AdminRegisterController@uploadpic');
     //recover password
     Route::post('recoverpwd', 'UsersController@recover');
     //block certain user

@@ -32,17 +32,19 @@ const Profile = React.createClass({
   render: function() {
     return (
       <div>
-        <ProfilePic firstname={this.state.firstname} lastname={this.state.lastname} country={this.state.country}/>
+        <div className="panel panel-default">
+          <ProfilePic firstname={this.state.firstname} lastname={this.state.lastname} username={this.state.username} country={this.state.country}/>
 
-          <Divider />
-        <div style={tabstyle}>
-          <div className="btn-group btn-group-justified btn-group-info">
-            <Link to={`/profile/activityfeed`} className="btn ">My Activity Feed</Link>
-            <Link to={`/profile/about`} className="btn ">About</Link>
-            <Link to={`/profile/photos`} className="btn ">Photos</Link>
+            <Divider />
+          <div style={tabstyle}>
+            <div className="btn-group btn-group-justified btn-group-info">
+              <Link to={`/profile/activityfeed`} className="btn ">My Activity Feed</Link>
+              <Link to={`/profile/about`} className="btn ">About</Link>
+              <Link to={`/profile/photos`} className="btn ">Photos</Link>
+            </div>
           </div>
+          {this.props.children}
         </div>
-        {this.props.children}
       </div>
     );    
   }
