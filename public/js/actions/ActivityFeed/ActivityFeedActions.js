@@ -74,7 +74,7 @@ var ActivityFeedActions = {
       console.log(response);
       });
   },*/
-  
+
 };
 
 module.exports = ActivityFeedActions;

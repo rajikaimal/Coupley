@@ -7,7 +7,7 @@ import CardTitle from 'material-ui/lib/card/card-title';
 import FlatButton from 'material-ui/lib/flat-button';
 import CardText from 'material-ui/lib/card/card-text';
 import LoginStore from '../../stores/LoginStore';
-
+import TextField from 'material-ui/lib/text-field';
 import List from 'material-ui/lib/lists/list';
 import ListItem from 'material-ui/lib/lists/list-item';
 import Divider from 'material-ui/lib/divider';
@@ -19,9 +19,10 @@ import IconMenu from 'material-ui/lib/menus/icon-menu';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 //import ThreadActions from '../../actions/Thread/ThreadActions';
 import ThreadStore from '../../stores/ThreadStore';
-
+import Emojis from './emojis';
 var socket = io.connect('http://localhost:8081');
 var User1 = LoginStore.getFirstname();
+var User1Email=LoginStore.getEmail();
 
 
 const Sty1 = {
@@ -29,14 +30,18 @@ const Sty1 = {
     overflow: 'auto'
 }
 
-const Sty2 = {
-    height: 100,
-    'margin-top': 0
+
+const Sty2={
+  height:100,
+  marginTop:0
 
 }
 
 
-socket.emit('LoggedUser', User1);
+ // socket.emit('LoggedUser',User1);
+ // socket.emit('LoggedUserEmail',User1Email);
+
+
 
 const Threads = React.createClass({
 
@@ -45,8 +50,17 @@ const Threads = React.createClass({
         threads: ThreadStore.getmessages()
     }
   },
+
+  userlistio:function(){
+      console.log(" awooooo");
+    socket.on('chatList',function(data){
+        console.log(data.Userlist+" awa!");
+    }.bind(this));
+ },
+
     componentDidMount: function () {
         ThreadStore.addChangeListener(this._onChange);
+
     },
     _onChange: function () {
         this.setState({
@@ -59,6 +73,7 @@ const Threads = React.createClass({
     socket.on('chat', function (data) {
       console.log(data.message);
         console.log(data.user2);
+        console.log("chat data awa");
       this.setState({threads: data.message});
     }.bind(this));
   },
@@ -73,14 +88,25 @@ const Threads = React.createClass({
         emailusr1: Eml
     }
     console.log('Emiting ...');
-
     socket.emit('message', chat);
     console.log('Done ...');
 
   },
+  test: function(item1) {
+  	var texts = item1.message.split(/:\)/g);
+    var content = [];
+    for(var i = 0; i < texts.length - 1; i++) {
+    	content.push(texts[i]);
+      content.push(<img src={Emojis[0].uri}/>);
+    }
+    return content.map(function(emoji) {
+      return (<span> {emoji} </span>)
+    }.bind(this));
+  },
   render: function() {
     return (
-        <Paper zDepth={1} style={Sty1}>
+      <Paper zDepth={1} style={Sty1}>
+        {this.userlistio()}
         {this.socketio()}
         <CardTitle title="Threads" subtitle="" />
         <CardText>
@@ -88,18 +114,12 @@ const Threads = React.createClass({
             <div>
           {
 
-            this.state.threads.map(function(item) {
-                //return (<li>{item.message}</li>);
-                /*  {item.message}.replace(':)',<img src="../../../img/smileys/smile53893.gif"/>); */
+            this.state.threads.map(item => {
 
                 return (<ListItem
                     leftAvatar={<Avatar src="profile pic" />}
-                    primaryText="Name"
-                    secondaryText={
-                        <p>
-                {item.message}
-                        </p>
-                        }
+                    primaryText={item.user1}
+                    secondaryText={this.test(item)}
                     secondaryTextLines={2}
                 />
                 );
@@ -112,6 +132,9 @@ const Threads = React.createClass({
                 <input type="text" ref="message2" />
           <input type="button" onClick={this._sendmessage} value="Send message" />
             </Paper>
+
+
+
         </CardText>
         <CardActions>
 
