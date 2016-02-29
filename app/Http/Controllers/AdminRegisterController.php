@@ -43,17 +43,23 @@ class AdminRegisterController extends Controller
         $lastname = $request->lastname;
         //checks whether new email is already in the database //old and new email can be similler for the selected admin only
         $admin = \DB::select('SELECT email FROM users WHERE email = "'.$email.'" not in (select email from users where id!='.$id.')');
-        if ($admin == null) {
-            //update
-            \DB::table('users')
-                ->where('id', $id)
-                ->update(['firstname' => $firstname, 'lastname' => $lastname, 'job' => $job, 'email' => $email]);
+        if($this->CheckInternet()){
+            if ($admin == null) {
+                //update
+                \DB::table('users')
+                    ->where('id', $id)
+                    ->update(['firstname' => $firstname, 'lastname' => $lastname, 'job' => $job, 'email' => $email]);
 
-            return response()->json(['you can use this email' => $admin, 'status' => 200], 200);
-        } else {
-            return response()->json(['email' => 'email already exists', 'status' => 201], 201);
+                return response()->json(['you can use this email' => $admin, 'status' => 200], 200);
+            } else {
+                return response()->json(['email' => 'email already exists', 'status' => 201], 201);
+            }
+        }
+        else {
+            return response()->json(['status' => 203], 203);
         }
     }
+
 
     public function uploadpic(Request $request)
     {
@@ -61,10 +67,10 @@ class AdminRegisterController extends Controller
         try {
             $apitoken = $request->input('apitoken');
             $id = $request->input('id');
-            $file = $request->file('file')->move($destination, $id);
             $ext = $request->file('file')->getClientOriginalExtension();
+            $file = $request->file('file')->move($destination, $id."i".".".$ext);
             User::where('id', $id)
-                ->update(['profilepic' => $id.'.'.$ext]);
+                ->update(['profilepic' => $id."i".'.'.$ext]);
 
             return response()->json(['status' => 200, 'done' => true], 200);
         } catch (Exception $e) {

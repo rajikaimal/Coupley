@@ -40,9 +40,9 @@ const Tables = React.createClass({
       return this.state.results.map((result) => {
         return (<Feed key={result.id} id={result.id} user={result.user} description={result.description} />);
       });}    else {
-        return (<Feed
-            id={ELSE}
-        />
+        return (<div>
+              No any feedbacks ragarding privacy.
+        </div>
         );
       }
   },

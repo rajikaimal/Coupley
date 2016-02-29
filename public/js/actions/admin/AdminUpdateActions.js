@@ -10,10 +10,12 @@ var UpdateActions = {
           actionType: ProfileConstants.GETDATA,
           userdata: credentials,
         });
-        location.reload(true);
-        swal('Good job!', 'Updated your profile', 'success');
-      } else if (data.status === 400) {
-        swal('Error', 'Please check your internet connection and retry', 'error');
+        swal('Sucess!', 'Updated your profile sucessfully', 'success');
+        setTimeout(function () {
+          location.reload(true);
+        }, 1500);
+      } else if (data.status === 203) {
+        swal('Something went wrong', 'Please check your internet connection and retry', 'error');
       } else {
         swal('Error', 'An account with the same email exists already', 'error');
       }

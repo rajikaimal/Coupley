@@ -14,7 +14,7 @@ var AdminLoginActions = {
         swal('Welcome Back!', 'Login Successful.', 'success');
         setTimeout(function () {
           history.go(0);
-        }, 500);
+        }, 1000);
       }      else {
         console.log(response);
       }
