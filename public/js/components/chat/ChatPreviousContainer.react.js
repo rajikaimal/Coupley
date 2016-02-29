@@ -6,6 +6,11 @@ import ThreadActions from '../../actions/Thread/ThreadActions';
 import ThreadStore from '../../stores/ThreadStore';
 
 
+const ListStyle={
+  width: 300,
+  height:635,
+}
+
 const PreviousChatContainer=React.createClass({
 
   getInitialState: function() {
@@ -31,10 +36,12 @@ const PreviousChatContainer=React.createClass({
   },
 
   render: function() {
-    return (
+       return(
+     <List subheader="Previous Chat" style={ListStyle} zDepth={1}>
      <div>
       {this._renderSearchItem()}
      </div>
+     </List>
     );
   }
 });

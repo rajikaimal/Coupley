@@ -46,7 +46,7 @@ const PreviousChat=React.createClass({
       },
         render:function(){
            return(
-             <List subheader="Previous Chat" style={ListStyle}>
+             <List style={ListStyle}>
                  <ListItem leftAvatar={<Avatar src="http://vignette1.wikia.nocookie.net/family-guy-fanverse/images/d/d7/Stewie-griffin.gif/revision/latest?cb=20140215140724" />}
                    rightIconButton={
                      <IconMenu iconButtonElement={iconButtonElement}>
@@ -62,7 +62,7 @@ const PreviousChat=React.createClass({
                 }
               secondaryTextLines={2}/>
 
-     <Divider inset={true} />
+     <Divider inset={false} />
             </List>
            )
         }

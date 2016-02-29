@@ -22,7 +22,7 @@ const Paperstyle1 = {
 const Paperstyle2 = {
   height:635,
   width: 650,
-  marginLeft:5,
+  marginLeft:1,
   textAlign: 'center',
   display: 'inline-block',
 };
