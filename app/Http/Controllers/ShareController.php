@@ -16,13 +16,17 @@ class ShareController extends Controller
         $id = $request->PostId;
         $email = $request->Email;
 
-        $result = Share::where('post_id', $id)
-            ->where('email', $email)->get();
+        try{
+            $result = Share::where('post_id', $id)
+                    ->where('email', $email)->get();
 
-        if ($result->isEmpty()) {
-            return 'false';
-        } else {
-            return 'true';
+            if ($result->isEmpty()) {
+                return 'false';
+            } else {
+                return 'true';
+            }
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 505], 505);
         }
     }
 
@@ -33,15 +37,19 @@ class ShareController extends Controller
     **/
     public function share(Request $request)
     {
-        $share = new Share;
-        $share->post_id = $request->PostId;
-        $share->email = $request->Email;
-        $share->firstname = $request->Fname;
+        try{
+            $share = new Share;
+            $share->post_id = $request->PostId;
+            $share->email = $request->Email;
+            $share->firstname = $request->Fname;
 
-        if ($share->save()) {
-            return response()->json(['status' => 201], 201);
-        } else {
-            return response()->json(['status' => 404], 404);
+            if ($share->save()) {
+                return response()->json(['status' => 201], 201);
+            } else {
+                return response()->json(['status' => 404], 404);
+            }
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 505], 505);
         }
     }
 
@@ -54,13 +62,18 @@ class ShareController extends Controller
     {
         $id = $request->PostId;
         $email = $request->Email;
-        $shares = \DB::table('shares')->where('post_id', '=', $id)
+
+        try{
+            $shares = \DB::table('shares')->where('post_id', '=', $id)
                                       ->where('email', '=', $email);
 
-        if ($shares->delete()) {
-            return response()->json(['status' => 201], 201);
-        } else {
-            return response()->json(['status' => 404], 404);
+            if ($shares->delete()) {
+                return response()->json(['status' => 201], 201);
+            } else {
+                return response()->json(['status' => 404], 404);
+            }
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 505], 505);
         }
     }
 }

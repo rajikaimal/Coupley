@@ -4,13 +4,7 @@ import LoginStore from '../../stores/LoginStore';
 import StatusStore from '../../stores/StatusStore';
 
 var ShareActions = {
-   getsharestatus: function() {
-    let pid = StatusStore.getStatusID();
-    let email= LoginStore.getEmail(); 
-    let getshare = {
-      PostId: pid,
-      Email: email,
-    };
+   getsharestatus: function(request) {
     $.get('/api/getsharestatus', function(response) {
       console.log("shareaction");
       console.log(response);

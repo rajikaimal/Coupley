@@ -51,25 +51,41 @@ const ActivityList = React.createClass({
             opens: false,
             liked: LikeStatusStore.getlikes(),
             shared: ShareStatusStore.getshares(),
-            postId: StatusStore.getStatusID(),
             Checked: StatusStore.getcheckStatus(),
         };
     },
 
     componentDidMount: function () {
         LikeStatusStore.addChangeListener(this._onChange);
-        LikesActions.getlikestatus();
+            let pid = this.props.id;
+            console.log('dddddddddddddddddddddddddddddddddddd');
+            console.log(pid);
+            let email= LoginStore.getEmail(); 
+
+            let getlike = {
+                PostId: pid,
+                Email: email,
+            };
+        LikesActions.getlikestatus(getlike);
 
         ShareStatusStore.addChangeListener(this._onChange);
-        ShareActions.getsharestatus();
+           
+            let getshare = {
+                PostId: pid,
+                Email: email,
+            };
+        ShareActions.getsharestatus(getshare);
 
-        //StatusStore.addChangeListener(this._onChange);
-        ActivityFeedActions.getpostId();
-        ActivityFeedActions.checkPost();
+        StatusStore.addChangeListener(this._onChange);
+
+            let checkPost = {
+                PId: pid,
+                Email: email,
+            };
+        ActivityFeedActions.checkPost(checkPost);
     },
 
     _onChange: function () {
-        this.setState({postId: StatusStore.getStatusID()});
         this.setState({liked: LikeStatusStore.getlikes()});
         this.setState({shared: ShareStatusStore.getshares()});
         this.setState({checked: StatusStore.getcheckStatus()});
@@ -108,17 +124,6 @@ const ActivityList = React.createClass({
         }
     },
 
-    /**checkloggedUserzPost:function(){
-        var email = LoginStore.getEmail();
-        var postId = this.props.id;
-        let checkPost = {
-            PId: postId,
-            Email: email,
-        };
-        ActivityFeedActions.checkPost(checkPost);
-        console.log('Done checking');
-    },*/
-
     editstatus: function () {
         let post_text= this.refs.EditBox.getValue();
         let postId= this.props.id;
@@ -139,7 +144,6 @@ const ActivityList = React.createClass({
         };
         ActivityFeedActions.delete_status(delete_status);
         console.log('Done deleting');
-        this.handleClose();
     },
 
     _changeShareState:function() {

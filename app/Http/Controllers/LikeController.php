@@ -16,13 +16,17 @@ class LikeController extends Controller
         $id = $request->PostId;
         $email = $request->Email;
 
-        $result = Like::where('post_id', $id)
-            ->where('email', $email)->get();
+        try{
+            $result = Like::where('post_id', $id)
+                ->where('email', $email)->get();
 
-        if ($result->isEmpty()) {
-            return 'false';
-        } else {
-            return 'true';
+            if ($result->isEmpty()) {
+                return 'false';
+            } else {
+                return 'true';
+            }
+        } catch (Illuminate\Database\QueryException $e) {
+                return response()->json(['status' => 505], 505);
         }
     }
 
@@ -33,16 +37,20 @@ class LikeController extends Controller
     **/
     public function like(Request $request)
     {
-        $like = new Like;
-        $like->post_id = $request->PostId;
-        $like->email = $request->Email;
-        $like->firstname = $request->Fname;
-        $like->status = '1';
+        try{
+            $like = new Like;
+            $like->post_id = $request->PostId;
+            $like->email = $request->Email;
+            $like->firstname = $request->Fname;
+            $like->status = '1';
 
-        if ($like->save()) {
-            return response()->json(['status' => 201], 201);
-        } else {
-            return response()->json(['status' => 404], 404);
+            if ($like->save()) {
+                return response()->json(['status' => 201], 201);
+            } else {
+                return response()->json(['status' => 404], 404);
+            }
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 505], 505);
         }
     }
 
@@ -55,13 +63,18 @@ class LikeController extends Controller
     {
         $id = $request->PostId;
         $email = $request->Email;
-        $posts = \DB::table('likes')->where('post_id', '=', $id)
-            ->where('email', '=', $email);
 
-        if ($posts->delete()) {
-            return response()->json(['status' => 201], 201);
-        } else {
-            return response()->json(['status' => 404], 404);
+        try{
+            $posts = \DB::table('likes')->where('post_id', '=', $id)
+                        ->where('email', '=', $email);
+
+            if ($posts->delete()) {
+                return response()->json(['status' => 201], 201);
+            } else {
+                return response()->json(['status' => 404], 404);
+            }
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 505], 505);
         }
     }
 }

@@ -10,6 +10,7 @@ var searchlikes;
 var LikeStatusStore = assign({},EventEmitter.prototype, {
     getlikes: function() {
       console.log("LikeStatusStore");
+      console.log(searchlikes);
       return searchlikes;
     },
     savelikes: function(results) {
@@ -27,6 +28,7 @@ var LikeStatusStore = assign({},EventEmitter.prototype, {
 AppDispatcher.register(function(payload) {
 	switch(payload.action.actionType) {
 		case(LikeConstants.LIKESTATUS):
+    console.log('statusssssssssssssssssss');
       console.log(payload.action.likestatus);
       LikeStatusStore.savelikes(payload.action.likestatus);
       LikeStatusStore.emitChange();

@@ -16,7 +16,6 @@ const PaperExampleSimple = React.createClass({
 
     EnterKey(e) {
         if (e.key === 'Enter') {
-            console.log();
             console.log(this.refs.statusBox.getValue());
             var status = this.refs.statusBox.getValue();
             var email = LoginStore.getEmail();

@@ -43,22 +43,6 @@ var ActivityFeedActions = {
     });
   },
 
-  getpostId: function() {
-    $.get('/api/getpostId' , function(response) {
-      console.log(response);
-      if (response.status == 200) {
-            AppDispatcher.handleViewAction({
-            actionType: ActivityFeedConstants.GETID,
-            pid: response.posts
-          });
-      }
-      else if (response.status == 505) {
-            console.log('Error 505');
-      }
-    });
-  },
-
-
   delete_status: function(postId){
     $.post('api/deleteStatus', postId, function(response) {
       console.log(response);
@@ -105,19 +89,14 @@ var ActivityFeedActions = {
       });
   },
 
-  checkPost:function(){
-    var email = LoginStore.getEmail();
-    var postId = StatusStore.getStatusID();
-    let checkPost = {
-            PId: postId,
-            Email: email,
-          };
+  checkPost:function(request){
     $.get('/api/checkpost' , function(response) {
+      console.log('nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn');
       console.log(response);
       if (response.status == 200) {
             AppDispatcher.handleViewAction({
             actionType: ActivityFeedConstants.CHECKSTATUS,
-            checkStatus: response.posts,
+            checkStatus: response
           });
       }
       else if (response.status == 505) {

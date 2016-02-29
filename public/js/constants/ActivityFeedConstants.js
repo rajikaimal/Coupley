@@ -4,6 +4,5 @@ module.exports = keyMirror({
     STATUS: null,
     EMAIL: null,
     GETDATA: null,
-    GETID: null,
     CHECKSTATUS: null,
 });
