@@ -10,7 +10,6 @@ var searchlikes;
 var LikeStatusStore = assign({},EventEmitter.prototype, {
     getlikes: function() {
       console.log("LikeStatusStore");
-      console.log(searchlikes);
       return searchlikes;
     },
     savelikes: function(results) {

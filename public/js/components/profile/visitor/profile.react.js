@@ -44,6 +44,7 @@ const Profile = React.createClass({
   render: function() {
     return (
       <div>
+        <div className="panel panel-default">
         <ProfilePic firstname={this.state.firstname} lastname={this.state.lastname} country={this.state.country}/>
         <Divider />
         <div style={tabstyle}>
@@ -54,6 +55,7 @@ const Profile = React.createClass({
           </div>
         </div>
         {this.props.children}
+        </div>
       </div>
     );    
   }

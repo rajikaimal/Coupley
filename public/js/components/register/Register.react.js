@@ -51,6 +51,11 @@ function validatefirstname(firstname) {
       "error": "*invalid firstname"
     }  
   }
+  else if(firstname.match(/\d+/g)) {
+    return {
+      "error": "*cannot contain numbers"
+    }  
+  }
   else {
     return true;
   }
@@ -71,7 +76,12 @@ function validatelastname(lastname) {
     return {
       "error": "*invalid lastname"
     }  
-  } 
+  }
+  else if(lastname.match(/\d+/g)) {
+    return {
+      "error": "*cannot contain numbers"
+    }  
+  }
   else {
     return true;
   }

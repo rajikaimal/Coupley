@@ -38,7 +38,7 @@ const Search = React.createClass({
 		// 	});
 		// }
 		return this.state.results.map((result) => {
-			return (<SearchItem key={result.id} username={result.username} firstname={result.firstname} lastname={result.lastname} gender={result.gender} />); 
+			return (<SearchItem key={result.id} username={result.username} firstname={result.firstname} lastname={result.lastname} gender={result.gender} image={result.profilepic} />); 
 		});
 	},
 	render: function() {

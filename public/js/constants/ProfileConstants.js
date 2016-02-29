@@ -10,4 +10,6 @@ module.exports = keyMirror({
   PROPPERMISSION: null,
   EDITACTIVITY: null,
   FEED: null,
+  PROFILEPIC: null,
+  VISITORPROFILEPIC: null,
 });

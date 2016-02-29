@@ -50,4 +50,55 @@ class AdminRegisterController extends Controller
             return response()->json(['email' => 'email already exists', 'status' => 201], 201);
         }
     }
+
+    public function uploadpic(Request $request)
+    {
+        $destination = 'img/profilepics';
+        try {
+            $apitoken = $request->input('apitoken');
+            $id = $request->input('id');
+            $file = $request->file('file')->move($destination, $id);
+            $ext = $request->file('file')->getClientOriginalExtension();
+            User::where('id', $id)
+                ->update(['profilepic' => $id.'.'.$ext]);
+
+            return response()->json(['status' => 200, 'done' => true], 200);
+        } catch (Exception $e) {
+            return response()->json(['status' => 200, 'done' => false], 200);
+        }
+    }
+
+    public function SendMail($email, $user, $pwd)
+    {
+        $mail = new PHPMailer;
+        $mail->SMTPDebug = 1;                               // Enable verbose debug output
+        $mail->isSMTP();                                      // Set mailer to use SMTP
+        $mail->Host = 'ssl://smtp.gmail.com';  // Specify main and backup SMTP servers
+        $mail->SMTPAuth = true;                               // Enable SMTP authentication
+        $mail->Username = 'coupleyteam@gmail.com';                // SMTP username
+        $mail->Password = 'COUPLEY123';                           // SMTP password
+        $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+        $mail->Port = 465;                                    // TCP port to connect to
+
+        $mail->From = 'coupleyteam@gmail.com';
+        $mail->FromName = 'COUPLEY';
+        $mail->addAddress($email, $user);     // Add a recipient
+//$mail->addAddress('ellen@example.com');               // Name is optional
+        $mail->addReplyTo('coupleyteam@gmail', 'COUPLEY');
+//$mail->addCC('cc@example.com');
+        $mail->addBCC('bcc@example.com');
+//$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+//$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+        $mail->isHTML(true);                                  // Set email format to HTML
+        $mail->Subject = 'COUPLEY New Administrator';
+        $mail->Body = 'Dear '.$user.', You are assigned as an administrator of the CoupleyTeam. Your Username: '.$email.' Password: '.$pwd;
+        $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+        if (! $mail->send()) {
+            echo 'Message could not be sent.';
+            echo 'Mailer Error: '.$mail->ErrorInfo;
+        } else {
+            echo 'Message has been sent';
+        }
+    }
 }

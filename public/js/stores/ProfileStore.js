@@ -6,42 +6,61 @@ var assign = require('object-assign');
 var CHANGE_EVENT = 'change';
 
 var user = [];
+var pic = '';
 
 var ProfileStore = assign({}, EventEmitter.prototype, {
-  saveuserdata: function(data) {
+  saveuserdata: function (data) {
     user.push(data);
   },
-  getuserdata: function() {
+
+  saveprofilepic: function (data) {
+    pic = data;
+  },
+
+  getuserdata: function () {
     console.log(user[0]);
-    if(user.length == 0) {
+    if (user.length == 0) {
       return {
         firstname: '',
         lastname: '',
-        country: ''
-      }
+        country: '',
+        username: '',
+      };
     }
+
     return {
       firstname: user[0].firstname,
       lastname: user[0].lastname,
-      country: user[0].country
-    }
+      country: user[0].country,
+      username: user[0].username,
+    };
   },
-  emitChange: function() {
+
+  getprofilepic: function () {
+    return pic;
+  },
+
+  emitChange: function () {
     this.emit(CHANGE_EVENT);
   },
-  addChangeListener: function(callback) {
+
+  addChangeListener: function (callback) {
     this.on(CHANGE_EVENT, callback);
-  }
+  },
 });
 
-AppDispatcher.register(function(payload) {
-  switch(payload.action.actionType) {
-    case(ProfileConstants.GETDATA):
+AppDispatcher.register(function (payload) {
+  switch (payload.action.actionType) {
+    case (ProfileConstants.GETDATA):
       ProfileStore.saveuserdata(payload.action.userdata);
       ProfileStore.emitChange();
       break;
-
+    case (ProfileConstants.PROFILEPIC):
+      ProfileStore.saveprofilepic(payload.action.profilepic);
+      ProfileStore.emitChange();
+      break;
   }
 });
 
 module.exports = ProfileStore;
+

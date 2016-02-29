@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<script src="dist/js/admin/sweetalert.min.js"></script>
 	<link rel="stylesheet" href="bootstrap.min.css" type="text/css" >
 	<link rel="stylesheet" href="base.css" type="text/css" >
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>

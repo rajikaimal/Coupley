@@ -13,9 +13,6 @@ const style = {
 
 const CommentBox = React.createClass({
 
-
-
-
   EnterKey(e){
       if (e.key ==='Enter') {
               console.log();
