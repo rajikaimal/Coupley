@@ -54,6 +54,7 @@ class AdminRegisterController extends Controller
             return response()->json(['email' => 'email already exists', 'status' => 201], 201);
         }
     }
+
     public function uploadpic(Request $request)
     {
         $destination = 'img/profilepics';
@@ -70,6 +71,7 @@ class AdminRegisterController extends Controller
             return response()->json(['status' => 201, 'done' => false], 200);
         }
     }
+
     public function SendMail($email, $user, $pwd)
     {
         $mail = new PHPMailer;

@@ -67,11 +67,11 @@ class UsersController extends Controller
                 $pwdHashed = \Hash::make($newpwd);
                 \DB::table('users')->where('email', $email)->update(['password' => $pwdHashed]);
 
-                if($this->SendMail($email, $admin->firstname, $newpwd)){
+                if ($this->SendMail($email, $admin->firstname, $newpwd)) {
                     return response()->json(['status' => 400], 400);
-                }
-                else
+                } else {
                     return response()->json(['status' => 200], 200);
+                }
             }
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 201], 201);
@@ -111,14 +111,13 @@ class UsersController extends Controller
             $mail->Body = 'Dear '.$user.', your new password is '.$pwd;
             $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
             $mail->send();
-            echo "Message sent!";
-        }
-        catch (phpmailerException $e) {
-                echo "Please Check Your internet connection"; //Pretty error messages from PHPMailer
+            echo 'Message sent!';
+        } catch (phpmailerException $e) {
+            echo 'Please Check Your internet connection'; //Pretty error messages from PHPMailer
                // return false;
-            } catch (Exception $e) {
-                echo $e->getMessage(); //Boring error messages from anything else!
-            }
+        } catch (Exception $e) {
+            echo $e->getMessage(); //Boring error messages from anything else!
+        }
     }
 
     public function Adminprofile(Request $request)

@@ -12,9 +12,9 @@
 Route::get('/', function () {
     return view('init');
 });
-/*  
+/*
     Login route
-    Handles initial login of a user of Coupley	
+    Handles initial login of a user of Coupley
     @author rajikaimal
 */
 Route::get('/api/login', function () {

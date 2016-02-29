@@ -39,7 +39,7 @@ class RegisterController extends Controller
 
     /*
         Returns @json
-        Checks username exists or not 
+        Checks username exists or not
     **/
     public function checkusername(Request $request)
     {
@@ -58,7 +58,7 @@ class RegisterController extends Controller
 
     /*
         Returns @json
-        Checks email exists or not 
+        Checks email exists or not
     **/
     public function checkemail(Request $request)
     {
