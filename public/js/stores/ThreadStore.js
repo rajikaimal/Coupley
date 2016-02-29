@@ -6,6 +6,7 @@ var assign = require('object-assign');
 var CHAT_EVENT = 'change';
 
 var Thread = [];
+var PreviousThread = [];
 
 var ThreadStore = assign({}, EventEmitter.prototype, {
 
@@ -22,14 +23,14 @@ var ThreadStore = assign({}, EventEmitter.prototype, {
         this.on(CHAT_EVENT, callback);
     },
     getpreviousmessage:function(){
-         return Thread;
+         return PreviousThread;
          console.log("Badu awa :D");
-         console.log(Thread);
+         console.log(PreviousThread);
 
     },
     savepreviousmessage:function(results){
          console.log(results);
-         Thread=results;
+         PreviousThread=results;
     }
 
 });
@@ -39,6 +40,7 @@ AppDispatcher.register(function (payload) {
     console.log(payload);
     switch (payload.action.actionType) {
         case(ThreadConstants.RETRIVEOLD):
+        console.log("hello ooooooooooooooooooooooooooooooooooo");
         console.log(payload.action.previousmessage);
             ThreadStore.savepreviousmessage(payload.action.previousmessage);
             console.log("Badu awa :D 1");

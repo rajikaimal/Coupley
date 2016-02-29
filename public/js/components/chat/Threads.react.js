@@ -38,8 +38,8 @@ const Sty2={
 }
 
 
- socket.emit('LoggedUser',User1);
- socket.emit('LoggedUserEmail',User1Email);
+ // socket.emit('LoggedUser',User1);
+ // socket.emit('LoggedUserEmail',User1Email);
 
 
 

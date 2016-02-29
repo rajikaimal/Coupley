@@ -42,6 +42,7 @@ const PreviousChat=React.createClass({
              user2:user2
            };
           ThreadActions.deleteM(deleteM);
+          console.log("Done deleting!");
 
       },
         render:function(){

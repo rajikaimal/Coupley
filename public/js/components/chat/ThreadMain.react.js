@@ -11,6 +11,7 @@ const ThreadMain = React.createClass({
 
          return(
             <div>
+
             <div className="col-xs-3"><ChatPreviousContainer/></div>
             <div className="col-xs-9"><MessageThread/></div>
             </div>

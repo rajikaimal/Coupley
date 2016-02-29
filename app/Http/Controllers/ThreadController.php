@@ -18,7 +18,7 @@ class ThreadController extends Controller
 
     public function getPreviousMessage()
     {
-      if ($pmessage = \DB::select("select user2,message from chats limit 5" )) {
+      if ($pmessage = \DB::select("select user2,message,id from chats" )) {
        return response()->json(['pmessage' => $pmessage, 'status' => 200], 200);
    } else {
        return response()->json(['status' => 505], 505);
