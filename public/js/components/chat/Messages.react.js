@@ -31,9 +31,9 @@ const PaperExampleSimple =React.createClass({
     },
 
     userlistio:function(){
-        console.log("chatlist awooooo");
+        console.log(" awooooo");
       socket.on('chatList',function(data){
-        //  console.log(data.Userlist+" awa!"); thama like karapu aya table eke na
+          console.log(data.Userlist+" awa!");
       }.bind(this));
    },
 
@@ -63,7 +63,7 @@ const PaperExampleSimple =React.createClass({
         return (<span> {emoji} </span>)
       }.bind(this));
     },
-//  secondaryText={this.test(item)}
+
 
   render:function(){
 

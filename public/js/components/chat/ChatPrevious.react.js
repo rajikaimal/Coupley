@@ -22,11 +22,7 @@ const iconButtonElement = (
   </IconButton>
 );
 
-// const rightIconMenu = (
-//   <IconMenu iconButtonElement={iconButtonElement}>
-//     <MenuItem primaryText="Delete" onClick={this.deleteconvo}/>
-//   </IconMenu>
-// );
+
 
 const ListStyle={
   width: 300

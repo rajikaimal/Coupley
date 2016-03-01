@@ -47,16 +47,27 @@ io.on('connection', function (socket) {
      connection.query("SELECT id FROM users WHERE email='"+data+"' ", function(err, result) {
                      var ID = result[0].id;
                      console.log("Logged users ID :"+ID);
-                     connection.query("SELECT user2 FROM liked WHERE likeduser='"+ID+"' ",function(err,result){
+                     connection.query("SELECT user2 FROM liked WHERE likeduser='"+ID+"' or gotliked='"+ID+"' and 	likeback=1 ",function(err,result){
                                             for(var i=0;i<result.length;i++){
                                                  Likedusers[i]=result[i].user2;
                                                 }
                                         console.log("List of users liked by this user :"+Likedusers);
-                                   for(var i=0;i<Likedusers.length;i++){
 
-                                   }
 
-                         io.sockets.connected[connectedUser[socket.username]].emit('chatList', {Userlist:Likedusers});
+                                        var arr = Likedusers.concat(Object.keys(connectedUser));
+                                        console.log(arr);
+                                        var sorted_arr = arr.sort();
+                                        console.log(sorted_arr);
+                                        var resultz = [];
+                                    for (var i = 0; i < arr.length - 1; i++) {
+                                         if (sorted_arr[i + 1] == sorted_arr[i]) {
+                                                resultz.push(sorted_arr[i]);
+                                            }
+                                        }
+                                           console.log(resultz);
+
+
+                         io.sockets.connected[connectedUser[socket.username]].emit('chatList', {Userlist:resultz});
                                             console.log("Liked list sent to "+socket.username);
                                     });
 

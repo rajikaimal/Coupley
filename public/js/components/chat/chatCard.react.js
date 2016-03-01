@@ -28,7 +28,7 @@ const Paperstyle2 = {
   display: 'inline-block',
 };
 
-//  <ChatCC style={Paperstyle1} className="col-xs-6 col-md-8 col-lg-10" />
+
 
  const MainThread=React.createClass({
        render:function(){
