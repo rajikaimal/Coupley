@@ -79,6 +79,8 @@ const Adminlogin = React.createClass({
 
   eleminateErrors:function () {
     document.getElementById('server-error').innerHTML = ' ';
+    document.getElementById('email').innerHTML = '';
+    document.getElementById('password').innerHTML = '';
   },
 
   render: function () {
@@ -88,7 +90,7 @@ const Adminlogin = React.createClass({
           <div className="col-lg-6 col-lg-offset-3 text-center">
             <Card style={ { marginTop: 60 } }>
               <CardTitle title="Welcome Back.." subtitle="Coupley &trade;"/>
-              <CardText onFocus={this.eleminateErrors}>
+              <CardText onChange={this.eleminateErrors}>
               <CardActions>
                 <TextField
                   floatingLabelText="Enter your email" ref="email" />
