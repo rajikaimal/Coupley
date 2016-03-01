@@ -21,9 +21,7 @@ var ThreadAction = {
   },
 
  getpreviousmessage:function(){
-    console.log('<<<<<<<<<previousmessages');
     $.get('/api/getpreviousmsg' , function(response) {
-      console.log(response);
       if (response.status == 200) {
             AppDispatcher.handleViewAction({
             actionType:ThreadConstants.RETRIVEOLD,
@@ -36,14 +34,13 @@ var ThreadAction = {
     });
 
  },
- deleteM: function(user2){
-   $.post('api/deletemessage', user2, function(response) {
-     console.log(response);
+ deleteM: function(id){
+   $.post('api/deletemessage', id, function(response) {
 
       if(response.status==201){
 
         $.get('/api/getpreviousmsg' , function(response) {
-          console.log(response);
+
           if (response.status == 200) {
                 AppDispatcher.handleViewAction({
                 actionType:ThreadConstants.RETRIVEOLD,

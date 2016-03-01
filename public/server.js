@@ -28,15 +28,10 @@ io.on('connection', function (socket) {
            connectedUser[socket.username]=socket.id;
            console.log(connectedUser);
            console.log("Logged User's Name :"+socket.username);
-
-
-
+           
        }
        else{
          console.log(data+ "Logged again!");
-
-
-
 
       }
   });

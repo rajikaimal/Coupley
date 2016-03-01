@@ -24,26 +24,18 @@ var ThreadStore = assign({}, EventEmitter.prototype, {
     },
     getpreviousmessage:function(){
          return PreviousThread;
-         console.log("Badu awa :D");
-         console.log(PreviousThread);
 
     },
     savepreviousmessage:function(results){
-         console.log(results);
          PreviousThread=results;
     }
 
 });
 
 AppDispatcher.register(function (payload) {
-    console.log('payload');
-    console.log(payload);
     switch (payload.action.actionType) {
         case(ThreadConstants.RETRIVEOLD):
-        console.log("hello ooooooooooooooooooooooooooooooooooo");
-        console.log(payload.action.previousmessage);
             ThreadStore.savepreviousmessage(payload.action.previousmessage);
-            console.log("Badu awa :D 1");
             ThreadStore.emitChange();
             break;
 

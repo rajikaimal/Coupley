@@ -35,6 +35,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('getstatus', 'ActivityFeedController@getstatus');
     //Return previos chats
     Route::get('getpreviousmsg','ThreadController@getPreviousMessage');
+    //Delete Messages
     Route::post('deletemessage','ThreadController@deletemessage');
     Route::get('getpostId', 'ActivityFeedController@getpostId');
     Route::post('likes', 'LikeController@addlikes');

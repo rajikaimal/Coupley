@@ -31,7 +31,6 @@ const PaperExampleSimple =React.createClass({
     },
 
     userlistio:function(){
-        console.log(" awooooo");
       socket.on('chatList',function(data){
           console.log(data.Userlist+" awa!");
       }.bind(this));

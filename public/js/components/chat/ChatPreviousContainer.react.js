@@ -22,14 +22,11 @@ const PreviousChatContainer=React.createClass({
     ThreadStore.addChangeListener(this._onChange);
     ThreadActions.getpreviousmessage();
   },
-  // _search: function () {
-  //   ActivityFeedActions.getstatus();
-  // },
+
   _onChange: function() {
     this.setState({results:ThreadStore.getpreviousmessage()});
   },
   _renderSearchItem: function () {
-        console.log(this.state.results);
         return this.state.results.map((result) => {
             return (<PreviousChat key={result.id} id={result.id} firstname={result.user2} message={result.message} created_at={result.created_at}/>);
         });
