@@ -69,17 +69,9 @@ function validatePassword(password) {
   if(password.length < 6) {
     return false;
   }
-  let re = /[0-9]/;
-  if(!re.test(password)) {
-    return false;
-  }
-  re = /[a-z]/;
-  if(!re.test(password)) {
-    return false;
-  }
-  re = /[A-Z]/;
-  if(!re.test(password)) {
-    return false;
+  let re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/;
+  if(re.test(password)) {
+    return true;
   }
 }
 
@@ -101,7 +93,9 @@ const Login = React.createClass({
     // }, 3000);
     console.log(LoginStore.getState());
     return {
-      apitoken: LoginStore.getState()
+      apitoken: LoginStore.getState(),
+      emailerr: '',
+      pwderr: ''
     };
   },
   componentDidMount: function() {
@@ -129,12 +123,17 @@ const Login = React.createClass({
     let email = this.refs.email.getValue();
     let password = this.refs.password.getValue();
     if(! validateEmail(email)) {
-      document.getElementById('emailval').innerHTML = 'Invalid Email !';
+      this.setState({
+        emailerr: '*invalid email !'
+      });
       return false;
     }
-    // if(! validatePassword(password)) {
-    //   document.getElementById('passwordval').innerHTML = 'Invalid Password !';
-    // }
+    if(! validatePassword(password)) {
+      this.setState({
+        pwderr: '*invalid password !'
+      });
+      return false;
+    }
     let credentials = {
       email: email,
       password: password
@@ -156,11 +155,13 @@ const Login = React.createClass({
                 <CardTitle title="Login" />
                 <CardText>
                   <TextField
-                  floatingLabelText="email" ref="email" fullwidth={true}/>
-                  <span id="emailval"> </span>
+                  floatingLabelText="email" ref="email" 
+                  errorText={this.state.emailerr} fullwidth={true}/>
+                  
                 <TextField
-                  floatingLabelText="password" type="password" ref="password" fullwidth={true}/>
-                  <span id="passwordval"> </span>
+                  floatingLabelText="password" type="password" ref="password" 
+                  errorText={this.state.pwderr} fullwidth={true}/>
+                  <span id="passwordval" style={error}> </span>
                 </CardText>
                 <CardActions>
                   <RaisedButton label="Signin" style={buttonStyle} primary={true} onTouchTap={this._handleLogin} />
