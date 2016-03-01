@@ -23,6 +23,25 @@ var ActivityFeedActions = {
     });
   },
 
+  addStatusProfile: function(status) {
+    $.post('api/status', status, function (response) {
+      if (response.status == 201) {
+        $.get('/api/getstatus', function (response) {
+          if (response.status == 200) {
+            AppDispatcher.handleViewAction({
+              actionType: ActivityFeedConstants.GETPROFILEPOSTS,
+              statusdata: response.posts,
+            });
+          } else if (response.status == 505) {
+            console.log('Error 505');
+          }
+        });
+      } else if (response.status == 404) {
+        console.log('Error 404');
+      }
+    });
+  },
+
   getstatus: function () {
     $.get('/api/getstatus', function (response) {
       console.log(response);
@@ -78,7 +97,7 @@ var ActivityFeedActions = {
   },
 
   loadmore: function (username) {
-    $.get('/api/profile/getposts', function (response) {
+    $.get('/api/profile/laodmoreposts', function (response) {
       if (response.status == 200) {
         AppDispatcher.handleViewAction({
             actionType: ActivityFeedConstants.GETDATA,
