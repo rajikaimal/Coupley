@@ -67,7 +67,11 @@ const styles = {
 };
 
 function validatePassword(password) {
-  if (password.length < 6) {
+  if (password.trim() == '') {
+    return {
+      error: '*Password cannot be empty',
+    };
+  } else if (password.length < 6) {
     return {
       error: '*Password length must be 6 or more',
     };
@@ -156,27 +160,35 @@ var Reset = React.createClass({
     if (validateRePassword(RePass, newpassword).error) {
       document.getElementById('repassword').innerHTML = validateRePassword(RePass, newpassword).error;
       document.getElementById('repassword').style.color = '#ff6666';
+      return false;
     }    else {
       document.getElementById('repassword').innerHTML = validateRePassword(RePass, newpassword).success;
       document.getElementById('repassword').style.color = '#66cc66';
+      return true;
     }
   },
 
   _handleResetClickEvent: function () {
     let newpassword = this.refs.newpassword.getValue();
     let oldpassword = this.refs.oldpassword.getValue();
-
-    if (validatePassword(newpassword).error) {
+    let RePass = this.refs.repassword.getValue();
+    if (validatePassword(oldpassword).error) {
+      document.getElementById('oldpassword').innerHTML = validatePassword(oldpassword).error;
+      return false;
+    } else if (validatePassword(newpassword).error) {
       document.getElementById('newpassword').innerHTML = validatePassword(newpassword).error;
       return false;
-    }    else {
+    } else if (validateRePassword(RePass, newpassword).error) {
+      document.getElementById('repassword').innerHTML = validateRePassword(RePass, newpassword).error;
+      document.getElementById('repassword').style.color = '#ff6666';
+      return false;
+    } else {
       let credentials = {
         email:this.state.email,
         newpassword: newpassword,
         password: oldpassword,
       };
       PwdActions.reset(credentials);
-      console.log(this.state.email);
     }
   },
 

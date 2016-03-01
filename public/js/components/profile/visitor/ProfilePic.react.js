@@ -1,4 +1,7 @@
 import React from 'react';
+import IconMenu from 'material-ui/lib/menus/icon-menu';
+import MenuItem from 'material-ui/lib/menus/menu-item';
+import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
 import FavIcon from 'material-ui/lib/svg-icons/action/favorite';
 import FavIconBorder from 'material-ui/lib/svg-icons/action/favorite-border';
 import Colors from 'material-ui/lib/styles/colors';
@@ -8,6 +11,7 @@ import ProfileVisitorActions from '../../../actions/ProfileVisitorActions';
 import VisitorStore from '../../../stores/VisitorStore';
 import GridTile from 'material-ui/lib/grid-list/grid-tile';
 import GridList from 'material-ui/lib/grid-list/grid-list';
+import Dialog from 'material-ui/lib/dialog';
 
 const style = {
   width: 200,
@@ -28,6 +32,10 @@ const styles = {
   },
 };
 
+const divStyle = {
+    float: 'right'
+};
+
 const ProfilePic = React.createClass({
   getInitialState: function() {
     return {
@@ -35,7 +43,8 @@ const ProfilePic = React.createClass({
       likedback: VisitorStore.getlikedbackstatus(),
       blocked: VisitorStore.getblockstatus(),
       permission: VisitorStore.getpermission(),
-      picture: VisitorStore.getprofilepic()
+      picture: VisitorStore.getprofilepic(),
+      open: false
     }
   },
   componentDidMount: function() {
@@ -96,10 +105,32 @@ const ProfilePic = React.createClass({
       ProfileVisitorActions.unblock();
     }
     this.setState({
-      blocked: !this.state.blocked
+      blocked: !this.state.blocked,
+      open: false
+    });
+  },
+  _handleBlockSelection: function() {
+    this.setState({open: true});
+  },
+  handleClose: function() {
+    this.setState({
+      open: false
     });
   },
   render: function() {
+    const actions = [
+      <FlatButton
+        label="Cancel"
+        secondary={true}
+        onTouchTap={this.handleClose}
+      />,
+      <FlatButton
+        label="Got it"
+        primary={true}
+        keyboardFocused={true}
+        onTouchTap={this._handleBlock}
+      />,
+    ];
     return (
       <div>
       	<div className="panel-body">
@@ -129,13 +160,40 @@ const ProfilePic = React.createClass({
                 this.state.likedback ? "😇 " + this.props.firstname + " has liked you": this.state.lastname
               }
             </div>
-            <div className="col-lg-3 col-lg-offset-3">
-              { this.state.permission ? (this.state.blocked ? <FlatButton onClick={this._handleBlock} label="Unblock user" primary={true} /> : 
-                                      <FlatButton onClick={this._handleBlock} label="Block user" primary={true} /> ) : ''
-              }
-            </div>
           </div>
-        </div> 	
+          <div className="col-sm-6 col-md-6 col-lg-6">
+                  <div style={divStyle}>
+                      <IconMenu
+                          iconButtonElement={<IconButton>
+                              <MoreVertIcon />
+                          </IconButton>}
+                          anchorOrigin={{horizontal: 'right', vertical: 'bottom'}}
+                          targetOrigin={{horizontal: 'right', vertical: 'bottom'}}
+                      >
+                          { this.state.permission ? (this.state.blocked ? <MenuItem primaryText="Unblock" onTouchTap={this._handleBlock} /> : 
+                                      <MenuItem primaryText="Block" onTouchTap={this._handleBlockSelection} /> ) : ''
+              }
+                      </IconMenu>
+                  </div>
+            </div>
+        </div>
+         <div>
+          <Dialog
+               title="Block user"
+               actions={actions}
+               modal={false}
+               open={true}
+               open={this.state.open}
+              onRequestClose={this.handleClose} >
+              You are going to block this user
+              If you proceed ...
+              <ul>
+                <li> You won't be able to find this user on search </li>
+                <li> You'll remove all your connections including likes </li>
+                <li> And this person won't be able to find you on Coupley </li>
+              </ul>
+          </Dialog>
+          </div> 
       </div>  
     );
   }

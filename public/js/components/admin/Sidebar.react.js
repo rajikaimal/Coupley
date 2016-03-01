@@ -46,7 +46,7 @@ var Sidebar = React.createClass({
           <section className="sidebar">
             <div className="user-panel">
               <div className="pull-left image">
-                <img src={path + this.state.id} className="img-circle" alt="User Image"/>
+                <img src={path + this.state.profilepic} className="img-circle" alt="User Image"/>
               </div>
               <div className="pull-left info">
                 <p>

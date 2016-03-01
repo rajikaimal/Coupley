@@ -51,15 +51,14 @@ const TableRaw = React.createClass({
         description,
         } = this.props;
     return (
-
         <tr>
-                            <td>{id}</td>
-                            <td>{user}</td>
-                            <td>{description}</td>
-                            <td>
-                                    <RaisedButton label="Mark as done" secondary={true} style={style} onTouchTap={this._handleFeedId} />
-                            </td>
-                    </tr>
+          <td>{id}</td>
+          <td>{user}</td>
+          <td>{description}</td>
+          <td>
+            <RaisedButton label="Mark as done" secondary={true} style={style} onTouchTap={this._handleFeedId} />
+          </td>
+        </tr>
 
   );
   },

@@ -10,11 +10,10 @@ var FeedActions = {
 
     $.post('/admin-api/markfeed', credentials, function (data) {
       if (data.status === 201) {
-
+        location.reload(true);
       }
     });
 
-    document.location = '/cp-admin#/feedback/';
   },
 
   timelineFeeds: function () {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\About;
 
 class RegisterController extends Controller
 {
@@ -24,8 +25,18 @@ class RegisterController extends Controller
                 $user->password = \Hash::make($request->password);
                 $user->orientation = $request->orientation;
                 $user->role = 'user';
+                if ($request->gender == 'male') {
+                    $user->profilepic = 'defaultmale';
+                } else {
+                    $user->profilepic = 'defaultfemale';
+                }
+
                 if ($user->save()) {
-                    return response()->json(['status' => 201], 201);
+                    $about = new About;
+                    $about->user_id = User::where('email', $email)->get(['id'])[0]->id;
+                    if ($about->save()) {
+                        return response()->json(['status' => 201], 201);
+                    }
                 } else {
                     return response()->json(['status' => 404], 404);
                 }

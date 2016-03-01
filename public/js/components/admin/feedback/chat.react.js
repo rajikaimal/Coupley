@@ -11,7 +11,7 @@ import TableBody from 'material-ui/lib/table/table-body';
 import FeedActions from '../../../actions/admin/FeedbackActions';
 import FeedStore from '../../../stores/admin/FeedbackStore';
 import Feed from '../feedback/feed.react';
-const ELSE = 'No any feedbacks regaurding chat.';
+const ELSE = 'No any feedbacks regarding chat.';
 
 const Tables = React.createClass({
   getInitialState: function () {
@@ -40,9 +40,9 @@ const Tables = React.createClass({
       return this.state.results.map((result) => {
         return (<Feed key={result.id} id={result.id} user={result.user} description={result.description} />);
       });}    else {
-        return (<Feed
-            id={ELSE}
-        />
+        return (<div>
+              No any feedbacks regarding chat.
+        </div>
 
        );
       }
@@ -51,22 +51,20 @@ const Tables = React.createClass({
   render: function () {
     return (
         <div>
-                                    <h1>Chat Feedback </h1>
-                    <table className="table table-striped table-hover">
-                            <thead>
-                                    <tr>
-                                            <th><h2>Id</h2></th>
-                                            <th><h2>User</h2></th>
-                                            <th><h2>Description</h2></th>
-                                    </tr>
-                            </thead>
-                            <tbody style={{ fontSize: '18px' }}>
-
-                            {this._renderFeedItem()}
-
-                            </tbody>
-                    </table>
-                    </div>
+          <h1>Chat Feedback </h1>
+          <table className="table table-striped table-hover">
+            <thead>
+            <tr>
+              <th><h2>Id</h2></th>
+              <th><h2>User</h2></th>
+              <th><h2>Description</h2></th>
+            </tr>
+            </thead>
+            <tbody style={{ fontSize: '18px' }}>
+            {this._renderFeedItem()}
+            </tbody>
+          </table>
+        </div>
     );
   },
 });

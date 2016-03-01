@@ -133,6 +133,20 @@ var LoginActions = {
     $.post('/api/blockuser', request, function (response) {
       if (response.status == 200) {
         console.log('Done change ...');
+        
+        let str = window.location.hash;
+        let gotunlikedusername = str.split(/[\/?]/)[1];
+        let request = {
+          unlikedUsername: localStorage.getItem('username'),
+          gotunLikedUsername: gotunlikedusername,
+          token: localStorage.getItem('apitoken'),
+        };
+        $.post('/api/unlike', request, function (response) {
+
+        }).fail(function (error) {
+          console.log(error);
+        });
+
         AppDispatcher.handleViewAction({
           actionType: ProfileConstants.BLOCKSTATUS,
           blockstatus: true,
