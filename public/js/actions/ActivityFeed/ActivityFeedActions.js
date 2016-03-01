@@ -86,6 +86,22 @@ var ActivityfeedActions = {
       });
   },
 
+  getUId:function(request){
+    $get('api/getUID',function(response){
+      console.log('Get uID in action');
+      console.log(response);
+      if (response.status == 200) {
+            AppDispatcher.handleViewAction({
+            actionType: ActivityFeedConstants.GETUID,
+            userid: response.posts
+          });
+      }
+      else if (response.status == 505) {
+            console.log('Error 505');
+      }
+    });
+  },
+
   checkPost:function(request){
     $.get('/api/checkpost' , function(response) {
       console.log('status actionnnnnnnnn');

@@ -56,35 +56,29 @@ const ActivityList = React.createClass({
     },
 
     componentDidMount: function () {
-        LikeStatusStore.addChangeListener(this._onChange);
+        
             let pid = this.props.id;
             let email= LoginStore.getEmail(); 
 
-            let getlike = {
+            let data = {
                 PostId: pid,
                 Email: email,
             };
-        LikesActions.getlikestatus(getlike);
+            
+        LikeStatusStore.addChangeListener(this._onChange);    
+        LikesActions.getlikestatus(data);
+        console.log('fffffffffffffffffffffffffff222222222');
+        console.log(data);
 
         ShareStatusStore.addChangeListener(this._onChange);
-           
-            let getshare = {
-                PostId: pid,
-                Email: email,
-            };
-        ShareActions.getsharestatus(getshare);
+        ShareActions.getsharestatus(data);
         console.log('fffffffffffffffffffffffffff');
-        console.log(getshare);
+        console.log(data);
 
         StatusStore.addChangeListener(this._onChange);
-
-            let checkPost = {
-                PId: pid,
-                Email: email,
-            };
-        ActivityFeedActions.checkPost(checkPost);
+        ActivityFeedActions.checkPost(data);
         console.log('fffffffffffffffffffffffffff1111111111111');
-        console.log(checkPost);
+        console.log(data);
     },
 
     _onChange: function () {

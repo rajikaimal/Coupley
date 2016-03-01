@@ -32,6 +32,8 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('recoverpwd', 'AuthenticateController@reset');
     //Add a status
     Route::post('status', 'ActivityFeedController@addstatus');
+    //Return logged user ID
+    Route::get('getUID','ActivityFeedController@getUID');
     //Return status
     Route::get('getstatus', 'ActivityFeedController@getstatus');
     //Return status ID (PostID)

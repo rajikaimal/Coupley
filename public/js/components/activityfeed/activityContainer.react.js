@@ -15,6 +15,14 @@ const activityContainer = React.createClass({
   componentDidMount: function() {
     StatusStore.addChangeListener(this._onChange);
     ActivityFeedActions.getstatus();
+
+    let email= LoginStore.getEmail(); 
+          let getUId = {
+                Email: email,
+            };
+    ActivityFeedActions.getUId(getUId);
+        console.log('get User Id ');
+        console.log(getUId);
   },
   _search: function () {
     ActivityFeedActions.getstatus();

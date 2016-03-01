@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\User;
+use App\Likes;
 
 class ActivityFeedController extends Controller
 {
@@ -31,6 +33,21 @@ class ActivityFeedController extends Controller
         }
     }
 
+    public function getUID(Request $request)
+    {
+        $email = $request->Email;
+
+        try{
+            $uid =  User::where('email', $email)->get(['id']);
+
+            $posts = \DB::select('select p.id,p.firstname,p.post_text,p.created_at from liked l ,users u, posts p where l.gotliked=2 and l.likeback=1 and u.id=l.likeduser and u.email=p.email order by p.created_at desc');
+
+            return response()->json(['posts' => $posts, 'status' => 200], 200);
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 505], 505);
+        }
+    }
+
     /*
         returns status data for GET request
         @return json
@@ -47,7 +64,7 @@ class ActivityFeedController extends Controller
 
     public function checkpost(Request $request)
     {
-        $id = $request->PId;
+        $id = $request->PostId;
         $email = $request->Email;
 
         try{
