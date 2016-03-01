@@ -20,13 +20,13 @@ class AdminRegisterController extends Controller
             $admin->email = $request->email;
             $admin->role = 'admin';
             $admin->password = \Hash::make($request->password);
-            if($this->CheckInternet()){
+            if ($this->CheckInternet()) {
                 if ($admin->save()) {
                     return response()->json(['status' => 201], 201);
                 } else {
                     return response()->json(['status' => 404], 404);
                 }
-            }else{
+            } else {
                 return response()->json(['status' => 203], 203);
             }
         } else {
@@ -43,7 +43,7 @@ class AdminRegisterController extends Controller
         $lastname = $request->lastname;
         //checks whether new email is already in the database //old and new email can be similler for the selected admin only
         $admin = \DB::select('SELECT email FROM users WHERE email = "'.$email.'" not in (select email from users where id!='.$id.')');
-        if($this->CheckInternet()){
+        if ($this->CheckInternet()) {
             if ($admin == null) {
                 //update
                 \DB::table('users')
@@ -54,12 +54,10 @@ class AdminRegisterController extends Controller
             } else {
                 return response()->json(['email' => 'email already exists', 'status' => 201], 201);
             }
-        }
-        else {
+        } else {
             return response()->json(['status' => 203], 203);
         }
     }
-
 
     public function uploadpic(Request $request)
     {
@@ -68,9 +66,9 @@ class AdminRegisterController extends Controller
             $apitoken = $request->input('apitoken');
             $id = $request->input('id');
             $ext = $request->file('file')->getClientOriginalExtension();
-            $file = $request->file('file')->move($destination, $id."i".".".$ext);
+            $file = $request->file('file')->move($destination, $id.'i'.'.'.$ext);
             User::where('id', $id)
-                ->update(['profilepic' => $id."i".'.'.$ext]);
+                ->update(['profilepic' => $id.'i'.'.'.$ext]);
 
             return response()->json(['status' => 200, 'done' => true], 200);
         } catch (Exception $e) {
@@ -105,12 +103,13 @@ class AdminRegisterController extends Controller
             //echo 'Message has been sent';
         }
     }
-    public function CheckInternet(){
-        if (!$sock = @fsockopen('www.google.com', 80)){
+
+    public function CheckInternet()
+    {
+        if (! $sock = @fsockopen('www.google.com', 80)) {
             //echo 'offline';
             return false;
-        }
-        else {
+        } else {
             //echo 'OK';
             return true;
         }
