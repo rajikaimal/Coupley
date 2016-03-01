@@ -17,7 +17,7 @@ class UsersController extends Controller
                 return response()->json(['users' => $users, 'status' => 200], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 300], 300);
         }
     }
 
@@ -28,7 +28,7 @@ class UsersController extends Controller
                 return response()->json(['users' => $users, 'status' => 200], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 300], 300);
         }
     }
 
@@ -43,7 +43,7 @@ class UsersController extends Controller
                 return response()->json(['status' => 201], 201);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 404], 404);
+            return response()->json(['status' => 300], 300);
         }
     }
 
@@ -55,7 +55,7 @@ class UsersController extends Controller
                 return response()->json(['status' => 201], 201);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 404], 404);
+            return response()->json(['status' => 300], 300);
         }
     }
 
@@ -82,7 +82,7 @@ class UsersController extends Controller
                 return response()->json(['status' => 203], 203);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 201], 201);
+            return response()->json(['status' => 300], 300);
         }
     }
 
@@ -136,7 +136,7 @@ class UsersController extends Controller
 
             return response()->json(['admin' => $admindetails, 'status' => 200]);
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 300], 300);
         }
     }
     public function CheckInternet(){
