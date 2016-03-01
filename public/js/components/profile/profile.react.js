@@ -7,9 +7,9 @@ import CardText from 'material-ui/lib/card/card-text';
 import Divider from 'material-ui/lib/divider';
 import ProfilePic from './ProfilePic.react';
 import { Link } from 'react-router';
-
 import ProfileActions from '../../actions/profile/ProfileActions';
 import ProfileStore from '../../stores/ProfileStore';
+import Colors from 'material-ui/lib/styles/colors';
 
 const tabstyle = {
   marginTop: 30,
@@ -17,6 +17,10 @@ const tabstyle = {
   marginReft: 50
 };
 
+const sectionStyle = {
+  color: Colors.deepPurple500,
+  fontWeight: 'bold'
+};
 
 const Profile = React.createClass({
   getInitialState: function() {
@@ -38,9 +42,9 @@ const Profile = React.createClass({
             <Divider />
           <div style={tabstyle}>
             <div className="btn-group btn-group-justified btn-group-info">
-              <Link to={`/profile/activityfeed`} className="btn ">My Activity Feed</Link>
-              <Link to={`/profile/about`} className="btn ">About</Link>
-              <Link to={`/profile/photos`} className="btn ">Photos</Link>
+              <Link to={`/profile/activityfeed`} className="btn " style={sectionStyle}>My Activity Feed</Link>
+              <Link to={`/profile/about`} className="btn " style={sectionStyle}>About</Link>
+              <Link to={`/profile/photos`} className="btn " style={sectionStyle}>Photos</Link>
             </div>
           </div>
         </div>
