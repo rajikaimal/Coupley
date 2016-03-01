@@ -19,6 +19,7 @@ class AuthenticateController extends Controller
     {
         $email = $request->email;
         $user = User::where('email', $email)->get();
+
         return response()->json(['user' => $user]);
     }
 
