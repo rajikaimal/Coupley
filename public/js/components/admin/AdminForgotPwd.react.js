@@ -23,7 +23,7 @@ const AdminForgot = React.createClass({
   sendemail: function () {
     let email = this.refs.email.getValue();
     let resetemail = {
-      email: email, 
+      email: email,
     };
     LoginActions.resetpassword(resetemail);
 
@@ -38,26 +38,25 @@ const AdminForgot = React.createClass({
         return false;
       } else {
         document.getElementById('email').innerHTML = '';
-
       }
     }
+  },
+
+  eleminateErrors:function () {
+    document.getElementById('email').innerHTML = ' ';
   },
 
   render: function () {
     return (
       <div>
-
         <div className="container">
-
           <div className="col-lg-6 col-lg-offset-3 text-center">
             <Card style={ { marginTop: 60 } }>
-
               <CardTitle title="Welcome Back.." subtitle="Coupley &trade;"/>
               <CardActions>
-                <TextField
+                <TextField onChange={this.eleminateErrors}
                   floatingLabelText="Enter your email" ref="email" />
                 <div style={err} id="email" onChange={this.sendemail}></div>
-
               </CardActions>
               <CardText>
                 <span id="server-error" style={err}> </span>
@@ -65,10 +64,8 @@ const AdminForgot = React.createClass({
                 <RaisedButton label="Ok"  primary={true} onTouchTap={this.sendemail} />
                 <a href="/cp-admin#/AdminLogin"> Back to Login </a>
               </CardText>
-
             </Card>
           </div>
-
         </div>
       </div>
     );

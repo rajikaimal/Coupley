@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\User;
 use PHPMailer;
+
 
 class UsersController extends Controller
 {
@@ -61,17 +63,23 @@ class UsersController extends Controller
     {
         $email = $request->email;
         try {
+            if ($this->CheckInternet()) {
             $admin = User::where('email', $email)->first();
-            if ($admin) {
-                $newpwd = $this->random_str(10);
-                $pwdHashed = \Hash::make($newpwd);
-                \DB::table('users')->where('email', $email)->update(['password' => $pwdHashed]);
+                if ($admin) {
+                    $newpwd = $this->random_str(10);
+                    $pwdHashed = \Hash::make($newpwd);
+                    \DB::table('users')->where('email', $email)->update(['password' => $pwdHashed]);
 
-                if ($this->SendMail($email, $admin->firstname, $newpwd)) {
-                    return response()->json(['status' => 400], 400);
-                } else {
-                    return response()->json(['status' => 200], 200);
-                }
+                        if ($this->SendMail($email, $admin->firstname, $newpwd)) {
+                            return response()->json(['status' => 207], 207);
+                        } else {
+                            return response()->json(['status' => 204], 204);
+                        }
+                }else{
+                return response()->json(['status' => 202], 202);
+            }
+            }else{
+                return response()->json(['status' => 203], 203);
             }
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 201], 201);
@@ -86,14 +94,13 @@ class UsersController extends Controller
             $str .= $keyspace[random_int(0, $max)];
         }
 
-        return $str;
+        return $str."a1A";
     }
 
     public function SendMail($email, $user, $pwd)
     {
         $mail = new PHPMailer(true);
         try {
-            $mail->SMTPDebug = 1;                               // Enable verbose debug output
             $mail->isSMTP();                                      // Set mailer to use SMTP
             $mail->Host = 'ssl://smtp.gmail.com';  // Specify main and backup SMTP servers
             $mail->SMTPAuth = true;                               // Enable SMTP authentication
@@ -111,7 +118,8 @@ class UsersController extends Controller
             $mail->Body = 'Dear '.$user.', your new password is '.$pwd;
             $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
             $mail->send();
-            echo 'Message sent!';
+            return true;
+            //echo 'Message sent!';
         } catch (phpmailerException $e) {
             echo 'Please Check Your internet connection'; //Pretty error messages from PHPMailer
                // return false;
@@ -129,6 +137,16 @@ class UsersController extends Controller
             return response()->json(['admin' => $admindetails, 'status' => 200]);
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 505], 505);
+        }
+    }
+    public function CheckInternet(){
+        if (!$sock = @fsockopen('www.google.com', 80)){
+            //echo 'offline';
+            return false;
+        }
+        else {
+            //echo 'OK';
+            return true;
         }
     }
 }

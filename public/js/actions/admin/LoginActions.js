@@ -27,11 +27,12 @@ var AdminLoginActions = {
 
   resetpassword: function (email) {
     $.post('/admin-api/recoverpwd', email, function (response) {
-      if (response.status === 201) {
+      if (response.status === 202) {
         swal('Error', 'Your email doesnt exists in the system.', 'error');
-      }      else {
-
+      } else if (response.status === 207) {
         swal('Check your mail!', 'New password has been sent to you email.', 'success');
+      } else if (response.status === 203) {
+        swal('Something went wrong', 'Please check your internet connection and retry', 'error');
       }
     });
   },
