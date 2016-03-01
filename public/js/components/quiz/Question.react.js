@@ -4,6 +4,7 @@ import Divider from 'material-ui/lib/divider';
 import Checkbox from 'material-ui/lib/checkbox';
 import RadioButton from 'material-ui/lib/radio-button';
 import RadioButtonGroup from 'material-ui/lib/radio-button-group';
+import Slider from 'material-ui/lib/slider';
 
 const radioStyle = {
   marginLeft: '15'
@@ -16,9 +17,6 @@ const Question = React.createClass({
     return {
       answer1: null,
       answer2: null,
-      answer3: null,
-      answer4: null,
-      answer5: null
     }
   },
   _value: function(event,val) {
@@ -40,31 +38,7 @@ const Question = React.createClass({
         } 
       });  
     }
-    else if(this.props.id == 3) {
-      this.setState({
-        answer3: {
-          "id": this.props.id,
-          "value": val
-        }
-      });
-    }
-    else if(this.props.id == 4) {
-      this.setState({
-        answer4: {
-          "id": this.props.id,
-          "value": val
-        } 
-      });
-    }
-    else if(this.props.id == 5) {
-      this.setState({
-        answer5: {
-          "id": this.props.id,
-          "value": val
-        } 
-      });
-    }
-    console.log('State ,,,' + this.state.answer1);
+    
     if(this.state.answer1 != null && this.state.answer2 !=null && this.state.answer3 !=null && this.state.answer4 !=null && this.state.answer5 !=null) {
       console.log('Done !');
     }
@@ -81,6 +55,8 @@ const Question = React.createClass({
             value="no"
             label="Nope"/>
         </RadioButtonGroup>
+        Importance ...
+        <Slider defaultValue={0} />
        <Divider />
       </div>
     );    

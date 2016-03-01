@@ -21,7 +21,7 @@ import Colors from 'material-ui/lib/styles/colors';
 injectTapEventPlugin();
 
 function validatefirstname(firstname) {
-  if(firstname.length >= 50) {
+  if(firstname.length >= 30) {
     return {
       "error": "*firstname is too long"
     }
@@ -47,7 +47,7 @@ function validatefirstname(firstname) {
 }
 
 function validatelastname(lastname) {
-  if (lastname.length >= 50) {
+  if (lastname.length >= 30) {
     return {
       "error": "*lastname is too long"
     }
@@ -116,7 +116,9 @@ const ProfilePic = React.createClass({
             preview: '',
             mouseover: false,
             picture: '',
-            country: 0
+            country: 0,
+            firstnameerr: '',
+            lastnameerr: ''
         }
     },
 
@@ -152,7 +154,7 @@ const ProfilePic = React.createClass({
         this.setState({
             editingPic: false,
             preview: '',
-            files: ''
+            files: '',
         });
     },
     _saveImage: function () {
@@ -220,11 +222,15 @@ const ProfilePic = React.createClass({
       }
 
       if(validatefirstname(firstname).error) {
-        document.getElementById('firstname').innerHTML = validatefirstname(firstname).error;
+        this.setState({
+          firstnameerr: validatefirstname(firstname).error
+        });
         val = false;
       }
       if(validatelastname(lastname).error) {
-        document.getElementById('lastname').innerHTML = validatelastname(lastname).error;
+        this.setState({
+          lastnameerr: validatelastname(lastname).error
+        });
         val = false;
       }
 
@@ -235,6 +241,14 @@ const ProfilePic = React.createClass({
 
     handleChangeCountry: function(e, index, value) {
       this.setState({country: value});
+    },
+
+    _cancelEditProfile: function() {
+      this.setState({
+        editingProfile: false,
+        firstnameerr: '',
+        lastnameerr: ''
+      });
     },
 
   render: function() {
@@ -265,14 +279,16 @@ const ProfilePic = React.createClass({
             
               <div className="col-sm-3 col-md-3 col-lg-3">
               <h3> {this.state.editingProfile ? <div><TextField
-                    ref="firstname" hintText="firstname" defaultValue={this.props.firstname} />
-                    <span style={error} id="firstname"> </span></div> : this.props.firstname} 
+                    ref="firstname" hintText="firstname" defaultValue={this.props.firstname} 
+                    errorText={this.state.firstnameerr} />
+              </div> : this.props.firstname} 
 
                     { ' ' }
 
                      {this.state.editingProfile ? <div><TextField
-                      ref="lastname" hintText="lastname" defaultValue={this.props.lastname} />
-                    <span style={error} id="lastname"> </span></div> : this.props.lastname} </h3>
+                      ref="lastname" hintText="lastname" defaultValue={this.props.lastname} 
+                      errorText={this.state.lastnameerr} />
+              </div> : this.props.lastname} </h3>
               <span> { this.state.editingProfile ? ''
                        : '@' + this.props.username} </span> <br/>
               <span> {this.state.editingProfile ? 
@@ -293,8 +309,8 @@ const ProfilePic = React.createClass({
                      {
                       this.state.editingProfile ? 
                         <div>
-                          <FlatButton onClick={this._saveChanges} label="Save changes" primary={true} />
-                          <FlatButton label="Cancel" onClick={this._editProfile}/> 
+                          <RaisedButton onClick={this._saveChanges} label="Save changes" primary={true} style={buttonStyle}/>
+                          <RaisedButton label="Cancel" onClick={this._cancelEditProfile} style={buttonStyle}/>
                         </div>
                         : ''
                      }

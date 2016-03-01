@@ -43,8 +43,8 @@ const Profile = React.createClass({
               <Link to={`/profile/photos`} className="btn ">Photos</Link>
             </div>
           </div>
-          {this.props.children}
         </div>
+        {this.props.children}
       </div>
     );    
   }
