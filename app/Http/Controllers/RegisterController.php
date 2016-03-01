@@ -21,6 +21,7 @@ class RegisterController extends Controller
                 $user->username = $request->username;
                 $user->email = $request->email;
                 $user->gender = $request->gender;
+                $user->birthday = $request->birthday;
                 $user->country = $request->country;
                 $user->password = \Hash::make($request->password);
                 $user->orientation = $request->orientation;
@@ -35,7 +36,7 @@ class RegisterController extends Controller
                     $about = new About;
                     $about->user_id = User::where('email', $email)->get(['id'])[0]->id;
                     if ($about->save()) {
-                        return response()->json(['status' => 201], 201);
+                       return response()->json(['status' => 201], 201);
                     }
                 } else {
                     return response()->json(['status' => 404], 404);

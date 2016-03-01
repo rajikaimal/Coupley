@@ -63,7 +63,19 @@ class UsersController extends Controller
         try {
             $admin = User::where('email', $email)->first();
             if ($admin) {
-                $newpwd = $this->random_str(10);
+                $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+                $newpwd = '';
+                 for ($i = 0; $i <= 10; $i++) {
+                      $newpwd .= $characters[rand(0, strlen($characters) - 1)];
+                 }
+                $characters = '0123456789';
+                $randNum = 0;
+
+                for ($i = 0; $i <= 5; $i++) {
+                      $randNum .= $characters[rand(0, strlen($characters) - 1)];
+                }
+                $newpwd = $newpwd . $randNum;
+                //$newpwd = $this->random_str(10);
                 $pwdHashed = \Hash::make($newpwd);
                 \DB::table('users')->where('email', $email)->update(['password' => $pwdHashed]);
 
