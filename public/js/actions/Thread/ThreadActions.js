@@ -62,6 +62,23 @@ var ThreadAction = {
  },
 
 
+ getlikedusers:function(request){
+    $.get('/api/getlikedusers' , function(response) {
+      if (response.status == 200) {
+            AppDispatcher.handleViewAction({
+            actionType:ThreadConstants.RETRIVEOLD,
+            listoflikedusers: response.llist
+          });
+      }
+      else if (response.status == 505) {
+            console.log('Error 505');
+      }
+    });
+
+ },
+
+
+
 };
 
 

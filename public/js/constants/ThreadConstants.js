@@ -4,4 +4,5 @@ module.exports = keyMirror({
   SAVE: null,
   RETRIVE:null,
   RETRIVEOLD:null,
+  RETRIVELIKED:null,
 });

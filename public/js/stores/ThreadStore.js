@@ -7,6 +7,7 @@ var CHAT_EVENT = 'change';
 
 var Thread = [];
 var PreviousThread = [];
+var LikedUsers = [];
 
 var ThreadStore = assign({}, EventEmitter.prototype, {
 
@@ -28,7 +29,14 @@ var ThreadStore = assign({}, EventEmitter.prototype, {
     },
     savepreviousmessage:function(results){
          PreviousThread=results;
-    }
+    },
+    savelikedusers:function(results){
+         LikedUsers=results;
+    },
+    getlikedusers:function(){
+         return LikedUsers;
+
+    },
 
 });
 
@@ -36,6 +44,10 @@ AppDispatcher.register(function (payload) {
     switch (payload.action.actionType) {
         case(ThreadConstants.RETRIVEOLD):
             ThreadStore.savepreviousmessage(payload.action.previousmessage);
+            ThreadStore.emitChange();
+            break;
+        case(ThreadConstants.RETRIVELIKED):
+            ThreadStore.savelikedusers(payload.action.llist);
             ThreadStore.emitChange();
             break;
 

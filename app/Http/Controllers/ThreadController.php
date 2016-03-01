@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Thread;
+use App\Likes;
 
 class ThreadController extends Controller
 {
@@ -49,7 +50,7 @@ class ThreadController extends Controller
     //   }
 
 
-    public function deletemessage(Request $request )
+    public function deletemessage(Request $request)
     {
       $user2 = $request->user2;
       $posts = \DB::table('chats')->where('user2', '=', $user2);
@@ -59,6 +60,16 @@ class ThreadController extends Controller
       } else {
           return response()->json(['status' => 404], 404);
       }
+    }
+
+    public function getLikedUserList(Request $request)
+    {
+       $user1 = $request->user1;
+      if ($llist= Likes::where('user1',$user1)->orWhere('user2',$user1)->where('likeback','1')->get()) {
+       return response()->json(['llist' => $llist, 'status' => 200], 200);
+   } else {
+       return response()->json(['status' => 505], 505);
+   }
     }
 
 

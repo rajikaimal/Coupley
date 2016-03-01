@@ -37,6 +37,8 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('getpreviousmsg','ThreadController@getPreviousMessage');
     //Delete Messages
     Route::post('deletemessage','ThreadController@deletemessage');
+    //Retrive likedusers
+    Route::get('getlikedusers','ThreadController@getLikedUserList');
     Route::get('getpostId', 'ActivityFeedController@getpostId');
     Route::post('likes', 'LikeController@addlikes');
     Route::post('likepost', 'LikeController@like');
