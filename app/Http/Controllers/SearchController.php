@@ -14,28 +14,55 @@ class SearchController extends Controller
         $username = $request->username;
         //return $username;
         try {
-            $data = User::where('username', $username)->get(['orientation', 'gender']);
+            $data = User::where('username', $username)->get(['id','orientation', 'gender']);
+            $userID = $data[0]->id;
             $orientation = $data[0]->orientation;
             $gender = $data[0]->gender;
             if ($orientation == 'straight' && $gender == 'female') {
-                $gender = 'male';
-                if ($users = \DB::table('users')
-                    ->where('firstname', 'like', $firstname.'%')
-                    ->where('orientation', $orientation)
-                    ->where('gender', $gender)
-                    ->where('username', '<>', $username)
-                    ->get()) {
+                $gender = "male";
+                if (//$users = \DB::table('users')
+                //     ->where('username', '<>', $username)
+                //     ->where('firstname', 'like', $firstname.'%')
+                //     ->where('gender', $gender)
+                //     ->where('orientation', $orientation)
+                //     //->orWhere('lastname', 'like', $firstname.'%')
+                //     ->whereNotIn('id', function($query) {
+                //         $query->select('blocked_user_id')
+                //              ->from('blocked')
+                //              ->where('user_id', $userID);
+                //     })
+                //     ->get()
+                    $users = \DB::select( \DB::raw("
+                        SELECT *
+                            FROM  `users`
+                            Where lastname LIKE '".$firstname."'
+
+                            and id NOT
+                            IN (
+                                SELECT blocked_user_id
+                                FROM  `blocked` 
+                                WHERE user_id =".$userID."
+                            )
+                        "))
+
+                    ) {
                     return response()->json(['users' => $users, 'status' => 201], 201);
                 } else {
                     return response()->json(['status' => 200], 200);
                 }
             } elseif ($orientation == 'straight' && $gender == 'male') {
-                $gender = 'male';
+                $gender = "female";
                 if ($users = \DB::table('users')
                     ->where('firstname', 'like', $firstname.'%')
                     ->where('orientation', $orientation)
                     ->where('gender', $gender)
                     ->where('username', '<>', $username)
+                    ->whereNotIn('id', function($q) {
+                           $q->select('blocked_user_id')
+                             ->from('blocked')
+                             ->where('user_id', $userID);
+                    })
+//                    ->orWhere('lastname', 'like', $firstname.'%')
                     ->get()) {
                     return response()->json(['users' => $users, 'status' => 201], 201);
                 } else {
@@ -74,7 +101,7 @@ class SearchController extends Controller
                 }
             }
         } catch (QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 201], 201);
         }
     }
 }
