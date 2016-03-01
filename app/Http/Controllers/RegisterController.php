@@ -29,8 +29,8 @@ class RegisterController extends Controller
                 if ($user->save()) {
                     $about = new About;
                     $about->user_id = User::where('email', $email)->get(['id'])[0]->id;
-                    if($about->save()) {
-                        return response()->json(['status' => 201], 201);    
+                    if ($about->save()) {
+                        return response()->json(['status' => 201], 201);
                     }
                 } else {
                     return response()->json(['status' => 404], 404);
