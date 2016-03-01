@@ -25,6 +25,12 @@ class RegisterController extends Controller
                 $user->password = \Hash::make($request->password);
                 $user->orientation = $request->orientation;
                 $user->role = 'user';
+                if($request->gender == "male") {
+                    $user->profilepic = "defaultmale";    
+                } else {
+                    $user->profilepic = "defaultfemale";
+                }
+                
 
                 if ($user->save()) {
                     $about = new About;
