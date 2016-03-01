@@ -77,16 +77,18 @@ const Adminlogin = React.createClass({
     }
   },
 
+  eleminateErrors:function () {
+    document.getElementById('server-error').innerHTML = ' ';
+  },
+
   render: function () {
     return (
       <div>
-
         <div className="container">
-
           <div className="col-lg-6 col-lg-offset-3 text-center">
             <Card style={ { marginTop: 60 } }>
-
               <CardTitle title="Welcome Back.." subtitle="Coupley &trade;"/>
+              <CardText onFocus={this.eleminateErrors}>
               <CardActions>
                 <TextField
                   floatingLabelText="Enter your email" ref="email" />
@@ -94,18 +96,14 @@ const Adminlogin = React.createClass({
                 <TextField
                   floatingLabelText="Enter your password" ref="password" type="password" />
                 <div id="password" style={err} onChange={this._handleLogin}></div>
-
               </CardActions>
-              <CardText>
                 <span id="server-error" style={err}> </span>
                 <br/>
                 <RaisedButton label="Signin"  primary={true} onTouchTap={this._handleLogin} />
                 <a href="/cp-admin#/Adminforgotpwd"> Forgot password ? </a>
               </CardText>
-
             </Card>
           </div>
-
         </div>
       </div>
     );

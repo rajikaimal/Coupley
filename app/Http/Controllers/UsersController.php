@@ -11,7 +11,7 @@ class UsersController extends Controller
     public function friends()
     {
         try {
-            if ($users = \DB::select('SELECT r.id as rowId, CONCAT(u1.firstname,"",u1.lastname) AS user, CONCAT(u2.firstname,"",u2.lastname) AS reported, r.description,r.reported_user_id FROM reported r JOIN users AS u1 ON r.user_id = u1.id JOIN users AS u2 ON r.reported_user_id= u2.id where r.status="pending"')) {
+            if ($users = \DB::select('SELECT r.id as rowId, CONCAT(u1.firstname,"",u1.lastname) AS user, CONCAT(u2.firstname,"",u2.lastname) AS reported, u2.profilepic,r.description,r.reported_user_id FROM reported r JOIN users AS u1 ON r.user_id = u1.id JOIN users AS u2 ON r.reported_user_id= u2.id where r.status="pending"')) {
                 return response()->json(['users' => $users, 'status' => 200], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {

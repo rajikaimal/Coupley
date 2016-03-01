@@ -17,7 +17,6 @@ import DropDownMenu from 'material-ui/lib/DropDownMenu';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import GridList from 'material-ui/lib/grid-list/grid-list';
 import GridTile from 'material-ui/lib/grid-list/grid-tile';
-
 import Table from 'material-ui/lib/table/table';
 import TableRow from 'material-ui/lib/table/table-row';
 import TableRowColumn from 'material-ui/lib/table/table-row-column';
@@ -78,7 +77,7 @@ function validatefirstname(firstname) {
     };
   }  else if (!/^\w+$/i.test(firstname)) {
     return {
-      error: '*Firstname cannot contain special characters',
+      error: '*Only upper & lower case letters without accesents and spaces are allowed',
     };
   }  else {
     return true;
@@ -92,7 +91,7 @@ function validatelastname(lastname) {
     };
   }  else if (!/^\w+$/i.test(lastname)) {
     return {
-      error: '*Lastname cannot contain special characters',
+      error: '*Only upper & lower case letters without accesents and spaces are allowed',
     };
   }  else {
     return true;
@@ -106,7 +105,7 @@ function validatejobname(job) {
     };
   }  else if (!/^\w+$/i.test(job)) {
     return {
-      error: '*Jobname cannot contain special characters',
+      error: '*Only upper & lower case letters without accesents and spaces are allowed',
     };
   }  else {
     return true;
@@ -202,9 +201,11 @@ var Header = React.createClass({
     if (validateRePassword(RePass, password).error) {
       document.getElementById('repassword').innerHTML = validateRePassword(RePass, password).error;
       document.getElementById('repassword').style.color = '#ff6666';
+      return false;
     }    else {
       document.getElementById('repassword').innerHTML = validateRePassword(RePass, password).success;
       document.getElementById('repassword').style.color = '#66cc66';
+      return true;
     }
   },
 
@@ -214,6 +215,7 @@ var Header = React.createClass({
     let job = this.refs.job.getValue();
     let email = this.refs.email.getValue();
     let password = this.refs.password.getValue();
+    let RePass = this.refs.repassword.getValue();
 
     if (validatefirstname(firstname).error) {
       document.getElementById('firstname').innerHTML = validatefirstname(firstname).error;
@@ -225,12 +227,16 @@ var Header = React.createClass({
       document.getElementById('job').innerHTML = validatejobname(job).error;
       return false;
     }    else if (!validateEmail(email)) {
-      document.getElementById('email').innerHTML = '*Invalid Email !';
+      document.getElementById('email').innerHTML = '*Please enter a valid Email !';
       return false;
     }    else if (validatePassword(password).error) {
       document.getElementById('password').innerHTML = validatePassword(password).error;
       return false;
-    }    else {
+    }else if (validateRePassword(RePass, password).error) {
+      document.getElementById('repassword').innerHTML = validateRePassword(RePass, password).error;
+      document.getElementById('repassword').style.color = '#ff6666';
+      return false;
+    } else {
       let credentials = {
         firstname: firstname,
         lastname: lastname,
@@ -242,6 +248,15 @@ var Header = React.createClass({
       console.log('Done calling !');
 
     }
+  },
+
+  eleminateErrors:function () {
+    document.getElementById('firstname').innerHTML = ' ';
+    document.getElementById('job').innerHTML = ' ';
+    document.getElementById('password').innerHTML = ' ';
+    document.getElementById('lastname').innerHTML = ' ';
+    document.getElementById('email').innerHTML = ' ';
+    document.getElementById('repassword').innerHTML = ' ';
   },
 
   render: function () {
@@ -265,9 +280,7 @@ var Header = React.createClass({
             'padding-left': '15px', }}>
 
           <div className="">
-
             <div>
-
               <GridList
                         cellHeight={200}
                         style={gridListStyle}
@@ -277,7 +290,6 @@ var Header = React.createClass({
               </GridList>
             </div>
           </div>
-
           <Dialog
                 title="Add New Administrator"
                 actions={actions}
@@ -286,15 +298,11 @@ var Header = React.createClass({
                 onRequestClose={this.handleClose}
                 contentStyle={customContentStyle}
             >
-
-
             <div>
               <div>
-
                 <div className="col-lg-12">
                   <Card>
-
-                    <CardText>
+                    <CardText onFocus={this.eleminateErrors}>
                       <div className="col-lg-6">
                         <TextField
                             hintText="Firstname" hintStyle={styles.errorStyle} fullwidth={true} ref="firstname"/>
@@ -311,7 +319,7 @@ var Header = React.createClass({
                         <snack/>
                         <TextField
                             type="password"
-                            hintText="Password" ref="password" hintStyle={styles.errorStyle} fullwidth={true}/>
+                            hintText="Password" ref="password" hintStyle={styles.errorStyle} fullwidth={true} onChange={this.reEnterPwd}/>
                         <br />
                         <span id="password" style={err}> </span>
                         <br />

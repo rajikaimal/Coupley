@@ -40,9 +40,9 @@ const Tables = React.createClass({
       return this.state.results.map((result) => {
         return (<Feed key={result.id} id={result.id} user={result.user} description={result.description} />);
       });}    else {
-        return (<Feed
-            id={ELSE}
-        />);
+        return (<div>
+            No any timeline feeds
+        </div>);
       }
   },
 
@@ -50,22 +50,20 @@ const Tables = React.createClass({
 
     return (
         <div>
-                                    <h1>Timeline Feedback </h1>
-                    <table className="table table-striped table-hover">
-                            <thead>
-                                    <tr>
-                                            <th><h2>Id</h2></th>
-                                            <th><h2>User</h2></th>
-                                            <th><h2>Description</h2></th>
-                                    </tr>
-                            </thead>
-                            <tbody style={{ fontSize: '18px' }}>
-
-                                    {this._renderFeedItem()}
-
-                          </tbody>
-                    </table>
-                    </div>
+          <h1>Timeline Feedback </h1>
+          <table className="table table-striped table-hover">
+            <thead>
+            <tr>
+              <th><h2>Id</h2></th>
+              <th><h2>User</h2></th>
+              <th><h2>Description</h2></th>
+            </tr>
+            </thead>
+            <tbody style={{ fontSize: '18px' }}>
+            {this._renderFeedItem()}
+            </tbody>
+          </table>
+        </div>
     );
   },
 

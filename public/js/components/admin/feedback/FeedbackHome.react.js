@@ -67,8 +67,8 @@ var Feedback = React.createClass({
                     cols={5}
                     cellHeight={200}
                     style={gridListStyle}
-                >
-                                {tileElements}
+            >
+              {tileElements}
             </GridList>
           </div>
           <Divider/>
