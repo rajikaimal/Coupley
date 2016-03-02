@@ -158,7 +158,7 @@ class ProfileController extends Controller
             $result = Likes::where('user1', $visitorUsername)
                     ->where('user2', $username)->get();
 
-            if (!$result->isEmpty()) {
+            if (! $result->isEmpty()) {
                 return response()->json(['liked' => true], 200);
             } else {
                 return response()->json(['liked' => false], 200);
@@ -353,16 +353,16 @@ class ProfileController extends Controller
 
     public function getabout(Request $request)
     {
-        if($email = $request->email) {
+        if ($email = $request->email) {
             try {
-            $userID = User::where('email', $email)->get(['id']);
-            $results = About::where('user_id', $userID[0]->id)->get();
+                $userID = User::where('email', $email)->get(['id']);
+                $results = About::where('user_id', $userID[0]->id)->get();
 
                 return response()->json(['status' => 200, 'data' => $results], 200);
             } catch (Illuminate\Database\QueryException $e) {
                 return response()->json(['status' => 200], 200);
-            }    
-        } elseif($visitorUsername = $request->visitorusername) {
+            }
+        } elseif ($visitorUsername = $request->visitorusername) {
             try {
                 $userID = User::where('username', $visitorUsername)->get(['id']);
                 $results = About::where('user_id', $userID[0]->id)->get();
@@ -370,9 +370,8 @@ class ProfileController extends Controller
                 return response()->json(['status' => 200, 'data' => $results], 200);
             } catch (Illuminate\Database\QueryException $e) {
                 return response()->json(['status' => 200], 200);
-            }   
+            }
         }
-        
     }
 
     /*
