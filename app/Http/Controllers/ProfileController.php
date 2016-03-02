@@ -26,11 +26,11 @@ class ProfileController extends Controller
     {
         $email = $request->email;
         try {
-            $userdetails = User::where('email', $email)->get();
+            $userDetails = User::where('email', $email)->get();
 
-            return response()->json(['user' => $userdetails, 'status' => 200]);
+            return response()->json(['user' => $userDetails, 'status' => 200]);
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 200], 200);
         }
     }
 
@@ -51,10 +51,10 @@ class ProfileController extends Controller
 
     public function getlikestatus(Request $request)
     {
-        $visitorusername = $request->visitorusername;
+        $visitorUsername = $request->visitorusername;
         $username = $request->username;
         try {
-            $result = Likes::where('user1', $visitorusername)
+            $result = Likes::where('user1', $visitorUsername)
                     ->where('user2', $username)->get();
         //return "false";
             if ($result->isEmpty()) {
@@ -63,7 +63,7 @@ class ProfileController extends Controller
                 return 'true';
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 200], 200);
         }
     }
 
@@ -75,13 +75,13 @@ class ProfileController extends Controller
     {
         $username = $request->username;
         try {
-            if ($userdetails = User::where('firstname', $username)->get()) {
-                return response()->json(['user' => $userdetails, 'status' => 200], 200);
+            if ($userDetails = User::where('firstname', $username)->get()) {
+                return response()->json(['user' => $userDetails, 'status' => 200], 200);
             } else {
-                return response()->json(['user' => $userdetails, 'status' => 505], 505);
+                return response()->json(['user' => $userDetails, 'status' => 200], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 200], 200);
         }
     }
 
@@ -100,7 +100,7 @@ class ProfileController extends Controller
             $result2 = Likes::where('user1', $gotLikedUsername)
                 ->where('user2', $likedUsername)->get();
 
-            if ($result1->isEmpty() && $result2->isEmpty()) {
+            if ($result1->isEmpty() || $result2->isEmpty()) {
                 $user1ID = User::where('username', $likedUsername)->get(['id']);
                 $user2ID = User::where('username', $gotLikedUsername)->get(['id']);
                 $like = new Likes;
@@ -112,13 +112,13 @@ class ProfileController extends Controller
                 if ($like->save()) {
                     return response()->json(['status' => 200], 200);
                 } else {
-                    return response()->json(['status' => 505], 505);
+                    return response()->json(['status' => 200], 200);
                 }
             } else {
-                return response()->json(['status' => 505], 505);
+                return response()->json(['status' => 200], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 200], 200);
         }
     }
 
@@ -139,10 +139,10 @@ class ProfileController extends Controller
 
                 return response()->json(['status' => 200], 200);
             } else {
-                return response()->json(['status' => 505], 505);
+                return response()->json(['status' => 200], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 200], 200);
         }
     }
 
@@ -152,19 +152,19 @@ class ProfileController extends Controller
     public function likedbackstatus(Request $request)
     {
         $username = $request->username;
-        $visitorusername = $request->visitorusername;
+        $visitorUsername = $request->visitorusername;
 
         try {
-            $result = Likes::where('user1', $visitorusername)
+            $result = Likes::where('user1', $visitorUsername)
                     ->where('user2', $username)->get();
 
-            if ($result !== null) {
+            if (!$result->isEmpty()) {
                 return response()->json(['liked' => true], 200);
             } else {
                 return response()->json(['liked' => false], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 200], 200);
         }
     }
 
@@ -173,11 +173,11 @@ class ProfileController extends Controller
     **/
     public function blockstatus(Request $request)
     {
-        $visitorusername = $request->visitorusername;
+        $visitorUsername = $request->visitorusername;
         $username = $request->username;
         try {
             $user1ID = User::where('username', $username)->get(['id']);
-            $user2ID = User::where('username', $visitorusername)->get(['id']);
+            $user2ID = User::where('username', $visitorUsername)->get(['id']);
 
             $result = Blocks::where('user_id', $user1ID[0]->id)
                 ->where('blocked_user_id', $user2ID[0]->id)
@@ -189,7 +189,7 @@ class ProfileController extends Controller
                 return response()->json(['blockstatus' => true], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 200], 200);
         }
     }
 
@@ -198,11 +198,11 @@ class ProfileController extends Controller
     **/
     public function block(Request $request)
     {
-        $visitorusername = $request->visitorusername;
+        $visitorUsername = $request->visitorusername;
         $username = $request->username;
         try {
             $user1ID = User::where('username', $username)->get(['id']);
-            $user2ID = User::where('username', $visitorusername)->get(['id']);
+            $user2ID = User::where('username', $visitorUsername)->get(['id']);
 
             $result1 = Blocks::where('user_id', $user1ID[0]->id)
                 ->where('blocked_user_id', $user2ID[0]->id)
@@ -216,14 +216,14 @@ class ProfileController extends Controller
                     if ($block->save()) {
                         return response()->json(['status' => 200], 200);
                     } else {
-                        return response()->json(['status' => 505], 505);
+                        return response()->json(['status' => 200], 200);
                     }
                 }
             } else {
                 return response()->json(['status' => 500], 500);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 200], 200);
         }
     }
 
@@ -232,12 +232,12 @@ class ProfileController extends Controller
     **/
     public function unblock(Request $request)
     {
-        $visitorusername = $request->visitorusername;
+        $visitorUsername = $request->visitorusername;
         $username = $request->username;
 
         try {
             $user1ID = User::where('username', $username)->get(['id']);
-            $user2ID = User::where('username', $visitorusername)->get(['id']);
+            $user2ID = User::where('username', $visitorUsername)->get(['id']);
 
             if (Blocks::where('user_id', $user1ID[0]->id)
                 ->where('blocked_user_id', $user2ID[0]->id)
@@ -245,10 +245,10 @@ class ProfileController extends Controller
             ) {
                 return response()->json(['status' => 200], 200);
             } else {
-                return response()->json(['status' => 505], 505);
+                return response()->json(['status' => 200], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 200], 200);
         }
     }
 
@@ -257,11 +257,11 @@ class ProfileController extends Controller
     **/
     public function profilepermission(Request $request)
     {
-        $visitorusername = $request->visitorusername;
+        $visitorUsername = $request->visitorusername;
         $username = $request->username;
         try {
             $user1ID = User::where('username', $username)->get(['id']);
-            $user2ID = User::where('username', $visitorusername)->get(['id']);
+            $user2ID = User::where('username', $visitorUsername)->get(['id']);
 
             $result = Blocks::where('user_id', $user2ID[0]->id)
                 ->where('blocked_user_id', $user1ID[0]->id)
@@ -275,7 +275,7 @@ class ProfileController extends Controller
                 return response()->json(['status' => 200], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 200], 200);
         }
     }
 
@@ -295,7 +295,7 @@ class ProfileController extends Controller
                 return response()->json(['status' => 200, 'data' => null], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 200], 200);
         }
     }
 
@@ -344,24 +344,35 @@ class ProfileController extends Controller
                     return response()->json(['status' => 200, 'data' => null], 200);
                 }
             } else {
-                return response()->json(['status' => 505], 505);
+                return response()->json(['status' => 200], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 200], 200);
         }
     }
 
     public function getabout(Request $request)
     {
-        $email = $request->email;
-        try {
+        if($email = $request->email) {
+            try {
             $userID = User::where('email', $email)->get(['id']);
             $results = About::where('user_id', $userID[0]->id)->get();
 
-            return response()->json(['status' => 200, 'data' => $results], 200);
-        } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+                return response()->json(['status' => 200, 'data' => $results], 200);
+            } catch (Illuminate\Database\QueryException $e) {
+                return response()->json(['status' => 200], 200);
+            }    
+        } elseif($visitorUsername = $request->visitorusername) {
+            try {
+                $userID = User::where('username', $visitorUsername)->get(['id']);
+                $results = About::where('user_id', $userID[0]->id)->get();
+
+                return response()->json(['status' => 200, 'data' => $results], 200);
+            } catch (Illuminate\Database\QueryException $e) {
+                return response()->json(['status' => 200], 200);
+            }   
         }
+        
     }
 
     /*
@@ -410,9 +421,9 @@ class ProfileController extends Controller
         $firstname = $request->firstname;
         $lastname = $request->lastname;
         $country = $request->country;
-        $currentusername = $request->currentusername;
+        $currentUsername = $request->currentusername;
         try {
-            if (User::where('username', $currentusername)
+            if (User::where('username', $currentUsername)
                 ->update(['firstname' => $firstname, 'lastname' => $lastname, 'country' => $country])) {
                 return response()->json(['status' => 200], 200);
             }
@@ -436,10 +447,10 @@ class ProfileController extends Controller
             ) {
                 return response()->json(['status' => 200], 200);
             } else {
-                return response()->json(['status' => 505], 505);
+                return response()->json(['status' => 200], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 200], 200);
         }
     }
 
@@ -458,10 +469,10 @@ class ProfileController extends Controller
             ) {
                 return response()->json(['status' => 200], 200);
             } else {
-                return response()->json(['status' => 505], 505);
+                return response()->json(['status' => 200], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 200], 200);
         }
     }
 
@@ -480,10 +491,10 @@ class ProfileController extends Controller
             ) {
                 return response()->json(['status' => 200], 200);
             } else {
-                return response()->json(['status' => 505], 505);
+                return response()->json(['status' => 200], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 200], 200);
         }
     }
 
@@ -493,19 +504,19 @@ class ProfileController extends Controller
     public function editthinkingof(Request $request)
     {
         $email = $request->email;
-        $thinkingof = $request->thinkingof;
+        $thinkingOf = $request->thinkingof;
 
         try {
             $userID = User::where('email', $email)->get(['id']);
             if (About::where('user_id', $userID[0]->id)
-                ->update(['thinkingof' => $thinkingof])
+                ->update(['thinkingof' => $thinkingOf])
             ) {
                 return response()->json(['status' => 200], 200);
             } else {
-                return response()->json(['status' => 505], 505);
+                return response()->json(['status' => 200], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 200], 200);
         }
     }
 
@@ -524,10 +535,10 @@ class ProfileController extends Controller
             ) {
                 return response()->json(['status' => 200], 200);
             } else {
-                return response()->json(['status' => 505], 505);
+                return response()->json(['status' => 200], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 200], 200);
         }
     }
 }
