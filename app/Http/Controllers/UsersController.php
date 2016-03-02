@@ -103,7 +103,6 @@ class UsersController extends Controller
     {
         $mail = new PHPMailer(true);
         try {
-            $mail->SMTPDebug = 1;                               // Enable verbose debug output
             $mail->isSMTP();                                      // Set mailer to use SMTP
             $mail->Host = 'ssl://smtp.gmail.com';  // Specify main and backup SMTP servers
             $mail->SMTPAuth = true;                               // Enable SMTP authentication
@@ -121,10 +120,10 @@ class UsersController extends Controller
             $mail->Body = 'Dear '.$user.', your new password is '.$pwd;
             $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
             $mail->send();
-            echo 'Message sent!';
+            return true;
         } catch (phpmailerException $e) {
-            echo 'Please Check Your internet connection'; //Pretty error messages from PHPMailer
-               // return false;
+            //echo 'Please Check Your internet connection'; //Pretty error messages from PHPMailer
+            return false;
         } catch (Exception $e) {
             echo $e->getMessage(); //Boring error messages from anything else!
         }
