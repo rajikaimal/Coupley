@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
 use App\User;
 use PHPMailer;
-
 
 class UsersController extends Controller
 {
@@ -64,20 +62,19 @@ class UsersController extends Controller
         $email = $request->email;
         try {
             if ($this->CheckInternet()) {
-            $admin = User::where('email', $email)->first();
+                $admin = User::where('email', $email)->first();
                 if ($admin) {
                     $newpwd = $this->random_str();
                     $pwdHashed = \Hash::make($newpwd);
                     \DB::table('users')->where('email', $email)->update(['password' => $pwdHashed]);
-
-                        if ($this->SendMail($email, $admin->firstname, $newpwd)) {
-                            return response()->json(['status' => 207], 207);
-                        } else {
-                            return response()->json(['status' => 204], 204);
-                        }
+                    if ($this->SendMail($email, $admin->firstname, $newpwd)) {
+                        return response()->json(['status' => 207], 207);
+                    } else {
+                        return response()->json(['status' => 204], 204);
+                    }
                 }else{
-                return response()->json(['status' => 202], 202);
-            }
+                    return response()->json(['status' => 202], 202);
+                }
             }else{
                 return response()->json(['status' => 203], 203);
             }
@@ -106,6 +103,7 @@ class UsersController extends Controller
     {
         $mail = new PHPMailer(true);
         try {
+            $mail->SMTPDebug = 1;                               // Enable verbose debug output
             $mail->isSMTP();                                      // Set mailer to use SMTP
             $mail->Host = 'ssl://smtp.gmail.com';  // Specify main and backup SMTP servers
             $mail->SMTPAuth = true;                               // Enable SMTP authentication
@@ -123,8 +121,7 @@ class UsersController extends Controller
             $mail->Body = 'Dear '.$user.', your new password is '.$pwd;
             $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
             $mail->send();
-            return true;
-            //echo 'Message sent!';
+            echo 'Message sent!';
         } catch (phpmailerException $e) {
             echo 'Please Check Your internet connection'; //Pretty error messages from PHPMailer
                // return false;

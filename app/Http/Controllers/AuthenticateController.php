@@ -26,7 +26,8 @@ class AuthenticateController extends Controller
     public function reset(Request $request)
     {
         $credentials = $request->only('email');
-        $newpassword = $request->newpassword;
+        //$newpassword = $request->newpassword;
+        $newpassword = 'ahahaH123';
         $mail = $request->email;
         try {
             // verify the credentials and create a token for the user
@@ -38,14 +39,14 @@ class AuthenticateController extends Controller
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
 
-        // if no errors update the new password
-        {   $this->SendMail($mail, 'Administrator', $newpassword);
-            $hashed = \Hash::make($newpassword);
-            \DB::table('users')
-                ->where('email', $mail)
-                ->update(['password' => $hashed]);
-            //return response()->json(['password' => 'uptodate'], 201);
-        }
+        // // if no errors update the new password
+        // {   $this->SendMail($mail, 'Administrator', $newpassword);
+        //     $hashed = \Hash::make($newpassword);
+        //     \DB::table('users')
+        //         ->where('email', $mail)
+        //         ->update(['password' => $hashed]);
+        //     //return response()->json(['password' => 'uptodate'], 201);
+        // }
     }
 
     public function SendMail($email, $user, $pwd)

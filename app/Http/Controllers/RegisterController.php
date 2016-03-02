@@ -21,6 +21,7 @@ class RegisterController extends Controller
                 $user->username = $request->username;
                 $user->email = $request->email;
                 $user->gender = $request->gender;
+                $user->birthday = $request->birthday;
                 $user->country = $request->country;
                 $user->password = \Hash::make($request->password);
                 $user->orientation = $request->orientation;
