@@ -27,7 +27,7 @@ var HeaderActions = {
             actionType: SearchConstants.SEARCH,
             search: response.users,
           });
-        } else if (response.status == 200) {
+        } else if (response.status == 200 && response.users == null) {
           AppDispatcher.handleViewAction({
             actionType: SearchConstants.SEARCH,
             search: '',

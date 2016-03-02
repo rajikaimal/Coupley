@@ -13,7 +13,7 @@ var RegisterActions = {
       }      else if (response.status === 201) {
         let email = credentials.email;
         localStorage.setItem('email', email);
-        document.location = '/#/quiz';
+        document.location.href = '/#/login';
       }
     });
 

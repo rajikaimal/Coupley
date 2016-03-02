@@ -6,8 +6,10 @@ var assign = require('object-assign');
 var CHANGE_EVENT = 'change';
 
 var searchresults = [];
-var profileposts;
+var profileposts = [];
 var searchID;
+var counter = 0;
+var initial = 3;
 
 var StatusStore = assign({}, EventEmitter.prototype, {
 
@@ -16,16 +18,24 @@ var StatusStore = assign({}, EventEmitter.prototype, {
     },
 
   getprofilePosts: function () {
-      return profileposts;
+    let portion = profileposts.slice(0, 5);
+    return portion;
+  },
+
+  getPaginationResults: function () {
+    counter = counter + 2;
+    let end = initial + counter;
+    return profileposts.slice(0, end);
   },
 
   saveprofileposts: function (data) {
-      profileposts = data;
+    profileposts = [];
+    profileposts = data;
   },
 
   saveStatusData: function (results) {
-      searchresults = [];
-      searchresults = results;
+    searchresults = [];
+    searchresults = results;
   },
 
   getStatusID:function () {

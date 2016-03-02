@@ -23,16 +23,16 @@ var ActivityFeedActions = {
     });
   },
 
-  addStatusProfile: function(status) {
+  addStatusProfile: function (status) {
     $.post('api/status', status, function (response) {
       if (response.status == 201) {
-        $.get('/api/getstatus', function (response) {
+        $.get('/api/profile/getposts?username=' + username, function (response) {
           if (response.status == 200) {
             AppDispatcher.handleViewAction({
               actionType: ActivityFeedConstants.GETPROFILEPOSTS,
-              statusdata: response.posts,
+              posts: response.posts,
             });
-          } else if (response.status == 505) {
+          } else if (response.status == 200 && !response.posts) {
             console.log('Error 505');
           }
         });
@@ -83,14 +83,14 @@ var ActivityFeedActions = {
     });
   },
 
-  loadposts: function (username) {
+  loadPosts: function (username) {
     $.get('/api/profile/getposts?username=' + username, function (response) {
       if (response.status == 200) {
         AppDispatcher.handleViewAction({
           actionType: ActivityFeedConstants.GETPROFILEPOSTS,
           posts: response.posts,
         });
-      } else if (response.status == 200 && response.posts == undefined) {
+      } else if (response.status == 200 && !response.posts) {
         console.log('Error 505');
       }
     });
@@ -101,7 +101,7 @@ var ActivityFeedActions = {
       if (response.status == 200) {
         AppDispatcher.handleViewAction({
             actionType: ActivityFeedConstants.GETDATA,
-            statusdata: response.posts,
+            posts: response.posts,
           });
       } else if (response.status == 505) {
         console.log('Error 505');

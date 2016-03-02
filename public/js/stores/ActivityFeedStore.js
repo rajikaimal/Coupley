@@ -8,31 +8,35 @@ var CHANGE_EVENT = 'change';
 var feed = [];
 
 var ActivityFeedStore = assign({}, EventEmitter.prototype, {
-    savefeed: function (data) {
-        feed = data;
-        console.log('SAVED');
-        console.log(feed.length);
-        console.log(typeof feed);
-    },
-    getfeed: function () {
-        return feed;
-    },
-    emitChange: function () {
-        this.emit(CHANGE_EVENT);
-    },
-    addChangeListener: function (callback) {
-        this.on(CHANGE_EVENT, callback);
-    }
+  savefeed: function (data) {
+    feed = data;
+    console.log('SAVED');
+    console.log(feed.length);
+    console.log(typeof feed);
+  },
+
+  getfeed: function () {
+    return feed;
+  },
+
+  emitChange: function () {
+    this.emit(CHANGE_EVENT);
+  },
+
+  addChangeListener: function (callback) {
+    this.on(CHANGE_EVENT, callback);
+  },
 });
 
 AppDispatcher.register(function (payload) {
-    console.log('Got payload' + payload);
-    switch (payload.action.actionType) {
-        case(ProfileConstants.FEED):
-            ActivityFeedStore.savefeed(payload.action.feed);
-            ActivityFeedStore.emitChange();
-            break;
-    }
+  console.log('Got payload' + payload);
+  switch (payload.action.actionType) {
+    case (ProfileConstants.FEED):
+      ActivityFeedStore.savefeed(payload.action.feed);
+      ActivityFeedStore.emitChange();
+      break;
+
+  }
 });
 
 module.exports = ActivityFeedStore;

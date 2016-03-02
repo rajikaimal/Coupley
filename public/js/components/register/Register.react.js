@@ -230,6 +230,7 @@ const Register = React.createClass({
       gender: gender,
       password: password,
       country: country,
+      birthday: '1994-08-12',
       orientation: orientation
     };
     if (val) {

@@ -29,12 +29,14 @@ var LoginActions = {
   },
 
   resetpassword: function (email) {
-    $.post('/api/recoverpwd', email, function (response) {
+    $.post('/admin-api/recoverpwd', email, function (response) {
       if (response.status === 201) {
         swal('Error', 'Your email doesnt exists', 'error');
+        
       }      else {
 
         swal('Check your e-mail!', 'New password has been sent to your email.', 'success');
+        document.location = '/#/login';
       }
     });
   },
