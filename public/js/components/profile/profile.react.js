@@ -10,6 +10,7 @@ import { Link } from 'react-router';
 import ProfileActions from '../../actions/profile/ProfileActions';
 import ProfileStore from '../../stores/ProfileStore';
 import Colors from 'material-ui/lib/styles/colors';
+import Countries from '../register/countries.js';
 
 const tabstyle = {
   marginTop: 30,
@@ -24,7 +25,7 @@ const sectionStyle = {
 
 const Profile = React.createClass({
   getInitialState: function() {
-      return ProfileStore.getuserdata();
+    return ProfileStore.getuserdata();
   },
   componentDidMount: function() {
     ProfileActions.getProfileData();
@@ -32,6 +33,22 @@ const Profile = React.createClass({
   },
   _onChange: function() {
     this.setState(ProfileStore.getuserdata());
+  },
+  _renderCountry: function() {
+    var found = false;
+    for(var i = 0; i < Countries.length; i++) {
+        if (Countries[i].code == this.state.country) {
+            found = true;
+            this.setState({
+              country: Countries[i].name
+            })
+            break;
+        }
+    }
+  },
+  _renderAge: function() {
+    let today = new Date().getFullYear();
+    
   },
   render: function() {
     return (
@@ -49,6 +66,8 @@ const Profile = React.createClass({
           </div>
         </div>
         {this.props.children}
+        {this._renderCountry()}
+        {this._renderAge()}
       </div>
     );    
   }

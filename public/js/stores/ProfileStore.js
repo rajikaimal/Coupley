@@ -25,6 +25,7 @@ var ProfileStore = assign({}, EventEmitter.prototype, {
         lastname: '',
         country: '',
         username: '',
+        age: '',
       };
     }
 
@@ -33,6 +34,7 @@ var ProfileStore = assign({}, EventEmitter.prototype, {
       lastname: user[0].lastname,
       country: user[0].country,
       username: user[0].username,
+      age: user[0].birthday,
     };
   },
 
