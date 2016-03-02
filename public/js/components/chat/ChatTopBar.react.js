@@ -8,8 +8,8 @@ import LoginStore from '../../stores/LoginStore';
 import RaisedButton from 'material-ui/lib/raised-button';
 
 const t1={
-  paddingLeft:10,
-  backgroundColor:'green',
+  marginTop:10,
+
 }
 
 const styles = {
@@ -22,8 +22,11 @@ const styles = {
 };
 
 const toggleDiv = {
-    float: 'right'
+    float: 'right',
+    marginTop:10,
 };
+
+
 
 const SelectFieldExampleSimple= React.createClass({
 
@@ -80,7 +83,7 @@ _blockUser: function() {
     return (
 
     <div>
-      <div className="pull-left" style={t1}>
+      <div className="pull-left" className='col-md-8'>
         <SelectField value={this.state.value} onChange={this.handleChange}>
         {
             this.state.results.map(item => {
@@ -91,13 +94,11 @@ _blockUser: function() {
         }
         </SelectField>
       </div>
-
-
-
-      <div style={toggleDiv}>
-        <RaisedButton label="Primary" primary={true} onClick={this._blockUser}/>
+        <RaisedButton label="Block" primary={true} onClick={this._blockUser} style={t1} className='col-md-2' />
+      <div style={toggleDiv} className='col-md-2' >
         <Toggle style={styles.toggle} onToggle={this.togglechanged} />
       </div>
+
     </div>
     );
   }

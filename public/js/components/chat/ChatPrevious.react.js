@@ -32,6 +32,10 @@ const ListStyle={
 
 const PreviousChat=React.createClass({
 
+
+
+
+
       deleteconvo:function(){
            var user2=this.props.firstname;
            let deleteM={

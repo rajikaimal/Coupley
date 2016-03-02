@@ -17,6 +17,7 @@ const style = {
   width: 650,
   paddingLeft:10,
   paddingRight:10,
+  paddingTop:50,
   position:'relative',
 
 };
@@ -59,8 +60,7 @@ const CC= React.createClass({
            <div>
               <Paper style={style} zDepth={1}>
               <div className='col=md-10' style={emptydiv}></div>
-              <TextField  hintText="user" ref="message1"/>
-              <TextField fullWidth={true} hintText="  Message" onKeyPress={this.EnterKey} ref="message2"/>
+              <TextField fullWidth={true} hintText="  Message" onKeyPress={this.EnterKey} ref="message2" />
               <FlatButton className='col-md-3' label="Add Files" />
               <FlatButton className='col-md-3' label="Add Photos" />
               <div className='col-md-4'>

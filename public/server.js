@@ -28,7 +28,7 @@ io.on('connection', function (socket) {
            connectedUser[socket.username]=socket.id;
            console.log(connectedUser);
            console.log("Logged User's Name :"+socket.username);
-           
+
        }
        else{
          console.log(data+ "Logged again!");
@@ -83,7 +83,7 @@ app.get('/threads/list', function(req, res) {
 
 socket.on('message', function (chat) {
            ThisUserEmail=chat.emailusr1;
-           console.log("Email awa "+ThisUserEmail);
+
            post = {
                   user1: chat.user1,
                   user2: chat.user2,
@@ -93,10 +93,16 @@ socket.on('message', function (chat) {
        connection.query('INSERT INTO chats SET ?', post, function(err, result) {
                        connection.query("SELECT message,user1 FROM chats WHERE 	user1 IN ('"+post.user1+"','"+post.user2+"') AND user2 IN ('"+post.user1+"','"+post.user2+"') ", function(err, result) {
                                  console.log("insert una");
+
                                 io.sockets.connected[connectedUser[chat.user1]].emit('chat', { message:result});
+
+                                if(chat.user2 in connectedUser){
                                 io.sockets.connected[connectedUser[chat.user2]].emit('chat', { message:result});
-
-
+                                }
+                                else{
+                                  console.log("hi");
+                                 io.sockets.connected[connectedUser[chat.user1]].emit('chat', { message:result});
+                                }
                                                       console.log("send unaaaa!");
                        });
       });

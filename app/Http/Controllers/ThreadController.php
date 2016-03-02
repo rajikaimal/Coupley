@@ -19,7 +19,7 @@ class ThreadController extends Controller
 
     public function getPreviousMessage()
     {
-      if ($pmessage = \DB::select("select user2,message,id from chats" )) {
+      if ($pmessage = \DB::select("select user2,message,id from chats limit 4" )) {
        return response()->json(['pmessage' => $pmessage, 'status' => 200], 200);
    } else {
        return response()->json(['status' => 505], 505);
@@ -47,6 +47,17 @@ class ThreadController extends Controller
    } else {
        return response()->json(['status' => 505], 505);
    }
+    }
+
+    public function getSearchConv(Request $request){
+
+      $user1 = $request->user;
+     if ($Slist= Thread::where('user1',$user1)->orWhere('user2',$user1)->where('likeback','1')->get()) {
+      return response()->json(['Slist' => $Slist, 'status' => 200], 200);
+  } else {
+      return response()->json(['status' => 505], 505);
+  }
+
     }
 
 

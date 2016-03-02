@@ -3,8 +3,6 @@ var ThreadConstants = require('../../constants/ThreadConstants');
 
 var ThreadAction = {
   savemessage: function(message){
-    console.log('message >>>>>>');
-    console.log(message);
     AppDispatcher.handleViewAction({
       actionType: ThreadConstants.SAVE,
       chatmessage: message,
@@ -12,7 +10,6 @@ var ThreadAction = {
   },
 
   getmessages:function(){
-     console.log('<<<<<<<<message');
      AppDispatcher.handleViewAction({
         actionType:ThreadConstants.RETRIVE,
         chatmessage:message
@@ -88,7 +85,22 @@ var ThreadAction = {
        document.location = "/#/";
      }
   });
- }
+},
+
+getseachconv:function(request){
+   $.get('/api/getsearchconv?user1=',request.user1, function(response) {
+     if (response.status == 200) {
+           AppDispatcher.handleViewAction({
+           actionType:ThreadConstants.SEARCHMSGLIST,
+           seacrhconvlist: response.Slist
+         });
+     }
+     else if (response.status == 200 && response.pmessage == "") {
+           console.log('Error 505');
+     }
+   });
+
+},
 
 
 };
