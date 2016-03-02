@@ -52,7 +52,11 @@ class ThreadController extends Controller
     public function getSearchConv(Request $request){
 
       $user1 = $request->user;
-     if ($Slist= Thread::where('user1',$user1)->orWhere('user2',$user1)->where('likeback','1')->get()) {
+     if ($Slist= \DB::select(\DB::raw("SELECT user2,message,created_at
+                                       FROM chats WHERE user2
+                                       IN (SELECT DISTINCT user2 FROM chats WHERE user2 !='".$user1."')
+                                       GROUP BY user2")))
+        {
       return response()->json(['Slist' => $Slist, 'status' => 200], 200);
   } else {
       return response()->json(['status' => 505], 505);
