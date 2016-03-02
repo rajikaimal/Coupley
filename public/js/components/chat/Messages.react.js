@@ -52,15 +52,23 @@ const PaperExampleSimple =React.createClass({
       }.bind(this));
     },
     test: function(item1) {
-    	var texts = item1.message.split(/:\)/g);
-      var content = [];
-      for(var i = 0; i < texts.length - 1; i++) {
-      	content.push(texts[i]);
-        content.push(<img src={Emojis[0].uri}/>);
-      }
-      return content.map(function(emoji) {
-        return (<span> {emoji} </span>)
-      }.bind(this));
+     var text1 = item1.message;
+     var patt = /:\)/g;
+      if(patt.test(text1)){
+       	  var texts = text1.split(/:\)/g);
+          var content = [];
+          for(var i = 0; i < texts.length - 1; i++) {
+      	      content.push(texts[i]);
+              content.push(<img src={Emojis[0].uri}/>);
+             }
+            return content.map(function(emoji) {
+               return (<span> {emoji} </span>)
+               }.bind(this));
+          }
+          else {
+            return item1.message;
+          }
+
     },
 
 
@@ -80,7 +88,7 @@ const PaperExampleSimple =React.createClass({
           return (<ListItem
               leftAvatar={<Avatar src="profile pic" />}
               primaryText={item.user1}
-              secondaryText={item.message}
+              secondaryText={this.test(item)}
               secondaryTextLines={2}
           />
           );

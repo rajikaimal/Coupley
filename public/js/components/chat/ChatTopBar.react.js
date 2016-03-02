@@ -1,6 +1,7 @@
 import React from 'react';
 import SelectField from 'material-ui/lib/select-field';
 import MenuItem from 'material-ui/lib/menus/menu-item';
+import Toggle from 'material-ui/lib/toggle';
 import ThreadStore from '../../stores/ThreadStore';
 import ThreadActions from '../../actions/Thread/ThreadActions';
 import LoginStore from '../../stores/LoginStore';
@@ -10,6 +11,15 @@ const t1={
   paddingLeft:10,
   backgroundColor:'green',
 }
+
+const styles = {
+  block: {
+    maxWidth: 20,
+  },
+  toggle: {
+    marginBottom: 1,
+  },
+};
 
 const SelectFieldExampleSimple= React.createClass({
 
@@ -46,8 +56,17 @@ handleChange:function(event, index, value){
 
 },
 
+toglechanged:function(){
+
+// if(this.Toggle.isToggled()){
+//     console.log("togle unaaaa!");
+// }
+
+},
+
   render:function() {
     return (
+    <div>
       <div className="pull-left" style={t1}>
         <SelectField value={this.state.value} onChange={this.handleChange}>
          <MenuItem value={1} primaryText="Tiffany"/>
@@ -56,6 +75,9 @@ handleChange:function(event, index, value){
          <MenuItem value={4} primaryText="Select name"/>
         </SelectField>
       </div>
+
+      <Toggle style={styles.toggle} />
+    </div>
     );
   }
 });
