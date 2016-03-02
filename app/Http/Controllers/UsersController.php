@@ -66,7 +66,7 @@ class UsersController extends Controller
             if ($this->CheckInternet()) {
             $admin = User::where('email', $email)->first();
                 if ($admin) {
-                    $newpwd = $this->random_str(10);
+                    $newpwd = $this->random_str();
                     $pwdHashed = \Hash::make($newpwd);
                     \DB::table('users')->where('email', $email)->update(['password' => $pwdHashed]);
 
@@ -86,15 +86,20 @@ class UsersController extends Controller
         }
     }
 
-    public function random_str($length, $keyspace = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
+    public function random_str()
     {
-        $str = '';
-        $max = mb_strlen($keyspace, '8bit') - 1;
-        for ($i = 0; $i < $length; ++$i) {
-            $str .= $keyspace[random_int(0, $max)];
+        $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        $newpwd = '';
+        for ($i = 0; $i <= 10; $i++) {
+            $newpwd .= $characters[rand(0, strlen($characters) - 1)];
         }
-
-        return $str."a1A";
+        $characters = '0123456789';
+        $randNum = 0;
+        for ($i = 0; $i <= 5; $i++) {
+            $randNum .= $characters[rand(0, strlen($characters) - 1)];
+        }
+        $newpwd = $newpwd.$randNum;
+        return $newpwd;
     }
 
     public function SendMail($email, $user, $pwd)
