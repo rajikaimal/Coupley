@@ -28,7 +28,7 @@ var ThreadAction = {
             previousmessage: response.pmessage
           });
       }
-      else if (response.status == 505) {
+      else if (response.status == 200 && response.pmessage == "") {
             console.log('Error 505');
       }
     });
@@ -63,10 +63,10 @@ var ThreadAction = {
 
 
  getlikedusers:function(request){
-    $.get('/api/getlikedusers' , function(response) {
+    $.get('/api/getlikedusers?user1='+ request.user1 , function(response) {
       if (response.status == 200) {
             AppDispatcher.handleViewAction({
-            actionType:ThreadConstants.RETRIVEOLD,
+            actionType:ThreadConstants.RETRIVELIKED,
             listoflikedusers: response.llist
           });
       }
@@ -77,6 +77,18 @@ var ThreadAction = {
 
  },
 
+ block: function(visitor, username) {
+   let data = {
+     visitorusername: visitor,
+     username: username
+   };
+   $.post('api/blockuser', data, function(response) {
+
+     if(response.status == 200) {
+       document.location = "/#/";
+     }
+  });
+ }
 
 
 };

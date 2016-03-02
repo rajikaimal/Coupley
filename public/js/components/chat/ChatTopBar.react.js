@@ -5,7 +5,7 @@ import Toggle from 'material-ui/lib/toggle';
 import ThreadStore from '../../stores/ThreadStore';
 import ThreadActions from '../../actions/Thread/ThreadActions';
 import LoginStore from '../../stores/LoginStore';
-
+import RaisedButton from 'material-ui/lib/raised-button';
 
 const t1={
   paddingLeft:10,
@@ -21,11 +21,15 @@ const styles = {
   },
 };
 
+const toggleDiv = {
+    float: 'right'
+};
+
 const SelectFieldExampleSimple= React.createClass({
 
 getInitialState: function(){
       return {
-      results:ThreadStore.getlikedusers(),
+      results:[''],
       value:4
   };
 },
@@ -34,7 +38,10 @@ componentDidMount: function() {
   let likedusers={
     user1:LoginStore.getFirstname()
   }
-   ThreadActions.getlikedusers(likedusers);
+  console.log('ádsadsaddas');
+  console.log(LoginStore.getFirstname());
+  ThreadActions.getlikedusers(likedusers);
+
 },
 
 _onChange: function() {
@@ -51,32 +58,46 @@ LikedUsers:function(){
 
 
 handleChange:function(event, index, value){
+  localStorage.setItem('chatname', value);
+  this.setState({
+    value: value
+  })
+},
 
-   this.setState({value});
+togglechanged:function(e, value){
+
+   if(value){
+    console.log("togle unaaaa!");
+ }
 
 },
 
-toglechanged:function(){
-
-// if(this.Toggle.isToggled()){
-//     console.log("togle unaaaa!");
-// }
-
+_blockUser: function() {
+  ThreadActions.block(localStorage.getItem('chatname'), localStorage.getItem('user'));
 },
 
   render:function() {
     return (
+
     <div>
       <div className="pull-left" style={t1}>
         <SelectField value={this.state.value} onChange={this.handleChange}>
-         <MenuItem value={1} primaryText="Tiffany"/>
-         <MenuItem value={2} primaryText="Alo"/>
-         <MenuItem value={3} primaryText="Chris"/>
-         <MenuItem value={4} primaryText="Select name"/>
+        {
+            this.state.results.map(item => {
+              return(
+                <MenuItem value={item.user2} primaryText={item.user2} />
+              )
+           })
+        }
         </SelectField>
       </div>
 
-      <Toggle style={styles.toggle} />
+
+
+      <div style={toggleDiv}>
+        <RaisedButton label="Primary" primary={true} onClick={this._blockUser}/>
+        <Toggle style={styles.toggle} onToggle={this.togglechanged} />
+      </div>
     </div>
     );
   }

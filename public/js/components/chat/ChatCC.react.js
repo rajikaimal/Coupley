@@ -31,7 +31,7 @@ const CC= React.createClass({
 
     _sendmessage: function() {
         let message = this.refs.message2.getValue();
-        let User2 = this.refs.message1.getValue();
+        let User2 = localStorage.getItem('chatname');
         let Eml = LoginStore.getEmail();
       let chat = {
           message: message,
