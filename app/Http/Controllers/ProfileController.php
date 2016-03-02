@@ -373,7 +373,7 @@ class ProfileController extends Controller
         $username = $request->username;
         try {
             $email = User::where('username', $username)->get(['email']);
-            $results = Post::where('email', $email[0]->email)->limit(4)->get();
+            $results = Post::where('email', $email[0]->email)->orderBy('created_at','desc')->get();
             if (! $results->isEmpty()) {
                 return response()->json(['status' => 200, 'posts' => $results], 200);
             } else {
