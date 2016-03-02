@@ -15,7 +15,7 @@ class UsersController extends Controller
                 return response()->json(['users' => $users, 'status' => 200], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 300], 300);
         }
     }
 
@@ -26,7 +26,7 @@ class UsersController extends Controller
                 return response()->json(['users' => $users, 'status' => 200], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 300], 300);
         }
     }
 
@@ -41,7 +41,7 @@ class UsersController extends Controller
                 return response()->json(['status' => 201], 201);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 404], 404);
+            return response()->json(['status' => 300], 300);
         }
     }
 
@@ -53,7 +53,7 @@ class UsersController extends Controller
                 return response()->json(['status' => 201], 201);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 404], 404);
+            return response()->json(['status' => 300], 300);
         }
     }
 
@@ -61,51 +61,48 @@ class UsersController extends Controller
     {
         $email = $request->email;
         try {
-            $admin = User::where('email', $email)->first();
-            if ($admin) {
-                $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-                $newpwd = '';
-                for ($i = 0; $i <= 10; $i++) {
-                    $newpwd .= $characters[rand(0, strlen($characters) - 1)];
+            if ($this->CheckInternet()) {
+                $admin = User::where('email', $email)->first();
+                if ($admin) {
+                    $newpwd = $this->random_str();
+                    $pwdHashed = \Hash::make($newpwd);
+                    \DB::table('users')->where('email', $email)->update(['password' => $pwdHashed]);
+                    if ($this->SendMail($email, $admin->firstname, $newpwd)) {
+                        return response()->json(['status' => 207], 207);
+                    } else {
+                        return response()->json(['status' => 204], 204);
+                    }
+                }else{
+                    return response()->json(['status' => 202], 202);
                 }
-                $characters = '0123456789';
-                $randNum = 0;
-
-                for ($i = 0; $i <= 5; $i++) {
-                    $randNum .= $characters[rand(0, strlen($characters) - 1)];
-                }
-                $newpwd = $newpwd.$randNum;
-                //$newpwd = $this->random_str(10);
-                $pwdHashed = \Hash::make($newpwd);
-                \DB::table('users')->where('email', $email)->update(['password' => $pwdHashed]);
-
-                if ($this->SendMail($email, $admin->firstname, $newpwd)) {
-                    return response()->json(['status' => 400], 400);
-                } else {
-                    return response()->json(['status' => 200], 200);
-                }
+            }else{
+                return response()->json(['status' => 203], 203);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 201], 201);
+            return response()->json(['status' => 300], 300);
         }
     }
 
-    public function random_str($length, $keyspace = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
+    public function random_str()
     {
-        $str = '';
-        $max = mb_strlen($keyspace, '8bit') - 1;
-        for ($i = 0; $i < $length; ++$i) {
-            $str .= $keyspace[random_int(0, $max)];
+        $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        $newpwd = '';
+        for ($i = 0; $i <= 10; $i++) {
+            $newpwd .= $characters[rand(0, strlen($characters) - 1)];
         }
-
-        return $str;
+        $characters = '0123456789';
+        $randNum = 0;
+        for ($i = 0; $i <= 5; $i++) {
+            $randNum .= $characters[rand(0, strlen($characters) - 1)];
+        }
+        $newpwd = $newpwd.$randNum;
+        return $newpwd;
     }
 
     public function SendMail($email, $user, $pwd)
     {
         $mail = new PHPMailer(true);
         try {
-            $mail->SMTPDebug = 1;                               // Enable verbose debug output
             $mail->isSMTP();                                      // Set mailer to use SMTP
             $mail->Host = 'ssl://smtp.gmail.com';  // Specify main and backup SMTP servers
             $mail->SMTPAuth = true;                               // Enable SMTP authentication
@@ -123,10 +120,10 @@ class UsersController extends Controller
             $mail->Body = 'Dear '.$user.', your new password is '.$pwd;
             $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
             $mail->send();
-            echo 'Message sent!';
+            return true;
         } catch (phpmailerException $e) {
-            echo 'Please Check Your internet connection'; //Pretty error messages from PHPMailer
-               // return false;
+            //echo 'Please Check Your internet connection'; //Pretty error messages from PHPMailer
+            return false;
         } catch (Exception $e) {
             echo $e->getMessage(); //Boring error messages from anything else!
         }
@@ -140,7 +137,17 @@ class UsersController extends Controller
 
             return response()->json(['admin' => $admindetails, 'status' => 200]);
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 300], 300);
+        }
+    }
+    public function CheckInternet(){
+        if (!$sock = @fsockopen('www.google.com', 80)){
+            //echo 'offline';
+            return false;
+        }
+        else {
+            //echo 'OK';
+            return true;
         }
     }
 }
