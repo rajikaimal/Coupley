@@ -23,9 +23,6 @@ class SearchController extends Controller
             if ($orientation == 'straight' && $gender == 'female') {
                 if (
 
-                 
-
-                 
                     $users = \DB::select(\DB::raw("
             SELECT id,firstname,lastname,username,gender,profilepic from(
     SELECT id,firstname, lastname,username,orientation,gender,profilepic,role FROM `users` WHERE        
@@ -40,7 +37,7 @@ class SearchController extends Controller
 
                     ) {
                     return response()->json(['users' => $users, 'status' => 201], 201);
-                } elseif($users == null) {
+                } elseif ($users == null) {
                     return response()->json(['users' => null, 'status' => 200], 200);
                 }
             } elseif ($orientation == 'straight' && $gender == 'male') {
