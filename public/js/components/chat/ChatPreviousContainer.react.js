@@ -51,20 +51,22 @@ const PreviousChatContainer=React.createClass({
         user1:LoginStore.getFirstname(),
         user2:ThisUser,
      }
-    // ThreadActions.getseachconv(ToSearch);
-     {this.SearchResult(ToSearch)}
+
+      ThreadActions.getseachconv(ToSearch);
+
+       {this.SearchResult()}
    },
 
      EnterKey(e){
         if (e.key ==='Enter') {
-
+        console.log("enter una");
                {this.SearchConv()}
         }
      },
 
-   SearchResult:function(req){
-      console.log("menna request eka "+req);
-     this.setState({results:ThreadActions.getseachconv(req)});
+   SearchResult:function(){
+
+     this.setState({results:ThreadStore.getsearchconv()});
      return this.state.results.map((result) => {
          return (<PreviousChat key={result.id} id={result.id} firstname={result.user2} message={result.message} created_at={result.created_at}/>);
      });

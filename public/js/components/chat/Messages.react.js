@@ -82,7 +82,7 @@ const PaperExampleSimple =React.createClass({
       <Paper style={style} zDepth={1}>
       <div>
     {
-
+    
       this.state.threads.map(item => {
 
           return (<ListItem
@@ -94,6 +94,7 @@ const PaperExampleSimple =React.createClass({
           );
 
       })
+
     }
       </div>
       </Paper>

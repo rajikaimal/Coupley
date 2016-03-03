@@ -39,7 +39,7 @@ var ThreadStore = assign({}, EventEmitter.prototype, {
          return LikedUsers;
 
     },
-    savesearchconv:function(results){
+    saveSearchConv:function(results){
          SearchList=results;
 
     },
@@ -61,7 +61,7 @@ AppDispatcher.register(function (payload) {
             ThreadStore.emitChange();
             break;
         case(ThreadConstants.SEARCHMSGLIST):
-            ThreadStore.savesearchconv(payload.action.seacrhconvlist);
+            ThreadStore.saveSearchConv(payload.action.seacrhconvlist);
             ThreadStore.emitChange();
             break;
 

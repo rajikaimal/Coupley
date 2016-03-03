@@ -87,7 +87,7 @@ else if (response.status==404) {
 },
 
 getseachconv:function(request){
-   $.get('/api/getsearchconv?user1='+request.user1+'& user2='+request.user2, function(response) {
+   $.get('/api/getsearchconv?user1='+request.user1+'&user2='+request.user2, function(response) {
      if (response.status == 200) {
            AppDispatcher.handleViewAction({
            actionType:ThreadConstants.SEARCHMSGLIST,
