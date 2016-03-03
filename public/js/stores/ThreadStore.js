@@ -8,64 +8,69 @@ var CHAT_EVENT = 'change';
 var Thread = [];
 var PreviousThread = [];
 var LikedUsers;
-var SearchList;
+var SearchList = [];
 
 var ThreadStore = assign({}, EventEmitter.prototype, {
 
-    getmessages: function () {
-        return Thread;
+  getmessages: function () {
+      return Thread;
     },
-    savemessage: function (data) {
-        Thread.push(data);
-    },
-    emitChange: function () {
-        this.emit(CHAT_EVENT);
-    },
-    addChangeListener: function (callback) {
-        this.on(CHAT_EVENT, callback);
-    },
-    getpreviousmessage:function(){
-         return PreviousThread;
 
+  savemessage: function (data) {
+      Thread.push(data);
     },
-    savepreviousmessage:function(results){
-         PreviousThread=results;
-    },
-    savelikedusers:function(results){
-         LikedUsers=results;
 
+  emitChange: function () {
+      this.emit(CHAT_EVENT);
     },
-    getlikedusers:function(){
-         return LikedUsers;
 
+  addChangeListener: function (callback) {
+      this.on(CHAT_EVENT, callback);
     },
-    saveSearchConv:function(results){
-         SearchList=results;
 
+  getpreviousmessage:function () {
+    return PreviousThread;
+  },
+
+  savepreviousmessage:function (results) {
+    PreviousThread = results;
+  },
+
+  savelikedusers:function (results) {
+      LikedUsers = results;
     },
-    getsearchconv:function(){
-         return SearchList;
+
+  getlikedusers:function () {
+      return LikedUsers;
+    },
+
+  saveSearchConv:function (results) {
+    SearchList = results;
+  },
+
+  getsearchconv:function () {
+      return SearchList;
 
     },
 
 });
 
 AppDispatcher.register(function (payload) {
-    switch (payload.action.actionType) {
-        case(ThreadConstants.RETRIVEOLD):
-            ThreadStore.savepreviousmessage(payload.action.previousmessage);
-            ThreadStore.emitChange();
-            break;
-        case(ThreadConstants.RETRIVELIKED):
-            ThreadStore.savelikedusers(payload.action.listoflikedusers);
-            ThreadStore.emitChange();
-            break;
-        case(ThreadConstants.SEARCHMSGLIST):
-            ThreadStore.saveSearchConv(payload.action.seacrhconvlist);
-            ThreadStore.emitChange();
-            break;
+  switch (payload.action.actionType) {
+    case (ThreadConstants.RETRIVEOLD):
+      ThreadStore.savepreviousmessage(payload.action.previousmessage);
+      ThreadStore.emitChange();
+      break;
+    case (ThreadConstants.RETRIVELIKED):
+      ThreadStore.savelikedusers(payload.action.listoflikedusers);
+      ThreadStore.emitChange();
+      break;
+    case (ThreadConstants.SEARCHMSGLIST):
+      ThreadStore.saveSearchConv(payload.action.seacrhconvlist);
+      ThreadStore.emitChange();
+      break;
 
-    }
+  }
 });
 
 module.exports = ThreadStore;

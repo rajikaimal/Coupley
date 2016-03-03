@@ -11,7 +11,6 @@ import MenuItem from 'material-ui/lib/menus/menu-item';
 import ThreadActions from '../../actions/Thread/ThreadActions';
 import ThreadStore from '../../stores/ThreadStore';
 
-
 const iconButtonElement = (
   <IconButton
     touch={true}
@@ -22,33 +21,25 @@ const iconButtonElement = (
   </IconButton>
 );
 
+const ListStyle = {
+  width: 300,
+};
 
+const PreviousChat = React.createClass({
 
-const ListStyle={
-  width: 300
-}
-
-
-
-const PreviousChat=React.createClass({
-
-
-
-
-
-      deleteconvo:function(){
-           var user2=this.props.firstname;
-           let deleteM={
-             user2:user2
+  deleteconvo:function () {
+    var user2 = this.props.firstname;
+    let deleteM = {
+             user2:user2,
            };
-          ThreadActions.deleteM(deleteM);
-          console.log("Done deleting!");
+    ThreadActions.deleteM(deleteM);
+    console.log('Done deleting!');
+  },
 
-      },
-        render:function(){
-           return(
+  render:function () {
+          return (
              <List style={ListStyle}>
-                 <ListItem leftAvatar={<Avatar src="http://vignette1.wikia.nocookie.net/family-guy-fanverse/images/d/d7/Stewie-griffin.gif/revision/latest?cb=20140215140724" />}
+                 <ListItem leftAvatar={<Avatar src="http://vignette1.wikia.nocookie.net/family-guy-fanverse/images/d/d7/Stewie-griffin.gif/revision/latest?cb=20140215140724" /> }
                    rightIconButton={
                      <IconMenu iconButtonElement={iconButtonElement}>
                        <MenuItem primaryText="Delete" onClick={this.deleteconvo}/>
@@ -57,16 +48,16 @@ const PreviousChat=React.createClass({
                    primaryText={this.props.firstname}
                   secondaryText={
                     <p>
-                  <span style={{color: Colors.darkBlack}}>{this.props.message}</span><br/>
-                  {this.props.created_at}
+                  <span style={ { color: Colors.darkBlack } }>{this.props.message}</span><br/>
+                  { this.props.created_at }
                     </p>
                 }
               secondaryTextLines={2}/>
 
      <Divider inset={false} />
             </List>
-           )
-        }
+          );
+        },
 });
 
 export default PreviousChat;
