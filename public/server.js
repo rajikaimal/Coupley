@@ -29,49 +29,49 @@ io.on('connection', function (socket) {
       console.log(connectedUser);
       console.log("Logged User's Name :" + socket.username);
 
+      socket.on('LoggedUserEmail', function (data) {
+
+        connection.query("SELECT id FROM users WHERE email='" + data + "' ", function (err, result) {
+          var ID = result[0].id;
+          console.log('Logged users ID :' + ID);
+          connection.query("SELECT user2 FROM liked WHERE likeduser='" + ID + "' or gotliked ='" + ID + "' and 	likeback=1 ", function (err, result) {
+            for (var i = 0; i < result.length; i++) {
+              Likedusers[i] = result[i].user2;
+            }
+
+            console.log('List of users liked by this user :' + Likedusers);
+
+            var arr = Likedusers.concat(Object.keys(connectedUser));
+            console.log(arr);
+            var sortedArr = arr.sort();
+            console.log(sortedArr);
+            var resultz = [];
+            for (var i = 0; i < arr.length - 1; i++) {
+              if (sortedArr[i + 1] == sortedArr[i]) {
+                resultz.push(sortedArr[i]);
+              }
+            }
+
+            console.log(resultz);
+
+            io.sockets.connected[connectedUser[socket.username]].emit('chatList', { Userlist:resultz });
+            console.log('Liked list sent to ' + socket.username);
+          });
+
+        });
+
+      });
+
     }else {
       console.log(data + 'Logged again!');
 
     }
   });
 
-  socket.on('LoggedUserEmail', function (data) {
-
-    connection.query("SELECT id FROM users WHERE email='" + data + "' ", function (err, result) {
-      var ID = result[0].id;
-      console.log('Logged users ID :' + ID);
-      connection.query("SELECT user2 FROM liked WHERE likeduser='" + ID + "' or gotliked ='" + ID + "' and 	likeback=1 ", function (err, result) {
-        for (var i = 0; i < result.length; i++) {
-          Likedusers[i] = result[i].user2;
-        }
-
-        console.log('List of users liked by this user :' + Likedusers);
-
-        var arr = Likedusers.concat(Object.keys(connectedUser));
-        console.log(arr);
-        var sortedArr = arr.sort();
-        console.log(sortedArr);
-        var resultz = [];
-        for (var i = 0; i < arr.length - 1; i++) {
-          if (sortedArr[i + 1] == sortedArr[i]) {
-            resultz.push(sortedArr[i]);
-          }
-        }
-
-        console.log(resultz);
-
-        io.sockets.connected[connectedUser[socket.username]].emit('chatList', { Userlist:resultz });
-        console.log('Liked list sent to ' + socket.username);
-      });
-
-    });
-
-  });
-
-  app.get('/threads/list', function (req, res) {
-
-    res.json(connectedUser);
-  });
+  // app.get('/threads/list', function (req, res) {
+  //
+  //   res.json(connectedUser);
+  // });
 
   socket.on('error', function () {
       throw new Error('Error occured!');

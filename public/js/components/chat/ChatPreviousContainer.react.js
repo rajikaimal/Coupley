@@ -9,6 +9,8 @@ import ThreadActions from '../../actions/Thread/ThreadActions';
 import ThreadStore from '../../stores/ThreadStore';
 import LoginStore from '../../stores/LoginStore';
 
+var SearchCeck = true;
+
 const ListStyle = {
   width: 300,
   height:635,
@@ -37,7 +39,11 @@ const PreviousChatContainer = React.createClass({
   },
 
   _onChange: function () {
-    this.setState({ results:ThreadStore.getpreviousmessage(initMessagges) });
+    if (SearchCeck) {
+      this.setState({ results:ThreadStore.getpreviousmessage(initMessagges) });
+    } else if (!SearchCeck) {
+      this.setState({ results:ThreadStore.getsearchconv() });
+    }
   },
 
   previousMList: function () {
@@ -49,20 +55,26 @@ const PreviousChatContainer = React.createClass({
   SearchConv:function () {
 
     let ThisUser = this.refs.SearchM.getValue();
+
     let ToSearch = {
       user1:LoginStore.getFirstname(),
       user2:ThisUser,
     };
-
-    ThreadActions.getseachconv(ToSearch);
+    if (ThisUser != null) {
+      SearchCeck = false;
+      ThreadActions.getseachconv(ToSearch);
+    }else if (ThisUser == '*') {
+      SearchCeck = true;
+      this.setState({ results:ThreadStore.getpreviousmessage(initMessagges) });
+    }
 
     {this.SearchResult();}
   },
 
   EnterKey(e) {
     if (e.key === 'Enter') {
-      console.log("enter una");
-      {this.SearchConv()}
+      console.log('enter una');
+      {this.SearchConv();}
     }
   },
 
