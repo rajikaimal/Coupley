@@ -21,7 +21,14 @@ class AdminAuthenticateController extends Controller
 
         return $admins;
     }
-
+    /**
+     * authenticates whether user is a administrator or not,
+     *  if user is a administrator, then jwt { jason web token } will be created
+     * @param string        $someString
+     *
+     *
+     * @return string
+     */
     public function authenticate(Request $request)
     {
         $email=$request->email;

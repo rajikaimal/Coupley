@@ -8,6 +8,13 @@ use PHPMailer;
 
 class FeedbackController extends Controller
 {
+    /**
+     * uses to retrive feedbacks regarding
+     *the timeline
+     *
+     *
+     * @return string
+     */
     public function timeline()
     {
         try {
@@ -18,7 +25,13 @@ class FeedbackController extends Controller
             return response()->json(['status' => 300], 300);
         }
     }
-
+    /**
+     * uses to retrive feedbacks regarding
+     *the activityfeed
+     *
+     *
+     * @return string
+     */
     public function activityFeed()
     {
         try {
@@ -29,7 +42,13 @@ class FeedbackController extends Controller
             return response()->json(['status' => 300], 300);
         }
     }
-
+    /**
+     * uses to retrive feedbacks regarding
+     *the privacy
+     *
+     *
+     * @return string
+     */
     public function privacy()
     {
         try {
@@ -40,7 +59,13 @@ class FeedbackController extends Controller
             return response()->json(['status' => 300], 300);
         }
     }
-
+    /**
+     * uses to retrive feedbacks regarding
+     *the chat
+     *
+     *
+     * @return string
+     */
     public function chat()
     {
         try {
@@ -51,7 +76,13 @@ class FeedbackController extends Controller
             return response()->json(['status' => 300], 300);
         }
     }
-
+    /**
+     * uses to retrive feedbacks regarding
+     *the other options
+     *
+     *
+     * @return string
+     */
     public function other()
     {
         try {
@@ -62,7 +93,13 @@ class FeedbackController extends Controller
             return response()->json(['status' => 300], 300);
         }
     }
-
+    /**
+     * uses to mark whether feedback is done
+     *
+     *@param string        $someString
+     *
+     * @return string
+     */
     public function markfeed(Request $request)
     {
         $id = $request->id;

@@ -8,10 +8,19 @@ use PHPMailer;
 
 class UsersController extends Controller
 {
+    /**
+     * friends uses to retrieve reported user data
+     *
+     *
+     * @return string
+     */
     public function friends()
     {
         try {
-            if ($users = \DB::select('SELECT r.id as rowId, CONCAT(u1.firstname,"",u1.lastname) AS user, CONCAT(u2.firstname,"",u2.lastname) AS reported, u2.profilepic,r.description,r.reported_user_id FROM reported r JOIN users AS u1 ON r.user_id = u1.id JOIN users AS u2 ON r.reported_user_id= u2.id where r.status="pending"')) {
+            if ($users = \DB::select('SELECT r.id as rowId, CONCAT(u1.firstname,"",u1.lastname) AS user,
+                          CONCAT(u2.firstname,"",u2.lastname) AS reported, u2.profilepic,r.description,
+                          r.reported_user_id FROM reported r JOIN users AS u1 ON r.user_id = u1.id JOIN
+                          users AS u2 ON r.reported_user_id= u2.id where r.status="pending"')) {
                 return response()->json(['users' => $users, 'status' => 200], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
@@ -19,6 +28,12 @@ class UsersController extends Controller
         }
     }
 
+    /**
+     * blocked uses to retrieve blocked user data
+     *
+     *
+     * @return string
+     */
     public function blocked()
     {
         try {
@@ -30,6 +45,14 @@ class UsersController extends Controller
         }
     }
 
+    /**
+     * block uses to block reported users
+     *
+     * @param id        $someInt
+     * @param rowId     $someInt
+     *
+     * @return string
+     */
     public function block(Request $request)
     {
         $id = $request->id;
@@ -44,7 +67,13 @@ class UsersController extends Controller
             return response()->json(['status' => 300], 300);
         }
     }
-
+    /**
+     * Unblock uses to unblock blocked users
+     *
+     * @param id        $someInt
+     *
+     * @return string
+     */
     public function Unblock(Request $request)
     {
         $id = $request->id;
@@ -57,6 +86,13 @@ class UsersController extends Controller
         }
     }
 
+    /**
+     * recover uses to recover password,
+     * when user forgot the password
+     * @param email        $someString
+     *
+     * @return string
+     */
     public function recover(Request $request)
     {
         $email = $request->email;
@@ -64,7 +100,7 @@ class UsersController extends Controller
             if ($this->CheckInternet()) {
                 $admin = User::where('email', $email)->where('role', 'admin')->first();
                 if ($admin) {
-                    $newpwd = $this->random_str();
+                    $newpwd = $this->randomStr();
                     $pwdHashed = \Hash::make($newpwd);
                     \DB::table('users')->where('email', $email)->update(['password' => $pwdHashed]);
                     if ($this->SendMail($email, $admin->firstname, $newpwd)) {
@@ -82,8 +118,14 @@ class UsersController extends Controller
             return response()->json(['status' => 300], 300);
         }
     }
-
-    public function random_str()
+    /**
+     * randomStr uses to generate new password,
+     * when user forgot the password
+     *
+     *
+     * @return string
+     */
+    public function randomStr()
     {
         $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
         $newpwd = '';
@@ -98,7 +140,11 @@ class UsersController extends Controller
         $newpwd = $newpwd.$randNum;
         return $newpwd;
     }
-
+    /**
+     * SendMail uses to send a mail
+     * to the users
+     * @return bool
+     */
     public function SendMail($email, $user, $pwd)
     {
         $mail = new PHPMailer(true);
@@ -128,7 +174,13 @@ class UsersController extends Controller
             echo $e->getMessage(); //Boring error messages from anything else!
         }
     }
-
+    /**
+     * Adminprofile uses to retrieve,
+     * logged in administrator's data
+     *
+     *
+     * @return string
+     */
     public function Adminprofile(Request $request)
     {
         $email = $request->email;
@@ -140,6 +192,13 @@ class UsersController extends Controller
             return response()->json(['status' => 300], 300);
         }
     }
+    /**
+     * CheckInternet uses to check,
+     * whether internet is connected.
+     *
+     *
+     * @return bool
+     */
     public function CheckInternet(){
         if (!$sock = @fsockopen('www.google.com', 80)){
             //echo 'offline';
