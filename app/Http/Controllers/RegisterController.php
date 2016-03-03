@@ -9,6 +9,7 @@
 | @author Rajika Imal
 |
 */
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -18,13 +19,13 @@ use App\About;
 class RegisterController extends Controller
 {
     /**
-     * checks whether user already exists
+     * checks whether user already exists.
      *
      * @param object        $request
-     * 
+     *
      *
      * @return json
-    */
+     */
     public function check(Request $request)
     {
         $email = $request->email;
@@ -64,14 +65,15 @@ class RegisterController extends Controller
             return response()->json(['status' => 505], 505);
         }
     }
+
     /**
-     * matches username from request and sql values
+     * matches username from request and sql values.
      *
      * @param object        $request
-     * 
+     *
      *
      * @return json
-    */
+     */
     public function checkusername(Request $request)
     {
         $username = $request->username;
@@ -86,14 +88,15 @@ class RegisterController extends Controller
             return response()->json(['status' => 505], 505);
         }
     }
+
     /**
-     * checks email from request exists or not
+     * checks email from request exists or not.
      *
      * @param object        $request
-     * 
+     *
      *
      * @return json
-    */
+     */
     public function checkemail(Request $request)
     {
         $email = $request->email;

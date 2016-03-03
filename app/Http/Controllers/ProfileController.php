@@ -9,6 +9,7 @@
 | @author Rajika Imal
 |
 */
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -23,25 +24,26 @@ use Illuminate\Http\Exception;
 class ProfileController extends Controller
 {
     /**
-     * Constructor uses JWT middleware to check whether request contains api-token
+     * Constructor uses JWT middleware to check whether request contains api-token.
      *
      * @param string        $someString
      * @param int           $someInt
      *
      * @return void
-    */
+     */
     public function __construct()
     {
         $this->middleware('jwt.auth');
     }
+
     /**
-     * get profile data for profile of each user profile
+     * get profile data for profile of each user profile.
      *
      * @param object        $request
-     * 
+     *
      *
      * @return json
-    */
+     */
     public function profile(Request $request)
     {
         $email = $request->email;
@@ -53,14 +55,15 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
-     * get profile pics for the user profiles
+     * get profile pics for the user profiles.
      *
      * @param object        $request
-     * 
+     *
      *
      * @return json
-    */
+     */
     public function getProfilePic(Request $request)
     {
         $username = $request->username;
@@ -71,14 +74,15 @@ class ProfileController extends Controller
         } catch (Illuminate\Database\QueryException $e) {
         }
     }
+
     /**
-     * get like status of a visitor's profile
+     * get like status of a visitor's profile.
      *
      * @param object        $request
-     * 
+     *
      *
      * @return json
-    */
+     */
     public function getlikestatus(Request $request)
     {
         $visitorUsername = $request->visitorusername;
@@ -96,14 +100,15 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
-     * get visitor profile data
+     * get visitor profile data.
      *
      * @param object        $request
-     * 
+     *
      *
      * @return json
-    */
+     */
     public function visitor(Request $request)
     {
         $username = $request->username;
@@ -117,14 +122,15 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
-     * add like to visitor's profile, handles POST request
+     * add like to visitor's profile, handles POST request.
      *
      * @param object        $request
-     * 
+     *
      *
      * @return json
-    */
+     */
     public function like(Request $request)
     {
         $likedUsername = $request->likedUsername;
@@ -156,14 +162,15 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
-     * unlike a visitor's profile handles POST request
+     * unlike a visitor's profile handles POST request.
      *
      * @param object        $request
-     * 
+     *
      *
      * @return json
-    */
+     */
     public function unlike(Request $request)
     {
         $unlikedUsername = $request->unlikedUsername;
@@ -187,15 +194,16 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
      * get liked back status to determine whether user and visitor have liked
-     * each other
+     * each other.
      *
      * @param object        $request
-     * 
+     *
      *
      * @return json
-    */
+     */
     public function likedbackstatus(Request $request)
     {
         $username = $request->username;
@@ -205,7 +213,7 @@ class ProfileController extends Controller
             $result = Likes::where('user1', $visitorUsername)
                     ->where('user2', $username)->get();
 
-            if (!$result->isEmpty()) {
+            if (! $result->isEmpty()) {
                 return response()->json(['liked' => true], 200);
             } else {
                 return response()->json(['liked' => false], 200);
@@ -214,14 +222,15 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
-     * get block status of visitor
+     * get block status of visitor.
      *
      * @param object        $request
-     * 
+     *
      *
      * @return json
-    */
+     */
     public function blockstatus(Request $request)
     {
         $visitorUsername = $request->visitorusername;
@@ -277,14 +286,15 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
-     * get like status of a visitor's profile
+     * get like status of a visitor's profile.
      *
      * @param object        $request
-     * 
+     *
      *
      * @return json
-    */
+     */
     public function unblock(Request $request)
     {
         $visitorUsername = $request->visitorusername;
@@ -306,14 +316,15 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
-     * get profile permission
+     * get profile permission.
      *
      * @param object        $request
-     * 
+     *
      *
      * @return json
-    */
+     */
     public function profilepermission(Request $request)
     {
         $visitorUsername = $request->visitorusername;
@@ -337,14 +348,15 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
-     * get activity feed of a user
+     * get activity feed of a user.
      *
      * @param object        $request
-     * 
+     *
      *
      * @return json
-    */
+     */
     public function getposts(Request $request)
     {
         $username = $request->username;
@@ -361,14 +373,15 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
-     * upload profile pic of a user
+     * upload profile pic of a user.
      *
      * @param object        $request
-     * 
+     *
      *
      * @return json
-    */
+     */
     public function uploadpic(Request $request)
     {
         $destination = 'img/profilepics';
@@ -381,19 +394,21 @@ class ProfileController extends Controller
 
             User::where('username', $username)
                 ->update(['profilepic' => $username]);
+
             return response()->json(['status' => 200, 'done' => true], 200);
         } catch (Exception $e) {
             return response()->json(['status' => 200, 'done' => false], 200);
         }
     }
+
     /**
-     * edit activity of a user
+     * edit activity of a user.
      *
      * @param object        $request
-     * 
+     *
      *
      * @return json
-    */
+     */
     public function editactivity(Request $request)
     {
         $email = $request->email;
@@ -417,26 +432,27 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
-     * get about section data
+     * get about section data.
      *
      * @param object        $request
-     * 
+     *
      *
      * @return json
-    */
+     */
     public function getabout(Request $request)
     {
-        if($email = $request->email) {
+        if ($email = $request->email) {
             try {
-            $userID = User::where('email', $email)->get(['id']);
-            $results = About::where('user_id', $userID[0]->id)->get();
+                $userID = User::where('email', $email)->get(['id']);
+                $results = About::where('user_id', $userID[0]->id)->get();
 
                 return response()->json(['status' => 200, 'data' => $results], 200);
             } catch (Illuminate\Database\QueryException $e) {
                 return response()->json(['status' => 200], 200);
-            }    
-        } elseif($visitorUsername = $request->visitorusername) {
+            }
+        } elseif ($visitorUsername = $request->visitorusername) {
             try {
                 $userID = User::where('username', $visitorUsername)->get(['id']);
                 $results = About::where('user_id', $userID[0]->id)->get();
@@ -444,18 +460,18 @@ class ProfileController extends Controller
                 return response()->json(['status' => 200, 'data' => $results], 200);
             } catch (Illuminate\Database\QueryException $e) {
                 return response()->json(['status' => 200], 200);
-            }   
+            }
         }
-        
     }
+
     /**
-     * get posts done by a user
+     * get posts done by a user.
      *
      * @param object        $request
-     * 
+     *
      *
      * @return json
-    */
+     */
     public function getpostsX(Request $request)
     {
         $username = $request->username;
@@ -471,14 +487,15 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
-     * load more posts for pagination
+     * load more posts for pagination.
      *
      * @param object        $request
-     * 
+     *
      *
      * @return json
-    */
+     */
     public function loadMorePosts(Request $request)
     {
         $username = $request->username;
@@ -494,14 +511,15 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
-     * edit basic information
+     * edit basic information.
      *
      * @param object        $request
-     * 
+     *
      *
      * @return json
-    */
+     */
     public function editbasics(Request $request)
     {
         $firstname = $request->firstname;
@@ -517,14 +535,15 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
-     * edit summary data
+     * edit summary data.
      *
      * @param object        $request
-     * 
+     *
      *
      * @return json
-    */
+     */
     public function editsummary(Request $request)
     {
         $email = $request->email;
@@ -543,14 +562,15 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
-     * edit life data
+     * edit life data.
      *
      * @param object        $request
-     * 
+     *
      *
      * @return json
-    */
+     */
     public function editlife(Request $request)
     {
         $email = $request->email;
@@ -569,14 +589,15 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
-     * edit good at data 
+     * edit good at data.
      *
      * @param object        $request
-     * 
+     *
      *
      * @return json
-    */
+     */
     public function editgoodat(Request $request)
     {
         $email = $request->email;
@@ -595,14 +616,15 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
-     * edit thinking of data
+     * edit thinking of data.
      *
      * @param object        $request
-     * 
+     *
      *
      * @return json
-    */
+     */
     public function editthinkingof(Request $request)
     {
         $email = $request->email;
@@ -621,14 +643,15 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
-     * edit favs data
+     * edit favs data.
      *
      * @param object        $request
-     * 
+     *
      *
      * @return json
-    */
+     */
     public function editfavs(Request $request)
     {
         $email = $request->email;
