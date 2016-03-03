@@ -17,8 +17,8 @@ var ThreadAction = {
      });
   },
 
- getpreviousmessage:function(){
-    $.get('/api/getpreviousmsg' , function(response) {
+ getpreviousmessage:function(request){
+    $.get('/api/getpreviousmsg?user1='+request.user1, function(response) {
       if (response.status == 200) {
             AppDispatcher.handleViewAction({
             actionType:ThreadConstants.RETRIVEOLD,
@@ -36,27 +36,26 @@ var ThreadAction = {
 
       if(response.status==201){
 
-        $.get('/api/getpreviousmsg' , function(response) {
-
-          if (response.status == 200) {
-                AppDispatcher.handleViewAction({
-                actionType:ThreadConstants.RETRIVEOLD,
-                previousmessage: response.pmessage
+            $.get('/api/getpreviousmsg?user1='+ request.user1 , function(response) {
+                  if (response.status == 200) {
+                     AppDispatcher.handleViewAction({
+                     actionType:ThreadConstants.RETRIVEOLD,
+                     previousmessage: response.pmessage
+                        });
+                    }
+            else if (response.status == 200 && response.pmessage == "") {
+                      console.log('Error 505');
+                    }
               });
-          }
-          else if (response.status == 505) {
-                console.log('Error 505');
-          }
-        });
 
 
-      }
-      else if (response.status==404) {
+       }
+else if (response.status==404) {
           console.log("Error 404");
       }
 
-     });
- },
+    });
+  },
 
 
  getlikedusers:function(request){
@@ -88,7 +87,7 @@ var ThreadAction = {
 },
 
 getseachconv:function(request){
-   $.get('/api/getsearchconv?user1=',request.user1, function(response) {
+   $.get('/api/getsearchconv?user1='+request.user1+'& user2='+request.user2, function(response) {
      if (response.status == 200) {
            AppDispatcher.handleViewAction({
            actionType:ThreadConstants.SEARCHMSGLIST,

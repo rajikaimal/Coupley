@@ -7,6 +7,7 @@ import IconButton from 'material-ui/lib/icon-button';
 import PreviousChat from './ChatPrevious.react';
 import ThreadActions from '../../actions/Thread/ThreadActions';
 import ThreadStore from '../../stores/ThreadStore';
+import LoginStore from '../../stores/LoginStore';
 
 
 const ListStyle={
@@ -19,20 +20,24 @@ const searchconvo={
   paddingLeft:20,
 }
 
+const initMessagges={
+    user1:LoginStore.getFirstname(),
+}
+
 const PreviousChatContainer=React.createClass({
 
   getInitialState: function() {
     return {
-      results:ThreadStore.getpreviousmessage()
+      results:ThreadStore.getpreviousmessage(initMessagges)
       }
   },
   componentDidMount: function() {
     ThreadStore.addChangeListener(this._onChange);
-    ThreadActions.getpreviousmessage();
+    ThreadActions.getpreviousmessage(initMessagges);
   },
 
   _onChange: function() {
-    this.setState({results:ThreadStore.getpreviousmessage()});
+    this.setState({results:ThreadStore.getpreviousmessage(initMessagges)});
   },
   previousMList: function () {
         return this.state.results.map((result) => {
@@ -43,9 +48,11 @@ const PreviousChatContainer=React.createClass({
 
      let ThisUser = this.refs.SearchM.getValue();
      let ToSearch={
-        user:ThisUser,
+        user1:LoginStore.getFirstname(),
+        user2:ThisUser,
      }
-     ThreadActions.getseachconv(ToSearch);
+    // ThreadActions.getseachconv(ToSearch);
+     {this.SearchResult(ToSearch)}
    },
 
      EnterKey(e){
@@ -55,8 +62,9 @@ const PreviousChatContainer=React.createClass({
         }
      },
 
-   SearchResult:function(){
-
+   SearchResult:function(req){
+      console.log("menna request eka "+req);
+     this.setState({results:ThreadActions.getseachconv(req)});
      return this.state.results.map((result) => {
          return (<PreviousChat key={result.id} id={result.id} firstname={result.user2} message={result.message} created_at={result.created_at}/>);
      });

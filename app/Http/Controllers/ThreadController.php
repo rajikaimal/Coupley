@@ -17,9 +17,13 @@ class ThreadController extends Controller
         $chat->save();
     }
 
-    public function getPreviousMessage()
+    public function getPreviousMessage(Request $request)
     {
-      if ($pmessage = \DB::select("select user2,message,id from chats limit 4" )) {
+      $user1 = $request->user1;
+      if ($pmessage= \DB::select(\DB::raw("SELECT user2,message,created_at
+                                        FROM chats WHERE user2
+                                        IN (SELECT DISTINCT user2 FROM chats WHERE user2 !='".$user1."')
+                                        GROUP BY user2"))) {
        return response()->json(['pmessage' => $pmessage, 'status' => 200], 200);
    } else {
        return response()->json(['status' => 505], 505);
@@ -51,11 +55,11 @@ class ThreadController extends Controller
 
     public function getSearchConv(Request $request){
 
-      $user1 = $request->user;
-     if ($Slist= \DB::select(\DB::raw("SELECT user2,message,created_at
-                                       FROM chats WHERE user2
-                                       IN (SELECT DISTINCT user2 FROM chats WHERE user2 !='".$user1."')
-                                       GROUP BY user2")))
+      $user1 = $request->user1;
+      $user2 = $request->user2;
+     if ($Slist= \DB::select(\DB::raw("SELECT user2,message,created_at FROM
+                                      (SELECT user2,message,created_at FROM chats WHERE user2 IN (SELECT DISTINCT user2 FROM chats WHERE user2 !='".$user1."')
+                                      GROUP BY user2)tb WHERE user2='".$user2."' ")))
         {
       return response()->json(['Slist' => $Slist, 'status' => 200], 200);
   } else {
