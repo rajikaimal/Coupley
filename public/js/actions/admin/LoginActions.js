@@ -16,8 +16,9 @@ var AdminLoginActions = {
         }, 1000);
       }      else if (response.status === 203) {
         swal('Oops!', 'You are not an Administrator. Please visit WWW.COUPLEY.COM', 'error');
+      } else if (response.status === 300) {
+        swal('Something Went Wrong', 'Please try again in a moment', 'error');
       }
-
     }).fail(function () {
       document.getElementById('server-error').innerHTML = '*Invalid credentials';
     });

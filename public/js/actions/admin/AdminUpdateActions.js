@@ -16,7 +16,9 @@ var UpdateActions = {
         }, 1500);
       } else if (data.status === 203) {
         swal('Something went wrong', 'Please check your internet connection and retry', 'error');
-      } else {
+      } else if (data.status === 300) {
+        swal('Something Went Wrong', 'Please try again in a moment', 'error');
+      }else {
         swal('Error', 'An account with the same email exists already', 'error');
       }
     }).fail(function () {

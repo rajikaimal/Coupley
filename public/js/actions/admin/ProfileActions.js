@@ -11,8 +11,8 @@ var ProfileActions = {
           actionType: ProfileConstants.GETDATA,
           userdata: response.admin[0],
         });
-      } else {
-        console.log(response);
+      } else if (response.status === 300) {
+        swal('Something Went Wrong', 'Please try again in a moment', 'error');
       }
     });
   },
