@@ -1,5 +1,14 @@
 <?php
-
+/*
+|--------------------------------------------------------------------------
+| ProfileController File
+|--------------------------------------------------------------------------
+|
+| Here is where all API requests related to profile are redirected
+| by routes files in order to handle the request and @return json responses
+| @author Rajika Imal
+|
+*/
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -13,15 +22,26 @@ use Illuminate\Http\Exception;
 
 class ProfileController extends Controller
 {
+    /**
+     * Constructor uses JWT middleware to check whether request contains api-token
+     *
+     * @param string        $someString
+     * @param int           $someInt
+     *
+     * @return void
+    */
     public function __construct()
     {
-        //$this->middleware('jwt.auth');
+        $this->middleware('jwt.auth');
     }
-
-    /*
-        returns profile data for GET request
-        @return json
-    **/
+    /**
+     * get profile data for profile of each user profile
+     *
+     * @param object        $request
+     * 
+     *
+     * @return json
+    */
     public function profile(Request $request)
     {
         $email = $request->email;
@@ -33,11 +53,14 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
-
-    /*
-        returns profile picture for GET request
-        @return json
-    **/
+    /**
+     * get profile pics for the user profiles
+     *
+     * @param object        $request
+     * 
+     *
+     * @return json
+    */
     public function getProfilePic(Request $request)
     {
         $username = $request->username;
@@ -48,7 +71,14 @@ class ProfileController extends Controller
         } catch (Illuminate\Database\QueryException $e) {
         }
     }
-
+    /**
+     * get like status of a visitor's profile
+     *
+     * @param object        $request
+     * 
+     *
+     * @return json
+    */
     public function getlikestatus(Request $request)
     {
         $visitorUsername = $request->visitorusername;
@@ -66,11 +96,14 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
-
-    /*
-        returns visitor profile data for GET request
-        @return json
-    **/
+    /**
+     * get visitor profile data
+     *
+     * @param object        $request
+     * 
+     *
+     * @return json
+    */
     public function visitor(Request $request)
     {
         $username = $request->username;
@@ -84,12 +117,14 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
-
-    /*
-        handles POST request from client
-        adds a like to profile
-        @return json ... status of action
-    **/
+    /**
+     * add like to visitor's profile, handles POST request
+     *
+     * @param object        $request
+     * 
+     *
+     * @return json
+    */
     public function like(Request $request)
     {
         $likedUsername = $request->likedUsername;
@@ -121,7 +156,14 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
-
+    /**
+     * unlike a visitor's profile handles POST request
+     *
+     * @param object        $request
+     * 
+     *
+     * @return json
+    */
     public function unlike(Request $request)
     {
         $unlikedUsername = $request->unlikedUsername;
@@ -145,10 +187,15 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
-
-    /*
-        Returns liked back status
-    **/
+    /**
+     * get liked back status to determine whether user and visitor have liked
+     * each other
+     *
+     * @param object        $request
+     * 
+     *
+     * @return json
+    */
     public function likedbackstatus(Request $request)
     {
         $username = $request->username;
@@ -167,10 +214,14 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
-
-    /*
-        Returns @json block status
-    **/
+    /**
+     * get block status of visitor
+     *
+     * @param object        $request
+     * 
+     *
+     * @return json
+    */
     public function blockstatus(Request $request)
     {
         $visitorUsername = $request->visitorusername;
@@ -226,10 +277,14 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
-
-    /*
-        Returns @int status after blocking
-    **/
+    /**
+     * get like status of a visitor's profile
+     *
+     * @param object        $request
+     * 
+     *
+     * @return json
+    */
     public function unblock(Request $request)
     {
         $visitorUsername = $request->visitorusername;
@@ -251,10 +306,14 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
-
-    /*
-        Returns @json profilepermission
-    **/
+    /**
+     * get profile permission
+     *
+     * @param object        $request
+     * 
+     *
+     * @return json
+    */
     public function profilepermission(Request $request)
     {
         $visitorUsername = $request->visitorusername;
@@ -278,10 +337,14 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
-
-    /*
-        Returns @json activity feed
-    **/
+    /**
+     * get activity feed of a user
+     *
+     * @param object        $request
+     * 
+     *
+     * @return json
+    */
     public function getposts(Request $request)
     {
         $username = $request->username;
@@ -298,10 +361,14 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
-
-    /*
-       @return @json uploads profile pic
-    **/
+    /**
+     * upload profile pic of a user
+     *
+     * @param object        $request
+     * 
+     *
+     * @return json
+    */
     public function uploadpic(Request $request)
     {
         $destination = 'img/profilepics';
@@ -314,19 +381,19 @@ class ProfileController extends Controller
 
             User::where('username', $username)
                 ->update(['profilepic' => $username]);
-
-            // About::where('user_id', $userID[0]->id)
-            //     ->update(['profilepic' => $username]);
-
             return response()->json(['status' => 200, 'done' => true], 200);
         } catch (Exception $e) {
             return response()->json(['status' => 200, 'done' => false], 200);
         }
     }
-
-    /*
-        Return @json edits activity ///\\\\
-    **/
+    /**
+     * edit activity of a user
+     *
+     * @param object        $request
+     * 
+     *
+     * @return json
+    */
     public function editactivity(Request $request)
     {
         $email = $request->email;
@@ -350,7 +417,14 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
-
+    /**
+     * get about section data
+     *
+     * @param object        $request
+     * 
+     *
+     * @return json
+    */
     public function getabout(Request $request)
     {
         if($email = $request->email) {
@@ -374,11 +448,14 @@ class ProfileController extends Controller
         }
         
     }
-
-    /*
-        @return json posts by user
-    **/
-
+    /**
+     * get posts done by a user
+     *
+     * @param object        $request
+     * 
+     *
+     * @return json
+    */
     public function getpostsX(Request $request)
     {
         $username = $request->username;
@@ -394,7 +471,14 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
-
+    /**
+     * load more posts for pagination
+     *
+     * @param object        $request
+     * 
+     *
+     * @return json
+    */
     public function loadMorePosts(Request $request)
     {
         $username = $request->username;
@@ -410,12 +494,14 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
-
-    /*
-        Updates basic information
-        @Return json
-    **/
-
+    /**
+     * edit basic information
+     *
+     * @param object        $request
+     * 
+     *
+     * @return json
+    */
     public function editbasics(Request $request)
     {
         $firstname = $request->firstname;
@@ -431,10 +517,14 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
-
-    /*
-        Return @json edits about ... summary
-    **/
+    /**
+     * edit summary data
+     *
+     * @param object        $request
+     * 
+     *
+     * @return json
+    */
     public function editsummary(Request $request)
     {
         $email = $request->email;
@@ -453,10 +543,14 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
-
-    /*
-        Return @json edits about ... summary
-    **/
+    /**
+     * edit life data
+     *
+     * @param object        $request
+     * 
+     *
+     * @return json
+    */
     public function editlife(Request $request)
     {
         $email = $request->email;
@@ -475,10 +569,14 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
-
-    /*
-        Return @json edits about ... summary
-    **/
+    /**
+     * edit good at data 
+     *
+     * @param object        $request
+     * 
+     *
+     * @return json
+    */
     public function editgoodat(Request $request)
     {
         $email = $request->email;
@@ -497,10 +595,14 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
-
-    /*
-        Return @json edits about ... summary
-    **/
+    /**
+     * edit thinking of data
+     *
+     * @param object        $request
+     * 
+     *
+     * @return json
+    */
     public function editthinkingof(Request $request)
     {
         $email = $request->email;
@@ -519,10 +621,14 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
-
-    /*
-        Return @json edits about ... summary
-    **/
+    /**
+     * edit favs data
+     *
+     * @param object        $request
+     * 
+     *
+     * @return json
+    */
     public function editfavs(Request $request)
     {
         $email = $request->email;
