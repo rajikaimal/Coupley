@@ -5,18 +5,14 @@ var assign = require('object-assign');
 
 var CHANGE_EVENT = 'change';
 
-var searchshares; 
+var searchshares = []; 
 
 var ShareStatusStore = assign({},EventEmitter.prototype, {
     getshares: function() {
-      console.log("ShareStatusStore");
-      console.log(searchshares);
       return searchshares;
     },
     saveshares: function(results) {
-      console.log("saveshares");
-      console.log(results);
-      searchshares = results;
+      searchshares.push(results);
     },
     emitChange: function() {
       this.emit(CHANGE_EVENT);
@@ -29,7 +25,6 @@ var ShareStatusStore = assign({},EventEmitter.prototype, {
 AppDispatcher.register(function(payload) {
 	switch(payload.action.actionType) {
 		case(ShareConstants.SHARESTATUS):
-      console.log(payload.action.sharestatus);
       ShareStatusStore.saveshares(payload.action.sharestatus);
       ShareStatusStore.emitChange();
       break;

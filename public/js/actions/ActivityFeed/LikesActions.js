@@ -9,20 +9,19 @@ var LikesActions ={
       console.log("likeactionnnnnnnnnnn");
       console.log(response);
       if (response.status == 200) {
-      	AppDispatcher.handleViewAction({
+        AppDispatcher.handleViewAction({
         actionType: LikeConstants.LIKESTATUS,
         likestatus: response
           });
-      	}
-      	else if (response.status == 505) {
+        }
+        else if (response.status == 505) {
             console.log('Error 505');
-      	}
+        }
       });
   },
 
   like: function(request) {
     $.post('/api/likepost', request,function(response){
-      console.log(response);
     }).fail(function(error) {
       console.log(error);
     });
@@ -30,7 +29,6 @@ var LikesActions ={
 
   unlike: function(request) {
     $.post('/api/unlikepost', request,function(response){
-      console.log(response);
     }).fail(function(error) {
       console.log(error);
     });

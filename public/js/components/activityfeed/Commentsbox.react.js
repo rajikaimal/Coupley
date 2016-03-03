@@ -1,9 +1,8 @@
 import React from 'react';
 import CommentAction from '../../actions/ActivityFeed/CommentAction';
 import CommentList from './CommentList.react';
-import CommentForm from './CommentForm.react';
 
-var CommentBox = React.createClass({
+var Commentsbox = React.createClass({
 
   render: function() {
     return (
@@ -14,4 +13,4 @@ var CommentBox = React.createClass({
   }
 });
 
-export default CommentBox;
+export default Commentsbox;

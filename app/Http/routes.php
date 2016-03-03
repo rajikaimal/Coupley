@@ -32,8 +32,6 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('recoverpwd', 'AuthenticateController@reset');
     //Add a status
     Route::post('status', 'ActivityFeedController@addstatus');
-    //Return logged user ID
-    Route::get('getUID','ActivityFeedController@getUID');
     //Return status
     Route::get('getstatus', 'ActivityFeedController@getstatus');
     //Return status ID (PostID)
@@ -85,11 +83,16 @@ Route::group(['prefix' => 'api'], function () {
     //Returns permission for viewing a profile
     Route::post('profilepermission', 'ProfileController@profilepermission');
     //Returns acitivity feed for specific user
-    Route::get('profile/feed', 'ProfileController@getposts');
+//    Route::get('profile/feed', 'ProfileController@getposts');
     //Upload profile pic
     Route::post('profile/profilepic', 'ProfileController@uploadpic');
     //Returns about data
     Route::get('profile/about', 'ProfileController@getabout');
+
+    //Returns posts by a user
+    Route::get('profile/getposts', 'ProfileController@getpostsX');
+
+    Route::get('profile/laodmoreposts', 'ProfileController@loadMorePosts');
 
     Route::put('profile/edit/updatebasics', 'ProfileController@editbasics');
 

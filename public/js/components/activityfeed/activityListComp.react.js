@@ -16,10 +16,10 @@ import LikesActions from '../../actions/ActivityFeed/LikesActions';
 import ShareActions from '../../actions/ActivityFeed/ShareActions';
 import LoginStore from '../../stores/LoginStore';
 import StatusStore from '../../stores/StatusStore';
-import ActivityfeedActions from '../../actions/ActivityFeed/ActivityfeedActions';
+import ActivityfeedAction from '../../actions/ActivityFeed/ActivityfeedAction';
 import CommentAction from '../../actions/ActivityFeed/CommentAction';
 import CommentStore from '../../stores/CommentStore';
-import CommentList from '../comments/CommentList.react';
+import CommentList from './CommentList.react';
 import Dialog from 'material-ui/lib/dialog';
 import RaisedButton from 'material-ui/lib/raised-button';
 import TextField from 'material-ui/lib/text-field';
@@ -49,14 +49,14 @@ const ActivityList = React.createClass({
     getInitialState: function () {
         return {
             opens: false,
+            commentTxt: '',
             liked: LikeStatusStore.getlikes(),
             shared: ShareStatusStore.getshares(),
-            Checked: StatusStore.getcheckStatus(),
         };
     },
 
     componentDidMount: function () {
-        
+
             let pid = this.props.id;
             let email= LoginStore.getEmail(); 
 
@@ -75,16 +75,11 @@ const ActivityList = React.createClass({
         console.log('fffffffffffffffffffffffffff');
         console.log(data);
 
-        StatusStore.addChangeListener(this._onChange);
-        ActivityFeedActions.checkPost(data);
-        console.log('fffffffffffffffffffffffffff1111111111111');
-        console.log(data);
     },
 
     _onChange: function () {
         this.setState({liked: LikeStatusStore.getlikes()});
         this.setState({shared: ShareStatusStore.getshares()});
-        this.setState({checked: StatusStore.getcheckStatus()});
 
         if (LikeStatusStore.getlikes() == "false") {
             this.setState({
@@ -108,16 +103,6 @@ const ActivityList = React.createClass({
             });
         }
 
-        if (StatusStore.getcheckStatus() == "false") {
-            this.setState({
-                Checked: false,
-            });
-        }
-        if (StatusStore.getcheckStatus() == "true") {
-            this.setState({
-                Checked: true,
-            });
-        }
     },
 
     editstatus: function () {
@@ -128,8 +113,8 @@ const ActivityList = React.createClass({
           PostId: postId,
           Status: post_text,
           };
-          ActivityFeedActions.editstatus(editstatus);
-          console.log('Done calling !');
+          ActivityfeedAction.editstatus(editstatus);
+          console.log('Done editing !');
           this.handleClose();
     },
 
@@ -138,8 +123,7 @@ const ActivityList = React.createClass({
         let delete_status = {
             PostId: postId
         };
-        ActivityFeedActions.delete_status(delete_status);
-        console.log('Done deleting');
+        ActivityfeedAction.delete_status(delete_status);
     },
 
     _changeShareState:function() {
@@ -163,10 +147,6 @@ const ActivityList = React.createClass({
             this.setState({shared: !this.state.shared});
             ShareActions.del_share(add_share);
         }
-    },
-
-    setFocusToTextBox: function () {
-        document.getElementById("mytext").focus();
     },
 
     _changeLikeState: function () {
@@ -200,22 +180,56 @@ const ActivityList = React.createClass({
         this.setState({opens: false});
     },
 
-    EnterKey_comment(e) {
-        if (e.key === 'Enter') {
-            console.log();
-            console.log(this.refs.commentBox.getValue());
-            var postId = this.props.id;
-            var comment = this.refs.commentBox.getValue();
-            var email = LoginStore.getEmail();
-            var firstname = LoginStore.getFirstname();
-            let add_comment = {
-                PId: postId,
-                Comment: comment,
-                Email: email,
-                Fname: firstname
-            };
-            CommentAction.add_comment(add_comment);
+    setFocusToTextBox: function () {
+        document.getElementById(this.props.id).focus();
+    },
+
+    validateCommentTxt:function(txtComment) {
+
+        if(txtComment.length < 200) {
+          return {
+            "error": "*comment is too long"
+          }
         }
+        else if(status_txt === "") {
+          return {
+            "error": "*comment cannot be empty"
+          }
+        }
+        else {
+          return true;
+        }
+    },
+
+    EnterKey(e){
+      if (e.key ==='Enter') {
+              let val = true;
+              console.log(this.refs.commentBox.getValue());
+              var comment = this.refs.commentBox.getValue();
+              var email= LoginStore.getEmail(); 
+              var firstname = LoginStore.getFirstname();
+              let add_comment={
+                 PostId: postId,
+                 Comment: comment,
+                 Email: email,
+                 Fname: firstname
+              };
+              CommentAction.add_comment(add_comment);
+              
+      if(validateCommentTxt(comment).error) {
+        this.setState({
+          commentTxt: validateCommentTxt(comment).error
+        });
+        val = false;
+      }
+
+      this.clearText();
+      }
+   },
+
+    clearText:function() {
+        var id=this.props.id;
+        document.getElementById(id).value = "";
     },
 
 	render: function() {
@@ -247,7 +261,7 @@ const ActivityList = React.createClass({
 		          }
 		          secondaryTextLines={2} 
 		          rightIconButton={
-                 <IconMenu iconButtonElement={iconButtonElement} closeOnItemTouchTap={this.state.Checked ? false : true}>
+                 <IconMenu iconButtonElement={iconButtonElement} >
                     <MenuItem primaryText="Edit" onClick={this.handleOpen}/>
                     <MenuItem primaryText="Remove" onClick={this.deleteStatus}/>
                     <MenuItem primaryText="Block" />
@@ -276,7 +290,7 @@ const ActivityList = React.createClass({
             <div><CommentList /></div>
 			<div style={style2}>
               <Paper>
-                <TextField hintText="Write a comment..." multiLine={false} fullWidth={true} onKeyPress={this.EnterKey_comment} ref="commentBox" id="mytext"/>
+                <TextField hintText="Write a comment..." multiLine={false} fullWidth={true} onKeyPress={this.EnterKey} errorText={this.state.commentTxt} ref="commentBox" id={this.props.id}/>
               </Paper>
             </div>
 			</div>

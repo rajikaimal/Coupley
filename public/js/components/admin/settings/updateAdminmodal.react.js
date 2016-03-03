@@ -100,7 +100,7 @@ function validatefirstname(firstname) {
     };
   }  else if (!/^\w+$/i.test(firstname)) {
     return {
-      error: '*Firstname cannot contain special characters',
+      error: '*Only upper & lower case letters without accesents and spaces are allowed',
     };
   }  else {
     return true;
@@ -118,7 +118,7 @@ function validatelastname(lastname) {
     };
   }  else if (!/^\w+$/i.test(lastname)) {
     return {
-      error: '*Lastname cannot contain special characters',
+      error: '*Only upper & lower case letters without accesents and spaces are allowed',
     };
   }  else {
     return true;
@@ -148,7 +148,9 @@ function validateEmail(email) {
       error: '*Email cannot be empty',
     };
   }  else {
-    return false;
+    return {
+      error: '*Please enter a valid Email',
+    };
   }
 }
 
@@ -238,7 +240,7 @@ var Update = React.createClass({
         console.log(data);
         if (data.done == true) {
           self.setState({
-            editing: false,
+            editing: true,
           });
         } else {
 
@@ -254,7 +256,7 @@ var Update = React.createClass({
 
   renderSave: function () {
     return (
-        this.state.preview ? <div>
+        this.state.preview ? <div style={{ marginTop: 100 }}>
           <RaisedButton onClick={this._saveImage} label="Save" primary={true} />
           <RaisedButton label="Cancel" onClick={this._cancelEdit}  />
         </div> : ''
@@ -295,8 +297,8 @@ var Update = React.createClass({
       return false;
     }
 
-    if (!validateEmail(email)) {
-      document.getElementById('email').innerHTML = '*Invalid Email !';
+    if (validateEmail(email).error) {
+      document.getElementById('email').innerHTML = validateEmail(email).error;
       return false;
     }    else {
       let credentials = {
@@ -307,6 +309,7 @@ var Update = React.createClass({
         email: email,
 
       };
+      localStorage.setItem('emails', email);
       UpdateActions.checks(credentials);
       console.log('Done calling !');
     }
@@ -379,12 +382,14 @@ var Update = React.createClass({
                         {
                           this.state.editing ? <div className="">
                             <Dropzone onDrop={this.onDrop} onMouseLeave={this.state.editing = false} style={{ width: '10px', height: '10px' }}>
-                              <div style={{ width: '300px' }}>Click to add a profile picture</div>
-                              <img style={{ width: '100px', height: '100px' }} src={this.state.preview} alt="Click to add a profile picture"/>
+                              <div style={{ width: '300px' }}></div>
+                              <img style={{ width: '100px', height: '100px' }} src={this.state.preview} alt="Click or Drag to add a profile picture"/>
                             </Dropzone>
                             {this.renderSave()}
+                            <br />
+                            <br />
                           </div> : <div className="" >
-                            <img onMouseOver={this._showUpload} style={{ width: '100px', height: '100px' }}  onMouseLeave={this._hideUpload} src={path + this.state.id} style={{ width: '100px', height: '100px' }} />
+                            <img onMouseOver={this._showUpload} style={{ width: '100px', height: '100px' }}  onMouseLeave={this._hideUpload} src={path + this.state.profilepic} style={{ width: '100px', height: '100px' }} />
                             {this.state.mouseover ? <RaisedButton style={uploadButtonStyle} label="Change picture" onClick={this.state.editing = true} /> : ''}
                           </div>
 

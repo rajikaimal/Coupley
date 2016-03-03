@@ -33,21 +33,6 @@ class ActivityFeedController extends Controller
         }
     }
 
-    public function getUID(Request $request)
-    {
-        $email = $request->Email;
-
-        try{
-            $uid =  User::where('email', $email)->get(['id']);
-
-            $posts = \DB::select('select p.id,p.firstname,p.post_text,p.created_at from liked l ,users u, posts p where l.gotliked=2 and l.likeback=1 and u.id=l.likeduser and u.email=p.email order by p.created_at desc');
-
-            return response()->json(['posts' => $posts, 'status' => 200], 200);
-        } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
-        }
-    }
-
     /*
         returns status data for GET request
         @return json
@@ -60,26 +45,6 @@ class ActivityFeedController extends Controller
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 505], 505);
         }
-    }
-
-    public function checkpost(Request $request)
-    {
-        $id = $request->PostId;
-        $email = $request->Email;
-
-        try{
-            $result = Post::where('id', $id)
-                    ->where('email', $email)->get();
-
-            if ($result->isEmpty()) {
-                return 'false';
-            } else {
-                return 'true';
-            }
-        } catch (Illuminate\Database\QueryException $e) {
-                return response()->json(['status' => 505], 505);
-        }
-
     }
 
     public function deleteStatus(Request $request)

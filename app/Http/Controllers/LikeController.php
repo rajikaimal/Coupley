@@ -15,7 +15,7 @@ class LikeController extends Controller
     {
         $id = $request->PostId;
         $email = $request->Email;
-
+        
         try{
             $result = Like::where('post_id', $id)->where('email', $email)->get();
 

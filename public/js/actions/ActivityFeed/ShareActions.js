@@ -9,29 +9,26 @@ var ShareActions = {
       console.log("shareaction");
       console.log(response);
       if (response.status == 200) {
-      	AppDispatcher.handleViewAction({
+        AppDispatcher.handleViewAction({
         actionType: ShareConstants.SHARESTATUS,
         sharestatus: response
           });
-      	}
-      	else if (response.status == 505) {
+        }
+        else if (response.status == 505) {
             console.log('Error 505');
-      	}
+        }
       });
   },
 
   add_share: function(request) {
     $.post('/api/sharepost', request,function(response){
-      console.log(response);
     }).fail(function(error) {
-      console.log("actionaaaaaaaa")
       console.log(error);
     });
   },
 
   del_share: function(request) {
     $.post('/api/unsharepost', request,function(response){
-      console.log(response);
     }).fail(function(error) {
       console.log(error);
     });

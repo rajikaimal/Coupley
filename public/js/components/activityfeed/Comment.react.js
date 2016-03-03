@@ -8,6 +8,7 @@ import Divider from 'material-ui/lib/divider';
 import Avatar from 'material-ui/lib/avatar';
 
 var Comment = React.createClass({
+
     render: function () {
         return (
             <div>
@@ -25,4 +26,5 @@ var Comment = React.createClass({
 });
 
 export default Comment;
+
 

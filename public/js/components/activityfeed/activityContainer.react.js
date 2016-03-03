@@ -1,9 +1,11 @@
 import React from 'react';
 import List from 'material-ui/lib/lists/list';
 import ListItem from 'material-ui/lib/lists/list-item';
-import ActivityfeedActions from '../../actions/ActivityFeed/ActivityfeedActions';
+import ActivityfeedAction from '../../actions/ActivityFeed/ActivityfeedAction';
 import StatusStore from '../../stores/StatusStore';
 import ActivityList from './activityListComp.react';
+import CommentList from './CommentList.react';
+import LoginStore from '../../stores/LoginStore';
 
 const activityContainer = React.createClass({
 
@@ -12,24 +14,16 @@ const activityContainer = React.createClass({
       results: StatusStore.getStatusData()
       }
   },
+
   componentDidMount: function() {
     StatusStore.addChangeListener(this._onChange);
-    ActivityFeedActions.getstatus();
+    ActivityfeedAction.getstatus();
+  },
 
-    let email= LoginStore.getEmail(); 
-          let getUId = {
-                Email: email,
-            };
-    ActivityFeedActions.getUId(getUId);
-        console.log('get User Id ');
-        console.log(getUId);
-  },
-  _search: function () {
-    ActivityFeedActions.getstatus();
-  },
-  _onChange: function() {
+  _onChange: function () {
     this.setState({results: StatusStore.getStatusData()});        
   },
+
   _renderSearchItem: function () {
         console.log(this.state.results); 
         return this.state.results.map((result) => {

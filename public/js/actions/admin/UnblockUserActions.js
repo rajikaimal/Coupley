@@ -6,11 +6,10 @@ var UnblockActions = {
     console.log(credentials);
     $.post('/admin-api/unblockuser', credentials, function (data) {
       if (data.status === 201) {
-
+        location.reload(true);
       }
     });
 
-    document.location = '/cp-admin#/users/friends';
   },
 };
 

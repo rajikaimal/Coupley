@@ -6,49 +6,57 @@ var assign = require('object-assign');
 var CHANGE_EVENT = 'change';
 
 var searchresults = [];
-var checkuserzPost;
+var checkuserzPost = [];
+var profileposts;
 
-var StatusStore = assign({},EventEmitter.prototype, {
+var StatusStore = assign({}, EventEmitter.prototype, {
 
-    getStatusData: function() {
-      console.log(searchresults);
+  getStatusData: function () {
       return searchresults;
     },
-    saveStatusData: function(results) {
-      console.log(results);
+
+  getprofilePosts: function () {
+      return profileposts;
+  },
+
+  saveprofileposts: function (data) {
+      profileposts = data;
+  },
+
+  saveStatusData: function (results) {
       searchresults = results;
     },
-    getcheckStatus: function() {
-      console.log('status store');
-      console.log(checkuserzPost);
+  getcheckStatus: function() {
       return checkuserzPost;
     },
-    savecheckStatus: function(results) {
-      console.log(results);
-      checkuserzPost = results;
-    },
-    emitChange: function() {
+  savecheckStatus: function(results) {
+      checkuserzPost.push(results);
+  },
+
+  emitChange: function () {
       this.emit(CHANGE_EVENT);
     },
-    addChangeListener: function(callback) {
+
+  addChangeListener: function (callback) {
       this.on(CHANGE_EVENT, callback);
-    }
+    },
 });
 
-AppDispatcher.register(function(payload) {
-	switch(payload.action.actionType) {
-		case(ActivityFeedConstants.GETDATA):
-      console.log(payload.action.statusdata);
+AppDispatcher.register(function (payload) {
+  switch (payload.action.actionType) {
+    case (ActivityFeedConstants.GETDATA):
       StatusStore.saveStatusData(payload.action.statusdata);
       StatusStore.emitChange();
       break;
     case(ActivityFeedConstants.CHECKSTATUS):
-      console.log('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb');
-      console.log(payload.action.checkStatus);
       StatusStore.savecheckStatus(payload.action.checkStatus);
       StatusStore.emitChange();
       break;
-	}
+    case (ActivityFeedConstants.GETPROFILEPOSTS):
+      StatusStore.saveprofileposts(payload.action.posts);
+      StatusStore.emitChange();
+      break;
+  }
 });
 
 module.exports = StatusStore;

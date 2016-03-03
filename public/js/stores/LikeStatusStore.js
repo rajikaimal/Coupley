@@ -5,18 +5,16 @@ var assign = require('object-assign');
 
 var CHANGE_EVENT = 'change';
 
-var searchlikes; 
+var searchlikes=[]; 
 
 var LikeStatusStore = assign({},EventEmitter.prototype, {
     getlikes: function() {
-      console.log("LikeStatusStoreeeeeeeeeeeeeeeeeeee");
+      console.log('storeeeeeeeeee');
       console.log(searchlikes);
       return searchlikes;
     },
     savelikes: function(results) {
-      console.log("wwwwwwwwwwwwwwwwwwwwwww");
-      console.log(results);
-      searchlikes = results;
+      searchlikes.push(results);
     },
     emitChange: function() {
       this.emit(CHANGE_EVENT);
@@ -26,11 +24,9 @@ var LikeStatusStore = assign({},EventEmitter.prototype, {
     }
 });
 
-AppDispatcher.register(function(payload) {
-	switch(payload.action.actionType) {
-		case(LikeConstants.LIKESTATUS):
-    console.log("statusssssssssssssssssss");
-      console.log(payload.action.likestatus);
+AppDispatcher.register(function (payload) {
+  switch (payload.action.actionType) {
+    case (LikeConstants.LIKESTATUS):
       LikeStatusStore.savelikes(payload.action.likestatus);
       LikeStatusStore.emitChange();
       break;

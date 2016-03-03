@@ -260,13 +260,13 @@ var Header = React.createClass({
 
                 <li className="dropdown user user-menu">
                   <a  className="dropdown-toggle" data-toggle="dropdown">
-                    <img src={path + this.state.id} className="user-image" alt="User Image"/>
+                    <img src={path + this.state.profilepic} className="user-image" alt="User Image"/>
                     <span className="hidden-xs">{this.state.firstname}</span>
                   </a>
                   <ul className="dropdown-menu">
 
                     <li className="user-header">
-                      <img src={path + this.state.id} className="img-circle" alt="User Image"/>
+                      <img src={path + this.state.profilepic} className="img-circle" alt="User Image"/>
                       <p>
                                                 {this.state.firstname} {this.state.lastname} - {this.state.job}
                         <small>Member since {this.state.created_at}</small>

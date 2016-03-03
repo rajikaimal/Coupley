@@ -8,6 +8,7 @@ use App\Likes;
 use App\Blocks;
 use App\ActivityFeed;
 use App\About;
+use App\Post;
 use Illuminate\Http\Exception;
 
 class ProfileController extends Controller
@@ -360,6 +361,42 @@ class ProfileController extends Controller
             return response()->json(['status' => 200, 'data' => $results], 200);
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 505], 505);
+        }
+    }
+
+    /*
+        @return json posts by user
+    **/
+
+    public function getpostsX(Request $request)
+    {
+        $username = $request->username;
+        try {
+            $email = User::where('username', $username)->get(['email']);
+            $results = Post::where('email', $email[0]->email)->limit(4)->get();
+            if (! $results->isEmpty()) {
+                return response()->json(['status' => 200, 'posts' => $results], 200);
+            } else {
+                return response()->json(['status' => 200, 'posts' => null], 200);
+            }
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 200], 200);
+        }
+    }
+
+    public function loadMorePosts(Request $request)
+    {
+        $username = $request->username;
+        try {
+            $email = User::where('username', $username)->get(['email']);
+            $results = Post::where('email', $email[0]->email)->limit(2)->get();
+            if (! $results->isEmpty()) {
+                return response()->json(['status' => 200, 'posts' => $results], 200);
+            } else {
+                return response()->json(['status' => 200, 'posts' => null], 200);
+            }
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 200], 200);
         }
     }
 

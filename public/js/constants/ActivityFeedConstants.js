@@ -6,4 +6,6 @@ module.exports = keyMirror({
     GETDATA: null,
     CHECKSTATUS: null,
     GETUID: null,
+    //GETID: null,
+    GETPROFILEPOSTS: null,
 });
