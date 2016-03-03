@@ -10,13 +10,12 @@ var AdminLoginActions = {
           actionType: LoginConstants.LOGIN,
           token: response.token,
         });
-        console.log('Dispatched');
         swal('Welcome Back!', 'Login Successful.', 'success');
         setTimeout(function () {
           history.go(0);
         }, 1000);
-      }      else {
-        console.log(response);
+      }      else if (response.status === 203) {
+        swal('Oops!', 'You are not an Administrator. Please visit WWW.COUPLEY.COM', 'error');
       }
 
     }).fail(function () {

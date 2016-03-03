@@ -62,7 +62,7 @@ class UsersController extends Controller
         $email = $request->email;
         try {
             if ($this->CheckInternet()) {
-                $admin = User::where('email', $email)->first();
+                $admin = User::where('email', $email)->where('role', 'admin')->first();
                 if ($admin) {
                     $newpwd = $this->random_str();
                     $pwdHashed = \Hash::make($newpwd);
