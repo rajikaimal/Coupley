@@ -8,15 +8,14 @@ use App\Likes;
 
 class ThreadController extends Controller
 {
-    public function sendMessage(Request $request)
-    {
-        $chat = new Thread;
-        $chat->user1 = $request;
-        $chat->user2 = $request;
-        $chat->message = $request;
-        $chat->save();
-    }
-
+  /**
+  * get previous conversation list of.
+  *
+  * @param object        $request
+  *
+  *
+  * @return json
+  */
     public function getPreviousMessage(Request $request)
     {
       $user1 = $request->user1;
@@ -29,8 +28,14 @@ class ThreadController extends Controller
        return response()->json(['status' => 505], 505);
    }
     }
-
-
+    /**
+    * delete messag (conversation).
+    *
+    * @param object        $request
+    *
+    *
+    * @return json         status
+    */
     public function deletemessage(Request $request)
     {
       $user2 = $request->user2;
@@ -42,7 +47,14 @@ class ThreadController extends Controller
           return response()->json(['status' => 404], 404);
       }
     }
-
+    /**
+    * get previous conversation list of.
+    *
+    * @param object        $request
+    *
+    *
+    * @return json         $llist
+    */
     public function getLikedUserList(Request $request)
     {
        $user1 = $request->user1;
@@ -53,6 +65,15 @@ class ThreadController extends Controller
    }
     }
 
+
+    /**
+    * Search for particular conversation.
+    *
+    * @param object        $request
+    *
+    *
+    * @return json         $llist
+    */
     public function getSearchConv(Request $request){
 
       $user1 = $request->user1;

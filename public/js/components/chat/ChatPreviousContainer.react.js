@@ -25,11 +25,28 @@ const initMessagges = {
   user1:LoginStore.getFirstname(),
 };
 
+function validateStatusText(textStatus) {
+
+  if (textStatus.length > 250) {
+    return {
+            error: '*search is too long',
+          };
+  }  else if (textStatus.length == 0) {
+    console.log('empty');
+    return {
+            error: '*search cannot be empty',
+          };
+  }  else {
+    return true;
+  }
+};
+
 const PreviousChatContainer = React.createClass({
 
   getInitialState: function () {
     return {
       results:ThreadStore.getpreviousmessage(initMessagges),
+      statusText: '',
     };
   },
 
@@ -60,15 +77,30 @@ const PreviousChatContainer = React.createClass({
       user1:LoginStore.getFirstname(),
       user2:ThisUser,
     };
-    if (ThisUser != null) {
-      SearchCeck = false;
+
+    if (validateStatusText(ThisUser).error) {
+      console.log('menna error');
+      this.setState({
+        statusText: validateStatusText(ThisUser).error,
+      });
+      val = false;
+    } else {
+      console.log('error na');
       ThreadActions.getseachconv(ToSearch);
-    }else if (ThisUser == '*') {
-      SearchCeck = true;
-      this.setState({ results:ThreadStore.getpreviousmessage(initMessagges) });
+      SearchCeck = false;
+      this.setState({
+        statusText: '',
+      });
     }
 
     {this.SearchResult();}
+
+    {this.clearText();}
+
+  },
+
+  clearText:function () {
+    document.getElementById('SearchField').value = '';
   },
 
   EnterKey(e) {
@@ -92,7 +124,7 @@ const PreviousChatContainer = React.createClass({
   <List subheader="Previous Chat" style={ListStyle} zDepth={1}>
        <IconButton iconClassName="muidocs-icon-custom-github" tooltip="top-right" tooltipPosition="top-right"/>
        <Divider inset={false} />
-       <TextField hintText="Username" floatingLabelText="Search Conversation" style={searchconvo} ref="SearchM" onKeyPress={this.EnterKey} />
+       <TextField hintText="Username" floatingLabelText="Search Conversation" style={searchconvo} ref="SearchM" errorText={this.state.statusText} onKeyPress={this.EnterKey} id="SearchField"/>
        <Divider inset={false} />
        <div>
          {this.previousMList()}
