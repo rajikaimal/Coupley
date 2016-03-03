@@ -5,10 +5,11 @@
 |--------------------------------------------------------------------------
 |
 | Here is where authentication is handled
-| 
+|
 | @author Rajika Imal
 |
 */
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -20,25 +21,26 @@ use PHPMailer;
 class AuthenticateController extends Controller
 {
     /**
-     * Constructor uses JWT middleware to check whether request contains api-token
+     * Constructor uses JWT middleware to check whether request contains api-token.
      *
      * @param string        $someString
      * @param int           $someInt
      *
      * @return void
-    */    
+     */
     public function __construct()
     {
         $this->middleware('jwt.auth', ['except' => ['authenticate', 'reset', 'SendMail']]);
     }
+
     /**
-     * checks user exists with given email
+     * checks user exists with given email.
      *
      * @param object        $request
-     * 
+     *
      *
      * @return json
-    */
+     */
     public function index(Request $request)
     {
         $email = $request->email;
@@ -46,14 +48,15 @@ class AuthenticateController extends Controller
 
         return response()->json(['user' => $user]);
     }
+
     /**
-     * password reset
+     * password reset.
      *
      * @param object        $request
-     * 
+     *
      *
      * @return json
-    */
+     */
     public function reset(Request $request)
     {
         $credentials = $request->only('email');
@@ -70,14 +73,15 @@ class AuthenticateController extends Controller
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
     }
+
     /**
-     * send email with resetpassword
+     * send email with resetpassword.
      *
      * @param object        $request
-     * 
+     *
      *
      * @return json
-    */
+     */
     public function SendMail($email, $user, $pwd)
     {
         $mail = new PHPMailer;
@@ -111,14 +115,15 @@ class AuthenticateController extends Controller
             echo 'Message has been sent';
         }
     }
+
     /**
-     * authenticate user with JWT and returns the status if fails or else the JWT
+     * authenticate user with JWT and returns the status if fails or else the JWT.
      *
      * @param object        $request
-     * 
+     *
      *
      * @return json
-    */
+     */
     public function authenticate(Request $request)
     {
         $credentials = $request->only('email', 'password');

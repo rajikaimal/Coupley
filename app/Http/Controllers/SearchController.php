@@ -9,6 +9,7 @@
 | @author Rajika Imal
 |
 */
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -19,13 +20,13 @@ use DB;
 class SearchController extends Controller
 {
     /**
-     * checks key value from request object and returns results according to 
+     * checks key value from request object and returns results according to.
      *
      * @param object        $request
-     * 
+     *
      *
      * @return json
-    */    
+     */
     public function search(Request $request)
     {
         $key = $request->key;
