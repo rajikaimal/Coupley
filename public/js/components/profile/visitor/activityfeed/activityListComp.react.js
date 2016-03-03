@@ -214,7 +214,7 @@ const ActivityList = React.createClass({
 			<div >
             <Card>
 		        <ListItem
-		          leftAvatar={<Avatar src={VisitorStore.getprofilepic()} />}
+		          leftAvatar={<Avatar src={VisitorStore.getProfilePic()} />}
 		          primaryText={this.props.firstname}
 		          secondaryText={
 		            <p>

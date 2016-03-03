@@ -21,7 +21,7 @@ const noresultStyle = {
 const Search = React.createClass({
 	getInitialState: function() {
 		return {
-			results: SearchStore.getresults(),
+			results: SearchStore.getResults(),
 			erropen: false,
 			noresult: false
 		}
@@ -30,7 +30,7 @@ const Search = React.createClass({
 		SearchStore.addChangeListener(this._onChange);
 	},
 	_onChange: function() {
-		if(SearchStore.getresults() === '' || SearchStore.getresults() == null) {
+		if(SearchStore.getResults() === '' || SearchStore.getResults() == null) {
 			this.setState({
 				resuls: '',
 				noresult: true
@@ -41,7 +41,7 @@ const Search = React.createClass({
 			});
 		}
 		this.setState({
-			results: SearchStore.getresults()
+			results: SearchStore.getResults()
 		});
 		if(this.state.results == 'err') {
 			this.setState({

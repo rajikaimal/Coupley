@@ -3,10 +3,10 @@ var ActivityFeedConstants = require('../../constants/ActivityFeedConstants');
 
 var ActivityFeedActions = {
   add_status: function (status) {
-    $.post('api/status', status, function (response) {
+    $.post('api/status?token=' + localStorage.getItem('apitoken') , status, function (response) {
       console.log(response);
       if (response.status == 201) {
-        $.get('/api/getstatus', function (response) {
+        $.get('/api/getstatus?token=' + localStorage.getItem('apitoken') , function (response) {
           console.log(response);
           if (response.status == 200) {
             AppDispatcher.handleViewAction({
@@ -26,7 +26,7 @@ var ActivityFeedActions = {
   addStatusProfile: function (status) {
     $.post('api/status', status, function (response) {
       if (response.status == 201) {
-        $.get('/api/profile/getposts?username=' + username, function (response) {
+        $.get('/api/profile/getposts?token=' + localStorage.getItem('apitoken') + 'username=' + username, function (response) {
           if (response.status == 200) {
             AppDispatcher.handleViewAction({
               actionType: ActivityFeedConstants.GETPROFILEPOSTS,
@@ -43,7 +43,7 @@ var ActivityFeedActions = {
   },
 
   getstatus: function () {
-    $.get('/api/getstatus', function (response) {
+    $.get('/api/getstatus=token?' + localStorage.getItem('apitoken') , function (response) {
       console.log(response);
       console.log('view status ');
       if (response.status == 200) {
@@ -58,7 +58,7 @@ var ActivityFeedActions = {
   },
 
   getpostId: function () {
-    $.get('/api/getpostId', function (response) {
+    $.get('/api/getpostId?token=' + localStorage.getItem('apitoken'), function (response) {
       console.log(response);
       if (response.status == 200) {
         AppDispatcher.handleViewAction({
@@ -72,7 +72,7 @@ var ActivityFeedActions = {
   },
 
   delete_status: function (postId) {
-    $.post('api/deleteStatus', postId, function (response) {
+    $.post('api/deleteStatus?token=' + localStorage.getItem('apitoken') , postId, function (response) {
       console.log(response);
     });
   },
@@ -84,7 +84,7 @@ var ActivityFeedActions = {
   },
 
   loadPosts: function (username) {
-    $.get('/api/profile/getposts?username=' + username, function (response) {
+    $.get('/api/profile/getposts?token=' + localStorage.getItem('apitoken') + '&username=' + username, function (response) {
       if (response.status == 200) {
         AppDispatcher.handleViewAction({
           actionType: ActivityFeedConstants.GETPROFILEPOSTS,
@@ -97,7 +97,7 @@ var ActivityFeedActions = {
   },
 
   loadmore: function (username) {
-    $.get('/api/profile/laodmoreposts', function (response) {
+    $.get('/api/profile/loadmoreposts?token=' + localStorage.getItem('apitoken'), function (response) {
       if (response.status == 200) {
         AppDispatcher.handleViewAction({
             actionType: ActivityFeedConstants.GETDATA,

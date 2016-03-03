@@ -8,11 +8,8 @@ var CHANGE_EVENT = 'change';
 var feed = [];
 
 var ActivityFeedStore = assign({}, EventEmitter.prototype, {
-  savefeed: function (data) {
+  saveFeed: function (data) {
     feed = data;
-    console.log('SAVED');
-    console.log(feed.length);
-    console.log(typeof feed);
   },
 
   getfeed: function () {
@@ -29,10 +26,9 @@ var ActivityFeedStore = assign({}, EventEmitter.prototype, {
 });
 
 AppDispatcher.register(function (payload) {
-  console.log('Got payload' + payload);
   switch (payload.action.actionType) {
     case (ProfileConstants.FEED):
-      ActivityFeedStore.savefeed(payload.action.feed);
+      ActivityFeedStore.saveFeed(payload.action.feed);
       ActivityFeedStore.emitChange();
       break;
 

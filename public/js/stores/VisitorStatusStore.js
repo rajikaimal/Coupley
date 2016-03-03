@@ -28,7 +28,7 @@ var VisitorStatusStore = assign({}, EventEmitter.prototype, {
     return profileposts.slice(0, end);
   },
 
-  saveprofileposts: function (data) {
+  saveProfilePosts: function (data) {
     profileposts = [];
     profileposts = data;
   },
@@ -43,7 +43,6 @@ var VisitorStatusStore = assign({}, EventEmitter.prototype, {
     },
 
   saveStatusID: function (id) {
-      console.log(id);
       searchID = id;
     },
 
@@ -59,18 +58,15 @@ var VisitorStatusStore = assign({}, EventEmitter.prototype, {
 AppDispatcher.register(function (payload) {
   switch (payload.action.actionType) {
     case (ActivityFeedConstants.GETDATA):
-      console.log('mmmmm');
-      console.log(payload.action.statusdata);
       VisitorStatusStore.saveStatusData(payload.action.statusdata);
       VisitorStatusStore.emitChange();
       break;
     case (ActivityFeedConstants.GETID):
-      console.log(payload.action.id);
       VisitorStatusStore.saveStatusID(payload.action.id);
       VisitorStatusStore.emitChange();
       break;
     case (ActivityFeedConstants.GETPROFILEPOSTS):
-      VisitorStatusStore.saveprofileposts(payload.action.posts);
+      VisitorStatusStore.saveProfilePosts(payload.action.posts);
       VisitorStatusStore.emitChange();
       break;
   }

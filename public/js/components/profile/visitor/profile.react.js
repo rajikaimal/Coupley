@@ -26,23 +26,23 @@ const urlTable = {
 
 const Profile = React.createClass({
   getInitialState: function() {
+    let str = window.location.hash;
+    let username = str.split(/[\/?]/)[1];
     return {
-      firstname: VisitorStore.getuserdata().firstname,
-      lastname: VisitorStore.getuserdata().lastname,
-      country: VisitorStore.getuserdata().country
+      firstname: VisitorStore.getUserData().firstname,
+      lastname: VisitorStore.getUserData().lastname,
+      country: VisitorStore.getUserData().country
     }
   },
   componentDidMount: function() {
-    let str = window.location.hash;
-    let username = str.split(/[\/?]/)[1];
     VisitorStore.addChangeListener(this._onChange);
-    ProfileVisitorActions.loadprofiledata(username);
+    ProfileVisitorActions.loadProfileData(username);
   },
   _onChange: function() {
     this.setState({
-      firstname: VisitorStore.getuserdata().firstname,
-      lastname: VisitorStore.getuserdata().lastname,
-      country: VisitorStore.getuserdata().country  
+      firstname: VisitorStore.getUserData().firstname,
+      lastname: VisitorStore.getUserData().lastname,
+      country: VisitorStore.getUserData().country  
     });
   },
   _renderCountry: function() {

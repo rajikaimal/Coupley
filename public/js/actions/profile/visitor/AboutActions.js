@@ -10,7 +10,7 @@ var AboutActions = {
           data: response.data[0],
         });
       } else {
-        console.log('Somthing happened ...');
+
       }
 
     }).fail(function () {

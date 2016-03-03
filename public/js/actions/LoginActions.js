@@ -17,11 +17,9 @@ var LoginActions = {
           });
         });
 
-        console.log('Dispatched');
-
         //document.location = "/";
-      }      else {
-        console.log('Something unusual happened ...');
+      } else {
+
       }
     }).fail(function () {
       document.getElementById('server-error').innerHTML = 'Invalid credentials';
@@ -32,7 +30,7 @@ var LoginActions = {
     $.post('/admin-api/recoverpwd', email, function (response) {
       if (response.status === 201) {
         swal('Error', 'Your email doesnt exists', 'error');
-        
+
       }      else {
 
         swal('Check your e-mail!', 'New password has been sent to your email.', 'success');

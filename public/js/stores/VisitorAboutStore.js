@@ -12,7 +12,7 @@ var spendtime;
 var favs;
 
 var AboutStore = assign({}, EventEmitter.prototype, {
-  saveall: function (data) {
+  saveAll: function (data) {
     summary = data.selfsummary;
     life = data.life;
     goodat = data.goodat;
@@ -20,43 +20,23 @@ var AboutStore = assign({}, EventEmitter.prototype, {
     favs = data.favourites;
   },
 
-  savesummary: function (data) {
-    summary = data;
-  },
-
-  getsummary: function () {
+  getSummary: function () {
     return summary;
   },
 
-  savelife: function (data) {
-    life = data;
-  },
-
-  getlife: function () {
+  getLife: function () {
     return life;
   },
 
-  savegoodat: function (data) {
-    goodat = data;
-  },
-
-  getgoodat: function () {
+  getGoodAt: function () {
     return goodat;
   },
 
-  savespendtime: function (data) {
-    spendtime = data;
-  },
-
-  getspendtime: function () {
+  getSpendTime: function () {
     return spendtime;
   },
 
-  savefavs: function (data) {
-    favs = data;
-  },
-
-  getfavs: function () {
+  getFavs: function () {
     return favs;
   },
 
@@ -70,10 +50,9 @@ var AboutStore = assign({}, EventEmitter.prototype, {
 });
 
 AppDispatcher.register(function (payload) {
-  console.log('Got payload' + payload);
   switch (payload.action.actionType) {
     case (ProfileConstants.VISITORABOUTLOAD):
-      AboutStore.saveall(payload.action.data);
+      AboutStore.saveAll(payload.action.data);
       AboutStore.emitChange();
       break;
   }

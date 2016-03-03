@@ -3,42 +3,41 @@ var ProfileConstants = require('../../constants/ProfileConstants');
 
 var ProfileActions = {
   getProfileData: function (email) {
-    console.log(email);
+    
     $.get('/api/profile?token=' + localStorage.getItem('apitoken') + '&email=' + localStorage.getItem('email'), function (response) {
-      console.log(response.user[0]);
+      
       if (response) {
         AppDispatcher.handleViewAction({
           actionType: ProfileConstants.GETDATA,
           userdata: response.user[0],
         });
       } else {
-        console.log(response);
+        
       }
     });
   },
 
   fetchProfilePicture: function (apitoken, username) {
     let data = {
-      apitoken: apitoken,
       username: username,
     };
-    $.get('/api/getProfilePic', data, function (response) {
+    $.get('/api/getProfilePic?token=' + localStorage.getItem('apitoken'), data, function (response) {
       if (response.status == 200) {
         AppDispatcher.handleViewAction({
           actionType: ProfileConstants.PROFILEPIC,
           profilepic: response.image,
         });
       } else {
-        console.log('Error');
+        
       }
     });
   },
 
-  updatechanges: function (data) {
+  updateChanges: function (data) {
     $.ajax({
-      url: '/api/profile/edit/updatebasics',
-      type: 'PUT',
-      data: 'firstname=' + data.firstname + '&lastname=' + data.lastname + '&country=' + data.country + '&currentusername=' + data.username,
+      url: '/api/profile/edit/updatebasics?token=' + localStorage.getItem('apitoken'),
+      type: 'POST',
+      data: 'token=' + localStorage.getItem('apitoken') +'&firstname=' + data.firstname + '&lastname=' + data.lastname + '&country=' + data.country + '&currentusername=' + data.username,
       success: function (response) {
         AppDispatcher.handleViewAction({
           actionType: ProfileConstants.GETDATA,

@@ -25,14 +25,14 @@ const sectionStyle = {
 
 const Profile = React.createClass({
   getInitialState: function() {
-    return ProfileStore.getuserdata();
+    return ProfileStore.getUserData();
   },
   componentDidMount: function() {
     ProfileActions.getProfileData();
     ProfileStore.addChangeListener(this._onChange);
   },
   _onChange: function() {
-    this.setState(ProfileStore.getuserdata());
+    this.setState(ProfileStore.getUserData());
   },
   _renderCountry: function() {
     var found = false;

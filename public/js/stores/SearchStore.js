@@ -10,7 +10,7 @@ var counter = 0;
 var initial = 3;
 
 var SearchStore = assign({}, EventEmitter.prototype, {
-  getresults: function () {
+  getResults: function () {
     let portion = searchresults.slice(0, 3);
     return portion;
   },
@@ -21,7 +21,7 @@ var SearchStore = assign({}, EventEmitter.prototype, {
     return searchresults.slice(0, end);
   },
 
-  saveresults: function (results) {
+  saveResults: function (results) {
     searchresults = results;
   },
 
@@ -37,8 +37,7 @@ var SearchStore = assign({}, EventEmitter.prototype, {
 AppDispatcher.register(function (payload) {
   switch (payload.action.actionType) {
     case (SearchConstants.SEARCH):
-      console.log(payload.action.search);
-      SearchStore.saveresults(payload.action.search);
+      SearchStore.saveResults(payload.action.search);
       SearchStore.emitChange();
       break;
 

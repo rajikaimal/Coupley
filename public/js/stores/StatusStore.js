@@ -43,7 +43,6 @@ var StatusStore = assign({}, EventEmitter.prototype, {
     },
 
   saveStatusID: function (id) {
-      console.log(id);
       searchID = id;
     },
 
@@ -59,13 +58,10 @@ var StatusStore = assign({}, EventEmitter.prototype, {
 AppDispatcher.register(function (payload) {
   switch (payload.action.actionType) {
     case (ActivityFeedConstants.GETDATA):
-      console.log('mmmmm');
-      console.log(payload.action.statusdata);
       StatusStore.saveStatusData(payload.action.statusdata);
       StatusStore.emitChange();
       break;
     case (ActivityFeedConstants.GETID):
-      console.log(payload.action.id);
       StatusStore.saveStatusID(payload.action.id);
       StatusStore.emitChange();
       break;

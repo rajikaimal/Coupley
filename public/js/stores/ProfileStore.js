@@ -9,16 +9,15 @@ var user = [];
 var pic = '';
 
 var ProfileStore = assign({}, EventEmitter.prototype, {
-  saveuserdata: function (data) {
+  saveUserData: function (data) {
     user.push(data);
   },
 
-  saveprofilepic: function (data) {
+  saveProfilePic: function (data) {
     pic = data;
   },
 
-  getuserdata: function () {
-    console.log(user[0]);
+  getUserData: function () {
     if (user.length == 0) {
       return {
         firstname: '',
@@ -38,7 +37,7 @@ var ProfileStore = assign({}, EventEmitter.prototype, {
     };
   },
 
-  getprofilepic: function () {
+  getProfilePic: function () {
     return pic;
   },
 
@@ -54,11 +53,11 @@ var ProfileStore = assign({}, EventEmitter.prototype, {
 AppDispatcher.register(function (payload) {
   switch (payload.action.actionType) {
     case (ProfileConstants.GETDATA):
-      ProfileStore.saveuserdata(payload.action.userdata);
+      ProfileStore.saveUserData(payload.action.userdata);
       ProfileStore.emitChange();
       break;
     case (ProfileConstants.PROFILEPIC):
-      ProfileStore.saveprofilepic(payload.action.profilepic);
+      ProfileStore.saveProfilePic(payload.action.profilepic);
       ProfileStore.emitChange();
       break;
   }
