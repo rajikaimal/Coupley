@@ -12,10 +12,18 @@ var SearchList = [];
 
 var ThreadStore = assign({}, EventEmitter.prototype, {
 
+  /**
+   * Get messages.
+   * @return  array[]
+   */
   getmessages: function () {
       return Thread;
     },
 
+  /**
+     * put messages to Thread.
+     *
+     */
   savemessage: function (data) {
       Thread.push(data);
     },
@@ -24,30 +32,51 @@ var ThreadStore = assign({}, EventEmitter.prototype, {
       this.emit(CHAT_EVENT);
     },
 
+  /**
+     * @param {function} callback
+     */
   addChangeListener: function (callback) {
       this.on(CHAT_EVENT, callback);
     },
-
+  /**
+   * Get messages.
+   * @return array[]
+   */
   getpreviousmessage:function () {
     return PreviousThread;
   },
-
+  /**
+     * put previous messages to PreviousThread.
+     *
+     */
   savepreviousmessage:function (results) {
     PreviousThread = results;
   },
-
+  /**
+     * put liked user list to LikedUsers.
+     *
+     */
   savelikedusers:function (results) {
       LikedUsers = results;
     },
-
+  /**
+   * Get all the liked users by a particular user.
+   * @return {object}
+   */
   getlikedusers:function () {
       return LikedUsers;
     },
-
+  /**
+     * put searched conversation list SearchList.
+     *
+     */
   saveSearchConv:function (results) {
     SearchList = results;
   },
-
+  /**
+   * Get Search reslts of previos conversations.
+   * @return array[]
+   */
   getsearchconv:function () {
       return SearchList;
 
