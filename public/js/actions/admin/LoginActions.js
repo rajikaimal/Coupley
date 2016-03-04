@@ -21,6 +21,7 @@ var AdminLoginActions = {
       }
     }).fail(function () {
       document.getElementById('server-error').innerHTML = '*Invalid credentials';
+      swal('Oops!', 'Invalid combination of Email/Password, Please try again', 'error');
     });
 
   },
