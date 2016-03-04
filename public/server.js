@@ -1,7 +1,7 @@
-var app = require('express')();
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
-var mysql      = require('mysql');
+var app = require('express')();    /*  Require express module  */
+var server = require('http').Server(app);   /*  Require HTTP module and create server */
+var io = require('socket.io')(server);    /*  Require Socket module */
+var mysql      = require('mysql');      /*  Require HTTP module and create server */
 var connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
@@ -14,11 +14,17 @@ var ThisUserEmail;
 
 connection.connect();
 
+/*  listen to port 8081 */
 server.listen(8081);
 
+/*
+ Retrive data when a client connect.
+ **/
 io.on('connection', function (socket) {
   console.log(' Client Connected !');
-
+  /*
+   Retrive loged user information.
+   **/
   socket.on('LoggedUser', function (data) {
 
     console.log(data in connectedUser);
@@ -40,7 +46,9 @@ io.on('connection', function (socket) {
             }
 
             console.log('List of users liked by this user :' + Likedusers);
-
+            /*
+             Comparing liked users and user connected to te shocket.
+             **/
             var arr = Likedusers.concat(Object.keys(connectedUser));
             console.log(arr);
             var sortedArr = arr.sort();
@@ -67,16 +75,15 @@ io.on('connection', function (socket) {
 
     }
   });
-
-  // app.get('/threads/list', function (req, res) {
-  //
-  //   res.json(connectedUser);
-  // });
-
+  /*
+   Throws exception when error occured.
+   **/
   socket.on('error', function () {
       throw new Error('Error occured!');
     });
-
+  /*
+     Gets the emitted chat message.
+     **/
   socket.on('message', function (chat) {
     ThisUserEmail = chat.emailusr1;
 
@@ -104,7 +111,9 @@ io.on('connection', function (socket) {
     });
 
   });
-
+  /*
+     Fires when client disconnects.
+     **/
   socket.on('disconnect', function () {
     console.log('user disconnected');
   });
