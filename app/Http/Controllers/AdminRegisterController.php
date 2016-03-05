@@ -9,7 +9,7 @@ class AdminRegisterController extends Controller
 {
     /**
      * checks whether same email is available
-     *  or not, then register new admin
+     *  or not, then register new admin.
      *
      * @param string        $someString
      *
@@ -44,7 +44,7 @@ class AdminRegisterController extends Controller
 
     /**
      * checks whether new email is already in the database
-     * old and new email can be similler for the selected admin only
+     * old and new email can be similler for the selected admin only.
      *
      * @param string        $someString
      *
@@ -73,6 +73,7 @@ class AdminRegisterController extends Controller
             return response()->json(['status' => 203], 203);
         }
     }
+
     /**
      * uploads the profile picture
      *  to the server.
@@ -80,7 +81,6 @@ class AdminRegisterController extends Controller
      *
      * @return string
      */
-
     public function uploadpic(Request $request)
     {
         $destination = 'img/profilepics';
@@ -97,9 +97,10 @@ class AdminRegisterController extends Controller
             return response()->json(['status' => 201, 'done' => false], 200);
         }
     }
+
     /**
      * SendMail uses to send a mail
-     * to the users
+     * to the users.
      * @return string
      */
     public function SendMail($email, $user, $pwd)
@@ -129,6 +130,7 @@ class AdminRegisterController extends Controller
             //echo 'Message has been sent';
         }
     }
+
     /**
      * CheckInternet uses to check,
      * whether internet is connected.
