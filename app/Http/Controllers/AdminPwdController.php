@@ -13,7 +13,7 @@ class AdminPwdController extends Controller
     /**
      * reset uses to check,
      * whether user is registered,
-     *  if it is, then update new password
+     *  if it is, then update new password.
      *
      * @return string
      */
@@ -49,7 +49,7 @@ class AdminPwdController extends Controller
 
     /**
      * SendMail uses to send a mail
-     * to the users
+     * to the users.
      * @return void
      */
     public function SendMail($email, $user, $pwd)
@@ -79,6 +79,7 @@ class AdminPwdController extends Controller
             //echo 'Message has been sent';
         }
     }
+
     /**
      * CheckInternet uses to check,
      * whether internet is connected.

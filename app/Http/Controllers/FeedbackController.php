@@ -4,13 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Feedback;
-use PHPMailer;
 
 class FeedbackController extends Controller
 {
     /**
      * uses to retrive feedbacks regarding
-     *the timeline
+     *the timeline.
      *
      *
      * @return string
@@ -18,16 +17,17 @@ class FeedbackController extends Controller
     public function timeline()
     {
         try {
-        if ($feeds = \DB::select('select * from feedback where category="timeline"')) {
-            return response()->json(['feeds' => $feeds, 'status' => 200], 200);
-        }
-        }catch (Illuminate\Database\QueryException $e) {
+            if ($feeds = \DB::select('select * from feedback where category="timeline"')) {
+                return response()->json(['feeds' => $feeds, 'status' => 200], 200);
+            }
+        } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 300], 300);
         }
     }
+
     /**
      * uses to retrive feedbacks regarding
-     *the activityfeed
+     *the activityfeed.
      *
      *
      * @return string
@@ -35,16 +35,17 @@ class FeedbackController extends Controller
     public function activityFeed()
     {
         try {
-        if ($feeds = \DB::select('select * from feedback where category="activity"')) {
-            return response()->json(['feeds' => $feeds, 'status' => 200], 200);
-        }
-        }catch (Illuminate\Database\QueryException $e) {
+            if ($feeds = \DB::select('select * from feedback where category="activity"')) {
+                return response()->json(['feeds' => $feeds, 'status' => 200], 200);
+            }
+        } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 300], 300);
         }
     }
+
     /**
      * uses to retrive feedbacks regarding
-     *the privacy
+     *the privacy.
      *
      *
      * @return string
@@ -52,16 +53,17 @@ class FeedbackController extends Controller
     public function privacy()
     {
         try {
-        if ($feeds = \DB::select('select * from feedback where category="privacy"')) {
-            return response()->json(['feeds' => $feeds, 'status' => 200], 200);
-        }
+            if ($feeds = \DB::select('select * from feedback where category="privacy"')) {
+                return response()->json(['feeds' => $feeds, 'status' => 200], 200);
+            }
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 300], 300);
         }
     }
+
     /**
      * uses to retrive feedbacks regarding
-     *the chat
+     *the chat.
      *
      *
      * @return string
@@ -69,16 +71,17 @@ class FeedbackController extends Controller
     public function chat()
     {
         try {
-        if ($feeds = \DB::select('select * from feedback where category="chat"')) {
-            return response()->json(['feeds' => $feeds, 'status' => 200], 200);
-        }
+            if ($feeds = \DB::select('select * from feedback where category="chat"')) {
+                return response()->json(['feeds' => $feeds, 'status' => 200], 200);
+            }
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 300], 300);
         }
     }
+
     /**
      * uses to retrive feedbacks regarding
-     *the other options
+     *the other options.
      *
      *
      * @return string
@@ -89,12 +92,13 @@ class FeedbackController extends Controller
             if ($feeds = \DB::select('select * from feedback where category="other"')) {
                 return response()->json(['feeds' => $feeds, 'status' => 200], 200);
             }
-        }catch (Illuminate\Database\QueryException $e) {
+        } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 300], 300);
         }
     }
+
     /**
-     * uses to mark whether feedback is done
+     * uses to mark whether feedback is done.
      *
      *@param object    $request
      *
@@ -107,7 +111,7 @@ class FeedbackController extends Controller
             if ($feeds = \DB::table('feedback')->where('id', $id)->delete()) {
                 return response()->json(['status' => 201], 201);
             }
-        }catch (Illuminate\Database\QueryException $e) {
+        } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 300], 300);
         }
     }
