@@ -4,7 +4,7 @@ var SearchConstants = require('../constants/SearchConstants');
 
 var HeaderActions = {
   getprofilename: function (email) {
-    console.log(email);
+
     $.get('/api/authenticate?token=' + localStorage.getItem('apitoken'), function (response) {
       if (response.token) {
         AppDispatcher.handleViewAction({
@@ -12,14 +12,14 @@ var HeaderActions = {
           firstname: response.user[0].firstname,
         });
       } else {
-        console.log(response);
+
       }
     });
   },
 
-  getsearchresults: function (searchkey) {
-    if (searchkey == '') {
-      console.log('Null searchkey');
+  getSearchResults: function (searchkey) {
+    if (!searchkey) {
+
     } else {
       $.get('/api/search?token=' + localStorage.getItem('apitoken') + '&key=' + searchkey + '&username=' + localStorage.getItem('username'), function (response) {
         if (response.status == 201 && response.users) {
@@ -27,7 +27,7 @@ var HeaderActions = {
             actionType: SearchConstants.SEARCH,
             search: response.users,
           });
-        } else if (response.status == 200) {
+        } else if (response.status == 200 && response.users == null) {
           AppDispatcher.handleViewAction({
             actionType: SearchConstants.SEARCH,
             search: '',

@@ -1,4 +1,14 @@
 <?php
+/*
+|--------------------------------------------------------------------------
+| RegisterController File
+|--------------------------------------------------------------------------
+|
+| Here is where all API requests related to profile are redirected
+| by routes files in order to handle the request and @return json responses
+| @author Rajika Imal
+|
+*/
 
 namespace App\Http\Controllers;
 
@@ -8,7 +18,14 @@ use App\About;
 
 class RegisterController extends Controller
 {
-    //checks whether user is already registered
+    /**
+     * checks whether user already exists.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function check(Request $request)
     {
         $email = $request->email;
@@ -49,10 +66,14 @@ class RegisterController extends Controller
         }
     }
 
-    /*
-        Returns @json
-        Checks username exists or not
-    **/
+    /**
+     * matches username from request and sql values.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function checkusername(Request $request)
     {
         $username = $request->username;
@@ -68,10 +89,14 @@ class RegisterController extends Controller
         }
     }
 
-    /*
-        Returns @json
-        Checks email exists or not
-    **/
+    /**
+     * checks email from request exists or not.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function checkemail(Request $request)
     {
         $email = $request->email;

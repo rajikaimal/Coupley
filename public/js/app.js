@@ -19,7 +19,7 @@ import ActivityContainer from './components/profile/ActivityFeed/ActivityFeedCon
 import About from './components/profile/About.react';
 import Photos from './components/profile/visitor/Photos.react';
 import ProfileVisitor from './components/profile/visitor/profile.react';
-import ActivityContainerVisitor from './components/profile/visitor/ActivityFeed/ActivityFeedContainer.react';
+import VisitorActivityFeed from './components/profile/visitor/activityfeed/activityMain.react';
 import AboutVisitor from './components/profile/visitor/About.react';
 import PhotosVisitor from './components/profile/visitor/Photos.react';
 import Search from './components/search/Search.react';
@@ -114,8 +114,7 @@ ReactDOM.render((
         <Route path="photos" component={Photos} />
       </Route>
       <Route path="/:username" component={ProfileVisitor} >
-        <Route path="activityfeed" component={ActivityContainerVisitor} />
-
+        <Route path="activityfeed" component={VisitorActivityFeed} />
         <Route path="about" component={AboutVisitor} />
         <Route path="photos" component={PhotosVisitor} />
       </Route>

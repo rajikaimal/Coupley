@@ -39,47 +39,47 @@ const divStyle = {
 const ProfilePic = React.createClass({
   getInitialState: function() {
     return {
-      liked: VisitorStore.getlikestatus(),
-      likedback: VisitorStore.getlikedbackstatus(),
-      blocked: VisitorStore.getblockstatus(),
-      permission: VisitorStore.getpermission(),
-      picture: VisitorStore.getprofilepic(),
+      liked: VisitorStore.getLikeStatus(),
+      likedback: VisitorStore.getLikedbackStatus(),
+      blocked: VisitorStore.getBlockStatus(),
+      permission: VisitorStore.getPermission(),
+      picture: VisitorStore.getProfilePic(),
       open: false
     }
   },
   componentDidMount: function() {
     VisitorStore.addChangeListener(this._onChange);
-    ProfileVisitorActions.getpermission();
-    ProfileVisitorActions.getlikestatus();
-    ProfileVisitorActions.getlikedbackstatus();
-    ProfileVisitorActions.getblockstatus();
+    ProfileVisitorActions.getPermission();
+    ProfileVisitorActions.getLikeStatus();
+    ProfileVisitorActions.getLikedbackStatus();
+    ProfileVisitorActions.getBlockStatus();
 
     ProfileVisitorActions.fetchProfilePicture();
   },
   _onChange: function() {
-    if(VisitorStore.getlikestatus() == "false") {
+    if(VisitorStore.getLikeStatus() == "false") {
       this.setState({
         liked: false,
-        likedback: VisitorStore.getlikedbackstatus()
+        likedback: VisitorStore.getLikedbackStatus()
       });  
     }
-    if(VisitorStore.getlikestatus() == "true") {
+    if(VisitorStore.getLikeStatus() == "true") {
       this.setState({
         liked: true,
-        likedback: VisitorStore.getlikedbackstatus()
+        likedback: VisitorStore.getLikedbackStatus()
       });
     }
 
     this.setState({
-      blocked: VisitorStore.getblockstatus()
+      blocked: VisitorStore.getBlockStatus()
     });
 
     this.setState({
-      permission: VisitorStore.getpermission()
+      permission: VisitorStore.getPermission()
     });
 
     this.setState({
-      picture: VisitorStore.getprofilepic()
+      picture: VisitorStore.getProfilePic()
     });
   },
   _changeLikeState: function() {

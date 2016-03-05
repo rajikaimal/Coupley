@@ -8,13 +8,11 @@ var CHANGE_EVENT = 'change';
 var abouterr;
 
 var ErrorStore = assign({}, EventEmitter.prototype, {
-  saveerror: function (err) {
-    console.log('Got err');
+  saveError: function (err) {
     abouterr = err;
   },
 
   getabouterr: function () {
-    console.log('returned err');
     return abouterr;
   },
 
@@ -30,23 +28,23 @@ var ErrorStore = assign({}, EventEmitter.prototype, {
 AppDispatcher.register(function (payload) {
   switch (payload.action.actionType) {
     case (AboutConstants.SUMMARY):
-      ErrorStore.saveerror(payload.action.error);
+      ErrorStore.saveError(payload.action.error);
       ErrorStore.emitChange();
       break;
     case (AboutConstants.LIFE):
-      ErrorStore.saveerror(payload.action.error);
+      ErrorStore.saveError(payload.action.error);
       ErrorStore.emitChange();
       break;
     case (AboutConstants.GOODAT):
-      ErrorStore.saveerror(payload.action.error);
+      ErrorStore.saveError(payload.action.error);
       ErrorStore.emitChange();
       break;
     case (AboutConstants.THINKING):
-      ErrorStore.saveerror(payload.action.error);
+      ErrorStore.saveError(payload.action.error);
       ErrorStore.emitChange();
       break;
     case (AboutConstants.FAVS):
-      ErrorStore.saveerror(payload.action.error);
+      ErrorStore.saveError(payload.action.error);
       ErrorStore.emitChange();
       break;
   }

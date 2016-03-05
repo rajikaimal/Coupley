@@ -70,11 +70,11 @@ const About = React.createClass({
         editingThinkingof: false,
         editingFavs: false,
         error: false,
-        summary: AboutStore.getsummary(),
-        life: AboutStore.getlife(),
-        goodat: AboutStore.getgoodat(),
-        spendtime: AboutStore.getspendtime(),
-        favs: AboutStore.getfavs()
+        summary: AboutStore.getSummary(),
+        life: AboutStore.getLife(),
+        goodat: AboutStore.getGoodAt(),
+        spendtime: AboutStore.getSpendTime(),
+        favs: AboutStore.getFavs()
     };
   },
     componentDidMount: function () {
@@ -84,11 +84,11 @@ const About = React.createClass({
   },
     _onChange: function () {
         this.setState({
-            summary: AboutStore.getsummary(),
-            life: AboutStore.getlife(),
-            goodat: AboutStore.getgoodat(),
-            spendtime: AboutStore.getspendtime(),
-            favs: AboutStore.getfavs(),
+            summary: AboutStore.getSummary(),
+            life: AboutStore.getLife(),
+            goodat: AboutStore.getGoodAt(),
+            spendtime: AboutStore.getSpendTime(),
+            favs: AboutStore.getFavs(),
             error: ErrorStore.getabouterr()
     });
   },
@@ -121,7 +121,7 @@ const About = React.createClass({
         if(validate(this.refs.summary.getValue()).error) {
             document.getElementById('summary').innerHTML = validate(this.refs.summary.getValue()).error;
         } else {
-            AboutActions.updatesummary(this.refs.summary.getValue());
+            AboutActions.updateSummary(this.refs.summary.getValue());
             this.setState({
                 editing: !this.state.editing
             });
@@ -132,7 +132,7 @@ const About = React.createClass({
             document.getElementById('life').innerHTML = validate(this.refs.life.getValue()).error;
         }
         else {
-            AboutActions.updatelife(this.refs.life.getValue());
+            AboutActions.updateLife(this.refs.life.getValue());
             this.setState({
                 editingLife: !this.state.editingLife
             });    
@@ -142,7 +142,7 @@ const About = React.createClass({
         if(validate(this.refs.goodat.getValue()).error) {
             document.getElementById('goodat').innerHTML = validate(this.refs.goodat.getValue()).error;
         } else {
-            AboutActions.updategoodat(this.refs.goodat.getValue());
+            AboutActions.updateGoodAt(this.refs.goodat.getValue());
             this.setState({
                 editingGoodat: !this.state.editingGoodat
             });
@@ -152,7 +152,7 @@ const About = React.createClass({
         if(validate(this.refs.thinkingof.getValue()).error) {
             document.getElementById('thinkingof').innerHTML = validate(this.refs.thinkingof.getValue()).error;
         } else {
-            AboutActions.updatethinkingof(this.refs.thinkingof.getValue());
+            AboutActions.updateThinkingOf(this.refs.thinkingof.getValue());
             this.setState({
                 editingThinkingof: !this.state.editingThinkingof
             });
@@ -162,7 +162,7 @@ const About = React.createClass({
         if(validate(this.refs.favs.getValue()).error) {
             document.getElementById('favs').innerHTML = validate(this.refs.favs.getValue()).error;
         } else {
-            AboutActions.updatefavs(this.refs.favs.getValue());
+            AboutActions.updateFavs(this.refs.favs.getValue());
             this.setState({
                 editingFavs: !this.state.editingFavs
             });

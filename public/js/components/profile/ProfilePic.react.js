@@ -129,7 +129,7 @@ const ProfilePic = React.createClass({
 
     _onChange: function() {
       this.setState({
-        picture: ProfileStore.getprofilepic()
+        picture: ProfileStore.getProfilePic()
       });
     },
 
@@ -166,7 +166,7 @@ const ProfilePic = React.createClass({
         fd.append('user', localStorage.getItem('username'));
         $.ajax({
             type: 'POST',
-            url: '/api/profile/profilepic',
+            url: '/api/profile/profilepic?token=' + localStorage.getItem('apitoken'),
             data: fd,
             contentType: false,
             processData: false,
@@ -175,9 +175,6 @@ const ProfilePic = React.createClass({
                 console.log(data);
                 if(data.done == true) {
                   ProfileActions.fetchProfilePicture(localStorage.getItem('apitoken'), localStorage.getItem('username'));
-                  // self.setState({
-                  //   editing: false
-                  // });
                   location.reload();
                 } else {
 
@@ -235,7 +232,7 @@ const ProfilePic = React.createClass({
       }
 
       if(val) {
-        ProfileActions.updatechanges(data);  
+        ProfileActions.updateChanges(data);  
       }
     },
 
@@ -314,7 +311,7 @@ const ProfilePic = React.createClass({
                         </div>
                         : ''
                      }
-                     
+                    Interested in men age between 18-30
               </div>
               <div className="col-sm-6 col-md-6 col-lg-6">
                   <div style={divStyle}>

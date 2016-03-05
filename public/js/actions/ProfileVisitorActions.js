@@ -2,7 +2,7 @@ var AppDispatcher = require('../dispatcher/AppDispatcher');
 var ProfileConstants = require('../constants/ProfileConstants');
 
 var LoginActions = {
-  loadprofiledata: function (username) {
+  loadProfileData: function (username) {
     $.get('/api/visitorprofile?token=' + localStorage.getItem('apitoken') + '&username=' + username, function (response) {
       AppDispatcher.handleViewAction({
           actionType: ProfileConstants.VISITOR,
@@ -17,7 +17,7 @@ var LoginActions = {
     });
   },
 
-  getpermission: function () {
+  getPermission: function () {
     let str = window.location.hash;
     let visitorusername = str.split(/[\/?]/)[1];
     let request = {
@@ -25,20 +25,20 @@ var LoginActions = {
       visitorusername: visitorusername,
       token: localStorage.getItem('apitoken'),
     };
-    $.post('/api/profilepermission', request, function (response) {
+    $.post('/api/profilepermission?token=' + localStorage.getItem('apitoken'), request, function (response) {
       if (response.status == 200) {
-        console.log('GOT PERMISSIONS');
+
         AppDispatcher.handleViewAction({
           actionType: ProfileConstants.PROPPERMISSION,
           permission: response.permission,
         });
       }
     }).fail(function (error) {
-      console.log(error);
+
     });
   },
 
-  getlikestatus: function () {
+  getLikeStatus: function () {
     let str = window.location.hash;
     let username = str.split(/[\/?]/)[1];
     let request = {
@@ -62,10 +62,10 @@ var LoginActions = {
       gotLikedUsername: gotlikedusername,
       token: localStorage.getItem('apitoken'),
     };
-    $.post('/api/like', request, function (response) {
-      console.log(response);
+    $.post('/api/like?token=' + localStorage.getItem('apitoken'), request, function (response) {
+
     }).fail(function (error) {
-      console.log(error);
+
     });
   },
 
@@ -77,34 +77,33 @@ var LoginActions = {
       gotunLikedUsername: gotunlikedusername,
       token: localStorage.getItem('apitoken'),
     };
-    $.post('/api/unlike', request, function (response) {
-      console.log(response);
+    $.post('/api/unlike?token=' + localStorage.getItem('apitoken'), request, function (response) {
+
     }).fail(function (error) {
-      console.log(error);
+
     });
   },
 
-  getlikedbackstatus: function () {
+  getLikedbackStatus: function () {
     let str = window.location.hash;
     let visitorusername = str.split(/[\/?]/)[1];
     let request = {
       username: localStorage.getItem('username'),
       visitorusername: visitorusername,
-      token: localStorage.getItem('apitoken'),
+//      token: localStorage.getItem('apitoken'),
     };
-    $.post('/api/likedbackstatus', request, function (response) {
-      console.log('GOT LIKEdBACK stat <><><><><>');
-      console.log(response);
+    $.post('/api/likedbackstatus?token=' + localStorage.getItem('apitoken'), request, function (response) {
+
       AppDispatcher.handleViewAction({
         actionType: ProfileConstants.LIKEBACKSTATUS,
         likedbackstatus: response.liked,
       });
     }).fail(function (error) {
-      console.log(error);
+
     });
   },
 
-  getblockstatus: function () {
+  getBlockStatus: function () {
     let str = window.location.hash;
     let visitorusername = str.split(/[\/?]/)[1];
     let request = {
@@ -112,13 +111,13 @@ var LoginActions = {
       visitorusername: visitorusername,
       token: localStorage.getItem('apitoken'),
     };
-    $.post('/api/blockstatus', request, function (response) {
+    $.post('/api/blockstatus?token=' + localStorage.getItem('apitoken'), request, function (response) {
       AppDispatcher.handleViewAction({
         actionType: ProfileConstants.BLOCKSTATUS,
         blockstatus: response.blockstatus,
       });
     }).fail(function (error) {
-      console.log(error);
+
     });
   },
 
@@ -130,10 +129,9 @@ var LoginActions = {
       visitorusername: visitorusername,
       token: localStorage.getItem('apitoken'),
     };
-    $.post('/api/blockuser', request, function (response) {
+    $.post('/api/blockuser?token=' + localStorage.getItem('apitoken'), request, function (response) {
       if (response.status == 200) {
-        console.log('Done change ...');
-        
+
         let str = window.location.hash;
         let gotunlikedusername = str.split(/[\/?]/)[1];
         let request = {
@@ -141,10 +139,10 @@ var LoginActions = {
           gotunLikedUsername: gotunlikedusername,
           token: localStorage.getItem('apitoken'),
         };
-        $.post('/api/unlike', request, function (response) {
+        $.post('/api/unlike?token=' + localStorage.getItem('apitoken'), request, function (response) {
 
         }).fail(function (error) {
-          console.log(error);
+
         });
 
         AppDispatcher.handleViewAction({
@@ -153,7 +151,7 @@ var LoginActions = {
         });
       }
     }).fail(function (error) {
-      console.log(error);
+
     });
   },
 
@@ -165,16 +163,15 @@ var LoginActions = {
       visitorusername: visitorusername,
       token: localStorage.getItem('apitoken'),
     };
-    $.post('/api/unblockuser', request, function (response) {
+    $.post('/api/unblockuser?token=' + localStorage.getItem('apitoken'), request, function (response) {
       if (response.status == 200) {
-        console.log('Done change ...');
         AppDispatcher.handleViewAction({
           actionType: ProfileConstants.BLOCKSTATUS,
           blockstatus: false,
         });
       }
     }).fail(function (error) {
-      console.log(error);
+
     });
   },
 
@@ -183,7 +180,7 @@ var LoginActions = {
     let visitorusername = str.split(/[\/?]/)[1];
     let apitoken = localStorage.getItem('apitoken');
     let data = {
-      apitoken: apitoken,
+      token: apitoken,
       username: visitorusername,
     };
     $.get('/api/getProfilePic', data, function (response) {
@@ -193,7 +190,7 @@ var LoginActions = {
           profilepic: response.image,
         });
       } else {
-        console.log('Error');
+
       }
     });
   },

@@ -5,16 +5,16 @@ var assign = require('object-assign');
 
 var CHANGE_EVENT = 'change';
 
-var searchresults = [];
+var searchResults = [];
 var profileposts = [];
 var searchID;
 var counter = 0;
 var initial = 3;
 
-var StatusStore = assign({}, EventEmitter.prototype, {
+var VisitorStatusStore = assign({}, EventEmitter.prototype, {
 
   getStatusData: function () {
-      return searchresults;
+      return searchResults;
     },
 
   getprofilePosts: function () {
@@ -28,14 +28,14 @@ var StatusStore = assign({}, EventEmitter.prototype, {
     return profileposts.slice(0, end);
   },
 
-  saveprofileposts: function (data) {
+  saveProfilePosts: function (data) {
     profileposts = [];
     profileposts = data;
   },
 
   saveStatusData: function (results) {
-    searchresults = [];
-    searchresults = results;
+    searchResults = [];
+    searchResults = results;
   },
 
   getStatusID:function () {
@@ -58,18 +58,18 @@ var StatusStore = assign({}, EventEmitter.prototype, {
 AppDispatcher.register(function (payload) {
   switch (payload.action.actionType) {
     case (ActivityFeedConstants.GETDATA):
-      StatusStore.saveStatusData(payload.action.statusdata);
-      StatusStore.emitChange();
+      VisitorStatusStore.saveStatusData(payload.action.statusdata);
+      VisitorStatusStore.emitChange();
       break;
     case (ActivityFeedConstants.GETID):
-      StatusStore.saveStatusID(payload.action.id);
-      StatusStore.emitChange();
+      VisitorStatusStore.saveStatusID(payload.action.id);
+      VisitorStatusStore.emitChange();
       break;
     case (ActivityFeedConstants.GETPROFILEPOSTS):
-      StatusStore.saveprofileposts(payload.action.posts);
-      StatusStore.emitChange();
+      VisitorStatusStore.saveProfilePosts(payload.action.posts);
+      VisitorStatusStore.emitChange();
       break;
   }
 });
 
-module.exports = StatusStore;
+module.exports = VisitorStatusStore;

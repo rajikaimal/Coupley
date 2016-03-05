@@ -1,8 +1,8 @@
 import React from 'react';
 import List from 'material-ui/lib/lists/list';
 import ListItem from 'material-ui/lib/lists/list-item';
-import ActivityFeedActions from '../../../actions/ActivityFeed/ActivityFeedActions';
-import StatusStore from '../../../stores/StatusStore';
+import ActivityFeedActions from '../../../../actions/ActivityFeed/VisitorActivityFeedActions';
+import StatusStore from '../../../../stores/VisitorStatusStore';
 import ActivityList from './activityListComp.react';
 import RaisedButton from 'material-ui/lib/raised-button';
 
@@ -15,7 +15,9 @@ const activityContainer = React.createClass({
   },
   componentDidMount: function() {
     StatusStore.addChangeListener(this._onChange);
-    ActivityFeedActions.loadPosts(localStorage.getItem('username'));
+    let str = window.location.hash;
+    let visitorUsername = str.split(/[\/?]/)[1];
+    ActivityFeedActions.loadPosts(visitorUsername);
   },
   _onChange: function() {
     if(this.state.result) {

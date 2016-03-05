@@ -12,19 +12,20 @@ import IconMenu from 'material-ui/lib/menus/icon-menu';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import FlatButton from 'material-ui/lib/flat-button';
 import Paper from 'material-ui/lib/paper';
-import LikesActions from '../../../actions/ActivityFeed/LikesActions';
-import ShareActions from '../../../actions/ActivityFeed/ShareActions';
-import LoginStore from '../../../stores/LoginStore';
-import StatusStore from '../../../stores/StatusStore';
-import ActivityFeedActions from '../../../actions/ActivityFeed/ActivityFeedActions';
-import CommentAction from '../../../actions/ActivityFeed/CommentAction';
-import CommentStore from '../../../stores/CommentStore';
+import LikesActions from '../../../../actions/ActivityFeed/LikesActions';
+import ShareActions from '../../../../actions/ActivityFeed/ShareActions';
+import LoginStore from '../../../../stores/LoginStore';
+import StatusStore from '../../../../stores/StatusStore';
+import ActivityFeedActions from '../../../../actions/ActivityFeed/ActivityFeedActions';
+import CommentAction from '../../../../actions/ActivityFeed/CommentAction';
+import CommentStore from '../../../../stores/CommentStore';
 //import CommentList from '../comments/CommentList.react';
 import Dialog from 'material-ui/lib/dialog';
 import RaisedButton from 'material-ui/lib/raised-button';
 import TextField from 'material-ui/lib/text-field';
-import LikeStatusStore from '../../../stores/LikeStatusStore';
+import LikeStatusStore from '../../../../stores/LikeStatusStore';
 import Snackbar from 'material-ui/lib/snackbar';
+import VisitorStore from '../../../../stores/VisitorStore';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 //tap-event-plugin
@@ -213,7 +214,7 @@ const ActivityList = React.createClass({
 			<div >
             <Card>
 		        <ListItem
-		          leftAvatar={<Avatar src={'img/profilepics/' + localStorage.getItem('username')} />}
+		          leftAvatar={<Avatar src={VisitorStore.getProfilePic()} />}
 		          primaryText={this.props.firstname}
 		          secondaryText={
 		            <p>
@@ -226,11 +227,7 @@ const ActivityList = React.createClass({
 		            </p>
 		          }
 		          secondaryTextLines={2}
-		          rightIconButton={
-                 <IconMenu iconButtonElement={iconButtonElement}>
-                    <MenuItem primaryText="Edit" onClick={this.handleOpen}/>
-                    <MenuItem primaryText="Remove" onClick={this.deleteStatus}/>
-                  </IconMenu> } />
+		         />
 		           	
              
                 <IconButton onClick={this._changeLikeState} tooltip={this.state.liked ? "Unlike" : "Like"} touch={true} tooltipPosition="bottom-right">

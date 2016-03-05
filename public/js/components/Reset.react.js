@@ -14,12 +14,13 @@ import LoginActions from '../actions/LoginActions';
 const err = {"color": "red"};
 var validEmail = /\S+@\S+\.\S+/;
 
-const ForgotPassword = React.createClass({
+const Reset = React.createClass({
     sendemail: function () {
         let email = this.refs.email.getValue();
         let resetemail = {
             email: email
         }
+        LoginActions.resetpassword(resetemail);
 
         if (email.trim() == "") {
             document.getElementById('email').innerHTML = "*Email field is empty, Please enter the email!";
@@ -37,8 +38,6 @@ const ForgotPassword = React.createClass({
 
             }
         }
-        LoginActions.resetpassword(resetemail);
-        document.getElementById('email').innerHTML = "Check your email and use the reset password!";        
     },
 
     render: function() {
@@ -54,7 +53,11 @@ const ForgotPassword = React.createClass({
                                 <TextField
                                     floatingLabelText="Enter your email" ref="email" />
                                 <div style={err} id="email" onChange={this.sendemail}></div>
-
+                                <TextField
+                                    floatingLabelText="Enter your recovered password" ref="password" />
+                                <TextField
+                                    floatingLabelText="Enter new password" ref="newpassword" />
+                                <div style={err} id="email" onChange={this.sendemail}></div>
                             </CardActions>
                             <CardText>
                                 <span id="server-error" style={err}> </span> <br/>
@@ -72,4 +75,4 @@ const ForgotPassword = React.createClass({
 
 });
 
-export default ForgotPassword;
+export default Reset;

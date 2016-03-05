@@ -1,6 +1,6 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
-var AboutConstants = require('../constants/AboutConstants');
+var ProfileConstants = require('../constants/ProfileConstants');
 var assign = require('object-assign');
 
 var CHANGE_EVENT = 'change';
@@ -20,40 +20,20 @@ var AboutStore = assign({}, EventEmitter.prototype, {
     favs = data.favourites;
   },
 
-  saveSummary: function (data) {
-    summary = data;
-  },
-
   getSummary: function () {
     return summary;
-  },
-
-  saveLife: function (data) {
-    life = data;
   },
 
   getLife: function () {
     return life;
   },
 
-  saveGoodAt: function (data) {
-    goodat = data;
-  },
-
   getGoodAt: function () {
     return goodat;
   },
 
-  saveSpendTime: function (data) {
-    spendtime = data;
-  },
-
   getSpendTime: function () {
     return spendtime;
-  },
-
-  saveFavs: function (data) {
-    favs = data;
   },
 
   getFavs: function () {
@@ -70,30 +50,9 @@ var AboutStore = assign({}, EventEmitter.prototype, {
 });
 
 AppDispatcher.register(function (payload) {
-
   switch (payload.action.actionType) {
-    case (AboutConstants.FETCH):
+    case (ProfileConstants.VISITORABOUTLOAD):
       AboutStore.saveAll(payload.action.data);
-      AboutStore.emitChange();
-      break;
-    case (AboutConstants.SUMMARY):
-      AboutStore.saveSummary(payload.action.summary);
-      AboutStore.emitChange();
-      break;
-    case (AboutConstants.LIFE):
-      AboutStore.saveLife(payload.action.life);
-      AboutStore.emitChange();
-      break;
-    case (AboutConstants.GOODAT):
-      AboutStore.saveGoodAt(payload.action.goodat);
-      AboutStore.emitChange();
-      break;
-    case (AboutConstants.THINKING):
-      AboutStore.saveSpendTime(payload.action.thinkingof);
-      AboutStore.emitChange();
-      break;
-    case (AboutConstants.FAVS):
-      AboutStore.saveFavs(payload.action.favs);
       AboutStore.emitChange();
       break;
   }

@@ -23,7 +23,7 @@ const Header = React.createClass({
 	},
 	_search: function() {
 		let searchkey = this.refs.search.value;
-		HeaderActions.getsearchresults(searchkey);
+		HeaderActions.getSearchResults(searchkey);
 	},
 	_onChange: function() {
 	    this.setState({ firstname: LoginStore.getFirstname() });

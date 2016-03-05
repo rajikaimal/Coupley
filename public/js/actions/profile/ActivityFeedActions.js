@@ -19,16 +19,16 @@ var ActivityFeedActions = {
     $.ajax({
       url: '/api/profile/edit/activity',
       type: 'PUT',
-      data: 'email=' + localStorage.getItem('email') + '&editActvity=' + data,
+      data: 'token=' + localStorage.getItem('apitoken') + '&email=' + localStorage.getItem('email') + '&editActvity=' + data,
       success: function (response) {
-        console.log('DOne ... ' + response);
+        
         if (response.status === 200) {
           AppDispatcher.handleViewAction({
             actionType: ProfileConstants.FEED,
             editActvity: data,
           });
-        }        else {
-          console.log('Somthing happened');
+        } else {
+          
         }
       },
     });
