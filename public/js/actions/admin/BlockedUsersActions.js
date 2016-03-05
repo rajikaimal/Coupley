@@ -14,9 +14,8 @@ var UsersActions = {
           actionType: SearchConstants.SEARCH,
           search: response.users,
         });
-      }else if (response.status == 505) {
-        console.log('Error 505');
-        document.location = '/#/search/err';
+      }else if (response.status === 300) {
+        swal('Something Went Wrong', 'Please try again in a moment', 'error');
       }
     });
   },

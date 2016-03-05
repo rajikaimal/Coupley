@@ -10,17 +10,18 @@ var AdminLoginActions = {
           actionType: LoginConstants.LOGIN,
           token: response.token,
         });
-        console.log('Dispatched');
         swal('Welcome Back!', 'Login Successful.', 'success');
         setTimeout(function () {
           history.go(0);
         }, 1000);
-      }      else {
-        console.log(response);
+      }      else if (response.status === 203) {
+        swal('Oops!', 'You are not an Administrator. Please visit WWW.COUPLEY.COM', 'error');
+      } else if (response.status === 300) {
+        swal('Something Went Wrong', 'Please try again in a moment', 'error');
       }
-
     }).fail(function () {
       document.getElementById('server-error').innerHTML = '*Invalid credentials';
+      swal('Oops!', 'Invalid combination of Email/Password, Please try again', 'error');
     });
 
   },

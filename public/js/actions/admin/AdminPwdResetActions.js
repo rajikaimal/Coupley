@@ -15,6 +15,8 @@ var PwdActions = {
         setTimeout(function () {
           location.reload(true);
         }, 1500);
+      } else if (data.status === 300) {
+        swal('Something Went Wrong', 'Please try again in a moment', 'error');
       }
     });
 

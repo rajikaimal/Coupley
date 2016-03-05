@@ -11,6 +11,8 @@ var FeedActions = {
     $.post('/admin-api/markfeed', credentials, function (data) {
       if (data.status === 201) {
         location.reload(true);
+      } else if (data.status === 300) {
+        swal('Something Went Wrong', 'Please try again in a moment', 'error');
       }
     });
 
@@ -23,9 +25,8 @@ var FeedActions = {
           actionType: FeedConstants.SEARCH,
           timelineFeed: response.feeds,
         });
-      }      else if (response.status == 505) {
-        console.log('Error 505');
-
+      }      else if (response.status === 300) {
+        swal('Something Went Wrong', 'Please try again in a moment', 'error');
       }
     });
   },
@@ -37,9 +38,8 @@ var FeedActions = {
           actionType: FeedConstants.SEARCH,
           timelineFeed: response.feeds,
         });
-      }      else if (response.status == 505) {
-        console.log('Error 505');
-
+      }      else if (response.status === 300) {
+        swal('Something Went Wrong', 'Please try again in a moment', 'error');
       }
     });
   },
@@ -51,9 +51,8 @@ var FeedActions = {
           actionType: FeedConstants.SEARCH,
           timelineFeed: response.feeds,
         });
-      }      else if (response.status == 505) {
-        console.log('Error 505');
-
+      }      else if (response.status === 300) {
+        swal('Something Went Wrong', 'Please try again in a moment', 'error');
       }
     });
   },
@@ -65,9 +64,8 @@ var FeedActions = {
           actionType: FeedConstants.SEARCH,
           timelineFeed: response.feeds,
         });
-      }      else if (response.status == 505) {
-        console.log('Error 505');
-
+      }      else if (response.status === 300) {
+        swal('Something Went Wrong', 'Please try again in a moment', 'error');
       }
     });
   },
