@@ -106,6 +106,9 @@ Route::group(['prefix' => 'admin-api'], function () {
     Route::post('authenticates', 'AdminAuthenticateController@authenticate');
     //Return userslist
     Route::get('search', 'UsersController@friends');
+    //Return userslist for search
+    Route::get('searches', 'AdminSearchController@search');
+    //return blocked users
     Route::get('blocked', 'UsersController@blocked');
     //Register new admins with RegisterConroller@register
     Route::post('registerAdmin', 'AdminRegisterController@checks');

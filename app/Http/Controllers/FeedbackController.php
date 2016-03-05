@@ -96,9 +96,9 @@ class FeedbackController extends Controller
     /**
      * uses to mark whether feedback is done
      *
-     *@param string        $someString
+     *@param object    $request
      *
-     * @return string
+     * @return json
      */
     public function markfeed(Request $request)
     {

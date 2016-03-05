@@ -86,6 +86,7 @@ ReactDOM.render((
     <Route path="/AdminLogin" component={AdminLogin} />
       <Route path="/Adminforgotpwd" component={AdminForgot} />
     <Route path="/dashboard" component={Admin} onEnter={requireAdminAuth}>
+        <Route path="/searches" component={Search} />
         <Route path="/users" component={Users}>
             <Route path="friends" component={Friends} />
             <Route path="enemies" component={Enemies} />
