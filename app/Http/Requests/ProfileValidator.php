@@ -2,8 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Requests\Request;
-
 class ProfileValidator extends Request
 {
     /**
@@ -24,7 +22,7 @@ class ProfileValidator extends Request
     public function rules()
     {
         return [
-           
+
         ];
     }
 }
