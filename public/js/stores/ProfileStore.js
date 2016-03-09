@@ -7,6 +7,7 @@ var CHANGE_EVENT = 'change';
 
 var user = [];
 var pic = '';
+var error = false;
 
 var ProfileStore = assign({}, EventEmitter.prototype, {
   saveUserData: function (data) {
@@ -15,6 +16,14 @@ var ProfileStore = assign({}, EventEmitter.prototype, {
 
   saveProfilePic: function (data) {
     pic = data;
+  },
+
+  saveErrorStatus: function (data) {
+    error = data;
+  },
+
+  getErrorStatus: function() {
+    return error;
   },
 
   getUserData: function () {
@@ -58,6 +67,10 @@ AppDispatcher.register(function (payload) {
       break;
     case (ProfileConstants.PROFILEPIC):
       ProfileStore.saveProfilePic(payload.action.profilepic);
+      ProfileStore.emitChange();
+      break;
+    case (ProfileConstants.ERR):
+      ProfileStore.saveErrorStatus(payload.action.error);
       ProfileStore.emitChange();
       break;
   }

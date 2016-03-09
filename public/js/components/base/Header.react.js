@@ -6,16 +6,20 @@ import NotificationsIcon from 'material-ui/lib/svg-icons/social/notifications';
 import MockChat from '../profile/MockChat.react';
 import MessageIcon from 'material-ui/lib/svg-icons/action/speaker-notes';
 import LoginStore from '../../stores/LoginStore';
+import ProfileStore from '../../stores/ProfileStore';
 import HeaderActions from '../../actions/HeaderActions';
+import Snackbar from 'material-ui/lib/snackbar';
 
 const Header = React.createClass({
 	getInitialState: function() {
 		return {
-			firstname: LoginStore.getFirstname()
+			firstname: LoginStore.getFirstname(),
+			error: false
 		}
 	},
 	componentDidMount: function() {
 		LoginStore.addChangeListener(this._onChange);
+		ProfileStore.addChangeListener(this._onChange);
 		//HeaderActions.getprofilename(LoginStore.getEmail());
 	},
 	_changeURL: function() {
@@ -26,7 +30,10 @@ const Header = React.createClass({
 		HeaderActions.getSearchResults(searchkey);
 	},
 	_onChange: function() {
-	    this.setState({ firstname: LoginStore.getFirstname() });
+	    this.setState({ 
+	    	firstname: LoginStore.getFirstname(),
+	    	error: ProfileStore.getErrorStatus()
+	    });
 	},
 	render: function() {
 	    return (
@@ -89,6 +96,12 @@ const Header = React.createClass({
         		<div className="col-lg-3">
 		          <MockChat />
 		        </div>
+		        <Snackbar
+                    open={this.state.error}
+                    message="Error occured please try again later !"
+                    autoHideDuration={4000}
+                    onRequestClose={this.handleRequestClose}
+                />
 			</div>
 		);
 	}

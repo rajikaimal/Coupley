@@ -42,10 +42,13 @@ const activityContainer = React.createClass({
 
   render: function() {
     return (
-     <div>
-      {this._renderActivity()}
-      <RaisedButton label="load more" primary={true} onClick={this._loadMore}/>  
-     </div>
+      <div>
+        <div>
+          {this._renderActivity()}
+
+        </div>
+        <RaisedButton label="load more" primary={true} onClick={this._loadMore}/>  
+      </div>
     );
   }
 });

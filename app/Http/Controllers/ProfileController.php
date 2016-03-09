@@ -19,6 +19,7 @@ use App\Blocks;
 use App\ActivityFeed;
 use App\About;
 use App\Post;
+use App\Requests\ProfileRequest;
 use Illuminate\Http\Exception;
 
 class ProfileController extends Controller
@@ -26,8 +27,8 @@ class ProfileController extends Controller
     /**
      * Constructor uses JWT middleware to check whether request contains api-token.
      *
-     * @param string        $someString
-     * @param int           $someInt
+     *
+     * 
      *
      * @return void
      */
@@ -396,7 +397,7 @@ class ProfileController extends Controller
                 ->update(['profilepic' => $username]);
 
             return response()->json(['status' => 200, 'done' => true], 200);
-        } catch (Exception $e) {
+        } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 200, 'done' => false], 200);
         }
     }
@@ -665,6 +666,55 @@ class ProfileController extends Controller
                 return response()->json(['status' => 200], 200);
             } else {
                 return response()->json(['status' => 200], 200);
+            }
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 200], 200);
+        }
+    }
+
+    /**
+     * permenantly deletes a user profile POST request
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
+    public function deleteProfile(Request $request)
+    {
+        $username = $request->username;
+        \DB::raw("delete FROM users WHERE username = '$username'");
+        return $username;
+        try {
+            if ($username)
+            {
+                return response()->json(['status' => 200, 'done' => true], 200);
+            } else {
+                return response()->json(['status' => 200, 'done' => false], 200);
+            }
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 200], 200);
+        }
+    }
+
+    /**
+     * Deactivates a user profile POST request
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
+    public function deactivateProfile(Request $request)
+    {
+        $username = $request->username;
+        try {
+            if (User::where('username', $username)
+                ->update(['status' => 'inactive']))
+            {
+                return response()->json(['status' => 200, 'done' => true], 200);
+            } else {
+                return response()->json(['status' => 200, 'done' => false], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 200], 200);

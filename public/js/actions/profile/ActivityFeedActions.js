@@ -10,7 +10,10 @@ var ActivityFeedActions = {
           feed: response.data,
         });
       } else {
-
+        AppDispatcher.handleViewAction({
+          actionType: ProfileConstants.ERR,
+          error: true,
+        });
       }
     });
   },
@@ -28,7 +31,10 @@ var ActivityFeedActions = {
             editActvity: data,
           });
         } else {
-          
+          AppDispatcher.handleViewAction({
+            actionType: ProfileConstants.ERR,
+            error: true,
+          });
         }
       },
     });

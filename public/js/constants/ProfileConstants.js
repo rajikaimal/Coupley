@@ -13,4 +13,5 @@ module.exports = keyMirror({
   PROFILEPIC: null,
   VISITORPROFILEPIC: null,
   VISITORABOUTLOAD: null,
+  ERR: null,
 });

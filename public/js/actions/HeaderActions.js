@@ -12,7 +12,10 @@ var HeaderActions = {
           firstname: response.user[0].firstname,
         });
       } else {
-
+        AppDispatcher.handleViewAction({
+          actionType: LoginConstants.ERR,
+          error: true,
+        });
       }
     });
   },
@@ -37,7 +40,7 @@ var HeaderActions = {
         AppDispatcher.handleViewAction({
             actionType: SearchConstants.SEARCH,
             search: 'err',
-          });
+        });
       });
     }
 

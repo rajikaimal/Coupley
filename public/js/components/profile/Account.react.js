@@ -15,11 +15,6 @@ import TableRow from 'material-ui/lib/table/table-row';
 import TableRowColumn from 'material-ui/lib/table/table-row-column';
 import TableBody from 'material-ui/lib/table/table-body';
 import Colors from 'material-ui/lib/styles/colors';
-import Countries from './countries.js';
-
-const registerStyle = {
-  marginLeft: 500
-};
 
 const buttonStyle = {
   marginTop: 25
@@ -155,7 +150,6 @@ function validatePassword(password) {
 
 const Register = React.createClass({
   getInitialState: function() {
-    document.body.style.background = 'url(/img/register.jpg)';
     return {
       gender: 0,
       orientation: 0,
@@ -283,11 +277,11 @@ const Register = React.createClass({
   },
   render: function() {
     return (
-      <div style={registerStyle}>
-        <Paper  zDepth={2}>
-        <div className="col-xs-6 col-sm-6 col-md-7 col-md-offset-5 col-lg-7 col-lg-offset-5">
+      <div>
+        <Paper zDepth={2}>
+        <div>
           <Card>
-            <CardTitle title="Register" />
+            <CardTitle title="Account details" />
             <Table>
               <TableBody displayRowCheckbox={false}>
               <TableRow hoverable={false} hovered={false} selectable={false}>
@@ -347,21 +341,7 @@ const Register = React.createClass({
                   <br/><span style={error} id="orientation"> </span>
                 </TableRowColumn>
               </TableRow>
-              <TableRow hoverable={false} hovered={false} selectable={false}>
-                <TableRowColumn>Country</TableRowColumn>
-                <TableRowColumn> 
-                <DropDownMenu value={this.state.country} onChange={this.handleChangeCountry}>
-                  <MenuItem value={0} primaryText="Select value"/>
-                {
-                  Countries.map((cntry) => {
-                    return (<MenuItem value={cntry.code} primaryText={cntry.name}/>);    
-                  })
-                }
-                
-               </DropDownMenu>
-               <br/><span style={error} id="country"> </span>
-                </TableRowColumn>
-              </TableRow>
+              
               <TableRow hoverable={false} hovered={false} selectable={false}>
                 <TableRowColumn>Password</TableRowColumn>
                 <TableRowColumn> 

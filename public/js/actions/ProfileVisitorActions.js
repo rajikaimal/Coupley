@@ -5,9 +5,9 @@ var LoginActions = {
   loadProfileData: function (username) {
     $.get('/api/visitorprofile?token=' + localStorage.getItem('apitoken') + '&username=' + username, function (response) {
       AppDispatcher.handleViewAction({
-          actionType: ProfileConstants.VISITOR,
-          userdata: response.user[0],
-        });
+        actionType: ProfileConstants.VISITOR,
+        userdata: response.user[0],
+      });
     });
   },
 
@@ -34,7 +34,10 @@ var LoginActions = {
         });
       }
     }).fail(function (error) {
-
+      AppDispatcher.handleViewAction({
+        actionType: ProfileConstants.ERR,
+        error: true,
+      });
     });
   },
 
@@ -99,7 +102,10 @@ var LoginActions = {
         likedbackstatus: response.liked,
       });
     }).fail(function (error) {
-
+      AppDispatcher.handleViewAction({
+        actionType: ProfileConstants.ERR,
+        error: true,
+      });
     });
   },
 
@@ -117,7 +123,10 @@ var LoginActions = {
         blockstatus: response.blockstatus,
       });
     }).fail(function (error) {
-
+      AppDispatcher.handleViewAction({
+        actionType: ProfileConstants.ERR,
+        error: true,
+      });
     });
   },
 
@@ -151,7 +160,10 @@ var LoginActions = {
         });
       }
     }).fail(function (error) {
-
+      AppDispatcher.handleViewAction({
+        actionType: ProfileConstants.ERR,
+        error: true,
+      });
     });
   },
 
@@ -171,7 +183,10 @@ var LoginActions = {
         });
       }
     }).fail(function (error) {
-
+      AppDispatcher.handleViewAction({
+        actionType: ProfileConstants.ERR,
+        error: true,
+      });
     });
   },
 
@@ -190,7 +205,10 @@ var LoginActions = {
           profilepic: response.image,
         });
       } else {
-
+        AppDispatcher.handleViewAction({
+          actionType: ProfileConstants.ERR,
+          error: true,
+        });
       }
     });
   },
