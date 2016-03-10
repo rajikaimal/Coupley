@@ -219,8 +219,8 @@ class UsersController extends Controller
     }
 
     /**
-     * posts feedback from users
-     * 
+     * posts feedback from users.
+     *
      * @param id        $request
      *
      * @return json
@@ -236,12 +236,10 @@ class UsersController extends Controller
         $feedback->description = $description;
         $feedback->category = $category;
 
-        if($feedback->save())
-        {
+        if ($feedback->save()) {
             return response()->json(['status' => 200, 'done' => true], 200);
         } else {
             return response()->json(['status' => 200, 'done' => false], 200);
         }
-
     }
 }

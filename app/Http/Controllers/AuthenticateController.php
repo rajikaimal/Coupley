@@ -129,7 +129,7 @@ class AuthenticateController extends Controller
         $email = $request->email;
 
         $status = User::where('email', $email)->get(['status'])[0]->status;
-        if($status == "inactive") {
+        if ($status == 'inactive') {
             User::where('email', $email)->update(['status' => 'active']);
         }
         $credentials = $request->only('email', 'password');

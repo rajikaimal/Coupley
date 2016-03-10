@@ -89,7 +89,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::put('profile/edit/favs ', 'ProfileController@editfavs');
     Route::put('profile/edit/activity ', 'ProfileController@editactivity');
     //End of edit routes
-    
+
     Route::post('profile/edit/deleteprofile', 'ProfileController@deleteProfile');
     Route::post('profile/edit/deactivateprofile', 'ProfileController@deactivateProfile');
 

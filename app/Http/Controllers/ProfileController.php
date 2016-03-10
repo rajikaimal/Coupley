@@ -19,8 +19,6 @@ use App\Blocks;
 use App\ActivityFeed;
 use App\About;
 use App\Post;
-use App\Requests\ProfileRequest;
-use Illuminate\Http\Exception;
 
 class ProfileController extends Controller
 {
@@ -28,7 +26,7 @@ class ProfileController extends Controller
      * Constructor uses JWT middleware to check whether request contains api-token.
      *
      *
-     * 
+     *
      *
      * @return void
      */
@@ -673,7 +671,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * permenantly deletes a user profile POST request
+     * permenantly deletes a user profile POST request.
      *
      * @param object        $request
      *
@@ -684,10 +682,10 @@ class ProfileController extends Controller
     {
         $username = $request->username;
         \DB::raw("delete FROM users WHERE username = '$username'");
+
         return $username;
         try {
-            if ($username)
-            {
+            if ($username) {
                 return response()->json(['status' => 200, 'done' => true], 200);
             } else {
                 return response()->json(['status' => 200, 'done' => false], 200);
@@ -698,7 +696,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * Deactivates a user profile POST request
+     * Deactivates a user profile POST request.
      *
      * @param object        $request
      *
@@ -710,8 +708,7 @@ class ProfileController extends Controller
         $username = $request->username;
         try {
             if (User::where('username', $username)
-                ->update(['status' => 'inactive']))
-            {
+                ->update(['status' => 'inactive'])) {
                 return response()->json(['status' => 200, 'done' => true], 200);
             } else {
                 return response()->json(['status' => 200, 'done' => false], 200);
