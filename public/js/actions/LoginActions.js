@@ -19,7 +19,8 @@ var LoginActions = {
 
         //document.location = "/";
       } else {
-
+        alert(response);
+        return false;
       }
     }).fail(function () {
       document.getElementById('server-error').innerHTML = 'Invalid credentials';

@@ -8,6 +8,7 @@ var CHANGE_EVENT = 'change';
 var user = [];
 var pic = '';
 var error = false;
+var done = false;
 
 var ProfileStore = assign({}, EventEmitter.prototype, {
   saveUserData: function (data) {
@@ -20,9 +21,23 @@ var ProfileStore = assign({}, EventEmitter.prototype, {
 
   saveErrorStatus: function (data) {
     error = data;
+    setTimeout(function () {
+      error = false;
+    }, 6000);
   },
 
-  getErrorStatus: function() {
+  saveDoneStatus: function (data) {
+    done = data;
+    setTimeout(function () {
+      done = false;
+    }, 6000);
+  },
+
+  getDoneStatus: function () {
+    return done;
+  },
+
+  getErrorStatus: function () {
     return error;
   },
 
@@ -71,6 +86,10 @@ AppDispatcher.register(function (payload) {
       break;
     case (ProfileConstants.ERR):
       ProfileStore.saveErrorStatus(payload.action.error);
+      ProfileStore.emitChange();
+      break;
+    case (ProfileConstants.DONE):
+      ProfileStore.saveDoneStatus(payload.action.done);
       ProfileStore.emitChange();
       break;
   }

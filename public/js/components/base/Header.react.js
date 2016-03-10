@@ -4,6 +4,7 @@ import Badge from 'material-ui/lib/badge';
 import IconButton from 'material-ui/lib/icon-button';
 import NotificationsIcon from 'material-ui/lib/svg-icons/social/notifications';
 import MockChat from '../profile/MockChat.react';
+import Feeback from '../feedback/feedback.react';
 import MessageIcon from 'material-ui/lib/svg-icons/action/speaker-notes';
 import LoginStore from '../../stores/LoginStore';
 import ProfileStore from '../../stores/ProfileStore';
@@ -95,6 +96,7 @@ const Header = React.createClass({
         		</div>
         		<div className="col-lg-3">
 		          <MockChat />
+		          <Feeback />
 		        </div>
 		        <Snackbar
                     open={this.state.error}
