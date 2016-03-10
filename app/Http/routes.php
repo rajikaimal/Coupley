@@ -92,6 +92,9 @@ Route::group(['prefix' => 'api'], function () {
     
     Route::post('profile/edit/deleteprofile', 'ProfileController@deleteProfile');
     Route::post('profile/edit/deactivateprofile', 'ProfileController@deactivateProfile');
+
+    //posts feeback from user profile
+    Route::post('feedback', 'UsersController@postFeedback');
 });
 Route::get('socket', 'SocketController@index');
 Route::post('sendmessage', 'SocketController@sendMessage');
