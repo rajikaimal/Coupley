@@ -126,8 +126,13 @@ class AuthenticateController extends Controller
      */
     public function authenticate(Request $request)
     {
-        $credentials = $request->only('email', 'password');
+        $email = $request->email;
 
+        $status = User::where('email', $email)->get(['status'])[0]->status;
+        if ($status == 'inactive') {
+            User::where('email', $email)->update(['status' => 'active']);
+        }
+        $credentials = $request->only('email', 'password');
         try {
             // verify the credentials and create a token for the user
             if (! $token = JWTAuth::attempt($credentials)) {

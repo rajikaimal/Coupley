@@ -118,7 +118,8 @@ const ProfilePic = React.createClass({
             picture: '',
             country: 0,
             firstnameerr: '',
-            lastnameerr: ''
+            lastnameerr: '',
+            countryerr: '',
         }
     },
 
@@ -230,6 +231,10 @@ const ProfilePic = React.createClass({
         });
         val = false;
       }
+      if(this.state.country == 0) {
+        document.getElementById('country-err').innerHTML = "*invalid selection";
+        val = false;  
+      }
 
       if(val) {
         ProfileActions.updateChanges(data);  
@@ -248,6 +253,9 @@ const ProfilePic = React.createClass({
       });
     },
 
+    _settings: function() {
+      document.location = "/#/isettings/";
+    },
   render: function() {
     return (
       <div>
@@ -289,19 +297,19 @@ const ProfilePic = React.createClass({
               <span> { this.state.editingProfile ? ''
                        : '@' + this.props.username} </span> <br/>
               <span> {this.state.editingProfile ? 
+                    <div>
+                      <DropDownMenu value={this.state.country} onChange={this.handleChangeCountry}>
+                          <MenuItem value={0} primaryText="Select value"/>
+                        {
+                          Countries.map((cntry) => {
+                            return (<MenuItem value={cntry.code} primaryText={cntry.name}/>);    
+                          })
+                        }
+                        
+                       </DropDownMenu>
 
-                    <DropDownMenu value={this.state.country} onChange={this.handleChangeCountry}>
-                        <MenuItem value={0} primaryText="Select value"/>
-                      {
-                        Countries.map((cntry) => {
-                          return (<MenuItem value={cntry.code} primaryText={cntry.name}/>);    
-                        })
-                      }
-                      
-                     </DropDownMenu>
-
-
-
+                       <span id="country-err" style={error}> </span>
+                    </div>
                      : this.props.country} </span>
                      {
                       this.state.editingProfile ? 
@@ -311,7 +319,6 @@ const ProfilePic = React.createClass({
                         </div>
                         : ''
                      }
-                    Interested in men age between 18-30
               </div>
               <div className="col-sm-6 col-md-6 col-lg-6">
                   <div style={divStyle}>
@@ -324,6 +331,7 @@ const ProfilePic = React.createClass({
                       >
                           <MenuItem primaryText="Change profile picture" onTouchTap={this._editProfilePic} />
                           <MenuItem primaryText="Edit profile" onTouchTap={this._editProfile} />
+                          <MenuItem primaryText="Settings" onTouchTap={this._settings} />
                       </IconMenu>
                   </div>
             </div>

@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Feedback;
 use PHPMailer;
 
 class UsersController extends Controller
 {
     /**
-     * friends uses to retrieve reported user data
+     * friends uses to retrieve reported user data.
      *
      *
      * @return string
@@ -29,7 +30,7 @@ class UsersController extends Controller
     }
 
     /**
-     * blocked uses to retrieve blocked user data
+     * blocked uses to retrieve blocked user data.
      *
      *
      * @return string
@@ -46,7 +47,7 @@ class UsersController extends Controller
     }
 
     /**
-     * block uses to block reported users
+     * block uses to block reported users.
      *
      * @param id        $someInt
      * @param rowId     $someInt
@@ -67,8 +68,9 @@ class UsersController extends Controller
             return response()->json(['status' => 300], 300);
         }
     }
+
     /**
-     * Unblock uses to unblock blocked users
+     * Unblock uses to unblock blocked users.
      *
      * @param id        $someInt
      *
@@ -88,7 +90,7 @@ class UsersController extends Controller
 
     /**
      * recover uses to recover password,
-     * when user forgot the password
+     * when user forgot the password.
      * @param email        $someString
      *
      * @return string
@@ -108,19 +110,20 @@ class UsersController extends Controller
                     } else {
                         return response()->json(['status' => 204], 204);
                     }
-                }else{
+                } else {
                     return response()->json(['status' => 202], 202);
                 }
-            }else{
+            } else {
                 return response()->json(['status' => 203], 203);
             }
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 300], 300);
         }
     }
+
     /**
      * randomStr uses to generate new password,
-     * when user forgot the password
+     * when user forgot the password.
      *
      *
      * @return string
@@ -138,11 +141,13 @@ class UsersController extends Controller
             $randNum .= $characters[rand(0, strlen($characters) - 1)];
         }
         $newpwd = $newpwd.$randNum;
+
         return $newpwd;
     }
+
     /**
      * SendMail uses to send a mail
-     * to the users
+     * to the users.
      * @return bool
      */
     public function SendMail($email, $user, $pwd)
@@ -166,6 +171,7 @@ class UsersController extends Controller
             $mail->Body = 'Dear '.$user.', your new password is '.$pwd;
             $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
             $mail->send();
+
             return true;
         } catch (phpmailerException $e) {
             //echo 'Please Check Your internet connection'; //Pretty error messages from PHPMailer
@@ -174,9 +180,10 @@ class UsersController extends Controller
             echo $e->getMessage(); //Boring error messages from anything else!
         }
     }
+
     /**
      * Adminprofile uses to retrieve,
-     * logged in administrator's data
+     * logged in administrator's data.
      *
      *
      * @return string
@@ -192,6 +199,7 @@ class UsersController extends Controller
             return response()->json(['status' => 300], 300);
         }
     }
+
     /**
      * CheckInternet uses to check,
      * whether internet is connected.
@@ -199,14 +207,39 @@ class UsersController extends Controller
      *
      * @return bool
      */
-    public function CheckInternet(){
-        if (!$sock = @fsockopen('www.google.com', 80)){
+    public function CheckInternet()
+    {
+        if (! $sock = @fsockopen('www.google.com', 80)) {
             //echo 'offline';
             return false;
-        }
-        else {
+        } else {
             //echo 'OK';
             return true;
+        }
+    }
+
+    /**
+     * posts feedback from users.
+     *
+     * @param id        $request
+     *
+     * @return json
+     */
+    public function postFeedback(Request $request)
+    {
+        $username = $request->username;
+        $description = $request->comment;
+        $category = $request->type;
+
+        $feedback = new Feedback;
+        $feedback->user = $username;
+        $feedback->description = $description;
+        $feedback->category = $category;
+
+        if ($feedback->save()) {
+            return response()->json(['status' => 200, 'done' => true], 200);
+        } else {
+            return response()->json(['status' => 200, 'done' => false], 200);
         }
     }
 }

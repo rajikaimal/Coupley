@@ -41,7 +41,8 @@ class SearchController extends Controller
             if ($orientation == 'straight' && $gender == 'female') {
                 if ($users = \DB::select(\DB::raw("
                         SELECT id,firstname,lastname,username,gender,profilepic from(
-                            SELECT id,firstname, lastname,username,orientation,gender,profilepic,role FROM `users` WHERE        
+                            SELECT id,firstname, lastname,username,orientation,gender,profilepic,role FROM `users` WHERE
+                                                    status = 'active' and
                                                     firstname like '".$key."%' or 
                                                     lastname like '".$key."%') as t where orientation='straight' and gender='male' 
                                                     and role='user' and id NOT IN (
@@ -59,6 +60,7 @@ class SearchController extends Controller
                 if ($users = \DB::select(\DB::raw("
                     SELECT id,firstname,lastname,username,gender,profilepic from(
                         SELECT id,firstname, lastname,username,orientation,gender,profilepic,role FROM `users` WHERE        
+                                                status = 'active' and
                                                 firstname like '".$key."%' or 
                                                 lastname like '".$key."%') as t where orientation='straight' and gender='female' 
                                                 and role='user' and id NOT IN (
@@ -75,6 +77,7 @@ class SearchController extends Controller
                 if ($users = \DB::select(\DB::raw("
                     SELECT id,firstname,lastname,username,gender,profilepic from(
                         SELECT id,firstname, lastname,username,orientation,gender,profilepic,role FROM `users` WHERE        
+                                                status = 'active' and
                                                 firstname like '".$key."%' or 
                                                 lastname like '".$key."%') as t where orientation='lesbian' and gender='female' 
                                                 and role='user' and id NOT IN (
@@ -91,6 +94,7 @@ class SearchController extends Controller
                 if ($users = \DB::select(\DB::raw("
                     SELECT id,firstname,lastname,gender,profilepic from(
                         SELECT id,firstname, lastname,username,orientation,gender,profilepic,role FROM `users` WHERE        
+                                                status = 'active' and
                                                 firstname like '".$key."%' or 
                                                 lastname like '".$key."%') as t where orientation='gay' and gender='male' 
                                                 and role='user' and id NOT IN (
@@ -107,6 +111,7 @@ class SearchController extends Controller
                 if ($users = \DB::select(\DB::raw("
                     SELECT id,firstname,username,lastname,gender,profilepic from(
                         SELECT id,firstname, lastname,username,orientation,gender,profilepic,role FROM `users` WHERE        
+                                                status = 'active' and
                                                 firstname like '".$key."%' or 
                                                 lastname like '".$key."%') as t where orientation='bisexual' and (gender='male' or gender='female')  
                                                 and role='user' and id NOT IN (
