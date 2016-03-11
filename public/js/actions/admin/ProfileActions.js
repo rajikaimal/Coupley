@@ -4,9 +4,9 @@ var SearchConstants = require('../../constants/SearchConstants');
 
 var ProfileActions = {
   getAdminProfileData: function (email) {
-    console.log(email);
+
     $.get('/admin-api/adminprofile?email=' + localStorage.getItem('emails'), function (response) {
-      console.log(response.admin[0]);
+
       if (response) {
         AppDispatcher.handleViewAction({
           actionType: ProfileConstants.GETDATA,

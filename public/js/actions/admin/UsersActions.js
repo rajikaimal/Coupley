@@ -6,7 +6,6 @@ var LoginConstants = require('../../constants/LoginConstants');
 var SearchConstants = require('../../constants/FeedConstants');
 
 var UsersActions = {
-
   getsearchresults: function () {
     $.get('/admin-api/search', function (response) {
       if (response.status == 200) {

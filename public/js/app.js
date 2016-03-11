@@ -47,6 +47,7 @@ import ChatFeed from './components/admin/feedback/chat.react';
 import OthersFeed from './components/admin/feedback/others.react';
 import Graph from './components/admin/graphs/graph.react';
 import PieGraph from './components/admin/graphs/piechart.react';
+import Searches from './components/admin/search/Search.react';
 
 function requireAuth(nextState, replace) {
   if (!localStorage.getItem('apitoken')) {
@@ -90,7 +91,7 @@ ReactDOM.render((
     <Route path="/AdminLogin" component={AdminLogin} />
       <Route path="/Adminforgotpwd" component={AdminForgot} />
     <Route path="/dashboard" component={Admin} onEnter={requireAdminAuth}>
-        <Route path="/searches" component={Search} />
+        <Route path="/searches" component={Searches} />
         <Route path="/users" component={Users}>
             <Route path="friends" component={Friends} />
             <Route path="enemies" component={Enemies} />
