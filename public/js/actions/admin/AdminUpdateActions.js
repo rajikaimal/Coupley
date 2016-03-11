@@ -2,7 +2,6 @@ var AppDispatcher = require('../../dispatcher/AppDispatcher');
 var ProfileConstants = require('../../constants/ProfileConstants');
 var UpdateActions = {
   checks: function (credentials) {
-    console.log(credentials);
     $.post('/admin-api/updateAdmin', credentials, function (data) {
 
       if (data.status == 200) {
