@@ -78,6 +78,7 @@ function validatePassword(password) {
 const Login = React.createClass({
   getInitialState: function() {
     let current = 0;
+    document.body.style.background = 'url(/img/login.jpg)';
     let lenArr = images.length;
     // setInterval(function() {
     //   if(current != (lenArr)) {

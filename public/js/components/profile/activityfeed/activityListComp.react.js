@@ -213,7 +213,7 @@ const ActivityList = React.createClass({
 			<div >
             <Card>
 		        <ListItem
-		          leftAvatar={<Avatar src={this.props.image} />}
+		          leftAvatar={<Avatar src={'img/profilepics/' + localStorage.getItem('username')} />}
 		          primaryText={this.props.firstname}
 		          secondaryText={
 		            <p>
@@ -222,7 +222,7 @@ const ActivityList = React.createClass({
 
                         {this.props.image ? <img src={'img/profilepics/' + 
 
-                        this.props.image}/> : ''}
+                        localStorage.getItem('username')}/> : ''}
 		            </p>
 		          }
 		          secondaryTextLines={2}

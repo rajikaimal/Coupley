@@ -7,24 +7,48 @@ var CHANGE_EVENT = 'change';
 
 var user = [];
 var pic = '';
+var error = false;
+var done = false;
 
 var ProfileStore = assign({}, EventEmitter.prototype, {
-  saveuserdata: function (data) {
+  saveUserData: function (data) {
     user.push(data);
   },
 
-  saveprofilepic: function (data) {
+  saveProfilePic: function (data) {
     pic = data;
   },
 
-  getuserdata: function () {
-    console.log(user[0]);
+  saveErrorStatus: function (data) {
+    error = data;
+    setTimeout(function () {
+      error = false;
+    }, 6000);
+  },
+
+  saveDoneStatus: function (data) {
+    done = data;
+    setTimeout(function () {
+      done = false;
+    }, 6000);
+  },
+
+  getDoneStatus: function () {
+    return done;
+  },
+
+  getErrorStatus: function () {
+    return error;
+  },
+
+  getUserData: function () {
     if (user.length == 0) {
       return {
         firstname: '',
         lastname: '',
         country: '',
         username: '',
+        age: '',
       };
     }
 
@@ -33,10 +57,11 @@ var ProfileStore = assign({}, EventEmitter.prototype, {
       lastname: user[0].lastname,
       country: user[0].country,
       username: user[0].username,
+      age: user[0].birthday,
     };
   },
 
-  getprofilepic: function () {
+  getProfilePic: function () {
     return pic;
   },
 
@@ -52,11 +77,19 @@ var ProfileStore = assign({}, EventEmitter.prototype, {
 AppDispatcher.register(function (payload) {
   switch (payload.action.actionType) {
     case (ProfileConstants.GETDATA):
-      ProfileStore.saveuserdata(payload.action.userdata);
+      ProfileStore.saveUserData(payload.action.userdata);
       ProfileStore.emitChange();
       break;
     case (ProfileConstants.PROFILEPIC):
-      ProfileStore.saveprofilepic(payload.action.profilepic);
+      ProfileStore.saveProfilePic(payload.action.profilepic);
+      ProfileStore.emitChange();
+      break;
+    case (ProfileConstants.ERR):
+      ProfileStore.saveErrorStatus(payload.action.error);
+      ProfileStore.emitChange();
+      break;
+    case (ProfileConstants.DONE):
+      ProfileStore.saveDoneStatus(payload.action.done);
       ProfileStore.emitChange();
       break;
   }

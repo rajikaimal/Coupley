@@ -17,9 +17,9 @@ Route::get('/', function () {
     Handles initial login of a user of Coupley
     @author rajikaimal
 */
-Route::get('/api/login', function () {
-    return 'Done';
-});
+// Route::get('/api/login', function () {
+//     ret;
+// });
 Route::group(['prefix' => 'api'], function () {
     //authenticate users with AuthenticateController
     Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
@@ -28,7 +28,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('register', 'RegisterController@check');
     Route::get('register/checkusername', 'RegisterController@checkusername');
     Route::get('register/checkemail', 'RegisterController@checkemail');
-    //update admin passwords
+    //update user passwords
     Route::post('recoverpwd', 'AuthenticateController@reset');
 
     Route::post('status', 'ActivityFeedController@addstatus');
@@ -76,7 +76,7 @@ Route::group(['prefix' => 'api'], function () {
     //Returns permission for viewing a profile
     Route::post('profilepermission', 'ProfileController@profilepermission');
     //Returns acitivity feed for specific user
-//    Route::get('profile/feed', 'ProfileController@getposts');
+    //Route::get('profile/feed', 'ProfileController@getposts');
     //Upload profile pic
     Route::post('profile/profilepic', 'ProfileController@uploadpic');
     //Returns about data
@@ -87,7 +87,7 @@ Route::group(['prefix' => 'api'], function () {
 
     Route::get('profile/laodmoreposts', 'ProfileController@loadMorePosts');
 
-    Route::put('profile/edit/updatebasics', 'ProfileController@editbasics');
+    Route::post('profile/edit/updatebasics', 'ProfileController@editbasics');
 
     //Edit About section
     Route::put('profile/edit/summary', 'ProfileController@editsummary');
@@ -96,7 +96,13 @@ Route::group(['prefix' => 'api'], function () {
     Route::put('profile/edit/thinkingof ', 'ProfileController@editthinkingof');
     Route::put('profile/edit/favs ', 'ProfileController@editfavs');
     Route::put('profile/edit/activity ', 'ProfileController@editactivity');
+    //End of edit routes
 
+    Route::post('profile/edit/deleteprofile', 'ProfileController@deleteProfile');
+    Route::post('profile/edit/deactivateprofile', 'ProfileController@deactivateProfile');
+
+    //posts feeback from user profile
+    Route::post('feedback', 'UsersController@postFeedback');
 });
 Route::get('socket', 'SocketController@index');
 Route::post('sendmessage', 'SocketController@sendMessage');
@@ -114,6 +120,9 @@ Route::group(['prefix' => 'admin-api'], function () {
     Route::post('authenticates', 'AdminAuthenticateController@authenticate');
     //Return userslist
     Route::get('search', 'UsersController@friends');
+    //Return userslist for search
+    Route::get('searches', 'AdminSearchController@search');
+    //return blocked users
     Route::get('blocked', 'UsersController@blocked');
     //Register new admins with RegisterConroller@register
     Route::post('registerAdmin', 'AdminRegisterController@checks');

@@ -12,7 +12,7 @@ var spendtime;
 var favs;
 
 var AboutStore = assign({}, EventEmitter.prototype, {
-  saveall: function (data) {
+  saveAll: function (data) {
     summary = data.selfsummary;
     life = data.life;
     goodat = data.goodat;
@@ -20,43 +20,43 @@ var AboutStore = assign({}, EventEmitter.prototype, {
     favs = data.favourites;
   },
 
-  savesummary: function (data) {
+  saveSummary: function (data) {
     summary = data;
   },
 
-  getsummary: function () {
+  getSummary: function () {
     return summary;
   },
 
-  savelife: function (data) {
+  saveLife: function (data) {
     life = data;
   },
 
-  getlife: function () {
+  getLife: function () {
     return life;
   },
 
-  savegoodat: function (data) {
+  saveGoodAt: function (data) {
     goodat = data;
   },
 
-  getgoodat: function () {
+  getGoodAt: function () {
     return goodat;
   },
 
-  savespendtime: function (data) {
+  saveSpendTime: function (data) {
     spendtime = data;
   },
 
-  getspendtime: function () {
+  getSpendTime: function () {
     return spendtime;
   },
 
-  savefavs: function (data) {
+  saveFavs: function (data) {
     favs = data;
   },
 
-  getfavs: function () {
+  getFavs: function () {
     return favs;
   },
 
@@ -70,30 +70,30 @@ var AboutStore = assign({}, EventEmitter.prototype, {
 });
 
 AppDispatcher.register(function (payload) {
-  console.log('Got payload' + payload);
+
   switch (payload.action.actionType) {
     case (AboutConstants.FETCH):
-      AboutStore.saveall(payload.action.data);
+      AboutStore.saveAll(payload.action.data);
       AboutStore.emitChange();
       break;
     case (AboutConstants.SUMMARY):
-      AboutStore.savesummary(payload.action.summary);
+      AboutStore.saveSummary(payload.action.summary);
       AboutStore.emitChange();
       break;
     case (AboutConstants.LIFE):
-      AboutStore.savelife(payload.action.life);
+      AboutStore.saveLife(payload.action.life);
       AboutStore.emitChange();
       break;
     case (AboutConstants.GOODAT):
-      AboutStore.savegoodat(payload.action.goodat);
+      AboutStore.saveGoodAt(payload.action.goodat);
       AboutStore.emitChange();
       break;
     case (AboutConstants.THINKING):
-      AboutStore.savespendtime(payload.action.thinkingof);
+      AboutStore.saveSpendTime(payload.action.thinkingof);
       AboutStore.emitChange();
       break;
     case (AboutConstants.FAVS):
-      AboutStore.savefavs(payload.action.favs);
+      AboutStore.saveFavs(payload.action.favs);
       AboutStore.emitChange();
       break;
   }

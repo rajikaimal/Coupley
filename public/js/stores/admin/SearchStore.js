@@ -32,7 +32,6 @@ var SearchStore = assign({}, EventEmitter.prototype, {
 AppDispatcher.register(function (payload) {
   switch (payload.action.actionType) {
     case (SearchConstants.SEARCH):
-      console.log(payload.action.search);
       SearchStore.saveresults(payload.action.search);
       SearchStore.emitChange();
       break;

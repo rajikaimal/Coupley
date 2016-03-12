@@ -1,10 +1,11 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var LoginConstants = require('../constants/LoginConstants');
 var SearchConstants = require('../constants/SearchConstants');
+var ProfileConstants = require('../constants/ProfileConstants');
 
 var HeaderActions = {
   getprofilename: function (email) {
-    console.log(email);
+
     $.get('/api/authenticate?token=' + localStorage.getItem('apitoken'), function (response) {
       if (response.token) {
         AppDispatcher.handleViewAction({
@@ -12,14 +13,17 @@ var HeaderActions = {
           firstname: response.user[0].firstname,
         });
       } else {
-        console.log(response);
+        AppDispatcher.handleViewAction({
+          actionType: LoginConstants.ERR,
+          error: true,
+        });
       }
     });
   },
 
-  getsearchresults: function (searchkey) {
-    if (searchkey == '') {
-      console.log('Null searchkey');
+  getSearchResults: function (searchkey) {
+    if (!searchkey) {
+
     } else {
       $.get('/api/search?token=' + localStorage.getItem('apitoken') + '&key=' + searchkey + '&username=' + localStorage.getItem('username'), function (response) {
         if (response.status == 201 && response.users) {
@@ -27,7 +31,7 @@ var HeaderActions = {
             actionType: SearchConstants.SEARCH,
             search: response.users,
           });
-        } else if (response.status == 200) {
+        } else if (response.status == 200 && response.users == null) {
           AppDispatcher.handleViewAction({
             actionType: SearchConstants.SEARCH,
             search: '',
@@ -35,12 +39,28 @@ var HeaderActions = {
         }
       }).fail(function () {
         AppDispatcher.handleViewAction({
-            actionType: SearchConstants.SEARCH,
-            search: 'err',
-          });
+          actionType: SearchConstants.SEARCH,
+          search: 'err',
+        });
       });
     }
 
+  },
+
+  postFeedback: function (data) {
+    $.post('/api/feedback?token=' + localStorage.getItem('apitoken'), data, function (response) {
+      if (response.status == 200 && response.done == true) {
+        AppDispatcher.handleViewAction({
+          actionType: ProfileConstants.DONE,
+          done: true,
+        });
+      } else {
+        AppDispatcher.handleViewAction({
+          actionType: ProfileConstants.ERR,
+          error: true,
+        });
+      }
+    });
   },
 };
 

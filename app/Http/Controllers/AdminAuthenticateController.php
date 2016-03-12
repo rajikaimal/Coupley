@@ -22,9 +22,19 @@ class AdminAuthenticateController extends Controller
         return $admins;
     }
 
+    /**
+     * authenticates whether user is a administrator or not,
+     *  if user is a administrator, then jwt { jason web token } will be created.
+     * @param string        $someString
+     *
+     *
+     * @return string
+     */
     public function authenticate(Request $request)
     {
+        $email = $request->email;
         $credentials = $request->only('email', 'password');
+        $admin = \DB::select('select * from users where role="admin" and email = "'.$email.'"');
 
         try {
             // verify the credentials and create a token for the user
@@ -37,6 +47,10 @@ class AdminAuthenticateController extends Controller
         }
 
         // if no errors are encountered we can return a JWT
-        return response()->json(compact('token'));
+        if ($admin) {
+            return response()->json(compact('token'));
+        } else {
+            return response()->json(['status' => 203], 203);
+        }
     }
 }

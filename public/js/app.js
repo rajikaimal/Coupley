@@ -18,8 +18,12 @@ import Quiz from './components/quiz/Quiz.react';
 import ActivityContainer from './components/profile/ActivityFeed/ActivityFeedContainer.react';
 import About from './components/profile/About.react';
 import Photos from './components/profile/visitor/Photos.react';
+import ProfileSettings from './components/profile/Settings.react';
+import Account from './components/profile/Account.react';
+import BlockList from './components/profile/BlockList.react';
+import Deactivate from './components/profile/Deactivate.react';
 import ProfileVisitor from './components/profile/visitor/profile.react';
-import ActivityContainerVisitor from './components/profile/visitor/ActivityFeed/ActivityFeedContainer.react';
+import VisitorActivityFeed from './components/profile/visitor/activityfeed/activityMain.react';
 import AboutVisitor from './components/profile/visitor/About.react';
 import PhotosVisitor from './components/profile/visitor/Photos.react';
 import Search from './components/search/Search.react';
@@ -48,6 +52,7 @@ import ChatFeed from './components/admin/feedback/chat.react';
 import OthersFeed from './components/admin/feedback/others.react';
 import Graph from './components/admin/graphs/graph.react';
 import PieGraph from './components/admin/graphs/piechart.react';
+import Searches from './components/admin/search/Search.react';
 
 function requireAuth(nextState, replace) {
   if (!localStorage.getItem('apitoken')) {
@@ -91,6 +96,7 @@ ReactDOM.render((
     <Route path="/AdminLogin" component={AdminLogin} />
       <Route path="/Adminforgotpwd" component={AdminForgot} />
     <Route path="/dashboard" component={Admin} onEnter={requireAdminAuth}>
+        <Route path="/searches" component={Searches} />
         <Route path="/users" component={Users}>
             <Route path="friends" component={Friends} />
             <Route path="enemies" component={Enemies} />
@@ -121,11 +127,15 @@ ReactDOM.render((
       <Route path="profile" component={Profile} >
           <Route path="activityfeed" component={MainActivityProfile} />
           <Route path="about" component={About} />
-        <Route path="photos" component={Photos} />
+          <Route path="photos" component={Photos} />
+      </Route>
+      <Route path="isettings" component={ProfileSettings} >
+          <Route path="account" component={Account} />
+          <Route path="blocked" component={BlockList} />
+          <Route path="deactivate" component={Deactivate} />
       </Route>
       <Route path="/:username" component={ProfileVisitor} >
-        <Route path="activityfeed" component={ActivityContainerVisitor} />
-
+        <Route path="activityfeed" component={VisitorActivityFeed} />
         <Route path="about" component={AboutVisitor} />
         <Route path="photos" component={PhotosVisitor} />
       </Route>

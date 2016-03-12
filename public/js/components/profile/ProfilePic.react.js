@@ -118,7 +118,8 @@ const ProfilePic = React.createClass({
             picture: '',
             country: 0,
             firstnameerr: '',
-            lastnameerr: ''
+            lastnameerr: '',
+            countryerr: '',
         }
     },
 
@@ -129,7 +130,7 @@ const ProfilePic = React.createClass({
 
     _onChange: function() {
       this.setState({
-        picture: ProfileStore.getprofilepic()
+        picture: ProfileStore.getProfilePic()
       });
     },
 
@@ -166,7 +167,7 @@ const ProfilePic = React.createClass({
         fd.append('user', localStorage.getItem('username'));
         $.ajax({
             type: 'POST',
-            url: '/api/profile/profilepic',
+            url: '/api/profile/profilepic?token=' + localStorage.getItem('apitoken'),
             data: fd,
             contentType: false,
             processData: false,
@@ -175,9 +176,6 @@ const ProfilePic = React.createClass({
                 console.log(data);
                 if(data.done == true) {
                   ProfileActions.fetchProfilePicture(localStorage.getItem('apitoken'), localStorage.getItem('username'));
-                  // self.setState({
-                  //   editing: false
-                  // });
                   location.reload();
                 } else {
 
@@ -233,9 +231,13 @@ const ProfilePic = React.createClass({
         });
         val = false;
       }
+      if(this.state.country == 0) {
+        document.getElementById('country-err').innerHTML = "*invalid selection";
+        val = false;  
+      }
 
       if(val) {
-        ProfileActions.updatechanges(data);  
+        ProfileActions.updateChanges(data);  
       }
     },
 
@@ -251,6 +253,9 @@ const ProfilePic = React.createClass({
       });
     },
 
+    _settings: function() {
+      document.location = "/#/isettings/";
+    },
   render: function() {
     return (
       <div>
@@ -292,19 +297,19 @@ const ProfilePic = React.createClass({
               <span> { this.state.editingProfile ? ''
                        : '@' + this.props.username} </span> <br/>
               <span> {this.state.editingProfile ? 
+                    <div>
+                      <DropDownMenu value={this.state.country} onChange={this.handleChangeCountry}>
+                          <MenuItem value={0} primaryText="Select value"/>
+                        {
+                          Countries.map((cntry) => {
+                            return (<MenuItem value={cntry.code} primaryText={cntry.name}/>);    
+                          })
+                        }
+                        
+                       </DropDownMenu>
 
-                    <DropDownMenu value={this.state.country} onChange={this.handleChangeCountry}>
-                        <MenuItem value={0} primaryText="Select value"/>
-                      {
-                        Countries.map((cntry) => {
-                          return (<MenuItem value={cntry.code} primaryText={cntry.name}/>);    
-                        })
-                      }
-                      
-                     </DropDownMenu>
-
-
-
+                       <span id="country-err" style={error}> </span>
+                    </div>
                      : this.props.country} </span>
                      {
                       this.state.editingProfile ? 
@@ -314,7 +319,6 @@ const ProfilePic = React.createClass({
                         </div>
                         : ''
                      }
-                     
               </div>
               <div className="col-sm-6 col-md-6 col-lg-6">
                   <div style={divStyle}>
@@ -327,6 +331,7 @@ const ProfilePic = React.createClass({
                       >
                           <MenuItem primaryText="Change profile picture" onTouchTap={this._editProfilePic} />
                           <MenuItem primaryText="Edit profile" onTouchTap={this._editProfile} />
+                          <MenuItem primaryText="Settings" onTouchTap={this._settings} />
                       </IconMenu>
                   </div>
             </div>

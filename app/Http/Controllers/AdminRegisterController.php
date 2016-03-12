@@ -7,7 +7,15 @@ use App\User;
 
 class AdminRegisterController extends Controller
 {
-    //checks whether user is already registered and save data
+    /**
+     * checks whether same email is available
+     *  or not, then register new admin.
+     *
+     * @param string        $someString
+     *
+     *
+     * @return string
+     */
     public function checks(Request $request)
     {
         $email = $request->email;
@@ -34,6 +42,14 @@ class AdminRegisterController extends Controller
         }
     }
 
+    /**
+     * checks whether new email is already in the database
+     * old and new email can be similler for the selected admin only.
+     *
+     * @param string        $someString
+     *
+     * @return string
+     */
     public function update(Request $request)
     {
         $email = $request->email;
@@ -41,7 +57,6 @@ class AdminRegisterController extends Controller
         $job = $request->job;
         $firstname = $request->firstname;
         $lastname = $request->lastname;
-        //checks whether new email is already in the database //old and new email can be similler for the selected admin only
         $admin = \DB::select('SELECT email FROM users WHERE email = "'.$email.'" not in (select email from users where id!='.$id.')');
         if ($this->CheckInternet()) {
             if ($admin == null) {
@@ -59,6 +74,13 @@ class AdminRegisterController extends Controller
         }
     }
 
+    /**
+     * uploads the profile picture
+     *  to the server.
+     * @param string        $someString
+     *
+     * @return string
+     */
     public function uploadpic(Request $request)
     {
         $destination = 'img/profilepics';
@@ -76,6 +98,11 @@ class AdminRegisterController extends Controller
         }
     }
 
+    /**
+     * SendMail uses to send a mail
+     * to the users.
+     * @return string
+     */
     public function SendMail($email, $user, $pwd)
     {
         $mail = new PHPMailer;
@@ -104,6 +131,13 @@ class AdminRegisterController extends Controller
         }
     }
 
+    /**
+     * CheckInternet uses to check,
+     * whether internet is connected.
+     *
+     *
+     * @return bool
+     */
     public function CheckInternet()
     {
         if (! $sock = @fsockopen('www.google.com', 80)) {

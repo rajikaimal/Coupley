@@ -127,25 +127,25 @@ function validateEmail(email) {
 function validatePassword(password) {
   if(password.length < 6) {
     return {
-      "error": "password length <br/> must be 6 or more"
+      "error": "*password length <br/> must be 6 or more"
     }
   }
   let re = /[0-9]/;
   if(!re.test(password)) {
     return {
-      "error": "password must <br/> contain a number"
+      "error": "*password must <br/> contain a number"
     }
   }
   re = /[a-z]/;
   if(!re.test(password)) {
     return {
-      "error": "password must <br/> contain a lowercase letter"
+      "error": "*password must <br/> contain a lowercase letter"
     }
   }
   re = /[A-Z]/;
   if(!re.test(password)) {
     return {
-      "error": "password must <br/> contain a uppercase letter"
+      "error": "*password must <br/> contain a uppercase letter"
     }
   }
   else {
@@ -155,6 +155,7 @@ function validatePassword(password) {
 
 const Register = React.createClass({
   getInitialState: function() {
+    document.body.style.background = 'url(/img/register.jpg)';
     return {
       gender: 0,
       orientation: 0,
@@ -203,9 +204,9 @@ const Register = React.createClass({
       document.getElementById('email').innerHTML = 'Invalid Email !';
       val = false;
     }
-    if(! validatePassword(password)) {
-      val = false;
+    if(validatePassword(password).error) {
       document.getElementById('password').innerHTML = validatePassword(password).error; 
+      val = false;
     }
     if(this.state.country == 0) {
       val = false;
@@ -230,6 +231,7 @@ const Register = React.createClass({
       gender: gender,
       password: password,
       country: country,
+      birthday: '1994-08-12',
       orientation: orientation
     };
     if (val) {

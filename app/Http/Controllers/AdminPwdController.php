@@ -10,6 +10,13 @@ use PHPMailer;
 
 class AdminPwdController extends Controller
 {
+    /**
+     * reset uses to check,
+     * whether user is registered,
+     *  if it is, then update new password.
+     *
+     * @return string
+     */
     public function reset(Request $request)
     {
         $credentials = $request->only('email', 'password');
@@ -40,10 +47,14 @@ class AdminPwdController extends Controller
         }
     }
 
+    /**
+     * SendMail uses to send a mail
+     * to the users.
+     * @return void
+     */
     public function SendMail($email, $user, $pwd)
     {
         $mail = new PHPMailer;
-        // Enable verbose debug output
         $mail->isSMTP();                                      // Set mailer to use SMTP
         $mail->Host = 'ssl://smtp.gmail.com';  // Specify main and backup SMTP servers
         $mail->SMTPAuth = true;                               // Enable SMTP authentication
@@ -69,6 +80,13 @@ class AdminPwdController extends Controller
         }
     }
 
+    /**
+     * CheckInternet uses to check,
+     * whether internet is connected.
+     *
+     *
+     * @return bool
+     */
     public function CheckInternet()
     {
         if (! $sock = @fsockopen('www.google.com', 80)) {

@@ -35,6 +35,15 @@ var Sidebar = React.createClass({
     ProfileStore.addChangeListener(this._onChange);
   },
 
+  _changeURL: function () {
+    document.location = 'cp-admin#/searches';
+  },
+
+  _search: function () {
+    let searchkey = this.refs.search.value;
+    ProfileActions.getsearchresults(searchkey);
+  },
+
   _onChange: function () {
     this.setState(ProfileStore.getuserdata());
   },
@@ -59,9 +68,8 @@ var Sidebar = React.createClass({
             </div>
             <form action="#" method="get" className="sidebar-form">
               <div className="input-group">
-                <TextField
-                  hintText="Hint Text" style={formcontol} fullWidth={true}
-                />
+                <input type="text" style={formcontol} placeholder="Search"
+                       onClick={this._changeURL} onKeyUp={this._search} ref="search"/>
                 <span className="input-group-addon">
                   <i className="fa fa-search"></i>
                 </span>
