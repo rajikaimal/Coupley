@@ -51,5 +51,28 @@ class GraphController extends Controller
             return response()->json(['status' => 300], 300);
         }
     }
+    /**
+     *uses to retrive number of
+     *likebacks/flirts among users
+     *
+     *
+     * @return json
+     */
+    public function userStats()
+    {
+        try {
+            if ($users = \DB::select('SELECT count,users,admins from(
+                            (SELECT count(*) as count FROM liked WHERE likeback=1)as t1
+                              join
+                            (SELECT count(*) as users from users where role="user") as t2
+                              join
+                            (SELECT count(*) as admins from users where role="admin") as t3)'))
+            {
+                return response()->json(['users' => $users, 'status' => 200], 200);
+            }
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 300], 300);
+        }
+    }
 
 }

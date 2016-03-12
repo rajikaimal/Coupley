@@ -146,6 +146,8 @@ Route::group(['prefix' => 'admin-api'], function () {
     //line chart dat
     Route::get('userRegistrations', 'GraphController@userRegistrations');
 
+    //cards data
+    Route::get('userStats', 'GraphController@userStats');
 
 });
 /*
