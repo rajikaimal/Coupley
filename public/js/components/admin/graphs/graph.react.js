@@ -1,5 +1,5 @@
 /**
- * Created by Isuru 1 on 21/02/2016.
+ * Created by Isuru 1 on 21/02/2016
  */
 import React from 'react';
 import { Link } from 'react-router';
