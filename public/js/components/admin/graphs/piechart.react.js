@@ -4,9 +4,36 @@
 
 import React from 'react';
 import { Link } from 'react-router';
+import GraphActions from './../../../actions/admin/GraphActions';
+import GraphStore from './../../../stores/admin/GraphStore';
 
-const Cards = React.createClass({
+const pieChart = React.createClass({
+  getInitialState: function () {
+    return {
+      status: GraphStore.getresults(),
+    };
+  },
+
+  componentDidMount: function () {
+    GraphActions.userStatus();
+    GraphStore.addChangeListener(this._onChange);
+  },
+
+  _onChange: function () {
+    if (this.isMounted()) {
+      this.setState({
+        status: GraphStore.getresults(),
+      });
+    }
+  },
+
   graph: function () {
+    for (var i in this.state.status) {
+      var Deactive = this.state.status[i].deactive; //Deactive key's value
+      var Active = this.state.status[i].active;     //Active key's value
+
+    }
+
     var chart = new CanvasJS.Chart('chartContainer1',
             {
               title: {
@@ -29,12 +56,12 @@ const Cards = React.createClass({
                       indexLabelFontColor: 'MistyRose',
                       indexLabelLineColor: 'darkgrey',
                       indexLabelPlacement: 'inside',
-                      toolTipContent: '{name}: {y}',
+                      toolTipContent: '{y} {name}',
                       showInLegend: true,
-                      indexLabel: '#percent%',
+                      indexLabel: '{name}',
                       dataPoints: [
-                          { y: 52, name: 'Blocked Users', legendMarkerType: 'triangle' },
-                          { y: 100, name: 'Usual Users', legendMarkerType: 'square' },
+                          { y: Active, name: 'Active Users', legendMarkerType: 'square' },
+                          { y: Deactive, name: 'Deactivated Users', legendMarkerType: 'square' },
 
                       ],
                     },
@@ -53,4 +80,4 @@ const Cards = React.createClass({
   },
 });
 
-export default Cards;
+export default pieChart;
