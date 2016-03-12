@@ -12,7 +12,6 @@ var SearchList = [];
 
 var ThreadStore = assign({}, EventEmitter.prototype, {
 
-<<<<<<< HEAD
   /**
    * Get messages.
    * @return  array[]
@@ -83,7 +82,6 @@ var ThreadStore = assign({}, EventEmitter.prototype, {
 
     },
 
-=======
   getmessages: function () {
     return Thread;
   },
@@ -99,12 +97,11 @@ var ThreadStore = assign({}, EventEmitter.prototype, {
   addChangeListener: function (callback) {
     this.on(CHAT_EVENT, callback);
   },
->>>>>>> 0265d573d72eafde72b1cb196855487c570d5b0e
+
 });
 
 AppDispatcher.register(function (payload) {
   switch (payload.action.actionType) {
-<<<<<<< HEAD
     case (ThreadConstants.RETRIVEOLD):
       ThreadStore.savepreviousmessage(payload.action.previousmessage);
       ThreadStore.emitChange();
@@ -117,13 +114,11 @@ AppDispatcher.register(function (payload) {
       ThreadStore.saveSearchConv(payload.action.seacrhconvlist);
       ThreadStore.emitChange();
       break;
-
-=======
     case (ThreadConstants.SAVE):
       ThreadStore.savemessage(payload.action.chatmessage);
       ThreadStore.emitChange();
       break;
->>>>>>> 0265d573d72eafde72b1cb196855487c570d5b0e
+
   }
 });
 
