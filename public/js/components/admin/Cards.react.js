@@ -72,7 +72,7 @@ const Cards = React.createClass({
           <div className="small-box bg-aqua">
             <div className="inner">
               <h3>{this.retireveLikebacks(this)}</h3>
-              <p>Likebacks</p>
+              <p>Total Likebacks</p>
             </div>
             <div className="icon">
               <i className="ion ion-heart"></i>

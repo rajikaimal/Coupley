@@ -33,7 +33,7 @@ const LineGraph = React.createClass({
     var i;
     for (i in this.state.users) {
       var count = this.state.users[i].sum;
-      var dateTime = this.state.users[i].created_at;
+      var dateTime = this.state.users[i].createdAt;
       var date = (dateTime.split(' ')[0]);
       var y = date.split('-')[0];
       var m = date.split('-')[1];
@@ -45,17 +45,18 @@ const LineGraph = React.createClass({
           {
             theme: 'theme2',
             title: {
-              text: 'Customer Registrations - All the time',
+              text: 'User Registrations - All the time',
             },
             animationEnabled: true,
             axisX: {
-              valueFormatString: 'MMM',
+              valueFormatString: 'DD-MMM-YYYY',
               interval: 1,
               intervalType: 'month',
+              title:'Date',
             },
             axisY: {
               includeZero: false,
-
+              title:'Total Users',
             },
             data: [
               {

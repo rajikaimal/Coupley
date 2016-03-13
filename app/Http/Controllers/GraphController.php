@@ -39,7 +39,7 @@ class GraphController extends Controller
     public function userRegistrations()
     {
         try {
-            if($users = \DB::select('select created_at,@sum := @sum + counts as sum
+            if($users = \DB::select('select created_at as createdAt,@sum := @sum + counts as sum
                                   from(select count(id) as counts,created_at
                                     from users,(select @sum:=0) as t where role="user"
                                       group by created_at)
@@ -52,8 +52,10 @@ class GraphController extends Controller
         }
     }
     /**
-     *uses to retrive number of
-     *likebacks/flirts among users
+     *Uses to retrive number of
+     *likebacks/flirts among users,
+     *Number of users,
+     *Number of Administators
      *
      *
      * @return json

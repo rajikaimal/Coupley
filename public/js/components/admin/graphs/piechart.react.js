@@ -29,10 +29,13 @@ const pieChart = React.createClass({
 
   graph: function () {
     for (var i in this.state.status) {
-      var Deactive = this.state.status[i].deactive; //Deactive key's value
-      var Active = this.state.status[i].active;     //Active key's value
+      var deactive = this.state.status[i].deactive; //Deactive key's value
+      var active = this.state.status[i].active;     //Active key's value
 
     }
+
+    active = parseInt(active);
+    deactive = parseInt(deactive);
 
     var chart = new CanvasJS.Chart('chartContainer1',
             {
@@ -57,11 +60,11 @@ const pieChart = React.createClass({
                       indexLabelLineColor: 'darkgrey',
                       indexLabelPlacement: 'inside',
                       toolTipContent: '{y} {name}',
+                      indexLabel: '#percent %',
                       showInLegend: true,
-                      indexLabel: '{name}',
                       dataPoints: [
-                          { y: Active, name: 'Active Users', legendMarkerType: 'square' },
-                          { y: Deactive, name: 'Deactivated Users', legendMarkerType: 'square' },
+                          { y: active, name: 'Active Users', legendMarkerType: 'square' },
+                          { y: deactive, name: 'Deactivated Users', legendMarkerType: 'square' },
 
                       ],
                     },
