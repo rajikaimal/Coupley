@@ -12,7 +12,7 @@ class FeedbackController extends Controller
      *the timeline.
      *
      *
-     * @return string
+     * @return json
      */
     public function timeline()
     {
@@ -30,7 +30,7 @@ class FeedbackController extends Controller
      *the activityfeed.
      *
      *
-     * @return string
+     * @return json
      */
     public function activityFeed()
     {
@@ -48,7 +48,7 @@ class FeedbackController extends Controller
      *the privacy.
      *
      *
-     * @return string
+     * @return json
      */
     public function privacy()
     {
@@ -66,7 +66,7 @@ class FeedbackController extends Controller
      *the chat.
      *
      *
-     * @return string
+     * @return json
      */
     public function chat()
     {
@@ -84,7 +84,7 @@ class FeedbackController extends Controller
      *the other options.
      *
      *
-     * @return string
+     * @return json
      */
     public function other()
     {

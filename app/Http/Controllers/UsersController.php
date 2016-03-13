@@ -13,7 +13,7 @@ class UsersController extends Controller
      * friends uses to retrieve reported user data.
      *
      *
-     * @return string
+     * @return json
      */
     public function friends()
     {
@@ -33,7 +33,7 @@ class UsersController extends Controller
      * blocked uses to retrieve blocked user data.
      *
      *
-     * @return string
+     * @return json
      */
     public function blocked()
     {
@@ -49,10 +49,10 @@ class UsersController extends Controller
     /**
      * block uses to block reported users.
      *
-     * @param id        $someInt
-     * @param rowId     $someInt
+     * @param id        $request
      *
-     * @return string
+     *
+     * @return json
      */
     public function block(Request $request)
     {
@@ -72,9 +72,9 @@ class UsersController extends Controller
     /**
      * Unblock uses to unblock blocked users.
      *
-     * @param id        $someInt
+     * @param id        $request
      *
-     * @return string
+     * @return json
      */
     public function Unblock(Request $request)
     {
@@ -91,9 +91,9 @@ class UsersController extends Controller
     /**
      * recover uses to recover password,
      * when user forgot the password.
-     * @param email        $someString
+     * @param email        $request
      *
-     * @return string
+     * @return json
      */
     public function recover(Request $request)
     {
@@ -155,15 +155,15 @@ class UsersController extends Controller
         $mail = new PHPMailer(true);
         try {
             $mail->isSMTP();                                      // Set mailer to use SMTP
-            $mail->Host = 'ssl://smtp.gmail.com';  // Specify main and backup SMTP servers
+            $mail->Host = 'ssl://smtp.gmail.com';                 // Specify main and backup SMTP servers
             $mail->SMTPAuth = true;                               // Enable SMTP authentication
-            $mail->Username = 'coupleyteam@gmail.com';                // SMTP username
-            $mail->Password = 'COUPLEY123';                           // SMTP password
+            $mail->Username = 'coupleyteam@gmail.com';            // SMTP username
+            $mail->Password = 'COUPLEY123';                       // SMTP password
             $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
             $mail->Port = 465;                                    // TCP port to connect to
             $mail->From = 'coupleyteam@gmail.com';
             $mail->FromName = 'COUPLEY';
-            $mail->addAddress($email, $user);     // Add a recipient
+            $mail->addAddress($email, $user);                     // Add a recipient
             $mail->addReplyTo('coupleyteam@gmail', 'COUPLEY');
             $mail->addBCC('bcc@example.com');
             $mail->isHTML(true);                                  // Set email format to HTML
@@ -174,10 +174,10 @@ class UsersController extends Controller
 
             return true;
         } catch (phpmailerException $e) {
-            //echo 'Please Check Your internet connection'; //Pretty error messages from PHPMailer
+            //echo 'Please Check Your internet connection';       //Pretty error messages from PHPMailer
             return false;
         } catch (Exception $e) {
-            echo $e->getMessage(); //Boring error messages from anything else!
+            echo $e->getMessage();
         }
     }
 

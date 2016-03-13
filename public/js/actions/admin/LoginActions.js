@@ -3,7 +3,6 @@ var LoginConstants = require('../../constants/LoginConstants');
 
 var AdminLoginActions = {
   login: function (credentials) {
-    console.log('Action login');
     $.post('/admin-api/authenticates', credentials, function (response) {
       if (response.token) {
         AppDispatcher.handleViewAction({

@@ -28,7 +28,6 @@ var FeedStore = assign({}, EventEmitter.prototype, {
 AppDispatcher.register(function (payload) {
   switch (payload.action.actionType) {
     case (FeedConstants.SEARCH):
-      console.log(payload.action.timelineFeed);
       FeedStore.saveresults(payload.action.timelineFeed);
       FeedStore.emitChange();
       break;

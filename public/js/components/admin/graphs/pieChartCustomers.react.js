@@ -25,7 +25,7 @@ const CustomerGraphs = React.createClass({
                 <div  onLoad={this.preload} className="" id="chartContainer1" style={ {
                   height: '300px',
                   width: '100%',
-                  top: '-150px',
+                  top: '-170px',
                   position: 'relative',
                 }} >
                     <iframe className="pull-right" src="http://localhost:3000/cp-admin#/piegraph" style={{ border: 'none' } } width="45%" height="133%" scrolling="no">
