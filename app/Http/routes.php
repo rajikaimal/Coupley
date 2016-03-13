@@ -141,6 +141,14 @@ Route::group(['prefix' => 'admin-api'], function () {
     Route::get('others', 'FeedbackController@other');
     //mark feedbacks
     Route::post('markfeed', 'FeedbackController@markfeed');
+    //pie graph data
+    Route::get('userStatus', 'GraphController@userStatus');
+    //line chart dat
+    Route::get('userRegistrations', 'GraphController@userRegistrations');
+
+    //cards data
+    Route::get('userStats', 'GraphController@userStats');
+
 });
 /*
 |--------------------------------------------------------------------------

@@ -1,73 +1,81 @@
 /**
- * Created by Isuru 1 on 21/02/2016.
+ * Created by Isuru 1 on 21/02/2016
  */
 import React from 'react';
 import { Link } from 'react-router';
+import GraphActions from './../../../actions/admin/GraphActions';
+import GraphStore from './../../../stores/admin/GraphStore';
 
-const Cards = React.createClass({
+const LineGraph = React.createClass({
+
+  getInitialState: function () {
+      return {
+        users: GraphStore.getresults(),
+      };
+    },
+
+  componentDidMount: function () {
+      GraphActions.userRegistrations();
+      GraphStore.addChangeListener(this._onChange);
+    },
+
+  _onChange: function () {
+      if (this.isMounted()) {
+        this.setState({
+          users: GraphStore.getresults(),
+        });
+      }
+    },
+
   graph: function () {
+
+    var dataPoints = [];
+    var i;
+    for (i in this.state.users) {
+      var count = this.state.users[i].sum;
+      var dateTime = this.state.users[i].created_at;
+      var date = (dateTime.split(' ')[0]);
+      var y = date.split('-')[0];
+      var m = date.split('-')[1];
+      var d = date.split('-')[2];
+      dataPoints.push({ x: new Date(y, m, d), y:parseInt(count) });
+    }
+
     var chart = new CanvasJS.Chart('chartContainer',
-            {
-              theme: 'theme2',
-              title: {
-                text: 'Customer Registrations - All the time',
+          {
+            theme: 'theme2',
+            title: {
+              text: 'Customer Registrations - All the time',
+            },
+            animationEnabled: true,
+            axisX: {
+              valueFormatString: 'MMM',
+              interval: 1,
+              intervalType: 'month',
+            },
+            axisY: {
+              includeZero: false,
+
+            },
+            data: [
+              {
+                type: 'line',
+                dataPoints: dataPoints,
               },
-              animationEnabled: true,
-              axisX: {
-                valueFormatString: 'MMM',
-                interval: 1,
-                intervalType: 'month',
+            ],
+          });
 
-              },
-              axisY: {
-                includeZero: false,
-
-              },
-              data: [
-                    {
-                      type: 'line',
-                      dataPoints: [
-                          { x: new Date(2012, 0, 1), y: 450 },
-                          { x: new Date(2012, 1, 1), y: 414 },
-                            {
-                              x: new Date(2012, 2, 1),
-                              y: 520,
-                              indexLabel: 'highest',
-                              markerColor: 'red',
-                              markerType: 'triangle',
-                            },
-                            { x: new Date(2012, 3, 1), y: 460 },
-                            { x: new Date(2012, 4, 1), y: 450 },
-                            { x: new Date(2012, 5, 1), y: 500 },
-                            { x: new Date(2012, 6, 1), y: 480 },
-                            { x: new Date(2012, 7, 1), y: 480 },
-                            {
-                              x: new Date(2012, 8, 1),
-                              y: 410,
-                              indexLabel: 'lowest',
-                              markerColor: 'DarkSlateGrey',
-                              markerType: 'cross',
-                            },
-                            { x: new Date(2012, 9, 1), y: 500 },
-                            { x: new Date(2012, 10, 1), y: 480 },
-                            { x: new Date(2012, 11, 1), y: 510 },
-
-                        ],
-                    },
-
-                ],
-            });
     chart.render();
   },
 
   render: function () {
     return (
         <div>
-                            <div onLoad={this.graph(this)}></div>
-                    </div>
+          <div onLoad={this.graph()}></div>
+        </div>
 
     );
   },
 });
 
-export default Cards;
+export default LineGraph;
