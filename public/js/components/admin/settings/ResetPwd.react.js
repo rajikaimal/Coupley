@@ -31,7 +31,7 @@ import PwdActions from '../../../actions/admin/AdminPwdResetActions';
 const tilesData = [
     {
       img: '../../../../img/lock-256.png',
-      title: 'Reset Password',
+      title: 'Update Password',
 
     },
 
@@ -231,7 +231,7 @@ var Reset = React.createClass({
             </div>
           </div>
           <Dialog
-              title="Reset Password"
+              title="Update Password"
               actions={actions}
               modal={false}
               open={this.state.open}

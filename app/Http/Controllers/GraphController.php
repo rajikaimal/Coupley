@@ -22,7 +22,8 @@ class GraphController extends Controller
                               and role="user") as t
                               join
                               (SELECT count(*) as active FROM users  where status="active"
-                              and role="user") as t2)')) {
+                              and role="user") as t2)'))
+            {
                 return response()->json(['users' => $users, 'status' => 200], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
