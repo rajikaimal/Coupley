@@ -96,7 +96,7 @@ Route::group(['prefix' => 'api'], function () {
     //posts feeback from user profile
     Route::post('feedback', 'UsersController@postFeedback');
     Route::get('instagram/init', 'InstagramController@init');
-    
+
 });
 
 Route::get('instagram/authenticate', 'InstagramController@auth');
