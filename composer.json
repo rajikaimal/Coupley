@@ -9,7 +9,8 @@
         "laravel/framework": "5.2.*",
         "predis/predis": "~1.1@dev",
         "guzzlehttp/guzzle": "~5.3|~6.0",
-        "phpmailer/phpmailer": "^5.2"
+        "phpmailer/phpmailer": "^5.2",
+        "thujohn/twitter": "~2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

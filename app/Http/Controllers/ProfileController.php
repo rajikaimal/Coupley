@@ -717,4 +717,48 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
+    /**
+     * Retreives block list of a certain user GET /
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
+    public function blocklist(Request $request)
+    {
+        $username = $request->username;
+        try {
+            $userID = User::where('username', $username)->get(['id'])[0]->id;
+            
+
+            $users = \DB::select(\DB::raw("
+               SELECT id,firstname,lastname,username,gender,profilepic from(
+                            SELECT id,firstname, lastname,username,orientation,gender,profilepic,role FROM `users` WHERE
+                                                    status = 'active'         
+                                                    ) as t where  
+                                                    role='user' and id IN (
+                                                        Select blocked_user_id
+                                                        from `blocked`
+                                                        where user_id=".$userID."
+                                                    ) 
+            "));
+            
+
+            // foreach ($blockedUsers as $value) {
+            //     $users[$value->blocked_user_id] = $value;
+            //     $users[$value->blocked_user_id] = User::where('id', $value->blocked_user_id)->get(['id', 'firstname', 'lastname', 'username', 'profilepic'])[0];
+            // }
+
+            return response()->json(['status' => 200, 'users' => $users], 200);
+            if ($userID) {
+                return response()->json(['status' => 200, 'done' => true], 200);
+            } else {
+                return response()->json(['status' => 200, 'done' => false], 200);
+            }
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 200], 200);
+        }
+    }
 }

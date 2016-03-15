@@ -65,8 +65,12 @@ var LoginActions = {
       gotLikedUsername: gotlikedusername,
       token: localStorage.getItem('apitoken'),
     };
+    let likeNotify = {
+      likedUsername: localStorage.getItem('username'),
+      gotLikedUsername: gotlikedusername,
+    };
     $.post('/api/like?token=' + localStorage.getItem('apitoken'), request, function (response) {
-
+      socket.emit('like', likeNotify);
     }).fail(function (error) {
 
     });

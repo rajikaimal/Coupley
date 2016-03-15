@@ -14,12 +14,12 @@ class NotificationMigration extends Migration
     {
         Schema::create('notification', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id1')->unsigned();
+            $table->integer('user_id1')->unsigned()->unique();
             $table->foreign('user_id1')->references('id')->on('users');
-            $table->integer('user_id2')->unsigned();
+            $table->integer('user_id2')->unsigned()->unique();
             $table->foreign('user_id2')->references('id')->on('users');
-            $table->string('content');
-            $table->boolean('read');
+            $table->string('content')->unique();
+            $table->boolean('readnotification');
             $table->timestamps();
         });
     }
