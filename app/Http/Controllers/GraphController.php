@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\User;
 
 class GraphController extends Controller
@@ -77,5 +76,4 @@ class GraphController extends Controller
             return response()->json(['status' => 300], 300);
         }
     }
-
 }
