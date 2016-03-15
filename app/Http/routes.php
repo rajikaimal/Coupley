@@ -122,6 +122,11 @@ Route::group(['prefix' => 'admin-api'], function () {
     Route::get('searches', 'AdminSearchController@search');
     //return blocked users
     Route::get('blocked', 'UsersController@blocked');
+    //block certain user
+    Route::post('blockuser', 'UsersController@block');
+    //unblock certain user
+    Route::post('unblockuser', 'UsersController@Unblock');
+
     //Register new admins with RegisterConroller@register
     Route::post('registerAdmin', 'AdminRegisterController@checks');
     //Update admins
@@ -132,12 +137,10 @@ Route::group(['prefix' => 'admin-api'], function () {
     Route::post('profilepic', 'AdminRegisterController@uploadpic');
     //recover password
     Route::post('recoverpwd', 'UsersController@recover');
-    //block certain user
-    Route::post('blockuser', 'UsersController@block');
-    //unblock certain user
-    Route::post('unblockuser', 'UsersController@Unblock');
     //Return Admin profile data
     Route::get('adminprofile', 'UsersController@Adminprofile');
+    //deactivate administrator
+    Route::post('deactivateAdmin', 'AdminDeactivateController@deactivate');
 
     //feedbacks
     Route::get('timeline', 'FeedbackController@timeline');
@@ -147,11 +150,11 @@ Route::group(['prefix' => 'admin-api'], function () {
     Route::get('others', 'FeedbackController@other');
     //mark feedbacks
     Route::post('markfeed', 'FeedbackController@markfeed');
+
     //pie graph data
     Route::get('userStatus', 'GraphController@userStatus');
     //line chart dat
     Route::get('userRegistrations', 'GraphController@userRegistrations');
-
     //cards data
     Route::get('userStats', 'GraphController@userStats');
 

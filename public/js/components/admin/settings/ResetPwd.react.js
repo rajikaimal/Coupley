@@ -31,7 +31,7 @@ import PwdActions from '../../../actions/admin/AdminPwdResetActions';
 const tilesData = [
     {
       img: '../../../../img/lock-256.png',
-      title: 'Update Password',
+      title: 'Reset Password',
 
     },
 

@@ -77,6 +77,7 @@ function logout() {
 function AdminSignout() {
   localStorage.removeItem('apitoken');
   localStorage.removeItem('emails');
+  localStorage.removeItem('id');
   document.location = '/cp-admin#/AdminLogin';
 }
 
