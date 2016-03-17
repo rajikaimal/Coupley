@@ -7,17 +7,21 @@ use App\Like;
 
 class LikeController extends Controller
 {
-    /*
-        returns likes status for GET request
-        @return json
-    **/
+    /**
+     * get likes status of a user.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function getlikestatus(Request $request)
     {
-        $id = $request->PostId;
-        $email = $request->Email;
+        $postId = $request->postId;
+        $email = $request->email;
         
         try{
-            $result = Like::where('post_id', $id)->where('email', $email)->get();
+            $result = Like::where('post_id', $postId)->where('email', $email)->get();
 
             if ($result->isEmpty()) {
                 return 'false';
@@ -29,18 +33,21 @@ class LikeController extends Controller
         }
     }
 
-    /*
-        handles POST request from client
-        add a like to status
-        @return json ... status of action
-    **/
+    /**
+     * add a like to Activity, handles POST request.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function like(Request $request)
     {
         try{
             $like = new Like;
-            $like->post_id = $request->PostId;
-            $like->email = $request->Email;
-            $like->firstname = $request->Fname;
+            $like->post_id = $request->postId;
+            $like->email = $request->email;
+            $like->firstname = $request->firstName;
             $like->status = '1';
 
             if ($like->save()) {
@@ -53,18 +60,21 @@ class LikeController extends Controller
         }
     }
 
-    /*
-        handles POST request from client
-        delete a like status to activityfeed
-        @return json ... status of action
-    **/
+    /**
+     * delete a like(unlike) to Activity, handles POST request.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function unlike(Request $request)
     {
-        $id = $request->PostId;
+        $postId = $request->PostId;
         $email = $request->Email;
 
         try{
-            $posts = \DB::table('likes')->where('post_id', '=', $id)
+            $posts = \DB::table('likes')->where('post_id', '=', $postId)
                         ->where('email', '=', $email);
 
             if ($posts->delete()) {

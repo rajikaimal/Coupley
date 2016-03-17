@@ -5,38 +5,48 @@ var assign = require('object-assign');
 
 var CHANGE_EVENT = 'change';
 
-var searchresults = [];
-var checkuserzPost = [];
+var searchResults = [];
 var profileposts;
 
 var StatusStore = assign({}, EventEmitter.prototype, {
 
+  /**
+   * Get activity feed data.
+   * return {object}
+   */
   getStatusData: function () {
-      return searchresults;
-    },
-
-  getprofilePosts: function () {
-      return profileposts;
+    return searchResults;
   },
 
-  saveprofileposts: function (data) {
-      profileposts = data;
-  },
-
+  /**
+   * Put results(activity feed data) to searchresults.
+   */
   saveStatusData: function (results) {
-      searchresults = results;
-    },
-  getcheckStatus: function() {
-      return checkuserzPost;
-    },
-  savecheckStatus: function(results) {
-      checkuserzPost.push(results);
+    searchResults = results;
+  },
+
+  /**
+   * Get profile post.
+   * return {object}
+   */
+  getprofilePosts: function () {
+    return profileposts;
+  },
+
+  /**
+   * Put data to profileposts.
+   */
+  saveprofileposts: function (data) {
+    profileposts = data;
   },
 
   emitChange: function () {
-      this.emit(CHANGE_EVENT);
-    },
+    this.emit(CHANGE_EVENT);
+  },
 
+  /**
+   * @param {function} callback
+   */
   addChangeListener: function (callback) {
       this.on(CHANGE_EVENT, callback);
     },
@@ -46,10 +56,6 @@ AppDispatcher.register(function (payload) {
   switch (payload.action.actionType) {
     case (ActivityFeedConstants.GETDATA):
       StatusStore.saveStatusData(payload.action.statusdata);
-      StatusStore.emitChange();
-      break;
-    case(ActivityFeedConstants.CHECKSTATUS):
-      StatusStore.savecheckStatus(payload.action.checkStatus);
       StatusStore.emitChange();
       break;
     case (ActivityFeedConstants.GETPROFILEPOSTS):

@@ -7,17 +7,21 @@ use App\share;
 
 class ShareController extends Controller
 {
-    /*
-        returns share status for GET request
-        @return json
-    **/
+    /**
+     * get shares status of a user.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function getsharestatus(Request $request)
     {
-        $id = $request->PostId;
+        $postId = $request->PostId;
         $email = $request->Email;
 
         try{
-            $result = Share::where('post_id', $id)
+            $result = Share::where('post_id', $postId)
                     ->where('email', $email)->get();
 
             if ($result->isEmpty()) {
@@ -30,18 +34,21 @@ class ShareController extends Controller
         }
     }
 
-    /*
-        handles POST request from client
-        adds a share status to activityfeed
-        @return json ... status of action
-    **/
+    /**
+     * add a share to Activity, handles POST request.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function share(Request $request)
     {
         try{
             $share = new Share;
-            $share->post_id = $request->PostId;
-            $share->email = $request->Email;
-            $share->firstname = $request->Fname;
+            $share->post_id = $request->postId;
+            $share->email = $request->email;
+            $share->firstname = $request->firstName;
 
             if ($share->save()) {
                 return response()->json(['status' => 201], 201);
@@ -53,18 +60,21 @@ class ShareController extends Controller
         }
     }
 
-    /*
-        handles POST request from client
-        deletes a share status 
-        @return json ... status of action
-    **/
+    /**
+     * delete a share to Activity, handles POST request.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function unshare(Request $request)
     {
-        $id = $request->PostId;
+        $postId = $request->PostId;
         $email = $request->Email;
 
         try{
-            $shares = \DB::table('shares')->where('post_id', '=', $id)
+            $shares = \DB::table('shares')->where('post_id', '=', $postId)
                                       ->where('email', '=', $email);
 
             if ($shares->delete()) {

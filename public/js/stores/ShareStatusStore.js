@@ -5,21 +5,35 @@ var assign = require('object-assign');
 
 var CHANGE_EVENT = 'change';
 
-var searchshares = []; 
+var searchShares = []; 
 
 var ShareStatusStore = assign({},EventEmitter.prototype, {
-    getshares: function() {
-      return searchshares;
-    },
-    saveshares: function(results) {
-      searchshares.push(results);
-    },
-    emitChange: function() {
-      this.emit(CHANGE_EVENT);
-    },
-    addChangeListener: function(callback) {
+
+  /**
+   * Get shared status.
+   * return {object}
+   */
+  getShares: function() {
+    return searchShares;
+  },
+
+  /**
+   * Put results(shared status) to searchShares.
+   */
+  saveshares: function(results) {
+    searchShares.push(results);
+  },
+
+  emitChange: function() {
+    this.emit(CHANGE_EVENT);
+  },
+
+  /**
+   * @param {function} callback
+   */
+  addChangeListener: function(callback) {
       this.on(CHANGE_EVENT, callback);
-    }
+  }
 });
 
 AppDispatcher.register(function(payload) {

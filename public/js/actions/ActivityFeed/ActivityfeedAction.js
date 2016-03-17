@@ -2,7 +2,7 @@ var AppDispatcher = require('../../dispatcher/AppDispatcher');
 var ActivityFeedConstants = require('../../constants/ActivityFeedConstants');
 
 var ActivityfeedAction = {
-  add_status: function (status) {
+  _addStatus: function (status) {
     $.post('api/status', status, function (response) {
       if (response.status == 201) {
         $.get('/api/getstatus', function (response) {
@@ -40,63 +40,56 @@ var ActivityfeedAction = {
     });
   },
 
-  getstatus: function () {
+  _getStatus: function () {
     $.get('/api/getstatus?email='+ localStorage.getItem('email'), function (response) {
-      console.log(response);
       if (response.status == 200) {
-            AppDispatcher.handleViewAction({
-            actionType: ActivityFeedConstants.GETDATA,
-            statusdata: response.posts,
-          });
+        AppDispatcher.handleViewAction({
+          actionType: ActivityFeedConstants.GETDATA,
+          statusdata: response.posts,
+        });
       } else if (response.status == 505) {
         console.log('Error 505');
       }
     });
   },
 
-  delete_status: function(postId){
+  _deleteStatus: function(postId){
     $.post('api/deleteStatus', postId, function(response) {
       if(response.status == 201) {
         $.get('/api/getstatus', function(response) {
           if (response.status == 200) {
             AppDispatcher.handleViewAction({
-            actionType: ActivityFeedConstants.GETDATA,
-            statusdata: response.posts
+              actionType: ActivityFeedConstants.GETDATA,
+              statusdata: response.posts
             });
-          }
-          else if (response.status == 505) {
+          } else if (response.status == 505) {
             console.log('Error 505');
           }
         });
-      }
-      else if(response.status == 404) {
+      } else if(response.status == 404) {
         console.log('Error 404');
       }
-      });
+    });
   },
 
-  editstatus:function (txt) {
+  _editStatus:function (txt) {
     $.post('api/edit_status', txt, function (response) {
       if(response.status == 201) {
-      $.get('/api/getstatus', function(response) {
+        $.get('/api/getstatus', function(response) {
           if (response.status == 200) {
             AppDispatcher.handleViewAction({
-            actionType: ActivityFeedConstants.GETDATA,
-            statusdata: response.posts
+              actionType: ActivityFeedConstants.GETDATA,
+              statusdata: response.posts
             });
-          }
-          else if (response.status == 505) {
+          } else if (response.status == 505) {
             console.log('Error 505');
           }
         });
-      }
-      else if(response.status == 404) {
+      } else if(response.status == 404) {
         console.log('Error 404');
       }
-      });
+    });
   },
-
-
 };
 
 module.exports = ActivityfeedAction;

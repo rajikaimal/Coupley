@@ -7,19 +7,22 @@ use App\Comment;
 
 class CommentController extends Controller
 {
-    /*
-        handles POST request from client
-        adds a comment to activityfeed
-        @return json ... status of action
-    **/
+    /**
+     * add a comment to Activity feed, handles POST request.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function addcomment(Request $request)
     {
         try{
             $comment = new Comment;
-            $comment->post_id = $request->PId;
-            $comment->email = $request->Email;
-            $comment->firstname = $request->Fname;
-            $comment->comment_txt = $request->Comment;
+            $comment->post_id = $request->postId;
+            $comment->email = $request->email;
+            $comment->firstname = $request->firstName;
+            $comment->comment_txt = $request->comment;
 
             if ($comment->save()) {
                 return response()->json(['status' => 201], 201);
@@ -31,10 +34,14 @@ class CommentController extends Controller
         }
     }
 
-    /*
-        returns comment data for GET request
-        @return json
-    **/
+    /**
+     * get comment data.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function getcomments(Request $request)
     {
         try{

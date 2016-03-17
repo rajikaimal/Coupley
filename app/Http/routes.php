@@ -31,11 +31,9 @@ Route::group(['prefix' => 'api'], function () {
     //update admin passwords
     Route::post('recoverpwd', 'AuthenticateController@reset');
     //Add a status
-    Route::post('status', 'ActivityFeedController@addstatus');
+    Route::post('status', 'ActivityFeedController@addStatus');
     //Return status
-    Route::get('getstatus', 'ActivityFeedController@getstatus');
-    //Return status ID (PostID)
-    Route::get('getpostId', 'ActivityFeedController@getpostId');
+    Route::get('getstatus', 'ActivityFeedController@getStatus');
     //Add a like to the status
     Route::post('likepost', 'LikeController@like');
     //Unlike the status
@@ -52,8 +50,6 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('comment', 'CommentController@addcomment');
     //Return comments data
     Route::get('getcomment', 'CommentController@getcomments');
-
-    Route::get('checkpost','ActivityFeedController@checkpost');
     //Delete a status
     Route::post('deleteStatus', 'ActivityFeedController@deleteStatus');
     //Edit a status 

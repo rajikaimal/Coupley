@@ -4,24 +4,33 @@ import LoginStore from '../../stores/LoginStore';
 import StatusStore from '../../stores/StatusStore';
 
 var LikesActions ={
-  getlikestatus: function(request) {
+  _getLikeStatus: function(request) {
     $.get('/api/getlikestatus',function(response) {
-      console.log("likeactionnnnnnnnnnn");
-      console.log(response);
       if (response.status == 200) {
         AppDispatcher.handleViewAction({
-        actionType: LikeConstants.LIKESTATUS,
-        likestatus: response
+          actionType: LikeConstants.LIKESTATUS,
+          likestatus: response
           });
-        }
-        else if (response.status == 505) {
-            console.log('Error 505');
-        }
-      });
+      } else if (response.status == 505) {
+        console.log('Error 505');
+      }
+    });
   },
 
   like: function(request) {
     $.post('/api/likepost', request,function(response){
+      if (response.status == 201) {
+        $.get('/api/getlikestatus',function(response) {
+          if (response.status == 200) {
+            AppDispatcher.handleViewAction({
+              actionType: LikeConstants.LIKESTATUS,
+              likestatus: response
+              });
+          } else if (response.status == 505) {
+            console.log('Error 505');
+          }
+        });
+      } 
     }).fail(function(error) {
       console.log(error);
     });
@@ -29,6 +38,18 @@ var LikesActions ={
 
   unlike: function(request) {
     $.post('/api/unlikepost', request,function(response){
+      if (response.status == 201) {
+        $.get('/api/getlikestatus',function(response) {
+          if (response.status == 200) {
+            AppDispatcher.handleViewAction({
+              actionType: LikeConstants.LIKESTATUS,
+              likestatus: response
+              });
+          } else if (response.status == 505) {
+            console.log('Error 505');
+          }
+        });
+      } 
     }).fail(function(error) {
       console.log(error);
     });

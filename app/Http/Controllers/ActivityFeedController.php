@@ -9,18 +9,21 @@ use App\Likes;
 
 class ActivityFeedController extends Controller
 {
-    /*
-        handles POST request from client
-        adds a status to activityfeed
-        @return json ... status of action
-    **/
-    public function addstatus(Request $request)
+    /**
+     * add an activity to Activity feed, handles POST request.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
+    public function addStatus(Request $request)
     {
         try{
             $post = new Post;
-            $post->email = $request->Email;
-            $post->firstname = $request->Fname;
-            $post->post_text = $request->Status;
+            $post->email = $request->email;
+            $post->firstname = $request->firstName;
+            $post->post_text = $request->status;
             $post->attachment = 'txt';
 
             if ($posts = $post->save()) {
@@ -29,30 +32,43 @@ class ActivityFeedController extends Controller
                 return response()->json(['status' => 404], 404);
             }
         } catch (Illuminate\Database\QueryException $e) {
-                return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 505], 505);
         }
     }
 
-    /*
-        returns status data for GET request
-        @return json
-    **/
-    public function getstatus(Request $request)
+    /**
+     * get activity feed of a user.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
+    public function getStatus(Request $request)
     {
         try {
-            $posts = \DB::select('select id,firstname,post_text,created_at from posts');
-             return response()->json(['posts' => $posts, 'status' => 200], 200);
+             $posts= \DB::select('select id,firstname,post_text,created_at from posts order by created_at desc');
+
+            return response()->json(['posts' => $posts, 'status' => 200], 200);
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 505], 505);
         }
     }
 
+    /**
+     * delete activity of a user.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function deleteStatus(Request $request)
     {
-        $id = $request->PostId;
+        $postId = $request->postId;
 
         try{
-            $posts = \DB::table('posts')->where('id', '=', $id);
+            $posts = \DB::table('posts')->where('id', '=', $postId);
 
             if ($posts->delete()) {
                 return response()->json(['status' => 201], 201);
@@ -60,17 +76,25 @@ class ActivityFeedController extends Controller
                 return response()->json(['status' => 404], 404);
             }
         } catch (Illuminate\Database\QueryException $e) {
-                return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 505], 505);
         }
     }
 
+    /**
+     * edit activity of a user.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function editStatus(Request $request)
     {
-        $id = $request->PostId;
-        $status = $request->Status;
+        $postId = $request->postId;
+        $status = $request->status;
 
         try{
-            $posts = \DB::table('posts')->where('id', $id)->update(['post_text' => $status]);
+            $posts = \DB::table('posts')->where('id', $postId)->update(['post_text' => $status]);
 
             if ($posts) {
                 return response()->json(['status' => 201], 201);
@@ -78,7 +102,7 @@ class ActivityFeedController extends Controller
                 return response()->json(['status' => 404], 404);
             }
         } catch (Illuminate\Database\QueryException $e) {
-                return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 505], 505);
         }
     }
 }
