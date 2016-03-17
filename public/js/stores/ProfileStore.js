@@ -70,6 +70,10 @@ var ProfileStore = assign({}, EventEmitter.prototype, {
     };
   },
 
+  getAll: function() {
+    return user[0];
+  },
+
   getProfilePic: function () {
     return pic;
   },

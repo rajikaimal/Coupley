@@ -10,6 +10,8 @@ import MenuItem from 'material-ui/lib/menus/menu-item';
 import TextField from 'material-ui/lib/text-field';
 import FlatButton from 'material-ui/lib/flat-button';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import ActivityFeedStore from '../../../stores/ActivityFeedStore';
+import ActivityFeedActions from '../../../actions/profile/ActivityFeedActions';
 
 //tap-event-plugin
 injectTapEventPlugin();
@@ -27,7 +29,7 @@ const textStyle = {
   marginLeft: "15"
 }
 
-const Like = React.createClass({
+const BlockList = React.createClass({
 	_remove: function() {
 		this.props.onRemove(this.props.username);
 	},
@@ -36,9 +38,18 @@ const Like = React.createClass({
 			<div>
 		        <ListItem
 		          leftAvatar={<Avatar src={this.props.image} />}
-		          primaryText={this.props.firstname + " " + this.props.lastname}
+		          primaryText={this.props.firstname + ' ' + this.props.lastname}
+		          secondaryText={
+		            <p>
+		            	<span style={{color: Colors.darkBlack}}>{this.props.post}</span>
+		           		<br/>
+		           		<b>{this.props.time}</b>
+		            </p>
+		          }
 		          secondaryTextLines={2} 
-		        />
+		          rightIconButton={<IconMenu iconButtonElement={iconButtonElement}>
+					    <MenuItem onTouchTap={this._remove}>Unblock</MenuItem>
+					  </IconMenu>} />
 
 			
 		        <Divider inset={true} />			
@@ -48,4 +59,4 @@ const Like = React.createClass({
 	}
 });
 
-export default Like;
+export default BlockList;

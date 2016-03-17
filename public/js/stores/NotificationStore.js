@@ -7,7 +7,7 @@ var CHANGE_EVENT = 'change';
 
 var notifications = [];
 var notificationNumber = 0;
-var list;
+var list = [];
 
 var NotificationStore = assign({}, EventEmitter.prototype, {
   saveNotfication: function (data) {
@@ -20,8 +20,6 @@ var NotificationStore = assign({}, EventEmitter.prototype, {
 
   saveList: function(data) {
     list = data;
-    console.log('Here is the list');
-    console.log(list);
   },
 
   getList: function() {

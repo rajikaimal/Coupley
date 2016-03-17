@@ -216,6 +216,19 @@ var LoginActions = {
       }
     });
   },
+
+  reportUser: function(data) {
+    $.post('/api/profile/report?token=' + localStorage.getItem('apitoken'), data, function (response) {
+      if (response.status == 200) {
+        window.reload();
+      }
+    }).fail(function (error) {
+      AppDispatcher.handleViewAction({
+        actionType: ProfileConstants.ERR,
+        error: true,
+      });
+    });
+  },
 };
 
 module.exports = LoginActions;
