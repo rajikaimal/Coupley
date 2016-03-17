@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import { Link } from 'react-router';
+import Tabs from './graphs/tab.react';
 import CustomerGraph from './graphs/customers.react';
 import PieGraph from './graphs/pieChartCustomers.react';
 import GraphActions from './../../actions/admin/GraphActions';
@@ -126,8 +127,8 @@ const Cards = React.createClass({
           </div>
         </div>
 
-        <CustomerGraph/>
-        <PieGraph/>
+
+        <Tabs/>
 
       </div>
 
