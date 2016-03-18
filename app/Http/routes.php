@@ -139,6 +139,8 @@ Route::group(['prefix' => 'admin-api'], function () {
     Route::post('recoverpwd', 'UsersController@recover');
     //Return Admin profile data
     Route::get('adminprofile', 'UsersController@Adminprofile');
+    //Return details of all administrators
+    Route::get('adminInfo', 'AdminDetailsController@admins');
     //deactivate administrator
     Route::post('deactivateAdmin', 'AdminDeactivateController@deactivate');
 

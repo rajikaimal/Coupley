@@ -10,6 +10,16 @@ const Path = React.createClass({
     return PathStore.getpath();
   },
 
+  componentDidMount: function () {
+    PathStore.addChangeListener(this._onChange);
+  },
+
+  _onChange: function () {
+    this.setState(
+      PathStore.getpath()
+    );
+  },
+
   render: function () {
     return (
       <div className="path">

@@ -8,23 +8,27 @@ import CustomerGraph from './graphs/customers.react';
 import PieGraph from './graphs/pieChartCustomers.react';
 import GraphActions from './../../actions/admin/GraphActions';
 import GraphStore from './../../stores/admin/GraphStore';
+import PathStore from './../../stores/admin/PathStore';
 
 const Cards = React.createClass({
   getInitialState: function () {
     return {
       status: GraphStore.getresults(),
+      path:PathStore.getpath(),
     };
   },
 
   componentDidMount: function () {
     GraphActions.userStats();
     GraphStore.addChangeListener(this._onChange);
+    PathStore.addChangeListener(this._onChange);
   },
 
   _onChange: function () {
     if (this.isMounted()) {
       this.setState({
         status: GraphStore.getresults(),
+        path:PathStore.getpath(),
       });
     }
   },
