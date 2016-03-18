@@ -12,13 +12,21 @@ class ChatMigration extends Migration
      */
     public function up()
     {
-        Schema::create('chats', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('user1');
-            $table->string('user2');
-            $table->string('message');
-            $table->timestamps();
-        });
+      // Schema::create('threads', function (Blueprint $table) {
+      //   $table->increments('trd_id');
+      //   $table->string('user1_un')->index();
+      //   $table->string('user2_un')->index();
+      //   $table->timestamps();
+      // });
+      //
+      // Schema::create('messages', function (Blueprint $table) {
+      //   $table->increments('mid');
+      //   $table->text('message');
+      //   $table->string('sender_un')->index();
+      //   $table->string('thread_id')->unsigned();
+      //   $table->timestamps();
+      // });
+
     }
 
     /**
@@ -28,6 +36,7 @@ class ChatMigration extends Migration
      */
     public function down()
     {
-        Schema::drop('chats');
+          // Schema::drop('threads');
+          // Schema::drop('messages');
     }
 }

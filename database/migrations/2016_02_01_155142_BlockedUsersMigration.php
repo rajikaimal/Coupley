@@ -1,8 +1,6 @@
 <?php
-
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
 class BlockedUsersMigration extends Migration
 {
     /**
@@ -21,7 +19,6 @@ class BlockedUsersMigration extends Migration
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *
