@@ -720,7 +720,7 @@ class ProfileController extends Controller
     }
 
     /**
-     * Retreives block list of a certain user GET /
+     * Retreives block list of a certain user GET /.
      *
      * @param object        $request
      *
@@ -732,7 +732,6 @@ class ProfileController extends Controller
         $username = $request->username;
         try {
             $userID = User::where('username', $username)->get(['id'])[0]->id;
-            
 
             $users = \DB::select(\DB::raw("
                SELECT id,firstname,lastname,username,gender,profilepic from(
@@ -742,10 +741,9 @@ class ProfileController extends Controller
                                                     role='user' and id IN (
                                                         Select blocked_user_id
                                                         from `blocked`
-                                                        where user_id=".$userID."
+                                                        where user_id=".$userID.'
                                                     ) 
-            "));
-            
+            '));
 
             // foreach ($blockedUsers as $value) {
             //     $users[$value->blocked_user_id] = $value;
