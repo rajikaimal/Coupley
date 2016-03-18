@@ -33,6 +33,8 @@ io.on('connection', function (socket) {
       connectedUser[socket.username] = socket.id;
 
       socket.on('LoggedUserEmail', function (data) {
+        ThisUserEmail = data;
+        connection.query("UPDATE users SET chatstatus='online' WHERE email='" + data + "' ", function (err, result) {});
 
         connection.query("SELECT id FROM users WHERE email='" + data + "' ",
          function (err, result) {

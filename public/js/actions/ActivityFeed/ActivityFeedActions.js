@@ -72,7 +72,8 @@ var ActivityFeedActions = {
   },
 
   delete_status: function (postId) {
-    $.post('api/deleteStatus?token=' + localStorage.getItem('apitoken'), postId, function (response) {
+    $.post('api/deleteStatus?token=' + localStorage.getItem('apitoken'),
+     postId, function (response) {
       console.log(response);
     });
   },
@@ -85,7 +86,6 @@ var ActivityFeedActions = {
 
   loadPosts: function (username) {
     $.get('/api/profile/getposts?token=' + localStorage.getItem('apitoken') + '&username=' + username, function (response) {
-
       if (response.status == 200) {
         AppDispatcher.handleViewAction({
           actionType: ActivityFeedConstants.GETPROFILEPOSTS,
