@@ -8,6 +8,7 @@
 
 namespace App\Http\Controllers;
 
+use PHPMailer;
 
 class EmailController extends Controller
 {
