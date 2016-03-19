@@ -9,6 +9,7 @@ var user = [];
 var pic = '';
 var error = false;
 var done = false;
+var blocklist = [];
 
 var ProfileStore = assign({}, EventEmitter.prototype, {
   saveUserData: function (data) {
@@ -31,6 +32,14 @@ var ProfileStore = assign({}, EventEmitter.prototype, {
     setTimeout(function () {
       done = false;
     }, 6000);
+  },
+
+  saveBlockList: function (data) {
+    blocklist = data;
+  },
+
+  getBlockList: function () {
+    return blocklist;
   },
 
   getDoneStatus: function () {
@@ -61,6 +70,10 @@ var ProfileStore = assign({}, EventEmitter.prototype, {
     };
   },
 
+  getAll: function() {
+    return user[0];
+  },
+
   getProfilePic: function () {
     return pic;
   },
@@ -84,6 +97,10 @@ AppDispatcher.register(function (payload) {
       ProfileStore.saveProfilePic(payload.action.profilepic);
       ProfileStore.emitChange();
       break;
+    case (ProfileConstants.BLOCKLIST):
+      ProfileStore.saveBlockList(payload.action.list);
+      ProfileStore.emitChange();
+      break;
     case (ProfileConstants.ERR):
       ProfileStore.saveErrorStatus(payload.action.error);
       ProfileStore.emitChange();
@@ -92,6 +109,7 @@ AppDispatcher.register(function (payload) {
       ProfileStore.saveDoneStatus(payload.action.done);
       ProfileStore.emitChange();
       break;
+
   }
 });
 

@@ -1,8 +1,7 @@
 var keyMirror = require('keymirror');
 
 module.exports = keyMirror({
-  REGISTER: null,
-  CHECK: null,
-  UPDATE: null,
-  ERR: null,
+  NOTIFICATION: null,
+  NOTIFICATIONNO: null,
+  LIST: null,
 });

@@ -19,6 +19,7 @@ use App\Blocks;
 use App\ActivityFeed;
 use App\About;
 use App\Post;
+use App\Reported;
 
 class ProfileController extends Controller
 {
@@ -716,5 +717,111 @@ class ProfileController extends Controller
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 200], 200);
         }
+    }
+
+    /**
+     * Retreives block list of a certain user GET /
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
+    public function blocklist(Request $request)
+    {
+        $username = $request->username;
+        try {
+            $userID = User::where('username', $username)->get(['id'])[0]->id;
+            
+
+            $users = \DB::select(\DB::raw("
+               SELECT id,firstname,lastname,username,gender,profilepic from(
+                            SELECT id,firstname, lastname,username,orientation,gender,profilepic,role FROM `users` WHERE
+                                                    status = 'active'         
+                                                    ) as t where  
+                                                    role='user' and id IN (
+                                                        Select blocked_user_id
+                                                        from `blocked`
+                                                        where user_id=".$userID."
+                                                    ) 
+            "));
+            
+
+            // foreach ($blockedUsers as $value) {
+            //     $users[$value->blocked_user_id] = $value;
+            //     $users[$value->blocked_user_id] = User::where('id', $value->blocked_user_id)->get(['id', 'firstname', 'lastname', 'username', 'profilepic'])[0];
+            // }
+
+            return response()->json(['status' => 200, 'users' => $users], 200);
+            if ($userID) {
+                return response()->json(['status' => 200, 'done' => true], 200);
+            } else {
+                return response()->json(['status' => 200, 'done' => false], 200);
+            }
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 200], 200);
+        }
+    }
+
+    /**
+     * Updates a user profile main info POST request.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
+    public function updateMain(Request $request)
+    {
+        $username = $request->username;
+        $email = $request->email;
+        $gender = $request->gender;
+        
+        //$birthday = $request->birthday;
+        $password = \Hash::make($request->password);
+        $orientation = $request->orientation;
+//        return response()->json(['status' => 200, 'done' => $username], 200);
+
+        try {
+            User::where('username', $username)
+                ->update(['email' => $email]
+                ,['gender'=> $gender]
+                ,['country'=> $country]
+                ,['password'=> $password]
+                ,['orientation'=> $orientation]);
+            return response()->json(['status' => 200, 'done' => true], 200);
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 505], 505);
+        }
+    }
+
+    /**
+     * Reports user profile
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
+    public function reportUser(Request $request)
+    {
+        $visitorUsername = $request->visitorusername;
+        $username = $request->username;
+        $description = $request->comment;
+        $type = $request->type;
+        try {
+            $user1ID = User::where('username', $username)->get(['id'])[0]->id;
+            $user2ID = User::where('username', $visitorUsername)->get(['id'])[0]->id;
+
+            $report = new Reported;
+            $report->user_id = $user1ID;
+            $report->reported_user_id = $user2ID;
+            $report->description = $description;
+            $report->status = $type;
+            $report->save();
+            return response()->json(['status' => 200, 'done' => true], 200);
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 200], 200);
+        }   
     }
 }
