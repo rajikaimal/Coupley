@@ -15,7 +15,8 @@ class AdminDetailsController extends Controller
     public function admins()
     {
         try {
-            if ($admins = \DB::select('select CONCAT(firstname," ",lastname) AS name, job, profilepic, status from users where role="admin"')) {
+            if ($admins = \DB::select('select CONCAT(firstname," ",lastname) AS name, job,
+                                        profilepic, status from users where role="admin"')) {
                 return response()->json(['admins' => $admins, 'status' => 200], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
