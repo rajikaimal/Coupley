@@ -3,9 +3,8 @@
  * Created by IntelliJ IDEA.
  * User: isuru
  * Date: 3/19/16
- * Time: 8:10 AM
+ * Time: 8:10 AM.
  */
-
 namespace App\Http\Controllers;
 
 use PHPMailer;
@@ -42,6 +41,7 @@ class EmailController extends Controller
             $mail->Body = $content;
             $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
             $mail->send();
+
             return true;
         } catch (phpmailerException $e) {
             //echo 'Please Check Your internet connection';
