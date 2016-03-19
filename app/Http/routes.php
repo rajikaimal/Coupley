@@ -97,7 +97,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('feedback', 'UsersController@postFeedback');
     Route::get('instagram/init', 'InstagramController@init');
     Route::get('profile/blocklist', 'ProfileController@blocklist');
-    
+
     //retrives no of notifications
     Route::get('profile/notifications', 'NotificationController@getNotificationNumber');
     //retrives all unread notifications
@@ -109,7 +109,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('profile/updatemain', 'ProfileController@updateMain');
 
     //reports a user
-    Route::post('profile/report', 'ProfileController@reportUser');    
+    Route::post('profile/report', 'ProfileController@reportUser');
 
 });
 
@@ -171,8 +171,7 @@ Route::group(['prefix' => 'admin-api'], function () {
 
 });
 
-
-Route::get('twitter/login', ['as' => 'twitter.login', function(){
+Route::get('twitter/login', ['as' => 'twitter.login', function () {
     // your SIGN IN WITH TWITTER  button should point to this route
     $sign_in_twitter = true;
     $force_login = false;
@@ -181,8 +180,7 @@ Route::get('twitter/login', ['as' => 'twitter.login', function(){
     Twitter::reconfig(['token' => '', 'secret' => '']);
     $token = Twitter::getRequestToken(route('twitter.callback'));
 
-    if (isset($token['oauth_token_secret']))
-    {
+    if (isset($token['oauth_token_secret'])) {
         $url = Twitter::getAuthorizeURL($token, $sign_in_twitter, $force_login);
 
         Session::put('oauth_state', 'start');
@@ -195,13 +193,12 @@ Route::get('twitter/login', ['as' => 'twitter.login', function(){
     return Redirect::route('twitter.error');
 }]);
 
-Route::get('twitter/callback', ['as' => 'twitter.callback', function(Request $request) {
+Route::get('twitter/callback', ['as' => 'twitter.callback', function (Request $request) {
     // You should set this route on your Twitter Application settings as the callback
     // https://apps.twitter.com/app/YOUR-APP-ID/settings
     $accessToken = $request->oauth_token;
     var_dump($accessToken);
-    if (Session::has('oauth_request_token'))
-    {
+    if (Session::has('oauth_request_token')) {
         $request_token = [
             'token'  => Session::get('oauth_request_token'),
             'secret' => Session::get('oauth_request_token_secret'),
@@ -211,23 +208,20 @@ Route::get('twitter/callback', ['as' => 'twitter.callback', function(Request $re
 
         $oauth_verifier = false;
 
-        if (Input::has('oauth_verifier'))
-        {
+        if (Input::has('oauth_verifier')) {
             $oauth_verifier = Input::get('oauth_verifier');
         }
 
         // getAccessToken() will reset the token for you
         $token = Twitter::getAccessToken($oauth_verifier);
 
-        if (!isset($token['oauth_token_secret']))
-        {
+        if (! isset($token['oauth_token_secret'])) {
             return Redirect::route('twitter.login')->with('flash_error', 'We could not log you in on Twitter.');
         }
 
         $credentials = Twitter::getCredentials();
 
-        if (is_object($credentials) && !isset($credentials->error))
-        {
+        if (is_object($credentials) && ! isset($credentials->error)) {
             // $credentials contains the Twitter user object with all the info about the user.
             // Add here your own user logic, store profiles, create new users on your tables...you name it!
             // Typically you'll want to store at least, user id, name and access tokens
@@ -245,20 +239,19 @@ Route::get('twitter/callback', ['as' => 'twitter.callback', function(Request $re
     }
 }]);
 
-Route::get('twitter/error', ['as' => 'twitter.error', function(){
+Route::get('twitter/error', ['as' => 'twitter.error', function () {
     // Something went wrong, add your own error handling here
 }]);
 
-Route::get('twitter/logout', ['as' => 'twitter.logout', function(){
+Route::get('twitter/logout', ['as' => 'twitter.logout', function () {
     Session::forget('access_token');
+
     return Redirect::to('/')->with('flash_notice', 'You\'ve successfully logged out!');
 }]);
 
-Route::get('/feeds', function()
-{
+Route::get('/feeds', function () {
     return Twitter::getUserTimeline(['screen_name' => 'rajikaimal', 'count' => 2, 'format' => 'json']);
 });
-
 
 /*
 |--------------------------------------------------------------------------
