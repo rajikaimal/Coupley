@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class AdminDetailsController extends Controller
 {
     /**
-     * uses to retrive details of admins
+     * uses to retrive details of admins.
      *
      *
      * @return json
@@ -22,5 +20,4 @@ class AdminDetailsController extends Controller
             return response()->json(['status' => 300], 300);
         }
     }
-
 }

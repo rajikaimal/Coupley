@@ -50,6 +50,7 @@ class AdminAuthenticateController extends Controller
         // update admin status to active
         if ($admin) {
             \DB::table('users')->where('email', $email)->update(['status' => 'active']);
+
             return response()->json(compact('token'));
         } else {
             return response()->json(['status' => 203], 203);
