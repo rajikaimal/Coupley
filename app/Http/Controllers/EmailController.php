@@ -11,6 +11,15 @@ namespace App\Http\Controllers;
 
 class EmailController extends Controller
 {
+    /**
+     * SendMail uses to send a mail
+     * to the users.
+     * @param receiverEmail $email
+     * @param receiverName  $userName
+     * @param content       $content
+     *
+     * @return bool
+     */
     public function SendMail($email, $userName, $content)
     {
         $mail = new PHPMailer(true);
@@ -24,7 +33,7 @@ class EmailController extends Controller
             $mail->Port = 465;                                    // TCP port to connect to
             $mail->From = 'coupleyteam@gmail.com';
             $mail->FromName = 'COUPLEY';
-            $mail->addAddress($email, $userName);                     // Add a recipient
+            $mail->addAddress($email, $userName);                 // Add a recipient
             $mail->addReplyTo('coupleyteam@gmail', 'COUPLEY');
             $mail->addBCC('bcc@example.com');
             $mail->isHTML(true);                                  // Set email format to HTML
