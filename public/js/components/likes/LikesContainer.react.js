@@ -3,9 +3,14 @@ import Activity from './Like.react';
 import List from 'material-ui/lib/lists/list';
 import LikeStore from '../../stores/LikeStore';
 import LikeActions from '../../actions/LikeActions';
+import TextField from 'material-ui/lib/text-field';
 
 const loadMoreStyle = {
   marginLeft: 100
+}
+
+const textStyle = {
+  marginLeft: 20
 }
 
 const ActivityFeedContainer = React.createClass({
@@ -45,6 +50,18 @@ const ActivityFeedContainer = React.createClass({
     },
     _loadMoreLikedBack: function() {
         LikeActions.getLikedBackList();
+    },
+    _handleSearchliked: function() {
+      let searchVal = this.refs.iliked.getValue();
+      LikeActions.searchLikedMe(searchVal);
+    },
+    _handleSearchlikedMe: function() {
+      let searchVal = this.refs.likedme.getValue();
+      LikeActions.searchGotLiked(searchVal);
+    },
+    _handleSearchlikedBack: function() {
+      let searchVal = this.refs.likedback.getValue();
+      LikeActions.searchLikedBack(searchVal);      
     },
   _renderILike: function() {
     return this.state.list.map((item) => {
@@ -87,18 +104,24 @@ const ActivityFeedContainer = React.createClass({
       <div>
           <div className="col-lg-4" >
             <List subheader="You have liked ...">
+            <TextField
+                    ref="iliked" hintText="search ..." onKeyUp={this._handleSearchliked} style={textStyle}/>
             {this._renderILike()}
             </List>
             <button onClick={this._loadMoreLiked} style={loadMoreStyle}> load more </button>
           </div>
           <div className="col-lg-4">
             <List subheader="You got liked by ...">
+            <TextField
+                    ref="likedme" hintText="search ..." onKeyUp={this._handleSearchlikedMe} style={textStyle}/>
             {this._renderWhoLikedMe()}
             </List>
             <button onClick={this._loadMoreGotLiked} style={loadMoreStyle}> load more </button>
           </div>
           <div className="col-lg-4">
             <List subheader="Who liked back you ...">
+            <TextField
+                    ref="likedback" hintText="search ..." onKeyUp={this._handleSearchlikedBack} style={textStyle}/>
             {this._renderBackList()}
             </List>
             <button onClick={this._loadMoreLikedBack} style={loadMoreStyle}> load more </button>
