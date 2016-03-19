@@ -31,6 +31,10 @@ const Like = React.createClass({
 	_remove: function() {
 		this.props.onRemove(this.props.username);
 	},
+	_gotoProfile: function() {
+		console.log('Click lickckak');
+		window.location = "/#/" + this.props.username + "/about";
+	},
 	render: function() {
 		return (
 			<div>
@@ -38,9 +42,8 @@ const Like = React.createClass({
 		          leftAvatar={<Avatar src={this.props.image} />}
 		          primaryText={this.props.firstname + " " + this.props.lastname}
 		          secondaryTextLines={2} 
+		          onTouchTap={this._gotoProfile}
 		        />
-
-			
 		        <Divider inset={true} />			
 
 			</div>
