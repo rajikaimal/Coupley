@@ -10,7 +10,6 @@ var connection = mysql.createConnection({
 });
 var connectedUser = {};
 var Likedusers = [];
-var ThisUserEmail;
 
 connection.connect();
 
@@ -32,40 +31,8 @@ io.on('connection', function (socket) {
       socket.username = data;
       connectedUser[socket.username] = socket.id;
 
-      socket.on('LoggedUserEmail', function (data) {
-        ThisUserEmail = data;
-        connection.query("UPDATE users SET chatstatus='online' WHERE email='" + data + "' ", function (err, result) {});
-
-        connection.query("SELECT id FROM users WHERE email='" + data + "' ",
-         function (err, result) {
-          var ID = result[0].id;
-
-          connection.query("SELECT user2 FROM liked WHERE likeduser='" + ID + "' or gotliked ='" + ID + "' and 	likeback=1 ", function (err, result) {
-            for (var i = 0; i < result.length; i++) {
-              Likedusers[i] = result[i].user2;
-            }
-
-            /*
-             Comparing liked users and user connected to te shocket.
-             **/
-            var arr = Likedusers.concat(Object.keys(connectedUser));
-
-            var sortedArr = arr.sort();
-
-            var resultz = [];
-            for (var i = 0; i < arr.length - 1; i++) {
-              if (sortedArr[i + 1] == sortedArr[i]) {
-                resultz.push(sortedArr[i]);
-              }
-            }
-
-            io.sockets.connected[connectedUser[socket.username]]
-            .emit('chatList', { Userlist:resultz });
-
-          });
-
-        });
-
+      connection.query("UPDATE users SET chatstatus='online' WHERE username='" + socket.username + "' ", function (err, result) {
+        console.log(socket.username + ' Connected!');
       });
 
     }else {
@@ -82,16 +49,26 @@ io.on('connection', function (socket) {
      Gets the emitted chat message.
      **/
   socket.on('message', function (chat) {
-    ThisUserEmail = chat.emailusr1;
 
     post = {
-      user1: chat.user1,
-      user2: chat.user2,
+      user1_un: chat.user1,
+      user2_un: chat.user2,
       message: chat.message,
+      threadid:'',
     };
 
-    connection.query('INSERT INTO chats SET ?', post, function (err, result) {
-      connection.query("SELECT message,user1 FROM chats WHERE 	user1 IN ('" + post.user1 + "','" + post.user2 + "') AND user2 IN ('" + post.user1 + "','" + post.user2 + "') ", function (err, result) {
+    connection.query("SELECT trd_id FROM threads WHERE user1_un IN ('" + post.user1_un + "','" + post.user2_un + "') AND user2_un IN ('" + post.user1_un  + "','" + post.user2_un + "') ", function (err, result) {
+      post.threadid = result;
+      if (result == '') {
+        connection.query("INSERT INTO treads (user1_un,user2_un) VALUES('" + post.user1 + "','" + post.user2 + "')", function (err, result) {
+          connection.query("SELECT trd_id FROM threads  WHERE user1_un IN ('" + post.user1 + "','" + post.user2 + "') AND user2_un IN ('" + post.user1 + "','" + post.user2 + "') ", function (err, result) {
+            post.threadid = result; });
+        });
+      }
+    });
+
+    connection.query("INSERT INTO messages(message,sender_un,thread_id) VALUES ('" + post.message + "','" + post.user1_un + "','" + post.threadid + "')", function (err, result) {
+      connection.query("SELECT m.message,(SELECT u.firstname FROM users u WHERE u.username=m.sender_un),m.created_at,m.thread_id FROM messages m WHERE m.thread_id='" + post.threadid + "' ", function (err, result) {
 
         io.sockets.connected[connectedUser[chat.user1]].emit('chat', { message:result });
 
@@ -101,16 +78,18 @@ io.on('connection', function (socket) {
 
           io.sockets.connected[connectedUser[chat.user1]].emit('chat', { message:result });
         }
-
       });
     });
-
   });
+
   /*
      Fires when client disconnects.
      **/
   socket.on('disconnect', function () {
 
+    connection.query("UPDATE users SET chatstatus='offline' WHERE username='" + socket.username + "' ", function (err, result) {});
+
+    console.log(socket.username + ' Disonnected!');
   });
 
 });

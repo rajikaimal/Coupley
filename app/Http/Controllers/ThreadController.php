@@ -66,7 +66,8 @@ class ThreadController extends Controller
     {
        $user1 = $request->user1;
        try {
-               if ($llist= Likes::where('user1',$user1)->orWhere('user2',$user1)->where('likeback','1')->get()) {
+             $usrid=\DB::table('users')->select('username')->where('username', '=', $user1)->get();
+               if ($llist= Likes::select('username','firstname','lastname')->where('user1',$usrid)->orWhere('user2',$usrid)->where('likeback','1')->get()) {
                     return response()->json(['llist' => $llist, 'status' => 200], 200);
             } else {
                      return response()->json(['status' => 505], 505);

@@ -31,7 +31,6 @@ import Admin from './components/admin/dashboard.react';
 import AdminLogin from './components/admin/login.react';
 import MainActivity from './components/activityfeed/activityMain.react';
 import MainActivityProfile from './components/profile/activityfeed/activityMain.react';
-import Threads from './components/chat/Threads.react';
 import ChatCC from './components/chat/ChatCC.react';
 import ChatCC1 from './components/chat/ChatPreviousContainer.react';
 import ChatCC2 from './components/chat/chatCard.react';
@@ -122,7 +121,6 @@ ReactDOM.render((
     <Route path="/" component={Header} onEnter={requireAuth}>
     <Route path="/ThreadMain" component={ThreadMain}/>
       <Route path="/search" component={Search} />
-      <Route path="/threads" component={Threads} />
         <Route path="activity" component={MainActivity}/>
       <Route path="profile" component={Profile} >
           <Route path="activityfeed" component={MainActivityProfile} />

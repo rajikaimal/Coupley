@@ -47,7 +47,7 @@ const SelectFieldExampleSimple = React.createClass({
 },
 
   LikedUsers:function () {
-    let likedusers = { user1:LoginStore.getFirstname() };
+    let likedusers = { user1:LoginStore.getUsername() };
     ThreadActions.getlikedusers(likedusers);
   },
 
@@ -76,7 +76,7 @@ const SelectFieldExampleSimple = React.createClass({
         <SelectField value={this.state.value} onChange={this.handleChange}>
         {
             this.state.results.map(item => {
-              return (<MenuItem value = {item.user2} primaryText = {item.user2} />);
+              return (<MenuItem value = {item.username} primaryText = {item.firstname} />);
             })
         }
         </SelectField>

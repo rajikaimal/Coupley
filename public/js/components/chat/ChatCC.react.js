@@ -6,11 +6,12 @@ import ThreadStore from '../../stores/ThreadStore';
 import LoginStore from '../../stores/LoginStore';
 import Emojis from './emojis';
 var socket = io.connect('http://localhost:8081');
-var User1 = LoginStore.getFirstname();
+var User1 = LoginStore.getUsername();
 var User1Email = LoginStore.getEmail();
 
 socket.emit('LoggedUser', User1);
-socket.emit('LoggedUserEmail', User1Email);
+
+//socket.emit('LoggedUserEmail', User1Email);
 
 const style = {
   height: 150,
@@ -54,12 +55,12 @@ const CC = React.createClass({
     let val = true;
     let message = this.refs.message2.getValue();
     let User2 = localStorage.getItem('chatname');
-    let Eml = LoginStore.getEmail();
+
     let chat = {
       message: message,
       user1: User1,
       user2: User2,
-      emailusr1:Eml,
+
     };
 
     if (validateStatusText(message).error) {
