@@ -97,7 +97,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('feedback', 'UsersController@postFeedback');
     Route::get('instagram/init', 'InstagramController@init');
     Route::get('profile/blocklist', 'ProfileController@blocklist');
-    
+
     //retrives no of notifications
     Route::get('profile/notifications', 'NotificationController@getNotificationNumber');
     //retrives all unread notifications
@@ -115,9 +115,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('profile/updatemain', 'ProfileController@updateMain');
 
     //reports a user
-    Route::post('profile/report', 'ProfileController@reportUser');    
-
-
+    Route::post('profile/report', 'ProfileController@reportUser');
 
 });
 
@@ -179,12 +177,9 @@ Route::group(['prefix' => 'admin-api'], function () {
 
 });
 
-
-Route::get('/feeds', function()
-{
+Route::get('/feeds', function () {
     return Twitter::getUserTimeline(['screen_name' => 'rajikaimal', 'count' => 2, 'format' => 'json']);
 });
-
 
 /*
 |--------------------------------------------------------------------------
