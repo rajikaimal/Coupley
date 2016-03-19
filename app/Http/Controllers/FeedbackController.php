@@ -108,8 +108,9 @@ class FeedbackController extends Controller
     {
         $id = $request->id;
         try {
+            $category = \DB::select('select category from feedback where id='.$id);
             if ($feeds = \DB::table('feedback')->where('id', $id)->delete()) {
-                return response()->json(['status' => 201], 201);
+                return response()->json(['category' => $category,'status' => 201], 201);
             }
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 300], 300);

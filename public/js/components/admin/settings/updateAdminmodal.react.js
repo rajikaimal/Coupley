@@ -239,9 +239,11 @@ var Update = React.createClass({
         console.log('success');
         console.log(data);
         if (data.done == true) {
-          self.setState({
-            editing: true,
-          });
+
+          //swal('Uploaded Your New Profile Picture Sucessfully!', '', 'success');
+          //setTimeout(function () {
+          //  location.reload(true);
+          //}, 1500);
         } else {
 
         }

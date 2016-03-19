@@ -3,27 +3,32 @@
  */
 import React from 'react';
 import { Link } from 'react-router';
+import Tabs from './graphs/tab.react';
 import CustomerGraph from './graphs/customers.react';
 import PieGraph from './graphs/pieChartCustomers.react';
 import GraphActions from './../../actions/admin/GraphActions';
 import GraphStore from './../../stores/admin/GraphStore';
+import PathStore from './../../stores/admin/PathStore';
 
 const Cards = React.createClass({
   getInitialState: function () {
     return {
       status: GraphStore.getresults(),
+      path:PathStore.getpath(),
     };
   },
 
   componentDidMount: function () {
     GraphActions.userStats();
     GraphStore.addChangeListener(this._onChange);
+    PathStore.addChangeListener(this._onChange);
   },
 
   _onChange: function () {
     if (this.isMounted()) {
       this.setState({
         status: GraphStore.getresults(),
+        path:PathStore.getpath(),
       });
     }
   },
@@ -72,7 +77,7 @@ const Cards = React.createClass({
           <div className="small-box bg-aqua">
             <div className="inner">
               <h3>{this.retireveLikebacks(this)}</h3>
-              <p>Likebacks</p>
+              <p>Total Likebacks</p>
             </div>
             <div className="icon">
               <i className="ion ion-heart"></i>
@@ -126,8 +131,8 @@ const Cards = React.createClass({
           </div>
         </div>
 
-        <CustomerGraph/>
-        <PieGraph/>
+
+        <Tabs/>
 
       </div>
 
