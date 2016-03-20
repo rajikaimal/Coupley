@@ -69,12 +69,8 @@ class ThreadController extends Controller
        $user1 = $request->user1;
        try {
 
-
           if($llist=\DB::select(\DB::raw(
-            "SELECT username,firstname,lastname FROM users WHERE username
-               IN
-               (SELECT user2 FROM liked WHERE user1='".$user1."')
-
+            "SELECT username,firstname,lastname FROM users WHERE username IN (SELECT user2 FROM liked WHERE user1='".$user1."' UNION SELECT user1 FROM liked WHERE user2='".$user1."')
                 "))
                ){
                     return response()->json(['llist' => $llist, 'status' => 200], 200);
