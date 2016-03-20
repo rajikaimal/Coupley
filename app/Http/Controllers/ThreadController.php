@@ -21,9 +21,9 @@ class ThreadController extends Controller
       $user1 = $request->user1;
       try {
            if ($pmessage= \DB::select(\DB::raw("
-          SELECT m.message,m.sender_un,m.created_at,m.thread_id
-          FROM messages m WHERE m.thread_id IN
-          (SELECT trd_id FROM threads WHERE user1_un='".$user1."' OR user2_un='".$user1."')
+          SELECT m.message,m.sender_un,u.firstname,u.lastname,m.created_at,m.thread_id
+          FROM messages m,users u WHERE m.thread_id IN
+          (SELECT trd_id FROM threads WHERE user1_un='".$user1."' OR user2_un='".$user1."')  AND m.sender_un !='".$user1."' AND u.username=m.sender_un
            GROUP BY m.thread_id
            "))) {
                  return response()->json(['pmessage' => $pmessage, 'status' => 200], 200);

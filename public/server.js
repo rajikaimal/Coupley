@@ -67,7 +67,6 @@ io.on('connection', function (socket) {
           connection.query("SELECT trd_id FROM threads  WHERE user1_un IN ('" + post1.user1_un + "','" + post1.user2_un + "') AND user2_un IN ('" + post1.user1_un + "','" + post1.user2_un + "') ", function (err, result) {
             post.thread_id = result[0].trd_id; });
 
-
         });
       }else {
 
@@ -75,11 +74,10 @@ io.on('connection', function (socket) {
 
       }
 
-
       connection.query("INSERT INTO messages(message,sender_un,thread_id) VALUES('" + post.message + "','" + post.sender_un + "','" + post.thread_id + "')", function (err, result) {
 
-        connection.query("SELECT m.message,m.created_at,m.thread_id FROM messages m WHERE m.thread_id='" + post.thread_id + "' ", function (err, result) {
-
+        connection.query("SELECT m.message,m.created_at,u.firstname,m.thread_id FROM messages m,users u WHERE m.thread_id='" + post.thread_id + "' AND u.username=m.sender_un ", function (err, result) {
+          console.log(result);
           io.sockets.connected[connectedUser[chat.user1]].emit('chat', { message:result });
 
           if (chat.user2 in connectedUser) {

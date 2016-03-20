@@ -100,7 +100,7 @@ const PaperExampleSimple = React.createClass({
 
         return (<ListItem
             leftAvatar={<Avatar src="profile pic" />}
-            primaryText={item.user1}
+            primaryText={item.firstname}
             secondaryText={this.test(item)}
             secondaryTextLines={2}
         />

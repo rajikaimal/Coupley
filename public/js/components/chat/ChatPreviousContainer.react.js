@@ -114,7 +114,7 @@ const PreviousChatContainer = React.createClass({
 
     this.setState({ results:ThreadStore.getsearchconv() });
     return this.state.results.map((result) => {
-      return (<PreviousChat key={result.id} id={result.id} firstname={result.user2} message={result.message} created_at={result.created_at}/>);
+      return (<PreviousChat key={result.id} id={result.id} Firstname={result.firstname}  message={result.message} created_at={result.created_at}/>);
     });
 
   },
