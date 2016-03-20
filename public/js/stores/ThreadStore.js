@@ -9,6 +9,7 @@ var Thread = [];
 var PreviousThread = [];
 var LikedUsers;
 var SearchList = [];
+var OnlineList = [];
 
 var ThreadStore = assign({}, EventEmitter.prototype, {
 
@@ -90,6 +91,22 @@ var ThreadStore = assign({}, EventEmitter.prototype, {
     Thread.push(data);
   },
 
+  /**
+     * put onlinelist to OnlineList.
+     *
+     */
+  saveonlineuserslist: function (results) {
+    OnlineList = results;
+  },
+
+  /**
+   * Get online list.
+   * @return array[]
+   */
+  getonlineuserslist: function () {
+    return OnlineList;
+  },
+
   emitChange: function () {
     this.emit(CHAT_EVENT);
   },
@@ -116,6 +133,10 @@ AppDispatcher.register(function (payload) {
       break;
     case (ThreadConstants.SAVE):
       ThreadStore.savemessage(payload.action.chatmessage);
+      ThreadStore.emitChange();
+      break;
+    case (ThreadConstants.RETRIVEONLINE):
+      ThreadStore.saveonlineuserslist(payload.action.onlinelist);
       ThreadStore.emitChange();
       break;
 

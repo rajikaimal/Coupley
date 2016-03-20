@@ -41,6 +41,8 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('getlikedusers','ThreadController@getLikedUserList');
     //Serch Results of Previous messages
     Route::get('getsearchconv','ThreadController@getSearchConv');
+    //Serch Results of Previous messages
+    Route::get('getonlineusers','ThreadController@getOnlineUsers');
     Route::get('getpostId', 'ActivityFeedController@getpostId');
     Route::post('likes', 'LikeController@addlikes');
     Route::post('likepost', 'LikeController@like');

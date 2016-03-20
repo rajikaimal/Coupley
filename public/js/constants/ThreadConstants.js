@@ -6,4 +6,5 @@ module.exports = keyMirror({
   RETRIVEOLD:null,
   RETRIVELIKED:null,
   SEARCHMSGLIST:null,
+  RETRIVEONLINE:null,
 });

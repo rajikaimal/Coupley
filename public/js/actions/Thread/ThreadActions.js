@@ -88,6 +88,20 @@ var ThreadAction = {
       }
     });
   },
+
+  getonlineuserslist:function (request) {
+   $.get('/api/getonlineusers?user1=' + request.user1, function (response) {
+     if (response.status == 200) {
+       AppDispatcher.handleViewAction({
+         actionType:ThreadConstants.RETRIVEONLINE,
+         onlinelist: response.onlinelist,
+       });
+     }else if (response.status == 200) {
+       console.log('Error 505');
+     }
+   });
+ },
+
 };
 
 module.exports = ThreadAction;

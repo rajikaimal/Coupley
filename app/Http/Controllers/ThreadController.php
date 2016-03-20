@@ -116,5 +116,30 @@ class ThreadController extends Controller
                    }
     }
 
+    /**
+    * List of online people.
+    *
+    * @param object        $request
+    *
+    *
+    * @return json         $llist
+    */
+
+    public function getOnlineUsers(Request $request)
+    {
+      $user1 = $request->user1;
+      try {
+           if ($onlinelist= \DB::select(\DB::raw("
+          SELECT username,firstname,lastname FROM users WHERE username IN (SELECT user2 FROM liked WHERE user1='".$user1."' UNION SELECT user1 FROM liked WHERE user2='".$user1."') AND chatstatus='online'
+           "))) {
+                 return response()->json(['onlinelist' => $onlinelist, 'status' => 200], 200);
+      } else {
+               return response()->json(['status' => 505], 505);
+         }
+      }catch (Illuminate\Database\QueryException $e) {
+                return response()->json(['status' => 200], 200);
+      }
+    }
+
 
 }
