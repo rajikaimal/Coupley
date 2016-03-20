@@ -21,7 +21,7 @@ class EmailController extends Controller
      *
      * @return bool
      */
-    public function SendMail($email, $userName,$subject, $content)
+    public function SendMail($email, $userName, $subject, $content)
     {
         $mail = new PHPMailer(true);
         try {

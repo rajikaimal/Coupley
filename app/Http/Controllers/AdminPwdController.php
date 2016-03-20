@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 use App\User;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
-use PHPMailer;
-use App\Http\Controllers\EmailController;
 
 class AdminPwdController extends Controller
 {
@@ -35,12 +33,11 @@ class AdminPwdController extends Controller
         // if no errors update the new password
         {
             if ($this->CheckInternet()) {
-
                 $adminName = \DB::select('SELECT firstname FROM users WHERE email = "'.$mail.'"');
                 $sendMail = new EmailController();
-                $content = "Dear Administrator, your updated password is ".$newpassword;
-                $subject = "COUPLEY Password Update";
-                $sendMail->SendMail($mail,$adminName[0]->firstname,$subject,$content);
+                $content = 'Dear Administrator, your updated password is '.$newpassword;
+                $subject = 'COUPLEY Password Update';
+                $sendMail->SendMail($mail, $adminName[0]->firstname, $subject, $content);
 
                 $hashed = \Hash::make($newpassword);
                 \DB::table('users')
@@ -53,6 +50,7 @@ class AdminPwdController extends Controller
             }
         }
     }
+
     /**
      * CheckInternet uses to check,
      * whether internet is connected.
