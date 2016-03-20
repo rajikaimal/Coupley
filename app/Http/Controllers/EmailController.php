@@ -16,11 +16,12 @@ class EmailController extends Controller
      * to the users.
      * @param receiverEmail $email
      * @param receiverName  $userName
+     * @param Subject       $subject
      * @param content       $content
      *
      * @return bool
      */
-    public function SendMail($email, $userName, $content)
+    public function SendMail($email, $userName,$subject, $content)
     {
         $mail = new PHPMailer(true);
         try {
@@ -37,7 +38,7 @@ class EmailController extends Controller
             $mail->addReplyTo('coupleyteam@gmail', 'COUPLEY');
             $mail->addBCC('bcc@example.com');
             $mail->isHTML(true);                                  // Set email format to HTML
-            $mail->Subject = 'COUPLEY password recovery';
+            $mail->Subject = $subject;
             $mail->Body = $content;
             $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
             $mail->send();

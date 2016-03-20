@@ -57,7 +57,8 @@ class AdminRegisterController extends Controller
         $job = $request->job;
         $firstname = $request->firstname;
         $lastname = $request->lastname;
-        $admin = \DB::select('SELECT email FROM users WHERE email = "'.$email.'" not in (select email from users where id!='.$id.')');
+        $admin = \DB::select('SELECT email FROM users WHERE email = "'.$email.'" not in
+                                            (select email from users where id!='.$id.')');
         if ($this->CheckInternet()) {
             if ($admin == null) {
                 //update
