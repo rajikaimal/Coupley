@@ -52,7 +52,7 @@ const SelectFieldExampleSimple = React.createClass({
   },
 
   handleChange:function (event, index, value) {
-  localStorage.setItem('chatname', value);
+  localStorage.setItem('chatusername', value);
   this.setState({
     value: value,
   });
@@ -65,7 +65,7 @@ const SelectFieldExampleSimple = React.createClass({
   },
 
   _blockUser: function () {
-  ThreadActions.block(localStorage.getItem('chatname'), localStorage.getItem('user'));
+  ThreadActions.block(localStorage.getItem('chatusername'), localStorage.getItem('user'));
 },
 
   render:function () {

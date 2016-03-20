@@ -20,10 +20,12 @@ class ThreadController extends Controller
     {
       $user1 = $request->user1;
       try {
-           if ($pmessage= \DB::select(\DB::raw("SELECT user2,message,created_at
-                                        FROM chats WHERE user2
-                                        IN (SELECT DISTINCT user2 FROM chats WHERE user2 !='".$user1."')
-                                        GROUP BY user2"))) {
+           if ($pmessage= \DB::select(\DB::raw("
+          SELECT m.message,m.sender_un,m.created_at,m.thread_id
+          FROM messages m WHERE m.thread_id IN
+          (SELECT trd_id FROM threads WHERE user1_un='".$user1."' OR user2_un='".$user1."')
+           GROUP BY m.thread_id
+           "))) {
                  return response()->json(['pmessage' => $pmessage, 'status' => 200], 200);
       } else {
                return response()->json(['status' => 505], 505);
@@ -66,8 +68,15 @@ class ThreadController extends Controller
     {
        $user1 = $request->user1;
        try {
-             $usrid=\DB::table('users')->select('username')->where('username', '=', $user1)->get();
-               if ($llist= Likes::select('username','firstname','lastname')->where('user1',$usrid)->orWhere('user2',$usrid)->where('likeback','1')->get()) {
+
+
+          if($llist=\DB::select(\DB::raw(
+            "SELECT username,firstname,lastname FROM users WHERE username
+               IN
+               (SELECT user2 FROM liked WHERE user1='".$user1."')
+
+                "))
+               ){
                     return response()->json(['llist' => $llist, 'status' => 200], 200);
             } else {
                      return response()->json(['status' => 505], 505);

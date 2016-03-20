@@ -58,18 +58,22 @@ io.on('connection', function (socket) {
     };
 
     connection.query("SELECT trd_id FROM threads WHERE user1_un IN ('" + post.user1_un + "','" + post.user2_un + "') AND user2_un IN ('" + post.user1_un  + "','" + post.user2_un + "') ", function (err, result) {
-      post.threadid = result;
+      post.threadid = result[0].trd_id;
+      console.log(post.threadid);
+      console.log(post.message + ' ' + post.user1_un + ' ' + post.user2_un);
       if (result == '') {
         connection.query("INSERT INTO treads (user1_un,user2_un) VALUES('" + post.user1 + "','" + post.user2 + "')", function (err, result) {
           connection.query("SELECT trd_id FROM threads  WHERE user1_un IN ('" + post.user1 + "','" + post.user2 + "') AND user2_un IN ('" + post.user1 + "','" + post.user2 + "') ", function (err, result) {
-            post.threadid = result; });
+            post.threadid = result[0].trd_id; });
+
+          console.log('aluth thread id awa');
         });
       }
     });
 
     connection.query("INSERT INTO messages(message,sender_un,thread_id) VALUES ('" + post.message + "','" + post.user1_un + "','" + post.threadid + "')", function (err, result) {
       connection.query("SELECT m.message,(SELECT u.firstname FROM users u WHERE u.username=m.sender_un),m.created_at,m.thread_id FROM messages m WHERE m.thread_id='" + post.threadid + "' ", function (err, result) {
-
+        console.log('insert una');
         io.sockets.connected[connectedUser[chat.user1]].emit('chat', { message:result });
 
         if (chat.user2 in connectedUser) {

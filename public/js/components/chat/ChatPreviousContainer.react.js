@@ -22,7 +22,7 @@ const searchconvo = {
 };
 
 const initMessagges = {
-  user1:LoginStore.getFirstname(),
+  user1:LoginStore.getUsername(),
 };
 
 function validateStatusText(textStatus) {

@@ -54,7 +54,7 @@ const CC = React.createClass({
   _sendmessage: function () {
     let val = true;
     let message = this.refs.message2.getValue();
-    let User2 = localStorage.getItem('chatname');
+    let User2 = localStorage.getItem('chatusername');
 
     let chat = {
       message: message,
