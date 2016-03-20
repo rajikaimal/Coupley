@@ -16,6 +16,7 @@ class EmailController extends Controller
      * to the users.
      * @param receiverEmail $email
      * @param receiverName  $userName
+     * @param Subject       $subject
      * @param content       $content
      *
      * @return bool
