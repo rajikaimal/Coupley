@@ -45,7 +45,7 @@ const PreviousChat = React.createClass({
                        <MenuItem primaryText="Delete" onClick={this.deleteconvo}/>
                      </IconMenu>
                    }
-                   primaryText={this.props.Firstname}
+                   primaryText={this.props.firstname}
                   secondaryText={
                     <p>
                   <span style={ { color: Colors.darkBlack } }>{this.props.message}</span><br/>

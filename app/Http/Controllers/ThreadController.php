@@ -96,9 +96,16 @@ class ThreadController extends Controller
       $user1 = $request->user1;
       $user2 = $request->user2;
        try {
-            if ($Slist= \DB::select(\DB::raw("SELECT user2,message,created_at FROM
-                                      (SELECT user2,message,created_at FROM chats WHERE user2 IN (SELECT DISTINCT user2 FROM chats WHERE user2 !='".$user1."')
-                                      GROUP BY user2)tb WHERE user2='".$user2."' "))){
+            if ($Slist= \DB::select(\DB::raw("
+
+            SELECT firstname,lastname,message,thread_id,created_at
+            FROM
+            (SELECT m.message,m.sender_un,u.firstname,u.lastname,m.created_at,m.thread_id
+            FROM messages m,users u WHERE m.thread_id IN
+            (SELECT trd_id FROM threads WHERE user1_un='".$user1."' OR user2_un='".$user1."')  AND m.sender_un !='".$user1."' AND u.username=m.sender_un
+            GROUP BY m.thread_id) tb1 WHERE firstname='".$user2."'
+
+            "))){
                    return response()->json(['Slist' => $Slist, 'status' => 200], 200);
                }
             else {
