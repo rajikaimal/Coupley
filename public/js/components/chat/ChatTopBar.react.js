@@ -2,10 +2,14 @@ import React from 'react';
 import SelectField from 'material-ui/lib/select-field';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import Toggle from 'material-ui/lib/toggle';
+import IconMenu from 'material-ui/lib/menus/icon-menu';
+import IconButton from 'material-ui/lib/icon-button';
+import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
 import ThreadStore from '../../stores/ThreadStore';
 import ThreadActions from '../../actions/Thread/ThreadActions';
 import LoginStore from '../../stores/LoginStore';
 import RaisedButton from 'material-ui/lib/raised-button';
+import FlatButton from 'material-ui/lib/flat-button';
 
 const t1 = {
   marginTop:10,
@@ -22,7 +26,7 @@ const styles = {
 
 const toggleDiv = {
   float: 'right',
-  marginTop:10,
+  marginTop:5,
 };
 
 const SelectFieldExampleSimple = React.createClass({
@@ -80,16 +84,21 @@ const SelectFieldExampleSimple = React.createClass({
             })
         }
         </SelectField>
+         
       </div>
-        <RaisedButton label="Block" primary={true} onClick={this._blockUser}
-         style={t1} className='col-md-2' />
-      <div style={toggleDiv} className='col-md-2' >
-        <Toggle style={styles.toggle} onToggle={this.togglechanged} />
-      </div>
+        <FlatButton label="+ New Message"  style={t1} />
+        <IconMenu  style={toggleDiv} iconButtonElement={<IconButton><MoreVertIcon /></IconButton>} 
+        anchorOrigin={{horizontal: 'left', vertical: 'top'}}
+        targetOrigin={{horizontal: 'left', vertical: 'top'}}>
+       <MenuItem primaryText="Delete" />
+       <MenuItem primaryText="Block" onClick={this._blockUser}/>
+      </IconMenu>
 
     </div>
     );
   },
 });
+
+ 
 
 export default SelectFieldExampleSimple;
