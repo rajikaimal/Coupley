@@ -62,14 +62,13 @@ io.on('connection', function (socket) {
    };
 
     connection.query("SELECT trd_id FROM threads WHERE user1_un IN ('" + post1.user1_un + "','" + post1.user2_un + "') AND user2_un IN ('" + post1.user1_un  + "','" + post1.user2_un + "') ", function (err, result) {
-      if (result == null) {
+      if (Object.keys(result).length==0) {
         connection.query('INSERT INTO threads SET ?', post1, function (err, result) {
           connection.query("SELECT trd_id FROM threads  WHERE user1_un IN ('" + post1.user1_un + "','" + post1.user2_un + "') AND user2_un IN ('" + post1.user1_un + "','" + post1.user2_un + "') ", function (err, result) {
             post.thread_id = result[0].trd_id; });
 
         });
       }else {
-
         post.thread_id = result[0].trd_id;
 
       }

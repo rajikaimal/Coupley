@@ -49,7 +49,7 @@ var ThreadAction = {
     });
   },
 
-  getlikedusers:function (request) {
+ :function (request) {
     $.get('/api/getlikedusers?user1=' + request.user1, function (response) {
       if (response.status == 200) {
         AppDispatcher.handleViewAction({
