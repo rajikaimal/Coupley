@@ -22,7 +22,7 @@ const searchconvo = {
 };
 
 const initMessagges = {
-  user1:LoginStore.getUsername(),
+  user1:LoginStore.getFirstname(),
 };
 
 function validateStatusText(textStatus) {
@@ -68,6 +68,7 @@ const PreviousChatContainer = React.createClass({
       return (<PreviousChat key={result.id} id={result.thread_id} firstname={result.firstname} message={result.message} created_at={result.created_at}/>);
     });
   },
+
 
   SearchConv:function () {
 
