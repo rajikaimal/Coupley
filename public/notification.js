@@ -44,14 +44,22 @@ io.on('connection', function (socket) {
     };
     connection.query("SELECT id FROM users WHERE username='" + like.likedUsername + "' ", function (err, result) {
       console.log('id 1' + result[0].id);
+
+      //var user1Firstname = result[0].firstname;
       var user1Id = result[0].id;
-      connection.query("SELECT id FROM users WHERE username='" + like.gotLikedUsername + "' ", function (err, result) {
+      connection.query("SELECT id,firstname,profilepic FROM users WHERE username='" + like.gotLikedUsername + "' ", function (err, result) {
         var user2Id = result[0].id;
+        var user2Firstname = result[0].firstname;
+        var user2ProfilePic = result[0].profilepic;
         console.log('id 2' + user2Id);
+        var userContent = {
+          firstname: user2Firstname,
+          profilepic: user2ProfilePic,
+        };
         var content = like.likedUsername + ' liked you';
-        connection.query("insert into notification (user_id1, user_id2, content, readnotification) values ("+ user1Id +","+ user2Id +",'"+ content +"', 0)", function (err, result) {
-          console.log("Here is the user of got liked !" + like.gotLikedUsername)
-          socket.broadcast.to(connectedUser[like.gotLikedUsername]).emit('notifylike', { message: content});
+        connection.query('insert into notification (user_id1, user_id2, content, readnotification) values (' + user1Id + ',' + user2Id + ",'" + content + "', 0)", function (err, result) {
+          console.log('Here is the user of got liked !' + like.gotLikedUsername);
+          socket.broadcast.to(connectedUser[like.gotLikedUsername]).emit('notifylike', { message: content, usercontent: userContent });
           console.log('send unaaaa!');
         });
       });
