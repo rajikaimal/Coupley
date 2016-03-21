@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use App\Http\Controllers\EmailController;
 
 class AdminRegisterController extends Controller
 {
@@ -32,11 +31,12 @@ class AdminRegisterController extends Controller
             if ($this->CheckInternet()) {
                 if ($admin->save()) {
                     $sendMail = new EmailController();
-                    $content = "Dear ".$admin->firstname.", You are assigned as an Administrator of COUPLEY Team.
-                    Your Email is ".$admin->email." & Password is ".$request->password."  Please visit
-                    WWW.COUPLEY.COM/cp-admin#/AdminLogin";
-                    $subject = "COUPLEY Administrator Registration";
-                    $sendMail->SendMail($admin->email,$admin->firstname,$subject,$content);
+                    $content = 'Dear '.$admin->firstname.', You are assigned as an Administrator of COUPLEY Team.
+                    Your Email is '.$admin->email.' & Password is '.$request->password.'  Please visit
+                    WWW.COUPLEY.COM/cp-admin#/AdminLogin';
+                    $subject = 'COUPLEY Administrator Registration';
+                    $sendMail->SendMail($admin->email, $admin->firstname, $subject, $content);
+
                     return response()->json(['status' => 201], 201);
                 } else {
                     return response()->json(['status' => 404], 404);
@@ -74,11 +74,12 @@ class AdminRegisterController extends Controller
                     ->update(['firstname' => $firstname, 'lastname' => $lastname, 'job' => $job, 'email' => $email]);
 
                 $sendMail = new EmailController();
-                $content = "Dear ".$firstname.", Your profile been Updated.
-                    Your Email is ".$email." Please visit
-                    WWW.COUPLEY.COM/cp-admin#/AdminLogin";
-                $subject = "COUPLEY Administrator Update";
-                $sendMail->SendMail($email,$firstname,$subject,$content);
+                $content = 'Dear '.$firstname.', Your profile been Updated.
+                    Your Email is '.$email.' Please visit
+                    WWW.COUPLEY.COM/cp-admin#/AdminLogin';
+                $subject = 'COUPLEY Administrator Update';
+                $sendMail->SendMail($email, $firstname, $subject, $content);
+
                 return response()->json(['you can use this email' => $admin, 'status' => 200], 200);
             } else {
                 return response()->json(['email' => 'email already exists', 'status' => 201], 201);
@@ -111,7 +112,6 @@ class AdminRegisterController extends Controller
             return response()->json(['status' => 201, 'done' => false], 200);
         }
     }
-
 
     /**
      * CheckInternet uses to check,

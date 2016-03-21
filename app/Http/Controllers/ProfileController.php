@@ -49,9 +49,9 @@ class ProfileController extends Controller
         $email = $request->email;
         try {
             //$userDetails = User::where('email', $email)->get();
-            $userDetails = \DB::select(\DB::raw("
+            $userDetails = \DB::select(\DB::raw('
                 SELECT id,firstname,lastname,orientation,email,country,gender,username,profilepic,birthday,TIMESTAMPDIFF(YEAR, birthday, CURDATE()) AS age from users where id=11
-            "));
+            '));
             //$userDetails = array_merge($userDetails->toArray(), $age->toArray());
             //$age = 0;
             return response()->json(['user' => $userDetails, 'status' => 200]);
@@ -692,8 +692,8 @@ class ProfileController extends Controller
         try {
             if ($username) {
                 var_dump($username);
-                $q = 'DELETE FROM users where id = ?';        
-                $status = \DB::delete($q, array(17));
+                $q = 'DELETE FROM users where id = ?';
+                $status = \DB::delete($q, [17]);
 
                 return response()->json(['status' => 200, 'done' => true], 200);
             } else {
@@ -722,9 +722,10 @@ class ProfileController extends Controller
                 $user = User::where('username', $username)->get()[0];
                 $email = $user->email;
                 $name = $user->firstname;
-                $subject = "Account deactivation !";
-                $content = "Your account has been deactivated !";
+                $subject = 'Account deactivation !';
+                $content = 'Your account has been deactivated !';
                 $emailController->SendMail($email, $name, $subject, $content);
+
                 return response()->json(['status' => 200, 'done' => true], 200);
             } else {
                 return response()->json(['status' => 200, 'done' => false], 200);
@@ -832,8 +833,9 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
-     * Updates password of user profile
+     * Updates password of user profile.
      *
      * @param object        $request
      *
@@ -841,14 +843,14 @@ class ProfileController extends Controller
      * @return json
      */
     public function updatePassword(Request $request)
-    {   
+    {
         $username = $request->username;
         $newPassword = \Hash::make($request->newpassword);
         try {
             $user = User::where('username', $username)->get()[0];
             $email = $user->email;
             $name = $user->firstname;
-            $subject = "Password change";
+            $subject = 'Password change';
             $content = "You password was changed ! <br/>
                 If you didnt make this change please follow this link to reset your password <br/>
                 <a href='http://localhost:3000/#/forgotpwd'> Reset </a> 
@@ -857,6 +859,7 @@ class ProfileController extends Controller
                 ->update(['password' => $newPassword]);
             $emailController = new EmailController();
             $emailController->SendMail($email, $name, $subject, $content);
+
             return response()->json(['status' => 200, 'done' => true], 200);
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 200], 200);
