@@ -113,9 +113,14 @@ Route::group(['prefix' => 'api'], function () {
 
     //updates main sections info of profile
     Route::post('profile/updatemain', 'ProfileController@updateMain');
-
+    
+    //updates password of user profile
+    Route::post('profile/updatepassword', 'ProfileController@updatePassword');
     //reports a user
     Route::post('profile/report', 'ProfileController@reportUser');
+
+    //returns list of suggestions
+    Route::get('suggestions', 'SuggestionController@getSuggestions');
 
 });
 
