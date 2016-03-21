@@ -13,7 +13,7 @@ injectTapEventPlugin();
 
 const styles = {
   root: {
-    marginRight: "40"
+    marginRight: "50"
   },
   gridList: {
     width: 500,

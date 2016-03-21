@@ -1,22 +1,21 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 var EventEmitter = require('events').EventEmitter;
-var SearchConstants = require('../constants/SearchConstants');
+var ProfileConstants = require('../constants/ProfileConstants');
 var assign = require('object-assign');
 
 var CHANGE_EVENT = 'change';
 
-var searchresults = [];
+var suggestions = [];
 var counter = 0;
 var initial = 3;
 
-var SearchStore = assign({}, EventEmitter.prototype, {
+var SuggestionStore = assign({}, EventEmitter.prototype, {
   getResults: function () {
-    let portion = searchresults.slice(0, 3);
-    return portion;
+    return suggestions;
   },
 
-  saveResults: function (results) {
-    searchresults = results;
+  saveResults: function (data) {
+    suggestions = data;
   },
 
   emitChange: function () {
@@ -30,12 +29,11 @@ var SearchStore = assign({}, EventEmitter.prototype, {
 
 AppDispatcher.register(function (payload) {
   switch (payload.action.actionType) {
-    case (SearchConstants.SEARCH):
-      SearchStore.saveResults(payload.action.search);
-      SearchStore.emitChange();
+    case (ProfileConstants.SUGGESTIONS):
+      SuggestionStore.saveResults(payload.action.suggestions);
+      SuggestionStore.emitChange();
       break;
-
   }
 });
 
-module.exports = SearchStore;
+module.exports = SuggestionStore;

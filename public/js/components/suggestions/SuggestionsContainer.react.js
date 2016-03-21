@@ -21,6 +21,11 @@ const noresultStyle = {
 	fontWeight: 'bold'
 }
 
+const suggStyle = {
+	margin: 15,
+	fontSize: 20
+}
+
 const Search = React.createClass({
 	getInitialState: function() {
 		return {
@@ -30,22 +35,13 @@ const Search = React.createClass({
 		}
 	},
 	componentDidMount: function() {
+		SuggestionActions.getSuggestions();
 		SuggestionStore.addChangeListener(this._onChange);
 	},
 	_onChange: function() {
-		if(SuggestionStore.getResults() === '' || SuggestionStore.getResults() == null) {
-			this.setState({
-				resuls: '',
-				noresult: true
-			});
-		} else {
-			this.setState({
-				noresult: false
-			});
-		}
 		this.setState({
 			results: SuggestionStore.getResults()
-		});
+		})
 		if(this.state.results == 'err') {
 			this.setState({
 				erropen: true
@@ -71,7 +67,8 @@ const Search = React.createClass({
 					this.state.noresult ? <label style={noresultStyle}> No results found ! </label>
 						: ''
 				}
-			  	<Paper zDepth={2}>
+			  	<Paper zDepth={1}>
+			  		<span style={suggStyle}> Suggested partners </span>
 					{this._renderSuggestion()}
 				</Paper>
 				{this.state.results ? <button style={loadMoreStyle} onClick={this._loadMore}> Load more </button>  : ''}
