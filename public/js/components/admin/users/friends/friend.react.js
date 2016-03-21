@@ -56,11 +56,11 @@ const Friend = React.createClass({
     return (
         <div>
                 <ListItem
-                style={{ backgroundColor: Colors.pink50, height:150 }}
+                style={{ backgroundColor: Colors.amber900, height:150 }}
                 leftAvatar={<Avatar size="60" src={path + this.props.profilepic} />}
                 primaryText={
-                    <p> {this.props.reported}<br/><br/><br/>
-                    <h4>{this.props.description}</h4>
+                    <p style={{ color: Colors.yellow50 }}> {this.props.reported}<br/><br/><br/>
+                    <h4>&ldquo;{this.props.description}&rdquo;</h4>
                     </p>
                     }
                 secondaryText={
