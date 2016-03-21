@@ -5,7 +5,8 @@ var ProfileActions = {
   getProfileData: function (email) {
 
     $.get('/api/profile?token=' + localStorage.getItem('apitoken') + '&email=' + localStorage.getItem('email'), function (response) {
-
+      console.log('Reposssssss');
+      console.log(response);
       if (response) {
         AppDispatcher.handleViewAction({
           actionType: ProfileConstants.GETDATA,

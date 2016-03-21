@@ -15,6 +15,7 @@ import AboutActions from '../../actions/profile/AboutActions';
 import AboutStore from '../../stores/AboutStore';
 import ErrorStore from '../../stores/ErrorStore';
 import Snackbar from 'material-ui/lib/snackbar';
+import LookingFor from './lookingfor/LookingFor.react';
 
 //tap-event-plugin
 injectTapEventPlugin();
@@ -170,116 +171,122 @@ const About = React.createClass({
     },
   render: function() {
     return (
-      <div>      
-        <List>
-            <ListItem key="Self summary"
-                primaryText="Self summary"
+      <div>
+          <div className="col-lg-6">      
+            <List>
+                <ListItem key="Self summary"
+                    primaryText="Self summary"
 
-                secondaryText={this.state.summary}
-                rightIconButton={<IconMenu iconButtonElement={<IconButton>
-                    <MoreVertIcon />
-                </IconButton>}>
-                    <MenuItem onTouchTap={this._toggle} primaryText="Edit"  />
-                </IconMenu>}
-                leftAvatar={<Avatar color={Colors.deepPurple500} backgroundColor={Colors.transparent}
-                    style={{left: 8}}>S</Avatar>} />
-            {this.state.editing ? <div>
-                <TextField
-                    multiLine={true}
-                    rows={2}
-                    rowsMax={4}
-                    ref="summary"  style={textStyle} defaultValue={this.state.summary} />
-                <span style={error} id="summary"> </span>
-                <FlatButton onClick={this._editSummary} label="Save changes" primary={true} />
-                <FlatButton label="Cancel" onClick={this._toggle}/>
-            </div> : ''}
-            <ListItem key="What Im doing"
-                primaryText="What I'm doing with my life ?"
-                secondaryText={this.state.life}
-                rightIconButton={<IconMenu iconButtonElement={<IconButton>
-                    <MoreVertIcon />
-                </IconButton>}>
-                    <MenuItem onTouchTap={this._toggleLife} primaryText="Edit"  />
-                </IconMenu>}
-                leftAvatar={<Avatar color={Colors.deepPurple500} backgroundColor={Colors.transparent}
-                    style={{left: 8}}>W</Avatar>} />
-            {this.state.editingLife ? <div>
-                <TextField
-                    multiLine={true}
-                    rows={2}
-                    rowsMax={4}
-                    ref="life"  style={textStyle} defaultValue={this.state.life} />
-                <span style={error} id="life"> </span>
-                <FlatButton onClick={this._editLife} label="Save changes" primary={true} />
-                <FlatButton label="Cancel" onClick={this._toggleLife}/>
-            </div> : ''}
-            <ListItem key="Really good at"
-                primaryText="I'm really good at"
-                secondaryText={this.state.goodat}
-                rightIconButton={<IconMenu iconButtonElement={<IconButton>
-                    <MoreVertIcon />
-                </IconButton>}>
-                    <MenuItem onTouchTap={this._toggleGoodat} primaryText="Edit"  />
-                </IconMenu>}
-                leftAvatar={<Avatar color={Colors.deepPurple500} backgroundColor={Colors.transparent}
-                    style={{left: 8}}>R</Avatar>} />
-            {this.state.editingGoodat ? <div>
-                <TextField
-                    multiLine={true}
-                    rows={2}
-                    rowsMax={4}
-                    ref="goodat"  style={textStyle} defaultValue={this.state.goodat} />
-                <span style={error} id="goodat"> </span>
-                <FlatButton onClick={this._editGoodat} label="Save changes" primary={true} />
-                <FlatButton label="Cancel" onClick={this._toggleGoodat}/>
-            </div> : ''}
-            <ListItem key="I spend alot"
-                primaryText="I spend a lot of time thinking about"
-                secondaryText={this.state.spendtime}
-                rightIconButton={<IconMenu iconButtonElement={<IconButton>
-                    <MoreVertIcon />
-                </IconButton>}>
-                    <MenuItem onTouchTap={this._toggleThinkingof} primaryText="Edit"  />
-                </IconMenu>}
-                leftAvatar={<Avatar color={Colors.deepPurple500} backgroundColor={Colors.transparent}
-                    style={{left: 8}}>I</Avatar>} />
-            {this.state.editingThinkingof ? <div>
-                <TextField
-                    multiLine={true}
-                    rows={2}
-                    rowsMax={4}
-                    ref="thinkingof"  style={textStyle} defaultValue={this.state.spendtime} />
-                <span style={error} id="spendtime"> </span>
-                <FlatButton onClick={this._editThinkingOf} label="Save changes" primary={true} />
-                <FlatButton label="Cancel" onClick={this._editThinkingOf}/>
-            </div> : ''}
-            <ListItem key="Books food movies"
-                primaryText="Favourite Books, Movies, Food <3"
-                secondaryText={this.state.favs}
-                rightIconButton={<IconMenu iconButtonElement={<IconButton>
-                    <MoreVertIcon />
-                </IconButton>}>
-                    <MenuItem onTouchTap={this._toggleFavs} primaryText="Edit"  />
-                </IconMenu>}
-                leftAvatar={<Avatar color={Colors.deepPurple500} backgroundColor={Colors.transparent}
-                    style={{left: 8}}>F</Avatar>} />
-            {this.state.editingFavs ? <div>
-                <TextField
-                    multiLine={true}
-                    rows={2}
-                    rowsMax={4}
-                    ref="favs"  style={textStyle} defaultValue={this.state.favs} />
-                <span style={error} id="favs"> </span>
-                <FlatButton onClick={this._editFavs} label="Save changes" primary={true} />
-                <FlatButton label="Cancel" onClick={this._editFavs}/>
-            </div> : ''}
-        </List>
-        <Snackbar
-            open={this.state.error}
-            message="Error occured, please try again later"
-            autoHideDuration={4000}
-            onRequestClose={this.handleRequestClose} />
-      </div>  
+                    secondaryText={this.state.summary}
+                    rightIconButton={<IconMenu iconButtonElement={<IconButton>
+                        <MoreVertIcon />
+                    </IconButton>}>
+                        <MenuItem onTouchTap={this._toggle} primaryText="Edit"  />
+                    </IconMenu>}
+                    leftAvatar={<Avatar color={Colors.deepPurple500} backgroundColor={Colors.transparent}
+                        style={{left: 8}}>S</Avatar>} />
+                {this.state.editing ? <div>
+                    <TextField
+                        multiLine={true}
+                        rows={2}
+                        rowsMax={4}
+                        ref="summary"  style={textStyle} defaultValue={this.state.summary} />
+                    <span style={error} id="summary"> </span>
+                    <FlatButton onClick={this._editSummary} label="Save changes" primary={true} />
+                    <FlatButton label="Cancel" onClick={this._toggle}/>
+                </div> : ''}
+                <ListItem key="What Im doing"
+                    primaryText="What I'm doing with my life ?"
+                    secondaryText={this.state.life}
+                    rightIconButton={<IconMenu iconButtonElement={<IconButton>
+                        <MoreVertIcon />
+                    </IconButton>}>
+                        <MenuItem onTouchTap={this._toggleLife} primaryText="Edit"  />
+                    </IconMenu>}
+                    leftAvatar={<Avatar color={Colors.deepPurple500} backgroundColor={Colors.transparent}
+                        style={{left: 8}}>W</Avatar>} />
+                {this.state.editingLife ? <div>
+                    <TextField
+                        multiLine={true}
+                        rows={2}
+                        rowsMax={4}
+                        ref="life"  style={textStyle} defaultValue={this.state.life} />
+                    <span style={error} id="life"> </span>
+                    <FlatButton onClick={this._editLife} label="Save changes" primary={true} />
+                    <FlatButton label="Cancel" onClick={this._toggleLife}/>
+                </div> : ''}
+                <ListItem key="Really good at"
+                    primaryText="I'm really good at"
+                    secondaryText={this.state.goodat}
+                    rightIconButton={<IconMenu iconButtonElement={<IconButton>
+                        <MoreVertIcon />
+                    </IconButton>}>
+                        <MenuItem onTouchTap={this._toggleGoodat} primaryText="Edit"  />
+                    </IconMenu>}
+                    leftAvatar={<Avatar color={Colors.deepPurple500} backgroundColor={Colors.transparent}
+                        style={{left: 8}}>R</Avatar>} />
+                {this.state.editingGoodat ? <div>
+                    <TextField
+                        multiLine={true}
+                        rows={2}
+                        rowsMax={4}
+                        ref="goodat"  style={textStyle} defaultValue={this.state.goodat} />
+                    <span style={error} id="goodat"> </span>
+                    <FlatButton onClick={this._editGoodat} label="Save changes" primary={true} />
+                    <FlatButton label="Cancel" onClick={this._toggleGoodat}/>
+                </div> : ''}
+                <ListItem key="I spend alot"
+                    primaryText="I spend a lot of time thinking about"
+                    secondaryText={this.state.spendtime}
+                    rightIconButton={<IconMenu iconButtonElement={<IconButton>
+                        <MoreVertIcon />
+                    </IconButton>}>
+                        <MenuItem onTouchTap={this._toggleThinkingof} primaryText="Edit"  />
+                    </IconMenu>}
+                    leftAvatar={<Avatar color={Colors.deepPurple500} backgroundColor={Colors.transparent}
+                        style={{left: 8}}>I</Avatar>} />
+                {this.state.editingThinkingof ? <div>
+                    <TextField
+                        multiLine={true}
+                        rows={2}
+                        rowsMax={4}
+                        ref="thinkingof"  style={textStyle} defaultValue={this.state.spendtime} />
+                    <span style={error} id="spendtime"> </span>
+                    <FlatButton onClick={this._editThinkingOf} label="Save changes" primary={true} />
+                    <FlatButton label="Cancel" onClick={this._editThinkingOf}/>
+                </div> : ''}
+                <ListItem key="Books food movies"
+                    primaryText="Favourite Books, Movies, Food <3"
+                    secondaryText={this.state.favs}
+                    rightIconButton={<IconMenu iconButtonElement={<IconButton>
+                        <MoreVertIcon />
+                    </IconButton>}>
+                        <MenuItem onTouchTap={this._toggleFavs} primaryText="Edit"  />
+                    </IconMenu>}
+                    leftAvatar={<Avatar color={Colors.deepPurple500} backgroundColor={Colors.transparent}
+                        style={{left: 8}}>F</Avatar>} />
+                {this.state.editingFavs ? <div>
+                    <TextField
+                        multiLine={true}
+                        rows={2}
+                        rowsMax={4}
+                        ref="favs"  style={textStyle} defaultValue={this.state.favs} />
+                    <span style={error} id="favs"> </span>
+                    <FlatButton onClick={this._editFavs} label="Save changes" primary={true} />
+                    <FlatButton label="Cancel" onClick={this._editFavs}/>
+                </div> : ''}
+            </List>
+            <Snackbar
+                open={this.state.error}
+                message="Error occured, please try again later"
+                autoHideDuration={4000}
+                onRequestClose={this.handleRequestClose} />
+          </div>  
+
+          <div className="col-lg-6">
+            <LookingFor />
+          </div>
+      </div>
     );    
   }
 

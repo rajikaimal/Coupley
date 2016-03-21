@@ -20,6 +20,9 @@ const Profile = React.createClass({
   _navAccount: function() {
     document.location = "/#/isettings/account";
   },
+  _navPassword: function() {
+    document.location = "/#/isettings/password";
+  },
   _navBlocked: function() {
     document.location = "/#/isettings/blocked";
   },
@@ -34,6 +37,9 @@ const Profile = React.createClass({
             <div className="panel-body">
                 <ListItem
                     primaryText="Account" onClick={this._navAccount}/>
+                  <Divider />
+                <ListItem
+                    primaryText="Change password" onClick={this._navPassword}/>
                   <Divider />
                 <ListItem
                     primaryText="Blocked" onClick={this._navBlocked}/>

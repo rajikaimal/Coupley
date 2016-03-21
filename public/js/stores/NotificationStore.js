@@ -8,21 +8,29 @@ var CHANGE_EVENT = 'change';
 var notifications = [];
 var notificationNumber = 0;
 var list = [];
+var socketList = [];
 
 var NotificationStore = assign({}, EventEmitter.prototype, {
-  saveNotfication: function (data) {
-    notifications.push(data);
-  },
-
   saveNotficationNumber: function (data) {
     notificationNumber = data;
   },
 
-  saveList: function(data) {
+  saveList: function (data) {
     list = data;
+    list.concat(socketList);
   },
 
-  getList: function() {
+  saveSocketNotification: function (data) {
+    let con = {
+      content: data,
+    };
+    console.log('sockeeeeet' + con);
+    socketList.push(con);
+  },
+
+  getList: function () {
+    console.log('Getting nooooooottt');
+    console.log(list);
     return list;
   },
 
@@ -54,11 +62,13 @@ AppDispatcher.register(function (payload) {
       NotificationStore.emitChange();
       break;
     case (NotificationsConstants.LIST):
-      console.log('Got got itt');
-      console.log(payload.action.list);
       NotificationStore.saveList(payload.action.list);
       NotificationStore.emitChange();
-      break;  
+      break;
+    case (NotificationsConstants.SOCKETNOTFICATION):
+      NotificationStore.saveSocketNotification(payload.action.notification);
+      NotificationStore.emitChange();
+      break;
   }
 });
 

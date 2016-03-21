@@ -61,6 +61,10 @@ AppDispatcher.register(function (payload) {
       LoginStore.storeUsername(payload.action.userdata.username);
       LoginStore.emitChange();
       break;
+    case (LoginConstants.CHANGEEMAIL):
+      LoginStore.saveEmail(payload.action.email);
+      LoginStore.emitChange();
+      break;
   }
 });
 

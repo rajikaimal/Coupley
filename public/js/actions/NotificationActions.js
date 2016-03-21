@@ -18,8 +18,8 @@ var NotificationActions = {
     });
   },
 
-  getList: function() {
-  	$.get('/api/profile/notificationlist?token=' + localStorage.getItem('apitoken') + '&username=' + localStorage.getItem('username'), function (response) {
+  getList: function () {
+    $.get('/api/profile/notificationlist?token=' + localStorage.getItem('apitoken') + '&username=' + localStorage.getItem('username'), function (response) {
       console.log('listing ....');
       console.log(response.list);
       if (response.status == 200 && response.list) {
@@ -33,6 +33,13 @@ var NotificationActions = {
           list: response.list,
         });
       }
+    });
+  },
+
+  updateListFromSocket: function(data) {
+    AppDispatcher.handleViewAction({
+      actionType: NotificationConstants.SOCKETNOTFICATION,
+      notification: data.message,
     });
   },
 };

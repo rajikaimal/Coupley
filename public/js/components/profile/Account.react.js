@@ -19,6 +19,7 @@ import UpdateAccActions from '../../actions/RegisterActions';
 import UpdateInfo from '../../actions/profile/UpdateInfo';
 import ProfileActions from '../../actions/profile/ProfileActions';
 import ProfileStore from '../../stores/ProfileStore';
+import DatePicker from 'material-ui/lib/date-picker/date-picker';
 
 const buttonStyle = {
   marginTop: 25
@@ -33,6 +34,14 @@ const styles = {
 const error = {
     color: Colors.red500
 };
+
+var year = new Date();
+var currentYear = year.getFullYear();
+year.setFullYear(currentYear - 18);
+
+var minYear = new Date();
+minYear.setFullYear(currentYear - 100);
+
 
 // function validateusername(username) {
 //   let re = /[0-9]/;
@@ -71,42 +80,14 @@ function validateEmail(email) {
   }
 }
 
-function validatePassword(password) {
-  if(password.length < 6) {
-    return {
-      "error": "*password length <br/> must be 6 or more"
-    }
-  }
-  let re = /[0-9]/;
-  if(!re.test(password)) {
-    return {
-      "error": "*password must <br/> contain a number"
-    }
-  }
-  re = /[a-z]/;
-  if(!re.test(password)) {
-    return {
-      "error": "*password must <br/> contain a lowercase letter"
-    }
-  }
-  re = /[A-Z]/;
-  if(!re.test(password)) {
-    return {
-      "error": "*password must <br/> contain a uppercase letter"
-    }
-  }
-  else {
-    return true;
-  }
-}
-
 const Register = React.createClass({
   getInitialState: function() {
     return {
       email: '',
       gender: 0,
       orientation: 0,
-      password: ''
+      password: '',
+      birthday: '',
     }
   },
   componentDidMount: function() {
@@ -135,14 +116,14 @@ const Register = React.createClass({
     else if(data.orientation == "bisexual") {
       orientation = 4;
     }
-
     this.setState({
       email: localStorage.getItem('email'),
       gender: gender,
-      orientation: orientation
+      orientation: orientation,
+      birthday: data.birthday,
     });
   },
-  _handleRegisterClickEvent: function() {
+  _handleSubmitEvent: function() {
     //let username = this.refs.username.getValue();
     let email = this.refs.email.getValue();
     if(this.state.gender == 1) {
@@ -151,7 +132,6 @@ const Register = React.createClass({
     else if(this.state.gender == 2) {
       var gender = "female";
     }
-    let password = this.refs.password.getValue();
     if(this.state.orientation == 1) {
       var orientation = "straight";
     }
@@ -174,11 +154,6 @@ const Register = React.createClass({
       val = false;
       return false;
     }
-    if(validatePassword(password).error) {
-      val = false;
-      document.getElementById('password').innerHTML = validatePassword(password).error;
-      return false;
-    }
     if(this.state.orientation == 0) {
       val = false;
       document.getElementById('orientation').innerHTML = "*select an option";
@@ -192,12 +167,18 @@ const Register = React.createClass({
     else {
       val = true;
     }
+    let birthday = "";
+    if(typeof window.birthday == undefined) {
+      birthday = this.state.birthday
+    } else {
+      birthday = window.birthday;
+    }
+
     let credentials = {
       username: localStorage.getItem('username'),
       email: email,
       gender: gender,
-      password: password,
-      birthday: '1994-08-12',
+      birthday: birthday,
       orientation: orientation
     };
     if (val) {
@@ -210,13 +191,13 @@ const Register = React.createClass({
   handleChangeOrientation: function(e, index, value){
     this.setState({orientation: value});
   },
-  _checkUsername: function() {
-    let username = this.refs.username.getValue();
-    if(validateusername(username).error) {
-        document.getElementById('username').innerHTML = validateusername(username).error;
-    }
-    UpdateAccActions.checkUsername(username);
-  },
+  // _checkUsername: function() {
+  //   let username = this.refs.username.getValue();
+  //   if(validateusername(username).error) {
+  //       document.getElementById('username').innerHTML = validateusername(username).error;
+  //   }
+  //   UpdateAccActions.checkUsername(username);
+  // },
   _checkEmail: function() {
     let email = this.refs.email.getValue();
     if(!validateEmail(email)) {
@@ -225,6 +206,10 @@ const Register = React.createClass({
     else {
         UpdateAccActions.checkEmail(email);
     }
+  },
+  _getDate: function(event, value) {
+    let birthday = value.getFullYear() + '-' + value.getMonth() + '-' + value.getDate();
+    window.birthday = birthday.toString();
   },
   _handleCancel: function() {
     window.location = "/#/profile/activityfeed";
@@ -241,10 +226,18 @@ const Register = React.createClass({
               <TableRow hoverable={false} hovered={false} selectable={false}>
                 <TableRowColumn>Email</TableRowColumn>
                 <TableRowColumn> 
-                  <TextField onKeyUp={this._checkEmail}
-                value={this.state.email} hintStyle={styles.errorStyle} fullwidth={true} ref="email"/>
+                  <TextField 
+                    value={this.state.email} hintStyle={styles.errorStyle} fullwidth={true} ref="email"/>
               
                 <br/><span style={error} id="email"> </span>
+                </TableRowColumn>
+              </TableRow>
+              <TableRow hoverable={false} hovered={false} selectable={false}>
+                <TableRowColumn>Birthday</TableRowColumn>
+                <TableRowColumn>
+                  {this.state.birthday}
+                  <DatePicker minDate={minYear} maxDate={year} hintText="select your birthday" onChange={this._getDate}/>
+                  <br/><span style={error} id="birthday"> </span>
                 </TableRowColumn>
               </TableRow>
               <TableRow hoverable={false} hovered={false} selectable={false}> 
@@ -269,24 +262,12 @@ const Register = React.createClass({
                   <br/><span style={error} id="orientation"> </span>
                 </TableRowColumn>
               </TableRow>
-              <TableRow hoverable={false} hovered={false} selectable={false}>
-                <TableRowColumn>Password</TableRowColumn>
-                <TableRowColumn> 
-                  <TextField onKeyUp={this._checkPassword}
-                  type="password"
-                  floatingLabelText={this.state.password} ref="password" hintStyle={styles.errorStyle} fullwidth={true}/>
-                
-                  <br/><span style={error} id="password"> </span>
-                </TableRowColumn>
-              </TableRow>
               </TableBody>
-            <CardText>                
-
-                   
+            <CardText>
             </CardText>
             </Table>
             <CardActions>
-              <RaisedButton label="Save changes" style={buttonStyle} primary={true} onTouchTap={this._handleRegisterClickEvent} />
+              <RaisedButton label="Save changes" style={buttonStyle} primary={true} onTouchTap={this._handleSubmitEvent} />
               <RaisedButton label="Cancel" style={buttonStyle} onTouchTap={this._handleCancel} />
             </CardActions>
               <span style={error} id="serverstatus"> </span>

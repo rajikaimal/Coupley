@@ -38,6 +38,9 @@ const Profile = React.createClass({
     VisitorStore.addChangeListener(this._onChange);
     ProfileVisitorActions.loadProfileData(username);
   },
+  componentWillUnmount: function() {
+    ProfileVisitorActions.clearAll();
+  },
   _onChange: function() {
     this.setState({
       firstname: VisitorStore.getUserData().firstname,

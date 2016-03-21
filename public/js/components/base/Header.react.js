@@ -5,6 +5,7 @@ import IconButton from 'material-ui/lib/icon-button';
 import NotificationsIcon from 'material-ui/lib/svg-icons/social/notifications';
 import MockChat from '../profile/MockChat.react';
 import Feeback from '../feedback/feedback.react';
+import Suggestions from '../suggestions/SuggestionsContainer.react';
 import MessageIcon from 'material-ui/lib/svg-icons/action/speaker-notes';
 import LoginStore from '../../stores/LoginStore';
 import ProfileStore from '../../stores/ProfileStore';
@@ -43,10 +44,11 @@ const Header = React.createClass({
 		NotificationStore.addChangeListener(this._onChangeNotification);
 		var self = this;
 		socket.on('notifylike', function(data) {
-			console.log('Got like notification');
+			console.log('Got like notification inside ');
 			console.log(data);
+			NotificationAction.updateListFromSocket(data);
 			self.setState({
-				notificationCount: ++self.state.notificationCount
+				notificationCount: ++self.state.notificationCount,
 			});
 		});
 	},
@@ -140,6 +142,7 @@ const Header = React.createClass({
         		<div className="col-lg-3">
 		          <MockChat />
 		          <Feeback />
+		          <Suggestions />
 		        </div>
 		        <Snackbar
                     open={this.state.error}

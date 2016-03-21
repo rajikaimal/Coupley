@@ -16,6 +16,7 @@ import TableRowColumn from 'material-ui/lib/table/table-row-column';
 import TableBody from 'material-ui/lib/table/table-body';
 import Colors from 'material-ui/lib/styles/colors';
 import Countries from './countries.js';
+import DatePicker from 'material-ui/lib/date-picker/date-picker';
 
 const registerStyle = {
   marginLeft: 500
@@ -34,6 +35,13 @@ const styles = {
 const error = {
     color: Colors.red500
 };
+
+var year = new Date();
+var currentYear = year.getFullYear();
+year.setFullYear(currentYear - 18);
+
+var minYear = new Date();
+minYear.setFullYear(currentYear - 100);
 
 function validatefirstname(firstname) {
   if(firstname.length >= 50) {
@@ -162,6 +170,9 @@ const Register = React.createClass({
       country: 0
     }
   },
+  componentDidMount: function() {
+    year = new Date().setFullYear(2010);
+  },
   _handleRegisterClickEvent: function() {
     let firstname = this.refs.firstname.getValue();
     let lastname = this.refs.lastname.getValue();
@@ -231,7 +242,7 @@ const Register = React.createClass({
       gender: gender,
       password: password,
       country: country,
-      birthday: '1994-08-12',
+      birthday: window.birthday,
       orientation: orientation
     };
     if (val) {
@@ -281,6 +292,10 @@ const Register = React.createClass({
         RegisterActions.checkEmail(email);
     }
   },
+  _getDate: function(event, value) {
+    let birthday = value.getFullYear() + '-' + value.getMonth() + '-' + value.getDate();
+    window.birthday = birthday.toString();
+  },
   render: function() {
     return (
       <div style={registerStyle}>
@@ -321,6 +336,13 @@ const Register = React.createClass({
                 floatingLabelText="Email" hintStyle={styles.errorStyle} fullwidth={true} ref="email"/>
               
                 <br/><span style={error} id="email"> </span>
+                </TableRowColumn>
+              </TableRow>
+              <TableRow hoverable={false} hovered={false} selectable={false}>
+                <TableRowColumn>Birthday</TableRowColumn>
+                <TableRowColumn> 
+                  <DatePicker minDate={minYear} maxDate={year} hintText="select your birthday" onChange={this._getDate}/>
+                  <br/><span style={error} id="birthday"> </span>
                 </TableRowColumn>
               </TableRow>
               <TableRow hoverable={false} hovered={false} selectable={false}> 

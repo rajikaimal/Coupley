@@ -229,6 +229,12 @@ var LoginActions = {
       });
     });
   },
+
+  clearAll: function() {
+    AppDispatcher.handleViewAction({
+      actionType: ProfileConstants.CLEAR,
+    });
+  },
 };
 
 module.exports = LoginActions;

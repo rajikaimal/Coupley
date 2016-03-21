@@ -28,26 +28,18 @@ const textStyle = {
 }
 
 const Notification = React.createClass({
-	_remove: function() {
-		this.props.onRemove(this.props.username);
-	},
 	render: function() {
 		return (
 			<div>
 		        <ListItem
-		          leftAvatar={<Avatar src={this.props.image} />}
-		          primaryText={this.props.firstname + ' ' + this.props.lastname}
+		          leftAvatar={<Avatar src="img/profilepics/tiffany" />}
+		          primaryText="rajika"
 		          secondaryText={
 		            <p>
-		            	<span style={{color: Colors.darkBlack}}>{this.props.post}</span>
-		           		<br/>
-		           		<b>{this.props.time}</b>
+		            	<span style={{color: Colors.darkBlack}}>{this.props.content}</span>
 		            </p>
 		          }
-		          secondaryTextLines={2} 
-		          rightIconButton={<IconMenu iconButtonElement={iconButtonElement}>
-					    <MenuItem onTouchTap={this._remove}>Unblock</MenuItem>
-					  </IconMenu>} />
+		        />
 
 			
 		        <Divider inset={true} />			
