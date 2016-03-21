@@ -54,6 +54,7 @@ var post = {
 const MockChat = React.createClass({
 
   getInitialState: function () {
+    console.log(post.user1);
     return {
       chatitem:ThreadStore.getonlineuserslist(),
     };

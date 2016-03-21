@@ -29,6 +29,10 @@ const toggleDiv = {
   marginTop:5,
 };
 
+const likedusers = {
+ user1:LoginStore.getUsername(),
+};
+
 const SelectFieldExampleSimple = React.createClass({
   getInitialState: function () {
     return {
@@ -39,10 +43,7 @@ const SelectFieldExampleSimple = React.createClass({
 
   componentDidMount: function () {
   ThreadStore.addChangeListener(this._onChange);
-  let likedusers = {
-    user1:LoginStore.getFirstname(),
-  };
-  ThreadActions.getlikedusers(likedusers);
+  ThreadActions. getlikedusers(likedusers);
 
 },
 
@@ -51,7 +52,7 @@ const SelectFieldExampleSimple = React.createClass({
 },
 
   LikedUsers:function () {
-    let likedusers = { user1:LoginStore.getUsername() };
+    
     ThreadActions.getlikedusers(likedusers);
   },
 

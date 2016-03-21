@@ -57,6 +57,7 @@ var ThreadAction = {
             listoflikedusers: response.llist,
           });
       }else if (response.status == 505) {
+        console.log("menna name eka "+request.user1);
         console.log('Error 505');
       }
     });
