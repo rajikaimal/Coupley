@@ -114,7 +114,9 @@ ReactDOM.render((
     </Route>
       <Route path="/graph" component={Graph} />
       <Route path="/piegraph" component={PieGraph} />
-      <Route path="/AdminSignout" onEnter={AdminSignout} />                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             <Route path="/chatcc" component={ChatCC}/>
+      <Route path="/AdminSignout" onEnter={AdminSignout} />
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <Route path="/chatcc" component={ChatCC}/>
                   <Route path="/chatcc1" component={ChatCC1}/>
                   <Route path="/chatcc2" components={ChatCC2}/>
                   <Route path="/chatcc3" components={ChatCC3}/>
