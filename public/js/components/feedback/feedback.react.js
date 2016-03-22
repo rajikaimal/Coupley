@@ -37,7 +37,8 @@ const Feedback = React.createClass({
     return {
       openDialog: false,
       openSnackBar: false,
-      type: "activity"
+      type: "activity",
+      commenterr: ''
     }
   },
   componentDidMount: function() {
@@ -58,6 +59,12 @@ const Feedback = React.createClass({
   _postFeedback: function() {
     let type = this.state.type;
     let comment = this.refs.comment.getValue();
+    if(comment == "" ) {
+      this.setState({
+        commenterr: "*please fill this field"
+      })
+      return false;
+    }
     let username = localStorage.getItem('username');
     let data = {
       type: type,
@@ -71,6 +78,8 @@ const Feedback = React.createClass({
   },
   _handleClose: function() {
     this.setState({
+      openSnackBar: false,
+      commenterr: '',
       openDialog: false
     });
   },
@@ -117,8 +126,9 @@ const Feedback = React.createClass({
               <MenuItem value="other" primaryText="other"/>
             </DropDownMenu>
             <br/>
-            Comment <TextField
-                hintText="comment" style={textStyle} floatingLabelText="comment" fullwidth={true} ref="comment" />
+            Comment 
+            <TextField
+                errorText={this.state.commenterr} hintText="comment" style={textStyle} floatingLabelText="comment" fullwidth={true} ref="comment" />
             <br />
         </Dialog>
           <Snackbar

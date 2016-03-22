@@ -4,9 +4,39 @@
 
 import React from 'react';
 import { Link } from 'react-router';
+import GraphActions from './../../../actions/admin/GraphActions';
+import GraphStore from './../../../stores/admin/GraphStore';
 
-const Cards = React.createClass({
+const pieChart = React.createClass({
+  getInitialState: function () {
+    return {
+      status: GraphStore.getresults(),
+    };
+  },
+
+  componentDidMount: function () {
+    GraphActions.userStatus();
+    GraphStore.addChangeListener(this._onChange);
+  },
+
+  _onChange: function () {
+    if (this.isMounted()) {
+      this.setState({
+        status: GraphStore.getresults(),
+      });
+    }
+  },
+
   graph: function () {
+    for (var i in this.state.status) {
+      var deactive = this.state.status[i].deactive; //Deactive key's value
+      var active = this.state.status[i].active;     //Active key's value
+
+    }
+
+    active = parseInt(active);
+    deactive = parseInt(deactive);
+
     var chart = new CanvasJS.Chart('chartContainer1',
             {
               title: {
@@ -29,12 +59,12 @@ const Cards = React.createClass({
                       indexLabelFontColor: 'MistyRose',
                       indexLabelLineColor: 'darkgrey',
                       indexLabelPlacement: 'inside',
-                      toolTipContent: '{name}: {y}',
+                      toolTipContent: '{y} {name}',
+                      indexLabel: '#percent %',
                       showInLegend: true,
-                      indexLabel: '#percent%',
                       dataPoints: [
-                          { y: 52, name: 'Blocked Users', legendMarkerType: 'triangle' },
-                          { y: 100, name: 'Usual Users', legendMarkerType: 'square' },
+                          { y: active, name: 'Active Users', legendMarkerType: 'square' },
+                          { y: deactive, name: 'Deactivated Users', legendMarkerType: 'square' },
 
                       ],
                     },
@@ -53,4 +83,4 @@ const Cards = React.createClass({
   },
 });
 
-export default Cards;
+export default pieChart;

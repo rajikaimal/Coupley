@@ -87,7 +87,7 @@ var Sidebar = React.createClass({
 
               <li>
                 <Link to={`/users`}>
-                  <i className="fa fa-th"></i>
+                  <i className="fa ion-earth"></i>
                   <span>Privacy</span>
                   <small className="label pull-right bg-green">new</small>
                 </Link>
@@ -95,7 +95,7 @@ var Sidebar = React.createClass({
 
               <li>
                 <Link to={`/feedback`}>
-                  <i className="fa fa-calendar"></i>
+                  <i className="fa ion-social-rss"></i>
                   <span>Feedbacks</span>
                   <small className="label pull-right bg-red">3</small>
                 </Link>

@@ -65,8 +65,12 @@ var LoginActions = {
       gotLikedUsername: gotlikedusername,
       token: localStorage.getItem('apitoken'),
     };
+    let likeNotify = {
+      likedUsername: localStorage.getItem('username'),
+      gotLikedUsername: gotlikedusername,
+    };
     $.post('/api/like?token=' + localStorage.getItem('apitoken'), request, function (response) {
-
+      socket.emit('like', likeNotify);
     }).fail(function (error) {
 
     });
@@ -210,6 +214,25 @@ var LoginActions = {
           error: true,
         });
       }
+    });
+  },
+
+  reportUser: function(data) {
+    $.post('/api/profile/report?token=' + localStorage.getItem('apitoken'), data, function (response) {
+      if (response.status == 200) {
+        window.reload();
+      }
+    }).fail(function (error) {
+      AppDispatcher.handleViewAction({
+        actionType: ProfileConstants.ERR,
+        error: true,
+      });
+    });
+  },
+
+  clearAll: function() {
+    AppDispatcher.handleViewAction({
+      actionType: ProfileConstants.CLEAR,
     });
   },
 };

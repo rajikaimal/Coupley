@@ -9,8 +9,76 @@ var FeedActions = {
   MarkAsDone: function (credentials) {
 
     $.post('/admin-api/markfeed', credentials, function (data) {
+      console.log(data.category[0].category);
       if (data.status === 201) {
-        location.reload(true);
+        switch (data.category[0].category) {
+          case 'timeline':
+            $.get('/admin-api/timeline', function (response) {
+              if (response.status == 200) {
+                AppDispatcher.handleViewAction({
+                  actionType: FeedConstants.SEARCH,
+                  timelineFeed: response.feeds,
+                });
+              }      else if (response.status === 300) {
+                swal('Something Went Wrong', 'Please try again in a moment', 'error');
+              }
+            });
+
+            break;
+          case 'activity':
+            $.get('/admin-api/activity', function (response) {
+              if (response.status == 200) {
+                AppDispatcher.handleViewAction({
+                  actionType: FeedConstants.SEARCH,
+                  timelineFeed: response.feeds,
+                });
+              }      else if (response.status === 300) {
+                swal('Something Went Wrong', 'Please try again in a moment', 'error');
+              }
+            });
+
+            break;
+          case 'privacy':
+            $.get('/admin-api/privacy', function (response) {
+              if (response.status == 200) {
+                AppDispatcher.handleViewAction({
+                  actionType: FeedConstants.SEARCH,
+                  timelineFeed: response.feeds,
+                });
+              }      else if (response.status === 300) {
+                swal('Something Went Wrong', 'Please try again in a moment', 'error');
+              }
+            });
+
+            break;
+          case 'chat':
+            $.get('/admin-api/chat', function (response) {
+              if (response.status == 200) {
+                AppDispatcher.handleViewAction({
+                  actionType: FeedConstants.SEARCH,
+                  timelineFeed: response.feeds,
+                });
+              }      else if (response.status === 300) {
+                swal('Something Went Wrong', 'Please try again in a moment', 'error');
+              }
+            });
+
+            break;
+          case 'other':
+            $.get('/admin-api/others', function (response) {
+              if (response.status == 200) {
+                AppDispatcher.handleViewAction({
+                  actionType: FeedConstants.SEARCH,
+                  timelineFeed: response.feeds,
+                });
+              }      else if (response.status === 300) {
+                swal('Something Went Wrong', 'Please try again in a moment', 'error');
+              }
+            });
+
+            break;
+
+        }
       } else if (data.status === 300) {
         swal('Something Went Wrong', 'Please try again in a moment', 'error');
       }
@@ -77,9 +145,8 @@ var FeedActions = {
           actionType: FeedConstants.SEARCH,
           timelineFeed: response.feeds,
         });
-      }      else if (response.status == 505) {
-        console.log('Error 505');
-
+      }      else if (response.status === 300) {
+        swal('Something Went Wrong', 'Please try again in a moment', 'error');
       }
     });
   },

@@ -15,12 +15,14 @@ import Login from './components/login/Login.react';
 import Profile from './components/profile/profile.react';
 import Register from './components/register/Register.react';
 import Quiz from './components/quiz/Quiz.react';
-import ActivityContainer from './components/profile/ActivityFeed/ActivityFeedContainer.react';
+//import ActivityContainer from './components/profile/ActivityFeed/ActivityFeedContainer.react';
 import About from './components/profile/About.react';
+import LookingFor from './components/profile/lookingfor/LookingFor.react';
 import Photos from './components/profile/visitor/Photos.react';
 import ProfileSettings from './components/profile/Settings.react';
 import Account from './components/profile/Account.react';
-import BlockList from './components/profile/BlockList.react';
+import PasswordChange from './components/profile/Password.react';
+import BlockList from './components/profile/blocklist/BlockListContainer.react';
 import Deactivate from './components/profile/Deactivate.react';
 import ProfileVisitor from './components/profile/visitor/profile.react';
 import VisitorActivityFeed from './components/profile/visitor/activityfeed/activityMain.react';
@@ -30,6 +32,8 @@ import Search from './components/search/Search.react';
 import Admin from './components/admin/dashboard.react';
 import AdminLogin from './components/admin/login.react';
 import MainActivity from './components/activityfeed/activityMain.react';
+import Notifications from './components/notifications/NotificationContainer.react';
+import Likes from './components/likes/LikesContainer.react';
 import MainActivityProfile from './components/profile/activityfeed/activityMain.react';
 import ChatCC from './components/chat/ChatCC.react';
 import ChatCC1 from './components/chat/ChatPreviousContainer.react';
@@ -54,6 +58,7 @@ import OthersFeed from './components/admin/feedback/others.react';
 import Graph from './components/admin/graphs/graph.react';
 import PieGraph from './components/admin/graphs/piechart.react';
 import Searches from './components/admin/search/Search.react';
+
 
 function requireAuth(nextState, replace) {
   if (!localStorage.getItem('apitoken')) {
@@ -83,34 +88,36 @@ function logout() {
 function AdminSignout() {
   localStorage.removeItem('apitoken');
   localStorage.removeItem('emails');
+  localStorage.removeItem('id');
   document.location = '/cp-admin#/AdminLogin';
 }
 
 ReactDOM.render((
   <Router history={hashHistory}>
     <Route path="/login" component={Login} />
-      <Route path="/logout" onEnter={logout} />
-      <Route path="/dashboard" component={Admin} />
-      <Route path="/forgotpwd" component={Forgot} />
+    <Route path="/logout" onEnter={logout} />
+    <Route path="/dashboard" component={Admin} />
+    <Route path="/forgotpwd" component={Forgot} />
     <Route path="/register" component={Register} />
     <Route path="/quiz" component={Quiz} />
+    <Route path="/notifications" component={Notifications} />
     <Route path="/AdminLogin" component={AdminLogin} />
-      <Route path="/Adminforgotpwd" component={AdminForgot} />
+    <Route path="/Adminforgotpwd" component={AdminForgot} />
     <Route path="/dashboard" component={Admin} onEnter={requireAdminAuth}>
         <Route path="/searches" component={Searches} />
         <Route path="/users" component={Users}>
-            <Route path="friends" component={Friends} />
-            <Route path="enemies" component={Enemies} />
-        </Route>
-        <Route path="/feedback" component={Feedback}>
-            <Route path="timeline" component={Timeline} />
-            <Route path="activity" component={ActivityFeed} />
-            <Route path="privacy" component={Privacy} />
-            <Route path="chat" component={ChatFeed} />
-            <Route path="others" component={OthersFeed} />
-        </Route>
-        <Route path="/cards" component={Cards} />
-        <Route path="/settings" component={Settings} />
+        <Route path="friends" component={Friends} />
+        <Route path="enemies" component={Enemies} />
+    </Route>
+    <Route path="/feedback" component={Feedback}>
+        <Route path="timeline" component={Timeline} />
+        <Route path="activity" component={ActivityFeed} />
+        <Route path="privacy" component={Privacy} />
+        <Route path="chat" component={ChatFeed} />
+        <Route path="others" component={OthersFeed} />
+    </Route>
+    <Route path="/cards" component={Cards} />
+    <Route path="/settings" component={Settings} />
     </Route>
       <Route path="/graph" component={Graph} />
       <Route path="/piegraph" component={PieGraph} />
@@ -125,7 +132,13 @@ ReactDOM.render((
     <Route path="/" component={Header} onEnter={requireAuth}>
     <Route path="/ThreadMain" component={ThreadMain}/>
       <Route path="/search" component={Search} />
+
         <Route path="activity" component={MainActivity}/>
+
+      <Route path="/threads" component={Threads} />
+      <Route path="activity" component={MainActivity}/>
+      <Route path="/likes" component={Likes} />
+
       <Route path="profile" component={Profile} >
           <Route path="activityfeed" component={MainActivityProfile} />
           <Route path="about" component={About} />
@@ -133,11 +146,12 @@ ReactDOM.render((
       </Route>
       <Route path="isettings" component={ProfileSettings} >
           <Route path="account" component={Account} />
+          <Route path="password" component={PasswordChange} />
           <Route path="blocked" component={BlockList} />
           <Route path="deactivate" component={Deactivate} />
       </Route>
       <Route path="/:username" component={ProfileVisitor} >
-        <Route path="activityfeed" component={VisitorActivityFeed} />
+      <Route path="activityfeed" component={VisitorActivityFeed} />
         <Route path="about" component={AboutVisitor} />
         <Route path="photos" component={PhotosVisitor} />
       </Route>

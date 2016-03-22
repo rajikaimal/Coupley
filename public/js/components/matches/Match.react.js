@@ -29,33 +29,16 @@ const textStyle = {
   marginLeft: "15"
 }
 
-const Activity = React.createClass({
-	getInitialState: function() {
-		return {
-			editing: false
-		}
-	},
-	_editActvity: function() {
-		ActivityFeedActions.editActvity(this.props.id);
-		this.setState({
-			editing: !this.state.editing
-		});
-
-	},
-	_removeActivity: function() {
-
-	},
-	_cancelEdit: function() {
-		this.setState({
-			editing: !this.state.editing
-		});
+const BlockList = React.createClass({
+	_remove: function() {
+		this.props.onRemove(this.props.username);
 	},
 	render: function() {
 		return (
 			<div>
 		        <ListItem
-		          leftAvatar={<Avatar src="https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg" />}
-		          primaryText={ "@" + localStorage.getItem('user')}
+		          leftAvatar={<Avatar src={this.props.image} />}
+		          primaryText={this.props.firstname + ' ' + this.props.lastname}
 		          secondaryText={
 		            <p>
 		            	<span style={{color: Colors.darkBlack}}>{this.props.post}</span>
@@ -65,13 +48,10 @@ const Activity = React.createClass({
 		          }
 		          secondaryTextLines={2} 
 		          rightIconButton={<IconMenu iconButtonElement={iconButtonElement}>
-					    <MenuItem onTouchTap={this.props.onEdit(this.props.id)}>Edit</MenuItem>
-					    <MenuItem onTouchTap={this.props.onRemove(this.props.id)}>Remove</MenuItem>
+					    <MenuItem onTouchTap={this._remove}>Unblock</MenuItem>
 					  </IconMenu>} />
 
-				{this.state.editing ? <div><TextField
-	            ref="editActvity"  style={textStyle} defaultValue={this.props.post} /><FlatButton onClick={this._editActvity} label="Save changes" primary={true} /><FlatButton label="Cancel" onClick={this._cancelEdit}/>
-	              </div> : ''}
+			
 		        <Divider inset={true} />			
 
 			</div>
@@ -79,4 +59,4 @@ const Activity = React.createClass({
 	}
 });
 
-export default Activity;
+export default BlockList;

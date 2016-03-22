@@ -12,6 +12,9 @@ import VisitorStore from '../../../stores/VisitorStore';
 import GridTile from 'material-ui/lib/grid-list/grid-tile';
 import GridList from 'material-ui/lib/grid-list/grid-list';
 import Dialog from 'material-ui/lib/dialog';
+import DropDownMenu from 'material-ui/lib/DropDownMenu';
+import TextField from 'material-ui/lib/text-field';
+import Snackbar from 'material-ui/lib/snackbar';
 
 const style = {
   width: 200,
@@ -20,6 +23,11 @@ const style = {
 
 const iconButtonStyle = {
 
+}
+
+const reportStyle = {
+    color: 'black',
+    marginTop: '25'
 }
 
 const styles = {
@@ -36,6 +44,10 @@ const divStyle = {
     float: 'right'
 };
 
+const textStyle = {
+  marginLeft: 15
+};
+
 const ProfilePic = React.createClass({
   getInitialState: function() {
     return {
@@ -44,7 +56,9 @@ const ProfilePic = React.createClass({
       blocked: VisitorStore.getBlockStatus(),
       permission: VisitorStore.getPermission(),
       picture: VisitorStore.getProfilePic(),
-      open: false
+      open: false,
+      openDialog: false,
+      type: 'annoying'
     }
   },
   componentDidMount: function() {
@@ -117,6 +131,31 @@ const ProfilePic = React.createClass({
       open: false
     });
   },
+  _handleReport: function() {
+    this.setState({
+      openDialog: true
+    });
+  },
+  handleCloseReport: function() {
+    this.setState({
+      openDialog: false
+    });
+  },
+  handleSubmitReport: function() {
+    let type = this.state.type;
+    let comment = this.refs.comment.getValue();
+    let username = localStorage.getItem('username');
+    let str = window.location.hash;
+    let visitorUsername = str.split(/[\/?]/)[1];
+
+    let data = {
+      username: username,
+      visitorusername: visitorUsername,
+      type: type,
+      comment: comment
+    };
+    ProfileVisitorActions.reportUser(data);
+  },
   render: function() {
     const actions = [
       <FlatButton
@@ -129,6 +168,19 @@ const ProfilePic = React.createClass({
         primary={true}
         keyboardFocused={true}
         onTouchTap={this._handleBlock}
+      />,
+    ];
+    const actionsReport = [
+      <FlatButton
+        label="Cancel"
+        secondary={true}
+        onTouchTap={this.handleCloseReport}
+      />,
+      <FlatButton
+        label="Report"
+        primary={true}
+        keyboardFocused={true}
+        onTouchTap={this.handleSubmitReport}
       />,
     ];
     return (
@@ -173,6 +225,7 @@ const ProfilePic = React.createClass({
                           { this.state.permission ? (this.state.blocked ? <MenuItem primaryText="Unblock" onTouchTap={this._handleBlock} /> : 
                                       <MenuItem primaryText="Block" onTouchTap={this._handleBlockSelection} /> ) : ''
               }
+                          <MenuItem primaryText="Report" onTouchTap={this._handleReport} />
                       </IconMenu>
                   </div>
             </div>
@@ -190,10 +243,42 @@ const ProfilePic = React.createClass({
               <ul>
                 <li> You won't be able to find this user on search </li>
                 <li> You'll remove all your connections including likes </li>
-                <li> And this person won't be able to find you on Coupley </li>
+                <li> And this person wont be able to find you on Coupley </li>
               </ul>
           </Dialog>
           </div> 
+          <div>
+              <Dialog
+                    title="Report user"
+                    actions={actionsReport}
+                    modal={true}
+                    open={this.state.openDialog}
+                    onRequestClose={this.handleClose}
+                    contentStyle={{ height:1000 }}
+                  >
+                  Category
+                  <DropDownMenu value={this.state.type} onChange={this._handleChange}>
+                    <MenuItem value="annoying" primaryText="Annoying"/>
+                    <MenuItem value="clingy" primaryText="Clingy"/>
+                    <MenuItem value="harassing" primaryText="Harassing"/>
+                  </DropDownMenu>
+                  <br/>
+                  Comment 
+                  <TextField
+                      hintText="optional comment"
+                      multiLine={true}
+                      rows={2}
+                      rowsMax={4}
+                      errorText={this.state.commenterr} hintText="comment" style={textStyle} fullwidth={true} ref="comment" />
+                  <br />
+              </Dialog>
+                <Snackbar
+                    open={this.state.openSnackBar}
+                    message="Successfull !"
+                    autoHideDuration={4000}
+                    onRequestClose={this.handleRequestClose}
+                  />
+            </div>
       </div>  
     );
   }
