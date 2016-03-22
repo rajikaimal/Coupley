@@ -35,7 +35,13 @@ import MainActivity from './components/activityfeed/activityMain.react';
 import Notifications from './components/notifications/NotificationContainer.react';
 import Likes from './components/likes/LikesContainer.react';
 import MainActivityProfile from './components/profile/activityfeed/activityMain.react';
-import Threads from './components/chat/Threads.react';
+import ChatCC from './components/chat/ChatCC.react';
+import ChatCC1 from './components/chat/ChatPreviousContainer.react';
+import ChatCC2 from './components/chat/chatCard.react';
+import ChatCC3 from './components/chat/ChatTopBar.react';
+import Tabs from './components/chat/tabs.react';
+import Tabs1 from './components/chat/tabs1.react';
+import ThreadMain from './components/chat/ThreadMain.react';
 import Users from './components/admin/users/userHome.react';
 import Friends from './components/admin/users/friends.react';
 import Enemies from './components/admin/users/enemies.react';
@@ -116,11 +122,23 @@ ReactDOM.render((
       <Route path="/graph" component={Graph} />
       <Route path="/piegraph" component={PieGraph} />
       <Route path="/AdminSignout" onEnter={AdminSignout} />
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <Route path="/chatcc" component={ChatCC}/>
+                  <Route path="/chatcc1" component={ChatCC1}/>
+                  <Route path="/chatcc2" components={ChatCC2}/>
+                  <Route path="/chatcc3" components={ChatCC3}/>
+                  <Route path="/tabs" components={Tabs}/>
+                  <Route path="/tabs1" components={Tabs1}/>
     <Route path="/" component={Header} onEnter={requireAuth}>
+    <Route path="/ThreadMain" component={ThreadMain}/>
       <Route path="/search" component={Search} />
+
+        <Route path="activity" component={MainActivity}/>
+
       <Route path="/threads" component={Threads} />
       <Route path="activity" component={MainActivity}/>
       <Route path="/likes" component={Likes} />
+
       <Route path="profile" component={Profile} >
           <Route path="activityfeed" component={MainActivityProfile} />
           <Route path="about" component={About} />
@@ -133,7 +151,7 @@ ReactDOM.render((
           <Route path="deactivate" component={Deactivate} />
       </Route>
       <Route path="/:username" component={ProfileVisitor} >
-        <Route path="activityfeed" component={VisitorActivityFeed} />
+      <Route path="activityfeed" component={VisitorActivityFeed} />
         <Route path="about" component={AboutVisitor} />
         <Route path="photos" component={PhotosVisitor} />
       </Route>
@@ -143,4 +161,3 @@ ReactDOM.render((
   ),
   document.getElementById('content')
 );
-

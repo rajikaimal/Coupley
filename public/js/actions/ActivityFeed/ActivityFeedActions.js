@@ -3,10 +3,10 @@ var ActivityFeedConstants = require('../../constants/ActivityFeedConstants');
 
 var ActivityFeedActions = {
   add_status: function (status) {
-    $.post('api/status?token=' + localStorage.getItem('apitoken') , status, function (response) {
+    $.post('api/status?token=' + localStorage.getItem('apitoken'), status, function (response) {
       console.log(response);
       if (response.status == 201) {
-        $.get('/api/getstatus?token=' + localStorage.getItem('apitoken') , function (response) {
+        $.get('/api/getstatus?token=' + localStorage.getItem('apitoken'), function (response) {
           console.log(response);
           if (response.status == 200) {
             AppDispatcher.handleViewAction({
@@ -43,7 +43,7 @@ var ActivityFeedActions = {
   },
 
   getstatus: function () {
-    $.get('/api/getstatus=token?' + localStorage.getItem('apitoken') , function (response) {
+    $.get('/api/getstatus=token?' + localStorage.getItem('apitoken'), function (response) {
       console.log(response);
       console.log('view status ');
       if (response.status == 200) {
@@ -72,7 +72,8 @@ var ActivityFeedActions = {
   },
 
   delete_status: function (postId) {
-    $.post('api/deleteStatus?token=' + localStorage.getItem('apitoken') , postId, function (response) {
+    $.post('api/deleteStatus?token=' + localStorage.getItem('apitoken'),
+     postId, function (response) {
       console.log(response);
     });
   },
@@ -108,6 +109,7 @@ var ActivityFeedActions = {
       }
     });
   },
+
 };
 
 module.exports = ActivityFeedActions;

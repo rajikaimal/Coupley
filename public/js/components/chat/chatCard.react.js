@@ -1,33 +1,42 @@
 import React from 'react';
-import Card from 'material-ui/lib/card/card';
-import CardActions from 'material-ui/lib/card/card-actions';
-import CardTitle from 'material-ui/lib/card/card-title';
-import FlatButton from 'material-ui/lib/flat-button';
-import CardText from 'material-ui/lib/card/card-text';
-import TextField from 'material-ui/lib/text-field';
-import RaisedButton from 'material-ui/lib/raised-button';
+import Paper from 'material-ui/lib/paper';
+import ChatCC from './ChatCC.react';
+import MessageThread from './Messages.react';
+import SelectFriend from './ChatTopBar.react';
+import LoginStore from '../../stores/LoginStore';
 
+var User1 = LoginStore.getFirstname();
+var User1Email = LoginStore.getEmail();
 
-const style = {
-    margin: 12,
+const styleup = {
+  height:50,
+  width: 650,
+  textAlign:'center',
 };
 
+const Paperstyle1 = {
+  height:435,
+  width: 650,
+};
 
-var ChatCard = React.createClass({
+const Paperstyle2 = {
+  height:535,
+  width: 650,
+  marginLeft:1,
+  textAlign: 'center',
+  display: 'inline-block',
+};
 
-    render: function () {
-        return (
-            <Card>
-                <CardTitle title="" subtitle="" />
-                <CardText>
-                    <TextField hintText="Message" fullWidth={true}/>
-                </CardText>
-                <CardActions>
-                    <FlatButton label="Send message"  style={this.style}/>
-                </CardActions>
-            </Card>
-        );
-    }
+const MainThread = React.createClass({
+  render:function () {
+    return (
+      <Paper style={Paperstyle2}>
+                  <Paper style={styleup} zDepth={2}><SelectFriend className='col-md-4'/><div className="col-md-8"/></Paper>
+                  <MessageThread className="col-xs-6 col-md-4 col-lg-10" />
+                  <ChatCC style={Paperstyle1} className="col-xs-6 col-md-8 col-lg-2" />
+                  </Paper>
+    );
+  },
 });
 
-export default ChatCard;
+export default MainThread;
