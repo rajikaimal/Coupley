@@ -58,6 +58,6 @@ const PreviousChat = React.createClass({
             </List>
           );
         },
-});
+});  
 
 export default PreviousChat;
