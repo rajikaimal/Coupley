@@ -231,7 +231,7 @@ var Reset = React.createClass({
             </div>
           </div>
           <Dialog
-              title="Reset Password"
+              title="Update Password"
               actions={actions}
               modal={false}
               open={this.state.open}

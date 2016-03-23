@@ -11,6 +11,8 @@ var connection = mysql.createConnection({
 var connectedUser = {};
 var Likedusers = [];
 
+
+
 connection.connect();
 
 /*  listen to port 8081 */
@@ -20,6 +22,7 @@ server.listen(8081);
  Retrive data when a client connect.
  **/
 io.on('connection', function (socket) {
+
 
   /*
    Retrive loged user information.
@@ -101,6 +104,9 @@ io.on('connection', function (socket) {
     connection.query("UPDATE users SET chatstatus='offline' WHERE username='" + socket.username + "' ", function (err, result) {});
 
     console.log(socket.username + ' Disonnected!');
+
   });
+
+
 
 });

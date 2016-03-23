@@ -16,7 +16,7 @@ import ListItem from 'material-ui/lib/lists/list-item';
 
 const colors = styles.Colors;
 
-var AvatarExampleSimple = React.createClass({
+var reportedUsers = React.createClass({
   getInitialState: function () {
     return {
       results: SearchStore.getresults(),
@@ -63,4 +63,4 @@ var AvatarExampleSimple = React.createClass({
 
 });
 
-export default AvatarExampleSimple;
+export default reportedUsers;

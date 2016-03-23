@@ -19,6 +19,7 @@ use App\Blocks;
 use App\ActivityFeed;
 use App\About;
 use App\Post;
+use App\Reported;
 
 class ProfileController extends Controller
 {
@@ -47,8 +48,12 @@ class ProfileController extends Controller
     {
         $email = $request->email;
         try {
-            $userDetails = User::where('email', $email)->get();
-
+            //$userDetails = User::where('email', $email)->get();
+            $userDetails = \DB::select(\DB::raw('
+                SELECT id,firstname,lastname,orientation,email,country,gender,username,profilepic,birthday,TIMESTAMPDIFF(YEAR, birthday, CURDATE()) AS age from users where id=11
+            '));
+            //$userDetails = array_merge($userDetails->toArray(), $age->toArray());
+            //$age = 0;
             return response()->json(['user' => $userDetails, 'status' => 200]);
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 200], 200);
@@ -112,7 +117,7 @@ class ProfileController extends Controller
     {
         $username = $request->username;
         try {
-            if ($userDetails = User::where('firstname', $username)->get()) {
+            if ($userDetails = User::where('username', $username)->get()) {
                 return response()->json(['user' => $userDetails, 'status' => 200], 200);
             } else {
                 return response()->json(['user' => $userDetails, 'status' => 200], 200);
@@ -681,11 +686,15 @@ class ProfileController extends Controller
     public function deleteProfile(Request $request)
     {
         $username = $request->username;
-        \DB::raw("delete FROM users WHERE username = '$username'");
+        // \DB::raw("delete FROM users WHERE username = '$username'");
 
-        return $username;
+        // return $username;
         try {
             if ($username) {
+                var_dump($username);
+                $q = 'DELETE FROM users where id = ?';
+                $status = \DB::delete($q, [17]);
+
                 return response()->json(['status' => 200, 'done' => true], 200);
             } else {
                 return response()->json(['status' => 200, 'done' => false], 200);
@@ -709,10 +718,149 @@ class ProfileController extends Controller
         try {
             if (User::where('username', $username)
                 ->update(['status' => 'inactive'])) {
+                $emailController = new EmailController();
+                $user = User::where('username', $username)->get()[0];
+                $email = $user->email;
+                $name = $user->firstname;
+                $subject = 'Account deactivation !';
+                $content = 'Your account has been deactivated !';
+                $emailController->SendMail($email, $name, $subject, $content);
+
                 return response()->json(['status' => 200, 'done' => true], 200);
             } else {
                 return response()->json(['status' => 200, 'done' => false], 200);
             }
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 200], 200);
+        }
+    }
+
+    /**
+     * Retreives block list of a certain user GET /.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
+    public function blocklist(Request $request)
+    {
+        $username = $request->username;
+        try {
+            $userID = User::where('username', $username)->get(['id'])[0]->id;
+
+            $users = \DB::select(\DB::raw("
+               SELECT id,firstname,lastname,username,gender,profilepic from(
+                            SELECT id,firstname, lastname,username,orientation,gender,profilepic,role FROM `users` WHERE
+                                                    status = 'active'         
+                                                    ) as t where  
+                                                    role='user' and id IN (
+                                                        Select blocked_user_id
+                                                        from `blocked`
+                                                        where user_id=".$userID.'
+                                                    ) 
+            '));
+
+            // foreach ($blockedUsers as $value) {
+            //     $users[$value->blocked_user_id] = $value;
+            //     $users[$value->blocked_user_id] = User::where('id', $value->blocked_user_id)->get(['id', 'firstname', 'lastname', 'username', 'profilepic'])[0];
+            // }
+
+            return response()->json(['status' => 200, 'users' => $users], 200);
+            if ($userID) {
+                return response()->json(['status' => 200, 'done' => true], 200);
+            } else {
+                return response()->json(['status' => 200, 'done' => false], 200);
+            }
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 200], 200);
+        }
+    }
+
+    /**
+     * Updates a user profile main info POST request.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
+    public function updateMain(Request $request)
+    {
+        $username = $request->username;
+        $email = $request->email;
+        $gender = $request->gender;
+
+        $birthday = $request->birthday;
+        $orientation = $request->orientation;
+        try {
+            User::where('username', $username)
+                ->update(['email' => $email, 'username' => $username, 'gender' => $gender, 'orientation' => $orientation, 'birthday' => $birthday]);
+
+            return response()->json(['status' => 200, 'done' => true], 200);
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 505], 505);
+        }
+    }
+
+    /**
+     * Reports user profile.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
+    public function reportUser(Request $request)
+    {
+        $visitorUsername = $request->visitorusername;
+        $username = $request->username;
+        $description = $request->comment;
+        $type = $request->type;
+        try {
+            $user1ID = User::where('username', $username)->get(['id'])[0]->id;
+            $user2ID = User::where('username', $visitorUsername)->get(['id'])[0]->id;
+
+            $report = new Reported;
+            $report->user_id = $user1ID;
+            $report->reported_user_id = $user2ID;
+            $report->description = $description;
+            $report->status = $type;
+            $report->save();
+
+            return response()->json(['status' => 200, 'done' => true], 200);
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 200], 200);
+        }
+    }
+
+    /**
+     * Updates password of user profile.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
+    public function updatePassword(Request $request)
+    {
+        $username = $request->username;
+        $newPassword = \Hash::make($request->newpassword);
+        try {
+            $user = User::where('username', $username)->get()[0];
+            $email = $user->email;
+            $name = $user->firstname;
+            $subject = 'Password change';
+            $content = "You password was changed ! <br/>
+                If you didnt make this change please follow this link to reset your password <br/>
+                <a href='http://localhost:3000/#/forgotpwd'> Reset </a> 
+            ";
+            User::where('username', $username)
+                ->update(['password' => $newPassword]);
+            $emailController = new EmailController();
+            $emailController->SendMail($email, $name, $subject, $content);
+
+            return response()->json(['status' => 200, 'done' => true], 200);
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 200], 200);
         }

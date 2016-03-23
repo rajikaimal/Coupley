@@ -5,7 +5,8 @@ var ProfileActions = {
   getProfileData: function (email) {
 
     $.get('/api/profile?token=' + localStorage.getItem('apitoken') + '&email=' + localStorage.getItem('email'), function (response) {
-
+      console.log('Reposssssss');
+      console.log(response);
       if (response) {
         AppDispatcher.handleViewAction({
           actionType: ProfileConstants.GETDATA,
@@ -57,7 +58,7 @@ var ProfileActions = {
   deleteAccount: function (data) {
     let username = {
       username: data,
-      token: localStorage.getItem('apitoken')
+      token: localStorage.getItem('apitoken'),
     };
     $.post('/api/profile/edit/deleteprofile?token=' + localStorage.getItem('apitoken'), username, function (response) {
       if (response.status == 200 && response.done == true) {
@@ -71,15 +72,15 @@ var ProfileActions = {
     });
   },
 
-  deactivateAccount: function(data) {
+  deactivateAccount: function (data) {
     let username = {
       username: data,
-      token: localStorage.getItem('apitoken')
+      token: localStorage.getItem('apitoken'),
     };
     $.post('/api/profile/edit/deactivateprofile?token=' + localStorage.getItem('apitoken'), username, function (response) {
       if (response.status == 200 && response.done == true) {
         localStorage.setItem('apitoken', '');
-        
+
         document.location = '/#/login';
       } else {
         AppDispatcher.handleViewAction({
@@ -88,7 +89,57 @@ var ProfileActions = {
         });
       }
     });
-  }
+  },
+
+  getBlockList: function() {
+    $.get('/api/profile/blocklist?token=' + localStorage.getItem('apitoken') + '&username=' + localStorage.getItem('username'), function (response) {
+      console.log(response);
+      if (response.status === 200) {
+        console.log('got it !');
+        AppDispatcher.handleViewAction({
+          actionType: ProfileConstants.BLOCKLIST,
+          list: response.users,
+        });
+      } else {
+        AppDispatcher.handleViewAction({
+          actionType: ProfileConstants.ERR,
+          error: true,
+        });
+      }
+    });
+  },
+
+  unblock: function (username) {
+    let visitorusername = username;
+    let request = {
+      username: localStorage.getItem('username'),
+      visitorusername: visitorusername,
+      token: localStorage.getItem('apitoken'),
+    };
+    $.post('/api/unblockuser?token=' + localStorage.getItem('apitoken'), request, function (response) {
+      if (response.status == 200) {
+        $.get('/api/profile/blocklist?token=' + localStorage.getItem('apitoken') + '&username=' + localStorage.getItem('username'), function (response) {
+          if (response.status === 200) {
+            console.log('got it !');
+            AppDispatcher.handleViewAction({
+              actionType: ProfileConstants.BLOCKLIST,
+              list: response.users,
+            });
+          } else {
+            AppDispatcher.handleViewAction({
+              actionType: ProfileConstants.ERR,
+              error: true,
+            });
+          }
+        });
+      }
+    }).fail(function (error) {
+      AppDispatcher.handleViewAction({
+        actionType: ProfileConstants.ERR,
+        error: true,
+      });
+    });
+  },
 };
 
 module.exports = ProfileActions;

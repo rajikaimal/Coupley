@@ -143,6 +143,14 @@ const ProfilePic = React.createClass({
         this.setState({
             editingProfile: !this.state.editingProfile
         });
+        for(var i = 0; i < Countries.length; i++) {
+            if (this.props.country == Countries[i].name) {
+                this.setState({
+                  country: Countries[i].code
+                })
+                break;
+            }
+        }
     },
     onDrop: function (files) {
         console.log(files);
@@ -268,6 +276,8 @@ const ProfilePic = React.createClass({
                         <img style={previewStyle} src={this.state.preview} />
                     </Dropzone>
                 {this.renderSave()}
+
+               
                 </div> : <div className="col-sm-3 col-md-3 col-lg-3">
                             
                               <GridList
@@ -294,12 +304,17 @@ const ProfilePic = React.createClass({
                       ref="lastname" hintText="lastname" defaultValue={this.props.lastname} 
                       errorText={this.state.lastnameerr} />
               </div> : this.props.lastname} </h3>
-              <span> { this.state.editingProfile ? ''
-                       : '@' + this.props.username} </span> <br/>
+
+              <span> <b>{ this.state.editingProfile ? ''
+                       : '@' + this.props.username} </b> </span> <br/>
+
+              <span> <b> { this.state.editingProfile ? '' : this.props.age } </b> </span>
+              <br />
+
               <span> {this.state.editingProfile ? 
                     <div>
                       <DropDownMenu value={this.state.country} onChange={this.handleChangeCountry}>
-                          <MenuItem value={0} primaryText="Select value"/>
+          
                         {
                           Countries.map((cntry) => {
                             return (<MenuItem value={cntry.code} primaryText={cntry.name}/>);    

@@ -37,6 +37,10 @@ var VisitorStore = assign({}, EventEmitter.prototype, {
     image = data;
   },
 
+  clear: function() {
+    visitor = [];
+  },
+
   getPermission: function () {
     return permission;
   },
@@ -102,6 +106,10 @@ AppDispatcher.register(function (payload) {
       break;
     case (ProfileConstants.VISITORPROFILEPIC):
       VisitorStore.saveProfilePic(payload.action.profilepic);
+      VisitorStore.emitChange();
+      break;
+    case (ProfileConstants.CLEAR):
+      VisitorStore.clear();
       VisitorStore.emitChange();
       break;
   }

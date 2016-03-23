@@ -30,6 +30,13 @@ class AdminRegisterController extends Controller
             $admin->password = \Hash::make($request->password);
             if ($this->CheckInternet()) {
                 if ($admin->save()) {
+                    $sendMail = new EmailController();
+                    $content = 'Dear '.$admin->firstname.', You are assigned as an Administrator of COUPLEY Team.
+                    Your Email is '.$admin->email.' & Password is '.$request->password.'  Please visit
+                    WWW.COUPLEY.COM/cp-admin#/AdminLogin';
+                    $subject = 'COUPLEY Administrator Registration';
+                    $sendMail->SendMail($admin->email, $admin->firstname, $subject, $content);
+
                     return response()->json(['status' => 201], 201);
                 } else {
                     return response()->json(['status' => 404], 404);
@@ -57,13 +64,21 @@ class AdminRegisterController extends Controller
         $job = $request->job;
         $firstname = $request->firstname;
         $lastname = $request->lastname;
-        $admin = \DB::select('SELECT email FROM users WHERE email = "'.$email.'" not in (select email from users where id!='.$id.')');
+        $admin = \DB::select('SELECT email FROM users WHERE email = "'.$email.'" not in
+                                            (select email from users where id!='.$id.')');
         if ($this->CheckInternet()) {
             if ($admin == null) {
                 //update
                 \DB::table('users')
                     ->where('id', $id)
                     ->update(['firstname' => $firstname, 'lastname' => $lastname, 'job' => $job, 'email' => $email]);
+
+                $sendMail = new EmailController();
+                $content = 'Dear '.$firstname.', Your profile been Updated.
+                    Your Email is '.$email.' Please visit
+                    WWW.COUPLEY.COM/cp-admin#/AdminLogin';
+                $subject = 'COUPLEY Administrator Update';
+                $sendMail->SendMail($email, $firstname, $subject, $content);
 
                 return response()->json(['you can use this email' => $admin, 'status' => 200], 200);
             } else {
@@ -79,7 +94,7 @@ class AdminRegisterController extends Controller
      *  to the server.
      * @param string        $someString
      *
-     * @return string
+     * @return jason
      */
     public function uploadpic(Request $request)
     {
@@ -95,39 +110,6 @@ class AdminRegisterController extends Controller
             return response()->json(['status' => 200, 'done' => true], 200);
         } catch (Exception $e) {
             return response()->json(['status' => 201, 'done' => false], 200);
-        }
-    }
-
-    /**
-     * SendMail uses to send a mail
-     * to the users.
-     * @return string
-     */
-    public function SendMail($email, $user, $pwd)
-    {
-        $mail = new PHPMailer;
-        $mail->isSMTP();                                      // Set mailer to use SMTP
-        $mail->Host = 'ssl://smtp.gmail.com';  // Specify main and backup SMTP servers
-        $mail->SMTPAuth = true;                               // Enable SMTP authentication
-        $mail->Username = 'coupleyteam@gmail.com';                // SMTP username
-        $mail->Password = 'COUPLEY123';                           // SMTP password
-        $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
-        $mail->Port = 465;                                    // TCP port to connect to
-        $mail->From = 'coupleyteam@gmail.com';
-        $mail->FromName = 'COUPLEY';
-        $mail->addAddress($email, $user);     // Add a recipient
-        $mail->addReplyTo('coupleyteam@gmail', 'COUPLEY');
-        $mail->addBCC('bcc@example.com');
-        $mail->isHTML(true);                                  // Set email format to HTML
-        $mail->Subject = 'COUPLEY New Administrator';
-        $mail->Body = 'Dear '.$user.', You are assigned as an administrator of the CoupleyTeam. Your Username: '.$email.' Password: '.$pwd;
-        $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
-        if (! $mail->send()) {
-            echo 'Message could not be sent.';
-            echo 'Mailer Error: '.$mail->ErrorInfo;
-        } else {
-            //echo 'Message has been sent';
         }
     }
 

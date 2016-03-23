@@ -105,7 +105,38 @@ Route::group(['prefix' => 'api'], function () {
 
     //posts feeback from user profile
     Route::post('feedback', 'UsersController@postFeedback');
+    Route::get('instagram/init', 'InstagramController@init');
+    Route::get('profile/blocklist', 'ProfileController@blocklist');
+
+    //retrives no of notifications
+    Route::get('profile/notifications', 'NotificationController@getNotificationNumber');
+    //retrives all unread notifications
+    Route::get('profile/notificationlist', 'NotificationController@getNotificationList');
+    //retrives liked list of a certain user
+    Route::get('profile/likedlist', 'LikeListController@getLikedList');
+
+    //retrives liked list of persons who have liked a certain user
+    Route::get('profile/likedlistme', 'LikeListController@getLikedListMe');
+
+    //retrives likedback list of persons
+    Route::get('profile/likedbacklist', 'LikeListController@getLikedBackList');
+
+    //updates main sections info of profile
+    Route::post('profile/updatemain', 'ProfileController@updateMain');
+
+    //updates password of user profile
+    Route::post('profile/updatepassword', 'ProfileController@updatePassword');
+    //reports a user
+    Route::post('profile/report', 'ProfileController@reportUser');
+
+    //returns list of suggestions
+    Route::get('suggestions', 'SuggestionController@getSuggestions');
+
 });
+
+Route::get('instagram/authenticate', 'InstagramController@auth');
+Route::get('instagram/init', 'InstagramController@init');
+
 Route::get('socket', 'SocketController@index');
 Route::post('sendmessage', 'SocketController@sendMessage');
 Route::get('writemessage', 'SocketController@writemessage');
@@ -126,6 +157,11 @@ Route::group(['prefix' => 'admin-api'], function () {
     Route::get('searches', 'AdminSearchController@search');
     //return blocked users
     Route::get('blocked', 'UsersController@blocked');
+    //block certain user
+    Route::post('blockuser', 'UsersController@block');
+    //unblock certain user
+    Route::post('unblockuser', 'UsersController@Unblock');
+
     //Register new admins with RegisterConroller@register
     Route::post('registerAdmin', 'AdminRegisterController@checks');
     //Update admins
@@ -136,12 +172,12 @@ Route::group(['prefix' => 'admin-api'], function () {
     Route::post('profilepic', 'AdminRegisterController@uploadpic');
     //recover password
     Route::post('recoverpwd', 'UsersController@recover');
-    //block certain user
-    Route::post('blockuser', 'UsersController@block');
-    //unblock certain user
-    Route::post('unblockuser', 'UsersController@Unblock');
     //Return Admin profile data
     Route::get('adminprofile', 'UsersController@Adminprofile');
+    //Return details of all administrators
+    Route::get('adminInfo', 'AdminDetailsController@admins');
+    //deactivate administrator
+    Route::post('deactivateAdmin', 'AdminDeactivateController@deactivate');
 
     //feedbacks
     Route::get('timeline', 'FeedbackController@timeline');
@@ -151,7 +187,20 @@ Route::group(['prefix' => 'admin-api'], function () {
     Route::get('others', 'FeedbackController@other');
     //mark feedbacks
     Route::post('markfeed', 'FeedbackController@markfeed');
+
+    //pie graph data
+    Route::get('userStatus', 'GraphController@userStatus');
+    //line chart dat
+    Route::get('userRegistrations', 'GraphController@userRegistrations');
+    //cards data
+    Route::get('userStats', 'GraphController@userStats');
+
 });
+
+Route::get('/feeds', function () {
+    return Twitter::getUserTimeline(['screen_name' => 'rajikaimal', 'count' => 2, 'format' => 'json']);
+});
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes

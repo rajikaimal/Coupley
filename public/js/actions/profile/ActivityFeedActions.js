@@ -5,6 +5,7 @@ var ActivityFeedActions = {
   getfeed: function () {
     $.get('/api/profile/feed?token=' + localStorage.getItem('apitoken') + '&username=' + localStorage.getItem('username'), function (response) {
       if (response.status === 200) {
+        console.log('got it !');
         AppDispatcher.handleViewAction({
           actionType: ProfileConstants.FEED,
           feed: response.data,
@@ -39,6 +40,7 @@ var ActivityFeedActions = {
       },
     });
   },
+
 };
 
 module.exports = ActivityFeedActions;

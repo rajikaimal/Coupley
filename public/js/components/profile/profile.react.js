@@ -47,14 +47,16 @@ const Profile = React.createClass({
     }
   },
   _renderAge: function() {
-    let today = new Date().getFullYear();
+    //let today = new Date().getFullYear();
+    //alert(this.state.age);
+    var str = "2010-1-10";
     
   },
   render: function() {
     return (
       <div>
         <div className="panel panel-default">
-          <ProfilePic firstname={this.state.firstname} lastname={this.state.lastname} username={this.state.username} country={this.state.country}/>
+          <ProfilePic firstname={this.state.firstname} lastname={this.state.lastname} username={this.state.username} age={this.state.age} country={this.state.country}/>
 
             <Divider />
           <div style={tabstyle}>
