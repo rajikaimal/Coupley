@@ -4,35 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Like;
+use App\activitylike;
 
 class LikeController extends Controller
 {
-    /**
-     * get likes status of a user.
-     *
-     * @param object        $request
-     *
-     *
-     * @return json
-     */
-    public function getlikestatus(Request $request)
-    {
-        $postId = $request->postId;
-        $email = $request->email;
-        
-        try{
-            $result = Like::where('post_id', $postId)->where('email', $email)->get();
-
-            if ($result->isEmpty()) {
-                return 'false';
-            } else {
-                return 'true';
-            }
-        } catch (Illuminate\Database\QueryException $e) {
-                return response()->json(['status' => 505], 505);
-        }
-    }
-
     /**
      * add a like to Activity, handles POST request.
      *
@@ -44,11 +19,11 @@ class LikeController extends Controller
     public function like(Request $request)
     {
         try{
-            $like = new Like;
+            $like = new activitylike;
             $like->post_id = $request->postId;
+            $like->UserId = $request->userId;
             $like->email = $request->email;
             $like->firstname = $request->firstName;
-            $like->status = '1';
 
             if ($like->save()) {
                 return response()->json(['status' => 201], 201);
@@ -70,11 +45,11 @@ class LikeController extends Controller
      */
     public function unlike(Request $request)
     {
-        $postId = $request->PostId;
-        $email = $request->Email;
+        $postId = $request->postId;
+        $email = $request->email;
 
         try{
-            $posts = \DB::table('likes')->where('post_id', '=', $postId)
+            $posts = \DB::table('activitylikes')->where('post_id', '=', $postId)
                         ->where('email', '=', $email);
 
             if ($posts->delete()) {
@@ -85,5 +60,21 @@ class LikeController extends Controller
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 505], 505);
         }
+    }
+
+    public function getLikedUsers(Request $request)
+    {
+        $postId = $request->postId;
+
+        try{    
+            $posts= \DB::select('select firstname
+                                 from activitylikes 
+                                 where post_id='.$postId.'
+                                 order by created_at desc');
+
+            return response()->json(['posts' => $posts, 'status' => 200], 200);
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 505], 505);
+        }        
     }
 }

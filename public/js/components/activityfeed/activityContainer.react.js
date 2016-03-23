@@ -9,22 +9,46 @@ import LoginStore from '../../stores/LoginStore';
 const activityContainer = React.createClass({
   getInitialState: function() {
     return {
-      results: StatusStore.getStatusData()
+      userId: StatusStore.getLoggedUId(),
+      results: StatusStore.getStatusData(),
     }
   },
 
   componentDidMount: function() {
     StatusStore.addChangeListener(this._onChange);
-    ActivityfeedAction._getStatus();
+    ActivityfeedAction._getUserId();
+
+    let data = {
+      //userId: StatusStore.getLoggedUId(),
+      userId: 11,
+    };
+    ActivityfeedAction._getStatus(data);
+
   },
 
   _onChange: function () {
-    this.setState({results: StatusStore.getStatusData()});        
+    this.setState({results: StatusStore.getStatusData()});
+    this.setState({userId: StatusStore.getLoggedUId()});  
   },
 
   _renderSearchItem: function () { 
     return this.state.results.map((result) => {
-      return (<ActivityList key={result.id} id={result.id} firstName={result.firstname} postText={result.post_text} created_at={result.created_at}/>);
+      return (<ActivityList key={result.id} 
+                            id={result.id} 
+                            type={result.type} 
+                            firstName={result.firstname} 
+                            postId={result.post_id} 
+                            attachment={result.attachment} 
+                            lPostId={result.pid} 
+                            postText={result.post_text} 
+                            created_at={result.created_at}
+                            postid={result.postid}
+                            likesCount={result.likesCount}
+                            sid={result.sid}
+                            sfirstname={result.sfirstname}
+                            sattachment={result.sattachment}
+                            spost_text={result.spost_text}
+                            screated_at={result.screated_at}/>);     
     });
   },
 

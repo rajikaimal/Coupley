@@ -7,7 +7,7 @@ import CardText from 'material-ui/lib/card/card-text';
 import Divider from 'material-ui/lib/divider';
 import ProfilePic from './ProfilePic.react';
 import { Link } from 'react-router'
-import ProfileVisitorActions from '../../../actions/ProfileVisitorActions';
+//import ProfileVisitorActions from '../../../actions/ProfileVisitorActions';
 import VisitorStore from '../../../stores/VisitorStore';
 
 const tabstyle = {

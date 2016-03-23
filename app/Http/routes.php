@@ -34,20 +34,22 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('status', 'ActivityFeedController@addStatus');
     //Return status
     Route::get('getstatus', 'ActivityFeedController@getStatus');
+    //Return logged uder Id
+    Route::get('getUserId', 'ActivityFeedController@getUserId');
     //Add a like to the status
     Route::post('likepost', 'LikeController@like');
     //Unlike the status
     Route::post('unlikepost', 'LikeController@unlike');
-    //Return likes status
-    Route::get('getlikestatus', 'LikeController@getlikestatus');
+    //Return liked Users
+    Route::get('getLikedUsers', 'LikeController@getLikedUsers');
     //Add a share
-    Route::post('sharepost', 'ShareController@share');
+    Route::post('sharedStatus', 'ActivityFeedController@sharedStatus');
     //Unshare the status
     Route::post('unsharepost', 'ShareController@unshare');
     //Return share status
     Route::get('getsharestatus', 'ShareController@getsharestatus');
     //Add a comment to the status
-    Route::post('comment', 'CommentController@addcomment');
+    Route::post('addcomment', 'CommentController@addcomment');
     //Return comments data
     Route::get('getcomment', 'CommentController@getcomments');
     //Delete a status

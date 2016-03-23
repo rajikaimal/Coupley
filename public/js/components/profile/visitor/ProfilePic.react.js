@@ -7,7 +7,7 @@ import FavIconBorder from 'material-ui/lib/svg-icons/action/favorite-border';
 import Colors from 'material-ui/lib/styles/colors';
 import IconButton from 'material-ui/lib/icon-button';
 import FlatButton from 'material-ui/lib/flat-button';
-import ProfileVisitorActions from '../../../actions/ProfileVisitorActions';
+//import ProfileVisitorActions from '../../../actions/ProfileVisitorActions';
 import VisitorStore from '../../../stores/VisitorStore';
 import GridTile from 'material-ui/lib/grid-list/grid-tile';
 import GridList from 'material-ui/lib/grid-list/grid-list';

@@ -6,7 +6,9 @@ var assign = require('object-assign');
 var CHANGE_EVENT = 'change';
 
 var searchResults = [];
+var sharedResults = [];
 var profileposts;
+var userId;
 
 var StatusStore = assign({}, EventEmitter.prototype, {
 
@@ -23,6 +25,23 @@ var StatusStore = assign({}, EventEmitter.prototype, {
    */
   saveStatusData: function (results) {
     searchResults = results;
+  },
+
+  getSharedData: function () {
+    return sharedResults;
+  },
+
+  saveSharedData: function (results) {
+    sharedResults = results;
+  },
+
+  getLoggedUId: function () {
+    console.log(userId);
+    return userId;
+  },
+
+  saveLoggedUId: function (results) {
+    userId = results;
   },
 
   /**
@@ -58,8 +77,16 @@ AppDispatcher.register(function (payload) {
       StatusStore.saveStatusData(payload.action.statusdata);
       StatusStore.emitChange();
       break;
+    case (ActivityFeedConstants.GETSHAREDDATA):
+      StatusStore.saveSharedData(payload.action.shareddata);
+      StatusStore.emitChange();
+      break;
     case (ActivityFeedConstants.GETPROFILEPOSTS):
       StatusStore.saveprofileposts(payload.action.posts);
+      StatusStore.emitChange();
+      break;
+    case (ActivityFeedConstants.GETLOGGEDUSERID):
+      StatusStore.saveLoggedUId(payload.action.userId);
       StatusStore.emitChange();
       break;
   }

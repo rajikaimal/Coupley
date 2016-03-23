@@ -4,7 +4,6 @@ import ActivityContainer from './activityContainer.react';
 import ActivityList from './activityListComp.react';
 
 const ActivityMain = React.createClass({
-
     render: function () {
         return (
             <div>
@@ -15,7 +14,6 @@ const ActivityMain = React.createClass({
                     <ActivityContainer/>
                 </div>
             </div>
-
         );
     }
 });

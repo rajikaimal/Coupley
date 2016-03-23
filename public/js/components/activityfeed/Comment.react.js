@@ -1,6 +1,4 @@
 import React from 'react';
-import CommentAction from '../../actions/ActivityFeed/CommentAction';
-import CommentStore from '../../stores/CommentStore';
 import Card from 'material-ui/lib/card/card';
 import ListItem from 'material-ui/lib/lists/list-item';
 import List from 'material-ui/lib/lists/list';
@@ -13,9 +11,9 @@ var Comment = React.createClass({
             <div>
                 <Card>
                     <ListItem
-                        leftAvatar={<Avatar src="http://www.db18.com/hairstyles/hairstylepics/boys/boy_hairstyle_112.jpg" />}
-                        primaryText={this.props.firstName}
-                        secondaryText={<p>{this.props.commentText}</p>}
+                        leftAvatar={<Avatar src="https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg" />}
+                        primaryText={this.props.cfirstName}
+                        secondaryText={<p>{this.props.comment_txt}</p>}
                         secondaryTextLines={1} />
                     <Divider inset={true} />
                 </Card>

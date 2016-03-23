@@ -5,23 +5,23 @@ var assign = require('object-assign');
 
 var CHANGE_EVENT = 'change';
 
-var searchLikes=[]; 
+var searchLikedUsers=[]; 
 
 var LikeStatusStore = assign({},EventEmitter.prototype, {
 
   /**
-   * Get liked status.
+   * Get liked usres.
    * return {object}
    */
-  getLikes: function() {
-    return searchLikes;
+  getLikedUsers: function() {
+    return searchLikedUsers;
   },
 
   /**
-   * Put results(liked status) to searchLikes.
+   * Put results(liked status) to searchLikedUsers.
    */
-  savelikes: function(results) {
-    searchLikes.push(results);
+  savelikedUsers: function(results) {
+    searchLikedUsers.push(results);
   },
 
   emitChange: function() {
@@ -38,8 +38,8 @@ var LikeStatusStore = assign({},EventEmitter.prototype, {
 
 AppDispatcher.register(function (payload) {
   switch (payload.action.actionType) {
-    case (LikeConstants.LIKESTATUS):
-      LikeStatusStore.savelikes(payload.action.likestatus);
+    case (LikeConstants.GETUSERS):
+      LikeStatusStore.savelikedUsers(payload.action.likedUsers);
       LikeStatusStore.emitChange();
       break;
 	}
