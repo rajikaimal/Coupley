@@ -12,7 +12,7 @@ class ThreadMessage extends Migration
      */
     public function up()
     {
-      Schema::create('messages', function (Blueprint $table) {
+        Schema::create('messages', function (Blueprint $table) {
         $table->increments('mid');
         $table->text('message');
         $table->string('sender_un');
