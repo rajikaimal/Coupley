@@ -40,6 +40,10 @@ var LoginStore = assign({}, EventEmitter.prototype, {
     return localStorage.getItem('user');
   },
 
+  getUsername: function () {
+    return localStorage.getItem('username');
+  },
+
   emitChange: function () {
     this.emit(CHANGE_EVENT);
   },

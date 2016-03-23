@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Thread extends Model
 {
     protected $table = 'chats';
-    protected $table1 = 'smilies';
+  
 }
