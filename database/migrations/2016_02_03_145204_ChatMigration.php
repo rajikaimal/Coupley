@@ -12,7 +12,7 @@ class ChatMigration extends Migration
      */
     public function up()
     {
-      // Schema::create('threads', function (Blueprint $table) {
+        // Schema::create('threads', function (Blueprint $table) {
       //   $table->increments('trd_id');
       //   $table->string('user1_un')->index();
       //   $table->string('user2_un')->index();
@@ -26,7 +26,6 @@ class ChatMigration extends Migration
       //   $table->string('thread_id')->unsigned();
       //   $table->timestamps();
       // });
-
     }
 
     /**
@@ -36,7 +35,7 @@ class ChatMigration extends Migration
      */
     public function down()
     {
-          // Schema::drop('threads');
+        // Schema::drop('threads');
           // Schema::drop('messages');
     }
 }
