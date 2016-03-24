@@ -122,10 +122,13 @@ const ActivityList = React.createClass({
 
   _getLikedUsers: function () {
     this.setState({open: true});
-    return this.state.likedUsers.map((result) => {
-      return (lFirstName=result.firstname);
-    });
-
+    let self = this;
+    return (this.state.likedUsers.map(function(likeUsers) {
+      return (likeUsers.map(function(results) {
+        console.log(results);
+        return(lFirstName=results.firstname);
+      }));
+    }));
   },
 
   _getCommentList: function () {
@@ -357,12 +360,12 @@ const ActivityList = React.createClass({
             actions={likeActions}
             modal={true}
             open={this.state.open}>
-                
-            <ListItem 
-              id="likedListBox"
-              leftAvatar={<Avatar src="https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg" />}
-              primaryText={this.lFirstName} />
-            <Divider inset={true} />
+               
+              <ListItem 
+                id="likedListBox"
+                leftAvatar={<Avatar src="https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg" />}
+                primaryText={lFirstName} />
+              <Divider inset={true} />
           </Dialog>
 
         </div>
