@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Http\Controllers\EmailController;
 
 class AdminRegisterController extends Controller
 {
@@ -14,7 +15,7 @@ class AdminRegisterController extends Controller
      * @param string        $someString
      *
      *
-     * @return string
+     * @return json
      */
     public function checks(Request $request)
     {
@@ -24,6 +25,7 @@ class AdminRegisterController extends Controller
             $admin = new User;
             $admin->firstname = $request->firstname;
             $admin->lastname = $request->lastname;
+            $admin->username = $request->firstname.$request->lastname;
             $admin->job = $request->job;
             $admin->email = $request->email;
             $admin->role = 'admin';
