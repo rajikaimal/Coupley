@@ -103,6 +103,7 @@ var Header = React.createClass({
                   </ul>
                 </li>
 
+
                 <li className="dropdown user user-menu">
                   <a  className="dropdown-toggle" data-toggle="dropdown">
                     <img src={path + this.state.profilepic} className="user-image" alt="User Image"/>

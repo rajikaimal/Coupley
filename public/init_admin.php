@@ -29,13 +29,13 @@
 <script src="dist/js/ripples.min.js"></script>
 <script src="dist/js/admin/bootstrap.min.js"></script>
 <script src="dist/css/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-<script src="dist/js/admin/app.min.js"></script>
-<script src="dist/js/admin/demo.js"></script>
 <script>
     $.material.init();
     var socket = io('http://localhost:8080');
 </script>
 <script src="bundle.js"></script>
+<script src="dist/js/admin/app.min.js"></script>
+<script src="dist/js/admin/demo.js"></script>
 
 
 </body>
