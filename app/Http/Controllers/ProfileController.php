@@ -49,9 +49,9 @@ class ProfileController extends Controller
         $email = $request->email;
         try {
             //$userDetails = User::where('email', $email)->get();
-            $userDetails = \DB::select(\DB::raw('
-                SELECT id,firstname,lastname,orientation,email,country,gender,username,profilepic,birthday,TIMESTAMPDIFF(YEAR, birthday, CURDATE()) AS age from users where id=11
-            '));
+            $userDetails = \DB::select(\DB::raw("
+                SELECT id,firstname,lastname,orientation,email,country,gender,username,profilepic,birthday,TIMESTAMPDIFF(YEAR, birthday, CURDATE()) AS age from users where email='". $email ."'
+            "));
             //$userDetails = array_merge($userDetails->toArray(), $age->toArray());
             //$age = 0;
             return response()->json(['user' => $userDetails, 'status' => 200]);
