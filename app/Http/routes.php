@@ -53,6 +53,11 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('share', 'ActivityFeedController@addshare');
     Route::post('deleteStatus', 'ActivityFeedController@deleteStatus');
     Route::post('edit_status', 'ActivityFeedController@editStatus');
+
+   //Retrive Trendslist
+    Route::get('gettrendslist', 'TrendsController@gettrends');
+    //
+
     //Return profile data
     Route::get('profile', 'ProfileController@profile');
     //Return profile picture
