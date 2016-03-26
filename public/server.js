@@ -5,13 +5,11 @@ var mysql      = require('mysql');      /*  Require HTTP module and create serve
 var connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: '',
+  password: 'miyoungrae123',
   database: 'Coupley',
 });
 var connectedUser = {};
 var Likedusers = [];
-
-
 
 connection.connect();
 
@@ -22,7 +20,6 @@ server.listen(8081);
  Retrive data when a client connect.
  **/
 io.on('connection', function (socket) {
-
 
   /*
    Retrive loged user information.
@@ -65,7 +62,7 @@ io.on('connection', function (socket) {
    };
 
     connection.query("SELECT trd_id FROM threads WHERE user1_un IN ('" + post1.user1_un + "','" + post1.user2_un + "') AND user2_un IN ('" + post1.user1_un  + "','" + post1.user2_un + "') ", function (err, result) {
-      if (Object.keys(result).length==0) {
+      if (Object.keys(result).length == 0) {
         connection.query('INSERT INTO threads SET ?', post1, function (err, result) {
           connection.query("SELECT trd_id FROM threads  WHERE user1_un IN ('" + post1.user1_un + "','" + post1.user2_un + "') AND user2_un IN ('" + post1.user1_un + "','" + post1.user2_un + "') ", function (err, result) {
             post.thread_id = result[0].trd_id; });
@@ -106,7 +103,5 @@ io.on('connection', function (socket) {
     console.log(socket.username + ' Disonnected!');
 
   });
-
-
 
 });
