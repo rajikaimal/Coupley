@@ -9,6 +9,7 @@ import ProfileActions from '../../actions/admin/ProfileActions';
 import ProfileStore from '../../stores/admin/ProfileStore';
 import NotificationAction from  '../../actions/admin/AdminNotificationActions';
 import NotificationStore from '../../stores/NotificationStore';
+
 const path = '../../../../img/profilepics/';
 var Header = React.createClass({
   getInitialState: function () {
@@ -119,7 +120,6 @@ var Header = React.createClass({
                       </ul>
                     </li>
                     <li className="footer">
-                      <a >View all</a>
                     </li>
                   </ul>
                 </li>
