@@ -7,22 +7,71 @@ import LoginStore from '../../stores/LoginStore';
 import HeaderActions from '../../actions/HeaderActions';
 import ProfileActions from '../../actions/admin/ProfileActions';
 import ProfileStore from '../../stores/admin/ProfileStore';
+import NotificationAction from  '../../actions/admin/AdminNotificationActions';
+import NotificationStore from '../../stores/NotificationStore';
 const path = '../../../../img/profilepics/';
 var Header = React.createClass({
   getInitialState: function () {
-    return ProfileStore.getuserdata();
+    return {
+      data:ProfileStore.getuserdata(),
+      notificationCount:NotificationStore.getNumber(),
+      listNotification: NotificationStore.getList(),
+    };
   },
 
   componentDidMount: function () {
     var user1 = localStorage.getItem('id');
     socket.emit('LoggedUser', user1);
-    ProfileStore.addChangeListener(this._onChange);
     ProfileActions.getAdminProfileData();
-    document.getElementById('rerender').click();
+    ProfileStore.addChangeListener(this._onChange);
+    NotificationAction.getList();
+    NotificationStore.addChangeListener(this._onChangeList);
+    NotificationAction.getInitialNo();
+    NotificationStore.addChangeListener(this._onChangeNotification);
+
+    var self = this;
+    socket.on('notifyRegistration', function (data) {
+      NotificationAction.updateListFromSocket(data);
+      self.setState({
+        notificationCount: ++self.state.notificationCount,
+      });
+    });
   },
 
   _onChange: function () {
     this.setState(ProfileStore.getuserdata());
+  },
+
+  setOne:function () {
+    NotificationAction.setOne();
+    NotificationStore.addChangeListener(this._onChangeNotification);
+  },
+
+  _onChangeNotification: function () {
+    this.setState({
+      notificationCount: NotificationStore.getNumber(),
+    });
+  },
+
+  _onChangeList: function () {
+    this.setState({
+      listNotification: NotificationStore.getList(),
+    });
+  },
+
+  _renderNotificationList: function () {
+    let self = this;
+    console.log(this.state.listNotification);
+    return this.state.listNotification.map((Notification) => {
+      return (
+          <li>
+          <a >
+          <i className="fa fa-users text-aqua"></i>
+          {Notification.content}
+          </a>
+          </li>
+      );
+    });
   },
 
   update:function () {
@@ -50,51 +99,23 @@ var Header = React.createClass({
               </a>
           </div>
           <nav className="nav bar navbar-static-top" role="navigation">
-            <a  className="sidebar-toggle" data-toggle="offcanvas" id="rerender" onCick={this.update} role="button" >
+            <a  className="sidebar-toggle" data-toggle="offcanvas" id="rerender"
+                onCick={this.update} role="button" >
               <span className="sr-only">Toggle navigation</span>
             </a>
             <div className="navbar-custom-menu">
               <ul className="nav navbar-nav">
-                <li className="dropdown notifications-menu">
+                <li className="dropdown notifications-menu" onClick={this.setOne}>
                   <a  className="dropdown-toggle" data-toggle="dropdown">
                     <i className="fa fa-bell-o"></i>
-                    <span className="label label-warning">10</span>
+                    <span className="label label-warning">{this.state.notificationCount}</span>
                   </a>
                   <ul className="dropdown-menu">
-                    <li className="header">You have 10 notifications</li>
+                    <li className="header">You have {this.state.notificationCount} notifications
+                    </li>
                     <li>
-
                       <ul className="menu">
-                        <li>
-                          <a >
-                            <i className="fa fa-users text-aqua"></i>
-                            5 new members joined today
-                          </a>
-                        </li>
-                        <li>
-                          <a >
-                            <i className="fa fa-warning text-yellow"></i>
-                            Very long description here that may not fit into the page and may cause design problems
-                          </a>
-                        </li>
-                        <li>
-                          <a >
-                            <i className="fa fa-users text-red"></i>
-                            5 new members joined
-                          </a>
-                        </li>
-                        <li>
-                          <a >
-                            <i className="fa fa-shopping-cart text-green"></i>
-                            25 sales made
-                          </a>
-                        </li>
-                        <li>
-                          <a >
-                            <i className="fa fa-user text-red"></i>
-                            You changed your username
-                          </a>
-                        </li>
+                        {this._renderNotificationList()}
                       </ul>
                     </li>
                     <li className="footer">
@@ -106,13 +127,15 @@ var Header = React.createClass({
 
                 <li className="dropdown user user-menu">
                   <a  className="dropdown-toggle" data-toggle="dropdown">
-                    <img src={path + this.state.profilepic} className="user-image" alt="User Image"/>
+                    <img src={path + this.state.profilepic} className="user-image"
+                         alt="User Image"/>
                     <span className="hidden-xs">{this.state.firstname}</span>
                   </a>
                   <ul className="dropdown-menu">
 
                     <li className="user-header">
-                      <img src={path + this.state.profilepic} className="img-circle" alt="User Image"/>
+                      <img src={path + this.state.profilepic} className="img-circle"
+                           alt="User Image"/>
                       <p>
                         {this.state.firstname} {this.state.lastname} - {this.state.job}
                         <small>Member since {this.state.created_at}</small>

@@ -5,7 +5,7 @@ var RegisterActions = {
   checks: function (credentials) {
 
     $.post('/admin-api/registerAdmin', credentials, function (data) {
-
+      socket.emit('register', credentials);
       if (data.status === 201) {
         swal('Successful!', 'New Administrator added to the system', 'success');
         setTimeout(function () {
