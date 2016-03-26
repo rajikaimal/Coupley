@@ -31,8 +31,8 @@ Route::group(['prefix' => 'api'], function () {
     //update user passwords
     Route::post('recoverpwd', 'AuthenticateController@reset');
 
-    Route::post('status', 'ActivityFeedController@addstatus');
-    Route::get('getstatus', 'ActivityFeedController@getstatus');
+    // Route::post('status', 'ActivityFeedController@addstatus');
+    // Route::get('getstatus', 'ActivityFeedController@getstatus');
     //Return previos chats
     Route::get('getpreviousmsg','ThreadController@getPreviousMessage');
     //Delete Messages
@@ -43,16 +43,46 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('getsearchconv','ThreadController@getSearchConv');
     //Serch Results of Previous messages
     Route::get('getonlineusers','ThreadController@getOnlineUsers');
-    Route::get('getpostId', 'ActivityFeedController@getpostId');
-    Route::post('likes', 'LikeController@addlikes');
-    Route::post('likepost', 'LikeController@like');
-    Route::post('unlikepost', 'LikeController@unlike');
-    Route::get('getlikestatus', 'LikeController@getlikestatus');
-    Route::post('comment', 'CommentController@addcomment');
-    Route::get('getcomment', 'CommentController@getcomments');
-    Route::post('share', 'ActivityFeedController@addshare');
-    Route::post('deleteStatus', 'ActivityFeedController@deleteStatus');
-    Route::post('edit_status', 'ActivityFeedController@editStatus');
+    // Route::get('getpostId', 'ActivityFeedController@getpostId');
+    // Route::post('likes', 'LikeController@addlikes');
+    // Route::post('likepost', 'LikeController@like');
+    // Route::post('unlikepost', 'LikeController@unlike');
+    // Route::get('getlikestatus', 'LikeController@getlikestatus');
+    // Route::post('comment', 'CommentController@addcomment');
+    // Route::get('getcomment', 'CommentController@getcomments');
+    // Route::post('share', 'ActivityFeedController@addshare');
+    // Route::post('deleteStatus', 'ActivityFeedController@deleteStatus');
+    // Route::post('edit_status', 'ActivityFeedController@editStatus');
+
+  //////////////
+  Route::post('status', 'ActivityFeedController@addStatus');
+//Return status
+Route::get('getstatus', 'ActivityFeedController@getStatus');
+//Return logged uder Id
+Route::get('getUserId', 'ActivityFeedController@getUserId');
+//Add a like to the status
+Route::post('likepost', 'LikeController@like');
+//Unlike the status
+Route::post('unlikepost', 'LikeController@unlike');
+//Return liked Users
+Route::get('getLikedUsers', 'LikeController@getLikedUsers');
+//Add a share
+Route::post('sharedStatus', 'ActivityFeedController@sharedStatus');
+//Unshare the status
+Route::post('unsharepost', 'ShareController@unshare');
+//Return share status
+Route::get('getsharestatus', 'ShareController@getsharestatus');
+//Add a comment to the status
+Route::post('addcomment', 'CommentController@addcomment');
+//Return comments data
+Route::get('getcomment', 'CommentController@getcomments');
+//Delete a status
+Route::post('deleteStatus', 'ActivityFeedController@deleteStatus');
+//Edit a status
+Route::post('edit_status', 'ActivityFeedController@editStatus');
+  ////////////
+
+
 
    //Retrive Trendslist
     Route::get('gettrendslist', 'TrendsController@gettrends');

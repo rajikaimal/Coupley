@@ -51,8 +51,8 @@ function validateStatusText(textStatus) {
 };
 
 const PreviousChatContainer = React.createClass({
-   
-  
+
+
 
   handleOpen: function () {
     this.setState({ open: true });
@@ -61,7 +61,7 @@ const PreviousChatContainer = React.createClass({
   handleClose: function () {
     this.setState({ open: false });
   },
-  
+
 
   getInitialState: function () {
     return {
@@ -78,7 +78,7 @@ const PreviousChatContainer = React.createClass({
   },
 
   handleChange:function (event, index, value) {
-    
+
     this.setState({
       value: event,
     });
@@ -149,7 +149,7 @@ const PreviousChatContainer = React.createClass({
   },
 
   render: function () {
-  
+
   const actions = [
       <FlatButton
         label="Cancel"
@@ -182,7 +182,7 @@ const PreviousChatContainer = React.createClass({
                         <div>
                          {this.previousMList()}
                         </div>
-       
+
       </div>
     </Tab>
         <Tab label="Message Request" >
@@ -204,11 +204,11 @@ const PreviousChatContainer = React.createClass({
         </Dialog>
       </div>
                         </div>
-       
+
       </div>
     </Tab>
     </Tabs>
-   
+
 
 
        </List>
