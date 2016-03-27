@@ -81,9 +81,9 @@ Route::group(['prefix' => 'api'], function () {
     //Route::get('profile/feed', 'ProfileController@getposts');
     //Upload profile pic
     Route::post('profile/profilepic', 'ProfileController@uploadpic');
-    
+
     //upload multiple photos
-    
+
     Route::post('profile/uploadmultiple', 'ProfileController@uploadmultiple');
     //Returns about data
     Route::get('profile/about', 'ProfileController@getabout');
