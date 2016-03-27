@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\AdminNotification;
-use App\User;
 use Illuminate\Database\QueryException;
 
 class AdminNotificationController extends Controller
@@ -26,7 +24,8 @@ class AdminNotificationController extends Controller
         try {
             $notifications = AdminNotification::where('readNotification', 0)
                 ->update(['readNotification' => 1]);
-            return response()->json(['status' => 200, 'done' => true,'count' => 0], 200);
+
+            return response()->json(['status' => 200, 'done' => true, 'count' => 0], 200);
         } catch (QueryException $e) {
             return response()->json(['status' => 200], 200);
         }
@@ -34,7 +33,6 @@ class AdminNotificationController extends Controller
 
     public function getNotificationNumber()
     {
-
         try {
             $notifications = AdminNotification::where('readNotification', 0)->count();
 
@@ -46,7 +44,6 @@ class AdminNotificationController extends Controller
 
     public function getNotificationList()
     {
-
         try {
             $notifications = AdminNotification::where('readNotification', 0)->limit(5)->get();
 
