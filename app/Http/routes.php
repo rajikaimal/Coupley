@@ -201,6 +201,13 @@ Route::group(['prefix' => 'admin-api'], function () {
     //cards data
     Route::get('userStats', 'GraphController@userStats');
 
+    //retrives no of notifications
+    Route::get('notifications', 'AdminNotificationController@getNotificationNumber');
+    //retrives all unread notifications
+    Route::get('notificationlist', 'AdminNotificationController@getNotificationList');
+    //sets notifications to read notifications
+    Route::get('readNotifications', 'AdminNotificationController@setOne');
+
 });
 
 Route::get('/feeds', function () {
