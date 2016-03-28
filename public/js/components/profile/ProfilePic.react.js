@@ -271,7 +271,7 @@ const ProfilePic = React.createClass({
           <div>
             {
                 this.state.editingPic ? <div className="col-sm-3 col-md-3 col-lg-3">
-                    <Dropzone onDrop={this.onDrop}>
+                    <Dropzone onDrop={this.onDrop} multiple={false} accept="image/*">
                         <div>Try dropping some files here, or click to select files to upload.</div>
                         <img style={previewStyle} src={this.state.preview} />
                     </Dropzone>

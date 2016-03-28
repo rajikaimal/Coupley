@@ -126,6 +126,9 @@ const Register = React.createClass({
   _handleSubmitEvent: function() {
     //let username = this.refs.username.getValue();
     let email = this.refs.email.getValue();
+    if(email == "" || email == null) {
+      email = this.state.email;
+    }
     if(this.state.gender == 1) {
       var gender = "male";  
     }
@@ -167,18 +170,21 @@ const Register = React.createClass({
     else {
       val = true;
     }
-    let birthday = "";
-    if(typeof window.birthday == undefined) {
-      birthday = this.state.birthday
-    } else {
-      birthday = window.birthday;
-    }
+    //let birthday;
+    // if(typeof window.birthday === 'undefined') {
+    //   // birthday = this.state.birthday
+    //   // alert('done' + birthday);
+    //   alert('wahatt');
+    // } else {
+    //   birthday = window.birthday;
+    // }
+    // return false;
 
     let credentials = {
       username: localStorage.getItem('username'),
       email: email,
       gender: gender,
-      birthday: birthday,
+      birthday: this.state.birthday,
       orientation: orientation
     };
     if (val) {
@@ -209,7 +215,10 @@ const Register = React.createClass({
   },
   _getDate: function(event, value) {
     let birthday = value.getFullYear() + '-' + value.getMonth() + '-' + value.getDate();
-    window.birthday = birthday.toString();
+    //window.birthday = birthday.toString();
+    this.setState({
+      birthday: birthday.toString()
+    })
   },
   _handleCancel: function() {
     window.location = "/#/profile/activityfeed";
@@ -227,7 +236,7 @@ const Register = React.createClass({
                 <TableRowColumn>Email</TableRowColumn>
                 <TableRowColumn> 
                   <TextField 
-                    value={this.state.email} hintStyle={styles.errorStyle} fullwidth={true} ref="email"/>
+                    hintText={this.state.email} hintStyle={styles.errorStyle} fullwidth={true} ref="email"/>
               
                 <br/><span style={error} id="email"> </span>
                 </TableRowColumn>
@@ -236,7 +245,7 @@ const Register = React.createClass({
                 <TableRowColumn>Birthday</TableRowColumn>
                 <TableRowColumn>
                   {this.state.birthday}
-                  <DatePicker minDate={minYear} maxDate={year} hintText="select your birthday" onChange={this._getDate}/>
+                  <DatePicker minDate={minYear} maxDate={year} hintStyle={styles.errorStyle} hintText="change your birthday" onChange={this._getDate}/>
                   <br/><span style={error} id="birthday"> </span>
                 </TableRowColumn>
               </TableRow>

@@ -34,14 +34,15 @@ Route::group(['prefix' => 'api'], function () {
     // Route::post('status', 'ActivityFeedController@addstatus');
     // Route::get('getstatus', 'ActivityFeedController@getstatus');
     //Return previos chats
-    Route::get('getpreviousmsg','ThreadController@getPreviousMessage');
+    Route::get('getpreviousmsg', 'ThreadController@getPreviousMessage');
     //Delete Messages
-    Route::post('deletemessage','ThreadController@deletemessage');
+    Route::post('deletemessage', 'ThreadController@deletemessage');
     //Retrive likedusers
-    Route::get('getlikedusers','ThreadController@getLikedUserList');
+    Route::get('getlikedusers', 'ThreadController@getLikedUserList');
     //Serch Results of Previous messages
-    Route::get('getsearchconv','ThreadController@getSearchConv');
+    Route::get('getsearchconv', 'ThreadController@getSearchConv');
     //Serch Results of Previous messages
+
     Route::get('getonlineusers','ThreadController@getOnlineUsers');
     Route::get('getMessage', 'ThreadController@getMessage');
     // Route::get('getpostId', 'ActivityFeedController@getpostId');
@@ -90,6 +91,19 @@ Route::post('edit_status', 'ActivityFeedController@editStatus');
     Route::get('gettrendssearchlist', 'TrendsController@getsearchtrends');
     //
 
+
+    Route::get('getonlineusers', 'ThreadController@getOnlineUsers');
+    Route::get('getpostId', 'ActivityFeedController@getpostId');
+    Route::post('likes', 'LikeController@addlikes');
+    Route::post('likepost', 'LikeController@like');
+    Route::post('unlikepost', 'LikeController@unlike');
+    Route::get('getlikestatus', 'LikeController@getlikestatus');
+    Route::post('comment', 'CommentController@addcomment');
+    Route::get('getcomment', 'CommentController@getcomments');
+    Route::post('share', 'ActivityFeedController@addshare');
+    Route::post('deleteStatus', 'ActivityFeedController@deleteStatus');
+    Route::post('edit_status', 'ActivityFeedController@editStatus');
+
     //Return profile data
     Route::get('profile', 'ProfileController@profile');
     //Return profile picture
@@ -118,6 +132,10 @@ Route::post('edit_status', 'ActivityFeedController@editStatus');
     //Route::get('profile/feed', 'ProfileController@getposts');
     //Upload profile pic
     Route::post('profile/profilepic', 'ProfileController@uploadpic');
+
+    //upload multiple photos
+
+    Route::post('profile/uploadmultiple', 'ProfileController@uploadmultiple');
     //Returns about data
     Route::get('profile/about', 'ProfileController@getabout');
 
@@ -162,12 +180,14 @@ Route::post('edit_status', 'ActivityFeedController@editStatus');
     Route::post('profile/updatemain', 'ProfileController@updateMain');
 
     //updates password of user profile
-    Route::post('profile/updatepassword', 'ProfileController@updatePassword');
+    Route::put('profile/updatepassword', 'ProfileController@updatePassword');
     //reports a user
     Route::post('profile/report', 'ProfileController@reportUser');
 
     //returns list of suggestions
     Route::get('suggestions', 'SuggestionController@getSuggestions');
+
+    Route::put('profile/lookingfor', 'LookingForController@update');
 
 });
 
@@ -231,6 +251,13 @@ Route::group(['prefix' => 'admin-api'], function () {
     Route::get('userRegistrations', 'GraphController@userRegistrations');
     //cards data
     Route::get('userStats', 'GraphController@userStats');
+
+    //retrives no of notifications
+    Route::get('notifications', 'AdminNotificationController@getNotificationNumber');
+    //retrives all unread notifications
+    Route::get('notificationlist', 'AdminNotificationController@getNotificationList');
+    //sets notifications to read notifications
+    Route::get('readNotifications', 'AdminNotificationController@setOne');
 
 });
 

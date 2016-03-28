@@ -119,7 +119,7 @@ const Header = React.createClass({
 				        	<Badge
 						      badgeContent={3}
 						      primary={true}>
-						    	<Link to={`/threads`}>
+						    	<Link to={`/threadmain`}>
 						      		<MessageIcon />
 					   			</Link>
 					   		</Badge>

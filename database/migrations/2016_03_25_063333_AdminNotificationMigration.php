@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class BlockedUsersMigration extends Migration
+class AdminNotificationMigration extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,12 @@ class BlockedUsersMigration extends Migration
      */
     public function up()
     {
-        Schema::create('blocked', function (Blueprint $table) {
+        Schema::create('AdminNotification', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->integer('blocked_user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('blocked_user_id')->references('id')->on('users');
+            $table->string('addedBy');
+            $table->string('added');
+            $table->string('content');
+            $table->boolean('readNotification');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class BlockedUsersMigration extends Migration
      */
     public function down()
     {
-        Schema::drop('blocked');
+        //
     }
 }

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Thread extends Model
+class LookingFor extends Model
 {
-    protected $table = 'chats';
+    protected $table = 'lookingfor';
 }
