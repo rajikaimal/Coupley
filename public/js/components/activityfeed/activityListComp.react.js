@@ -67,6 +67,7 @@ function validateCommentText(textComment) {
 };
 
 var lFirstName;
+var likeCount;
   
 const ActivityList = React.createClass({
   getInitialState: function () {
@@ -76,6 +77,7 @@ const ActivityList = React.createClass({
       sharedResults: StatusStore.getSharedData(),
       likedUsers: LikeStatusStore.getLikedUsers(),
       commentResults: CommentStore.getCommentsData(),
+      likedCount: LikeStatusStore.getLikedCount(),
       liked: '',
       open: false,
       open1: false,
@@ -98,16 +100,18 @@ const ActivityList = React.createClass({
     };
     ActivityfeedAction.getCommentList(commentData);
 
-    let likeData = {
+    let LikedData = {
       postId: this.props.id,
     };
-    ActivityfeedAction.getLikedUsers(likeData);
+    ActivityfeedAction.getLikeCount(LikedData);
+
   },
 
   _onChange: function () {
     this.setState({sharedResults: StatusStore.getSharedData()});
     this.setState({likedUsers: LikeStatusStore.getLikedUsers()});
     this.setState({commentResults: CommentStore.getCommentsData()});
+    this.setState({likedCount: LikeStatusStore.getLikedCount()});
   },
 
   _getSharedItem: function () { 
@@ -120,13 +124,37 @@ const ActivityList = React.createClass({
     }
   },
 
+  _getLikedCount: function () {
+    let self = this;
+    return (this.state.likedCount.map(function(likes) {
+
+          console.log('lllllllllllllllllll');
+          console.log();
+      return (likes.map(function(result) {
+        console.log('eeeeeeeeeeeee');
+        console.log(result);    
+        if(self.props.id == result.post_id) {
+          likeCount=result.count;          
+        }
+      }));
+    }));
+  },
+
   _getLikedUsers: function () {
     this.setState({open: true});
+
+    let likeData = {
+      postId: this.props.id,
+    };
+    ActivityfeedAction.getLikedUsers(likeData);
+
     let self = this;
-    return (this.state.likedUsers.map(function(likeUsers) {
-      return (likeUsers.map(function(results) {
-        console.log(results);
-        return(lFirstName=results.firstname);
+    return (this.state.likedUsers.map(function(likes) {
+      return (likes.map(function(result) {
+        console.log('eeeeeeeeeeeee');
+        console.log(result);
+        lFirstName=result.firstname;       
+        
       }));
     }));
   },
@@ -163,6 +191,10 @@ const ActivityList = React.createClass({
     };
     ActivityfeedAction._deleteStatus(deleteData);
     },
+
+  _blockStatus: function () {
+
+  },
 
   _changeShareState:function() {
     let shareStatus = this.refs.shareBox.getValue();
@@ -302,7 +334,7 @@ const ActivityList = React.createClass({
                   <IconMenu iconButtonElement={iconButtonElement}>
                     <MenuItem primaryText="Edit" onClick={this.handleOpen}/>
                     <MenuItem primaryText="Remove" onClick={this._deleteStatus}/>
-                    <MenuItem primaryText="Block" />
+                    <MenuItem primaryText="Block" onClick={this._blockStatus}/>
                   </IconMenu> } />
 
               <CardText>
@@ -325,13 +357,17 @@ const ActivityList = React.createClass({
               <FlatButton label="Comment" onClick={this.setFocusToTextBox} />
               <FlatButton label="Share" onClick={this.handleOpenShare}  secondary={this.state.shared ? true : false}/>
               <Divider inset={true} />   
+
+              <div>
+                {this._getLikedCount()}
+              </div>
              
           </Card> 
 
           <div>
             <Card style={style2}>
               <Paper zDepth={1}>
-                <FlatButton label={!this.props.likesCount ? " " : this.props.likesCount + " Likes"} onClick={this._getLikedUsers}/>
+                <FlatButton label={(likeCount==0) ? " " : likeCount + " Likes"} onClick={this._getLikedUsers}/>
                 <FlatButton label="2 Shares"  />
               </Paper>
             </Card>

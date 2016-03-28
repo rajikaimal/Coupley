@@ -88,29 +88,49 @@ class ActivityFeedController extends Controller
         $uId = $request->userId;
 
         try {
-          $posts = \DB::select('SELECT p.id,p.firstname,p.type,p.attachment,p.post_text,p.post_id,p.created_at,p.pid,p.likesCount,q.sid,q.sfirstname,q.sattachment,q.spost_text,q.screated_at
-FROM(SELECT x.id as id,x.firstname as firstname,x.type as type,x.attachment as attachment,x.post_text as post_text,x.post_id as post_id,x.created_at as created_at,x.pid as pid,y.likesCount as likesCount
-    FROM (select a.id as id,a.firstname as firstname,a.type as type,a.attachment as attachment,a.post_text as post_text,a.post_id as post_id,a.created_at as created_at,l.post_id as pid
-              from (select id,firstname,type,attachment,post_text,post_id,created_at  
-                    from (select p.id,p.firstname,p.type,p.attachment,p.post_text,p.post_id,p.created_at
-                          from activityposts p, liked a
-                          where a.gotliked='.$uId.' and a.likeback=1 and p.userId=a.likeduser 
+          $posts = \DB::select('SELECT p.id,
+                                       p.firstname,
+                                       p.type,
+                                       p.attachment,
+                                       p.post_text,
+                                       p.post_id,
+                                       p.created_at,
+                                       p.pid,
+                                       p.likesCount,
+                                       q.sid,
+                                       q.sfirstname,
+                                       q.sattachment,
+                                       q.spost_text,
+                                       q.screated_at
+                                FROM(SELECT x.id as id,x.firstname as firstname,x.type as type,x.attachment as attachment,
+                                            x.post_text as post_text,x.post_id as post_id,x.created_at as created_at,x.pid as pid,
+                                            y.likesCount as likesCount
+                                     FROM (select a.id as id,a.firstname as firstname,a.type as type,a.attachment as attachment,
+                                                    a.post_text as post_text,a.post_id as post_id,a.created_at as created_at,
+                                                    l.post_id as pid
+                                           from (select id,firstname,type,attachment,post_text,post_id,created_at  
+                                                 from (select p.id,p.firstname,p.type,p.attachment,p.post_text,p.post_id,
+                                                                p.created_at
+                                                       from activityposts p, liked a
+                                                       where a.gotliked='.$uId.' and a.likeback=1 and p.userId=a.likeduser 
                                          
-                          union
+                                                        union
                                                                            
-                          select p.id,p.firstname,p.type,p.attachment,p.post_text,p.post_id,p.created_at
-                          from activityposts p
-                          where p.userId='.$uId.' ) as t1 ) a
+                                                      select p.id,p.firstname,p.type,p.attachment,p.post_text,p.post_id,
+                                                      p.created_at
+                                                      from activityposts p
+                                                      where p.userId='.$uId.' ) as t1 ) a
                 
-              Left JOIN (SELECT post_id FROM activitylikes WHERE UserId='.$uId.') l
-              ON a.id=l.post_id
-              order by a.created_at desc) x
+                                          Left JOIN (SELECT post_id FROM activitylikes WHERE UserId='.$uId.') l
+                                          ON a.id=l.post_id) x
              
-    Left JOIN (SELECT post_id,count(UserId) as likesCount FROM activitylikes) y
-    ON x.id = y.post_id) p
+                                     Left JOIN (SELECT post_id,count(UserId) as likesCount FROM activitylikes) y
+                                     ON x.id = y.post_id) p
     
-Left Join (select id as sid,firstname as sfirstname,attachment as sattachment,post_text as spost_text,created_at as screated_at from activityposts) q
-On p.post_id=q.sid');
+                                Left Join (select id as sid,firstname as sfirstname,attachment as sattachment,
+                                            post_text as spost_text,created_at as screated_at from activityposts) q
+                                On p.post_id=q.sid
+                                order by p.created_at desc');
 
 
             return response()->json(['posts' => $posts, 'status' => 200], 200);

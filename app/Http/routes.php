@@ -40,6 +40,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('likepost', 'LikeController@like');
     //Unlike the status
     Route::post('unlikepost', 'LikeController@unlike');
+    Route::get('getLikeCount','LikeController@getLikeCount');
     //Return liked Users
     Route::get('getLikedUsers', 'LikeController@getLikedUsers');
     //Add a share
