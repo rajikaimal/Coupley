@@ -17,7 +17,20 @@ var TrendsAction = {
     });
   },
 
-  
+	getTrendsSearchList:function (request) {
+		$.get('/api/gettrendssearchlist?trend='+request.trend, function (response) {
+			if (response.status == 200) {
+				AppDispatcher.handleViewAction({
+						actionType:TrendConstants.SEARCHTRENDS,
+						listofsearchtrends: response.stlist,
+					});
+			}else if (response.status == 505) {
+				console.log('Error 505');
+			}
+		});
+	},
+
+
 
 };
 

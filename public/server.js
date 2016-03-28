@@ -42,6 +42,8 @@ io.on('connection', function (socket) {
 
     }
   });
+
+
   /*
    Throws exception when error occured.
    **/
@@ -106,6 +108,8 @@ io.on('connection', function (socket) {
     console.log(socket.username + ' Disonnected!');
 
   });
+
+
 
 
 

@@ -5,6 +5,7 @@ var assign = require('object-assign');
 
 var CHANGE_EVENT = 'change';
 var TrendsList = [];
+var TrendsSearchList = [];
 
 var TrendsStore = assign({}, EventEmitter.prototype, {
 
@@ -25,6 +26,14 @@ var TrendsStore = assign({}, EventEmitter.prototype, {
      return TrendsList;
   },
 
+  saveTrendsSearchList:function (results) {
+    TrendsSearchList = results;
+  },
+
+   getTrendsSearchList:function () {
+     return TrendsSearchList;
+  },
+
 });
 
 AppDispatcher.register(function (payload) {
@@ -32,6 +41,10 @@ AppDispatcher.register(function (payload) {
     switch (payload.action.actionType) {
     	 case (TrendConstants.ALLTRENDS):
             TrendsStore.savetrendslist(payload.action.listoftrends);
+            TrendsStore.emitChange();
+            break;
+       case (TrendConstants.SEARCHTRENDS):
+            TrendsStore.saveTrendsSearchList(payload.action.listofsearchtrends);
             TrendsStore.emitChange();
             break;
 

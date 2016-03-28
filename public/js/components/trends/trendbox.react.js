@@ -28,15 +28,12 @@ const Trends = React.createClass({
        changeHandler: function(e) {
         if (typeof this.props.onTouchTap === 'function') {
             this.props.onTouchTap(e.target.primaryText);
-            console.log('wada kaloooo');
-            console.log(this.props.tid);
-
         }
     },
-   
+
 	 render:function(){
 	 	  return(
-		 	  	<ListItem primaryText={this.props.trend} id={this.props.tid} onTouchTap={this.changeHandler}/>
+		 	  	<ListItem primaryText={this.props.trends} id={this.props.tid} onTouchTap={this.changeHandler}/>
 	 	  	);
 	 }
 });

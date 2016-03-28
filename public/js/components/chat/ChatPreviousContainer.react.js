@@ -45,7 +45,7 @@ const PreviousChatContainer = React.createClass({
 
   getInitialState: function () {
     return {
-      results:ThreadStore.getpreviousmessage(initMessagges),
+      results:ThreadStore.getpreviousmessage(),
       statusText: '',
     };
   },
@@ -57,7 +57,7 @@ const PreviousChatContainer = React.createClass({
 
   _onChange: function () {
     if (SearchCeck) {
-      this.setState({ results:ThreadStore.getpreviousmessage(initMessagges) });
+      this.setState({ results:ThreadStore.getpreviousmessage() });
     } else if (!SearchCeck) {
       this.setState({ results:ThreadStore.getsearchconv() });
     }

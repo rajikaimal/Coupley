@@ -10,6 +10,7 @@ import ThreadActions from '../../actions/Thread/ThreadActions';
 import LoginStore from '../../stores/LoginStore';
 import RaisedButton from 'material-ui/lib/raised-button';
 import FlatButton from 'material-ui/lib/flat-button';
+import AutoComplete from 'material-ui/lib/auto-complete';
 import Dialog from 'material-ui/lib/dialog';
 
 const t1 = {
@@ -56,7 +57,7 @@ const SelectFieldExampleSimple = React.createClass({
 
   handleOpen2: function () {
     this.setState({ open2: true });
-    console.log('click una');
+    console.log('set kala');
   },
 
   handleClose2: function () {
@@ -105,6 +106,17 @@ const SelectFieldExampleSimple = React.createClass({
   ThreadActions.block(localStorage.getItem('chatusername'), localStorage.getItem('user'));
 },
 
+
+
+handleUpdateInput(text) {
+  console.log(text);
+  this.setState({
+    value: text
+  });
+  localStorage.setItem('chatusername', text);
+},
+
+
   render:function () {
 
     const actions = [
@@ -137,17 +149,28 @@ const SelectFieldExampleSimple = React.createClass({
 
         const actions2 = [
             <FlatButton
-              label="No"
+              label="Cancle"
               secondary={true}
               onTouchTap={this.handleClose2}
             />,
             <FlatButton
-              label="Yes"
+              label="Select"
               primary={true}
               keyboardFocused={true}
               onTouchTap={this.handleClose2}
             />,
           ];
+
+          const colors = [
+  'Red',
+  'Orange',
+  'Yellow',
+  'Green',
+  'Blue',
+  'Purple',
+  'Black',
+  'White',
+];
 
   //onClick={this._blockUser}
 
@@ -197,7 +220,12 @@ const SelectFieldExampleSimple = React.createClass({
         open={this.state.open2}
         onRequestClose={this.handleClose2}
       >
-        Are you sure you want to block this user?.
+      <AutoComplete
+      floatingLabelText="Enter Username"
+      onUpdateInput={this.handleUpdateInput}
+      filter={AutoComplete.caseInsensitiveFilter}
+      dataSource={colors}
+     />
       </Dialog>
 
     </div>

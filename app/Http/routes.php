@@ -43,6 +43,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('getsearchconv','ThreadController@getSearchConv');
     //Serch Results of Previous messages
     Route::get('getonlineusers','ThreadController@getOnlineUsers');
+    Route::get('getMessage', 'ThreadController@getMessage');
     // Route::get('getpostId', 'ActivityFeedController@getpostId');
     // Route::post('likes', 'LikeController@addlikes');
     // Route::post('likepost', 'LikeController@like');
@@ -86,6 +87,7 @@ Route::post('edit_status', 'ActivityFeedController@editStatus');
 
    //Retrive Trendslist
     Route::get('gettrendslist', 'TrendsController@gettrends');
+    Route::get('gettrendssearchlist', 'TrendsController@getsearchtrends');
     //
 
     //Return profile data

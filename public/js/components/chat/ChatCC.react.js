@@ -5,7 +5,7 @@ import FlatButton from 'material-ui/lib/flat-button';
 import ThreadStore from '../../stores/ThreadStore';
 import LoginStore from '../../stores/LoginStore';
 import Emojis from './emojis';
-var socket = io.connect('http://localhost:8081');
+var socket = io.connect('http://localhost:8081/');
 var User1 = LoginStore.getUsername();
 var User1Email = LoginStore.getEmail();
 
