@@ -61,13 +61,13 @@ const blocked = React.createClass({
     return (
         <div>
           <ListItem
-              style={{ backgroundColor: Colors.yellow100, height:120 }}
+              style={{ backgroundColor: Colors.red500, height:120 }}
               leftAvatar={<Avatar size="80" src={path + this.props.profilepic} />}
               secondaryText={
                    <p>
-                      <b> &#160;&#160;&#160;&#160;&#160;&#160;{this.props.firstname} {this.props.lastname} </b>
+                      <b style={{ color: Colors.yellow50 }}> &#160;&#160;&#160;&#160;&#160;&#160;{this.props.firstname} {this.props.lastname} </b>
                       <br/>
-                      <span style={{ color: Colors.darkBlack }}>&#160;&#160;&#160;&#160;&#160;&#160;{this.props.gender}</span>
+                      <span style={{ color: Colors.darkBlack }}>&#160;&#160;&#160;&#160;&#160;&#160;&#160;{this.props.gender}</span>
                     </p>
                     }
               secondaryTextLines={2}

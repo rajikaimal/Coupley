@@ -34,6 +34,9 @@ const Profile = React.createClass({
   componentDidUnmount: function() {
     ProfileVisitorActions.remove();  
   },
+  componentWillUnmount: function() {
+    ProfileVisitorActions.clearAll();
+  },
   _onChange: function() {
     this.setState({
       firstname: VisitorStore.getuserdata().firstname,

@@ -89,6 +89,15 @@ class UsersController extends Controller
         return $str;
     }
 
+    /**
+     * SendMail uses to send a mail
+     * to the users.
+     * @param email $email
+     * @param user $user
+     * @param password $pwd
+     *
+     * @return bool
+     */
     public function SendMail($email, $user, $pwd)
     {
         $mail = new PHPMailer(true);

@@ -12,4 +12,10 @@ module.exports = keyMirror({
   FEED: null,
   PROFILEPIC: null,
   VISITORPROFILEPIC: null,
+  VISITORABOUTLOAD: null,
+  ERR: null,
+  DONE: null,
+  BLOCKLIST: null,
+  CLEAR: null,
+  SUGGESTIONS: null,
 });

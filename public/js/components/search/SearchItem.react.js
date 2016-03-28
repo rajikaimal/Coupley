@@ -27,7 +27,7 @@ const linkStyle = {
 
 const SearchItem = React.createClass({
   _redirect: function() {
-    document.location = "/#/" + this.props.username;
+    document.location = "/#/" + this.props.username + "/about";
   },
   render: function() {
     return (

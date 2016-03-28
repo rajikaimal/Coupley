@@ -1,7 +1,15 @@
 <?php
-
+/*
+|--------------------------------------------------------------------------
+| ProfileController File
+|--------------------------------------------------------------------------
+|
+| Here is where all API requests related to profile are redirected
+| by routes files in order to handle the request and @return json responses
+| @author Rajika Imal
+|
+*/
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\User;
 use App\Likes;
@@ -9,52 +17,75 @@ use App\Blocks;
 use App\ActivityFeed;
 use App\About;
 use App\Post;
-use Illuminate\Http\Exception;
-
+use App\Reported;
 class ProfileController extends Controller
 {
+    /**
+     * Constructor uses JWT middleware to check whether request contains api-token.
+     *
+     *
+     *
+     *
+     * @return void
+     */
     public function __construct()
     {
-        //$this->middleware('jwt.auth');
+        $this->middleware('jwt.auth');
     }
-
-    /*
-        returns profile data for GET request
-        @return json
-    **/
+    /**
+     * get profile data for profile of each user profile.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function profile(Request $request)
     {
         $email = $request->email;
         try {
-            $userdetails = User::where('email', $email)->get();
-
-            return response()->json(['user' => $userdetails, 'status' => 200]);
+            //$userDetails = User::where('email', $email)->get();
+            $userDetails = \DB::select(\DB::raw("
+                SELECT id,firstname,lastname,orientation,email,country,gender,username,profilepic,birthday,TIMESTAMPDIFF(YEAR, birthday, CURDATE()) AS age from users where email='". $email ."'
+            "));
+            //$userDetails = array_merge($userDetails->toArray(), $age->toArray());
+            //$age = 0;
+            return response()->json(['user' => $userDetails, 'status' => 200]);
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 200], 200);
         }
     }
-
-    /*
-        returns profile picture for GET request
-        @return json
-    **/
+    /**
+     * get profile pics for the user profiles.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function getProfilePic(Request $request)
     {
         $username = $request->username;
         try {
             $profilepic = User::where('username', $username)->get(['profilepic']);
-
             return response()->json(['status' => 200, 'image' => '/img/profilepics/'.$profilepic[0]->profilepic]);
         } catch (Illuminate\Database\QueryException $e) {
         }
     }
-
+    /**
+     * get like status of a visitor's profile.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function getlikestatus(Request $request)
     {
-        $visitorusername = $request->visitorusername;
+        $visitorUsername = $request->visitorusername;
         $username = $request->username;
         try {
-            $result = Likes::where('user1', $visitorusername)
+            $result = Likes::where('user1', $visitorUsername)
                     ->where('user2', $username)->get();
         //return "false";
             if ($result->isEmpty()) {
@@ -63,33 +94,38 @@ class ProfileController extends Controller
                 return 'true';
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 200], 200);
         }
     }
-
-    /*
-        returns visitor profile data for GET request
-        @return json
-    **/
+    /**
+     * get visitor profile data.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function visitor(Request $request)
     {
         $username = $request->username;
         try {
-            if ($userdetails = User::where('firstname', $username)->get()) {
-                return response()->json(['user' => $userdetails, 'status' => 200], 200);
+            if ($userDetails = User::where('username', $username)->get()) {
+                return response()->json(['user' => $userDetails, 'status' => 200], 200);
             } else {
-                return response()->json(['user' => $userdetails, 'status' => 505], 505);
+                return response()->json(['user' => $userDetails, 'status' => 200], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 200], 200);
         }
     }
-
-    /*
-        handles POST request from client
-        adds a like to profile
-        @return json ... status of action
-    **/
+    /**
+     * add like to visitor's profile, handles POST request.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function like(Request $request)
     {
         $likedUsername = $request->likedUsername;
@@ -99,8 +135,7 @@ class ProfileController extends Controller
                     ->where('user2', $gotLikedUsername)->get();
             $result2 = Likes::where('user1', $gotLikedUsername)
                 ->where('user2', $likedUsername)->get();
-
-            if ($result1->isEmpty() && $result2->isEmpty()) {
+            if ($result1->isEmpty() || $result2->isEmpty()) {
                 $user1ID = User::where('username', $likedUsername)->get(['id']);
                 $user2ID = User::where('username', $gotLikedUsername)->get(['id']);
                 $like = new Likes;
@@ -112,16 +147,23 @@ class ProfileController extends Controller
                 if ($like->save()) {
                     return response()->json(['status' => 200], 200);
                 } else {
-                    return response()->json(['status' => 505], 505);
+                    return response()->json(['status' => 200], 200);
                 }
             } else {
-                return response()->json(['status' => 505], 505);
+                return response()->json(['status' => 200], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 200], 200);
         }
     }
-
+    /**
+     * unlike a visitor's profile handles POST request.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function unlike(Request $request)
     {
         $unlikedUsername = $request->unlikedUsername;
@@ -131,83 +173,83 @@ class ProfileController extends Controller
                     ->where('user2', $gotunLikedUsername)->get();
             $result2 = Likes::where('user1', $gotunLikedUsername)
                 ->where('user2', $unlikedUsername)->get();
-
             if ($result1 !== null && $result2 !== null) {
                 Likes::where('user1', $unlikedUsername)
                     ->where('user2', $gotunLikedUsername)
                     ->delete();
-
                 return response()->json(['status' => 200], 200);
             } else {
-                return response()->json(['status' => 505], 505);
+                return response()->json(['status' => 200], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 200], 200);
         }
     }
-
-    /*
-        Returns liked back status
-    **/
+    /**
+     * get liked back status to determine whether user and visitor have liked
+     * each other.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function likedbackstatus(Request $request)
     {
         $username = $request->username;
-        $visitorusername = $request->visitorusername;
-
+        $visitorUsername = $request->visitorusername;
         try {
-            $result = Likes::where('user1', $visitorusername)
+            $result = Likes::where('user1', $visitorUsername)
                     ->where('user2', $username)->get();
-
-            if ($result !== null) {
+            if (! $result->isEmpty()) {
                 return response()->json(['liked' => true], 200);
             } else {
                 return response()->json(['liked' => false], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 200], 200);
         }
     }
-
-    /*
-        Returns @json block status
-    **/
+    /**
+     * get block status of visitor.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function blockstatus(Request $request)
     {
-        $visitorusername = $request->visitorusername;
+        $visitorUsername = $request->visitorusername;
         $username = $request->username;
         try {
             $user1ID = User::where('username', $username)->get(['id']);
-            $user2ID = User::where('username', $visitorusername)->get(['id']);
-
+            $user2ID = User::where('username', $visitorUsername)->get(['id']);
             $result = Blocks::where('user_id', $user1ID[0]->id)
                 ->where('blocked_user_id', $user2ID[0]->id)
                 ->get();
-
             if ($result->isEmpty()) {
                 return response()->json(['blockstatus' => false], 200);
             } else {
                 return response()->json(['blockstatus' => true], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 200], 200);
         }
     }
-
     /*
         Returns @int status after blocking
     **/
     public function block(Request $request)
     {
-        $visitorusername = $request->visitorusername;
+        $visitorUsername = $request->visitorusername;
         $username = $request->username;
         try {
             $user1ID = User::where('username', $username)->get(['id']);
-            $user2ID = User::where('username', $visitorusername)->get(['id']);
-
+            $user2ID = User::where('username', $visitorUsername)->get(['id']);
             $result1 = Blocks::where('user_id', $user1ID[0]->id)
                 ->where('blocked_user_id', $user2ID[0]->id)
                 ->get();
-
             if ($result1->isEmpty()) {
                 if ($result1->isEmpty()) {
                     $block = new Blocks;
@@ -216,57 +258,61 @@ class ProfileController extends Controller
                     if ($block->save()) {
                         return response()->json(['status' => 200], 200);
                     } else {
-                        return response()->json(['status' => 505], 505);
+                        return response()->json(['status' => 200], 200);
                     }
                 }
             } else {
                 return response()->json(['status' => 500], 500);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 200], 200);
         }
     }
-
-    /*
-        Returns @int status after blocking
-    **/
+    /**
+     * get like status of a visitor's profile.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function unblock(Request $request)
     {
-        $visitorusername = $request->visitorusername;
+        $visitorUsername = $request->visitorusername;
         $username = $request->username;
-
         try {
             $user1ID = User::where('username', $username)->get(['id']);
-            $user2ID = User::where('username', $visitorusername)->get(['id']);
-
+            $user2ID = User::where('username', $visitorUsername)->get(['id']);
             if (Blocks::where('user_id', $user1ID[0]->id)
                 ->where('blocked_user_id', $user2ID[0]->id)
                 ->delete()
             ) {
                 return response()->json(['status' => 200], 200);
             } else {
-                return response()->json(['status' => 505], 505);
+                return response()->json(['status' => 200], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 200], 200);
         }
     }
-
-    /*
-        Returns @json profilepermission
-    **/
+    /**
+     * get profile permission.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function profilepermission(Request $request)
     {
-        $visitorusername = $request->visitorusername;
+        $visitorUsername = $request->visitorusername;
         $username = $request->username;
         try {
             $user1ID = User::where('username', $username)->get(['id']);
-            $user2ID = User::where('username', $visitorusername)->get(['id']);
-
+            $user2ID = User::where('username', $visitorUsername)->get(['id']);
             $result = Blocks::where('user_id', $user2ID[0]->id)
                 ->where('blocked_user_id', $user1ID[0]->id)
                 ->get();
-
             if (! $result->isEmpty()) {
                 return response()->json(['permission' => false, 'status' => 200], 200);
             } elseif ($result->isEmpty()) {
@@ -275,18 +321,21 @@ class ProfileController extends Controller
                 return response()->json(['status' => 200], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 200], 200);
         }
     }
-
-    /*
-        Returns @json activity feed
-    **/
+    /**
+     * get activity feed of a user.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function getposts(Request $request)
     {
         $username = $request->username;
         $userID = User::where('username', $username)->get(['id']);
-
         try {
             $results = ActivityFeed::where('user_id', $userID[0]->id)->get();
             if (! $results->isEmpty()) {
@@ -295,43 +344,73 @@ class ProfileController extends Controller
                 return response()->json(['status' => 200, 'data' => null], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 200], 200);
         }
     }
-
-    /*
-       @return @json uploads profile pic
-    **/
+    /**
+     * upload profile pic of a user.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function uploadpic(Request $request)
     {
         $destination = 'img/profilepics';
         try {
-            $apitoken = $request->input('apitoken');
+            //$apitoken = $request->input('apitoken');
             $email = $request->input('email');
             $username = $request->input('user');
             $file = $request->file('file')->move($destination, $username);
             $ext = $request->file('file')->getClientOriginalExtension();
-
             User::where('username', $username)
                 ->update(['profilepic' => $username]);
-
-            // About::where('user_id', $userID[0]->id)
-            //     ->update(['profilepic' => $username]);
-
             return response()->json(['status' => 200, 'done' => true], 200);
-        } catch (Exception $e) {
+        } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 200, 'done' => false], 200);
         }
     }
-
-    /*
-        Return @json edits activity ///\\\\
-    **/
+    /**
+     * upload profile pic of a user.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
+    public function uploadmultiple(Request $request)
+    {
+        $username = $request->input('user');
+        $destination = 'img/albums';
+        try {
+            $email = $request->input('email');
+//            $files = $request->file('files');
+            $file = $request->file('files')->move($destination, $username);
+            // for($val = 0; $val <= sizeof($files); $val++) {
+            //     //$request->file('file'[$val])->move($destination, $username);
+            // }
+            // foreach($files as $val) {
+            //     var_dump($files);
+            //     $file = $request->file('file')->move($destination, $username);    
+            // }
+            return response()->json(['status' => 200, 'done' => true], 200);
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 200, 'done' => false], 200);
+        }
+    }    
+    /**
+     * edit activity of a user.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function editactivity(Request $request)
     {
         $email = $request->email;
         $editActvity = $request->editActvity;
-
         try {
             $userID = User::where('email', $email)->get(['id']);
             if (About::where('user_id', $userID[0]->id)
@@ -344,36 +423,54 @@ class ProfileController extends Controller
                     return response()->json(['status' => 200, 'data' => null], 200);
                 }
             } else {
-                return response()->json(['status' => 505], 505);
+                return response()->json(['status' => 200], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 200], 200);
         }
     }
-
+    /**
+     * get about section data.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function getabout(Request $request)
     {
-        $email = $request->email;
-        try {
-            $userID = User::where('email', $email)->get(['id']);
-            $results = About::where('user_id', $userID[0]->id)->get();
-
-            return response()->json(['status' => 200, 'data' => $results], 200);
-        } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+        if ($email = $request->email) {
+            try {
+                $userID = User::where('email', $email)->get(['id']);
+                $results = About::where('user_id', $userID[0]->id)->get();
+                return response()->json(['status' => 200, 'data' => $results], 200);
+            } catch (Illuminate\Database\QueryException $e) {
+                return response()->json(['status' => 200], 200);
+            }
+        } elseif ($visitorUsername = $request->visitorusername) {
+            try {
+                $userID = User::where('username', $visitorUsername)->get(['id']);
+                $results = About::where('user_id', $userID[0]->id)->get();
+                return response()->json(['status' => 200, 'data' => $results], 200);
+            } catch (Illuminate\Database\QueryException $e) {
+                return response()->json(['status' => 200], 200);
+            }
         }
     }
-
-    /*
-        @return json posts by user
-    **/
-
+    /**
+     * get posts done by a user.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function getpostsX(Request $request)
     {
         $username = $request->username;
         try {
             $email = User::where('username', $username)->get(['email']);
-            $results = Post::where('email', $email[0]->email)->limit(4)->get();
+            $results = Post::where('email', $email[0]->email)->orderBy('created_at', 'desc')->get();
             if (! $results->isEmpty()) {
                 return response()->json(['status' => 200, 'posts' => $results], 200);
             } else {
@@ -383,7 +480,14 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
-
+    /**
+     * load more posts for pagination.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function loadMorePosts(Request $request)
     {
         $username = $request->username;
@@ -399,20 +503,22 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
-
-    /*
-        Updates basic information
-        @Return json
-    **/
-
+    /**
+     * edit basic information.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function editbasics(Request $request)
     {
         $firstname = $request->firstname;
         $lastname = $request->lastname;
         $country = $request->country;
-        $currentusername = $request->currentusername;
+        $currentUsername = $request->currentusername;
         try {
-            if (User::where('username', $currentusername)
+            if (User::where('username', $currentUsername)
                 ->update(['firstname' => $firstname, 'lastname' => $lastname, 'country' => $country])) {
                 return response()->json(['status' => 200], 200);
             }
@@ -420,15 +526,18 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
-
-    /*
-        Return @json edits about ... summary
-    **/
+    /**
+     * edit summary data.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function editsummary(Request $request)
     {
         $email = $request->email;
         $summary = $request->summary;
-
         try {
             $userID = User::where('email', $email)->get(['id']);
             if (About::where('user_id', $userID[0]->id)
@@ -436,21 +545,24 @@ class ProfileController extends Controller
             ) {
                 return response()->json(['status' => 200], 200);
             } else {
-                return response()->json(['status' => 505], 505);
+                return response()->json(['status' => 200], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 200], 200);
         }
     }
-
-    /*
-        Return @json edits about ... summary
-    **/
+    /**
+     * edit life data.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function editlife(Request $request)
     {
         $email = $request->email;
         $life = $request->life;
-
         try {
             $userID = User::where('email', $email)->get(['id']);
             if (About::where('user_id', $userID[0]->id)
@@ -458,21 +570,24 @@ class ProfileController extends Controller
             ) {
                 return response()->json(['status' => 200], 200);
             } else {
-                return response()->json(['status' => 505], 505);
+                return response()->json(['status' => 200], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 200], 200);
         }
     }
-
-    /*
-        Return @json edits about ... summary
-    **/
+    /**
+     * edit good at data.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function editgoodat(Request $request)
     {
         $email = $request->email;
         $goodat = $request->goodat;
-
         try {
             $userID = User::where('email', $email)->get(['id']);
             if (About::where('user_id', $userID[0]->id)
@@ -480,43 +595,49 @@ class ProfileController extends Controller
             ) {
                 return response()->json(['status' => 200], 200);
             } else {
-                return response()->json(['status' => 505], 505);
+                return response()->json(['status' => 200], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 200], 200);
         }
     }
-
-    /*
-        Return @json edits about ... summary
-    **/
+    /**
+     * edit thinking of data.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function editthinkingof(Request $request)
     {
         $email = $request->email;
-        $thinkingof = $request->thinkingof;
-
+        $thinkingOf = $request->thinkingof;
         try {
             $userID = User::where('email', $email)->get(['id']);
             if (About::where('user_id', $userID[0]->id)
-                ->update(['thinkingof' => $thinkingof])
+                ->update(['thinkingof' => $thinkingOf])
             ) {
                 return response()->json(['status' => 200], 200);
             } else {
-                return response()->json(['status' => 505], 505);
+                return response()->json(['status' => 200], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 200], 200);
         }
     }
-
-    /*
-        Return @json edits about ... summary
-    **/
+    /**
+     * edit favs data.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function editfavs(Request $request)
     {
         $email = $request->email;
         $favs = $request->favs;
-
         try {
             $userID = User::where('email', $email)->get(['id']);
             if (About::where('user_id', $userID[0]->id)
@@ -524,10 +645,185 @@ class ProfileController extends Controller
             ) {
                 return response()->json(['status' => 200], 200);
             } else {
-                return response()->json(['status' => 505], 505);
+                return response()->json(['status' => 200], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 200], 200);
+        }
+    }
+    /**
+     * permenantly deletes a user profile POST request.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
+    public function deleteProfile(Request $request)
+    {
+        $username = $request->username;
+        // \DB::raw("delete FROM users WHERE username = '$username'");
+        // return $username;
+        try {
+            if ($username) {
+                var_dump($username);
+                $q = 'DELETE FROM users where id = ?';
+                $status = \DB::delete($q, [17]);
+                return response()->json(['status' => 200, 'done' => true], 200);
+            } else {
+                return response()->json(['status' => 200, 'done' => false], 200);
+            }
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 200], 200);
+        }
+    }
+    /**
+     * Deactivates a user profile POST request.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
+    public function deactivateProfile(Request $request)
+    {
+        $username = $request->username;
+        try {
+            if (User::where('username', $username)
+                ->update(['status' => 'inactive'])) {
+                $emailController = new EmailController();
+                $user = User::where('username', $username)->get()[0];
+                $email = $user->email;
+                $name = $user->firstname;
+                $subject = 'Account deactivation !';
+                $content = 'Your account has been deactivated !';
+                $emailController->SendMail($email, $name, $subject, $content);
+                return response()->json(['status' => 200, 'done' => true], 200);
+            } else {
+                return response()->json(['status' => 200, 'done' => false], 200);
+            }
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 200], 200);
+        }
+    }
+    /**
+     * Retreives block list of a certain user GET /.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
+    public function blocklist(Request $request)
+    {
+        $username = $request->username;
+        try {
+            $userID = User::where('username', $username)->get(['id'])[0]->id;
+            $users = \DB::select(\DB::raw("
+               SELECT id,firstname,lastname,username,gender,profilepic from(
+                            SELECT id,firstname, lastname,username,orientation,gender,profilepic,role FROM `users` WHERE
+                                                    status = 'active'         
+                                                    ) as t where  
+                                                    role='user' and id IN (
+                                                        Select blocked_user_id
+                                                        from `blocked`
+                                                        where user_id=".$userID.'
+                                                    ) 
+            '));
+            // foreach ($blockedUsers as $value) {
+            //     $users[$value->blocked_user_id] = $value;
+            //     $users[$value->blocked_user_id] = User::where('id', $value->blocked_user_id)->get(['id', 'firstname', 'lastname', 'username', 'profilepic'])[0];
+            // }
+            return response()->json(['status' => 200, 'users' => $users], 200);
+            if ($userID) {
+                return response()->json(['status' => 200, 'done' => true], 200);
+            } else {
+                return response()->json(['status' => 200, 'done' => false], 200);
+            }
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 200], 200);
+        }
+    }
+    /**
+     * Updates a user profile main info POST request.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
+    public function updateMain(Request $request)
+    {
+        $username = $request->username;
+        $email = $request->email;
+        $gender = $request->gender;
+        $birthday = $request->birthday;
+        $orientation = $request->orientation;
+        try {
+            User::where('username', $username)
+                ->update(['email' => $email, 'username' => $username, 'gender' => $gender, 'orientation' => $orientation, 'birthday' => $birthday]);
+            return response()->json(['status' => 200, 'done' => true], 200);
+        } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 505], 505);
+        }
+    }
+    /**
+     * Reports user profile.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
+    public function reportUser(Request $request)
+    {
+        $visitorUsername = $request->visitorusername;
+        $username = $request->username;
+        $description = $request->comment;
+        $type = $request->type;
+        try {
+            $user1ID = User::where('username', $username)->get(['id'])[0]->id;
+            $user2ID = User::where('username', $visitorUsername)->get(['id'])[0]->id;
+            $report = new Reported;
+            $report->user_id = $user1ID;
+            $report->reported_user_id = $user2ID;
+            $report->description = $description;
+            $report->status = $type;
+            $report->save();
+            return response()->json(['status' => 200, 'done' => true], 200);
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 200], 200);
+        }
+    }
+    /**
+     * Updates password of user profile.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
+    public function updatePassword(Request $request)
+    {
+        $username = $request->username;
+        $newPassword = \Hash::make($request->password);
+        
+        try {
+            $user = User::where('username', $username)->get()[0];
+            $email = $user->email;
+            $name = $user->firstname;
+            $subject = 'Password change';
+            $content = "You password was changed ! <br/>
+                If you didnt make this change please follow this link to reset your password <br/>
+                <a href='http://localhost:3000/#/forgotpwd'> Reset </a> 
+            ";
+            User::where('username', $username)
+                ->update(['password' => $newPassword]);
+            $emailController = new EmailController();
+            $emailController->SendMail($email, $name, $subject, $content);
+            return response()->json(['status' => 200, 'done' => true], 200);
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 200], 200);
         }
     }
 }

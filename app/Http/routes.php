@@ -30,6 +30,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('register/checkemail', 'RegisterController@checkemail');
     //update admin passwords
     Route::post('recoverpwd', 'AuthenticateController@reset');
+
     //Add a status
     Route::post('status', 'ActivityFeedController@addStatus');
     //Return status
@@ -40,7 +41,6 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('likepost', 'LikeController@like');
     //Unlike the status
     Route::post('unlikepost', 'LikeController@unlike');
-    Route::get('getLikeCount','LikeController@getLikeCount');
     //Return liked Users
     Route::get('getLikedUsers', 'LikeController@getLikedUsers');
     //Add a share
@@ -57,6 +57,17 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('deleteStatus', 'ActivityFeedController@deleteStatus');
     //Edit a status 
     Route::post('edit_status', 'ActivityFeedController@editStatus');
+
+    //Return previos chats
+    Route::get('getpreviousmsg', 'ThreadController@getPreviousMessage');
+    //Delete Messages
+    Route::post('deletemessage', 'ThreadController@deletemessage');
+    //Retrive likedusers
+    Route::get('getlikedusers', 'ThreadController@getLikedUserList');
+    //Serch Results of Previous messages
+    Route::get('getsearchconv', 'ThreadController@getSearchConv');
+    //Serch Results of Previous messages
+    Route::get('getonlineusers', 'ThreadController@getOnlineUsers');
     //Return profile data
     Route::get('profile', 'ProfileController@profile');
     //Return profile picture
@@ -85,6 +96,10 @@ Route::group(['prefix' => 'api'], function () {
 //    Route::get('profile/feed', 'ProfileController@getposts');
     //Upload profile pic
     Route::post('profile/profilepic', 'ProfileController@uploadpic');
+    
+    //upload multiple photos
+    
+    Route::post('profile/uploadmultiple', 'ProfileController@uploadmultiple');
     //Returns about data
     Route::get('profile/about', 'ProfileController@getabout');
 
@@ -102,6 +117,43 @@ Route::group(['prefix' => 'api'], function () {
     Route::put('profile/edit/thinkingof ', 'ProfileController@editthinkingof');
     Route::put('profile/edit/favs ', 'ProfileController@editfavs');
     Route::put('profile/edit/activity ', 'ProfileController@editactivity');
+
+    //End of edit routes
+
+    Route::post('profile/edit/deleteprofile', 'ProfileController@deleteProfile');
+    Route::post('profile/edit/deactivateprofile', 'ProfileController@deactivateProfile');
+
+    //posts feeback from user profile
+    Route::post('feedback', 'UsersController@postFeedback');
+    Route::get('instagram/init', 'InstagramController@init');
+    Route::get('profile/blocklist', 'ProfileController@blocklist');
+
+    //retrives no of notifications
+    Route::get('profile/notifications', 'NotificationController@getNotificationNumber');
+    //retrives all unread notifications
+    Route::get('profile/notificationlist', 'NotificationController@getNotificationList');
+    //retrives liked list of a certain user
+    Route::get('profile/likedlist', 'LikeListController@getLikedList');
+
+    //retrives liked list of persons who have liked a certain user
+    Route::get('profile/likedlistme', 'LikeListController@getLikedListMe');
+
+    //retrives likedback list of persons
+    Route::get('profile/likedbacklist', 'LikeListController@getLikedBackList');
+
+    //updates main sections info of profile
+    Route::post('profile/updatemain', 'ProfileController@updateMain');
+
+    //updates password of user profile
+    Route::put('profile/updatepassword', 'ProfileController@updatePassword');
+    //reports a user
+    Route::post('profile/report', 'ProfileController@reportUser');
+
+    //returns list of suggestions
+    Route::get('suggestions', 'SuggestionController@getSuggestions');
+
+    Route::put('profile/lookingfor', 'LookingForController@update');
+
 
 });
 Route::get('socket', 'SocketController@index');
@@ -121,6 +173,11 @@ Route::group(['prefix' => 'admin-api'], function () {
     //Return userslist
     Route::get('search', 'UsersController@friends');
     Route::get('blocked', 'UsersController@blocked');
+    //block certain user
+    Route::post('blockuser', 'UsersController@block');
+    //unblock certain user
+    Route::post('unblockuser', 'UsersController@Unblock');
+
     //Register new admins with RegisterConroller@register
     Route::post('registerAdmin', 'AdminRegisterController@checks');
     //Update admins
@@ -131,12 +188,12 @@ Route::group(['prefix' => 'admin-api'], function () {
     Route::post('profilepic', 'AdminRegisterController@uploadpic');
     //recover password
     Route::post('recoverpwd', 'UsersController@recover');
-    //block certain user
-    Route::post('blockuser', 'UsersController@block');
-    //unblock certain user
-    Route::post('unblockuser', 'UsersController@Unblock');
     //Return Admin profile data
     Route::get('adminprofile', 'UsersController@Adminprofile');
+    //Return details of all administrators
+    Route::get('adminInfo', 'AdminDetailsController@admins');
+    //deactivate administrator
+    Route::post('deactivateAdmin', 'AdminDeactivateController@deactivate');
 
     //feedbacks
     Route::get('timeline', 'FeedbackController@timeline');
@@ -146,7 +203,27 @@ Route::group(['prefix' => 'admin-api'], function () {
     Route::get('others', 'FeedbackController@other');
     //mark feedbacks
     Route::post('markfeed', 'FeedbackController@markfeed');
+
+    //pie graph data
+    Route::get('userStatus', 'GraphController@userStatus');
+    //line chart dat
+    Route::get('userRegistrations', 'GraphController@userRegistrations');
+    //cards data
+    Route::get('userStats', 'GraphController@userStats');
+
+    //retrives no of notifications
+    Route::get('notifications', 'AdminNotificationController@getNotificationNumber');
+    //retrives all unread notifications
+    Route::get('notificationlist', 'AdminNotificationController@getNotificationList');
+    //sets notifications to read notifications
+    Route::get('readNotifications', 'AdminNotificationController@setOne');
+
 });
+
+Route::get('/feeds', function () {
+    return Twitter::getUserTimeline(['screen_name' => 'rajikaimal', 'count' => 2, 'format' => 'json']);
+});
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes

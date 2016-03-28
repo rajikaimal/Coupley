@@ -16,6 +16,7 @@ import TableRowColumn from 'material-ui/lib/table/table-row-column';
 import TableBody from 'material-ui/lib/table/table-body';
 import Colors from 'material-ui/lib/styles/colors';
 import Countries from './countries.js';
+import DatePicker from 'material-ui/lib/date-picker/date-picker';
 
 const registerStyle = {
   marginLeft: 500
@@ -34,6 +35,13 @@ const styles = {
 const error = {
     color: Colors.red500
 };
+
+var year = new Date();
+var currentYear = year.getFullYear();
+year.setFullYear(currentYear - 18);
+
+var minYear = new Date();
+minYear.setFullYear(currentYear - 100);
 
 function validatefirstname(firstname) {
   if(firstname.length >= 50) {
@@ -127,25 +135,25 @@ function validateEmail(email) {
 function validatePassword(password) {
   if(password.length < 6) {
     return {
-      "error": "password length <br/> must be 6 or more"
+      "error": "*password length <br/> must be 6 or more"
     }
   }
   let re = /[0-9]/;
   if(!re.test(password)) {
     return {
-      "error": "password must <br/> contain a number"
+      "error": "*password must <br/> contain a number"
     }
   }
   re = /[a-z]/;
   if(!re.test(password)) {
     return {
-      "error": "password must <br/> contain a lowercase letter"
+      "error": "*password must <br/> contain a lowercase letter"
     }
   }
   re = /[A-Z]/;
   if(!re.test(password)) {
     return {
-      "error": "password must <br/> contain a uppercase letter"
+      "error": "*password must <br/> contain a uppercase letter"
     }
   }
   else {
@@ -155,11 +163,15 @@ function validatePassword(password) {
 
 const Register = React.createClass({
   getInitialState: function() {
+    document.body.style.background = 'url(/img/register.jpg)';
     return {
       gender: 0,
       orientation: 0,
       country: 0
     }
+  },
+  componentDidMount: function() {
+    year = new Date().setFullYear(2010);
   },
   _handleRegisterClickEvent: function() {
     let firstname = this.refs.firstname.getValue();
@@ -203,9 +215,9 @@ const Register = React.createClass({
       document.getElementById('email').innerHTML = 'Invalid Email !';
       val = false;
     }
-    if(! validatePassword(password)) {
-      val = false;
+    if(validatePassword(password).error) {
       document.getElementById('password').innerHTML = validatePassword(password).error; 
+      val = false;
     }
     if(this.state.country == 0) {
       val = false;
@@ -230,6 +242,7 @@ const Register = React.createClass({
       gender: gender,
       password: password,
       country: country,
+      birthday: window.birthday,
       orientation: orientation
     };
     if (val) {
@@ -279,6 +292,10 @@ const Register = React.createClass({
         RegisterActions.checkEmail(email);
     }
   },
+  _getDate: function(event, value) {
+    let birthday = value.getFullYear() + '-' + value.getMonth() + '-' + value.getDate();
+    window.birthday = birthday.toString();
+  },
   render: function() {
     return (
       <div style={registerStyle}>
@@ -319,6 +336,13 @@ const Register = React.createClass({
                 floatingLabelText="Email" hintStyle={styles.errorStyle} fullwidth={true} ref="email"/>
               
                 <br/><span style={error} id="email"> </span>
+                </TableRowColumn>
+              </TableRow>
+              <TableRow hoverable={false} hovered={false} selectable={false}>
+                <TableRowColumn>Birthday</TableRowColumn>
+                <TableRowColumn> 
+                  <DatePicker minDate={minYear} maxDate={year} hintText="select your birthday" onChange={this._getDate}/>
+                  <br/><span style={error} id="birthday"> </span>
                 </TableRowColumn>
               </TableRow>
               <TableRow hoverable={false} hovered={false} selectable={false}> 

@@ -3,8 +3,23 @@
  */
 import React from 'react';
 import { Link } from 'react-router';
+import PathStore from './../../stores/admin/PathStore';
 
 const Path = React.createClass({
+  getInitialState: function () {
+    return PathStore.getpath();
+  },
+
+  componentDidMount: function () {
+    PathStore.addChangeListener(this._onChange);
+  },
+
+  _onChange: function () {
+    this.setState(
+      PathStore.getpath()
+    );
+  },
+
   render: function () {
     return (
       <div className="path">
@@ -17,9 +32,9 @@ const Path = React.createClass({
             <li>
               <a >
                 <i className="fa fa-dashboard"></i>
-                Home</a>
+                HOME</a>
             </li>
-            <li className="active">Dashboard</li>
+            <li className="active">{this.state.path}</li>
           </ol>
         </section>
       </div>

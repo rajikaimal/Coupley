@@ -9,7 +9,7 @@ import FlatButton from 'material-ui/lib/flat-button';
 //import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import IconButton from 'material-ui/lib/icon-button';
 import Divider from 'material-ui/lib/divider';
-
+import PathStore from './../../../stores/admin/PathStore';
 const tilesData = [
   {
     img: '../../../../img/User_group_man_people_users_male.png',
@@ -35,17 +35,31 @@ const style = {
 
 const tileElements = tilesData.map(tile => <GridTile
     key={tile.img}
-    title={<FlatButton label={tile.title} secondary={true} style={style} linkButton={true} href={tile.path} />}
+    title={<FlatButton label={tile.title} secondary={true} style={style}
+    linkButton={true} href={tile.path} />}
 
 ><img src={tile.img}/></GridTile>);
 const gridListStyle = { width: 600, height: 220, overflowY: 'auto' };
 
 var GridListExampleSimple = React.createClass({
+  getInitialState: function () {
+    return PathStore.getpath();
+  },
+
+  componentDidMount: function () {
+    PathStore.addChangeListener(this._onChange);
+  },
+
+  _onChange: function () {
+    this.setState(
+      PathStore.getpath()
+    );
+  },
+
   render: function () {
     return (
         <div>
           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-around' }}>
-            {/* Basic grid list with mostly default options *//* Basic grid list with mostly default options */}
             <GridList
                 cellHeight={200}
                 style={gridListStyle}

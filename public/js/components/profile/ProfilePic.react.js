@@ -118,7 +118,8 @@ const ProfilePic = React.createClass({
             picture: '',
             country: 0,
             firstnameerr: '',
-            lastnameerr: ''
+            lastnameerr: '',
+            countryerr: '',
         }
     },
 
@@ -129,7 +130,7 @@ const ProfilePic = React.createClass({
 
     _onChange: function() {
       this.setState({
-        picture: ProfileStore.getprofilepic()
+        picture: ProfileStore.getProfilePic()
       });
     },
 
@@ -142,6 +143,14 @@ const ProfilePic = React.createClass({
         this.setState({
             editingProfile: !this.state.editingProfile
         });
+        for(var i = 0; i < Countries.length; i++) {
+            if (this.props.country == Countries[i].name) {
+                this.setState({
+                  country: Countries[i].code
+                })
+                break;
+            }
+        }
     },
     onDrop: function (files) {
         console.log(files);
@@ -166,7 +175,7 @@ const ProfilePic = React.createClass({
         fd.append('user', localStorage.getItem('username'));
         $.ajax({
             type: 'POST',
-            url: '/api/profile/profilepic',
+            url: '/api/profile/profilepic?token=' + localStorage.getItem('apitoken'),
             data: fd,
             contentType: false,
             processData: false,
@@ -175,9 +184,6 @@ const ProfilePic = React.createClass({
                 console.log(data);
                 if(data.done == true) {
                   ProfileActions.fetchProfilePicture(localStorage.getItem('apitoken'), localStorage.getItem('username'));
-                  // self.setState({
-                  //   editing: false
-                  // });
                   location.reload();
                 } else {
 
@@ -233,9 +239,13 @@ const ProfilePic = React.createClass({
         });
         val = false;
       }
+      if(this.state.country == 0) {
+        document.getElementById('country-err').innerHTML = "*invalid selection";
+        val = false;  
+      }
 
       if(val) {
-        ProfileActions.updatechanges(data);  
+        ProfileActions.updateChanges(data);  
       }
     },
 
@@ -251,18 +261,23 @@ const ProfilePic = React.createClass({
       });
     },
 
+    _settings: function() {
+      document.location = "/#/isettings/";
+    },
   render: function() {
     return (
       <div>
-      	<div className="panel-body">
+        <div className="panel-body">
           <div>
             {
                 this.state.editingPic ? <div className="col-sm-3 col-md-3 col-lg-3">
-                    <Dropzone onDrop={this.onDrop}>
+                    <Dropzone onDrop={this.onDrop} multiple={false} accept="image/*">
                         <div>Try dropping some files here, or click to select files to upload.</div>
                         <img style={previewStyle} src={this.state.preview} />
                     </Dropzone>
                 {this.renderSave()}
+
+               
                 </div> : <div className="col-sm-3 col-md-3 col-lg-3">
                             
                               <GridList
@@ -289,22 +304,27 @@ const ProfilePic = React.createClass({
                       ref="lastname" hintText="lastname" defaultValue={this.props.lastname} 
                       errorText={this.state.lastnameerr} />
               </div> : this.props.lastname} </h3>
-              <span> { this.state.editingProfile ? ''
-                       : '@' + this.props.username} </span> <br/>
+
+              <span> <b>{ this.state.editingProfile ? ''
+                       : '@' + this.props.username} </b> </span> <br/>
+
+              <span> <b> { this.state.editingProfile ? '' : this.props.age } </b> </span>
+              <br />
+
               <span> {this.state.editingProfile ? 
+                    <div>
+                      <DropDownMenu value={this.state.country} onChange={this.handleChangeCountry}>
+          
+                        {
+                          Countries.map((cntry) => {
+                            return (<MenuItem value={cntry.code} primaryText={cntry.name}/>);    
+                          })
+                        }
+                        
+                       </DropDownMenu>
 
-                    <DropDownMenu value={this.state.country} onChange={this.handleChangeCountry}>
-                        <MenuItem value={0} primaryText="Select value"/>
-                      {
-                        Countries.map((cntry) => {
-                          return (<MenuItem value={cntry.code} primaryText={cntry.name}/>);    
-                        })
-                      }
-                      
-                     </DropDownMenu>
-
-
-
+                       <span id="country-err" style={error}> </span>
+                    </div>
                      : this.props.country} </span>
                      {
                       this.state.editingProfile ? 
@@ -314,7 +334,6 @@ const ProfilePic = React.createClass({
                         </div>
                         : ''
                      }
-                     
               </div>
               <div className="col-sm-6 col-md-6 col-lg-6">
                   <div style={divStyle}>
@@ -327,11 +346,12 @@ const ProfilePic = React.createClass({
                       >
                           <MenuItem primaryText="Change profile picture" onTouchTap={this._editProfilePic} />
                           <MenuItem primaryText="Edit profile" onTouchTap={this._editProfile} />
+                          <MenuItem primaryText="Settings" onTouchTap={this._settings} />
                       </IconMenu>
                   </div>
             </div>
           </div>
-        </div> 	
+        </div>  
       </div>  
     );
   }

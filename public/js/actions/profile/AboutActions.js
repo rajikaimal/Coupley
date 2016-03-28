@@ -142,6 +142,31 @@ var AboutActions = {
       });
     });;
   },
+
+  updateLookingFor: function(data) {
+    console.log("sending req");
+    $.ajax({
+      url: '/api/profile/lookingfor?token=' + localStorage.getItem('apitoken'),
+      type: 'PUT',
+      data: 'username=' + localStorage.getItem('username') + '&location=' + data.location + '&minage=' + data.minage + '&maxage=' + data.maxage + '&relstatus=' + data.relstatus + '&shortterm=' + data.shortterm + '&longterm=' + data.longterm + '&casualsex=' + data.casualsex,
+      success: function (response) {
+        console.log(response);
+        if (response.status === 200) {
+          AppDispatcher.handleViewAction({
+            actionType: AboutConstants.FAVS,
+            favs: favs,
+          });
+        } else {
+
+        }
+      },
+    }).fail(function () {
+      AppDispatcher.handleViewAction({
+        actionType: AboutConstants.FAVS,
+        error: true,
+      });
+    });;
+  },
 };
 
 module.exports = AboutActions;
