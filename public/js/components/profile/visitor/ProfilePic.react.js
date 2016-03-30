@@ -69,6 +69,17 @@ const ProfilePic = React.createClass({
     ProfileVisitorActions.getBlockStatus();
 
     ProfileVisitorActions.fetchProfilePicture();
+
+    //invoke action method to increment visitor count in back-end via AJAX request
+    let visitorUsername = localStorage.getItem('username');
+    let str = window.location.hash;
+    let username = str.split(/[\/?]/)[1];
+
+    let data = {
+      visitorusername: visitorUsername,
+      username: username
+    };
+    ProfileVisitorActions.visitor(data);
   },
   _onChange: function() {
     if(VisitorStore.getLikeStatus() == "false") {
