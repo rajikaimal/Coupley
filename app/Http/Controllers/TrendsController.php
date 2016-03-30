@@ -113,7 +113,7 @@ class TrendsController extends Controller
                                          FROM activityposts
                                          WHERE post_text like '%#%') t
                                    WHERE trend IN (SELECT SUBSTRING(post_text,LOCATE('#',post_text),15) AS trend FROM activityposts WHERE post_text like '%#%' HAVING MAX(id))
-
+                                
                                     )"))) {
                        return response()->json(['inittrendposts' => $inittrendposts, 'status' => 200], 200);
             } else {
