@@ -8,26 +8,37 @@ import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
 import IconMenu from 'material-ui/lib/menus/icon-menu';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import Avatar from 'material-ui/lib/avatar';
+import TextField from 'material-ui/lib/text-field';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import FlatButton from 'material-ui/lib/flat-button';
+import AboutActions from '../../../actions/profile/visitor/AboutActions';
+import AboutStore from '../../../stores/VisitorAboutStore';
+import ErrorStore from '../../../stores/ErrorStore';
+import Snackbar from 'material-ui/lib/snackbar';
 
-const details = [{
-  "summary": "Summary of myself !",
-  "Age": "Hello !"
-}, {
-  "summary": "What I'm doing ?",
-  "Age": "Bla bla ..."
-},
-{
-  "summary": "Good at !",
-  "Age": "Bla bla ..."
-},
-{
-  "summary": "Favourite movies, books ...",
-  "Age": "Bla bla ..."
-},{
-  "summary": "Could live never without",
-  "Age": "Bla bla ..."
-}];
+//tap-event-plugin
+injectTapEventPlugin();
 
+function validate(data) {
+  if(data.length >= 100) {
+    return {
+      "error": "*limit exceeded"
+    }
+  }
+  else if(data === "") {
+    return {
+      "error": "*cannot be empty"
+    }
+  }
+  else {
+    return true;
+  }
+}
+
+const error = {
+    color: Colors.red500,
+    fontSize: 15
+};
 
 const iconButtonElement = (
   <IconButton
@@ -46,34 +57,112 @@ const rightIconMenu = (
   </IconMenu>
 );
 
+const textStyle = {
+    marginLeft: "15"
+}
+
 const About = React.createClass({
-  getInitialState: function() {
-    return {
-      editing: false
-    };
-  },
-  _toggleEdit: function(key) {
-    this.state.editing ? this.setState({editing: false}) : this.setState({editing: true});
-  },
-  _generateListItem: function() {
-    return details.map((item) => {
-      return (<ListItem key={item.summary}
-                  primaryText={item.summary}
-                  onClick={this._toggleEdit.bind(this,item.summary)}
-                  secondaryText={item.Age} 
-                  leftAvatar={<Avatar color={Colors.deepPurple500} backgroundColor={Colors.transparent}
-                  style={{left: 8}}>{item.summary.substring(0,1)}</Avatar>} />);
-    });
-  },
-  render: function() {
-    return (
-      <div>        
-        <List>
-            {this._generateListItem()}
-        </List>
-      </div>  
-    );    
-  }
+    getInitialState: function() {
+        return {
+            editing: false,
+            editingLife: false,
+            editingGoodat: false,
+            editingThinkingof: false,
+            editingFavs: false,
+            error: false,
+            summary: AboutStore.getSummary(),
+            life: AboutStore.getLife(),
+            goodat: AboutStore.getGoodAt(),
+            spendtime: AboutStore.getSpendTime(),
+            favs: AboutStore.getFavs()
+        };
+    },
+    componentDidMount: function () {
+        let str = window.location.hash;
+        let visitorUsername = str.split(/[\/?]/)[1];
+        AboutActions.fetchAll(visitorUsername);
+        AboutStore.addChangeListener(this._onChange);
+        ErrorStore.addChangeListener(this._onChange);
+    },
+    _onChange: function () {
+        this.setState({
+            summary: AboutStore.getSummary(),
+            life: AboutStore.getLife(),
+            goodat: AboutStore.getGoodAt(),
+            spendtime: AboutStore.getSpendTime(),
+            favs: AboutStore.getFavs(),
+            error: ErrorStore.getabouterr()
+        });
+    },
+    render: function() {
+        return (
+          <div>      
+            <List>
+                <ListItem key="Self summary"
+                    primaryText="Self summary"
+
+                    secondaryText={this.state.summary}
+                    rightIconButton={<IconMenu iconButtonElement={<IconButton>
+                        
+                    </IconButton>}>
+                        
+                    </IconMenu>}
+                    leftAvatar={<Avatar color={Colors.deepPurple500} backgroundColor={Colors.transparent}
+                        style={{left: 8}}>S</Avatar>} />
+                
+                <ListItem key="What Im doing"
+                    primaryText="What I'm doing with my life ?"
+                    secondaryText={this.state.life}
+                    rightIconButton={<IconMenu iconButtonElement={<IconButton>
+                        
+                    </IconButton>}>
+                        
+                    </IconMenu>}
+                    leftAvatar={<Avatar color={Colors.deepPurple500} backgroundColor={Colors.transparent}
+                        style={{left: 8}}>W</Avatar>} />
+                
+                <ListItem key="Really good at"
+                    primaryText="I'm really good at"
+                    secondaryText={this.state.goodat}
+                    rightIconButton={<IconMenu iconButtonElement={<IconButton>
+                        
+                    </IconButton>}>
+                        
+                    </IconMenu>}
+                    leftAvatar={<Avatar color={Colors.deepPurple500} backgroundColor={Colors.transparent}
+                        style={{left: 8}}>R</Avatar>} />
+                
+                <ListItem key="I spend alot"
+                    primaryText="I spend a lot of time thinking about"
+                    secondaryText={this.state.spendtime}
+                    rightIconButton={<IconMenu iconButtonElement={<IconButton>
+                        
+                    </IconButton>}>
+                        
+                    </IconMenu>}
+                    leftAvatar={<Avatar color={Colors.deepPurple500} backgroundColor={Colors.transparent}
+                        style={{left: 8}}>I</Avatar>} />
+                
+                <ListItem key="Books food movies"
+                    primaryText="Favourite Books, Movies, Food <3"
+                    secondaryText={this.state.favs}
+                    rightIconButton={<IconMenu iconButtonElement={<IconButton>
+                        
+                    </IconButton>}>
+                        
+                    </IconMenu>}
+                    leftAvatar={<Avatar color={Colors.deepPurple500} backgroundColor={Colors.transparent}
+                        style={{left: 8}}>F</Avatar>} />
+                
+            </List>
+            <Snackbar
+                open={this.state.error}
+                message="Something went wrong. We're working on getting this fixed as soon as we can. You may be able to try again."
+                autoHideDuration={4000}
+                onRequestClose={this.handleRequestClose} />
+          </div>  
+        );    
+    }
 
 });
 

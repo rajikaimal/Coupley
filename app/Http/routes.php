@@ -31,8 +31,10 @@ Route::group(['prefix' => 'api'], function () {
     //update admin passwords
     Route::post('recoverpwd', 'AuthenticateController@reset');
 
-    //Add a status
+    //Add a status   
     Route::post('status', 'ActivityFeedController@addStatus');
+    //Add a image status   
+    Route::post('imageStatus', 'ActivityFeedController@addImageStatus');
     //Return status
     Route::get('getstatus', 'ActivityFeedController@getStatus');
     //Return logged uder Id
@@ -57,6 +59,8 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('deleteStatus', 'ActivityFeedController@deleteStatus');
     //Edit a status 
     Route::post('edit_status', 'ActivityFeedController@editStatus');
+    //Block a status
+    Route::post('block_status','ActivityFeedController@block_status');
 
     //Return previos chats
     Route::get('getpreviousmsg', 'ThreadController@getPreviousMessage');

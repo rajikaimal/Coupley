@@ -36,8 +36,8 @@ const NotificationContainer = React.createClass({
   render: function() {
     return (
       <div>
-        <List>
-          <div> Notification </div>
+		    <List>
+        	<div> Notification </div>
           {this._renderNotificationList()}
         </List>
       </div>
@@ -46,3 +46,4 @@ const NotificationContainer = React.createClass({
 });
 
 export default NotificationContainer;
+

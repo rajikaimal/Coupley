@@ -67,7 +67,7 @@ class LikeController extends Controller
         $postId = $request->postId;
 
         try{    
-            $counts= \DB::select('select post_id,count(UserId)
+            $counts= \DB::select('select post_id,count(UserId) as count
                                  from activitylikes 
                                  where post_id='.$postId);
 

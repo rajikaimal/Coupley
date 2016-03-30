@@ -185,7 +185,7 @@ const ProfilePic = React.createClass({
     ];
     return (
       <div>
-        <div className="panel-body">
+      	<div className="panel-body">
           <div>
             <div className="col-sm-3 col-md-3 col-lg-3">
                 <GridList

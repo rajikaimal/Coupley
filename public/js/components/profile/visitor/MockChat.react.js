@@ -12,7 +12,7 @@ const ChatData = [{
   "name": "Stephanie Hwang",
   "uri": "http://images6.fanpop.com/image/photos/35600000/Tiffany-SNSD-IPKN-tiffany-hwang-35651024-720-720.png"
 },{
-  "name": "Test",
+  "name": "Anne Hathway",
   "uri": "http://images6.fanpop.com/image/photos/35600000/Tiffany-SNSD-IPKN-tiffany-hwang-35651024-720-720.png"
 }]
 

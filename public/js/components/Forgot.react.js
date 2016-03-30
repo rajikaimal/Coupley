@@ -20,7 +20,6 @@ const ForgotPassword = React.createClass({
         let resetemail = {
             email: email
         }
-        LoginActions.resetpassword(resetemail);
 
         if (email.trim() == "") {
             document.getElementById('email').innerHTML = "*Email field is empty, Please enter the email!";
@@ -38,6 +37,8 @@ const ForgotPassword = React.createClass({
 
             }
         }
+        LoginActions.resetpassword(resetemail);
+        document.getElementById('email').innerHTML = "Check your email and use the reset password!";        
     },
 
     render: function() {

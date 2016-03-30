@@ -4,14 +4,13 @@ var AboutConstants = require('../../constants/AboutConstants');
 var AboutActions = {
   fetchAll: function () {
     $.get('/api/profile/about?token=' + localStorage.getItem('apitoken') + '&email=' + localStorage.getItem('email'), function (response) {
-      console.log(response);
       if (response.status === 200) {
         AppDispatcher.handleViewAction({
           actionType: AboutConstants.FETCH,
           data: response.data[0],
         });
       } else {
-        console.log('Somthing happened ...');
+
       }
 
     }).fail(function () {
@@ -22,23 +21,22 @@ var AboutActions = {
     });
   },
 
-  updatesummary: function (summary) {
+  updateSummary: function (summary) {
     $.ajax({
-      url: '/api/profile/edit/summary',
+      url: '/api/profile/edit/summary?token=' + localStorage.getItem('apitoken'),
       type: 'PUT',
       data: 'email=' + localStorage.getItem('email') + '&summary=' + summary,
       success: function (response) {
-        console.log('DOne ... ' + response);
         if (response.status === 200) {
           AppDispatcher.handleViewAction({
             actionType: AboutConstants.SUMMARY,
             summary: summary,
           });
         } else {
-          console.log('Somthing happened');
+
         }
       },
-    }).fail(function() {
+    }).fail(function () {
       AppDispatcher.handleViewAction({
         actionType: AboutConstants.SUMMARY,
         error: true,
@@ -46,23 +44,22 @@ var AboutActions = {
     });
   },
 
-  updatelife: function (life) {
+  updateLife: function (life) {
     $.ajax({
-      url: '/api/profile/edit/life',
+      url: '/api/profile/edit/life?token=' + localStorage.getItem('apitoken'),
       type: 'PUT',
-      data: 'email=' + localStorage.getItem('email') + '&life=' + life,
+      data: 'token=' + localStorage.getItem('apitoken') + '&email=' + localStorage.getItem('email') + '&life=' + life,
       success: function (response) {
-        console.log('DOne ... ' + response);
         if (response.status === 200) {
           AppDispatcher.handleViewAction({
             actionType: AboutConstants.LIFE,
             life: life,
           });
         } else {
-          console.log('Somthing happened');
+
         }
       },
-    }).fail(function() {
+    }).fail(function () {
       AppDispatcher.handleViewAction({
         actionType: AboutConstants.LIFE,
         error: true,
@@ -70,24 +67,22 @@ var AboutActions = {
     });;
   },
 
-  updategoodat: function (goodat) {
-    console.log('Goodat ' + goodat);
+  updateGoodAt: function (goodat) {
     $.ajax({
-      url: '/api/profile/edit/goodat',
+      url: '/api/profile/edit/goodat?token=' + localStorage.getItem('apitoken'),
       type: 'PUT',
-      data: 'email=' + localStorage.getItem('email') + '&goodat=' + goodat,
+      data: 'token=' + localStorage.getItem('apitoken') + '&email=' + localStorage.getItem('email') + '&goodat=' + goodat,
       success: function (response) {
-        console.log('DOne ... ' + response);
         if (response.status === 200) {
           AppDispatcher.handleViewAction({
             actionType: AboutConstants.GOODAT,
             goodat: goodat,
           });
         } else {
-          console.log('Somthing happened');
+
         }
       },
-    }).fail(function() {
+    }).fail(function () {
       AppDispatcher.handleViewAction({
         actionType: AboutConstants.GOODAT,
         error: true,
@@ -95,23 +90,22 @@ var AboutActions = {
     });;
   },
 
-  updatethinkingof: function (thinkingof) {
+  updateThinkingOf: function (thinkingof) {
     $.ajax({
-      url: '/api/profile/edit/thinkingof',
+      url: '/api/profile/edit/thinkingof?token=' + localStorage.getItem('apitoken'),
       type: 'PUT',
       data: 'email=' + localStorage.getItem('email') + '&thinkingof=' + thinkingof,
       success: function (response) {
-        console.log('DOne ... ' + response);
         if (response.status === 200) {
           AppDispatcher.handleViewAction({
             actionType: AboutConstants.THINKING,
             thinkingof: thinkingof,
           });
         } else {
-          console.log('Somthing happened');
+
         }
       },
-    }).fail(function() {
+    }).fail(function () {
       AppDispatcher.handleViewAction({
         actionType: AboutConstants.THINKING,
         error: true,
@@ -119,23 +113,22 @@ var AboutActions = {
     });;
   },
 
-  updatefavs: function (favs) {
+  updateFavs: function (favs) {
     $.ajax({
-      url: '/api/profile/edit/favs',
+      url: '/api/profile/edit/favs?token=' + localStorage.getItem('apitoken'),
       type: 'PUT',
       data: 'email=' + localStorage.getItem('email') + '&favs=' + favs,
       success: function (response) {
-        console.log('DOne ... ' + response);
         if (response.status === 200) {
           AppDispatcher.handleViewAction({
             actionType: AboutConstants.FAVS,
             favs: favs,
           });
         } else {
-          console.log('Somthing happened');
+
         }
       },
-    }).fail(function() {
+    }).fail(function () {
       AppDispatcher.handleViewAction({
         actionType: AboutConstants.FAVS,
         error: true,

@@ -1,10 +1,10 @@
 import React from 'react';
-import Activity from './Activity.react';
+import BlockItem from './BlockItem.react';
 import List from 'material-ui/lib/lists/list';
-import ActivityFeedStore from '../../../stores/ActivityFeedStore';
-import ActivityFeedActions from '../../../actions/profile/ActivityFeedActions';
+import ActivityFeedStore from '../../stores/ActivityFeedStore';
+import ActivityFeedActions from '../../actions/profile/ActivityFeedActions';
 
-const ActivityFeedContainer = React.createClass({
+const BlockList = React.createClass({
     getInitialState: function () {
         return {
             feed: ActivityFeedStore.getfeed()
@@ -31,14 +31,14 @@ const ActivityFeedContainer = React.createClass({
 
       return this.state.feed.map((activity) => {
   		return (
-            <Activity key={activity.id} onEdit={this._handleEdit} onRemove={this._handleRemove} id={activity.id} post={activity.post} time={activity.created_at} />
+            <BlockItem key={activity.id} onEdit={this._handleEdit} onRemove={this._handleRemove} id={activity.id} post={activity.post} time={activity.created_at} />
   		);
       });
   },
   render: function() {
     return (
       <div>
-          <List subheader="Today">
+          <List subheader="Blocked users">
         	{this._renderActivites()}
         </List>
       </div>
@@ -46,4 +46,4 @@ const ActivityFeedContainer = React.createClass({
   }
 });
 
-export default ActivityFeedContainer;
+export default BlockList;

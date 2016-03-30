@@ -2,7 +2,7 @@ import React from 'react';
 import Paper from './newPaper.react';
 import ActivityContainer from './activityContainer.react';
 import ActivityList from './activityListComp.react';
-//import Commentsbox from '../../activityfeed/Commentsbox.react';
+import CommentBox from '../../comments/CommentBox.react';
 
 const ActivityMain = React.createClass({
 

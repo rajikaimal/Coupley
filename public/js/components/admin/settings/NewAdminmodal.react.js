@@ -203,7 +203,8 @@ var Header = React.createClass({
       document.getElementById('repassword').style.color = '#ff6666';
       return false;
     }    else {
-      document.getElementById('repassword').innerHTML = validateRePassword(RePass, password).success;
+      document.getElementById('repassword').innerHTML = validateRePassword(RePass, password).
+          success;
       document.getElementById('repassword').style.color = '#66cc66';
       return true;
     }

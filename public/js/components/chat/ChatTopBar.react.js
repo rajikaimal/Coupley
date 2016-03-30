@@ -10,6 +10,8 @@ import ThreadActions from '../../actions/Thread/ThreadActions';
 import LoginStore from '../../stores/LoginStore';
 import RaisedButton from 'material-ui/lib/raised-button';
 import FlatButton from 'material-ui/lib/flat-button';
+import AutoComplete from 'material-ui/lib/auto-complete';
+import Dialog from 'material-ui/lib/dialog';
 
 const t1 = {
   marginTop:10,
@@ -34,10 +36,41 @@ const likedusers = {
 };
 
 const SelectFieldExampleSimple = React.createClass({
+
+  handleOpen: function () {
+    this.setState({ open: true });
+    console.log('click una');
+  },
+
+  handleClose: function () {
+    this.setState({ open: false });
+  },
+
+  handleOpen1: function () {
+    this.setState({ open1: true });
+    console.log('click una');
+  },
+
+  handleClose1: function () {
+    this.setState({ open1: false });
+  },
+
+  handleOpen2: function () {
+    this.setState({ open2: true });
+    console.log('set kala');
+  },
+
+  handleClose2: function () {
+    this.setState({ open2: false });
+  },
+
   getInitialState: function () {
     return {
       results:[''],
       value:4,
+      open: false,
+       open1: false,
+       open2:false,
     };
   },
 
@@ -52,7 +85,7 @@ const SelectFieldExampleSimple = React.createClass({
 },
 
   LikedUsers:function () {
-    
+
     ThreadActions.getlikedusers(likedusers);
   },
 
@@ -73,7 +106,74 @@ const SelectFieldExampleSimple = React.createClass({
   ThreadActions.block(localStorage.getItem('chatusername'), localStorage.getItem('user'));
 },
 
+
+
+handleUpdateInput(text) {
+  console.log(text);
+  this.setState({
+    value: text
+  });
+  localStorage.setItem('chatusername', text);
+},
+
+
   render:function () {
+
+    const actions = [
+        <FlatButton
+          label="No"
+          secondary={true}
+          onTouchTap={this.handleClose}
+        />,
+        <FlatButton
+          label="Yes"
+          primary={true}
+          keyboardFocused={true}
+          onTouchTap={this.handleClose}
+        />,
+      ];
+
+      const actions1 = [
+          <FlatButton
+            label="No"
+            secondary={true}
+            onTouchTap={this.handleClose1}
+          />,
+          <FlatButton
+            label="Yes"
+            primary={true}
+            keyboardFocused={true}
+            onTouchTap={this.handleClose1}
+          />,
+        ];
+
+        const actions2 = [
+            <FlatButton
+              label="Cancle"
+              secondary={true}
+              onTouchTap={this.handleClose2}
+            />,
+            <FlatButton
+              label="Select"
+              primary={true}
+              keyboardFocused={true}
+              onTouchTap={this.handleClose2}
+            />,
+          ];
+
+          const colors = [
+  'Red',
+  'Orange',
+  'Yellow',
+  'Green',
+  'Blue',
+  'Purple',
+  'Black',
+  'White',
+];
+
+  //onClick={this._blockUser}
+
     return (
 
     <div>
@@ -85,21 +185,54 @@ const SelectFieldExampleSimple = React.createClass({
             })
         }
         </SelectField>
-         
+
       </div>
-        <FlatButton label="+ New Message"  style={t1} />
-        <IconMenu  style={toggleDiv} iconButtonElement={<IconButton><MoreVertIcon /></IconButton>} 
+        <FlatButton label="+ New Message"  style={t1}  onClick={this.handleOpen2}/>
+        <IconMenu  style={toggleDiv} iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
         anchorOrigin={{horizontal: 'left', vertical: 'top'}}
         targetOrigin={{horizontal: 'left', vertical: 'top'}}>
-       <MenuItem primaryText="Delete" />
-       <MenuItem primaryText="Block" onClick={this._blockUser}/>
+       <MenuItem primaryText="Delete" onTouchTap={this.handleOpen}/>
+       <MenuItem primaryText="Block" onTouchTap={this.handleOpen1} />
       </IconMenu>
+      <Dialog
+        title="Delete Conversation"
+        actions={actions}
+        modal={false}
+        open={this.state.open}
+        onRequestClose={this.handleClose}
+      >
+        Are you sure you want to delete tis conversation?.
+      </Dialog>
+      <Dialog
+        title="Block user"
+        actions={actions1}
+        modal={false}
+        open={this.state.open1}
+        onRequestClose={this.handleClose1}
+      >
+        Are you sure you want to block this user?.
+      </Dialog>
+
+      <Dialog
+        title="New Message"
+        actions={actions2}
+        modal={false}
+        open={this.state.open2}
+        onRequestClose={this.handleClose2}
+      >
+      <AutoComplete
+      floatingLabelText="Enter Username"
+      onUpdateInput={this.handleUpdateInput}
+      filter={AutoComplete.caseInsensitiveFilter}
+      dataSource={colors}
+     />
+      </Dialog>
 
     </div>
     );
   },
 });
 
- 
+
 
 export default SelectFieldExampleSimple;

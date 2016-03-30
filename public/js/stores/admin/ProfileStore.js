@@ -13,7 +13,6 @@ var ProfileStore = assign({}, EventEmitter.prototype, {
   },
 
   getuserdata: function () {
-    console.log(admin[0]);
     if (admin.length == 0) {
       return {
         id:'',
@@ -45,22 +44,15 @@ var ProfileStore = assign({}, EventEmitter.prototype, {
 
   addChangeListener: function (callback) {
     this.on(CHANGE_EVENT, callback);
-    console.log('cahnged dude');
   },
 });
 
 AppDispatcher.register(function (payload) {
-  console.log('pay');
   switch (payload.action.actionType) {
     case (ProfileConstants.GETDATA):
-      console.log('emit');
-
       ProfileStore.saveuserdata(payload.action.userdata);
-      console.log(payload.action.userdata);
       ProfileStore.emitChange();
-      console.log('change');
       break;
-
   }
 });
 

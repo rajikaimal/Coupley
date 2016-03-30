@@ -12,12 +12,12 @@ import IconMenu from 'material-ui/lib/menus/icon-menu';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import FlatButton from 'material-ui/lib/flat-button';
 import Paper from 'material-ui/lib/paper';
-//import LikesActions from '../../../actions/ActivityFeed/LikesActions';
-//import ShareActions from '../../../actions/ActivityFeed/ShareActions';
+import LikesActions from '../../../actions/ActivityFeed/LikesActions';
+import ShareActions from '../../../actions/ActivityFeed/ShareActions';
 import LoginStore from '../../../stores/LoginStore';
 import StatusStore from '../../../stores/StatusStore';
-import ActivityfeedAction from '../../../actions/ActivityFeed/ActivityfeedAction';
-//import CommentAction from '../../../actions/ActivityFeed/CommentAction';
+import ActivityFeedActions from '../../../actions/ActivityFeed/ActivityFeedActions';
+import CommentAction from '../../../actions/ActivityFeed/CommentAction';
 import CommentStore from '../../../stores/CommentStore';
 //import CommentList from '../comments/CommentList.react';
 import Dialog from 'material-ui/lib/dialog';
@@ -57,7 +57,7 @@ const ActivityList = React.createClass({
         let delete_status = {
             PostId: postId
         };
-        ActivityfeedAction.delete_status(delete_status);
+        ActivityFeedActions.delete_status(delete_status);
     },
 
     addshare: function () {
@@ -87,6 +87,9 @@ const ActivityList = React.createClass({
     componentDidMount: function () {
         LikeStatusStore.addChangeListener(this._onChange);
         LikesActions.getlikestatus();
+
+        StatusStore.addChangeListener(this._onChange);
+        ActivityFeedActions.getpostId();
     },
 
     _onChange: function () {
@@ -210,7 +213,7 @@ const ActivityList = React.createClass({
 			<div >
             <Card>
 		        <ListItem
-		          leftAvatar={<Avatar src={this.props.image} />}
+		          leftAvatar={<Avatar src={'img/profilepics/' + localStorage.getItem('username')} />}
 		          primaryText={this.props.firstname}
 		          secondaryText={
 		            <p>
@@ -219,7 +222,7 @@ const ActivityList = React.createClass({
 
                         {this.props.image ? <img src={'img/profilepics/' + 
 
-                        this.props.image}/> : ''}
+                        localStorage.getItem('username')}/> : ''}
 		            </p>
 		          }
 		          secondaryTextLines={2}

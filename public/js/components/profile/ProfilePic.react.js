@@ -267,7 +267,7 @@ const ProfilePic = React.createClass({
   render: function() {
     return (
       <div>
-        <div className="panel-body">
+      	<div className="panel-body">
           <div>
             {
                 this.state.editingPic ? <div className="col-sm-3 col-md-3 col-lg-3">
@@ -351,7 +351,7 @@ const ProfilePic = React.createClass({
                   </div>
             </div>
           </div>
-        </div>  
+        </div> 	
       </div>  
     );
   }

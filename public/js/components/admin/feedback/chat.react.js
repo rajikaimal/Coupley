@@ -15,7 +15,6 @@ const ELSE = 'No any feedbacks regarding chat.';
 
 const Tables = React.createClass({
   getInitialState: function () {
-
     return {
       results: FeedStore.getresults(),
     };
@@ -35,7 +34,6 @@ const Tables = React.createClass({
   },
 
   _renderFeedItem: function () {
-    console.log(this.state.results);
     if (this.state.results) {
       return this.state.results.map((result) => {
         return (<Feed key={result.id} id={result.id} user={result.user} description={result.description} />);

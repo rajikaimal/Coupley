@@ -125,6 +125,25 @@ var ActivityfeedAction = {
     });
   },
 
+  _blockStatus: function (result) {
+    $.post('api/block_status', result, function(response) {
+      if(response.status == 201) {
+        $.get('/api/getstatus', result, function (response) {
+          if (response.status == 200) {
+            AppDispatcher.handleViewAction({
+              actionType: ActivityFeedConstants.GETDATA,
+              statusdata: response.posts,
+            });
+          } else if (response.status == 505) {
+            console.log('Error 505');
+          }
+        });
+      } else if(response.status == 404) {
+        console.log('Error 404');
+      } 
+    });
+  },
+
   like: function(request) {
     $.post('/api/likepost', request,function(response){
     }).fail(function(error) {

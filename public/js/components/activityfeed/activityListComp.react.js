@@ -114,6 +114,7 @@ const ActivityList = React.createClass({
     this.setState({likedCount: LikeStatusStore.getLikedCount()});
   },
 
+
   _getSharedItem: function () { 
     if(this.props.type=="shared"){
       return(<ActivitySharedList sid={this.props.sid}
@@ -192,8 +193,13 @@ const ActivityList = React.createClass({
     ActivityfeedAction._deleteStatus(deleteData);
     },
 
-  _blockStatus: function () {
-
+  _blockedStatus: function () {
+    let blockData = {
+      email: LoginStore.getEmail(),
+      userId: 11,
+      postId: this.props.id,
+    };
+    ActivityfeedAction._blockStatus(blockData);
   },
 
   _changeShareState:function() {
@@ -334,16 +340,23 @@ const ActivityList = React.createClass({
                   <IconMenu iconButtonElement={iconButtonElement}>
                     <MenuItem primaryText="Edit" onClick={this.handleOpen}/>
                     <MenuItem primaryText="Remove" onClick={this._deleteStatus}/>
-                    <MenuItem primaryText="Block" onClick={this._blockStatus}/>
+                    <MenuItem primaryText="Block" onClick={this._blockedStatus}/>
                   </IconMenu> } />
 
               <CardText>
                 {this.props.postText}
               </CardText>
 
-              <CardMedia expandable={true}>
-                <img src={this.props.attachment} />
-              </CardMedia>
+              <div>
+                {
+                  (this.props.attachment!='None') ? <div>
+                                                  <CardMedia>
+                                                    <img src={'img/activityFeedPics/'+ this.props.attachment} />
+                                                  </CardMedia>
+                                            </div> : ''
+                }
+              </div>
+
 
               <div>
                 {this._getSharedItem()}
