@@ -131,7 +131,7 @@ const StatusBox = React.createClass({
             var token = Math.random();
             fd.append('file', this.state.files[0]);
             fd.append('email', localStorage.getItem('email'));
-            fd.append('userId', 11);
+            fd.append('userId', localStorage.getItem('userid'));
             fd.append('firstName',LoginStore.getFirstname());
             fd.append('status',status);
             fd.append('token', token);
@@ -159,7 +159,7 @@ const StatusBox = React.createClass({
         else {
           let statusData = {
           email: LoginStore.getEmail(),
-          userId: 11,
+          userId: localStorage.getItem('userid'),
           firstName: LoginStore.getFirstname(),
           status: status,
           };

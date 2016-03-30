@@ -177,7 +177,7 @@ const ActivityList = React.createClass({
   _editStatus: function () {
     let status = this.refs.EditBox.getValue();
     let editData = {
-      userId: 11,
+      userId: localStorage.getItem('userid'),
       postId: this.props.id,
       status: status,
     };
@@ -187,7 +187,7 @@ const ActivityList = React.createClass({
 
   _deleteStatus: function () {
     let deleteData = {
-      userId: 11,
+      userId: localStorage.getItem('userid'),
       postId: this.props.id,
     };
     ActivityfeedAction._deleteStatus(deleteData);
@@ -196,7 +196,7 @@ const ActivityList = React.createClass({
   _blockedStatus: function () {
     let blockData = {
       email: LoginStore.getEmail(),
-      userId: 11,
+      userId: localStorage.getItem('userid'),
       postId: this.props.id,
     };
     ActivityfeedAction._blockStatus(blockData);
@@ -206,7 +206,7 @@ const ActivityList = React.createClass({
     let shareStatus = this.refs.shareBox.getValue();
     let shareData = {
       email: LoginStore.getEmail(),
-      userId: 11,  
+      userId: localStorage.getItem('userid'),  
       firstName: LoginStore.getFirstname(),
       postId: this.props.id,
       status: shareStatus,
@@ -223,7 +223,7 @@ const ActivityList = React.createClass({
   _changeLikeState: function () {
     let likeData = {
       postId: this.props.id,
-      userId: 11, 
+      userId: localStorage.getItem('userid'), 
       email: LoginStore.getEmail(),
       firstName: LoginStore.getFirstname(),
     };
@@ -262,7 +262,7 @@ const ActivityList = React.createClass({
       var comment = this.refs.commentBox.getValue();
       let commentData={
         postId: this.props.id,
-        userId: 11,  
+        userId: localStorage.getItem('userid'),  
         comment: comment,
         email: LoginStore.getEmail(),
         firstName: LoginStore.getFirstname(),

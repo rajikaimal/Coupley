@@ -19,8 +19,7 @@ const activityContainer = React.createClass({
     ActivityfeedAction._getUserId();
 
     let data = {
-      //userId: StatusStore.getLoggedUId(),
-      userId: 11,
+      userId: localStorage.getItem('userid'),
     };
     ActivityfeedAction._getStatus(data);
 
