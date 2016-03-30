@@ -31,7 +31,7 @@
 <script src="dist/css/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 <script>
     $.material.init();
-    var socket = io('http://localhost:8080');
+    var socket = io('http://localhost:8081');
 </script>
 <script src="bundle.js"></script>
 <script src="dist/js/admin/app.min.js"></script>

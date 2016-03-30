@@ -48,7 +48,7 @@ class AdminNotificationController extends Controller
     {
 
         try {
-            $notifications = AdminNotification::where('readNotification', 0)->limit(5)->get();
+            $notifications = \DB::select('SELECT * FROM AdminNotification order by id desc limit 5');
 
             return response()->json(['status' => 200, 'list' => $notifications], 200);
         } catch (QueryException $e) {
