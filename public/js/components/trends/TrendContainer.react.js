@@ -61,11 +61,8 @@ const TrendContainer = React.createClass({
     } else if (!SearchCeck) {
      this.setState({ trendsResult:TrendsStore.getTrendsSearchList()});
    }
-   if(listClick){
-   this.setState({ trendsPostResult:TrendsStore. getFirstTrendsSearchPost()});
-   }else if (!listClick) {
-    this.setState({ trendsPostResult:TrendsStore. getTrendsSearchPost()});
-  }
+    this.setState({ trendsPostResult:TrendsStore. getFirstTrendsSearchPost()});
+
   },
 
    trendItem: function () {
@@ -113,7 +110,6 @@ const TrendContainer = React.createClass({
 
     console.log(E);
     TrendsAction.getTrendsSearchPosts(trend);
-    // TrendsStore.getFirstTrendsSearchPost();
 
   },
 
@@ -126,23 +122,13 @@ const TrendContainer = React.createClass({
    });
  },
 
-  //
-  //  trendPostSelectedItem: function () {
-  //    this.setState({ trendsPostResult:TrendsStore.getTrendsSearchPost()});
-  //   return this.state.trendsPostResult.map((result) => {
-  //     return (<TrendPost />);
-  //   });
-  //
-  // },
 
   trendPostItem: function () {
    return this.state.trendsPostResult.map((result) => {
-     return (<TrendPost/>);
+     return (<TrendPost firstName={result.firstname} postText={result.post_text} created_at={result.created_at}/>);
    });
 
  },
-
-
 
 
   clearText:function () {

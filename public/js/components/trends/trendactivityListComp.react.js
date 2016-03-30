@@ -37,7 +37,7 @@ const iconButtonElement = (
 
 const style1 = {
   width: 700,
-  marginTop: 20,
+  marginBottom: 20,
 };
 
 const style2 = {
