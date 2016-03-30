@@ -92,7 +92,7 @@ const Header = React.createClass({
 				        <span className="icon-bar"></span>
 				        <span className="icon-bar"></span>
 				      </button>
-				      <a className="navbar-brand" href="/#/">Coupley</a>
+				      <a className="navbar-brand" href="/#/activity">Coupley</a>
 				    </div>
 				    <div className="navbar-collapse collapse navbar-inverse-collapse">
 				      <ul className="nav navbar-nav">
