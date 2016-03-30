@@ -62,6 +62,21 @@ class LikeController extends Controller
         }
     }
 
+    public function getLikeCount(Request $request)
+    {
+        $postId = $request->postId;
+
+        try{    
+            $counts= \DB::select('select post_id,count(UserId) as count
+                                 from activitylikes 
+                                 where post_id='.$postId);
+
+            return response()->json(['posts' => $counts, 'status' => 200], 200);
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 505], 505);
+        }  
+    }
+
     public function getLikedUsers(Request $request)
     {
         $postId = $request->postId;

@@ -30,6 +30,34 @@ var TrendsAction = {
 		});
 	},
 
+	getTrendsSearchPosts:function (request) {
+		$.get('/api/gettrendssearchpost?trend='+request, function (response) {
+			console.log(response);
+			if (response.status == 200) {
+				AppDispatcher.handleViewAction({
+						actionType:TrendConstants.SEARCHTRENDPOSTS,
+						listofposttrends: response.trendposts,
+					});
+			}else if (response.status == 505) {
+				console.log('Error 505');
+			}
+		});
+	},
+
+	getTrendsInitialSearchPosts:function () {
+		$.get('/api/gettrendsinitialsearchpost', function (response) {
+			console.log(response);
+			if (response.status == 200) {
+				AppDispatcher.handleViewAction({
+						actionType:TrendConstants.INITIALSEARCHTRENDPOSTS,
+						listofinitialposttrends: response.inittrendposts,
+					});
+			}else if (response.status == 505) {
+				console.log('Error 505');
+			}
+		});
+	},
+
 
 
 };

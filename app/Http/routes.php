@@ -56,53 +56,52 @@ Route::group(['prefix' => 'api'], function () {
     // Route::post('deleteStatus', 'ActivityFeedController@deleteStatus');
     // Route::post('edit_status', 'ActivityFeedController@editStatus');
 
-  //////////////
-  Route::post('status', 'ActivityFeedController@addStatus');
-//Return status
-Route::get('getstatus', 'ActivityFeedController@getStatus');
-//Return logged uder Id
-Route::get('getUserId', 'ActivityFeedController@getUserId');
-//Add a like to the status
-Route::post('likepost', 'LikeController@like');
-//Unlike the status
-Route::post('unlikepost', 'LikeController@unlike');
-//Return liked Users
-Route::get('getLikedUsers', 'LikeController@getLikedUsers');
-//Add a share
-Route::post('sharedStatus', 'ActivityFeedController@sharedStatus');
-//Unshare the status
-Route::post('unsharepost', 'ShareController@unshare');
-//Return share status
-Route::get('getsharestatus', 'ShareController@getsharestatus');
-//Add a comment to the status
-Route::post('addcomment', 'CommentController@addcomment');
-//Return comments data
-Route::get('getcomment', 'CommentController@getcomments');
-//Delete a status
-Route::post('deleteStatus', 'ActivityFeedController@deleteStatus');
-//Edit a status
-Route::post('edit_status', 'ActivityFeedController@editStatus');
-  ////////////
-
-
+    //Add a status
+       Route::post('status', 'ActivityFeedController@addStatus');
+       //Return status
+       Route::get('getstatus', 'ActivityFeedController@getStatus');
+       //Return logged uder Id
+       Route::get('getUserId', 'ActivityFeedController@getUserId');
+       //Add a like to the status
+       Route::post('likepost', 'LikeController@like');
+       //Unlike the status
+       Route::post('unlikepost', 'LikeController@unlike');
+       //Return liked Users
+       Route::get('getLikedUsers', 'LikeController@getLikedUsers');
+       //Add a share
+       Route::post('sharedStatus', 'ActivityFeedController@sharedStatus');
+       //Unshare the status
+       Route::post('unsharepost', 'ShareController@unshare');
+       //Return share status
+       Route::get('getsharestatus', 'ShareController@getsharestatus');
+       //Add a comment to the status
+       Route::post('addcomment', 'CommentController@addcomment');
+       //Return comments data
+       Route::get('getcomment', 'CommentController@getcomments');
+       //Delete a status
+       Route::post('deleteStatus', 'ActivityFeedController@deleteStatus');
+       //Edit a status
+       Route::post('edit_status', 'ActivityFeedController@editStatus');
 
    //Retrive Trendslist
     Route::get('gettrendslist', 'TrendsController@gettrends');
     Route::get('gettrendssearchlist', 'TrendsController@getsearchtrends');
+    Route::get('gettrendsinitialsearchpost', 'TrendsController@getInitPosttrends');
+    Route::get('gettrendssearchpost', 'TrendsController@getPosttrends');
     //
 
 
     Route::get('getonlineusers', 'ThreadController@getOnlineUsers');
-    Route::get('getpostId', 'ActivityFeedController@getpostId');
-    Route::post('likes', 'LikeController@addlikes');
-    Route::post('likepost', 'LikeController@like');
-    Route::post('unlikepost', 'LikeController@unlike');
-    Route::get('getlikestatus', 'LikeController@getlikestatus');
-    Route::post('comment', 'CommentController@addcomment');
-    Route::get('getcomment', 'CommentController@getcomments');
-    Route::post('share', 'ActivityFeedController@addshare');
-    Route::post('deleteStatus', 'ActivityFeedController@deleteStatus');
-    Route::post('edit_status', 'ActivityFeedController@editStatus');
+    // Route::get('getpostId', 'ActivityFeedController@getpostId');
+    // Route::post('likes', 'LikeController@addlikes');
+    // Route::post('likepost', 'LikeController@like');
+    // Route::post('unlikepost', 'LikeController@unlike');
+    // Route::get('getlikestatus', 'LikeController@getlikestatus');
+    // Route::post('comment', 'CommentController@addcomment');
+    // Route::get('getcomment', 'CommentController@getcomments');
+    // Route::post('share', 'ActivityFeedController@addshare');
+    // Route::post('deleteStatus', 'ActivityFeedController@deleteStatus');
+    // Route::post('edit_status', 'ActivityFeedController@editStatus');
 
     //Return profile data
     Route::get('profile', 'ProfileController@profile');

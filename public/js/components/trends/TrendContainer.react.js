@@ -5,8 +5,10 @@ import TextField from 'material-ui/lib/text-field';
 import TrendsStore from '../../stores/TrendsStore';
 import TrendsAction from '../../actions/TrendsAction';
 import Trend from './trendbox.react';
+import TrendPost from './trendactivityListComp.react';
 
 var SearchCeck = true;
+var listClick = true;
 
 const style1={
   width:200,
@@ -15,8 +17,8 @@ const style1={
 const searchconvo = {
   marginTop:'-18',
   paddingLeft:10,
-  paddingRight:10,
-  width:180,
+  paddingRight:50,
+  width:150,
 };
 
 
@@ -38,24 +40,19 @@ function validateStatusText(textStatus) {
 
 const TrendContainer = React.createClass({
 
-   changeHandler: function(trends) {
-        this.setState({
-            value:trends,
-           });
-        console.log(this.state.value);
-    },
-
    getInitialState: function() {
     return {
       trendsResult:TrendsStore.gettrendslist(),
       statusText: '',
       value:'',
+      trendsPostResult:TrendsStore.getFirstTrendsSearchPost(),
     }
   },
 
   componentDidMount: function() {
     TrendsStore.addChangeListener(this._onChange);
     TrendsAction.getTrendsList();
+    TrendsAction.getTrendsInitialSearchPosts();
   },
 
   _onChange: function () {
@@ -64,26 +61,28 @@ const TrendContainer = React.createClass({
     } else if (!SearchCeck) {
      this.setState({ trendsResult:TrendsStore.getTrendsSearchList()});
    }
+   if(listClick){
+   this.setState({ trendsPostResult:TrendsStore. getFirstTrendsSearchPost()});
+   }else if (!listClick) {
+    this.setState({ trendsPostResult:TrendsStore. getTrendsSearchPost()});
+  }
   },
 
    trendItem: function () {
     return this.state.trendsResult.map((result) => {
-      return (<Trend trends={result.trend} tid={result.id} onTouchTap={this.changeHandler}/>);
+      return (<Trend abc={this.getHashtag} trends={result.trend} tid={result.id}/>);
     });
 
   },
 
-  trendSearchItem: function () {
-   this.setState({ trendsResult:TrendsStore.getTrendsSearchList()});
-   return this.state.trendsResult.map((result) => {
-     return (<Trend trends={result.trend} tid={result.id} onTouchTap={this.changeHandler}/>);
-   });
- },
-
   SearchTren:function () {
 
-    let ThisTrend = this.refs.SearchT.getValue();
-  console.log(ThisTrend);
+    var trd=this.refs.SearchT.getValue();
+
+    let ThisTrend ={
+      trend:trd,
+     }
+     console.log(ThisTrend.trend);
 
     if (validateStatusText(ThisTrend).error) {
       console.log('menna error');
@@ -100,9 +99,46 @@ const TrendContainer = React.createClass({
       });
     }
       {this.trendSearchItem();}
+
       {this.clearText();}
 
   },
+
+  getHashtag:function (e) {
+    console.log('clicked');
+    console.log(e);
+    TrendsAction.getTrendsSearchPosts(e);
+
+
+  },
+
+  trendSearchItem: function () {
+   this.setState({ trendsResult:TrendsStore.getTrendsSearchList()});
+   console.log('menna result');
+   console.log(this.state.trendsResult);
+   return this.state.trendsResult.map((result) => {
+     return (<Trend trends={result.trend} tid={result.id}/>);
+   });
+ },
+
+  //
+  //  trendPostSelectedItem: function () {
+  //    this.setState({ trendsPostResult:TrendsStore.getTrendsSearchPost()});
+  //   return this.state.trendsPostResult.map((result) => {
+  //     return (<TrendPost />);
+  //   });
+  //
+  // },
+
+  trendPostItem: function () {
+   return this.state.trendsPostResult.map((result) => {
+     return (<TrendPost/>);
+   });
+
+ },
+
+
+
 
   clearText:function () {
     document.getElementById('SearchField').value = '';
@@ -120,8 +156,9 @@ const TrendContainer = React.createClass({
 
 	 render:function(){
 	 	  return(
-         <div style={style1}>
-            <List >
+        <div>
+         <div style={style1} className="col-xs-4">
+            <List zDepth={1}>
             <div><h4>Trends</h4></div>
             <Divider/>
             <div>
@@ -131,8 +168,13 @@ const TrendContainer = React.createClass({
             <Divider/>
              {this.trendItem()}
            </List>
-
           </div>
+
+        <div className="col-xs-8">
+                {this.trendPostItem()}
+        </div>
+
+      </div>
 
 	 	  	);
 	 }

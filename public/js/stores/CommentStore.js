@@ -42,12 +42,12 @@ var CommentStore = assign({},EventEmitter.prototype, {
 });
 
 AppDispatcher.register(function(payload) {
-  switch(payload.action.actionType) {
-    case(CommentConstants.GETCOMMENT):
+	switch(payload.action.actionType) {
+		case(CommentConstants.GETCOMMENT):
       CommentStore.saveCommentsData(payload.action.commentdata);
       CommentStore.emitChange();
       break;
-  }
+	}
 });
 
 module.exports = CommentStore;

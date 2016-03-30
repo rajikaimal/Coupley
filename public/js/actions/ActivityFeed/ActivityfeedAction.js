@@ -139,6 +139,21 @@ var ActivityfeedAction = {
     });
   },
 
+  getLikeCount: function(request) {
+    $.get('/api/getLikeCount', request, function (response) {
+      console.log('jjjjjjjjjjjjjjjjjjjjjjj');
+      console.log(response);
+      if (response.status == 200) {
+        AppDispatcher.handleViewAction({
+          actionType: LikeConstants.GETLIKECOUNT,
+          likedCount: response.posts,
+        });
+      } else if (response.status == 505) {
+        console.log('Error 505');
+      }
+    });
+  },
+
   getLikedUsers: function(request) {
     $.get('/api/getLikedUsers', request, function (response) {
       if (response.status == 200) {
