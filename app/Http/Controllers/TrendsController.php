@@ -71,18 +71,12 @@ class TrendsController extends Controller
       */
         public function getPosttrends(Request $request)
         {
-            $trends = $request->trend;
+            $trends = $request->strend;
 
           try {
                if ($trendposts= \DB::select(\DB::raw("
-                   SELECT *
-                   FROM activityposts
-                   WHERE id IN ( SELECT id
-                                 FROM (SELECT id,SUBSTRING(post_text,LOCATE('#',post_text),15) AS trend
-                                       FROM activityposts
-                                       WHERE post_text like '%#%') t
-                                 WHERE trend='#google' )"))) {
-                     return response()->json(['trendposts' => $trendposts, 'status' => 200], 200);
+                  SELECT * FROM activityposts WHERE id IN ( SELECT id FROM (SELECT id,SUBSTRING(post_text,LOCATE('#',post_text),15) AS trend FROM activityposts WHERE post_text like '%#%') t WHERE trend LIKE '%".$trends."%' )"))) {
+                     return response()->json(['trendposts' =>$trendposts, 'status' => 200], 200);
           } else {
                    return response()->json(['status' => 505], 505);
              }
@@ -113,7 +107,7 @@ class TrendsController extends Controller
                                          FROM activityposts
                                          WHERE post_text like '%#%') t
                                    WHERE trend IN (SELECT SUBSTRING(post_text,LOCATE('#',post_text),15) AS trend FROM activityposts WHERE post_text like '%#%' HAVING MAX(id))
-                                
+
                                     )"))) {
                        return response()->json(['inittrendposts' => $inittrendposts, 'status' => 200], 200);
             } else {

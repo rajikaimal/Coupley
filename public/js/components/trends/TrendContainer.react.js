@@ -107,7 +107,10 @@ const TrendContainer = React.createClass({
   getHashtag:function (e) {
     console.log('clicked');
     console.log(e);
-    TrendsAction.getTrendsSearchPosts(e);
+    let trend={
+      strend:e,
+    };
+    TrendsAction.getTrendsSearchPosts(trend);
 
 
   },
