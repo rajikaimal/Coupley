@@ -30,7 +30,7 @@ var LoginStore = assign({}, EventEmitter.prototype, {
 
   storeUserId: function(id) {
     localStorage.setItem('userid', id);
-  }
+  },
 
   getState: function () {
     return localStorage.getItem('apitoken');
