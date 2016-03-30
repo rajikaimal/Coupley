@@ -18,7 +18,7 @@ class CommentController extends Controller
      */
     public function addcomment(Request $request)
     {
-        try{
+        try {
             $comment = new activitycomment;
             $comment->post_id = $request->postId;
             $comment->UserId = $request->userId;
@@ -32,7 +32,7 @@ class CommentController extends Controller
                 return response()->json(['status' => 404], 404);
             }
         } catch (Illuminate\Database\QueryException $e) {
-                return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 505], 505);
         }
     }
 
@@ -47,13 +47,14 @@ class CommentController extends Controller
     public function getcomments(Request $request)
     {
         $postId = $request->postId;
-        try{
+        try {
             $comments = \DB::select('select id,firstname,comment_txt,post_id 
                                      from activitycomments 
                                      where post_id='.$postId);
-                return response()->json(['comments' => $comments, 'status' => 200], 200);
+
+            return response()->json(['comments' => $comments, 'status' => 200], 200);
         } catch (Illuminate\Database\QueryException $e) {
-                return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 505], 505);
         }
     }
 }
