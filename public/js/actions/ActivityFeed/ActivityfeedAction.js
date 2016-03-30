@@ -188,7 +188,20 @@ var ActivityfeedAction = {
 
   addComment: function(comment){
     $.post('api/addcomment', comment, function(response) {
-      console.log(response);
+      if (response.status == 201) {
+        $.get('/api/getcomment', comment,function(response) {
+          if (response.status == 200) {
+              AppDispatcher.handleViewAction({
+                actionType: CommentConstants.GETCOMMENT,
+                commentdata: response.comments
+              });
+          } else if (response.status == 505) {
+            console.log('Error 505');
+          }
+        });
+      } else if (response.status == 404) {
+        console.log('Error 404');
+      }
     });
   },
 

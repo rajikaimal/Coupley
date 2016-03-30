@@ -29,7 +29,6 @@ const style1 = {
   position:'relative',
 };
 
-///////////////////////////////////////
 const cardStyle = {
   width: 800,
   height: 300,
@@ -45,9 +44,6 @@ const buttonStyle = {
   marginTop: 22,
   width: 200
 };
-
-///////////////////////////////////////
-
 
 function validateStatusText(textStatus) {
   if(textStatus.length > 250) {
@@ -148,8 +144,6 @@ const StatusBox = React.createClass({
                 success: function (data) {
                     console.log("success");
                     console.log(data);
-
-                  //
 
                       ActivityfeedAction._getStatus(11);
                       location.reload();
