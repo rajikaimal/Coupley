@@ -1,9 +1,12 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\User;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
+
 class AdminPwdController extends Controller
 {
     /**
@@ -39,12 +42,14 @@ class AdminPwdController extends Controller
                 \DB::table('users')
                     ->where('email', $mail)
                     ->update(['password' => $hashed]);
+
                 return response()->json(['password' => 'uptodate', 'status' => 200], 200);
             } else {
                 return response()->json(['error' => 'No_network', 'status' => 203], 203);
             }
         }
     }
+
     /**
      * CheckInternet uses to check,
      * whether internet is connected.
