@@ -10,6 +10,7 @@ var PreviousThread = [];
 var LikedUsers;
 var SearchList = [];
 var OnlineList = [];
+var ThreadMessage= [];
 
 var ThreadStore = assign({}, EventEmitter.prototype, {
 
@@ -107,6 +108,14 @@ var ThreadStore = assign({}, EventEmitter.prototype, {
     return OnlineList;
   },
 
+  saveThreadMessages: function (data) {
+     ThreadMessage=data;
+  },
+
+  getThreadMessage: function (){
+    return ThreadMessage;
+  },
+
   emitChange: function () {
     this.emit(CHAT_EVENT);
   },
@@ -137,6 +146,10 @@ AppDispatcher.register(function (payload) {
       break;
     case (ThreadConstants.RETRIVEONLINE):
       ThreadStore.saveonlineuserslist(payload.action.onlinelist);
+      ThreadStore.emitChange();
+      break;
+    case (ThreadConstants.MSGLIST):
+      ThreadStore.saveThreadMessages(payload.action.messagelist);
       ThreadStore.emitChange();
       break;
 

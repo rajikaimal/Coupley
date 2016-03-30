@@ -21,10 +21,10 @@ import LoginStore from '../../stores/LoginStore';
 import StatusStore from '../../stores/StatusStore';
 import ActivityfeedAction from '../../actions/ActivityFeed/ActivityfeedAction';
 import CommentStore from '../../stores/CommentStore';
-import Comment from './Comment.react';
+import Comment from './trendComment.react';
 import LikeStatusStore from '../../stores/LikeStatusStore';
-import ActivitySharedList from './ActivitySharedList.react';
-import ActivityContainer from './activityContainer.react';
+import ActivitySharedList from './trendactivitySharedList.react';
+import ActivityContainer from './trendactivityContainer.react';
 
 const iconButtonElement = (
   <IconButton
@@ -36,16 +36,16 @@ const iconButtonElement = (
 );
 
 const style1 = {
-  width: 800,
-  margin: 40,
+  width: 700,
+  marginTop: 2,
 };
 
 const style2 = {
-  width: 800,
+  width: 700,
 };
 
 const style3 = {
-  width: 760,
+  width: 660,
   position:'relative',
 
 };
@@ -67,8 +67,7 @@ function validateCommentText(textComment) {
 };
 
 var lFirstName;
-var likeCount;
-  
+
 const ActivityList = React.createClass({
   getInitialState: function () {
     return {
@@ -77,7 +76,6 @@ const ActivityList = React.createClass({
       sharedResults: StatusStore.getSharedData(),
       likedUsers: LikeStatusStore.getLikedUsers(),
       commentResults: CommentStore.getCommentsData(),
-      likedCount: LikeStatusStore.getLikedCount(),
       liked: '',
       open: false,
       open1: false,
@@ -100,21 +98,19 @@ const ActivityList = React.createClass({
     };
     ActivityfeedAction.getCommentList(commentData);
 
-    let LikedData = {
+    let likeData = {
       postId: this.props.id,
     };
-    ActivityfeedAction.getLikeCount(LikedData);
-
+    ActivityfeedAction.getLikedUsers(likeData);
   },
 
   _onChange: function () {
     this.setState({sharedResults: StatusStore.getSharedData()});
     this.setState({likedUsers: LikeStatusStore.getLikedUsers()});
     this.setState({commentResults: CommentStore.getCommentsData()});
-    this.setState({likedCount: LikeStatusStore.getLikedCount()});
   },
 
-  _getSharedItem: function () { 
+  _getSharedItem: function () {
     if(this.props.type=="shared"){
       return(<ActivitySharedList sid={this.props.sid}
                                  sfirstname={this.props.sfirstname}
@@ -124,37 +120,13 @@ const ActivityList = React.createClass({
     }
   },
 
-  _getLikedCount: function () {
-    let self = this;
-    return (this.state.likedCount.map(function(likes) {
-
-          console.log('lllllllllllllllllll');
-          console.log();
-      return (likes.map(function(result) {
-        console.log('eeeeeeeeeeeee');
-        console.log(result);    
-        if(self.props.id == result.post_id) {
-          likeCount=result.count;          
-        }
-      }));
-    }));
-  },
-
   _getLikedUsers: function () {
     this.setState({open: true});
-
-    let likeData = {
-      postId: this.props.id,
-    };
-    ActivityfeedAction.getLikedUsers(likeData);
-
     let self = this;
-    return (this.state.likedUsers.map(function(likes) {
-      return (likes.map(function(result) {
-        console.log('eeeeeeeeeeeee');
-        console.log(result);
-        lFirstName=result.firstname;       
-        
+    return (this.state.likedUsers.map(function(likeUsers) {
+      return (likeUsers.map(function(results) {
+        console.log(results);
+        return(lFirstName=results.firstname);
       }));
     }));
   },
@@ -164,10 +136,10 @@ const ActivityList = React.createClass({
       return (this.state.commentResults.map(function(comment) {
         return (comment.map(function(comm) {
           if(self.props.id == comm.post_id) {
-            return (<Comment ckey={comm.id} 
-                             cid={comm.id} 
-                             cfirstName={comm.firstname} 
-                             comment_txt={comm.comment_txt} />);       
+            return (<Comment ckey={comm.id}
+                             cid={comm.id}
+                             cfirstName={comm.firstname}
+                             comment_txt={comm.comment_txt} />);
           }
         }));
       }));
@@ -192,15 +164,11 @@ const ActivityList = React.createClass({
     ActivityfeedAction._deleteStatus(deleteData);
     },
 
-  _blockStatus: function () {
-
-  },
-
   _changeShareState:function() {
     let shareStatus = this.refs.shareBox.getValue();
     let shareData = {
       email: LoginStore.getEmail(),
-      userId: 11,  
+      userId: 1,
       firstName: LoginStore.getFirstname(),
       postId: this.props.id,
       status: shareStatus,
@@ -217,7 +185,7 @@ const ActivityList = React.createClass({
   _changeLikeState: function () {
     let likeData = {
       postId: this.props.id,
-      userId: 11, 
+      userId: 11,
       email: LoginStore.getEmail(),
       firstName: LoginStore.getFirstname(),
     };
@@ -256,12 +224,12 @@ const ActivityList = React.createClass({
       var comment = this.refs.commentBox.getValue();
       let commentData={
         postId: this.props.id,
-        userId: 11,  
+        userId: 11,
         comment: comment,
         email: LoginStore.getEmail(),
         firstName: LoginStore.getFirstname(),
       };
-             
+
       if(validateCommentText(comment).error) {
         this.setState({
           commentText: validateCommentText(comment).error
@@ -284,18 +252,6 @@ const ActivityList = React.createClass({
   },
 
   render: function() {
-    const updateActions = [
-      <FlatButton
-        label="Update"
-        primary={true}
-        keyboardFocused={true}
-        onTouchTap={this._editStatus}/>,
-
-      <FlatButton
-        label="Close"
-        secondary={true}
-        onTouchTap={this.handleClose}/>,
-    ];
 
     const likeActions = [
       <FlatButton
@@ -329,12 +285,12 @@ const ActivityList = React.createClass({
                   <b>{this.props.created_at}</b>
                 </p>
               }
-              secondaryTextLines={1} 
+              secondaryTextLines={1}
               rightIconButton={
                   <IconMenu iconButtonElement={iconButtonElement}>
                     <MenuItem primaryText="Edit" onClick={this.handleOpen}/>
                     <MenuItem primaryText="Remove" onClick={this._deleteStatus}/>
-                    <MenuItem primaryText="Block" onClick={this._blockStatus}/>
+                    <MenuItem primaryText="Block" />
                   </IconMenu> } />
 
               <CardText>
@@ -348,39 +304,27 @@ const ActivityList = React.createClass({
               <div>
                 {this._getSharedItem()}
               </div>
-                  
+
               <IconButton onClick={this._changeLikeState} tooltip={!this.state.liked ? "Unlike" : "Like"} touch={true} tooltipPosition="bottom-right">
-                {!this.state.liked ? <FavIcon onClick={this._changeLikeState} viewBox="0 0 20 30" color={Colors.red500} /> : 
+                {!this.state.liked ? <FavIcon onClick={this._changeLikeState} viewBox="0 0 20 30" color={Colors.red500} /> :
                   <FavIconBorder viewBox="0 0 20 30" color={Colors.red500} />}
               </IconButton>
 
               <FlatButton label="Comment" onClick={this.setFocusToTextBox} />
               <FlatButton label="Share" onClick={this.handleOpenShare}  secondary={this.state.shared ? true : false}/>
-              <Divider inset={true} />   
+              <Divider inset={true} />
 
-              <div>
-                {this._getLikedCount()}
-              </div>
-             
-          </Card> 
+          </Card>
 
           <div>
             <Card style={style2}>
               <Paper zDepth={1}>
-                <FlatButton label={(likeCount==0) ? " " : likeCount + " Likes"} onClick={this._getLikedUsers}/>
+                <FlatButton label={!this.props.likesCount ? " " : this.props.likesCount + " Likes"} onClick={this._getLikedUsers}/>
                 <FlatButton label="2 Shares"  />
               </Paper>
             </Card>
           </div>
 
-          <Dialog
-            title="Modify Your Status"
-            actions={updateActions}
-            modal={false}
-            open={this.state.opens}
-            onRequestClose={this.handleClose}>
-            <TextField hintText="Update your status" multiLine={false} fullWidth={true} ref="EditBox" defaultValue={this.props.postText}/>
-          </Dialog>
 
           <Dialog
             title={this.props.firstName + "'s post Share on your own Activityfeed"}
@@ -396,8 +340,8 @@ const ActivityList = React.createClass({
             actions={likeActions}
             modal={true}
             open={this.state.open}>
-               
-              <ListItem 
+
+              <ListItem
                 id="likedListBox"
                 leftAvatar={<Avatar src="https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg" />}
                 primaryText={lFirstName} />
@@ -409,10 +353,10 @@ const ActivityList = React.createClass({
         <div>{this._getCommentList()}</div>
         <div>
           <Card style={style2}>
-            <Paper zDepth={1}>
-              <div className='col-md-10'></div>
-                <TextField style={style3} className='col-md-2' fullWidth={true} hintText="Write a comment..." multiLine={false} onKeyPress={this.EnterKey} errorText={this.state.commentText} ref="commentBox" id={this.props.id} />
-            </Paper>
+          <Paper zDepth={1}>
+            <div className='col-md-10'></div>
+              <TextField style={style3} className='col-md-2' fullWidth={true} hintText="Write a comment..." multiLine={false} onKeyPress={this.EnterKey} errorText={this.state.commentText} ref="commentBox" id={this.props.id} />
+          </Paper>
           </Card>
         </div>
       </div>
@@ -421,4 +365,3 @@ const ActivityList = React.createClass({
 });
 
 export default ActivityList;
-
