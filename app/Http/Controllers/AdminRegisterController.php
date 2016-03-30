@@ -1,10 +1,7 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\User;
-
 class AdminRegisterController extends Controller
 {
     /**
@@ -37,7 +34,6 @@ class AdminRegisterController extends Controller
                     WWW.COUPLEY.COM/cp-admin#/AdminLogin';
                     $subject = 'COUPLEY Administrator Registration';
                     $sendMail->SendMail($admin->email, $admin->firstname, $subject, $content);
-
                     return response()->json(['status' => 201], 201);
                 } else {
                     return response()->json(['status' => 404], 404);
@@ -49,7 +45,6 @@ class AdminRegisterController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
-
     /**
      * checks whether new email is already in the database
      * old and new email can be similler for the selected admin only.
@@ -73,14 +68,12 @@ class AdminRegisterController extends Controller
                 \DB::table('users')
                     ->where('id', $id)
                     ->update(['firstname' => $firstname, 'lastname' => $lastname, 'job' => $job, 'email' => $email]);
-
                 $sendMail = new EmailController();
                 $content = 'Dear '.$firstname.', Your profile been Updated.
                     Your Email is '.$email.' Please visit
                     WWW.COUPLEY.COM/cp-admin#/AdminLogin';
                 $subject = 'COUPLEY Administrator Update';
                 $sendMail->SendMail($email, $firstname, $subject, $content);
-
                 return response()->json(['you can use this email' => $admin, 'status' => 200], 200);
             } else {
                 return response()->json(['email' => 'email already exists', 'status' => 201], 201);
@@ -89,7 +82,6 @@ class AdminRegisterController extends Controller
             return response()->json(['status' => 203], 203);
         }
     }
-
     /**
      * uploads the profile picture
      *  to the server.
@@ -107,13 +99,11 @@ class AdminRegisterController extends Controller
             $file = $request->file('file')->move($destination, $id.'i'.'.'.$ext);
             User::where('id', $id)
                 ->update(['profilepic' => $id.'i'.'.'.$ext]);
-
             return response()->json(['status' => 200, 'done' => true], 200);
         } catch (Exception $e) {
             return response()->json(['status' => 201, 'done' => false], 200);
         }
     }
-
     /**
      * CheckInternet uses to check,
      * whether internet is connected.

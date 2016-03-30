@@ -1,12 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\User;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
-
 class AdminPwdController extends Controller
 {
     /**
@@ -38,19 +35,16 @@ class AdminPwdController extends Controller
                 $content = 'Dear Administrator, your updated password is '.$newpassword;
                 $subject = 'COUPLEY Password Update';
                 $sendMail->SendMail($mail, $adminName[0]->firstname, $subject, $content);
-
                 $hashed = \Hash::make($newpassword);
                 \DB::table('users')
                     ->where('email', $mail)
                     ->update(['password' => $hashed]);
-
                 return response()->json(['password' => 'uptodate', 'status' => 200], 200);
             } else {
                 return response()->json(['error' => 'No_network', 'status' => 203], 203);
             }
         }
     }
-
     /**
      * CheckInternet uses to check,
      * whether internet is connected.

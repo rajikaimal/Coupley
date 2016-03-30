@@ -1,0 +1,14 @@
+var AppDispatcher = require('../dispatcher/AppDispatcher');
+var TodoConstants = require('../constants/TodoConstants');
+
+var StarterActions = {
+  create: function(text) {
+    console.log('Action');
+    AppDispatcher.handleViewAction({
+      actionType: TodoConstants.TODO_CREATE,
+      item: text
+    }); 
+  }
+};
+
+module.exports = StarterActions;
