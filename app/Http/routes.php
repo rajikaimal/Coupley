@@ -43,7 +43,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('getsearchconv', 'ThreadController@getSearchConv');
     //Serch Results of Previous messages
 
-    Route::get('getonlineusers','ThreadController@getOnlineUsers');
+    Route::get('getonlineusers', 'ThreadController@getOnlineUsers');
     Route::get('getMessage', 'ThreadController@getMessage');
     // Route::get('getpostId', 'ActivityFeedController@getpostId');
     // Route::post('likes', 'LikeController@addlikes');
@@ -89,7 +89,6 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('gettrendsinitialsearchpost', 'TrendsController@getInitPosttrends');
     Route::get('gettrendssearchpost', 'TrendsController@getPosttrends');
     //
-
 
     Route::get('getonlineusers', 'ThreadController@getOnlineUsers');
     // Route::get('getpostId', 'ActivityFeedController@getpostId');
