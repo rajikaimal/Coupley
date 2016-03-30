@@ -1,11 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Comment;
 use App\activitycomment;
-
 class CommentController extends Controller
 {
     /**
@@ -25,7 +22,6 @@ class CommentController extends Controller
             $comment->email = $request->email;
             $comment->firstname = $request->firstName;
             $comment->comment_txt = $request->comment;
-
             if ($comment->save()) {
                 return response()->json(['status' => 201], 201);
             } else {
@@ -35,7 +31,6 @@ class CommentController extends Controller
                 return response()->json(['status' => 505], 505);
         }
     }
-
     /**
      * get comment data.
      *

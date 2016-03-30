@@ -230,6 +230,15 @@ var LoginActions = {
     });
   },
 
+  visitor: function(data) {
+    $.post('/api/profile/visitorcount?token=' + localStorage.getItem('apitoken'), data).fail(function (error) {
+      AppDispatcher.handleViewAction({
+        actionType: ProfileConstants.ERR,
+        error: true,
+      });
+    });
+  },
+
   clearAll: function() {
     AppDispatcher.handleViewAction({
       actionType: ProfileConstants.CLEAR,

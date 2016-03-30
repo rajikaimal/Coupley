@@ -46,7 +46,7 @@ class ProfileController extends Controller
         try {
             //$userDetails = User::where('email', $email)->get();
             $userDetails = \DB::select(\DB::raw("
-                SELECT id,firstname,lastname,orientation,email,country,gender,username,profilepic,birthday,TIMESTAMPDIFF(YEAR, birthday, CURDATE()) AS age from users where email='". $email ."'
+                SELECT id,firstname,lastname,orientation,email,country,gender,username,profilepic,birthday,TIMESTAMPDIFF(YEAR, birthday, CURDATE()) AS age from users where email='".$email."'
             "));
             //$userDetails = array_merge($userDetails->toArray(), $age->toArray());
             //$age = 0;
@@ -392,13 +392,13 @@ class ProfileController extends Controller
             // }
             // foreach($files as $val) {
             //     var_dump($files);
-            //     $file = $request->file('file')->move($destination, $username);    
+            //     $file = $request->file('file')->move($destination, $username);
             // }
             return response()->json(['status' => 200, 'done' => true], 200);
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 200, 'done' => false], 200);
         }
-    }    
+    }
     /**
      * edit activity of a user.
      *
@@ -807,7 +807,6 @@ class ProfileController extends Controller
     {
         $username = $request->username;
         $newPassword = \Hash::make($request->password);
-        
         try {
             $user = User::where('username', $username)->get()[0];
             $email = $user->email;

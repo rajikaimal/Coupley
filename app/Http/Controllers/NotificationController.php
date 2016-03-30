@@ -30,7 +30,7 @@ class NotificationController extends Controller
             $id = User::where('username', $username)->get()[0]->id;
             $notifications = Notification::where('user_id2', $id)
                     ->where('readnotification', 0)->count();
-                        
+
             return response()->json(['status' => 200, 'count' => $notifications], 200);
         } catch (QueryException $e) {
             return response()->json(['status' => 200], 200);
@@ -48,15 +48,14 @@ class NotificationController extends Controller
             // $notifications = \DB::select(\DB::raw("
             //    SELECT id,firstname,lastname,username,gender,profilepic from(
             //                 SELECT id,firstname, lastname,username,orientation,gender,profilepic,role FROM `users` WHERE
-            //                                         status = 'active'         
-            //                                         ) as t where  
+            //                                         status = 'active'
+            //                                         ) as t where
             //                                         role='user' and id IN (
             //                                             Select blocked_user_id
             //                                             from `blocked`
             //                                             where user_id=".$userID.'
-            //                                         ) 
+            //                                         )
             // '));
-
 
             return response()->json(['status' => 200, 'list' => $notifications], 200);
         } catch (QueryException $e) {

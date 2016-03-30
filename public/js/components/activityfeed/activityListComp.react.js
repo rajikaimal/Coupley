@@ -434,4 +434,3 @@ const ActivityList = React.createClass({
 });
 
 export default ActivityList;
-

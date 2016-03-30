@@ -136,4 +136,21 @@ class ThreadController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
+    public function getMessage(Request $request)
+    {
+        $threadId = $request->threadId;
+        try {
+            if ($message = \DB::select(\DB::raw("
+            SELECT m.message,m.created_at,u.firstname,m.thread_id
+              FROM messages m,users u WHERE m.thread_id='".$threadId."' AND u.username=m.sender_un
+            "))) {
+                return response()->json(['message' => $message, 'status' => 200], 200);
+            } else {
+                return response()->json(['status' => 505], 505);
+            }
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 200], 200);
+        }
+    }
 }
