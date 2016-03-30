@@ -23,6 +23,4 @@ class ExampleTest extends TestCase
         $data = json_decode($response->getBody());
         $this->assertEquals(false, $data);
     }
-
-
 }

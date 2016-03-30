@@ -1,7 +1,10 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Feedback;
+
 class FeedbackController extends Controller
 {
     /**
@@ -21,6 +24,7 @@ class FeedbackController extends Controller
             return response()->json(['status' => 300], 300);
         }
     }
+
     /**
      * uses to retrive feedbacks regarding
      *the activityfeed.
@@ -38,6 +42,7 @@ class FeedbackController extends Controller
             return response()->json(['status' => 300], 300);
         }
     }
+
     /**
      * uses to retrive feedbacks regarding
      *the privacy.
@@ -55,6 +60,7 @@ class FeedbackController extends Controller
             return response()->json(['status' => 300], 300);
         }
     }
+
     /**
      * uses to retrive feedbacks regarding
      *the chat.
@@ -72,6 +78,7 @@ class FeedbackController extends Controller
             return response()->json(['status' => 300], 300);
         }
     }
+
     /**
      * uses to retrive feedbacks regarding
      *the other options.
@@ -89,6 +96,7 @@ class FeedbackController extends Controller
             return response()->json(['status' => 300], 300);
         }
     }
+
     /**
      * uses to mark whether feedback is done.
      *

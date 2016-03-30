@@ -1,20 +1,22 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Post;
 use App\User;
-use App\Likes;
 use App\activitypost;
 use App\activitylikes;
-use App\activitycomment;
 use App\activityblock;
+
 class ActivityFeedController extends Controller
 {
     public function getUserId(Request $request)
     {
         $email = $request->email;
         try {
-             $uId= User::where('email', $email)->get(['id'])[0]->id;
+            $uId = User::where('email', $email)->get(['id'])[0]->id;
+
             return response()->json(['uId' => $uId, 'status' => 200], 200);
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 505], 505);
@@ -74,7 +76,7 @@ class ActivityFeedController extends Controller
 
     public function sharedStatus(Request $request)
     {
-        try{
+        try {
             $post = new activitypost;
             $post->email = $request->email;
             $post->userId = $request->userId;
@@ -104,7 +106,7 @@ class ActivityFeedController extends Controller
     {
         $uId = $request->userId;
         try {
-          $posts = \DB::select('SELECT p.id,
+            $posts = \DB::select('SELECT p.id,
                                        p.firstname,
                                        p.type,
                                        p.attachment,
@@ -147,6 +149,7 @@ class ActivityFeedController extends Controller
                                                 post_text as spost_text,created_at as screated_at from activityposts) q
                                 On p.post_id=q.sid
                                 order by p.created_at desc');
+
             return response()->json(['posts' => $posts, 'status' => 200], 200);
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 505], 505);
@@ -164,7 +167,7 @@ class ActivityFeedController extends Controller
     public function deleteStatus(Request $request)
     {
         $postId = $request->postId;
-        try{
+        try {
             $posts = \DB::table('activityposts')->where('id', '=', $postId);
             if ($posts->delete()) {
                 return response()->json(['status' => 201], 201);
@@ -188,7 +191,7 @@ class ActivityFeedController extends Controller
     {
         $postId = $request->postId;
         $status = $request->status;
-        try{
+        try {
             $posts = \DB::table('activityposts')->where('id', $postId)->update(['post_text' => $status]);
             if ($posts) {
                 return response()->json(['status' => 201], 201);
@@ -199,10 +202,10 @@ class ActivityFeedController extends Controller
             return response()->json(['status' => 505], 505);
         }
     }
-    
+
     public function block_status(Request $request)
     {
-        try{
+        try {
             $blockPost = new activityblock;
             $blockPost->email = $request->email;
             $blockPost->userId = $request->userId;

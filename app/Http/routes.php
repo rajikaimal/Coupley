@@ -31,9 +31,9 @@ Route::group(['prefix' => 'api'], function () {
     //update admin passwords
     Route::post('recoverpwd', 'AuthenticateController@reset');
 
-    //Add a status   
+    //Add a status
     Route::post('status', 'ActivityFeedController@addStatus');
-    //Add a image status   
+    //Add a image status
     Route::post('imageStatus', 'ActivityFeedController@addImageStatus');
     //Return status
     Route::get('getstatus', 'ActivityFeedController@getStatus');
@@ -57,10 +57,10 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('getcomment', 'CommentController@getcomments');
     //Delete a status
     Route::post('deleteStatus', 'ActivityFeedController@deleteStatus');
-    //Edit a status 
+    //Edit a status
     Route::post('edit_status', 'ActivityFeedController@editStatus');
     //Block a status
-    Route::post('block_status','ActivityFeedController@block_status');
+    Route::post('block_status', 'ActivityFeedController@block_status');
 
     //Return previos chats
     Route::get('getpreviousmsg', 'ThreadController@getPreviousMessage');
@@ -121,7 +121,6 @@ Route::group(['prefix' => 'api'], function () {
     // Route::post('share', 'ActivityFeedController@addshare');
     // Route::post('deleteStatus', 'ActivityFeedController@deleteStatus');
     // Route::post('edit_status', 'ActivityFeedController@editStatus');
-
 
     //Return profile data
     Route::get('profile', 'ProfileController@profile');
@@ -208,7 +207,6 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('suggestions', 'SuggestionController@getSuggestions');
 
     Route::put('profile/lookingfor', 'LookingForController@update');
-
 
 });
 Route::get('socket', 'SocketController@index');

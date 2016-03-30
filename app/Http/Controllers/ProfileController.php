@@ -9,7 +9,9 @@
 | @author Rajika Imal
 |
 */
+
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\User;
 use App\Likes;
@@ -18,6 +20,7 @@ use App\ActivityFeed;
 use App\About;
 use App\Post;
 use App\Reported;
+
 class ProfileController extends Controller
 {
     /**
@@ -32,6 +35,7 @@ class ProfileController extends Controller
     {
         $this->middleware('jwt.auth');
     }
+
     /**
      * get profile data for profile of each user profile.
      *
@@ -55,6 +59,7 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
      * get profile pics for the user profiles.
      *
@@ -68,10 +73,12 @@ class ProfileController extends Controller
         $username = $request->username;
         try {
             $profilepic = User::where('username', $username)->get(['profilepic']);
+
             return response()->json(['status' => 200, 'image' => '/img/profilepics/'.$profilepic[0]->profilepic]);
         } catch (Illuminate\Database\QueryException $e) {
         }
     }
+
     /**
      * get like status of a visitor's profile.
      *
@@ -97,6 +104,7 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
      * get visitor profile data.
      *
@@ -118,6 +126,7 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
      * add like to visitor's profile, handles POST request.
      *
@@ -156,6 +165,7 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
      * unlike a visitor's profile handles POST request.
      *
@@ -177,6 +187,7 @@ class ProfileController extends Controller
                 Likes::where('user1', $unlikedUsername)
                     ->where('user2', $gotunLikedUsername)
                     ->delete();
+
                 return response()->json(['status' => 200], 200);
             } else {
                 return response()->json(['status' => 200], 200);
@@ -185,6 +196,7 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
      * get liked back status to determine whether user and visitor have liked
      * each other.
@@ -210,6 +222,7 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
      * get block status of visitor.
      *
@@ -237,6 +250,7 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /*
         Returns @int status after blocking
     **/
@@ -268,6 +282,7 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
      * get like status of a visitor's profile.
      *
@@ -295,6 +310,7 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
      * get profile permission.
      *
@@ -324,6 +340,7 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
      * get activity feed of a user.
      *
@@ -347,6 +364,7 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
      * upload profile pic of a user.
      *
@@ -366,11 +384,13 @@ class ProfileController extends Controller
             $ext = $request->file('file')->getClientOriginalExtension();
             User::where('username', $username)
                 ->update(['profilepic' => $username]);
+
             return response()->json(['status' => 200, 'done' => true], 200);
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 200, 'done' => false], 200);
         }
     }
+
     /**
      * upload profile pic of a user.
      *
@@ -399,6 +419,7 @@ class ProfileController extends Controller
             return response()->json(['status' => 200, 'done' => false], 200);
         }
     }
+
     /**
      * edit activity of a user.
      *
@@ -429,6 +450,7 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
      * get about section data.
      *
@@ -443,6 +465,7 @@ class ProfileController extends Controller
             try {
                 $userID = User::where('email', $email)->get(['id']);
                 $results = About::where('user_id', $userID[0]->id)->get();
+
                 return response()->json(['status' => 200, 'data' => $results], 200);
             } catch (Illuminate\Database\QueryException $e) {
                 return response()->json(['status' => 200], 200);
@@ -451,12 +474,14 @@ class ProfileController extends Controller
             try {
                 $userID = User::where('username', $visitorUsername)->get(['id']);
                 $results = About::where('user_id', $userID[0]->id)->get();
+
                 return response()->json(['status' => 200, 'data' => $results], 200);
             } catch (Illuminate\Database\QueryException $e) {
                 return response()->json(['status' => 200], 200);
             }
         }
     }
+
     /**
      * get posts done by a user.
      *
@@ -480,6 +505,7 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
      * load more posts for pagination.
      *
@@ -503,6 +529,7 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
      * edit basic information.
      *
@@ -526,6 +553,7 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
      * edit summary data.
      *
@@ -551,6 +579,7 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
      * edit life data.
      *
@@ -576,6 +605,7 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
      * edit good at data.
      *
@@ -601,6 +631,7 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
      * edit thinking of data.
      *
@@ -626,6 +657,7 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
      * edit favs data.
      *
@@ -651,6 +683,7 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
      * permenantly deletes a user profile POST request.
      *
@@ -669,6 +702,7 @@ class ProfileController extends Controller
                 var_dump($username);
                 $q = 'DELETE FROM users where id = ?';
                 $status = \DB::delete($q, [17]);
+
                 return response()->json(['status' => 200, 'done' => true], 200);
             } else {
                 return response()->json(['status' => 200, 'done' => false], 200);
@@ -677,6 +711,7 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
      * Deactivates a user profile POST request.
      *
@@ -698,6 +733,7 @@ class ProfileController extends Controller
                 $subject = 'Account deactivation !';
                 $content = 'Your account has been deactivated !';
                 $emailController->SendMail($email, $name, $subject, $content);
+
                 return response()->json(['status' => 200, 'done' => true], 200);
             } else {
                 return response()->json(['status' => 200, 'done' => false], 200);
@@ -706,6 +742,7 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
      * Retreives block list of a certain user GET /.
      *
@@ -744,6 +781,7 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
      * Updates a user profile main info POST request.
      *
@@ -762,11 +800,13 @@ class ProfileController extends Controller
         try {
             User::where('username', $username)
                 ->update(['email' => $email, 'username' => $username, 'gender' => $gender, 'orientation' => $orientation, 'birthday' => $birthday]);
+
             return response()->json(['status' => 200, 'done' => true], 200);
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 505], 505);
         }
     }
+
     /**
      * Reports user profile.
      *
@@ -790,11 +830,13 @@ class ProfileController extends Controller
             $report->description = $description;
             $report->status = $type;
             $report->save();
+
             return response()->json(['status' => 200, 'done' => true], 200);
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
      * Updates password of user profile.
      *
@@ -820,6 +862,7 @@ class ProfileController extends Controller
                 ->update(['password' => $newPassword]);
             $emailController = new EmailController();
             $emailController->SendMail($email, $name, $subject, $content);
+
             return response()->json(['status' => 200, 'done' => true], 200);
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 200], 200);
