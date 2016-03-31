@@ -538,7 +538,7 @@ class ProfileController extends Controller
      *
      * @return json
      */
-    public function editbasics(Request $request)
+    public function editBasics(Request $request)
     {
         $firstname = $request->firstname;
         $lastname = $request->lastname;

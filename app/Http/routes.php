@@ -147,7 +147,7 @@ Route::group(['prefix' => 'api'], function () {
     //Returns permission for viewing a profile
     Route::post('profilepermission', 'ProfileController@profilepermission');
     //Returns acitivity feed for specific user
-//    Route::get('profile/feed', 'ProfileController@getposts');
+    //Route::get('profile/feed', 'ProfileController@getposts');
     //Upload profile pic
     Route::post('profile/profilepic', 'ProfileController@uploadpic');
 
@@ -162,7 +162,7 @@ Route::group(['prefix' => 'api'], function () {
 
     Route::get('profile/laodmoreposts', 'ProfileController@loadMorePosts');
 
-    Route::put('profile/edit/updatebasics', 'ProfileController@editbasics');
+    Route::post('profile/edit/updatebasics', 'ProfileController@editBasics');
 
     //Edit About section
     Route::put('profile/edit/summary', 'ProfileController@editsummary');
