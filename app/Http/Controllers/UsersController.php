@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use PHPMailer;
+use App\Feedback;
 
 class UsersController extends Controller
 {
@@ -128,6 +129,31 @@ class UsersController extends Controller
             echo $e->getMessage(); //Boring error messages from anything else!
         }
     }
+
+    /**
+     * posts feedback from users
+     * 
+     * @param id        $request
+     *
+     * @return json
+     */
+    public function postFeedback(Request $request)
+    {
+        $username = $request->username;
+        $description = $request->comment;
+        $category = $request->type;
+        $feedback = new Feedback;
+        $feedback->user = $username;
+        $feedback->description = $description;
+        $feedback->category = $category;
+        if($feedback->save())
+        {
+            return response()->json(['status' => 200, 'done' => true], 200);
+        } else {
+            return response()->json(['status' => 200, 'done' => false], 200);
+        }
+    }
+
 
     public function Adminprofile(Request $request)
     {
