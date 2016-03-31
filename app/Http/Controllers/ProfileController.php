@@ -803,7 +803,7 @@ class ProfileController extends Controller
 
             return response()->json(['status' => 200, 'done' => true], 200);
         } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 200], 200);
         }
     }
 
