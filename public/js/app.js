@@ -25,7 +25,7 @@ import PasswordChange from './components/profile/Password.react';
 import BlockList from './components/profile/blocklist/BlockListContainer.react';
 import Deactivate from './components/profile/Deactivate.react';
 import ProfileVisitor from './components/profile/visitor/profile.react';
-import VisitorActivityFeed from './components/profile/visitor/activityfeed/activityMain.react';
+//import VisitorActivityFeed from './components/profile/visitor/activityfeed/activityMain.react';
 import AboutVisitor from './components/profile/visitor/About.react';
 import PhotosVisitor from './components/profile/visitor/Photos.react';
 import Search from './components/search/Search.react';
@@ -151,7 +151,7 @@ ReactDOM.render((
           <Route path="deactivate" component={Deactivate} />
       </Route>
       <Route path="/:username" component={ProfileVisitor} >
-        <Route path="activityfeed" component={VisitorActivityFeed} />
+        <Route path="activityfeed" component={AboutVisitor} />
         <Route path="about" component={AboutVisitor} />
         <Route path="photos" component={PhotosVisitor} />
       </Route>

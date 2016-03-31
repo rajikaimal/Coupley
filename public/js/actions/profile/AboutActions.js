@@ -21,6 +21,20 @@ var AboutActions = {
     });
   },
 
+  fetchLookingFor: function () {
+    $.get('/api/profile/lookingfor?token=' + localStorage.getItem('apitoken') + '&username=' + localStorage.getItem('username'), function (response) {
+      AppDispatcher.handleViewAction({
+        actionType: AboutConstants.LOOKINGFOR,
+        lookingfor: response.data[0],
+      });
+    }).fail(function () {
+      AppDispatcher.handleViewAction({
+        actionType: AboutConstants.FETCH,
+        error: true,
+      });
+    });
+  },
+
   updateSummary: function (summary) {
     $.ajax({
       url: '/api/profile/edit/summary?token=' + localStorage.getItem('apitoken'),
@@ -136,7 +150,7 @@ var AboutActions = {
     });;
   },
 
-  updateLookingFor: function(data) {
+  updateLookingFor: function (data) {
     $.ajax({
       url: '/api/profile/lookingfor?token=' + localStorage.getItem('apitoken'),
       type: 'PUT',
@@ -144,9 +158,16 @@ var AboutActions = {
       success: function (response) {
         console.log(response);
         if (response.status === 200) {
-          AppDispatcher.handleViewAction({
-            actionType: AboutConstants.FAVS,
-            favs: favs,
+          $.get('/api/profile/lookingfor?token=' + localStorage.getItem('apitoken') + '&username=' + localStorage.getItem('username'), function (response) {
+            AppDispatcher.handleViewAction({
+              actionType: AboutConstants.LOOKINGFOR,
+              lookingfor: response.data[0],
+            });
+          }).fail(function () {
+            AppDispatcher.handleViewAction({
+              actionType: AboutConstants.FETCH,
+              error: true,
+            });
           });
         } else {
 
