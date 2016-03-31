@@ -10,7 +10,7 @@ use Illuminate\Database\QueryException;
 class LookingForController extends Controller
 {
     /**
-     * updates lookingfor section in profile
+     * updates lookingfor section in profile.
      *
      * @param object        $request
      *
@@ -22,10 +22,9 @@ class LookingForController extends Controller
         $username = $request->username;
         try {
             $userID = User::where('username', $username)->get()[0]->id;
-        } catch(QueryException $e) {
+        } catch (QueryException $e) {
             return response()->json(['status' => 200, 'done' => false], 200);
         }
-        
 
         $minAge = $request->minage;
         $maxAge = $request->maxage;
@@ -72,13 +71,15 @@ class LookingForController extends Controller
                 'longtterm' => $longTerm,
                 'casualsex' => $casualSex,
             ]);
+
             return response()->json(['status' => 200, 'done' => true], 200);
-        } catch(QueryException $e) {
+        } catch (QueryException $e) {
             return response()->json(['status' => 200, 'done' => false], 200);
         }
     }
+
     /**
-     * returns lookingfor data for a particular user profile
+     * returns lookingfor data for a particular user profile.
      *
      * @param object        $request
      *
@@ -88,12 +89,13 @@ class LookingForController extends Controller
     public function getLookingFor(Request $request)
     {
         $username = $request->username;
-        
+
         try {
             $userID = User::where('username', $username)->get()[0]->id;
             $lookingForData = LookingFor::where('user_id', $userID)->get();
+
             return response()->json(['status' => 200, 'data' => $lookingForData], 200);
-        } catch(QueryException $e) {
+        } catch (QueryException $e) {
             return response()->json(['status' => 200, 'done' => false], 200);
         }
     }
