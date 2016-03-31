@@ -144,7 +144,6 @@ class ProfileController extends Controller
                     ->where('user2', $gotLikedUsername)->get();
             $result2 = Likes::where('user1', $gotLikedUsername)
                 ->where('user2', $likedUsername)->get();
-
             if ($result1->isEmpty() || $result2->isEmpty()) {
                 $user1ID = User::where('username', $likedUsername)->get(['id']);
                 $user2ID = User::where('username', $gotLikedUsername)->get(['id']);
@@ -184,7 +183,6 @@ class ProfileController extends Controller
                     ->where('user2', $gotunLikedUsername)->get();
             $result2 = Likes::where('user1', $gotunLikedUsername)
                 ->where('user2', $unlikedUsername)->get();
-
             if ($result1 !== null && $result2 !== null) {
                 Likes::where('user1', $unlikedUsername)
                     ->where('user2', $gotunLikedUsername)
@@ -212,11 +210,9 @@ class ProfileController extends Controller
     {
         $username = $request->username;
         $visitorUsername = $request->visitorusername;
-
         try {
             $result = Likes::where('user1', $visitorUsername)
                     ->where('user2', $username)->get();
-
             if (! $result->isEmpty()) {
                 return response()->json(['liked' => true], 200);
             } else {
@@ -242,11 +238,9 @@ class ProfileController extends Controller
         try {
             $user1ID = User::where('username', $username)->get(['id']);
             $user2ID = User::where('username', $visitorUsername)->get(['id']);
-
             $result = Blocks::where('user_id', $user1ID[0]->id)
                 ->where('blocked_user_id', $user2ID[0]->id)
                 ->get();
-
             if ($result->isEmpty()) {
                 return response()->json(['blockstatus' => false], 200);
             } else {
@@ -267,11 +261,9 @@ class ProfileController extends Controller
         try {
             $user1ID = User::where('username', $username)->get(['id']);
             $user2ID = User::where('username', $visitorUsername)->get(['id']);
-
             $result1 = Blocks::where('user_id', $user1ID[0]->id)
                 ->where('blocked_user_id', $user2ID[0]->id)
                 ->get();
-
             if ($result1->isEmpty()) {
                 if ($result1->isEmpty()) {
                     $block = new Blocks;
@@ -303,11 +295,9 @@ class ProfileController extends Controller
     {
         $visitorUsername = $request->visitorusername;
         $username = $request->username;
-
         try {
             $user1ID = User::where('username', $username)->get(['id']);
             $user2ID = User::where('username', $visitorUsername)->get(['id']);
-
             if (Blocks::where('user_id', $user1ID[0]->id)
                 ->where('blocked_user_id', $user2ID[0]->id)
                 ->delete()
@@ -336,11 +326,9 @@ class ProfileController extends Controller
         try {
             $user1ID = User::where('username', $username)->get(['id']);
             $user2ID = User::where('username', $visitorUsername)->get(['id']);
-
             $result = Blocks::where('user_id', $user2ID[0]->id)
                 ->where('blocked_user_id', $user1ID[0]->id)
                 ->get();
-
             if (! $result->isEmpty()) {
                 return response()->json(['permission' => false, 'status' => 200], 200);
             } elseif ($result->isEmpty()) {
@@ -365,7 +353,6 @@ class ProfileController extends Controller
     {
         $username = $request->username;
         $userID = User::where('username', $username)->get(['id']);
-
         try {
             $results = ActivityFeed::where('user_id', $userID[0]->id)->get();
             if (! $results->isEmpty()) {
@@ -395,7 +382,6 @@ class ProfileController extends Controller
             $username = $request->input('user');
             $file = $request->file('file')->move($destination, $username);
             $ext = $request->file('file')->getClientOriginalExtension();
-
             User::where('username', $username)
                 ->update(['profilepic' => $username]);
 
@@ -420,7 +406,6 @@ class ProfileController extends Controller
         try {
             $email = $request->input('email');
 //            $files = $request->file('files');
-
             $file = $request->file('files')->move($destination, $username);
             // for($val = 0; $val <= sizeof($files); $val++) {
             //     //$request->file('file'[$val])->move($destination, $username);
@@ -429,7 +414,6 @@ class ProfileController extends Controller
             //     var_dump($files);
             //     $file = $request->file('file')->move($destination, $username);
             // }
-
             return response()->json(['status' => 200, 'done' => true], 200);
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 200, 'done' => false], 200);
@@ -448,7 +432,6 @@ class ProfileController extends Controller
     {
         $email = $request->email;
         $editActvity = $request->editActvity;
-
         try {
             $userID = User::where('email', $email)->get(['id']);
             if (About::where('user_id', $userID[0]->id)
@@ -583,7 +566,6 @@ class ProfileController extends Controller
     {
         $email = $request->email;
         $summary = $request->summary;
-
         try {
             $userID = User::where('email', $email)->get(['id']);
             if (About::where('user_id', $userID[0]->id)
@@ -610,7 +592,6 @@ class ProfileController extends Controller
     {
         $email = $request->email;
         $life = $request->life;
-
         try {
             $userID = User::where('email', $email)->get(['id']);
             if (About::where('user_id', $userID[0]->id)
@@ -637,7 +618,6 @@ class ProfileController extends Controller
     {
         $email = $request->email;
         $goodat = $request->goodat;
-
         try {
             $userID = User::where('email', $email)->get(['id']);
             if (About::where('user_id', $userID[0]->id)
@@ -664,7 +644,6 @@ class ProfileController extends Controller
     {
         $email = $request->email;
         $thinkingOf = $request->thinkingof;
-
         try {
             $userID = User::where('email', $email)->get(['id']);
             if (About::where('user_id', $userID[0]->id)
@@ -691,7 +670,6 @@ class ProfileController extends Controller
     {
         $email = $request->email;
         $favs = $request->favs;
-
         try {
             $userID = User::where('email', $email)->get(['id']);
             if (About::where('user_id', $userID[0]->id)
@@ -718,7 +696,6 @@ class ProfileController extends Controller
     {
         $username = $request->username;
         // \DB::raw("delete FROM users WHERE username = '$username'");
-
         // return $username;
         try {
             if ($username) {
@@ -779,7 +756,6 @@ class ProfileController extends Controller
         $username = $request->username;
         try {
             $userID = User::where('username', $username)->get(['id'])[0]->id;
-
             $users = \DB::select(\DB::raw("
                SELECT id,firstname,lastname,username,gender,profilepic from(
                             SELECT id,firstname, lastname,username,orientation,gender,profilepic,role FROM `users` WHERE
@@ -791,12 +767,10 @@ class ProfileController extends Controller
                                                         where user_id=".$userID.'
                                                     ) 
             '));
-
             // foreach ($blockedUsers as $value) {
             //     $users[$value->blocked_user_id] = $value;
             //     $users[$value->blocked_user_id] = User::where('id', $value->blocked_user_id)->get(['id', 'firstname', 'lastname', 'username', 'profilepic'])[0];
             // }
-
             return response()->json(['status' => 200, 'users' => $users], 200);
             if ($userID) {
                 return response()->json(['status' => 200, 'done' => true], 200);
@@ -821,7 +795,6 @@ class ProfileController extends Controller
         $username = $request->username;
         $email = $request->email;
         $gender = $request->gender;
-
         $birthday = $request->birthday;
         $orientation = $request->orientation;
         try {
@@ -851,7 +824,6 @@ class ProfileController extends Controller
         try {
             $user1ID = User::where('username', $username)->get(['id'])[0]->id;
             $user2ID = User::where('username', $visitorUsername)->get(['id'])[0]->id;
-
             $report = new Reported;
             $report->user_id = $user1ID;
             $report->reported_user_id = $user2ID;
@@ -877,7 +849,6 @@ class ProfileController extends Controller
     {
         $username = $request->username;
         $newPassword = \Hash::make($request->password);
-
         try {
             $user = User::where('username', $username)->get()[0];
             $email = $user->email;

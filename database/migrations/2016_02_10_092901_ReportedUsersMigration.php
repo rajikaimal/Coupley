@@ -19,7 +19,7 @@ class ReportedUsersMigration extends Migration
             $table->string('description');
             $table->string('status')->default('pending');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('reported_user_id')->references('id')->on('users');
+            $table->foreign('blocked_user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

@@ -31,9 +31,15 @@ const ActivitySharedList = React.createClass({
                             {this.props.spost_text}
                         </CardText>
 
-                        <CardMedia expandable={true}>
-                            <img src={this.props.sattachment} />
-                        </CardMedia>
+                        <div>
+                            {
+                            (this.props.attachment!='None') ? <div>
+                                                                <CardMedia>
+                                                                <img src={'img/activityFeedPics/'+ this.props.sattachment} />
+                                                                </CardMedia>
+                                                              </div> : ''
+                        }
+                      </div>
                         <Divider inset={true} />
                     </Card>   
                   </div>

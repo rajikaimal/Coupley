@@ -17,9 +17,9 @@ Route::get('/', function () {
     Handles initial login of a user of Coupley
     @author rajikaimal
 */
-// Route::get('/api/login', function () {
-//     ret;
-// });
+Route::get('/api/login', function () {
+    return 'Done';
+});
 Route::group(['prefix' => 'api'], function () {
     //authenticate users with AuthenticateController
     Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
@@ -28,11 +28,40 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('register', 'RegisterController@check');
     Route::get('register/checkusername', 'RegisterController@checkusername');
     Route::get('register/checkemail', 'RegisterController@checkemail');
-    //update user passwords
+    //update admin passwords
     Route::post('recoverpwd', 'AuthenticateController@reset');
 
-    // Route::post('status', 'ActivityFeedController@addstatus');
-    // Route::get('getstatus', 'ActivityFeedController@getstatus');
+    //Add a status
+    Route::post('status', 'ActivityFeedController@addStatus');
+    //Add a image status
+    Route::post('imageStatus', 'ActivityFeedController@addImageStatus');
+    //Return status
+    Route::get('getstatus', 'ActivityFeedController@getStatus');
+    //Return logged uder Id
+    Route::get('getUserId', 'ActivityFeedController@getUserId');
+    //Add a like to the status
+    Route::post('likepost', 'LikeController@like');
+    //Unlike the status
+    Route::post('unlikepost', 'LikeController@unlike');
+    //Return liked Users
+    Route::get('getLikedUsers', 'LikeController@getLikedUsers');
+    //Add a share
+    Route::post('sharedStatus', 'ActivityFeedController@sharedStatus');
+    //Unshare the status
+    Route::post('unsharepost', 'ShareController@unshare');
+    //Return share status
+    Route::get('getsharestatus', 'ShareController@getsharestatus');
+    //Add a comment to the status
+    Route::post('addcomment', 'CommentController@addcomment');
+    //Return comments data
+    Route::get('getcomment', 'CommentController@getcomments');
+    //Delete a status
+    Route::post('deleteStatus', 'ActivityFeedController@deleteStatus');
+    //Edit a status
+    Route::post('edit_status', 'ActivityFeedController@editStatus');
+    //Block a status
+    Route::post('block_status', 'ActivityFeedController@block_status');
+
     //Return previos chats
     Route::get('getpreviousmsg', 'ThreadController@getPreviousMessage');
     //Delete Messages
@@ -44,44 +73,35 @@ Route::group(['prefix' => 'api'], function () {
     //Serch Results of Previous messages
 
     Route::get('getonlineusers', 'ThreadController@getOnlineUsers');
-    Route::get('getMessage', 'ThreadController@getMessage');
-    // Route::get('getpostId', 'ActivityFeedController@getpostId');
-    // Route::post('likes', 'LikeController@addlikes');
-    // Route::post('likepost', 'LikeController@like');
-    // Route::post('unlikepost', 'LikeController@unlike');
-    // Route::get('getlikestatus', 'LikeController@getlikestatus');
-    // Route::post('comment', 'CommentController@addcomment');
-    // Route::get('getcomment', 'CommentController@getcomments');
-    // Route::post('share', 'ActivityFeedController@addshare');
-    // Route::post('deleteStatus', 'ActivityFeedController@deleteStatus');
-    // Route::post('edit_status', 'ActivityFeedController@editStatus');
 
-    //Add a status
-       Route::post('status', 'ActivityFeedController@addStatus');
-       //Return status
-       Route::get('getstatus', 'ActivityFeedController@getStatus');
-       //Return logged uder Id
-       Route::get('getUserId', 'ActivityFeedController@getUserId');
-       //Add a like to the status
-       Route::post('likepost', 'LikeController@like');
-       //Unlike the status
-       Route::post('unlikepost', 'LikeController@unlike');
-       //Return liked Users
-       Route::get('getLikedUsers', 'LikeController@getLikedUsers');
-       //Add a share
-       Route::post('sharedStatus', 'ActivityFeedController@sharedStatus');
-       //Unshare the status
-       Route::post('unsharepost', 'ShareController@unshare');
-       //Return share status
-       Route::get('getsharestatus', 'ShareController@getsharestatus');
-       //Add a comment to the status
-       Route::post('addcomment', 'CommentController@addcomment');
-       //Return comments data
-       Route::get('getcomment', 'CommentController@getcomments');
-       //Delete a status
-       Route::post('deleteStatus', 'ActivityFeedController@deleteStatus');
-       //Edit a status
-       Route::post('edit_status', 'ActivityFeedController@editStatus');
+    Route::get('getMessage', 'ThreadController@getMessage');
+
+    // //Add a status
+    //    Route::post('status', 'ActivityFeedController@addStatus');
+    //    //Return status
+    //    Route::get('getstatus', 'ActivityFeedController@getStatus');
+    //    //Return logged uder Id
+    //    Route::get('getUserId', 'ActivityFeedController@getUserId');
+    //    //Add a like to the status
+    //    Route::post('likepost', 'LikeController@like');
+    //    //Unlike the status
+    //    Route::post('unlikepost', 'LikeController@unlike');
+    //    //Return liked Users
+    //    Route::get('getLikedUsers', 'LikeController@getLikedUsers');
+    //    //Add a share
+    //    Route::post('sharedStatus', 'ActivityFeedController@sharedStatus');
+    //    //Unshare the status
+    //    Route::post('unsharepost', 'ShareController@unshare');
+    //    //Return share status
+    //    Route::get('getsharestatus', 'ShareController@getsharestatus');
+    //    //Add a comment to the status
+    //    Route::post('addcomment', 'CommentController@addcomment');
+    //    //Return comments data
+    //    Route::get('getcomment', 'CommentController@getcomments');
+    //    //Delete a status
+    //    Route::post('deleteStatus', 'ActivityFeedController@deleteStatus');
+    //    //Edit a status
+    //    Route::post('edit_status', 'ActivityFeedController@editStatus');
 
    //Retrive Trendslist
     Route::get('gettrendslist', 'TrendsController@gettrends');
@@ -127,7 +147,7 @@ Route::group(['prefix' => 'api'], function () {
     //Returns permission for viewing a profile
     Route::post('profilepermission', 'ProfileController@profilepermission');
     //Returns acitivity feed for specific user
-    //Route::get('profile/feed', 'ProfileController@getposts');
+//    Route::get('profile/feed', 'ProfileController@getposts');
     //Upload profile pic
     Route::post('profile/profilepic', 'ProfileController@uploadpic');
 
@@ -142,7 +162,7 @@ Route::group(['prefix' => 'api'], function () {
 
     Route::get('profile/laodmoreposts', 'ProfileController@loadMorePosts');
 
-    Route::post('profile/edit/updatebasics', 'ProfileController@editbasics');
+    Route::put('profile/edit/updatebasics', 'ProfileController@editbasics');
 
     //Edit About section
     Route::put('profile/edit/summary', 'ProfileController@editsummary');
@@ -151,6 +171,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::put('profile/edit/thinkingof ', 'ProfileController@editthinkingof');
     Route::put('profile/edit/favs ', 'ProfileController@editfavs');
     Route::put('profile/edit/activity ', 'ProfileController@editactivity');
+
     //End of edit routes
 
     Route::post('profile/edit/deleteprofile', 'ProfileController@deleteProfile');
@@ -188,10 +209,6 @@ Route::group(['prefix' => 'api'], function () {
     Route::put('profile/lookingfor', 'LookingForController@update');
 
 });
-
-Route::get('instagram/authenticate', 'InstagramController@auth');
-Route::get('instagram/init', 'InstagramController@init');
-
 Route::get('socket', 'SocketController@index');
 Route::post('sendmessage', 'SocketController@sendMessage');
 Route::get('writemessage', 'SocketController@writemessage');
@@ -208,9 +225,6 @@ Route::group(['prefix' => 'admin-api'], function () {
     Route::post('authenticates', 'AdminAuthenticateController@authenticate');
     //Return userslist
     Route::get('search', 'UsersController@friends');
-    //Return userslist for search
-    Route::get('searches', 'AdminSearchController@search');
-    //return blocked users
     Route::get('blocked', 'UsersController@blocked');
     //block certain user
     Route::post('blockuser', 'UsersController@block');
