@@ -137,7 +137,6 @@ var AboutActions = {
   },
 
   updateLookingFor: function(data) {
-    console.log("sending req");
     $.ajax({
       url: '/api/profile/lookingfor?token=' + localStorage.getItem('apitoken'),
       type: 'PUT',
