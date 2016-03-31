@@ -205,9 +205,11 @@ Route::group(['prefix' => 'api'], function () {
 
     //returns list of suggestions
     Route::get('suggestions', 'SuggestionController@getSuggestions');
-
+    //updates lookingfor data of a certain user
     Route::put('profile/lookingfor', 'LookingForController@update');
 
+    //return lookingfor data of a certain user
+    Route::get('profile/lookingfor', 'LookingForController@getLookingFor');
 });
 Route::get('socket', 'SocketController@index');
 Route::post('sendmessage', 'SocketController@sendMessage');
