@@ -290,7 +290,7 @@ const LookingFor = React.createClass({
                               <TextField 
                                 hintText={this.state.minAgeShow} style={ageStyle} hintStyle={styles.errorStyle} fullwidth={true} ref="minAge" type="number" min="18" max="99" />
                               to 
-                              <TextField 
+                               <TextField 
                                 hintText={this.state.maxAgeShow} style={ageStyle} hintStyle={styles.errorStyle} fullwidth={true} ref="maxAge" type="number" min="18" max="99" />
                             <br/><span style={error} id="email"> </span>
                             </TableRowColumn>
