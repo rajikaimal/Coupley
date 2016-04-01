@@ -90,6 +90,14 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('gettrendssearchpost', 'TrendsController@getPosttrends');
     //
 
+    //Add visitor info
+     Route::post('visitorcount', 'VisitorCountController@incrementVisitorCount');
+     Route::get('myvisits', 'VisitorCountController@myVisits');
+     Route::get('smyvisits', 'VisitorCountController@searchMyVisits');
+     Route::get('othervisits', 'VisitorCountController@othersVisits');
+     Route::get('sothervisits', 'VisitorCountController@searchOthersVisits');
+    /////////
+
     Route::get('getonlineusers', 'ThreadController@getOnlineUsers');
     // Route::get('getpostId', 'ActivityFeedController@getpostId');
     // Route::post('likes', 'LikeController@addlikes');

@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from 'material-ui/lib/card/card';
+import Avatar from 'material-ui/lib/avatar';
 import CardActions from 'material-ui/lib/card/card-actions';
 import CardHeader from 'material-ui/lib/card/card-header';
 import CardMedia from 'material-ui/lib/card/card-media';
@@ -13,16 +14,45 @@ import Divider from 'material-ui/lib/divider';
 import IconButton from 'material-ui/lib/icon-button';
 import Tabs from 'material-ui/lib/tabs/tabs';
 import Tab from 'material-ui/lib/tabs/tab';
+import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
+import IconMenu from 'material-ui/lib/menus/icon-menu';
+import MenuItem from 'material-ui/lib/menus/menu-item';
+import Colors from 'material-ui/lib/styles/colors';
 import Dialog from 'material-ui/lib/dialog';
+
+
+const iconButtonElement = (
+  <IconButton
+    touch={true}
+    tooltip="more"
+    tooltipPosition="bottom-left"
+  >
+    <MoreVertIcon color={Colors.grey400} />
+  </IconButton>
+);
+
+const rightIconMenu = (
+  <IconMenu iconButtonElement={iconButtonElement}>
+    <MenuItem>Delete</MenuItem>
+  </IconMenu>
+);
+
 
 
 
 const myvisits = React.createClass({
 
+
+
       render:function(){
              return(
-              <Card>
-              </Card>
+              <div>
+                  <ListItem
+                     primaryText={this.props.fistname}
+                     leftAvatar={<Avatar src="images/ok-128.jpg" />}
+                    />
+                 <Divider/>
+              </div>
              );
       }
 
