@@ -97,7 +97,7 @@ var Header = React.createClass({
     if (this.state.notificationCount.count == 0) {
       return ('0');
     } else {
-      return (this.state.notificationCount.toString());
+      return (this.state.notificationCount);
     }
   },
 

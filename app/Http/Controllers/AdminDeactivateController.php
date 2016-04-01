@@ -10,8 +10,12 @@ class AdminDeactivateController extends Controller
     {
         $id = $request->id;
         try {
-            if ($users = \DB::table('users')->where('id', $id)->update(['status' => 'deactive'])) {
+            if ($users = \DB::table('users')->where('id', $id)->where('superAdmin', 'no')
+                ->update(['status' => 'deactive'])) {
                 return response()->json(['status' => 201], 201);
+            }
+            else{
+                return response()->json(['status' => 200], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 300], 300);

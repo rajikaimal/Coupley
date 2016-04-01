@@ -9,6 +9,8 @@ var DeactivateActions = {
         setTimeout(function () {
           location.href = '/cp-admin#/AdminSignout';
         }, 1500);
+      }else if (data.status === 200) {
+        swal('Oops!', 'You Can\'t Deactivate your account since you are The Super Admin!', 'error');
       } else if (data.status === 300) {
         swal('Something Went Wrong', 'Please try again in a moment', 'error');
       }
