@@ -11,7 +11,7 @@ class AdminRegisterController extends Controller
      * checks whether same email is available
      *  or not, then register new admin.
      *
-     * @param string        $someString
+     * @param object        $someString
      *
      *
      * @return json
