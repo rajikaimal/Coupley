@@ -21,6 +21,20 @@ var AboutActions = {
     });
   },
 
+  fetchLookingFor: function () {
+    $.get('/api/profile/lookingfor?token=' + localStorage.getItem('apitoken') + '&username=' + localStorage.getItem('username'), function (response) {
+      AppDispatcher.handleViewAction({
+        actionType: AboutConstants.LOOKINGFOR,
+        lookingfor: response.data[0],
+      });
+    }).fail(function () {
+      AppDispatcher.handleViewAction({
+        actionType: AboutConstants.FETCH,
+        error: true,
+      });
+    });
+  },
+
   updateSummary: function (summary) {
     $.ajax({
       url: '/api/profile/edit/summary?token=' + localStorage.getItem('apitoken'),
@@ -123,6 +137,37 @@ var AboutActions = {
           AppDispatcher.handleViewAction({
             actionType: AboutConstants.FAVS,
             favs: favs,
+          });
+        } else {
+
+        }
+      },
+    }).fail(function () {
+      AppDispatcher.handleViewAction({
+        actionType: AboutConstants.FAVS,
+        error: true,
+      });
+    });;
+  },
+
+  updateLookingFor: function (data) {
+    $.ajax({
+      url: '/api/profile/lookingfor?token=' + localStorage.getItem('apitoken'),
+      type: 'PUT',
+      data: 'username=' + localStorage.getItem('username') + '&location=' + data.location + '&minage=' + data.minage + '&maxage=' + data.maxage + '&relstatus=' + data.relstatus + '&shortterm=' + data.shortterm + '&longterm=' + data.longterm + '&casualsex=' + data.casualsex,
+      success: function (response) {
+        console.log(response);
+        if (response.status === 200) {
+          $.get('/api/profile/lookingfor?token=' + localStorage.getItem('apitoken') + '&username=' + localStorage.getItem('username'), function (response) {
+            AppDispatcher.handleViewAction({
+              actionType: AboutConstants.LOOKINGFOR,
+              lookingfor: response.data[0],
+            });
+          }).fail(function () {
+            AppDispatcher.handleViewAction({
+              actionType: AboutConstants.FETCH,
+              error: true,
+            });
           });
         } else {
 

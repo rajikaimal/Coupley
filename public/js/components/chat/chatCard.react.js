@@ -5,8 +5,7 @@ import MessageThread from './Messages.react';
 import SelectFriend from './ChatTopBar.react';
 import LoginStore from '../../stores/LoginStore';
 
-var User1 = LoginStore.getFirstname();
-var User1Email = LoginStore.getEmail();
+
 
 const styleup = {
   height:50,

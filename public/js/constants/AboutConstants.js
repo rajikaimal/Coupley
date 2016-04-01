@@ -7,4 +7,5 @@ module.exports = keyMirror({
     THINKING: null,
     FAVS: null,
     FETCH: null,
+    LOOKINGFOR: null,
 });

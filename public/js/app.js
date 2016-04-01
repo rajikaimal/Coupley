@@ -25,7 +25,7 @@ import PasswordChange from './components/profile/Password.react';
 import BlockList from './components/profile/blocklist/BlockListContainer.react';
 import Deactivate from './components/profile/Deactivate.react';
 import ProfileVisitor from './components/profile/visitor/profile.react';
-import VisitorActivityFeed from './components/profile/visitor/activityfeed/activityMain.react';
+//import VisitorActivityFeed from './components/profile/visitor/activityfeed/activityMain.react';
 import AboutVisitor from './components/profile/visitor/About.react';
 import PhotosVisitor from './components/profile/visitor/Photos.react';
 import Search from './components/search/Search.react';
@@ -41,6 +41,7 @@ import ChatCC2 from './components/chat/chatCard.react';
 import ChatCC3 from './components/chat/ChatTopBar.react';
 import Tabs from './components/chat/tabs.react';
 import Tabs1 from './components/chat/tabs1.react';
+import Trends from './components/trends/TrendContainer.react';
 import ThreadMain from './components/chat/ThreadMain.react';
 import Users from './components/admin/users/userHome.react';
 import Friends from './components/admin/users/friends.react';
@@ -112,6 +113,7 @@ ReactDOM.render((
     <Route path="/feedback" component={Feedback}>
         <Route path="timeline" component={Timeline} />
         <Route path="activity" component={ActivityFeed} />
+
         <Route path="privacy" component={Privacy} />
         <Route path="chat" component={ChatFeed} />
         <Route path="others" component={OthersFeed} />
@@ -129,10 +131,12 @@ ReactDOM.render((
                   <Route path="/chatcc3" components={ChatCC3}/>
                   <Route path="/tabs" components={Tabs}/>
                   <Route path="/tabs1" components={Tabs1}/>
+                 
     <Route path="/" component={Header} onEnter={requireAuth}>
     <Route path="/ThreadMain" component={ThreadMain}/>
       <Route path="/search" component={Search} />
-      <Route path="activity" component={MainActivity}/>   
+      <Route path="activity" component={MainActivity}/>  
+        <Route path="trends" components={Trends}/> 
       <Route path="/likes" component={Likes} />
 
       <Route path="profile" component={Profile} >
@@ -147,7 +151,7 @@ ReactDOM.render((
           <Route path="deactivate" component={Deactivate} />
       </Route>
       <Route path="/:username" component={ProfileVisitor} >
-        <Route path="activityfeed" component={VisitorActivityFeed} />
+        <Route path="activityfeed" component={AboutVisitor} />
         <Route path="about" component={AboutVisitor} />
         <Route path="photos" component={PhotosVisitor} />
       </Route>

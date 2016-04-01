@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
-use App\Http\Controllers\EmailController;
 
 class AdminRegisterController extends Controller
 {
@@ -74,7 +73,6 @@ class AdminRegisterController extends Controller
                 \DB::table('users')
                     ->where('id', $id)
                     ->update(['firstname' => $firstname, 'lastname' => $lastname, 'job' => $job, 'email' => $email]);
-
                 $sendMail = new EmailController();
                 $content = 'Dear '.$firstname.', Your profile been Updated.
                     Your Email is '.$email.' Please visit

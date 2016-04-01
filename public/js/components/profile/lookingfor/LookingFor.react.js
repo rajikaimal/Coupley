@@ -46,8 +46,12 @@ const styles = {
   },
 };
 
+const editStyle = {
+  float: 'right'
+};
+
 const ageStyle = {
-    width: 120
+  width: 50
 }
 
 function validate(data) {
@@ -96,103 +100,102 @@ const LookingFor = React.createClass({
   getInitialState: function() {
     return {
         editing: false,
+        location: true,
+        mustBeSingle: true,
+        shortTerm: true,
+        longTerm: true,
+        casualSex: true,
+        nearYouShow: "",
+        minAgeShow: 0,
+        maxAgeShow: 0,
+        relStatusShow: "",
+        shortTermShow: "",
+        longTermShow: "",
+        casualSexShow: ""
+    };
+  },
+  componentDidMount: function () {
+    AboutActions.fetchLookingFor();
+    AboutStore.addChangeListener(this._onChange);
+    ErrorStore.addChangeListener(this._onChange);
+  },
+  _onChange: function () {
+    if(AboutStore.getLookingFor().location == 0) {
+      this.setState({
+        nearYouShow: "Anywhere",
+        location: false
+      });
+    }
+    else {
+      this.setState({
+        nearYouShow: "Near me",
+        location: true
+      }); 
+    }
+    if(AboutStore.getLookingFor().status == 1) {
+      this.setState({
+        relStatusShow: "Must be Single",
+        mustBeSingle: true
+      });
+    }
+    else {
+      this.setState({
+        relStatusShow: "Doesn't care about relationship status",
+        mustBeSingle: false
+      });
+    }
+    if(AboutStore.getLookingFor().shortterm == 1) {
+      this.setState({
+        shortTermShow: "Looking for short term relationship",
+        shortTerm: true
+      });
+    }
+    else {
+      this.setState({
+        shortTermShow: "Not looking for short term relationship",
+        shortTerm: false
+      }); 
+    }
+    if(AboutStore.getLookingFor().longtterm == 1) {
+      this.setState({
+        longTermShow: "Looking for long term relationship",
+        longTerm: true
+      });
+    }
+    else {
+      this.setState({
+        longTermShow: "Not looking for long term relationship",
+        longTerm: false
+      }); 
+    }
+    if(AboutStore.getLookingFor().casualSex == 1) {
+      this.setState({
+        casualSexShow: "For casual sex",
+        casualSex: true
+      });
+    }
+    else {
+      this.setState({
+        casualSexShow: "No casual sex",
+        casualSex: false
+      });  
+    }
+
+    this.setState({
         summary: AboutStore.getSummary(),
         life: AboutStore.getLife(),
         goodat: AboutStore.getGoodAt(),
         spendtime: AboutStore.getSpendTime(),
-        favs: AboutStore.getFavs()
-    };
-  },
-    componentDidMount: function () {
-        AboutActions.fetchAll();
-        AboutStore.addChangeListener(this._onChange);
-        ErrorStore.addChangeListener(this._onChange);
-  },
-    _onChange: function () {
-        this.setState({
-            summary: AboutStore.getSummary(),
-            life: AboutStore.getLife(),
-            goodat: AboutStore.getGoodAt(),
-            spendtime: AboutStore.getSpendTime(),
-            favs: AboutStore.getFavs(),
-            error: ErrorStore.getabouterr()
+        favs: AboutStore.getFavs(),
+        error: ErrorStore.getabouterr(),
+        minAgeShow: AboutStore.getLookingFor().minage,
+        maxAgeShow: AboutStore.getLookingFor().maxage
     });
   },
     _toggle: function () {
         this.setState({
             editing: !this.state.editing
         });
-    },
-    _toggleLife: function () {
-        this.setState({
-            editingLife: !this.state.editingLife
-        });
-    },
-    _toggleGoodat: function () {
-        this.setState({
-            editingGoodat: !this.state.editingGoodat
-        });
-    },
-    _toggleThinkingof: function () {
-        this.setState({
-            editingThinkingof: !this.state.editingThinkingof
-        });
-    },
-    _toggleFavs: function () {
-        this.setState({
-            editingFavs: !this.state.editingFavs
-        });
-    },
-    _editSummary: function () {
-        if(validate(this.refs.summary.getValue()).error) {
-            document.getElementById('summary').innerHTML = validate(this.refs.summary.getValue()).error;
-        } else {
-            AboutActions.updateSummary(this.refs.summary.getValue());
-            this.setState({
-                editing: !this.state.editing
-            });
-        }
-    },
-    _editLife: function () {
-        if(validate(this.refs.life.getValue()).error) {
-            document.getElementById('life').innerHTML = validate(this.refs.life.getValue()).error;
-        }
-        else {
-            AboutActions.updateLife(this.refs.life.getValue());
-            this.setState({
-                editingLife: !this.state.editingLife
-            });    
-        }
-    },
-    _editGoodat: function () {
-        if(validate(this.refs.goodat.getValue()).error) {
-            document.getElementById('goodat').innerHTML = validate(this.refs.goodat.getValue()).error;
-        } else {
-            AboutActions.updateGoodAt(this.refs.goodat.getValue());
-            this.setState({
-                editingGoodat: !this.state.editingGoodat
-            });
-        }
-    },
-    _editThinkingOf: function () {
-        if(validate(this.refs.thinkingof.getValue()).error) {
-            document.getElementById('thinkingof').innerHTML = validate(this.refs.thinkingof.getValue()).error;
-        } else {
-            AboutActions.updateThinkingOf(this.refs.thinkingof.getValue());
-            this.setState({
-                editingThinkingof: !this.state.editingThinkingof
-            });
-        }
-    },
-    _editFavs: function () {
-        if(validate(this.refs.favs.getValue()).error) {
-            document.getElementById('favs').innerHTML = validate(this.refs.favs.getValue()).error;
-        } else {
-            AboutActions.updateFavs(this.refs.favs.getValue());
-            this.setState({
-                editingFavs: !this.state.editingFavs
-            });
-        }
     },
     handleChangeGender: function(e, index, value){
         this.setState({gender: value});
@@ -204,23 +207,58 @@ const LookingFor = React.createClass({
     },
     _handleStatusChange: function(e, value) {
         this.setState({
-            status: value
+            mustBeSingle: value
         });
     },
     _handleShortChange: function(e, value) {
         this.setState({
-            shortFor: value
+            shortTerm: value
         });
     },
     _handleLongChange: function(e, value) {
         this.setState({
-            longFor: value
+            longTerm: value
         });
     },
     _handleSxChange: function(e, value) {
         this.setState({
-            sxFor: value
+            casualSex: value
         });
+    },
+    _handleCancel: function() {
+      this.setState({
+        editing: false
+      });
+    },
+    _handleSubmit: function() {
+      let minAge = this.refs.minAge.getValue();
+      let maxAge = this.refs.maxAge.getValue();
+      if(minAge == "") {
+        minAge = this.state.minAgeShow;
+      }
+      if(maxAge == "") {
+        maxAge = this.state.maxAgeShow; 
+      }
+
+      if(minAge > maxAge) {
+        document.getElementById('serverstatus').innerHTML = "*invalid age selection";
+        return false;
+      }
+
+      let lookingFor = {
+        location: this.state.location,
+        minage: minAge,
+        maxage: maxAge,
+        relstatus: this.state.mustBeSingle,
+        shortterm: this.state.shortTerm,
+        longterm: this.state.longTerm,
+        casualsex: this.state.casualSex
+      };
+
+      AboutActions.updateLookingFor(lookingFor);
+      this.setState({
+        editing: false
+      });
     },
   render: function() {
     return (
@@ -229,26 +267,17 @@ const LookingFor = React.createClass({
         <div>
           <Card>
             <CardTitle title="Looking for" />
-                <button onClick={this._toggle}> edit </button>
+                { this.state.editing ? '' : <button style={editStyle} onClick={this._toggle}> edit </button> }
                 <ul>
                     { this.state.editing ? 
-
+                        <div>
                         <Table>
                           <TableBody displayRowCheckbox={false}>
-                          <TableRow hoverable={false} hovered={false} selectable={false}> 
-                            <TableRowColumn>Gender</TableRowColumn>
-                            <TableRowColumn> 
-                              <DropDownMenu value={this.state.gender} onChange={this.handleChangeGender}>
-                              <MenuItem value={1} primaryText="Men"/>
-                              <MenuItem value={2} primaryText="Women"/>
-                            </DropDownMenu>
-                            <br/><span style={error} id="gender"> </span>
-                            </TableRowColumn>
-                          </TableRow>
                           <TableRow hoverable={false} hovered={false} selectable={false}>
                             <TableRowColumn>Location</TableRowColumn>
                             <TableRowColumn>
                                 <Checkbox
+                                        checked={this.state.location}
                                         onCheck={this._handleLocationChange}
                                         label="Near you"
                                         style={styles.checkbox}
@@ -259,8 +288,10 @@ const LookingFor = React.createClass({
                             <TableRowColumn>Age</TableRowColumn>
                             <TableRowColumn> 
                               <TextField 
-                                value={this.state.email} style={ageStyle} hintStyle={styles.errorStyle} fullwidth={true} ref="email"/>
-                          
+                                hintText={this.state.minAgeShow} style={ageStyle} hintStyle={styles.errorStyle} fullwidth={true} ref="minAge" type="number" min="18" max="99" />
+                              to 
+                               <TextField 
+                                hintText={this.state.maxAgeShow} style={ageStyle} hintStyle={styles.errorStyle} fullwidth={true} ref="maxAge" type="number" min="18" max="99" />
                             <br/><span style={error} id="email"> </span>
                             </TableRowColumn>
                           </TableRow>
@@ -268,6 +299,7 @@ const LookingFor = React.createClass({
                             <TableRowColumn>Relationship Status</TableRowColumn>
                             <TableRowColumn> 
                               <Checkbox
+                                  checked={this.state.mustBeSingle}
                                   onCheck={this._handleStatusChange}
                                   label="Must be single"
                                   style={styles.checkbox}
@@ -279,16 +311,19 @@ const LookingFor = React.createClass({
                             <TableRowColumn>For</TableRowColumn>
                             <TableRowColumn> 
                               <Checkbox
+                                  checked={this.state.shortTerm}
                                   onCheck={this._handleShortChange}
                                   label="Short term relationship"
                                   style={styles.checkbox}
                                 />
                               <Checkbox
+                                  checked={this.state.longTerm}
                                   onCheck={this._handleLongChange}
                                   label="Long term relationship"
                                   style={styles.checkbox}
                                 />
                               <Checkbox
+                                  checked={this.state.casualSex}
                                   onCheck={this._handleSxChange}
                                   label="Casual sex"
                                   style={styles.checkbox}
@@ -300,26 +335,30 @@ const LookingFor = React.createClass({
                         <CardText>
                         </CardText>
                         </Table>
-
-
+                        <div>
+                          <CardActions>
+                            <RaisedButton label="Save changes" style={buttonStyle} onTouchTap={this._handleSubmit} />
+                            <RaisedButton label="Cancel" style={buttonStyle} onTouchTap={this._handleCancel} />
+                          </CardActions>
+                            <span style={error} id="serverstatus"> </span>
+                        </div>
+                        </div>
                     : 
                      <div>
                         <li style={listStyle}> 
-                        adad
-                        
+                          {this.state.nearYouShow}
                         </li>
                         <li style={listStyle}> 
-                            adad
-
+                          {this.state.minAgeShow} - {this.state.maxAgeShow}
                         </li>
-                        <li style={listStyle}> Age 18-50 </li>
-                        <li style={listStyle}> Who are single</li>
-                        <li style={listStyle}> Friends, short term dating, for casual sex </li>
+                        <li style={listStyle}>{this.state.relStatusShow}</li>
+                        <li style={listStyle}>{this.state.shortTermShow}, {this.state.longTermShow}, {this.state.casualSexShow}</li>
                      </div>
 
                     }
                     
                 </ul>
+
           </Card>  
         </div>
         </Paper>   

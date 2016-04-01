@@ -45,6 +45,18 @@ class NotificationController extends Controller
             $notifications = Notification::where('user_id2', $id)
                     ->where('readnotification', 0)->get();
 
+            // $notifications = \DB::select(\DB::raw("
+            //    SELECT id,firstname,lastname,username,gender,profilepic from(
+            //                 SELECT id,firstname, lastname,username,orientation,gender,profilepic,role FROM `users` WHERE
+            //                                         status = 'active'
+            //                                         ) as t where
+            //                                         role='user' and id IN (
+            //                                             Select blocked_user_id
+            //                                             from `blocked`
+            //                                             where user_id=".$userID.'
+            //                                         )
+            // '));
+
             return response()->json(['status' => 200, 'list' => $notifications], 200);
         } catch (QueryException $e) {
             return response()->json(['status' => 200], 200);

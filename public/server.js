@@ -11,8 +11,6 @@ var connection = mysql.createConnection({
 var connectedUser = {};
 var Likedusers = [];
 
-
-
 connection.connect();
 
 /*  listen to port 8081 */
@@ -22,7 +20,6 @@ server.listen(8081);
  Retrive data when a client connect.
  **/
 io.on('connection', function (socket) {
-
 
   /*
    Retrive loged user information.
@@ -42,6 +39,8 @@ io.on('connection', function (socket) {
 
     }
   });
+
+
   /*
    Throws exception when error occured.
    **/
@@ -65,7 +64,7 @@ io.on('connection', function (socket) {
    };
 
     connection.query("SELECT trd_id FROM threads WHERE user1_un IN ('" + post1.user1_un + "','" + post1.user2_un + "') AND user2_un IN ('" + post1.user1_un  + "','" + post1.user2_un + "') ", function (err, result) {
-      if (Object.keys(result).length==0) {
+      if (Object.keys(result).length == 0) {
         connection.query('INSERT INTO threads SET ?', post1, function (err, result) {
           connection.query("SELECT trd_id FROM threads  WHERE user1_un IN ('" + post1.user1_un + "','" + post1.user2_un + "') AND user2_un IN ('" + post1.user1_un + "','" + post1.user2_un + "') ", function (err, result) {
             post.thread_id = result[0].trd_id; });
@@ -78,7 +77,7 @@ io.on('connection', function (socket) {
 
       console.log(post.thread_id);
       connection.query("INSERT INTO messages(message,sender_un,thread_id) VALUES('" + post.message + "','" + post.sender_un + "','" + post.thread_id + "')", function (err, result) {
-
+      console.log('error eka '+err);
         connection.query("SELECT m.message,m.created_at,u.firstname,m.thread_id FROM messages m,users u WHERE m.thread_id='" + post.thread_id + "' AND u.username=m.sender_un ", function (err, result) {
 
           io.sockets.connected[connectedUser[chat.user1]].emit('chat', { message:result });
@@ -106,7 +105,6 @@ io.on('connection', function (socket) {
     console.log(socket.username + ' Disonnected!');
 
   });
-
 
 
 });

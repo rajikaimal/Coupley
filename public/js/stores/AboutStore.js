@@ -10,6 +10,7 @@ var life;
 var goodat;
 var spendtime;
 var favs;
+var lookingfor;
 
 var AboutStore = assign({}, EventEmitter.prototype, {
   saveAll: function (data) {
@@ -30,6 +31,14 @@ var AboutStore = assign({}, EventEmitter.prototype, {
 
   saveLife: function (data) {
     life = data;
+  },
+
+  saveLookingFor: function (data) {
+    lookingfor = data;
+  },
+
+  getLookingFor: function () {
+    return lookingfor;
   },
 
   getLife: function () {
@@ -94,6 +103,10 @@ AppDispatcher.register(function (payload) {
       break;
     case (AboutConstants.FAVS):
       AboutStore.saveFavs(payload.action.favs);
+      AboutStore.emitChange();
+      break;
+    case (AboutConstants.LOOKINGFOR):
+      AboutStore.saveLookingFor(payload.action.lookingfor);
       AboutStore.emitChange();
       break;
   }

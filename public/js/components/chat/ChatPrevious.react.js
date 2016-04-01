@@ -10,6 +10,7 @@ import IconMenu from 'material-ui/lib/menus/icon-menu';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import ThreadActions from '../../actions/Thread/ThreadActions';
 import ThreadStore from '../../stores/ThreadStore';
+import PaperExampleSimple from './Messages.react';
 
 const iconButtonElement = (
   <IconButton
@@ -27,6 +28,20 @@ const ListStyle = {
 
 const PreviousChat = React.createClass({
 
+  getInitialState: function () {
+    return {
+      results:ThreadStore.getThreadMessage(),
+    };
+  },
+
+  componentDidMount: function () {
+    ThreadStore.addChangeListener(this._onChange);
+  },
+
+  _onChange: function () {
+      this.setState({results:ThreadStore.getThreadMessage()});
+  },
+
   deleteconvo:function () {
     var user2 = this.props.firstname;
     let deleteM = {
@@ -34,6 +49,17 @@ const PreviousChat = React.createClass({
            };
     ThreadActions.deleteM(deleteM);
     console.log('Done deleting!');
+  },
+
+  getMessage:function () {
+    let threadData = {
+      threadId: this.props.id,
+    };
+    ThreadActions.getMessage(threadData);
+
+    return this.state.results.map((result) => {
+      return (<PaperExampleSimple key={result.thread_id} id={result.thread_id} firstname={result.firstname}  message={result.message} created_at={result.created_at}/>);
+    });
   },
 
   render:function () {
@@ -45,6 +71,7 @@ const PreviousChat = React.createClass({
                        <MenuItem primaryText="Delete" onClick={this.deleteconvo}/>
                      </IconMenu>
                    }
+                  onTouchTap={this.getMessage}
                    primaryText={this.props.firstname}
                   secondaryText={
                     <p>

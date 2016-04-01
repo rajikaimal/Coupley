@@ -16,11 +16,13 @@ class LookingForMigration extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('gender');
-            $table->string('location');
-            $table->string('age');
-            $table->string('status');
-            $table->string('lookingfor');
+            $table->boolean('location');
+            $table->integer('minage');
+            $table->integer('maxage');
+            $table->boolean('status');
+            $table->boolean('shortterm');
+            $table->boolean('longtterm');
+            $table->boolean('casualsex');
             $table->timestamps();
         });
     }

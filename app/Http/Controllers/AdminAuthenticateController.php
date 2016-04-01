@@ -35,7 +35,6 @@ class AdminAuthenticateController extends Controller
         $email = $request->email;
         $credentials = $request->only('email', 'password');
         $admin = \DB::select('select * from users where role="admin" and email = "'.$email.'"');
-
         try {
             // verify the credentials and create a token for the user
             if (! $token = JWTAuth::attempt($credentials)) {
@@ -45,7 +44,6 @@ class AdminAuthenticateController extends Controller
             // something went wrong
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
-
         // if no errors are encountered we can return a JWT
         // update admin status to active
         if ($admin) {

@@ -5,33 +5,49 @@ var assign = require('object-assign');
 
 var CHANGE_EVENT = 'change';
 
-var searchcomments = [];
+var searchComments = []; 
 
-var CommentStore = assign({}, EventEmitter.prototype, {
-  getCommentsData: function () {
-      return searchcomments;
-    },
+var CommentStore = assign({},EventEmitter.prototype, {
 
-  saveCommentsData: function (results) {
-      searchcomments = results;
-    },
+  /**
+   * Get comment data.
+   * return {object}
+   */
+  getCommentsData: function() {
+    return searchComments;
+  },
 
-  emitChange: function () {
-      this.emit(CHANGE_EVENT);
-    },
+  /**
+   * Put results(comment data) to searchComments.
+   */
+  saveCommentsData: function(results) {
+    // searchComments.postID = results[0].post_id;
+    // searchComments.comments = results;
+    searchComments.push(results);
+    console.log('Search comments');
+    console.log(searchComments);
+    
+  },
 
-  addChangeListener: function (callback) {
-      this.on(CHANGE_EVENT, callback);
-    },
+  emitChange: function() {
+    this.emit(CHANGE_EVENT);
+  },
+
+  /**
+   * @param {function} callback
+   */
+  addChangeListener: function(callback) {
+    this.on(CHANGE_EVENT, callback);
+  }
 });
 
-AppDispatcher.register(function (payload) {
-  switch (payload.action.actionType) {
-    case (CommentConstants.GETCOMMENT):
+AppDispatcher.register(function(payload) {
+	switch(payload.action.actionType) {
+		case(CommentConstants.GETCOMMENT):
       CommentStore.saveCommentsData(payload.action.commentdata);
       CommentStore.emitChange();
       break;
-  }
+	}
 });
 
 module.exports = CommentStore;

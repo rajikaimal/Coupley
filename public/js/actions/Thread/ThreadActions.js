@@ -103,6 +103,19 @@ var ThreadAction = {
    });
  },
 
+getMessage:function (request) {
+  $.get('/api/getMessage?threadId='+request.threadId, function (response){
+    if (response.status == 200) {
+      AppDispatcher.handleViewAction({
+        actionType:ThreadConstants.MSGLIST,
+        messagelist: response.message,
+      });
+    }else if (response.status == 200) {
+      console.log('Error 505');
+    }
+  });
+},
+
 };
 
 module.exports = ThreadAction;

@@ -1,39 +1,62 @@
 import React from 'react';
 import List from 'material-ui/lib/lists/list';
 import ListItem from 'material-ui/lib/lists/list-item';
-import ActivityFeedActions from '../../actions/ActivityFeed/ActivityFeedActions';
+import ActivityfeedAction from '../../actions/ActivityFeed/ActivityfeedAction';
 import StatusStore from '../../stores/StatusStore';
 import ActivityList from './activityListComp.react';
+import LoginStore from '../../stores/LoginStore';
 
 const activityContainer = React.createClass({
-
   getInitialState: function() {
     return {
-      results: StatusStore.getStatusData()
-      }
+      userId: StatusStore.getLoggedUId(),
+      results: StatusStore.getStatusData(),
+    }
   },
+
   componentDidMount: function() {
     StatusStore.addChangeListener(this._onChange);
-    ActivityFeedActions.getstatus();
+    ActivityfeedAction._getUserId();
+
+    let data = {
+      //userId: StatusStore.getLoggedUId(),
+      userId: 11,
+    };
+    ActivityfeedAction._getStatus(data);
+
   },
-  _search: function () {
-    ActivityFeedActions.getstatus();
+
+  _onChange: function () {
+    this.setState({results: StatusStore.getStatusData()});
+    this.setState({userId: StatusStore.getLoggedUId()});  
   },
-  _onChange: function() {
-    this.setState({results: StatusStore.getStatusData()});        
-  },
-  _renderSearchItem: function () {
-        console.log(this.state.results); 
-        return this.state.results.map((result) => {
-            return (<ActivityList key={result.id} id={result.id} firstname={result.firstname} post_text={result.post_text} created_at={result.created_at}/>);
-        });
+
+  _renderSearchItem: function () { 
+    return this.state.results.map((result) => {
+      return (<ActivityList key={result.id} 
+                            id={result.id} 
+                            type={result.type} 
+                            firstName={result.firstname} 
+                            postId={result.post_id} 
+                            attachment={result.attachment} 
+                            lPostId={result.pid} 
+                            postText={result.post_text} 
+                            created_at={result.created_at}
+                            postid={result.postid}
+                            likesCount={result.likesCount}
+                            sid={result.sid}
+                            sfirstname={result.sfirstname}
+                            sattachment={result.sattachment}
+                            spost_text={result.spost_text}
+                            screated_at={result.screated_at}/>);     
+    });
   },
 
   render: function() {
     return (
-     <div>
-      {this._renderSearchItem()}
-     </div>
+      <div>
+        {this._renderSearchItem()}
+      </div>
     );
   }
 });

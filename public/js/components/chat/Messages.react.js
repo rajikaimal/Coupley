@@ -26,7 +26,8 @@ const PaperExampleSimple = React.createClass({
   getInitialState: function () {
       return {
         threads: ThreadStore.getmessages(),
-      };
+        resullts:'',
+      }
     },
 
   userlistio:function () {
@@ -45,6 +46,30 @@ const PaperExampleSimple = React.createClass({
       threads: ThreadStore.getmessages(),
     });
 
+  },
+
+  previousMList: function () {
+        this.state.threads.map((item) => {
+       return (<ListItem
+              leftAvatar={<Avatar src="profile pic" />}
+              primaryText={item.firstname}
+              secondaryText={this.test(item)}
+              secondaryTextLines={2}
+          />
+      );
+    });
+  },
+
+  MList: function () {
+        this.state.threads.map((item) => {
+       return (<ListItem
+              leftAvatar={<Avatar src="profile pic" />}
+              primaryText={item.firstname}
+              secondaryText={this.test(item)}
+              secondaryTextLines={2}
+          />
+      );
+    });
   },
 
   socketio: function () {
@@ -85,6 +110,10 @@ const PaperExampleSimple = React.createClass({
 
   },
 
+
+
+
+
   render:function () {
 
     return (
@@ -92,23 +121,23 @@ const PaperExampleSimple = React.createClass({
       {this.userlistio()}
       {this.socketio()}
 
-      <Paper style={style} zDepth={1}>
+      <Paper style={style} zDepth={1} id="data">
       <div>
-    {
 
-      this.state.threads.map(item => {
+      {
 
-        return (<ListItem
-            leftAvatar={<Avatar src="profile pic" />}
-            primaryText={item.firstname}
-            secondaryText={this.test(item)}
-            secondaryTextLines={2}
-        />
-        );
+        this.state.threads.map((item) => {
+       return (<ListItem
+              leftAvatar={<Avatar src="profile pic" />}
+              primaryText={item.firstname}
+              secondaryText={this.test(item)}
+              secondaryTextLines={2}
+          />
+      );
+    })
 
-      })
+      }
 
-    }
       </div>
       </Paper>
       </div>

@@ -28,6 +28,10 @@ var LoginStore = assign({}, EventEmitter.prototype, {
     localStorage.setItem('firstname', firstname);
   },
 
+  storeUserId: function(id) {
+    localStorage.setItem('userid', id);
+  },
+
   getState: function () {
     return localStorage.getItem('apitoken');
   },
@@ -62,6 +66,7 @@ AppDispatcher.register(function (payload) {
       break;
     case (LoginConstants.PROPOGATE):
       LoginStore.storeUserData(payload.action.userdata.firstname);
+      LoginStore.storeUserId(payload.action.userdata.id);
       LoginStore.storeUsername(payload.action.userdata.username);
       LoginStore.emitChange();
       break;
