@@ -6,6 +6,14 @@ use Illuminate\Http\Request;
 
 class AdminDeactivateController extends Controller
 {
+    /**
+     * checks whether given user id is super admin or not.
+     * if admin is not a super admin, then deactivates the account.
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function deactivate(Request $request)
     {
         $id = $request->id;
