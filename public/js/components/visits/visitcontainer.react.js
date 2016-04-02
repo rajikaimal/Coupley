@@ -30,12 +30,22 @@ const listStyle={
   height:500,
 };
 
+const tabstyle={
+paddingLeft:50,
+paddingRight:50,
+paddingTop:50,
+
+};
+
+
+
 const searchconvo = {
-  marginTop:'-18',
-  paddingLeft:10,
+  marginTop:10,
+  paddingLeft:50,
   paddingRight:50,
   width:350,
 };
+
 
 const Thisuser = {
  myusername:LoginStore.getUsername(),
@@ -198,6 +208,7 @@ const VisitContainer = React.createClass({
  },
 
       render:function(){
+
              return(
                <div>
                  <Tabs>
@@ -205,8 +216,8 @@ const VisitContainer = React.createClass({
                    <div>
                     <Paper style={listStyle} zDepth={0}>
                     <TextField hintText="Username" floatingLabelText="Search Users" style={searchconvo} errorText={this.state.statusText} onKeyPress={this.EnterKey1}
-                     ref="SearchMV" id="SearchField1"/>
-                      <List subheader="">
+                     ref="SearchMV" id="SearchField1" />
+                      <List subheader="" style={tabstyle}>
                      {this.myVisits()}
                       </List>
                     </Paper>
@@ -217,7 +228,7 @@ const VisitContainer = React.createClass({
                    <Paper style={listStyle} zDepth={0}>
                    <TextField hintText="Username" floatingLabelText="Search Users" style={searchconvo} errorText={this.state.statusText} onKeyPress={this.EnterKey2}
                     ref="SearchOV" id="SearchField2"/>
-                      <List>
+                      <List style={tabstyle}>
                       {this.otherVisits()}
                       </List>
                     </Paper>

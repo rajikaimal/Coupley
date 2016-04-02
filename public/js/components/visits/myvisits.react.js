@@ -33,7 +33,7 @@ const iconButtonElement = (
 
 const rightIconMenu = (
   <IconMenu iconButtonElement={iconButtonElement}>
-    <MenuItem>Delete</MenuItem>
+    <MenuItem>Unfollow</MenuItem>
   </IconMenu>
 );
 
@@ -42,16 +42,61 @@ const rightIconMenu = (
 
 const myvisits = React.createClass({
 
+  handleOpen: function () {
+    this.setState({ open: true });
+    console.log('Unfollowed!');
+  },
 
+  handleClose: function () {
+    this.setState({ open: false });
+  },
+
+
+ deletemyfollow:function () {
+
+   console.log('follower deleted!');
+
+ },
+
+ getInitialState: function () {
+   return {
+     open: false,
+   };
+ },
 
       render:function(){
+        const actions = [
+            <FlatButton
+              label="No"
+              secondary={true}
+              onTouchTap={this.handleClose}
+            />,
+            <FlatButton
+              label="Yes"
+              primary={true}
+              keyboardFocused={true}
+              onTouchTap={this.handleClose}
+            />,
+          ];
              return(
               <div>
                   <ListItem
                      primaryText={this.props.fistname}
                      leftAvatar={<Avatar src="images/ok-128.jpg" />}
+                     rightIconButton={  <IconMenu iconButtonElement={iconButtonElement}>
+                         <MenuItem onTouchTap={this.handleOpen}>Unfollow</MenuItem>
+                       </IconMenu>}
                     />
                  <Divider/>
+                 <Dialog
+                   title="Unfollow your user"
+                   actions={actions}
+                   modal={false}
+                   open={this.state.open}
+                   onRequestClose={this.handleClose}
+                 >
+                   Are you sure you want to Unfollow this user?.
+                 </Dialog>
               </div>
              );
       }

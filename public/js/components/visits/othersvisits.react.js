@@ -32,7 +32,7 @@ const iconButtonElement = (
 
 const rightIconMenu = (
   <IconMenu iconButtonElement={iconButtonElement}>
-    <MenuItem>Delete</MenuItem>
+    <MenuItem>Block</MenuItem>
   </IconMenu>
 );
 
@@ -40,14 +40,62 @@ const rightIconMenu = (
 
 const othervisits = React.createClass({
 
+  handleOpen: function () {
+    this.setState({ open: true });
+    console.log('Blocked!');
+  },
+
+  handleClose: function () {
+    this.setState({ open: false });
+  },
+
+
+ deletemyfollow:function () {
+
+   console.log('follower deleted!');
+
+ },
+
+ getInitialState: function () {
+   return {
+     open: false,
+   };
+ },
+
       render:function(){
+
+        const actions = [
+            <FlatButton
+              label="No"
+              secondary={true}
+              onTouchTap={this.handleClose}
+            />,
+            <FlatButton
+              label="Yes"
+              primary={true}
+              keyboardFocused={true}
+              onTouchTap={this.handleClose}
+            />,
+          ];
              return(
                <div>
                    <ListItem
                       primaryText={this.props.fistname}
                       leftAvatar={<Avatar src="images/ok-128.jpg" />}
+                      rightIconButton={ <IconMenu iconButtonElement={iconButtonElement}>
+                          <MenuItem onTouchTap={this.handleOpen}>Block</MenuItem>
+                        </IconMenu>}
                      />
                   <Divider/>
+                  <Dialog
+                    title="Block your Followeres"
+                    actions={actions}
+                    modal={false}
+                    open={this.state.open}
+                    onRequestClose={this.handleClose}
+                  >
+                    Are you sure you want to Block this user?.
+                  </Dialog>
                </div>
              );
       }
