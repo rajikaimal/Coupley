@@ -16,8 +16,6 @@ class SuggestionController extends Controller
 
             $result = User::orderBy(\DB::raw('RAND()'))->limit(3)->get();
 
-            
-
             if (! $result->isEmpty()) {
                 return response()->json(['status' => 200, 'suggestions' => $result], 200);
             } else {
