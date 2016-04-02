@@ -51,10 +51,12 @@ io.on('connection', function (socket) {
         var user2Id = result[0].id;
         var user2Firstname = result[0].firstname;
         var user2ProfilePic = result[0].profilepic;
+        var user2Username = like.gotLikedUsername;
         console.log('id 2' + user2Id);
         var userContent = {
           firstname: user2Firstname,
           profilepic: user2ProfilePic,
+          username: user2Username
         };
         var content = like.likedUsername + ' liked you';
         connection.query('insert into notification (user_id1, user_id2, content, readnotification) values (' + user1Id + ',' + user2Id + ",'" + content + "', 0)", function (err, result) {

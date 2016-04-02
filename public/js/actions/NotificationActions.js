@@ -36,10 +36,10 @@ var NotificationActions = {
     });
   },
 
-  updateListFromSocket: function(data) {
+  updateListFromSocket: function (data) {
     AppDispatcher.handleViewAction({
       actionType: NotificationConstants.SOCKETNOTFICATION,
-      notification: data.message,
+      notification: data,
     });
   },
 };

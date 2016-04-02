@@ -70,6 +70,7 @@ var LoginActions = {
       gotLikedUsername: gotlikedusername,
     };
     $.post('/api/like?token=' + localStorage.getItem('apitoken'), request, function (response) {
+      alert('emiting');
       socket.emit('like', likeNotify);
     }).fail(function (error) {
 
