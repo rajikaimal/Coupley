@@ -20,6 +20,22 @@ var AboutActions = {
       });
     });
   },
+
+  fetchLookingFor: function (username) {
+    $.get('/api/profile/lookingfor?token=' + localStorage.getItem('apitoken') + '&username=' + username, function (response) {
+      console.log('Reposad');
+      console.log(response);
+      AppDispatcher.handleViewAction({
+        actionType: ProfileConstants.LOOKINGFOR,
+        lookingfor: response.data[0],
+      });
+    }).fail(function () {
+      AppDispatcher.handleViewAction({
+        actionType: AboutConstants.FETCH,
+        error: true,
+      });
+    });
+  },
 };
 
 module.exports = AboutActions;
