@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
                     ['firstname' => 'Chris', 'lastname' => 'james', 'email' => 'chris@gmail.com', 'gender' => 'male', 'username' => 'chris', 'orientation' => 'straight', 'birthday' => '1994-08-01', 'country' => 'Sri Lanka', 'role' => 'user', 'password' => Hash::make('cC123456')],
                     ['firstname' => 'Han', 'lastname' => 'Solo', 'email' => 'alo@gmail.com', 'gender' => 'male', 'username' => 'alo', 'orientation' => 'straight', 'birthday' => '1994-08-01', 'country' => 'Sri Lanka', 'role' => 'user', 'password' => Hash::make('rR12356')],
                     ['firstname' => 'Tiffany', 'lastname' => 'Hwang', 'email' => 'tiffany@gmail.com', 'gender' => 'female', 'username' => 'tiffany', 'orientation' => 'straight', 'birthday' => '1994-08-01', 'country' => 'Sri Lanka', 'role' => 'user', 'password' => Hash::make('tT123456')],
-                    ['firstname' => 'Isuru', 'lastname' => ' Dilhan', 'email' => 'isuru.dilhan@yahoo.com', 'job' => 'Web developer','superAdmin'=>'yes', 'role' => 'admin', 'password' => Hash::make('Secret123/')],
+                    ['firstname' => 'Isuru', 'lastname' => ' Dilhan', 'email' => 'isuru.dilhan@yahoo.com', 'job' => 'Web developer', 'superAdmin' => 'yes', 'role' => 'admin', 'password' => Hash::make('Secret123/')],
             ];
 
             // Loop through each user above and create the record for them in the database
