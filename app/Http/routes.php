@@ -96,6 +96,7 @@ Route::group(['prefix' => 'api'], function () {
      Route::get('smyvisits', 'VisitorCountController@searchMyVisits');
      Route::get('othervisits', 'VisitorCountController@othersVisits');
      Route::get('sothervisits', 'VisitorCountController@searchOthersVisits');
+     Route::get('unfollowvisitor', 'VisitorCountController@unFollowVisitor');
     /////////
 
     Route::get('getonlineusers', 'ThreadController@getOnlineUsers');

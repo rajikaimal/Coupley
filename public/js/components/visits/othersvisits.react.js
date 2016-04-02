@@ -20,6 +20,8 @@ import Tabs from 'material-ui/lib/tabs/tabs';
 import Tab from 'material-ui/lib/tabs/tab';
 import Dialog from 'material-ui/lib/dialog';
 
+import ThreadActions from '../../actions/Thread/ThreadActions';
+
 const iconButtonElement = (
   <IconButton
     touch={true}
@@ -43,6 +45,7 @@ const othervisits = React.createClass({
   handleOpen: function () {
     this.setState({ open: true });
     console.log('Blocked!');
+     blockUser();
   },
 
   handleClose: function () {
@@ -61,6 +64,10 @@ const othervisits = React.createClass({
      open: false,
    };
  },
+
+ blockUser: function () {
+ ThreadActions.block(this.props.username, localStorage.getItem('user'));
+},
 
       render:function(){
 

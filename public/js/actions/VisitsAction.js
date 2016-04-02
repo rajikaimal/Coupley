@@ -56,6 +56,18 @@ var VisitsAction = {
     });
   },
 
+  unfollowUser: function (visitor, username) {
+    let data = {
+     visitorusername: visitor,
+     username: username,
+   };
+    $.post('api/unfollowvisitor', data, function (response) {
+      if (response.status == 200) {
+
+      }
+    });
+  },
+
 
 
 

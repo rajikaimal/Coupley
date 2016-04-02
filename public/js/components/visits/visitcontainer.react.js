@@ -182,13 +182,13 @@ const VisitContainer = React.createClass({
 
  myVisits:function () {
    return this.state.VisitResult.map((result) => {
-     return (<MyVisit fistname={result.firstname}/>);
+     return (<MyVisit fistname={result.firstname} username={result.username}/>);
    });
  },
 
  otherVisits:function () {
    return this.state.OtherVisitResult.map((results) => {
-     return (<OtherV fistname={results.firstname}/>);
+     return (<OtherV fistname={results.firstname} username={results.username}/>);
    });
  },
 

@@ -20,6 +20,9 @@ import MenuItem from 'material-ui/lib/menus/menu-item';
 import Colors from 'material-ui/lib/styles/colors';
 import Dialog from 'material-ui/lib/dialog';
 
+import ThreadActions from '../../actions/Thread/ThreadActions';
+import VisitsActions from '../../actions/VisitsAction';
+
 
 const iconButtonElement = (
   <IconButton
@@ -45,6 +48,7 @@ const myvisits = React.createClass({
   handleOpen: function () {
     this.setState({ open: true });
     console.log('Unfollowed!');
+    unFollow();
   },
 
   handleClose: function () {
@@ -62,6 +66,10 @@ const myvisits = React.createClass({
    return {
      open: false,
    };
+ },
+
+ unFollow: function (){
+   VisitsActions.unfollowUser(this.props.username, localStorage.getItem('user'));
  },
 
       render:function(){

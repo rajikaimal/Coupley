@@ -113,4 +113,26 @@ class VisitorCountController extends Controller
           return response()->json(['status' => 200], 200);
       }
     }
+
+
+
+    public function unFollowVisitor(Request $request)
+    {
+        $vusername = $request->visitorusername;
+        $username = $request->username;
+
+
+        try {
+
+
+            $result  =\DB::select(\DB::raw("DELETE FROM ProfileVisitor
+                                             WHERE visusername='".$vusername." AND
+                                                   prousername='".$username."'
+                                              "));
+
+            //update query using model
+            //no reponse needed since callback is not used in $.post ...
+        } catch (Illuminate\Database\QueryException $e) {
+        }
+    }
 }
