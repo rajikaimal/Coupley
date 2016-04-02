@@ -30,11 +30,34 @@ const listStyle={
   height:500,
 };
 
+const searchconvo = {
+  marginTop:'-18',
+  paddingLeft:10,
+  paddingRight:50,
+  width:350,
+};
+
 const Thisuser = {
  myusername:LoginStore.getUsername(),
 };
 
 function validateStatusText1(textStatus) {
+
+  if (textStatus.length > 250) {
+    return {
+            error: '*search is too long',
+          };
+  }  else if (textStatus.length == 0) {
+    console.log('empty');
+    return {
+            error: '*search cannot be empty',
+          };
+  }  else {
+    return true;
+  }
+};
+
+function validateStatusText2(textStatus) {
 
   if (textStatus.length > 250) {
     return {
@@ -57,7 +80,8 @@ const VisitContainer = React.createClass({
    return {
      VisitResult:VisitsStore.getMyVisitList(),
      OtherVisitResult:VisitsStore.getOthersVisitList(),
-     statusText: '',
+     statusText1: '',
+     statusText2: '',
    }
  },
 
@@ -80,42 +104,74 @@ const VisitContainer = React.createClass({
 
  SearchMyVisits:function () {
 
-   var uname=this.refs.SearchT.getValue();
+   var uname=this.refs.SearchMV.getValue();
 
    let TheseUsers ={
      username:uname,
      myusername:LoginStore.getUsername(),
     }
-    console.log(ThisTrend.trend);
 
-   if (validateStatusText(ThisTrend).error) {
+   if (validateStatusText1(uname).error) {
      console.log('menna error');
      this.setState({
-       statusText: validateStatusText(ThisTrend).error,
+       statusText: validateStatusText1(uname).error,
      });
      val = false;
    } else {
      console.log('error na');
      VisitsActions.SearchMyvisits(TheseUsers);
-     SearchCeck = false;
+     SearchCeck1 = false;
      this.setState({
        statusText: '',
      });
    }
-     {this.trendSearchItem();}
-
-     {this.clearText();}
+     this.setState({VisitResult:VisitsStore.getMyVisitList()});
+    console.log('search una');
+     {this.clearText1();}
 
  },
 
- clearText:function () {
-   document.getElementById('SearchField').value = '';
+ SearchOthersVisits:function () {
+
+   var uname=this.refs.SearchOV.getValue();
+
+   let TheseUsers ={
+     username:uname,
+     myusername:LoginStore.getUsername(),
+    }
+
+   if (validateStatusText2(uname).error) {
+     console.log('menna error');
+     this.setState({
+       statusText2: validateStatusText2(uname).error,
+     });
+     val1 = false;
+   } else {
+     console.log('error na');
+     VisitsActions.searchOthersVisits(TheseUsers);
+     SearchCeck2 = false;
+     this.setState({
+       statusText2: '',
+     });
+   }
+
+     this.setState({OtherVisitResult:VisitsStore.getOthersVisitList()});
+
+     {this.clearText2();}
+
  },
 
+ clearText1:function () {
+   console.log('clear unaaaa');
+   document.getElementById('SearchField1').value = '';
+ },
+
+ clearText2:function () {
+   document.getElementById('SearchField2').value = '';
+ },
 
  myVisits:function () {
    return this.state.VisitResult.map((result) => {
-
      return (<MyVisit fistname={result.firstname}/>);
    });
  },
@@ -126,10 +182,18 @@ const VisitContainer = React.createClass({
    });
  },
 
+
  EnterKey1(e) {
    if (e.key === 'Enter') {
      console.log('enter una');
      {this.SearchMyVisits();}
+   }
+ },
+
+ EnterKey2(e) {
+   if (e.key === 'Enter') {
+     console.log('enter una');
+     {this.SearchOthersVisits();}
    }
  },
 
@@ -140,7 +204,9 @@ const VisitContainer = React.createClass({
                   <Tab label="My Visits" >
                    <div>
                     <Paper style={listStyle} zDepth={0}>
-                      <List subheader="Recent chats">
+                    <TextField hintText="Username" floatingLabelText="Search Users" style={searchconvo} errorText={this.state.statusText} onKeyPress={this.EnterKey1}
+                     ref="SearchMV" id="SearchField1"/>
+                      <List subheader="">
                      {this.myVisits()}
                       </List>
                     </Paper>
@@ -148,7 +214,9 @@ const VisitContainer = React.createClass({
                   </Tab>
                   <Tab label="Visits to my profile" >
                    <div>
-                    <Paper style={listStyle} zDepth={0}>
+                   <Paper style={listStyle} zDepth={0}>
+                   <TextField hintText="Username" floatingLabelText="Search Users" style={searchconvo} errorText={this.state.statusText} onKeyPress={this.EnterKey2}
+                    ref="SearchOV" id="SearchField2"/>
                       <List>
                       {this.otherVisits()}
                       </List>
