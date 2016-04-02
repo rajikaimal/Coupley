@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('country');
             $table->string('role');
             $table->string('status')->default('active');
+            $table->string('superAdmin')->default('no');
             $table->string('password', 60);
             $table->string('profilepic')->default('user.png');
             $table->timestamps();
