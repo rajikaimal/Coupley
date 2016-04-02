@@ -33,7 +33,6 @@ class SearchController extends Controller
         $username = $request->username;
         //return $username;
         try {
-            $PDO = DB::connection('mysql')->getPdo();
             $data = User::where('username', $username)->get(['id', 'orientation', 'gender']);
             $userID = $data[0]->id;
             $orientation = $data[0]->orientation;
@@ -48,7 +47,7 @@ class SearchController extends Controller
                                                     and role='user' and id NOT IN (
                                                         Select blocked_user_id
                                                         from `blocked`
-                                                        where user_id=25
+                                                        where user_id=".$userID."
                                                     ) 
                     "))) {
                     return response()->json(['users' => $users, 'status' => 201], 201);
@@ -66,7 +65,7 @@ class SearchController extends Controller
                                                 and role='user' and id NOT IN (
                                                     Select blocked_user_id
                                                     from `blocked`
-                                                    where user_id=25
+                                                    where user_id=".$userID."
                                 ) 
                     "))) {
                     return response()->json(['users' => $users, 'status' => 201], 201);
@@ -83,7 +82,7 @@ class SearchController extends Controller
                                                 and role='user' and id NOT IN (
                                                     Select blocked_user_id
                                                     from `blocked`
-                                                    where user_id=25
+                                                    where user_id=".$userID."
                                                 ) 
                     "))) {
                     return response()->json(['users' => $users, 'status' => 201], 201);
@@ -100,7 +99,7 @@ class SearchController extends Controller
                                                 and role='user' and id NOT IN (
                                                     Select blocked_user_id
                                                     from `blocked`
-                                                    where user_id=25
+                                                    where user_id=".$userID."
                                                 ) 
                     "))) {
                     return response()->json(['users' => $users, 'status' => 201], 201);
@@ -117,7 +116,7 @@ class SearchController extends Controller
                                                 and role='user' and id NOT IN (
                                                     Select blocked_user_id
                                                     from `blocked`
-                                                    where user_id=25
+                                                    where user_id=".$userID."
                                                 ) 
                     "))) {
                     return response()->json(['users' => $users, 'status' => 201], 201);
