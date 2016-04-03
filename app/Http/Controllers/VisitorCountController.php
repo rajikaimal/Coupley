@@ -31,7 +31,7 @@ class VisitorCountController extends Controller
 
       try {
           if ($myVlist = \DB::select(\DB::raw("
-          SELECT p.pvid,u.id,u.firstname,u.lastname,u.chatstatus,p.created_at
+          SELECT p.pvid,u.id,u.firstname,u.lastname,u.username,u.chatstatus,p.created_at
           FROM profilevisitor p, users u
           WHERE prousername='".$username."' AND u.username=p.visusername
          "))) {
@@ -76,7 +76,7 @@ class VisitorCountController extends Controller
 
       try {
           if ($oVlist = \DB::select(\DB::raw("
-          SELECT p.pvid,u.id,u.firstname,u.lastname,u.chatstatus,p.created_at
+          SELECT p.pvid,u.id,u.firstname,u.lastname,u.username,u.chatstatus,p.created_at
           FROM profilevisitor p, users u
           WHERE visusername='".$username."' AND u.username=p.prousername
          "))) {
@@ -121,18 +121,16 @@ class VisitorCountController extends Controller
         $vusername = $request->visitorusername;
         $username = $request->username;
 
-
+        $posts = \DB::table('ProfileVisitor')->where('visusername', '=', $vusername)->where('prousername', '=',$username);
         try {
-
-
-            $result  =\DB::select(\DB::raw("DELETE FROM ProfileVisitor
-                                             WHERE visusername='".$vusername." AND
-                                                   prousername='".$username."'
-                                              "));
-
-            //update query using model
-            //no reponse needed since callback is not used in $.post ...
+            if ($posts->delete()) {
+                return response()->json(['username' => $username,'status' => 200], 200);
+            } else {
+                return response()->json(['status' => 505], 505);
+            }
         } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 200], 200);
         }
+
     }
 }

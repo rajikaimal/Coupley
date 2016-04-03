@@ -32,7 +32,7 @@ var ThreadAction = {
   deleteM:function (id) {
     $.post('api/deletemessage', id, function (response) {
       if (response.status == 201) {
-        $.get('/api/getpreviousmsg?user1=' + request.user1, function (response) {
+        $.get('/api/getpreviousmsg?user1=' + response.thisuser, function (response) {
           if (response.status == 200) {
             AppDispatcher.handleViewAction({
               actionType:ThreadConstants.RETRIVEOLD,

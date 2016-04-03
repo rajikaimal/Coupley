@@ -65,7 +65,7 @@ const PreviousChatContainer = React.createClass({
 
   previousMList: function () {
     return this.state.results.map((result) => {
-      return (<PreviousChat key={result.id} id={result.thread_id} firstname={result.firstname} message={result.message} created_at={result.created_at}/>);
+      return (<PreviousChat key={result.id} id={result.thread_id} thread_id={result.thread_id} firstname={result.firstname} message={result.message} created_at={result.created_at}/>);
     });
   },
 

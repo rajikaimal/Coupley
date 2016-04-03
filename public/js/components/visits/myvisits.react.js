@@ -47,8 +47,6 @@ const myvisits = React.createClass({
 
   handleOpen: function () {
     this.setState({ open: true });
-    console.log('Unfollowed!');
-    unFollow();
   },
 
   handleClose: function () {
@@ -69,7 +67,10 @@ const myvisits = React.createClass({
  },
 
  unFollow: function (){
-   VisitsActions.unfollowUser(this.props.username, localStorage.getItem('user'));
+   console.log(localStorage.getItem('username'));
+   console.log(this.props.username);
+   VisitsActions.unfollowUser(this.props.username, localStorage.getItem('username'));
+   this.setState({ open: false });
  },
 
       render:function(){
@@ -83,7 +84,7 @@ const myvisits = React.createClass({
               label="Yes"
               primary={true}
               keyboardFocused={true}
-              onTouchTap={this.handleClose}
+              onTouchTap={this.unFollow}
             />,
           ];
              return(

@@ -44,12 +44,13 @@ class ThreadController extends Controller
     public function deletemessage(Request $request)
     {
         $user2 = $request->user2;
-        $posts = \DB::table('chats')->where('user2', '=', $user2);
+        $thisuser = $request->user1;
+        $posts = \DB::table('messages')->where('thread_id', '=', $user2);
         try {
             if ($posts->delete()) {
-                return response()->json(['status' => 201], 201);
+                return response()->json(['thisuser' => $thisuser,'status' => 201], 201);
             } else {
-                return response()->json(['status' => 404], 404);
+                return response()->json(['thisuser' => $thisuser,'status' => 404], 404);
             }
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 200], 200);

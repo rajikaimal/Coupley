@@ -44,8 +44,7 @@ const othervisits = React.createClass({
 
   handleOpen: function () {
     this.setState({ open: true });
-    console.log('Blocked!');
-     blockUser();
+
   },
 
   handleClose: function () {
@@ -66,7 +65,8 @@ const othervisits = React.createClass({
  },
 
  blockUser: function () {
- ThreadActions.block(this.props.username, localStorage.getItem('user'));
+ ThreadActions.block(this.props.username, localStorage.getItem('username'));
+ this.setState({ open: false });
 },
 
       render:function(){
@@ -81,7 +81,7 @@ const othervisits = React.createClass({
               label="Yes"
               primary={true}
               keyboardFocused={true}
-              onTouchTap={this.handleClose}
+              onTouchTap={this. blockUser}
             />,
           ];
              return(

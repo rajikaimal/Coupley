@@ -43,9 +43,10 @@ const PreviousChat = React.createClass({
   },
 
   deleteconvo:function () {
-    var user2 = this.props.firstname;
+    var user2 = this.props.thread_id;
     let deleteM = {
              user2:user2,
+             user1:localStorage.getItem('username'),
            };
     ThreadActions.deleteM(deleteM);
     console.log('Done deleting!');

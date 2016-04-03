@@ -61,9 +61,20 @@ var VisitsAction = {
      visitorusername: visitor,
      username: username,
    };
+   console.log('menna send una data'+data);
+   console.log(data);
     $.post('api/unfollowvisitor', data, function (response) {
       if (response.status == 200) {
-
+        $.get('/api/myvisits?myusername='+response.username, function (response) {
+          if (response.status == 200) {
+            AppDispatcher.handleViewAction({
+                actionType:VisitConstants.MYVISITS,
+                myVisitlist: response.myVlist,
+              });
+          }else if (response.status == 505) {
+            console.log('Error 505');
+          }
+        });
       }
     });
   },
