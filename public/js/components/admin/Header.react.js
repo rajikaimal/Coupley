@@ -62,17 +62,26 @@ var Header = React.createClass({
 
   _renderNotificationList: function () {
     let self = this;
-    console.log(this.state.listNotification);
-    return this.state.listNotification.map((Notification) => {
+    if (this.state.listNotification.length == 0) {
       return (
           <li>
-          <a >
-          <i className="fa fa-users text-aqua"></i>
-          {Notification.content}
-          </a>
+            <a >
+              No notifications.
+            </a>
           </li>
       );
-    });
+    } else {
+      return this.state.listNotification.map((Notification) => {
+        return (
+            <li>
+              <a>
+                <i className="fa fa-users text-aqua"></i>
+                {Notification.content}
+              </a>
+            </li>
+        );
+      });
+    }
   },
 
   update:function () {
@@ -82,6 +91,14 @@ var Header = React.createClass({
         history.go(0);
       }
     }, 400);
+  },
+
+  counts:function () {
+    if (this.state.notificationCount.count == 0) {
+      return ('0');
+    } else {
+      return (this.state.notificationCount);
+    }
   },
 
   render: function () {
@@ -109,10 +126,10 @@ var Header = React.createClass({
                 <li className="dropdown notifications-menu" onClick={this.setOne}>
                   <a  className="dropdown-toggle" data-toggle="dropdown">
                     <i className="fa fa-bell-o"></i>
-                    <span className="label label-warning">{this.state.notificationCount}</span>
+                    <span className="label label-warning">{this.counts()}</span>
                   </a>
                   <ul className="dropdown-menu">
-                    <li className="header">You have {this.state.notificationCount} notifications
+                    <li className="header">You have {this.counts()} notifications
                     </li>
                     <li>
                       <ul className="menu">

@@ -7,13 +7,13 @@ use App\Post;
 use App\User;
 use App\activitypost;
 use App\activitylikes;
+use App\activityblock;
 
 class ActivityFeedController extends Controller
 {
     public function getUserId(Request $request)
     {
         $email = $request->email;
-
         try {
             $uId = User::where('email', $email)->get(['id'])[0]->id;
 
@@ -39,6 +39,30 @@ class ActivityFeedController extends Controller
             $post->userId = $request->userId;
             $post->firstname = $request->firstName;
             $post->post_text = $request->status;
+            if ($posts = $post->save()) {
+                return response()->json(['posts' => $posts, 'status' => 201], 201);
+            } else {
+                return response()->json(['status' => 404], 404);
+            }
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 505], 505);
+        }
+    }
+
+    public function addImageStatus(Request $request)
+    {
+        $destination = 'img/activityFeedPics';
+        try {
+            $token = $request->input('token');
+            $file = $request->file('file')->move($destination, $token);
+            $ext = $request->file('file')->getClientOriginalExtension();
+
+            $post = new activitypost;
+            $post->email = $request->input('email');
+            $post->userId = $request->input('userId');
+            $post->firstname = $request->input('firstName');
+            $post->post_text = $request->input('status');
+            $post->attachment = $token;
 
             if ($posts = $post->save()) {
                 return response()->json(['posts' => $posts, 'status' => 201], 201);
@@ -60,7 +84,6 @@ class ActivityFeedController extends Controller
             $post->type = 'shared';
             $post->post_id = $request->postId;
             $post->post_text = $request->status;
-
             if ($posts = $post->save()) {
                 return response()->json(['posts' => $posts, 'status' => 201], 201);
             } else {
@@ -82,7 +105,6 @@ class ActivityFeedController extends Controller
     public function getStatus(Request $request)
     {
         $uId = $request->userId;
-
         try {
             $posts = \DB::select('SELECT p.id,
                                        p.firstname,
@@ -99,11 +121,9 @@ class ActivityFeedController extends Controller
                                        q.spost_text,
                                        q.screated_at
                                 FROM(SELECT x.id as id,x.firstname as firstname,x.type as type,x.attachment as attachment,
-                                            x.post_text as post_text,x.post_id as post_id,x.created_at as created_at,x.pid as pid,
-                                            y.likesCount as likesCount
-                                     FROM (select a.id as id,a.firstname as firstname,a.type as type,a.attachment as attachment,
-                                                    a.post_text as post_text,a.post_id as post_id,a.created_at as created_at,
-                                                    l.post_id as pid
+                                            x.post_text as post_text,x.post_id as post_id,x.created_at as created_at,x.pid as pid,y.likesCount as likesCount
+                                     FROM (select a.id as id,a.firstname as firstname,a.type as type,
+                                                    a.attachment as attachment,a.post_text as post_text,a.post_id as post_id,a.created_at as created_at,l.post_id as pid
                                            from (select id,firstname,type,attachment,post_text,post_id,created_at  
                                                  from (select p.id,p.firstname,p.type,p.attachment,p.post_text,p.post_id,
                                                                 p.created_at
@@ -112,19 +132,21 @@ class ActivityFeedController extends Controller
                                          
                                                         union
                                                                            
-                                                      select p.id,p.firstname,p.type,p.attachment,p.post_text,p.post_id,
-                                                      p.created_at
-                                                      from activityposts p
-                                                      where p.userId='.$uId.' ) as t1 ) a
+                                                        select p.id,p.firstname,p.type,p.attachment,p.post_text,p.post_id,p.created_at
+                                                        from activityposts p
+                                                        where p.userId='.$uId.' ) as t1
+                                                 where id NOT IN (select post_id 
+                                                                  from activityblocks
+                                                                  where userId='.$uId.' ) ) a
                 
-                                          Left JOIN (SELECT post_id FROM activitylikes WHERE UserId='.$uId.') l
-                                          ON a.id=l.post_id) x
+                                           Left JOIN (SELECT post_id FROM activitylikes WHERE UserId='.$uId.') l
+                                           ON a.id=l.post_id) x
              
                                      Left JOIN (SELECT post_id,count(UserId) as likesCount FROM activitylikes) y
                                      ON x.id = y.post_id) p
     
                                 Left Join (select id as sid,firstname as sfirstname,attachment as sattachment,
-                                            post_text as spost_text,created_at as screated_at from activityposts) q
+                                                post_text as spost_text,created_at as screated_at from activityposts) q
                                 On p.post_id=q.sid
                                 order by p.created_at desc');
 
@@ -145,10 +167,8 @@ class ActivityFeedController extends Controller
     public function deleteStatus(Request $request)
     {
         $postId = $request->postId;
-
         try {
             $posts = \DB::table('activityposts')->where('id', '=', $postId);
-
             if ($posts->delete()) {
                 return response()->json(['status' => 201], 201);
             } else {
@@ -171,12 +191,27 @@ class ActivityFeedController extends Controller
     {
         $postId = $request->postId;
         $status = $request->status;
-
         try {
             $posts = \DB::table('activityposts')->where('id', $postId)->update(['post_text' => $status]);
-
             if ($posts) {
                 return response()->json(['status' => 201], 201);
+            } else {
+                return response()->json(['status' => 404], 404);
+            }
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 505], 505);
+        }
+    }
+
+    public function block_status(Request $request)
+    {
+        try {
+            $blockPost = new activityblock;
+            $blockPost->email = $request->email;
+            $blockPost->userId = $request->userId;
+            $blockPost->post_id = $request->postId;
+            if ($posts = $blockPost->save()) {
+                return response()->json(['posts' => $posts, 'status' => 201], 201);
             } else {
                 return response()->json(['status' => 404], 404);
             }

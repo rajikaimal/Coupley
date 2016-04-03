@@ -38,7 +38,6 @@ class AdminPwdController extends Controller
                 $content = 'Dear Administrator, your updated password is '.$newpassword;
                 $subject = 'COUPLEY Password Update';
                 $sendMail->SendMail($mail, $adminName[0]->firstname, $subject, $content);
-
                 $hashed = \Hash::make($newpassword);
                 \DB::table('users')
                     ->where('email', $mail)

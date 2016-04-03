@@ -25,7 +25,6 @@ class CommentController extends Controller
             $comment->email = $request->email;
             $comment->firstname = $request->firstName;
             $comment->comment_txt = $request->comment;
-
             if ($comment->save()) {
                 return response()->json(['status' => 201], 201);
             } else {
