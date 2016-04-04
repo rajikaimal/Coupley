@@ -36,15 +36,11 @@ var StatusStore = assign({}, EventEmitter.prototype, {
   },
 
   getSharedUsers: function () {
-    console.log('jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj');
-    console.log(sharedUsers);
     return sharedUsers;
   },
 
   saveSharedUsers: function (results) {
     sharedUsers.push(results);
-       console.log('jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj11111111111');
-    console.log(sharedUsers);
   },
 
   /**

@@ -60,8 +60,6 @@ const CountBox = React.createClass({
     return (this.state.likedUsers.map(function(likes) {
       return (likes.map(function(result) {
         if(self.props.post_id == result.post_id) {
-            console.log('ssssssssssssss1111111111');
-            console.log(result.firstname);
             firstname=result.firstname;
           }
       }));
@@ -70,14 +68,12 @@ const CountBox = React.createClass({
 
   _getSharedUsers: function () {
     this.setState({open2: true}); 
-
+    this.setState({sharedUsers: StatusStore.getSharedUsers()});
     let self = this;
     return (this.state.sharedUsers.map(function(shares) {
       return (shares.map(function(result) {
-        if(self.props.id == result.post_id) {
-  
-           console.log('ssssssssssssss111111111122222233333333333');
-            console.log(result.firstname); 
+        if(self.props.post_id == result.post_id) {
+                firstname=result.firstname;
           }
       }));
     }));

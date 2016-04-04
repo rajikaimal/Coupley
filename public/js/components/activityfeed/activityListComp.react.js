@@ -85,6 +85,7 @@ const ActivityList = React.createClass({
       open1: false,
       open3: false,
       open4: false,
+      open5: false,
       likeCount: '',
     };
   },
@@ -182,7 +183,6 @@ const ActivityList = React.createClass({
       postId: this.props.id,
     };
     ActivityfeedAction._blockStatus(blockData);
-    alert('Do you really want to block this post?')
   },
 
   _changeShareState:function() {
@@ -243,10 +243,15 @@ const ActivityList = React.createClass({
     this.setState({open3: true});
   },
 
+  handleOpenBlock: function () {
+    this.setState({open5: true});
+  },
+
   handleClose: function () {
     this.setState({opens: false});
     this.setState({open3: false});
     this.setState({open4: false});
+    this.setState({open5: false});
   },
 
   setFocusToTextBox: function () {
@@ -313,6 +318,19 @@ const ActivityList = React.createClass({
         onTouchTap={this.handleClose}/>,
     ];
 
+    const confirmBlockActions = [
+      <FlatButton
+        label="Block"
+        primary={true}
+        keyboardFocused={true}
+        onTouchTap={this._blockedStatus}/>,
+
+      <FlatButton
+        label="Cansel"
+        secondary={true}
+        onTouchTap={this.handleClose}/>,
+    ];
+
     const shareActions = [
       <FlatButton
         label="Post"
@@ -350,7 +368,7 @@ const ActivityList = React.createClass({
                   <IconMenu iconButtonElement={iconButtonElement}>
                     <MenuItem primaryText="Edit" onClick={this.handleOpen}/>
                     <MenuItem primaryText="Remove" onClick={this.handleOpenDelete}/>
-                    <MenuItem primaryText="Block" onClick={this._blockedStatus}/>
+                    <MenuItem primaryText="Block" onClick={this.handleOpenBlock}/>
                   </IconMenu> } />
 
               <CardText>
@@ -401,7 +419,16 @@ const ActivityList = React.createClass({
             modal={false}
             open={this.state.open3}
             onRequestClose={this.handleClose}>
-              Are you sure you want to delete this?" 
+              Are you sure you want to delete this post?" 
+          </Dialog>
+
+          <Dialog
+            title="Block Post"
+            actions={confirmBlockActions}
+            modal={false}
+            open={this.state.open5}
+            onRequestClose={this.handleClose}>
+              Are you sure you want to block this post?" 
           </Dialog>
 
           <Dialog
