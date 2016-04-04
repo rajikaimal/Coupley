@@ -37,14 +37,16 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('imageStatus', 'ActivityFeedController@addImageStatus');
     //Return status
     Route::get('getstatus', 'ActivityFeedController@getStatus');
-    //Return logged uder Id
-    Route::get('getUserId', 'ActivityFeedController@getUserId');
     //Add a like to the status
     Route::post('likepost', 'LikeController@like');
     //Unlike the status
     Route::post('unlikepost', 'LikeController@unlike');
+    //Return liked and shaed count
+    Route::get('getCount', 'LikeController@getCount');
     //Return liked Users
     Route::get('getLikedUsers', 'LikeController@getLikedUsers');
+    //Return shared users
+    Route::get('getSharedUsers', 'ActivityFeedController@getSharedUsers');
     //Add a share
     Route::post('sharedStatus', 'ActivityFeedController@sharedStatus');
     //Unshare the status

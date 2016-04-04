@@ -10,17 +10,6 @@ use App\activitycomment;
 use App\activityblock;
 class ActivityFeedController extends Controller
 {
-    public function getUserId(Request $request)
-    {
-        $email = $request->email;
-        try {
-             $uId= User::where('email', $email)->get(['id'])[0]->id;
-            return response()->json(['uId' => $uId, 'status' => 200], 200);
-        } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
-        }
-    }
-
     /**
      * add an activity to Activity feed, handles POST request.
      *
@@ -215,5 +204,19 @@ class ActivityFeedController extends Controller
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 505], 505);
         }
+    }
+
+    public function getSharedUsers(Request $request)
+    {
+       $postId = $request->postId;
+        try{    
+            $posts= \DB::select('select firstname,post_id
+                                 from activityposts 
+                                 where post_id='.$postId.'
+                                 order by created_at desc');
+            return response()->json(['posts' => $posts, 'status' => 200], 200);
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 505], 505);
+        } 
     }
 }

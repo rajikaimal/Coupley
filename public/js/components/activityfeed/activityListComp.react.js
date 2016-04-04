@@ -25,6 +25,7 @@ import Comment from './Comment.react';
 import LikeStatusStore from '../../stores/LikeStatusStore';
 import ActivitySharedList from './ActivitySharedList.react';
 import ActivityContainer from './activityContainer.react';
+import CountBox from './CountBox.react';
 
 const iconButtonElement = (
   <IconButton
@@ -50,6 +51,10 @@ const style3 = {
 
 };
 
+const loadMoreStyle = {
+  marginLeft: 100
+}
+
 function validateCommentText(textComment) {
   if(textComment.length > 200) {
     return {
@@ -66,21 +71,21 @@ function validateCommentText(textComment) {
   }
 };
 
-var lFirstName;
-var likeCount;
-  
+var commentLimitNo = 0;
+
 const ActivityList = React.createClass({
   getInitialState: function () {
     return {
       opens: false,
       commentText: '',
       sharedResults: StatusStore.getSharedData(),
-      likedUsers: LikeStatusStore.getLikedUsers(),
       commentResults: CommentStore.getCommentsData(),
-      likedCount: LikeStatusStore.getLikedCount(),
+      count: LikeStatusStore.getCount(),
       liked: '',
-      open: false,
       open1: false,
+      open3: false,
+      open4: false,
+      likeCount: '',
     };
   },
 
@@ -97,21 +102,20 @@ const ActivityList = React.createClass({
 
     let commentData = {
       postId: this.props.id,
+      commentLimitNo: commentLimitNo + 5,
     };
     ActivityfeedAction.getCommentList(commentData);
 
     let LikedData = {
       postId: this.props.id,
     };
-    ActivityfeedAction.getLikeCount(LikedData);
-
+    ActivityfeedAction.getCount(LikedData);
   },
 
   _onChange: function () {
-    this.setState({sharedResults: StatusStore.getSharedData()});
-    this.setState({likedUsers: LikeStatusStore.getLikedUsers()});
+    this.setState({sharedResults: StatusStore.getSharedData()});  
     this.setState({commentResults: CommentStore.getCommentsData()});
-    this.setState({likedCount: LikeStatusStore.getLikedCount()});
+    this.setState({count: LikeStatusStore.getCount()});
   },
 
 
@@ -127,35 +131,13 @@ const ActivityList = React.createClass({
 
   _getLikedCount: function () {
     let self = this;
-    return (this.state.likedCount.map(function(likes) {
-
-          console.log('lllllllllllllllllll');
-          console.log();
-      return (likes.map(function(result) {
-        console.log('eeeeeeeeeeeee');
-        console.log(result);    
+    return (this.state.count.map(function(val) {
+      return (val.map(function(result) {
         if(self.props.id == result.post_id) {
-          likeCount=result.count;          
+           return(<CountBox likedCount={result.likedCount}
+                            shareCount={result.shareCount}
+                            post_id={result.post_id}/>);
         }
-      }));
-    }));
-  },
-
-  _getLikedUsers: function () {
-    this.setState({open: true});
-
-    let likeData = {
-      postId: this.props.id,
-    };
-    ActivityfeedAction.getLikedUsers(likeData);
-
-    let self = this;
-    return (this.state.likedUsers.map(function(likes) {
-      return (likes.map(function(result) {
-        console.log('eeeeeeeeeeeee');
-        console.log(result);
-        lFirstName=result.firstname;       
-        
       }));
     }));
   },
@@ -200,6 +182,7 @@ const ActivityList = React.createClass({
       postId: this.props.id,
     };
     ActivityfeedAction._blockStatus(blockData);
+    alert('Do you really want to block this post?')
   },
 
   _changeShareState:function() {
@@ -212,12 +195,12 @@ const ActivityList = React.createClass({
       status: shareStatus,
     };
 
-    if (!this.state.shared) {shareStatus
       this.setState({shared: !this.state.shared});
       ActivityfeedAction._addShare(shareData);
-      alert('Share successful');
-    }
-    this.handleClose();
+      //alert('Share successful');
+   
+    this.setState({open1: false});   
+    this.setState({open4: true});
   },
 
   _changeLikeState: function () {
@@ -231,11 +214,21 @@ const ActivityList = React.createClass({
     if (this.state.liked) {
       this.setState({liked: !this.state.liked});
       ActivityfeedAction.like(likeData);
+      _getLikedCount();
     }
     else {
       this.setState({liked: !this.state.liked});
       ActivityfeedAction.unlike(likeData);
+      _getLikedCount();
     }
+  },
+
+  _loadMoreComments: function () {
+      let commentData = {
+      postId: this.props.id,
+      commentLimitNo: commentLimitNo + 5,
+    };
+    ActivityfeedAction.getCommentList(commentData);
   },
 
   handleOpen: function () {
@@ -246,10 +239,14 @@ const ActivityList = React.createClass({
     this.setState({open1: true});
   },
 
+  handleOpenDelete: function () {
+    this.setState({open3: true});
+  },
+
   handleClose: function () {
     this.setState({opens: false});
-    this.setState({open: false});
-    this.setState({open1: false});
+    this.setState({open3: false});
+    this.setState({open4: false});
   },
 
   setFocusToTextBox: function () {
@@ -303,9 +300,15 @@ const ActivityList = React.createClass({
         onTouchTap={this.handleClose}/>,
     ];
 
-    const likeActions = [
+    const confirmDeleteActions = [
       <FlatButton
-        label="Close"
+        label="Delete"
+        primary={true}
+        keyboardFocused={true}
+        onTouchTap={this._deleteStatus}/>,
+
+      <FlatButton
+        label="Cansel"
         secondary={true}
         onTouchTap={this.handleClose}/>,
     ];
@@ -319,6 +322,13 @@ const ActivityList = React.createClass({
 
       <FlatButton
         label="Close"
+        secondary={true}
+        onTouchTap={this.handleClose}/>,
+    ];
+
+    const confirmShareActions = [
+      <FlatButton
+        label="Ok"
         secondary={true}
         onTouchTap={this.handleClose}/>,
     ];
@@ -339,7 +349,7 @@ const ActivityList = React.createClass({
               rightIconButton={
                   <IconMenu iconButtonElement={iconButtonElement}>
                     <MenuItem primaryText="Edit" onClick={this.handleOpen}/>
-                    <MenuItem primaryText="Remove" onClick={this._deleteStatus}/>
+                    <MenuItem primaryText="Remove" onClick={this.handleOpenDelete}/>
                     <MenuItem primaryText="Block" onClick={this._blockedStatus}/>
                   </IconMenu> } />
 
@@ -368,22 +378,12 @@ const ActivityList = React.createClass({
               </IconButton>
 
               <FlatButton label="Comment" onClick={this.setFocusToTextBox} />
-              <FlatButton label="Share" onClick={this.handleOpenShare}  secondary={this.state.shared ? true : false}/>
-              <Divider inset={true} />   
+              <FlatButton label="Share" onClick={this.handleOpenShare} /> /> 
 
-              <div>
-                {this._getLikedCount()}
-              </div>
-             
           </Card> 
 
           <div>
-            <Card style={style2}>
-              <Paper zDepth={1}>
-                <FlatButton label={(likeCount==0) ? " " : likeCount + " Likes"} onClick={this._getLikedUsers}/>
-                <FlatButton label="2 Shares"  />
-              </Paper>
-            </Card>
+            {this._getLikedCount()}
           </div>
 
           <Dialog
@@ -396,6 +396,15 @@ const ActivityList = React.createClass({
           </Dialog>
 
           <Dialog
+            title="Delete Post"
+            actions={confirmDeleteActions}
+            modal={false}
+            open={this.state.open3}
+            onRequestClose={this.handleClose}>
+              Are you sure you want to delete this?" 
+          </Dialog>
+
+          <Dialog
             title={this.props.firstName + "'s post Share on your own Activityfeed"}
             actions={shareActions}
             modal={false}
@@ -405,21 +414,22 @@ const ActivityList = React.createClass({
           </Dialog>
 
           <Dialog
-            title="Liked Users"
-            actions={likeActions}
-            modal={true}
-            open={this.state.open}>
-               
-              <ListItem 
-                id="likedListBox"
-                leftAvatar={<Avatar src="https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg" />}
-                primaryText={lFirstName} />
-              <Divider inset={true} />
+            title="Share Post"
+            actions={confirmShareActions}
+            modal={false}
+            open={this.state.open4}
+            onRequestClose={this.handleClose}>
+              "This has been shared to your Timeline."
           </Dialog>
 
         </div>
 
-        <div>{this._getCommentList()}</div>
+        <div>
+          <Card style={style2}>
+          <FlatButton label="load more comments" onClick={this._loadMoreComments} /> 
+          </Card>
+          {this._getCommentList()}
+        </div>
         <div>
           <Card style={style2}>
             <Paper zDepth={1}>

@@ -36,19 +36,6 @@ var ActivityfeedAction = {
     });
   },
 
-  _getUserId:function () {
-    $.get('/api/getUserId?email='+ localStorage.getItem('email'), function (response) {
-      if (response.status == 200) {
-        AppDispatcher.handleViewAction({
-          actionType: ActivityFeedConstants.GETLOGGEDUSERID,
-          userId: response.uId,
-        });
-      } else if (response.status == 505) {
-        console.log('Error 505');
-      }
-    });
-  },
-
   _addShare: function (result) {
     $.post('api/sharedStatus', result, function (response) {
         if (response.status == 201) {
@@ -158,14 +145,14 @@ var ActivityfeedAction = {
     });
   },
 
-  getLikeCount: function(request) {
-    $.get('/api/getLikeCount', request, function (response) {
-      console.log('jjjjjjjjjjjjjjjjjjjjjjj');
+  getCount: function(request) {
+    $.get('/api/getCount', request, function (response) {
+      console.log('ssssssssssss');
       console.log(response);
       if (response.status == 200) {
         AppDispatcher.handleViewAction({
-          actionType: LikeConstants.GETLIKECOUNT,
-          likedCount: response.posts,
+          actionType: LikeConstants.GETCOUNT,
+          countValue: response.posts,
         });
       } else if (response.status == 505) {
         console.log('Error 505');
@@ -175,6 +162,7 @@ var ActivityfeedAction = {
 
   getLikedUsers: function(request) {
     $.get('/api/getLikedUsers', request, function (response) {
+      console.log(response);
       if (response.status == 200) {
         AppDispatcher.handleViewAction({
           actionType: LikeConstants.GETUSERS,
@@ -186,34 +174,50 @@ var ActivityfeedAction = {
     });
   },
 
+  getSharedUsers: function(request) {
+    $.get('/api/getSharedUsers', request, function (response) {
+      if (response.status == 200) {
+        AppDispatcher.handleViewAction({
+          actionType: ActivityFeedConstants.GETSHAREDUSERS,
+          sharedUsers: response.posts,
+        });
+      } else if (response.status == 505) {
+        console.log('Error 505');
+      }
+    });
+  },
+
   addComment: function(comment){
     $.post('api/addcomment', comment, function(response) {
-      if (response.status == 201) {
-        $.get('/api/getcomment', comment,function(response) {
-          if (response.status == 200) {
-              AppDispatcher.handleViewAction({
-                actionType: CommentConstants.GETCOMMENT,
-                commentdata: response.comments
-              });
-          } else if (response.status == 505) {
-            console.log('Error 505');
-          }
-        });
-      } else if (response.status == 404) {
-        console.log('Error 404');
-      }
+      // if (response.status == 201) {
+      //   $.get('/api/getcomment', comment,function(response) {
+      //     if (response.status == 200) {
+      //         AppDispatcher.handleViewAction({
+      //           actionType: CommentConstants.GETCOMMENT,
+      //           commentdata: response.comments
+      //         });
+      //     } else if (response.status == 505) {
+      //       console.log('Error 505');
+      //     }
+      //   });
+      // } else if (response.status == 404) {
+      //   console.log('Error 404');
+      // }
     });
   },
 
   getCommentList: function(commentData) {
     $.get('/api/getcomment', commentData,function(response) {
-      if (response.status == 200) {
+      if (response.status == 200 && response.comments) {
           AppDispatcher.handleViewAction({
             actionType: CommentConstants.GETCOMMENT,
             commentdata: response.comments
           });
-      } else if (response.status == 505) {
-        console.log('Error 505');
+      } else {
+          AppDispatcher.handleViewAction({
+            actionType: CommentConstants.GETCOMMENT,
+            commentdata: response.comments
+          });
       }
     });
   },

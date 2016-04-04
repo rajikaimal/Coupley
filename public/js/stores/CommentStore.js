@@ -21,12 +21,7 @@ var CommentStore = assign({},EventEmitter.prototype, {
    * Put results(comment data) to searchComments.
    */
   saveCommentsData: function(results) {
-    // searchComments.postID = results[0].post_id;
-    // searchComments.comments = results;
     searchComments.push(results);
-    console.log('Search comments');
-    console.log(searchComments);
-    
   },
 
   emitChange: function() {

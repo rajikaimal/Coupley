@@ -31,7 +31,7 @@ const style1 = {
 
 const cardStyle = {
   width: 800,
-  height: 300,
+  height: 200,
   marginLeft: 40,
   position:'relative',
 };
@@ -190,7 +190,7 @@ const StatusBox = React.createClass({
               
               <div>
                 {
-                  this.state.editingPic ? <Card style={cardStyle}>
+                  this.state.editingPic ? <Card style={cardStyle} >
                                             <div className="col-sm-3 col-md-3 col-lg-3">
                                               <Dropzone onDrop={this.onDrop} multiple={false} accept="image/*">
                                               <div>Try dropping some images here, or click to select images to upload.</div>

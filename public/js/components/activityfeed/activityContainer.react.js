@@ -9,14 +9,12 @@ import LoginStore from '../../stores/LoginStore';
 const activityContainer = React.createClass({
   getInitialState: function() {
     return {
-      userId: StatusStore.getLoggedUId(),
       results: StatusStore.getStatusData(),
     }
   },
 
   componentDidMount: function() {
     StatusStore.addChangeListener(this._onChange);
-    ActivityfeedAction._getUserId();
 
     let data = {
       userId: localStorage.getItem('userid'),
@@ -27,7 +25,6 @@ const activityContainer = React.createClass({
 
   _onChange: function () {
     this.setState({results: StatusStore.getStatusData()});
-    this.setState({userId: StatusStore.getLoggedUId()});  
   },
 
   _renderSearchItem: function () { 
@@ -53,9 +50,9 @@ const activityContainer = React.createClass({
 
   render: function() {
     return (
-      <div>
-        {this._renderSearchItem()}
-      </div>
+        <div>
+          {this._renderSearchItem()}
+        </div>
     );
   }
 });
