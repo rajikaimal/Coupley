@@ -1,10 +1,16 @@
 import React from 'react';
 import List from 'material-ui/lib/lists/list';
 import ListItem from 'material-ui/lib/lists/list-item';
+import RaisedButton from 'material-ui/lib/raised-button';
 import ActivityfeedAction from '../../actions/ActivityFeed/ActivityfeedAction';
 import StatusStore from '../../stores/StatusStore';
 import ActivityList from './activityListComp.react';
 import LoginStore from '../../stores/LoginStore';
+
+const style = {
+  marginLeft: 40,
+  width: 800,
+};
 
 const activityContainer = React.createClass({
   getInitialState: function() {
@@ -25,6 +31,13 @@ const activityContainer = React.createClass({
 
   _onChange: function () {
     this.setState({results: StatusStore.getStatusData()});
+  },
+
+  _loadMorePosts: function () {
+    let data = {
+      userId: localStorage.getItem('userid'),
+    };
+    ActivityfeedAction._getStatus(data);
   },
 
   _renderSearchItem: function () { 
@@ -50,9 +63,14 @@ const activityContainer = React.createClass({
 
   render: function() {
     return (
+      <div>
         <div>
           {this._renderSearchItem()}
         </div>
+        <div>
+          <RaisedButton label="load more posts" secondary={true} style={style} onClick={this._loadMorePosts} />
+        </div>
+      </div>
     );
   }
 });

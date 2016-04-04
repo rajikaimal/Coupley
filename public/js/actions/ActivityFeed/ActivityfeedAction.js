@@ -3,6 +3,9 @@ var ActivityFeedConstants = require('../../constants/ActivityFeedConstants');
 var LikeConstants = require('../../constants/LikeConstants');
 var CommentConstants = require('../../constants/CommentConstants');
 
+var commentLimitNo = 0;
+var postLimitNo = 0;
+
 var ActivityfeedAction = {
   _addStatus: function (status) {
     $.post('api/status', status, function (response) {
@@ -24,7 +27,8 @@ var ActivityfeedAction = {
   },
 
   _getStatus: function (uId) {
-    $.get('/api/getstatus', uId, function (response) {
+    postLimitNo = postLimitNo + 3;
+    $.get('/api/getstatus?postLimitNo=' + postLimitNo, uId, function (response) {
       if (response.status == 200) {
         AppDispatcher.handleViewAction({
           actionType: ActivityFeedConstants.GETDATA,
@@ -207,7 +211,8 @@ var ActivityfeedAction = {
   },
 
   getCommentList: function(commentData) {
-    $.get('/api/getcomment', commentData,function(response) {
+    commentLimitNo = commentLimitNo + 5
+    $.get('/api/getcomment?commentLimitNo=' + commentLimitNo , commentData,function(response) {
       if (response.status == 200 && response.comments) {
           AppDispatcher.handleViewAction({
             actionType: CommentConstants.GETCOMMENT,

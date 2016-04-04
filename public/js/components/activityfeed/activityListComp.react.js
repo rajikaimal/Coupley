@@ -103,7 +103,6 @@ const ActivityList = React.createClass({
 
     let commentData = {
       postId: this.props.id,
-      commentLimitNo: commentLimitNo + 5,
     };
     ActivityfeedAction.getCommentList(commentData);
 
@@ -226,7 +225,6 @@ const ActivityList = React.createClass({
   _loadMoreComments: function () {
       let commentData = {
       postId: this.props.id,
-      commentLimitNo: commentLimitNo + 5,
     };
     ActivityfeedAction.getCommentList(commentData);
   },

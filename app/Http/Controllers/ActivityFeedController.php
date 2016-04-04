@@ -92,6 +92,7 @@ class ActivityFeedController extends Controller
     public function getStatus(Request $request)
     {
         $uId = $request->userId;
+        $pagination = $request->postLimitNo;
         try {
           $posts = \DB::select('SELECT p.id,
                                        p.firstname,
@@ -135,7 +136,8 @@ class ActivityFeedController extends Controller
                                 Left Join (select id as sid,firstname as sfirstname,attachment as sattachment,
                                                 post_text as spost_text,created_at as screated_at from activityposts) q
                                 On p.post_id=q.sid
-                                order by p.created_at desc');
+                                order by p.created_at desc
+                                limit '.$pagination);
             return response()->json(['posts' => $posts, 'status' => 200], 200);
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 505], 505);
