@@ -30,7 +30,7 @@ class SuggestionController extends Controller
             //$result = User::orderBy(\DB::raw('RAND()'))->limit(3)->get();
             $users = User::orderBy(\DB::raw('RAND()'))->get();
 
-            $suggestedUsers = array();
+            $suggestedUsers = [];
 
             foreach ($users as $user) {
                 $id = $user->id;
@@ -51,7 +51,7 @@ class SuggestionController extends Controller
                 $casualSexMatch = self::matchCasualSex($causalsex, $causalsexT);
 
                 $matchPercentage = self::calculateMatchPercentage($locationMatch, $ageMatch, $statusMatch, $longTermMatch, $shortTermMatch, $casualSexMatch);
-                if($matchPercentage <= 0.45) {
+                if ($matchPercentage <= 0.45) {
                     array_push($suggestedUsers, $user);
                 }
             }
@@ -69,99 +69,93 @@ class SuggestionController extends Controller
     private function userPreferences($userId)
     {
         $lookingForData = LookingFor::where('user_id', $userId)->get();
+
         return $lookingForData;
     }
 
     private function matchLocation($userId1, $userId2, $user1Location, $user2Location)
     {
-        if($user1Location == 0)
-        {
+        if ($user1Location == 0) {
             return true;
-        }
-        else {
+        } else {
             $user1LocationCode = User::where('id', $userId1)->get()[0]->country;
             $user2LocationCode = User::where('id', $userId2)->get()[0]->country;
-        
-            if($user1LocationCode == $user2LocationCode)
-            {
+
+            if ($user1LocationCode == $user2LocationCode) {
                 return true;
-            }
-            else {
+            } else {
                 return false;
-            }    
+            }
         }
     }
 
     private function matchAge($user1MinAge, $user1MaxAge, $user2MinAge, $user2MaxAge)
     {
-        if($user1MaxAge < $user2MinAge || $user1MaxAge > $user2MaxAge) {
+        if ($user1MaxAge < $user2MinAge || $user1MaxAge > $user2MaxAge) {
             return false;
-        }
-        else {
+        } else {
             return true;
         }
     }
 
     private function matchStatus($user1Status, $user2Status)
     {
-        if($user1Status == $user2Status) {
+        if ($user1Status == $user2Status) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
 
     private function matchLongTermRel($user1Rel, $user2Rel)
     {
-        if($user1Rel == $user2Rel) {
+        if ($user1Rel == $user2Rel) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
+
     private function matchShortTermRel($user1Rel, $user2Rel)
     {
-        if($user1Rel == $user2Rel) {
+        if ($user1Rel == $user2Rel) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
 
     private function matchCasualSex($user1Cs, $user2Cs)
     {
-        if($user1Cs == $user2Cs) {
+        if ($user1Cs == $user2Cs) {
             return true;
-        }
-        else {
+        } else {
             return false;
-        }   
+        }
     }
 
     private function calculateMatchPercentage($locationMatch, $ageMatch, $statusMatch, $longTermMatch, $shortTermMatch, $casualSexMatch)
     {
         $matchPercentage;
-        if($locationMatch) {
+        if ($locationMatch) {
             $matchPercentage = 0.20;
         }
-        if($ageMatch) {
-            $matchPercentage+= 0.30;
+        if ($ageMatch) {
+            $matchPercentage += 0.30;
         }
-        if($statusMatch) {
-            $matchPercentage+= 0.10;
+        if ($statusMatch) {
+            $matchPercentage += 0.10;
         }
-        if($longTermMatch) {
-            $matchPercentage+= 0.15;
+        if ($longTermMatch) {
+            $matchPercentage += 0.15;
         }
-        if($shortTermMatch) {
-            $matchPercentage+= 0.15;
+        if ($shortTermMatch) {
+            $matchPercentage += 0.15;
         }
-        if($casualSexMatch) {
-            $matchPercentage+= 0.05;
+        if ($casualSexMatch) {
+            $matchPercentage += 0.05;
         }
+
         return $matchPercentage;
     }
 }
