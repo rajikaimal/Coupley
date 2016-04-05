@@ -160,7 +160,9 @@ Route::group(['prefix' => 'api'], function () {
     //Returns posts by a user
     Route::get('profile/getposts', 'ProfileController@getpostsX');
 
-    Route::get('profile/laodmoreposts', 'ProfileController@loadMorePosts');
+    Route::get('profile/loadmoreposts', 'ProfileController@loadMorePosts');
+    //fetch photos of a user profile
+    Route::get('profile/photos', 'ProfileController@photos');
 
     Route::post('profile/edit/updatebasics', 'ProfileController@editBasics');
 
