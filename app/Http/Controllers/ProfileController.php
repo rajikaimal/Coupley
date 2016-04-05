@@ -869,8 +869,9 @@ class ProfileController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
-     * Fetch images of a user profile
+     * Fetch images of a user profile.
      *
      * @param object        $request
      *
@@ -886,10 +887,8 @@ class ProfileController extends Controller
             $userPosts = activitypost::where('userid', $userId)->get();
 
             $photos = [];
-            foreach ($userPosts as $post) 
-            {
-                if($post->attachment != "None")
-                {
+            foreach ($userPosts as $post) {
+                if ($post->attachment != 'None') {
                     array_push($photos, $post->attachment);
                 }
             }
@@ -898,5 +897,5 @@ class ProfileController extends Controller
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 200], 200);
         }
-    }    
+    }
 }
