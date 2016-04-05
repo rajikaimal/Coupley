@@ -51,7 +51,7 @@ class SuggestionController extends Controller
                 $casualSexMatch = self::matchCasualSex($causalsex, $causalsexT);
 
                 $matchPercentage = self::calculateMatchPercentage($locationMatch, $ageMatch, $statusMatch, $longTermMatch, $shortTermMatch, $casualSexMatch);
-                if ($matchPercentage <= 0.45) {
+                if ($matchPercentage >= 0.45) {
                     array_push($suggestedUsers, $user);
                 }
             }
