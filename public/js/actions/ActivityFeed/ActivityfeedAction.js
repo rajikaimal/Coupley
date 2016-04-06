@@ -211,7 +211,7 @@ var ActivityfeedAction = {
   },
 
   getCommentList: function(commentData) {
-    commentLimitNo = commentLimitNo + 5
+    commentLimitNo = commentLimitNo + 3;
     $.get('/api/getcomment?commentLimitNo=' + commentLimitNo , commentData,function(response) {
       if (response.status == 200 && response.comments) {
           AppDispatcher.handleViewAction({
@@ -221,6 +221,23 @@ var ActivityfeedAction = {
       } else {
           AppDispatcher.handleViewAction({
             actionType: CommentConstants.GETCOMMENT,
+            commentdata: response.comments
+          });
+      }
+    });
+  },
+  loadMoreComment: function(commentData) {
+    commentLimitNo = commentLimitNo + 3;
+    $.get('/api/getcomment?commentLimitNo=' + commentLimitNo , commentData,function(response) {
+      if (response.status == 200 && response.comments) {
+          alert('sds');
+          AppDispatcher.handleViewAction({
+            actionType: CommentConstants.LOADMORE,
+            commentdata: response.comments
+          });
+      } else {
+          AppDispatcher.handleViewAction({
+            actionType: CommentConstants.LOADMORE,
             commentdata: response.comments
           });
       }

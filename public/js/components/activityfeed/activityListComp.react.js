@@ -226,7 +226,7 @@ const ActivityList = React.createClass({
       let commentData = {
       postId: this.props.id,
     };
-    ActivityfeedAction.getCommentList(commentData);
+    ActivityfeedAction.loadMoreComment(commentData);
   },
 
   handleOpen: function () {

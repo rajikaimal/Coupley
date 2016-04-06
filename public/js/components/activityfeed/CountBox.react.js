@@ -26,6 +26,7 @@ const CountBox = React.createClass({
       sharedUsers: StatusStore.getSharedUsers(),
       open: false,
       firstname: '',
+      sfirstname: '',
     };
   },
 
@@ -61,6 +62,10 @@ const CountBox = React.createClass({
       return (likes.map(function(result) {
         if(self.props.post_id == result.post_id) {
             firstname=result.firstname;
+             alert(firstname);
+                self.setState({
+                  firstname: firstname
+                });
           }
       }));
     }));
@@ -74,6 +79,10 @@ const CountBox = React.createClass({
       return (shares.map(function(result) {
         if(self.props.post_id == result.post_id) {
                 firstname=result.firstname;
+                alert(firstname);
+                self.setState({
+                  sfirstname: firstname
+                });
           }
       }));
     }));
@@ -112,7 +121,7 @@ const CountBox = React.createClass({
                        
                        <ListItem 
                         leftAvatar={<Avatar src="https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg" />}
-                        primaryText={this.firstname} />
+                        primaryText={this.state.firstname} />
                       <Divider inset={true} />  
                 </Dialog>
 
@@ -125,7 +134,7 @@ const CountBox = React.createClass({
                        
                       <ListItem 
                         leftAvatar={<Avatar src="https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg" />}
-                        primaryText={this.sfirstname} />
+                        primaryText={this.state.sfirstname} />
                       <Divider inset={true} />
                 </Dialog>
             </div>
