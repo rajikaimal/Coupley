@@ -1,8 +1,11 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Comment;
 use App\activitycomment;
+
 class CommentController extends Controller
 {
     /**
@@ -15,7 +18,7 @@ class CommentController extends Controller
      */
     public function addcomment(Request $request)
     {
-        try{
+        try {
             $comment = new activitycomment;
             $comment->post_id = $request->postId;
             $comment->UserId = $request->userId;
@@ -28,9 +31,10 @@ class CommentController extends Controller
                 return response()->json(['status' => 404], 404);
             }
         } catch (Illuminate\Database\QueryException $e) {
-                return response()->json(['status' => 505], 505);
+            return response()->json(['status' => 505], 505);
         }
     }
+
     /**
      * get comment data.
      *
@@ -43,15 +47,16 @@ class CommentController extends Controller
     {
         $postId = $request->postId;
         $pagination = $request->commentLimitNo;
-        try{
+        try {
             $comments = \DB::select('select id,firstname,comment_txt,post_id 
                                      from activitycomments 
                                      where post_id='.$postId.'
                                      order by created_at desc
                                      limit '.$pagination);
-                return response()->json(['status' => 200, 'comments' => $comments], 200);
+
+            return response()->json(['status' => 200, 'comments' => $comments], 200);
         } catch (Illuminate\Database\QueryException $e) {
-                return response()->json(['status' => 200], 200);
+            return response()->json(['status' => 200], 200);
         }
     }
 }
