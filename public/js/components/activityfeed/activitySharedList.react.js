@@ -33,7 +33,7 @@ const ActivitySharedList = React.createClass({
 
                         <div>
                             {
-                            (this.props.attachment!='None') ? <div>
+                            (this.props.sattachment!='None') ? <div>
                                                                 <CardMedia>
                                                                 <img src={'img/activityFeedPics/'+ this.props.sattachment} />
                                                                 </CardMedia>
