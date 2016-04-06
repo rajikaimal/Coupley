@@ -10,7 +10,7 @@ var ActivityfeedAction = {
   _addStatus: function (status) {
     $.post('api/status', status, function (response) {
       if (response.status == 201) {
-        $.get('/api/getstatus', status, function (response) {
+        $.get('/api/getstatus?postLimitNo=' + postLimitNo, status, function (response) {
           if (response.status == 200) {
             AppDispatcher.handleViewAction({
               actionType: ActivityFeedConstants.GETDATA,
@@ -43,7 +43,7 @@ var ActivityfeedAction = {
   _addShare: function (result) {
     $.post('api/sharedStatus', result, function (response) {
         if (response.status == 201) {
-          $.get('/api/getstatus', result, function (response) {
+          $.get('/api/getstatus?postLimitNo=' + postLimitNo, result, function (response) {
             if (response.status == 200) {
               AppDispatcher.handleViewAction({
                 actionType: ActivityFeedConstants.GETDATA,
@@ -81,7 +81,7 @@ var ActivityfeedAction = {
   _deleteStatus: function(postId){
     $.post('api/deleteStatus', postId, function(response) {
       if(response.status == 201) {
-        $.get('/api/getstatus', postId, function (response) {
+        $.get('/api/getstatus?postLimitNo=' + postLimitNo, postId, function (response) {
           if (response.status == 200) {
             AppDispatcher.handleViewAction({
               actionType: ActivityFeedConstants.GETDATA,
@@ -100,7 +100,7 @@ var ActivityfeedAction = {
   _editStatus:function (txt) {
     $.post('api/edit_status', txt, function (response) {
       if(response.status == 201) {
-        $.get('/api/getstatus', txt, function (response) {
+        $.get('/api/getstatus?postLimitNo=' + postLimitNo, txt, function (response) {
           if (response.status == 200) {
             AppDispatcher.handleViewAction({
               actionType: ActivityFeedConstants.GETDATA,
@@ -119,15 +119,15 @@ var ActivityfeedAction = {
   _blockStatus: function (result) {
     $.post('api/block_status', result, function(response) {
       if(response.status == 201) {
-        $.get('/api/getstatus', result, function (response) {
-          if (response.status == 200) {
-            AppDispatcher.handleViewAction({
-              actionType: ActivityFeedConstants.GETDATA,
-              statusdata: response.posts,
-            });
-          } else if (response.status == 505) {
-            console.log('Error 505');
-          }
+        $.get('/api/getstatus?postLimitNo=' + postLimitNo, result, function (response) {
+              if (response.status == 200) {
+                AppDispatcher.handleViewAction({
+                  actionType: ActivityFeedConstants.GETDATA,
+                  statusdata: response.posts,
+                });
+              } else if (response.status == 505) {
+                console.log('Error 505');
+              }
         });
       } else if(response.status == 404) {
         console.log('Error 404');
