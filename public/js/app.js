@@ -18,7 +18,7 @@ import Quiz from './components/quiz/Quiz.react';
 //import ActivityContainer from './components/profile/ActivityFeed/ActivityFeedContainer.react';
 import About from './components/profile/About.react';
 import LookingFor from './components/profile/lookingfor/LookingFor.react';
-import Photos from './components/profile/visitor/Photos.react';
+import Photos from './components/profile/Photos.react';
 import ProfileSettings from './components/profile/Settings.react';
 import Account from './components/profile/Account.react';
 import PasswordChange from './components/profile/Password.react';

@@ -20,6 +20,7 @@ use App\ActivityFeed;
 use App\About;
 use App\Post;
 use App\Reported;
+use App\activitypost;
 
 class ProfileController extends Controller
 {
@@ -864,6 +865,35 @@ class ProfileController extends Controller
             $emailController->SendMail($email, $name, $subject, $content);
 
             return response()->json(['status' => 200, 'done' => true], 200);
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 200], 200);
+        }
+    }
+
+    /**
+     * Fetch images of a user profile.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
+    public function photos(Request $request)
+    {
+        $username = $request->username;
+        try {
+            $userId = User::where('username', $username)->get()[0]->id;
+
+            $userPosts = activitypost::where('userid', $userId)->get();
+
+            $photos = [];
+            foreach ($userPosts as $post) {
+                if ($post->attachment != 'None') {
+                    array_push($photos, $post->attachment);
+                }
+            }
+
+            return response()->json(['status' => 200, 'photos' => $photos], 200);
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 200], 200);
         }
