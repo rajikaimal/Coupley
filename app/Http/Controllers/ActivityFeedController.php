@@ -35,7 +35,6 @@ class ActivityFeedController extends Controller
             return response()->json(['status' => 505], 505);
         }
     }
-
     public function addImageStatus(Request $request)
     {
         $destination = 'img/activityFeedPics';
@@ -43,14 +42,12 @@ class ActivityFeedController extends Controller
             $token = $request->input('token');
             $file = $request->file('file')->move($destination, $token);
             $ext = $request->file('file')->getClientOriginalExtension();
-
             $post = new activitypost;
             $post->email = $request->input('email');
             $post->userId = $request->input('userId');
             $post->firstname = $request->input('firstName');
             $post->post_text = $request->input('status');
             $post->attachment = $token;
-
             if ($posts = $post->save()) {
                 return response()->json(['posts' => $posts, 'status' => 201], 201);
             } else {
@@ -60,7 +57,6 @@ class ActivityFeedController extends Controller
             return response()->json(['status' => 505], 505);
         }
     }
-
     public function sharedStatus(Request $request)
     {
         try{
@@ -80,7 +76,6 @@ class ActivityFeedController extends Controller
             return response()->json(['status' => 505], 505);
         }
     }
-
     /**
      * get activity feed of a user.
      *
@@ -143,7 +138,6 @@ class ActivityFeedController extends Controller
             return response()->json(['status' => 505], 505);
         }
     }
-
     /**
      * delete activity of a user.
      *
@@ -166,7 +160,6 @@ class ActivityFeedController extends Controller
             return response()->json(['status' => 505], 505);
         }
     }
-
     /**
      * edit activity of a user.
      *
@@ -207,7 +200,6 @@ class ActivityFeedController extends Controller
             return response()->json(['status' => 505], 505);
         }
     }
-
     public function getSharedUsers(Request $request)
     {
        $postId = $request->postId;

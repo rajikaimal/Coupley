@@ -31,9 +31,9 @@ Route::group(['prefix' => 'api'], function () {
     //update admin passwords
     Route::post('recoverpwd', 'AuthenticateController@reset');
 
-    //Add a status   
+    //Add a status
     Route::post('status', 'ActivityFeedController@addStatus');
-    //Add a image status   
+    //Add a image status
     Route::post('imageStatus', 'ActivityFeedController@addImageStatus');
     //Return status
     Route::get('getstatus', 'ActivityFeedController@getStatus');
@@ -59,10 +59,10 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('getcomment', 'CommentController@getcomments');
     //Delete a status
     Route::post('deleteStatus', 'ActivityFeedController@deleteStatus');
-    //Edit a status 
+    //Edit a status
     Route::post('edit_status', 'ActivityFeedController@editStatus');
     //Block a status
-    Route::post('block_status','ActivityFeedController@block_status');
+    Route::post('block_status', 'ActivityFeedController@block_status');
 
     //Return previos chats
     Route::get('getpreviousmsg', 'ThreadController@getPreviousMessage');
@@ -124,7 +124,6 @@ Route::group(['prefix' => 'api'], function () {
     // Route::post('deleteStatus', 'ActivityFeedController@deleteStatus');
     // Route::post('edit_status', 'ActivityFeedController@editStatus');
 
-
     //Return profile data
     Route::get('profile', 'ProfileController@profile');
     //Return profile picture
@@ -150,7 +149,7 @@ Route::group(['prefix' => 'api'], function () {
     //Returns permission for viewing a profile
     Route::post('profilepermission', 'ProfileController@profilepermission');
     //Returns acitivity feed for specific user
-//    Route::get('profile/feed', 'ProfileController@getposts');
+    //Route::get('profile/feed', 'ProfileController@getposts');
     //Upload profile pic
     Route::post('profile/profilepic', 'ProfileController@uploadpic');
 
@@ -163,9 +162,11 @@ Route::group(['prefix' => 'api'], function () {
     //Returns posts by a user
     Route::get('profile/getposts', 'ProfileController@getpostsX');
 
-    Route::get('profile/laodmoreposts', 'ProfileController@loadMorePosts');
+    Route::get('profile/loadmoreposts', 'ProfileController@loadMorePosts');
+    //fetch photos of a user profile
+    Route::get('profile/photos', 'ProfileController@photos');
 
-    Route::put('profile/edit/updatebasics', 'ProfileController@editbasics');
+    Route::post('profile/edit/updatebasics', 'ProfileController@editBasics');
 
     //Edit About section
     Route::put('profile/edit/summary', 'ProfileController@editsummary');
@@ -208,10 +209,11 @@ Route::group(['prefix' => 'api'], function () {
 
     //returns list of suggestions
     Route::get('suggestions', 'SuggestionController@getSuggestions');
-
+    //updates lookingfor data of a certain user
     Route::put('profile/lookingfor', 'LookingForController@update');
 
-
+    //return lookingfor data of a certain user
+    Route::get('profile/lookingfor', 'LookingForController@getLookingFor');
 });
 Route::get('socket', 'SocketController@index');
 Route::post('sendmessage', 'SocketController@sendMessage');

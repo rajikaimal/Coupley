@@ -10,6 +10,7 @@ var pic = '';
 var error = false;
 var done = false;
 var blocklist = [];
+var photoPaths = [];
 
 var ProfileStore = assign({}, EventEmitter.prototype, {
   saveUserData: function (data) {
@@ -36,6 +37,14 @@ var ProfileStore = assign({}, EventEmitter.prototype, {
 
   saveBlockList: function (data) {
     blocklist = data;
+  },
+
+  savePhotos: function(data) {
+    photoPaths = data;
+  },
+
+  getPhotos: function() {
+    return photoPaths;
   },
 
   getBlockList: function () {
@@ -101,6 +110,10 @@ AppDispatcher.register(function (payload) {
       break;
     case (ProfileConstants.BLOCKLIST):
       ProfileStore.saveBlockList(payload.action.list);
+      ProfileStore.emitChange();
+      break;
+    case (ProfileConstants.PROFPHOTOS):
+      ProfileStore.savePhotos(payload.action.photos);
       ProfileStore.emitChange();
       break;
     case (ProfileConstants.ERR):

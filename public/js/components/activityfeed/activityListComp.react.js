@@ -23,7 +23,7 @@ import ActivityfeedAction from '../../actions/ActivityFeed/ActivityfeedAction';
 import CommentStore from '../../stores/CommentStore';
 import Comment from './Comment.react';
 import LikeStatusStore from '../../stores/LikeStatusStore';
-import ActivitySharedList from './ActivitySharedList.react';
+import ActivitySharedList from './activitySharedList.react';
 import ActivityContainer from './activityContainer.react';
 import CountBox from './CountBox.react';
 

@@ -26,6 +26,7 @@ const NotificationContainer = React.createClass({
     console.log('logging state');
     console.log(this.state.listNotification);
     return this.state.listNotification.map((Notification) => {
+      console.log(Notification);
       return (
         <div>
           {Notification.content}

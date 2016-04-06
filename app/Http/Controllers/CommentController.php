@@ -49,7 +49,6 @@ class CommentController extends Controller
                                      where post_id='.$postId.'
                                      order by created_at desc
                                      limit '.$pagination);
-
                 return response()->json(['status' => 200, 'comments' => $comments], 200);
         } catch (Illuminate\Database\QueryException $e) {
                 return response()->json(['status' => 200], 200);

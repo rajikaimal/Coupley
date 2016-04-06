@@ -14,7 +14,7 @@ connection.connect();
 
 /*  listen to port 8080 */
 server.listen(8080, function () {
-  console.log('Server listening on port 8080');
+  console.log('Server listening on port 8081');
 });
 
 io.on('connection', function (socket) {

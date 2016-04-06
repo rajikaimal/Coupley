@@ -1,12 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Like;
 use App\activitylike;
 use App\activitypost;
-
 class LikeController extends Controller
 {
     /**
@@ -70,7 +67,6 @@ class LikeController extends Controller
                                                    FROM activitylikes
                                                    WHERE post_id='.$postId.') l
                                   ON p.post_id=l.post_id');
-
             return response()->json(['posts' => $counts, 'status' => 200], 200);
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 505], 505);

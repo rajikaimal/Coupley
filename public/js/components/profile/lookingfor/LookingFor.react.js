@@ -46,8 +46,12 @@ const styles = {
   },
 };
 
+const editStyle = {
+  float: 'right'
+};
+
 const ageStyle = {
-    width: 50
+  width: 50
 }
 
 function validate(data) {
@@ -100,22 +104,92 @@ const LookingFor = React.createClass({
         mustBeSingle: true,
         shortTerm: true,
         longTerm: true,
-        casualSex: true
+        casualSex: true,
+        nearYouShow: "",
+        minAgeShow: 0,
+        maxAgeShow: 0,
+        relStatusShow: "",
+        shortTermShow: "",
+        longTermShow: "",
+        casualSexShow: ""
     };
   },
-    componentDidMount: function () {
-        AboutActions.fetchAll();
-        AboutStore.addChangeListener(this._onChange);
-        ErrorStore.addChangeListener(this._onChange);
+  componentDidMount: function () {
+    AboutActions.fetchLookingFor();
+    AboutStore.addChangeListener(this._onChange);
+    ErrorStore.addChangeListener(this._onChange);
   },
-    _onChange: function () {
-        this.setState({
-            summary: AboutStore.getSummary(),
-            life: AboutStore.getLife(),
-            goodat: AboutStore.getGoodAt(),
-            spendtime: AboutStore.getSpendTime(),
-            favs: AboutStore.getFavs(),
-            error: ErrorStore.getabouterr()
+  _onChange: function () {
+    if(AboutStore.getLookingFor().location == 0) {
+      this.setState({
+        nearYouShow: "Anywhere",
+        location: false
+      });
+    }
+    else {
+      this.setState({
+        nearYouShow: "Near me",
+        location: true
+      }); 
+    }
+    if(AboutStore.getLookingFor().status == 1) {
+      this.setState({
+        relStatusShow: "Must be Single",
+        mustBeSingle: true
+      });
+    }
+    else {
+      this.setState({
+        relStatusShow: "Doesn't care about relationship status",
+        mustBeSingle: false
+      });
+    }
+    if(AboutStore.getLookingFor().shortterm == 1) {
+      this.setState({
+        shortTermShow: "Looking for short term relationship",
+        shortTerm: true
+      });
+    }
+    else {
+      this.setState({
+        shortTermShow: "Not looking for short term relationship",
+        shortTerm: false
+      }); 
+    }
+    if(AboutStore.getLookingFor().longtterm == 1) {
+      this.setState({
+        longTermShow: "Looking for long term relationship",
+        longTerm: true
+      });
+    }
+    else {
+      this.setState({
+        longTermShow: "Not looking for long term relationship",
+        longTerm: false
+      }); 
+    }
+    if(AboutStore.getLookingFor().casualSex == 1) {
+      this.setState({
+        casualSexShow: "For casual sex",
+        casualSex: true
+      });
+    }
+    else {
+      this.setState({
+        casualSexShow: "No casual sex",
+        casualSex: false
+      });  
+    }
+
+    this.setState({
+        summary: AboutStore.getSummary(),
+        life: AboutStore.getLife(),
+        goodat: AboutStore.getGoodAt(),
+        spendtime: AboutStore.getSpendTime(),
+        favs: AboutStore.getFavs(),
+        error: ErrorStore.getabouterr(),
+        minAgeShow: AboutStore.getLookingFor().minage,
+        maxAgeShow: AboutStore.getLookingFor().maxage
     });
   },
     _toggle: function () {
@@ -159,6 +233,18 @@ const LookingFor = React.createClass({
     _handleSubmit: function() {
       let minAge = this.refs.minAge.getValue();
       let maxAge = this.refs.maxAge.getValue();
+      if(minAge == "") {
+        minAge = this.state.minAgeShow;
+      }
+      if(maxAge == "") {
+        maxAge = this.state.maxAgeShow; 
+      }
+
+      if(minAge > maxAge) {
+        document.getElementById('serverstatus').innerHTML = "*invalid age selection";
+        return false;
+      }
+
       let lookingFor = {
         location: this.state.location,
         minage: minAge,
@@ -170,6 +256,9 @@ const LookingFor = React.createClass({
       };
 
       AboutActions.updateLookingFor(lookingFor);
+      this.setState({
+        editing: false
+      });
     },
   render: function() {
     return (
@@ -178,7 +267,7 @@ const LookingFor = React.createClass({
         <div>
           <Card>
             <CardTitle title="Looking for" />
-                { this.state.editing ? '' : <button onClick={this._toggle}> edit </button> }
+                { this.state.editing ? '' : <button style={editStyle} onClick={this._toggle}> edit </button> }
                 <ul>
                     { this.state.editing ? 
                         <div>
@@ -199,10 +288,10 @@ const LookingFor = React.createClass({
                             <TableRowColumn>Age</TableRowColumn>
                             <TableRowColumn> 
                               <TextField 
-                                value={this.state.email} style={ageStyle} hintStyle={styles.errorStyle} fullwidth={true} ref="minAge" type="number" min="18" max="99" />
+                                hintText={this.state.minAgeShow} style={ageStyle} hintStyle={styles.errorStyle} fullwidth={true} ref="minAge" type="number" min="18" max="99" />
                               to 
-                              <TextField 
-                                value={this.state.email} style={ageStyle} hintStyle={styles.errorStyle} fullwidth={true} ref="maxAge" type="number" min="18" max="99" />
+                               <TextField 
+                                hintText={this.state.maxAgeShow} style={ageStyle} hintStyle={styles.errorStyle} fullwidth={true} ref="maxAge" type="number" min="18" max="99" />
                             <br/><span style={error} id="email"> </span>
                             </TableRowColumn>
                           </TableRow>
@@ -257,16 +346,13 @@ const LookingFor = React.createClass({
                     : 
                      <div>
                         <li style={listStyle}> 
-                        adad
-                        
+                          {this.state.nearYouShow}
                         </li>
                         <li style={listStyle}> 
-                            adad
-
+                          {this.state.minAgeShow} - {this.state.maxAgeShow}
                         </li>
-                        <li style={listStyle}> Age 18-50 </li>
-                        <li style={listStyle}> Who are single</li>
-                        <li style={listStyle}> Friends, short term dating, for casual sex </li>
+                        <li style={listStyle}>{this.state.relStatusShow}</li>
+                        <li style={listStyle}>{this.state.shortTermShow}, {this.state.longTermShow}, {this.state.casualSexShow}</li>
                      </div>
 
                     }
