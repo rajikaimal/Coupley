@@ -11,18 +11,6 @@ use App\activityblock;
 
 class ActivityFeedController extends Controller
 {
-    public function getUserId(Request $request)
-    {
-        $email = $request->email;
-        try {
-            $uId = User::where('email', $email)->get(['id'])[0]->id;
-
-            return response()->json(['uId' => $uId, 'status' => 200], 200);
-        } catch (Illuminate\Database\QueryException $e) {
-            return response()->json(['status' => 505], 505);
-        }
-    }
-
     /**
      * add an activity to Activity feed, handles POST request.
      *
@@ -56,14 +44,12 @@ class ActivityFeedController extends Controller
             $token = $request->input('token');
             $file = $request->file('file')->move($destination, $token);
             $ext = $request->file('file')->getClientOriginalExtension();
-
             $post = new activitypost;
             $post->email = $request->input('email');
             $post->userId = $request->input('userId');
             $post->firstname = $request->input('firstName');
             $post->post_text = $request->input('status');
             $post->attachment = $token;
-
             if ($posts = $post->save()) {
                 return response()->json(['posts' => $posts, 'status' => 201], 201);
             } else {
@@ -105,6 +91,7 @@ class ActivityFeedController extends Controller
     public function getStatus(Request $request)
     {
         $uId = $request->userId;
+        $pagination = $request->postLimitNo;
         try {
             $posts = \DB::select('SELECT p.id,
                                        p.firstname,
@@ -148,7 +135,8 @@ class ActivityFeedController extends Controller
                                 Left Join (select id as sid,firstname as sfirstname,attachment as sattachment,
                                                 post_text as spost_text,created_at as screated_at from activityposts) q
                                 On p.post_id=q.sid
-                                order by p.created_at desc');
+                                order by p.created_at desc
+                                limit '.$pagination);
 
             return response()->json(['posts' => $posts, 'status' => 200], 200);
         } catch (Illuminate\Database\QueryException $e) {
@@ -215,6 +203,21 @@ class ActivityFeedController extends Controller
             } else {
                 return response()->json(['status' => 404], 404);
             }
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 505], 505);
+        }
+    }
+
+    public function getSharedUsers(Request $request)
+    {
+        $postId = $request->postId;
+        try {
+            $posts = \DB::select('select firstname,post_id
+                                 from activityposts 
+                                 where post_id='.$postId.'
+                                 order by created_at desc');
+
+            return response()->json(['posts' => $posts, 'status' => 200], 200);
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 505], 505);
         }

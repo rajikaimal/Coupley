@@ -9,4 +9,5 @@ module.exports = keyMirror({
     GETLOGGEDUSERID: null,
     GETPROFILEPOSTS: null,
     GETSHAREDDATA: null,
+    GETSHAREDUSERS: null,
 });
