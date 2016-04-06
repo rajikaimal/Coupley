@@ -61,7 +61,6 @@ var VisitsAction = {
      visitorusername: visitor,
      username: username,
    };
-   console.log('menna send una data'+data);
    console.log(data);
     $.post('api/unfollowvisitor', data, function (response) {
       if (response.status == 200) {
