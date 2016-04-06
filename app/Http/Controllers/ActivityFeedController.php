@@ -1,13 +1,14 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Post;
 use App\User;
-use App\Likes;
 use App\activitypost;
 use App\activitylikes;
-use App\activitycomment;
 use App\activityblock;
+
 class ActivityFeedController extends Controller
 {
     /**
@@ -35,6 +36,7 @@ class ActivityFeedController extends Controller
             return response()->json(['status' => 505], 505);
         }
     }
+
     public function addImageStatus(Request $request)
     {
         $destination = 'img/activityFeedPics';
@@ -57,9 +59,10 @@ class ActivityFeedController extends Controller
             return response()->json(['status' => 505], 505);
         }
     }
+
     public function sharedStatus(Request $request)
     {
-        try{
+        try {
             $post = new activitypost;
             $post->email = $request->email;
             $post->userId = $request->userId;
@@ -76,6 +79,7 @@ class ActivityFeedController extends Controller
             return response()->json(['status' => 505], 505);
         }
     }
+
     /**
      * get activity feed of a user.
      *
@@ -89,7 +93,7 @@ class ActivityFeedController extends Controller
         $uId = $request->userId;
         $pagination = $request->postLimitNo;
         try {
-          $posts = \DB::select('SELECT p.id,
+            $posts = \DB::select('SELECT p.id,
                                        p.firstname,
                                        p.type,
                                        p.attachment,
@@ -133,11 +137,13 @@ class ActivityFeedController extends Controller
                                 On p.post_id=q.sid
                                 order by p.created_at desc
                                 limit '.$pagination);
+
             return response()->json(['posts' => $posts, 'status' => 200], 200);
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 505], 505);
         }
     }
+
     /**
      * delete activity of a user.
      *
@@ -149,7 +155,7 @@ class ActivityFeedController extends Controller
     public function deleteStatus(Request $request)
     {
         $postId = $request->postId;
-        try{
+        try {
             $posts = \DB::table('activityposts')->where('id', '=', $postId);
             if ($posts->delete()) {
                 return response()->json(['status' => 201], 201);
@@ -160,6 +166,7 @@ class ActivityFeedController extends Controller
             return response()->json(['status' => 505], 505);
         }
     }
+
     /**
      * edit activity of a user.
      *
@@ -172,7 +179,7 @@ class ActivityFeedController extends Controller
     {
         $postId = $request->postId;
         $status = $request->status;
-        try{
+        try {
             $posts = \DB::table('activityposts')->where('id', $postId)->update(['post_text' => $status]);
             if ($posts) {
                 return response()->json(['status' => 201], 201);
@@ -183,10 +190,10 @@ class ActivityFeedController extends Controller
             return response()->json(['status' => 505], 505);
         }
     }
-    
+
     public function block_status(Request $request)
     {
-        try{
+        try {
             $blockPost = new activityblock;
             $blockPost->email = $request->email;
             $blockPost->userId = $request->userId;
@@ -200,17 +207,19 @@ class ActivityFeedController extends Controller
             return response()->json(['status' => 505], 505);
         }
     }
+
     public function getSharedUsers(Request $request)
     {
-       $postId = $request->postId;
-        try{    
-            $posts= \DB::select('select firstname,post_id
+        $postId = $request->postId;
+        try {
+            $posts = \DB::select('select firstname,post_id
                                  from activityposts 
                                  where post_id='.$postId.'
                                  order by created_at desc');
+
             return response()->json(['posts' => $posts, 'status' => 200], 200);
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 505], 505);
-        } 
+        }
     }
 }
