@@ -48,9 +48,9 @@ class ThreadController extends Controller
         $posts = \DB::table('messages')->where('thread_id', '=', $user2);
         try {
             if ($posts->delete()) {
-                return response()->json(['thisuser' => $thisuser,'status' => 201], 201);
+                return response()->json(['thisuser' => $thisuser, 'status' => 201], 201);
             } else {
-                return response()->json(['thisuser' => $thisuser,'status' => 404], 404);
+                return response()->json(['thisuser' => $thisuser, 'status' => 404], 404);
             }
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 200], 200);
