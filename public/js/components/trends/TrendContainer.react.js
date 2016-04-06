@@ -61,11 +61,8 @@ const TrendContainer = React.createClass({
     } else if (!SearchCeck) {
      this.setState({ trendsResult:TrendsStore.getTrendsSearchList()});
    }
-   if(listClick){
-   this.setState({ trendsPostResult:TrendsStore. getFirstTrendsSearchPost()});
-   }else if (!listClick) {
-    this.setState({ trendsPostResult:TrendsStore. getTrendsSearchPost()});
-  }
+    this.setState({ trendsPostResult:TrendsStore. getFirstTrendsSearchPost()});
+
   },
 
    trendItem: function () {
@@ -106,9 +103,13 @@ const TrendContainer = React.createClass({
 
   getHashtag:function (e) {
     console.log('clicked');
-    console.log(e);
-    TrendsAction.getTrendsSearchPosts(e);
+    var E= e.substr(1);
+    let trend={
+      strend:E,
+    };
 
+    console.log(E);
+    TrendsAction.getTrendsSearchPosts(trend);
 
   },
 
@@ -121,23 +122,13 @@ const TrendContainer = React.createClass({
    });
  },
 
-  //
-  //  trendPostSelectedItem: function () {
-  //    this.setState({ trendsPostResult:TrendsStore.getTrendsSearchPost()});
-  //   return this.state.trendsPostResult.map((result) => {
-  //     return (<TrendPost />);
-  //   });
-  //
-  // },
 
   trendPostItem: function () {
    return this.state.trendsPostResult.map((result) => {
-     return (<TrendPost/>);
+     return (<TrendPost firstName={result.firstname} postText={result.post_text} created_at={result.created_at}/>);
    });
 
  },
-
-
 
 
   clearText:function () {

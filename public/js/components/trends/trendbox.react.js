@@ -12,6 +12,7 @@ import Divider from 'material-ui/lib/divider';
 
 
 
+
 const Trends = React.createClass({
 
 

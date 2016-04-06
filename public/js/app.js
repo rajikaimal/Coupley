@@ -42,6 +42,7 @@ import ChatCC3 from './components/chat/ChatTopBar.react';
 import Tabs from './components/chat/tabs.react';
 import Tabs1 from './components/chat/tabs1.react';
 import Trends from './components/trends/TrendContainer.react';
+import Visits from './components/visits/visitcontainer.react';
 import ThreadMain from './components/chat/ThreadMain.react';
 import Users from './components/admin/users/userHome.react';
 import Friends from './components/admin/users/friends.react';
@@ -131,12 +132,13 @@ ReactDOM.render((
                   <Route path="/chatcc3" components={ChatCC3}/>
                   <Route path="/tabs" components={Tabs}/>
                   <Route path="/tabs1" components={Tabs1}/>
-                 
+
     <Route path="/" component={Header} onEnter={requireAuth}>
     <Route path="/ThreadMain" component={ThreadMain}/>
+    <Route path="/Visits" component={Visits}/>
       <Route path="/search" component={Search} />
-      <Route path="activity" component={MainActivity}/>  
-        <Route path="trends" components={Trends}/> 
+      <Route path="activity" component={MainActivity}/>
+        <Route path="trends" components={Trends}/>
       <Route path="/likes" component={Likes} />
 
       <Route path="profile" component={Profile} >

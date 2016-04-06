@@ -31,7 +31,7 @@ var TrendsAction = {
 	},
 
 	getTrendsSearchPosts:function (request) {
-		$.get('/api/gettrendssearchpost?trend='+request, function (response) {
+		$.get('/api/gettrendssearchpost?strend='+request.strend, function (response) {
 			console.log(response);
 			if (response.status == 200) {
 				AppDispatcher.handleViewAction({
