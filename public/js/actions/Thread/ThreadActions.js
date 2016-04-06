@@ -68,7 +68,7 @@ var ThreadAction = {
      visitorusername: visitor,
      username: username,
    };
-    $.post('api/blockuser', data, function (response) {
+    $.post('/api/blockuser?token=' + localStorage.getItem('apitoken'), data, function (response) {
       if (response.status == 200) {
         document.location = '/#/';
       }
