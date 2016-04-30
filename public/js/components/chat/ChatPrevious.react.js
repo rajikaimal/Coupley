@@ -59,14 +59,14 @@ const PreviousChat = React.createClass({
     ThreadActions.getMessage(threadData);
 
     return this.state.results.map((result) => {
-      return (<PaperExampleSimple key={result.thread_id} id={result.thread_id} firstname={result.firstname}  message={result.message} created_at={result.created_at}/>);
+      return (<Paper ExampleSimple key={result.thread_id} id={result.thread_id} firstname={result.firstname}  message={result.message} created_at={result.created_at}/>);
     });
   },
 
   render:function () {
           return (
              <List style={ListStyle}>
-                 <ListItem leftAvatar={<Avatar src="http://vignette1.wikia.nocookie.net/family-guy-fanverse/images/d/d7/Stewie-griffin.gif/revision/latest?cb=20140215140724" /> }
+                 <ListItem leftAvatar={<Avatar src={'img/profilepics/'+this.props.username} /> }
                    rightIconButton={
                      <IconMenu iconButtonElement={iconButtonElement}>
                        <MenuItem primaryText="Delete" onClick={this.deleteconvo}/>

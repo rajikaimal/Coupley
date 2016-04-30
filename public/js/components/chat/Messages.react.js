@@ -105,7 +105,7 @@ const PaperExampleSimple = React.createClass({
 
         this.state.threads.map((item) => {
        return (<ListItem
-              leftAvatar={<Avatar src={'img/'+item.username} />}
+              leftAvatar={<Avatar src={'img/profilepics/'+item.username} />}
               primaryText={item.firstname}
               secondaryText={this.test(item)}
               secondaryTextLines={2}

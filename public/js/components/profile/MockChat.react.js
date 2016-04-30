@@ -67,7 +67,7 @@ const MockChat = React.createClass({
         <div>
           <ListItem
             primaryText={chatitem.firstname}
-            leftAvatar={<Avatar src={chatitem.uri} />}
+            leftAvatar={<Avatar src={'img/profilepics/'+chatitem.username} />}
             rightIcon={<CommunicationChatBubble />} />
           <Divider />
         </div>
