@@ -25,14 +25,14 @@ var ProfileStore = assign({}, EventEmitter.prototype, {
     error = data;
     setTimeout(function () {
       error = false;
-    }, 6000);
+    }, 1000);
   },
 
   saveDoneStatus: function (data) {
     done = data;
     setTimeout(function () {
       done = false;
-    }, 6000);
+    }, 1000);
   },
 
   saveBlockList: function (data) {

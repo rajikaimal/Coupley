@@ -146,7 +146,7 @@ const Header = React.createClass({
 		        </div>
 		        <Snackbar
                     open={this.state.error}
-                    message="Error occured please try again later !"
+                    message="Error occured please try again later !!!"
                     autoHideDuration={4000}
                     onRequestClose={this.handleRequestClose}
                 />
