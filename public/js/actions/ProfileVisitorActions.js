@@ -221,7 +221,11 @@ var LoginActions = {
   reportUser: function(data) {
     $.post('/api/profile/report?token=' + localStorage.getItem('apitoken'), data, function (response) {
       if (response.status == 200) {
-        window.reload();
+        AppDispatcher.handleViewAction({
+          actionType: ProfileConstants.REPORTDONE,
+          done: true,
+        });
+//        window.location.reload(true);
       }
     }).fail(function (error) {
       AppDispatcher.handleViewAction({
