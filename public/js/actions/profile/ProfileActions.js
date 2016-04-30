@@ -158,6 +158,24 @@ var ProfileActions = {
       }
     });
   },
+
+  fetchVisitorPhotos: function() {
+    $.get('/api/profile/photos?token=' + localStorage.getItem('apitoken') + '&username=' + localStorage.getItem('visitor'), function (response) {
+      console.log(response);
+      if (response.status === 200) {
+        console.log('got photos !');
+        AppDispatcher.handleViewAction({
+          actionType: ProfileConstants.PROFPHOTOS,
+          photos: response.photos,
+        });
+      } else {
+        AppDispatcher.handleViewAction({
+          actionType: ProfileConstants.ERR,
+          error: true,
+        });
+      }
+    });
+  }
 };
 
 module.exports = ProfileActions;
