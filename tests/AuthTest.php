@@ -8,16 +8,16 @@ class AuthTest extends TestCase
         /*
        Initial authentication success
    **/
-        $this->post('/api/authenticate', ['email' => 'tiffany@gmail.com', 'password' => 'secret'])
-             ->seeJsonStructure([
-                 'token',
-             ]);
+        // $this->post('/api/authenticate', ['email' => 'tiffany@gmail.com', 'password' => 'secret'])
+        //      ->seeJsonStructure([
+        //          'token',
+        //      ]);
         /*
             Initial authentication failure
     	**/
-        $this->post('/api/authenticate', ['email' => 'tiffany@gmail.com', 'password' => 'credentials'])
-             ->seeJsonStructure([
-                 'error',
-             ]);
+        // $this->post('/api/authenticate', ['email' => 'tiffany@gmail.com', 'password' => 'credentials'])
+        //      ->seeJsonStructure([
+        //          'error',
+        //      ]);
     }
 }
