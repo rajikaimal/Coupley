@@ -13,50 +13,66 @@ class SuggestionController extends Controller
         $username = $request->username;
 
         try {
-            //$user1ID = User::where('username', $username)->get(['id']);
-
+            //$user1ID = User::where('username', $username)->get();
+            //return response()->json(['status' => 200, 'suggestions' => $user1ID], 200);
             $userId = User::where('username', $username)->get(['id'])[0]->id;
 
             $userPreferences = self::userPreferences($userId);
+            
+            $orientation = User::where('username', $username)->get()[0]->orientation;
+            $gender = User::where('username', $username)->get()[0]->gender;
 
             $location = $userPreferences[0]->location;
             $minage = $userPreferences[0]->mixage;
             $maxage = $userPreferences[0]->maxage;
             $status = $userPreferences[0]->status;
             $shortterm = $userPreferences[0]->shortterm;
-            $longterm = $userPreferences[0]->longterm;
-            $causalsex = $userPreferences[0]->causalsex;
-
+            $longterm = $userPreferences[0]->longtterm;
+            $causalsex = $userPreferences[0]->casualsex;
+            
             //$result = User::orderBy(\DB::raw('RAND()'))->limit(3)->get();
-            $users = User::orderBy(\DB::raw('RAND()'))->get();
+            $users = User::orderBy(\DB::raw('RAND()'))->limit(3)->get();
 
-            $suggestedUsers = [];
+            $suggestedUsers = array();
 
             foreach ($users as $user) {
-                $id = $user->id;
+                //changed id ///
+                $id = 1;
                 $takenUserPreferences = self::userPreferences($id);
+
+                $orientationT = User::where('id', $id)->get()[0]->orientation;
+                $genderT = User::where('id', $id)->get()[0]->gender;
+
+                if($orientation == $orientationT && $gender == $genderT) {
+                    break;
+                } 
+
                 $locationT = $takenUserPreferences[0]->location;
+                
                 $minageT = $takenUserPreferences[0]->mixage;
                 $maxageT = $takenUserPreferences[0]->maxage;
                 $statusT = $takenUserPreferences[0]->status;
                 $shorttermT = $takenUserPreferences[0]->shortterm;
                 $longtermT = $takenUserPreferences[0]->longterm;
-                $causalsexT = $takenUserPreferences[0]->causalsex;
+                $causalsexT = $takenUserPreferences[0]->casualsex;
+
 
                 $locationMatch = self::matchLocation($userId, $id, $location, $locationT);
                 $ageMatch = self::matchAge($minage, $maxage, $minageT, $maxageT);
                 $statusMatch = self::matchStatus($status, $statusT);
-                $longTermMatch = self::matchLongTermRel($shortterm, $shorttermT);
-                $shortTermMatch = self::matchShortTermRel($shortterm, $shorttermT);
+                $shortTermMatch = self::matchLongTermRel($shortterm, $shorttermT);
+                $longTermMatch = self::matchShortTermRel($longterm, $longtermT);
                 $casualSexMatch = self::matchCasualSex($causalsex, $causalsexT);
 
                 $matchPercentage = self::calculateMatchPercentage($locationMatch, $ageMatch, $statusMatch, $longTermMatch, $shortTermMatch, $casualSexMatch);
+
+
                 if ($matchPercentage >= 0.45) {
                     array_push($suggestedUsers, $user);
                 }
             }
 
-            if (! $result->isEmpty()) {
+            if ($suggestedUsers) {
                 return response()->json(['status' => 200, 'suggestions' => $suggestedUsers], 200);
             } else {
                 return response()->json(['status' => 200, 'suggestions' => null], 200);
