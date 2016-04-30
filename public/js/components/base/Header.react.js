@@ -99,6 +99,7 @@ const Header = React.createClass({
 				        
 				        <li></li>
 				        <li><Link to={`/likes`}>Likes</Link></li>
+				        <li><Link to={`/visits`}>Visits</Link></li>
 				      </ul>
 				      <form className="navbar-form navbar-left">
 				        <div className="form-group">
