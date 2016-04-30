@@ -18,7 +18,7 @@ class SuggestionController extends Controller
             $userId = User::where('username', $username)->get(['id'])[0]->id;
 
             $userPreferences = self::userPreferences($userId);
-            
+
             $orientation = User::where('username', $username)->get()[0]->orientation;
             $gender = User::where('username', $username)->get()[0]->gender;
 
@@ -29,11 +29,11 @@ class SuggestionController extends Controller
             $shortterm = $userPreferences[0]->shortterm;
             $longterm = $userPreferences[0]->longtterm;
             $causalsex = $userPreferences[0]->casualsex;
-            
+
             //$result = User::orderBy(\DB::raw('RAND()'))->limit(3)->get();
             $users = User::orderBy(\DB::raw('RAND()'))->limit(3)->get();
 
-            $suggestedUsers = array();
+            $suggestedUsers = [];
 
             foreach ($users as $user) {
                 //changed id ///
@@ -43,19 +43,18 @@ class SuggestionController extends Controller
                 $orientationT = User::where('id', $id)->get()[0]->orientation;
                 $genderT = User::where('id', $id)->get()[0]->gender;
 
-                if($orientation == $orientationT && $gender == $genderT) {
+                if ($orientation == $orientationT && $gender == $genderT) {
                     break;
-                } 
+                }
 
                 $locationT = $takenUserPreferences[0]->location;
-                
+
                 $minageT = $takenUserPreferences[0]->mixage;
                 $maxageT = $takenUserPreferences[0]->maxage;
                 $statusT = $takenUserPreferences[0]->status;
                 $shorttermT = $takenUserPreferences[0]->shortterm;
                 $longtermT = $takenUserPreferences[0]->longterm;
                 $causalsexT = $takenUserPreferences[0]->casualsex;
-
 
                 $locationMatch = self::matchLocation($userId, $id, $location, $locationT);
                 $ageMatch = self::matchAge($minage, $maxage, $minageT, $maxageT);
@@ -65,7 +64,6 @@ class SuggestionController extends Controller
                 $casualSexMatch = self::matchCasualSex($causalsex, $causalsexT);
 
                 $matchPercentage = self::calculateMatchPercentage($locationMatch, $ageMatch, $statusMatch, $longTermMatch, $shortTermMatch, $casualSexMatch);
-
 
                 if ($matchPercentage >= 0.45) {
                     array_push($suggestedUsers, $user);
