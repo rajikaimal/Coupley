@@ -60,7 +60,9 @@ import OthersFeed from './components/admin/feedback/others.react';
 import Graph from './components/admin/graphs/graph.react';
 import PieGraph from './components/admin/graphs/piechart.react';
 import Searches from './components/admin/search/Search.react';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
+//injectTapEventPlugin();
 
 function requireAuth(nextState, replace) {
   if (!localStorage.getItem('apitoken')) {

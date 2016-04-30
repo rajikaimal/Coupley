@@ -17,9 +17,6 @@ import ErrorStore from '../../stores/ErrorStore';
 import Snackbar from 'material-ui/lib/snackbar';
 import LookingFor from './lookingfor/LookingFor.react';
 
-//tap-event-plugin
-injectTapEventPlugin();
-
 function validate(data) {
   if(data.length >= 100) {
     return {

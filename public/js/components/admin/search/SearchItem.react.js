@@ -9,7 +9,6 @@ import GridTile from 'material-ui/lib/grid-list/grid-tile';
 import IconButton from 'material-ui/lib/icon-button';
 
 //tap-event-plugin
-injectTapEventPlugin();
 
 const styles = {
   root: {

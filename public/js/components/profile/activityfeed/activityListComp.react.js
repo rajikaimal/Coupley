@@ -27,9 +27,6 @@ import LikeStatusStore from '../../../stores/LikeStatusStore';
 import Snackbar from 'material-ui/lib/snackbar';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-//tap-event-plugin
-injectTapEventPlugin();
-
 const iconButtonElement = (
     <IconButton
         touch={true}

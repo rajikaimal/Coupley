@@ -4,8 +4,6 @@
 import React from 'react';
 import Snackbar from 'material-ui/lib/snackbar';
 import RaisedButton from 'material-ui/lib/raised-button';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
 
 var SnackbarExampleSimple = React.createClass({
   getInitialState: function () {

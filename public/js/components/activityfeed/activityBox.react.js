@@ -9,13 +9,9 @@ import ActivityfeedAction from '../../actions/ActivityFeed/ActivityfeedAction';
 import LoginStore from '../../stores/LoginStore';
 import StatusStore from '../../stores/StatusStore';
 import RaisedButton from 'material-ui/lib/raised-button';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 import Dropzone from 'react-dropzone';
 import GridTile from 'material-ui/lib/grid-list/grid-tile';
 import GridList from 'material-ui/lib/grid-list/grid-list';
-
-//tap-event-plugin
-injectTapEventPlugin();
 
 const style = {
   width: 800,

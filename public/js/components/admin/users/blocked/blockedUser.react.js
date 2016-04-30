@@ -11,7 +11,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import UnBlockActions from '../../../../actions/admin/UnblockUserActions';
 
 //tap-event-plugin
-injectTapEventPlugin();
+
 const path = '../../../../../../img/profilepics/';
 const iconButtonElement = (
     <IconButton

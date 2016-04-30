@@ -16,8 +16,7 @@ import AboutStore from '../../../stores/AboutStore';
 import ErrorStore from '../../../stores/ErrorStore';
 import Snackbar from 'material-ui/lib/snackbar';
 
-//tap-event-plugin
-injectTapEventPlugin();
+
 
 function validate(data) {
   if(data.length >= 100) {

@@ -13,8 +13,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import ActivityFeedStore from '../../../stores/ActivityFeedStore';
 import ActivityFeedActions from '../../../actions/profile/ActivityFeedActions';
 
-//tap-event-plugin
-injectTapEventPlugin();
+
 
 const iconButtonElement = (
   <IconButton
