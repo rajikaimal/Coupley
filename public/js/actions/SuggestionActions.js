@@ -4,9 +4,6 @@ var ProfileConstants = require('../constants/ProfileConstants');
 var SuggestionActions = {
   getSuggestions: function () {
     $.get('/api/suggestions?token=' + localStorage.getItem('apitoken') + '&username=' + localStorage.getItem('username'), function (response) {
-      alert(response.suggestions);
-      console.log("<><><><><><><><>");
-      console.log(response.suggestions);
       if (response.status == 200 && response.suggestions) {
         AppDispatcher.handleViewAction({
           actionType: ProfileConstants.SUGGESTIONS,
