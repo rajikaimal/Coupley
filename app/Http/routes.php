@@ -37,6 +37,8 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('imageStatus', 'ActivityFeedController@addImageStatus');
     //Return status
     Route::get('getstatus', 'ActivityFeedController@getStatus');
+    //Get statuses for visiting profile
+    Route::get('getstatusvisitor', 'ActivityFeedController@getStatusVisitor');
     //Add a like to the status
     Route::post('likepost', 'LikeController@like');
     //Unlike the status

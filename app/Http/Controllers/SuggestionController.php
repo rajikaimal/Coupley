@@ -40,12 +40,14 @@ class SuggestionController extends Controller
                 $id = 1;
                 $takenUserPreferences = self::userPreferences($id);
 
+                $usernameT = User::where('id', $id)->get()[0]->username;
+                
                 $orientationT = User::where('id', $id)->get()[0]->orientation;
                 $genderT = User::where('id', $id)->get()[0]->gender;
 
-                if($orientation == $orientationT && $gender == $genderT) {
+                if($orientation == $orientationT && $gender == $genderT && $username == $usernameT) {
                     break;
-                } 
+                }
 
                 $locationT = $takenUserPreferences[0]->location;
                 

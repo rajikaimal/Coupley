@@ -2,10 +2,10 @@ import React from 'react';
 import List from 'material-ui/lib/lists/list';
 import ListItem from 'material-ui/lib/lists/list-item';
 import RaisedButton from 'material-ui/lib/raised-button';
-import ActivityfeedAction from '../../../actions/ActivityFeed/ActivityfeedAction';
-import StatusStore from '../../../stores/StatusStore';
+import ActivityfeedAction from '../../../../actions/ActivityFeed/ActivityfeedAction';
+import StatusStore from '../../../../stores/StatusStore';
 import ActivityList from './activityListComp.react';
-import LoginStore from '../../../stores/LoginStore';
+import LoginStore from '../../../../stores/LoginStore';
 
 const style = {
   marginLeft: 40,
@@ -25,7 +25,7 @@ const activityContainer = React.createClass({
     let data = {
       userId: localStorage.getItem('userid'),
     };
-    ActivityfeedAction._getStatusProfile();
+    ActivityfeedAction._getStatusVisitor(data);
 
   },
 

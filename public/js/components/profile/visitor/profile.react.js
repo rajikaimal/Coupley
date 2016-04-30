@@ -81,9 +81,9 @@ const Profile = React.createClass({
             <Link to={'/' + visitorUsername + '/photos'} className="btn ">Photos</Link>
           </div>
         </div>
-        {this.props.children}
         {this._renderCountry()}
         </div>
+        {this.props.children}
       </div>
     );    
   }

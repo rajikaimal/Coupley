@@ -17,12 +17,12 @@ import Dialog from 'material-ui/lib/dialog';
 import RaisedButton from 'material-ui/lib/raised-button';
 import TextField from 'material-ui/lib/text-field';
 import Paper from 'material-ui/lib/paper';
-import LoginStore from '../../../stores/LoginStore';
-import StatusStore from '../../../stores/StatusStore';
-import ActivityfeedAction from '../../../actions/ActivityFeed/ActivityfeedAction';
-import CommentStore from '../../../stores/CommentStore';
+import LoginStore from '../../../../stores/LoginStore';
+import StatusStore from '../../../../stores/StatusStore';
+import ActivityfeedAction from '../../../../actions/ActivityFeed/ActivityfeedAction';
+import CommentStore from '../../../../stores/CommentStore';
 import Comment from './Comment.react';
-import LikeStatusStore from '../../../stores/LikeStatusStore';
+import LikeStatusStore from '../../../../stores/LikeStatusStore';
 import ActivitySharedList from './activitySharedList.react';
 import ActivityContainer from './activityContainer.react';
 import CountBox from './CountBox.react';
@@ -290,25 +290,13 @@ const ActivityList = React.createClass({
   },
 
   render: function() {
-    const updateActions = [
+
+    const confirmBlockActions = [
       <FlatButton
-        label="Update"
+        label="Block"
         primary={true}
         keyboardFocused={true}
-        onTouchTap={this._editStatus}/>,
-
-      <FlatButton
-        label="Close"
-        secondary={true}
-        onTouchTap={this.handleClose}/>,
-    ];
-
-    const confirmDeleteActions = [
-      <FlatButton
-        label="Delete"
-        primary={true}
-        keyboardFocused={true}
-        onTouchTap={this._deleteStatus}/>,
+        onTouchTap={this._blockedStatus}/>,
 
       <FlatButton
         label="Cansel"
@@ -351,8 +339,7 @@ const ActivityList = React.createClass({
               secondaryTextLines={1} 
               rightIconButton={
                   <IconMenu iconButtonElement={iconButtonElement}>
-                    <MenuItem primaryText="Edit" onClick={this.handleOpen}/>
-                    <MenuItem primaryText="Remove" onClick={this.handleOpenDelete}/>
+                      <MenuItem primaryText="Block" onClick={this.handleOpenBlock}/>
                   </IconMenu> } />
 
               <CardText>
@@ -389,21 +376,12 @@ const ActivityList = React.createClass({
           </div>
 
           <Dialog
-            title="Modify Your Status"
-            actions={updateActions}
+            title="Block Post"
+            actions={confirmBlockActions}
             modal={false}
-            open={this.state.opens}
+            open={this.state.open5}
             onRequestClose={this.handleClose}>
-            <TextField hintText="Update your status" multiLine={false} fullWidth={true} ref="EditBox" defaultValue={this.props.postText}/>
-          </Dialog>
-
-          <Dialog
-            title="Delete Post"
-            actions={confirmDeleteActions}
-            modal={false}
-            open={this.state.open3}
-            onRequestClose={this.handleClose}>
-              Are you sure you want to delete this post?" 
+              Are you sure you want to block this post?" 
           </Dialog>
 
           <Dialog

@@ -40,6 +40,36 @@ var ActivityfeedAction = {
     });
   },
 
+  _getStatusVisitor: function (uId) {
+    postLimitNo = postLimitNo + 3;
+    let str = window.location.hash;
+    let username = str.split(/[\/?]/)[1];
+    $.get('/api/getstatusvisitor?postLimitNo=' + postLimitNo + '&username=' + username , function (response) {
+      if (response.status == 200) {
+        AppDispatcher.handleViewAction({
+          actionType: ActivityFeedConstants.GETDATA,
+          statusdata: response.posts,
+        });
+      } else if (response.status == 505) {
+        console.log('Error 505');
+      }
+    });
+  },
+
+  _getStatusProfile: function() {
+    postLimitNo = postLimitNo + 3;
+    $.get('/api/getstatusvisitor?postLimitNo=' + postLimitNo + '&username=' + localStorage.getItem('username') , function (response) {
+      if (response.status == 200) {
+        AppDispatcher.handleViewAction({
+          actionType: ActivityFeedConstants.GETDATA,
+          statusdata: response.posts,
+        });
+      } else if (response.status == 505) {
+        console.log('Error 505');
+      }
+    });
+  },
+
   _addShare: function (result) {
     $.post('api/sharedStatus', result, function (response) {
         if (response.status == 201) {
@@ -230,7 +260,6 @@ var ActivityfeedAction = {
     commentLimitNo = commentLimitNo + 3;
     $.get('/api/getcomment?commentLimitNo=' + commentLimitNo , commentData,function(response) {
       if (response.status == 200 && response.comments) {
-          alert('sds');
           AppDispatcher.handleViewAction({
             actionType: CommentConstants.LOADMORE,
             commentdata: response.comments
