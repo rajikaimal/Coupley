@@ -21,6 +21,7 @@ use App\About;
 use App\Post;
 use App\Reported;
 use App\activitypost;
+use App\Notification;
 
 class ProfileController extends Controller
 {
@@ -188,6 +189,14 @@ class ProfileController extends Controller
                 Likes::where('user1', $unlikedUsername)
                     ->where('user2', $gotunLikedUsername)
                     ->delete();
+                $user_id1 = User::where('username', $unlikedUsername)->get()[0]->id;
+                $user_id2 = User::where('username', $gotunLikedUsername)->get()[0]->id;
+
+                Notification::where('user_id1', $user_id1)
+                        ->where('user_id2', $user_id2)
+                        ->where('content', 'like')
+                        ->delete();
+                
 
                 return response()->json(['status' => 200], 200);
             } else {

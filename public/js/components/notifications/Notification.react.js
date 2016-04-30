@@ -34,7 +34,7 @@ const Notification = React.createClass({
 		          primaryText="rajika"
 		          secondaryText={
 		            <p>
-		            	<span style={{color: Colors.darkBlack}}>{this.props.content}</span>
+		            	<span style={{color: Colors.darkBlack}}>{this.props.id  + ' ' + this.props.profilepic}</span>
 		            </p>
 		          }
 		        />
