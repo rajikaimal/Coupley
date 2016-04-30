@@ -201,6 +201,8 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('profile/notificationlist', 'NotificationController@getNotificationList');
     //load more notifications based on client request
     Route::get('profile/notificationlistmore', 'NotificationController@getNotificationListMore');
+    //clear notifications    
+    Route::post('profile/notifications/clear', 'NotificationController@clearNotifications');
     //retrives liked list of a certain user
     Route::get('profile/likedlist', 'LikeListController@getLikedList');
 

@@ -43,7 +43,7 @@ class NotificationController extends Controller
         try {
             $id = User::where('username', $username)->get()[0]->id;
             $notifications = Notification::where('user_id2', $id)
-                    ->where('readnotification', 0)->limit(5)->get();
+                    ->limit(5)->get();
 
             $notificationsList = array();
 
@@ -98,5 +98,19 @@ class NotificationController extends Controller
         } catch (QueryException $e) {
             return response()->json(['status' => 200], 200);
         }
+    }
+    public function clearNotifications(Request $request)
+    {
+        $username = $request->username;
+        try {
+            $id = User::where('username', $username)->get()[0]->id;
+            Notification::where('user_id2', $id)
+                    ->where('readnotification', 0)->update(['readnotification' => 1]);
+
+            return response()->json(['status' => 200, 'done' => true], 200);
+        } catch (QueryException $e) {
+            return response()->json(['status' => 200], 200);
+        }
+
     }
 }

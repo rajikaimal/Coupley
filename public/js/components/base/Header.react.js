@@ -66,15 +66,29 @@ const Header = React.createClass({
 	    });
 	},
 	_onChangeNotification: function() {
-		this.setState({
-			notificationCount: NotificationStore.getNumber()
-		});
+		// if(NotificationStore.getNumber() == undefined) {
+		// 	this.setState({
+		// 		notificationCount: 0
+		// 	});
+		// } else {
+		// 	this.setState({
+		// 		notificationCount: NotificationStore.getNumber()
+		// 	});
+		// }
+		
+		
 	},
 	_clearNotifications: function(event) {
 		this.setState({
 	      open: !this.state.open,
 	      anchorEl: event.currentTarget,
 	    });
+	    if(!this.state.open) {
+	    	NotificationAction.clearNotifications(localStorage.getItem('username'));
+	    	this.setState({
+	    		notificationCount: 0
+	    	});
+	    }
 	},
 	handleRequestClose: function() {
 	    this.setState({
