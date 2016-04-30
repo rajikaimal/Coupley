@@ -4,7 +4,7 @@ use GuzzleHttp\Client;
 
 class ProfileTest extends TestCase
 {
-    /**
+    /*
      * Test profile@ProfileController.
      *
      * @return void

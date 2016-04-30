@@ -4,7 +4,7 @@ use GuzzleHttp\Client;
 
 class ExampleTest extends TestCase
 {
-    /**
+    /*
      * Test getlikestatus@LikeController.
      *
      * @return void

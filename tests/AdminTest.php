@@ -4,7 +4,7 @@ use GuzzleHttp\Client;
 
 class AdminTest extends TestCase
 {
-    /**
+    /*
      * Test AdminAuthenticateController@authenticate.
      *
      * @return void
