@@ -18,7 +18,7 @@ class NotificationMigration extends Migration
             $table->foreign('user_id1')->references('id')->on('users');
             $table->integer('user_id2')->unsigned();
             $table->foreign('user_id2')->references('id')->on('users');
-            $table->string('content')->unique();
+            $table->string('content');
             $table->boolean('readnotification');
             $table->timestamps();
         });

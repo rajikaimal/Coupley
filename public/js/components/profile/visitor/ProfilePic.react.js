@@ -58,7 +58,7 @@ const ProfilePic = React.createClass({
       picture: VisitorStore.getProfilePic(),
       open: false,
       openDialog: false,
-      type: 'annoying'
+      type: 'annoying',
     }
   },
   componentDidMount: function() {
@@ -105,6 +105,10 @@ const ProfilePic = React.createClass({
 
     this.setState({
       picture: VisitorStore.getProfilePic()
+    });
+
+    this.setState({
+      openSnackBar: VisitorStore.getDoneStatus()
     });
   },
   _changeLikeState: function() {
@@ -285,7 +289,7 @@ const ProfilePic = React.createClass({
               </Dialog>
                 <Snackbar
                     open={this.state.openSnackBar}
-                    message="Successfull !"
+                    message="Successfully posted !"
                     autoHideDuration={4000}
                     onRequestClose={this.handleRequestClose}
                   />

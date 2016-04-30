@@ -43,21 +43,58 @@ class NotificationController extends Controller
         try {
             $id = User::where('username', $username)->get()[0]->id;
             $notifications = Notification::where('user_id2', $id)
-                    ->where('readnotification', 0)->get();
+                    ->where('readnotification', 0)->limit(5)->get();
 
-            // $notifications = \DB::select(\DB::raw("
-            //    SELECT id,firstname,lastname,username,gender,profilepic from(
-            //                 SELECT id,firstname, lastname,username,orientation,gender,profilepic,role FROM `users` WHERE
-            //                                         status = 'active'
-            //                                         ) as t where
-            //                                         role='user' and id IN (
-            //                                             Select blocked_user_id
-            //                                             from `blocked`
-            //                                             where user_id=".$userID.'
-            //                                         )
-            // '));
+            $notificationsList = array();
 
-            return response()->json(['status' => 200, 'list' => $notifications], 200);
+            foreach ($notifications as $notification) {
+                $user2 = $notification->user_id1;
+                $query = $user2ProfilePic = User::where('id', $user2)->get()[0];
+                $user2Name = $query->firstname;
+                $user2Username = $query->username;
+                $user2ProfilePic = $query->profilepic;
+                $user2Content = $query->content;
+                $user2Data['id'] = $user2;
+                $user2Data['name'] = $user2Name;
+                $user2Data['username'] = $user2Username;
+                $user2Data['content'] = $notification->content;
+                $user2Data['profilepic'] = $user2ProfilePic;
+                array_push($notificationsList, $user2Data);        
+            }
+
+            return response()->json(['status' => 200, 'list' => $notificationsList], 200);
+        } catch (QueryException $e) {
+            return response()->json(['status' => 200], 200);
+        }
+    }
+    public function getNotificationListMore(Request $request)
+    {
+        $username = $request->username;
+        $pagination = $request->pagination;
+
+        try {
+            $id = User::where('username', $username)->get()[0]->id;
+            $notifications = Notification::where('user_id2', $id)
+                    ->where('readnotification', 0)->limit($pagination)->get();
+
+            $notificationsList = array();
+
+            foreach ($notifications as $notification) {
+                $user2 = $notification->user_id1;
+                $query = $user2ProfilePic = User::where('id', $user2)->get()[0];
+                $user2Name = $query->firstname;
+                $user2Username = $query->username;
+                $user2ProfilePic = $query->profilepic;
+                $user2Content = $query->content;
+                $user2Data['id'] = $user2;
+                $user2Data['name'] = $user2Name;
+                $user2Data['username'] = $user2Username;
+                $user2Data['content'] = $notification->content;
+                $user2Data['profilepic'] = $user2ProfilePic;
+                array_push($notificationsList, $user2Data);        
+            }
+
+            return response()->json(['status' => 200, 'list' => $notificationsList], 200);
         } catch (QueryException $e) {
             return response()->json(['status' => 200], 200);
         }

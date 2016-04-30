@@ -16,16 +16,20 @@ var NotificationStore = assign({}, EventEmitter.prototype, {
   },
 
   saveList: function (data) {
+    console.log('<><><><>STore <><><>');
+    console.log(data);
     list = data;
-    list.concat(socketList);
+//    list.concat(socketList);
   },
 
   saveSocketNotification: function (data) {
+        console.log('<><><><>STore <><><>');
+    console.log(data);
     let con = {
       content: data,
     };
     console.log('sockeeeeet' + con);
-    socketList.push(con);
+    socketList.push(data);
   },
 
   getList: function () {

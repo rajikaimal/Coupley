@@ -11,8 +11,6 @@ import TextField from 'material-ui/lib/text-field';
 import FlatButton from 'material-ui/lib/flat-button';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-//tap-event-plugin
-injectTapEventPlugin();
 
 const iconButtonElement = (
   <IconButton
@@ -36,7 +34,7 @@ const Notification = React.createClass({
 		          primaryText="rajika"
 		          secondaryText={
 		            <p>
-		            	<span style={{color: Colors.darkBlack}}>{this.props.content}</span>
+		            	<span style={{color: Colors.darkBlack}}>{this.props.id  + ' ' + this.props.profilepic}</span>
 		            </p>
 		          }
 		        />

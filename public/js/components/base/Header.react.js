@@ -99,6 +99,7 @@ const Header = React.createClass({
 				        
 				        <li></li>
 				        <li><Link to={`/likes`}>Likes</Link></li>
+				        <li><Link to={`/visits`}>Visits</Link></li>
 				      </ul>
 				      <form className="navbar-form navbar-left">
 				        <div className="form-group">
@@ -146,7 +147,7 @@ const Header = React.createClass({
 		        </div>
 		        <Snackbar
                     open={this.state.error}
-                    message="Error occured please try again later !"
+                    message="Error occured please try again later !!!"
                     autoHideDuration={4000}
                     onRequestClose={this.handleRequestClose}
                 />

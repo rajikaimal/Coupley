@@ -20,6 +20,8 @@ const tabStyle = {
 var str = window.location.hash;
 var username = str.split(/[\/?]/)[1];
 
+var visitorUsername;
+
 const urlTable = {
   username: username
 }
@@ -28,15 +30,21 @@ const Profile = React.createClass({
   getInitialState: function() {
     let str = window.location.hash;
     let username = str.split(/[\/?]/)[1];
+    localStorage.setItem("visitor", username);
+    visitorUsername = localStorage.getItem('visitor');
     return {
       firstname: VisitorStore.getUserData().firstname,
       lastname: VisitorStore.getUserData().lastname,
       country: VisitorStore.getUserData().country
     }
+
   },
   componentDidMount: function() {
+    let str = window.location.hash;
+    let username = str.split(/[\/?]/)[1];
     VisitorStore.addChangeListener(this._onChange);
     ProfileVisitorActions.loadProfileData(username);
+    
   },
   componentWillUnmount: function() {
     ProfileVisitorActions.clearAll();
@@ -68,9 +76,9 @@ const Profile = React.createClass({
         <Divider />
         <div style={tabStyle}>
           <div className="btn-group btn-group-justified btn-group-info">
-            <Link to={'/' + urlTable['username'] + '/activityfeed'} className="btn ">My Activity Feed</Link>
-            <Link to={'/' + urlTable['username'] + '/about'} className="btn ">About</Link>
-            <Link to={'/' + urlTable['username'] + '/photos'} className="btn ">Photos</Link>
+            <Link to={'/' + visitorUsername + '/activityfeed'} className="btn ">My Activity Feed</Link>
+            <Link to={'/' + visitorUsername + '/about'} className="btn ">About</Link>
+            <Link to={'/' + visitorUsername + '/photos'} className="btn ">Photos</Link>
           </div>
         </div>
         {this.props.children}

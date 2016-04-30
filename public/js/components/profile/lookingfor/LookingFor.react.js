@@ -26,9 +26,6 @@ import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
 import IconMenu from 'material-ui/lib/menus/icon-menu';
 import Checkbox from 'material-ui/lib/checkbox';
 
-//tap-event-plugin
-injectTapEventPlugin();
-
 const buttonStyle = {
   marginTop: 25
 }

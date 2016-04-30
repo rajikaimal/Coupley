@@ -20,16 +20,19 @@ const NotificationContainer = React.createClass({
       listNotification: NotificationStore.getList()
     });
   },
+  _loadMore: function() {
+    NotificationAction.loadMore();
+  },
   _renderNotificationList: function() {
     let self = this;
-    console.log('render method');
-    console.log('logging state');
-    console.log(this.state.listNotification);
     return this.state.listNotification.map((Notification) => {
       console.log(Notification);
       return (
         <div>
-          {Notification.content}
+          <div>
+            <img height="25" width="25" src={'/img/profilepics/' + Notification.profilepic } /> <a href={'/#/' + Notification.username + '/about' }>{Notification.name} {Notification.content == 'like' ? 'liked you' : ''} </a> 
+          </div>
+          <br />
         </div>
       );
     });
@@ -38,9 +41,11 @@ const NotificationContainer = React.createClass({
     return (
       <div>
 		    <List>
-        	<div> Notification </div>
+        	<div> Notifications </div>
+          <br/>
           {this._renderNotificationList()}
         </List>
+        <div> <button onClick={this._loadMore}>load more </button></div>
       </div>
     );
   }

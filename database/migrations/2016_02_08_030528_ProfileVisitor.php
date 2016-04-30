@@ -12,7 +12,7 @@ class ProfileVisitor extends Migration
      */
     public function up()
     {
-      Schema::create('ProfileVisitor', function (Blueprint $table) {
+        Schema::create('ProfileVisitor', function (Blueprint $table) {
       $table->increments('pvid');
       $table->string('prousername');
       $table->string('visusername');

@@ -17,8 +17,6 @@ import Countries from '../register/countries.js';
 import DropDownMenu from 'material-ui/lib/DropDownMenu';
 import Colors from 'material-ui/lib/styles/colors';
 
-//tap-event-plugin
-injectTapEventPlugin();
 
 function validatefirstname(firstname) {
   if(firstname.length >= 30) {
