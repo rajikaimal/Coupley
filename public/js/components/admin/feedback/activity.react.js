@@ -14,9 +14,9 @@ import Feed from '../feedback/feed.react';
 const ELSE = 'No any feedbacks regarding activity feed.';
 const Tables = React.createClass({
   getInitialState: function () {
-
     return {
       results: FeedStore.getresults(),
+      key: Math.random(),
     };
   },
 
@@ -26,24 +26,25 @@ const Tables = React.createClass({
   },
 
   _onChange: function () {
-    if (this.isMounted()) {
-      this.setState({
+
+    this.setState({
         results: FeedStore.getresults(),
       });
-    }
   },
 
   _renderFeedItem: function () {
     console.log(this.state.results);
     if (this.state.results) {
       return this.state.results.map((result) => {
-        return (<Feed key={result.id} id={result.id} user={result.user} description={result.description} />);
-      });}    else {
-        return (<div>
+        return (<Feed key={this.state.key} id={result.id} user={result.user} description={result.description} />);
+      });
+    }    else {
+      this.forceUpdate();
+      return (<div>
               No any feedbacks regarding activity feed.
-        </div>
-        );
-      }
+              </div>
+      );
+    }
   },
 
   render: function () {
