@@ -1,5 +1,6 @@
 import React from 'react';
 import Paper from 'material-ui/lib/paper';
+import ThreadActions from '../../actions/Thread/ThreadActions';
 import ThreadStore from '../../stores/ThreadStore';
 import LoginStore from '../../stores/LoginStore';
 import ListItem from 'material-ui/lib/lists/list-item';
@@ -21,11 +22,15 @@ const style = {
   overflow: 'auto',
 };
 
+const initMessageUser = {
+  user1:LoginStore.getUsername(),
+};
+
 const PaperExampleSimple = React.createClass({
 
   getInitialState: function () {
       return {
-        threads: ThreadStore.getmessages(),
+        threads: ThreadStore.getInitmessages(),
         resullts:'',
       }
     },
@@ -38,12 +43,12 @@ const PaperExampleSimple = React.createClass({
 
   componentDidMount: function () {
     ThreadStore.addChangeListener(this._onChange);
-
+    ThreadActions.getInitMessage(initMessageUser);
   },
 
   _onChange: function () {
     this.setState({
-      threads: ThreadStore.getmessages(),
+      threads: ThreadStore.getInitmessages(),
     });
 
   },
@@ -52,6 +57,7 @@ const PaperExampleSimple = React.createClass({
   socketio: function () {
       socket.on('chat', function (data) {
         this.setState({ threads:data.message });
+        localStorage.setItem('chatusername', this.state.threads[0].username);
       }.bind(this));
     },
 

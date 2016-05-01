@@ -66,6 +66,8 @@ Route::group(['prefix' => 'api'], function () {
 
     //Return previos chats
     Route::get('getpreviousmsg', 'ThreadController@getPreviousMessage');
+    //Return initial chats
+    Route::get('getinitmsg', 'ThreadController@getInitMessage');
     //Delete Messages
     Route::post('deletemessage', 'ThreadController@deletemessage');
     //Retrive likedusers
