@@ -45,7 +45,7 @@ class NotificationController extends Controller
             $notifications = Notification::where('user_id2', $id)
                     ->limit(5)->get();
 
-            $notificationsList = array();
+            $notificationsList = [];
 
             foreach ($notifications as $notification) {
                 $user2 = $notification->user_id1;
@@ -59,7 +59,7 @@ class NotificationController extends Controller
                 $user2Data['username'] = $user2Username;
                 $user2Data['content'] = $notification->content;
                 $user2Data['profilepic'] = $user2ProfilePic;
-                array_push($notificationsList, $user2Data);        
+                array_push($notificationsList, $user2Data);
             }
 
             return response()->json(['status' => 200, 'list' => $notificationsList], 200);
@@ -67,6 +67,7 @@ class NotificationController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     public function getNotificationListMore(Request $request)
     {
         $username = $request->username;
@@ -77,7 +78,7 @@ class NotificationController extends Controller
             $notifications = Notification::where('user_id2', $id)
                     ->where('readnotification', 0)->limit($pagination)->get();
 
-            $notificationsList = array();
+            $notificationsList = [];
 
             foreach ($notifications as $notification) {
                 $user2 = $notification->user_id1;
@@ -91,7 +92,7 @@ class NotificationController extends Controller
                 $user2Data['username'] = $user2Username;
                 $user2Data['content'] = $notification->content;
                 $user2Data['profilepic'] = $user2ProfilePic;
-                array_push($notificationsList, $user2Data);        
+                array_push($notificationsList, $user2Data);
             }
 
             return response()->json(['status' => 200, 'list' => $notificationsList], 200);
@@ -99,6 +100,7 @@ class NotificationController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     public function clearNotifications(Request $request)
     {
         $username = $request->username;
@@ -111,6 +113,5 @@ class NotificationController extends Controller
         } catch (QueryException $e) {
             return response()->json(['status' => 200], 200);
         }
-
     }
 }
