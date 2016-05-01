@@ -5,7 +5,7 @@ var mysql      = require('mysql');      /*  Require HTTP module and create serve
 var connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'miyoungrae123',
+  password: '',
   database: 'Coupley',
 });
 var connectedUser = {};

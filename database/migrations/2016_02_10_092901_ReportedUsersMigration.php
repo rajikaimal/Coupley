@@ -18,7 +18,7 @@ class ReportedUsersMigration extends Migration
             $table->integer('reported_user_id')->unsigned();
             $table->string('description');
             $table->string('status')->default('pending');
-            //$table->foreign('user_id')->references('id')->on('users');
+            $table->string('type');
             $table->foreign('reported_user_id')->references('id')->on('users');
             $table->timestamps();
         });
