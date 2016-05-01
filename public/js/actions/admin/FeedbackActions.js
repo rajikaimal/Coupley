@@ -9,7 +9,6 @@ var FeedActions = {
   MarkAsDone: function (credentials) {
 
     $.post('/admin-api/markfeed', credentials, function (data) {
-      console.log(data.category[0].category);
       if (data.status === 201) {
         switch (data.category[0].category) {
           case 'timeline':

@@ -9,6 +9,7 @@ var FeedResults = [];
 
 var FeedStore = assign({}, EventEmitter.prototype, {
   getresults: function () {
+    alert(FeedResults + 'hy feed from store');
     return FeedResults;
   },
 
