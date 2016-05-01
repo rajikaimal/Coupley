@@ -37,14 +37,18 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('imageStatus', 'ActivityFeedController@addImageStatus');
     //Return status
     Route::get('getstatus', 'ActivityFeedController@getStatus');
-    //Return logged uder Id
-    Route::get('getUserId', 'ActivityFeedController@getUserId');
+    //Get statuses for visiting profile
+    Route::get('getstatusvisitor', 'ActivityFeedController@getStatusVisitor');
     //Add a like to the status
     Route::post('likepost', 'LikeController@like');
     //Unlike the status
     Route::post('unlikepost', 'LikeController@unlike');
+    //Return liked and shaed count
+    Route::get('getCount', 'LikeController@getCount');
     //Return liked Users
     Route::get('getLikedUsers', 'LikeController@getLikedUsers');
+    //Return shared users
+    Route::get('getSharedUsers', 'ActivityFeedController@getSharedUsers');
     //Add a share
     Route::post('sharedStatus', 'ActivityFeedController@sharedStatus');
     //Unshare the status
@@ -110,6 +114,15 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('gettrendssearchpost', 'TrendsController@getPosttrends');
     //
 
+    //Add visitor info
+     Route::post('visitorcount', 'VisitorCountController@incrementVisitorCount');
+     Route::get('myvisits', 'VisitorCountController@myVisits');
+     Route::get('smyvisits', 'VisitorCountController@searchMyVisits');
+     Route::get('othervisits', 'VisitorCountController@othersVisits');
+     Route::get('sothervisits', 'VisitorCountController@searchOthersVisits');
+     Route::post('unfollowvisitor', 'VisitorCountController@unFollowVisitor');
+    /////////
+
     Route::get('getonlineusers', 'ThreadController@getOnlineUsers');
     // Route::get('getpostId', 'ActivityFeedController@getpostId');
     // Route::post('likes', 'LikeController@addlikes');
@@ -160,7 +173,9 @@ Route::group(['prefix' => 'api'], function () {
     //Returns posts by a user
     Route::get('profile/getposts', 'ProfileController@getpostsX');
 
-    Route::get('profile/laodmoreposts', 'ProfileController@loadMorePosts');
+    Route::get('profile/loadmoreposts', 'ProfileController@loadMorePosts');
+    //fetch photos of a user profile
+    Route::get('profile/photos', 'ProfileController@photos');
 
     Route::post('profile/edit/updatebasics', 'ProfileController@editBasics');
 
@@ -186,6 +201,10 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('profile/notifications', 'NotificationController@getNotificationNumber');
     //retrives all unread notifications
     Route::get('profile/notificationlist', 'NotificationController@getNotificationList');
+    //load more notifications based on client request
+    Route::get('profile/notificationlistmore', 'NotificationController@getNotificationListMore');
+    //clear notifications    
+    Route::post('profile/notifications/clear', 'NotificationController@clearNotifications');
     //retrives liked list of a certain user
     Route::get('profile/likedlist', 'LikeListController@getLikedList');
 

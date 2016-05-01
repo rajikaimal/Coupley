@@ -3,11 +3,14 @@ var ActivityFeedConstants = require('../../constants/ActivityFeedConstants');
 var LikeConstants = require('../../constants/LikeConstants');
 var CommentConstants = require('../../constants/CommentConstants');
 
+var commentLimitNo = 0;
+var postLimitNo = 0;
+
 var ActivityfeedAction = {
   _addStatus: function (status) {
     $.post('api/status', status, function (response) {
       if (response.status == 201) {
-        $.get('/api/getstatus', status, function (response) {
+        $.get('/api/getstatus?postLimitNo=' + postLimitNo, status, function (response) {
           if (response.status == 200) {
             AppDispatcher.handleViewAction({
               actionType: ActivityFeedConstants.GETDATA,
@@ -24,7 +27,8 @@ var ActivityfeedAction = {
   },
 
   _getStatus: function (uId) {
-    $.get('/api/getstatus', uId, function (response) {
+    postLimitNo = postLimitNo + 3;
+    $.get('/api/getstatus?postLimitNo=' + postLimitNo, uId, function (response) {
       if (response.status == 200) {
         AppDispatcher.handleViewAction({
           actionType: ActivityFeedConstants.GETDATA,
@@ -36,12 +40,29 @@ var ActivityfeedAction = {
     });
   },
 
-  _getUserId:function () {
-    $.get('/api/getUserId?email='+ localStorage.getItem('email'), function (response) {
+  _getStatusVisitor: function (uId) {
+    postLimitNo = postLimitNo + 3;
+    let str = window.location.hash;
+    let username = str.split(/[\/?]/)[1];
+    $.get('/api/getstatusvisitor?postLimitNo=' + postLimitNo + '&username=' + username , function (response) {
       if (response.status == 200) {
         AppDispatcher.handleViewAction({
-          actionType: ActivityFeedConstants.GETLOGGEDUSERID,
-          userId: response.uId,
+          actionType: ActivityFeedConstants.GETDATA,
+          statusdata: response.posts,
+        });
+      } else if (response.status == 505) {
+        console.log('Error 505');
+      }
+    });
+  },
+
+  _getStatusProfile: function() {
+    postLimitNo = postLimitNo + 3;
+    $.get('/api/getstatusvisitor?postLimitNo=' + postLimitNo + '&username=' + localStorage.getItem('username') , function (response) {
+      if (response.status == 200) {
+        AppDispatcher.handleViewAction({
+          actionType: ActivityFeedConstants.GETDATA,
+          statusdata: response.posts,
         });
       } else if (response.status == 505) {
         console.log('Error 505');
@@ -52,7 +73,7 @@ var ActivityfeedAction = {
   _addShare: function (result) {
     $.post('api/sharedStatus', result, function (response) {
         if (response.status == 201) {
-          $.get('/api/getstatus', result, function (response) {
+          $.get('/api/getstatus?postLimitNo=' + postLimitNo, result, function (response) {
             if (response.status == 200) {
               AppDispatcher.handleViewAction({
                 actionType: ActivityFeedConstants.GETDATA,
@@ -90,7 +111,7 @@ var ActivityfeedAction = {
   _deleteStatus: function(postId){
     $.post('api/deleteStatus', postId, function(response) {
       if(response.status == 201) {
-        $.get('/api/getstatus', postId, function (response) {
+        $.get('/api/getstatus?postLimitNo=' + postLimitNo, postId, function (response) {
           if (response.status == 200) {
             AppDispatcher.handleViewAction({
               actionType: ActivityFeedConstants.GETDATA,
@@ -109,7 +130,7 @@ var ActivityfeedAction = {
   _editStatus:function (txt) {
     $.post('api/edit_status', txt, function (response) {
       if(response.status == 201) {
-        $.get('/api/getstatus', txt, function (response) {
+        $.get('/api/getstatus?postLimitNo=' + postLimitNo, txt, function (response) {
           if (response.status == 200) {
             AppDispatcher.handleViewAction({
               actionType: ActivityFeedConstants.GETDATA,
@@ -128,15 +149,15 @@ var ActivityfeedAction = {
   _blockStatus: function (result) {
     $.post('api/block_status', result, function(response) {
       if(response.status == 201) {
-        $.get('/api/getstatus', result, function (response) {
-          if (response.status == 200) {
-            AppDispatcher.handleViewAction({
-              actionType: ActivityFeedConstants.GETDATA,
-              statusdata: response.posts,
-            });
-          } else if (response.status == 505) {
-            console.log('Error 505');
-          }
+        $.get('/api/getstatus?postLimitNo=' + postLimitNo, result, function (response) {
+              if (response.status == 200) {
+                AppDispatcher.handleViewAction({
+                  actionType: ActivityFeedConstants.GETDATA,
+                  statusdata: response.posts,
+                });
+              } else if (response.status == 505) {
+                console.log('Error 505');
+              }
         });
       } else if(response.status == 404) {
         console.log('Error 404');
@@ -158,14 +179,14 @@ var ActivityfeedAction = {
     });
   },
 
-  getLikeCount: function(request) {
-    $.get('/api/getLikeCount', request, function (response) {
-      console.log('jjjjjjjjjjjjjjjjjjjjjjj');
+  getCount: function(request) {
+    $.get('/api/getCount', request, function (response) {
+      console.log('ssssssssssss');
       console.log(response);
       if (response.status == 200) {
         AppDispatcher.handleViewAction({
-          actionType: LikeConstants.GETLIKECOUNT,
-          likedCount: response.posts,
+          actionType: LikeConstants.GETCOUNT,
+          countValue: response.posts,
         });
       } else if (response.status == 505) {
         console.log('Error 505');
@@ -175,6 +196,7 @@ var ActivityfeedAction = {
 
   getLikedUsers: function(request) {
     $.get('/api/getLikedUsers', request, function (response) {
+      console.log(response);
       if (response.status == 200) {
         AppDispatcher.handleViewAction({
           actionType: LikeConstants.GETUSERS,
@@ -186,34 +208,67 @@ var ActivityfeedAction = {
     });
   },
 
-  addComment: function(comment){
-    $.post('api/addcomment', comment, function(response) {
-      if (response.status == 201) {
-        $.get('/api/getcomment', comment,function(response) {
-          if (response.status == 200) {
-              AppDispatcher.handleViewAction({
-                actionType: CommentConstants.GETCOMMENT,
-                commentdata: response.comments
-              });
-          } else if (response.status == 505) {
-            console.log('Error 505');
-          }
+  getSharedUsers: function(request) {
+    $.get('/api/getSharedUsers', request, function (response) {
+      if (response.status == 200) {
+        AppDispatcher.handleViewAction({
+          actionType: ActivityFeedConstants.GETSHAREDUSERS,
+          sharedUsers: response.posts,
         });
-      } else if (response.status == 404) {
-        console.log('Error 404');
+      } else if (response.status == 505) {
+        console.log('Error 505');
       }
     });
   },
 
+  addComment: function(comment){
+    $.post('api/addcomment', comment, function(response) {
+      // if (response.status == 201) {
+      //   $.get('/api/getcomment', comment,function(response) {
+      //     if (response.status == 200) {
+      //         AppDispatcher.handleViewAction({
+      //           actionType: CommentConstants.GETCOMMENT,
+      //           commentdata: response.comments
+      //         });
+      //     } else if (response.status == 505) {
+      //       console.log('Error 505');
+      //     }
+      //   });
+      // } else if (response.status == 404) {
+      //   console.log('Error 404');
+      // }
+    });
+  },
+
   getCommentList: function(commentData) {
-    $.get('/api/getcomment', commentData,function(response) {
-      if (response.status == 200) {
+    commentLimitNo = commentLimitNo + 3;
+    $.get('/api/getcomment?commentLimitNo=' + commentLimitNo , commentData,function(response) {
+      if (response.status == 200 && response.comments) {
           AppDispatcher.handleViewAction({
             actionType: CommentConstants.GETCOMMENT,
             commentdata: response.comments
           });
-      } else if (response.status == 505) {
-        console.log('Error 505');
+      } else {
+          AppDispatcher.handleViewAction({
+            actionType: CommentConstants.GETCOMMENT,
+            commentdata: response.comments
+          });
+      }
+    });
+  },
+  loadMoreComment: function(commentData) {
+    commentLimitNo = commentLimitNo + 3;
+    $.get('/api/getcomment?commentLimitNo=' + commentLimitNo , commentData,function(response) {
+      if (response.status == 200 && response.comments) {
+          AppDispatcher.handleViewAction({
+            actionType: CommentConstants.LOADMORE,
+            commentdata: response.comments
+          });
+      } else {
+          AppDispatcher.handleViewAction({
+            actionType: CommentConstants.LOADMORE,
+            commentdata: response.comments
+          });
       }
     });
   },

@@ -66,7 +66,7 @@ AppDispatcher.register(function (payload) {
             TrendsStore.emitChange();
             break;
         case (TrendConstants.SEARCHTRENDPOSTS):
-            TrendsStore.saveTrendsSearchPost(payload.action.listofposttrends);
+            TrendsStore.saveFirstTrendsSearchPost(payload.action.listofposttrends);
             TrendsStore.emitChange();
             break;
         case (TrendConstants.INITIALSEARCHTRENDPOSTS):

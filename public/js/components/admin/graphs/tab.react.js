@@ -6,7 +6,6 @@ import Tabs from 'material-ui/lib/tabs/tabs';
 import Tab from 'material-ui/lib/tabs/tab';
 import CustomerGraph from './customers.react';
 import PieGraph from './pieChartCustomers.react';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 
 import Item from './../graphs/adminPanel/admin.react';
 
@@ -14,7 +13,6 @@ import SearchStore from '../../../stores/admin/SearchStore';
 import AdminActions from '../../../actions/admin/AdminDetailsActions';
 
 //tap-event-plugin
-injectTapEventPlugin();
 
 const styles = {
   headline: {

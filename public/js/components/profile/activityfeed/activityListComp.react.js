@@ -1,5 +1,7 @@
 import React from 'react';
 import Card from 'material-ui/lib/card/card';
+import CardMedia from 'material-ui/lib/card/card-media';
+import CardText from 'material-ui/lib/card/card-text';
 import ListItem from 'material-ui/lib/lists/list-item';
 import Divider from 'material-ui/lib/divider';
 import Avatar from 'material-ui/lib/avatar';
@@ -11,196 +13,289 @@ import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
 import IconMenu from 'material-ui/lib/menus/icon-menu';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import FlatButton from 'material-ui/lib/flat-button';
-import Paper from 'material-ui/lib/paper';
-import LikesActions from '../../../actions/ActivityFeed/LikesActions';
-import ShareActions from '../../../actions/ActivityFeed/ShareActions';
-import LoginStore from '../../../stores/LoginStore';
-import StatusStore from '../../../stores/StatusStore';
-import ActivityFeedActions from '../../../actions/ActivityFeed/ActivityFeedActions';
-import CommentAction from '../../../actions/ActivityFeed/CommentAction';
-import CommentStore from '../../../stores/CommentStore';
-//import CommentList from '../comments/CommentList.react';
 import Dialog from 'material-ui/lib/dialog';
 import RaisedButton from 'material-ui/lib/raised-button';
 import TextField from 'material-ui/lib/text-field';
+import Paper from 'material-ui/lib/paper';
+import LoginStore from '../../../stores/LoginStore';
+import StatusStore from '../../../stores/StatusStore';
+import ActivityfeedAction from '../../../actions/ActivityFeed/ActivityfeedAction';
+import CommentStore from '../../../stores/CommentStore';
+import Comment from './Comment.react';
 import LikeStatusStore from '../../../stores/LikeStatusStore';
-import Snackbar from 'material-ui/lib/snackbar';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-
-//tap-event-plugin
-injectTapEventPlugin();
+import ActivitySharedList from './activitySharedList.react';
+import ActivityContainer from './activityContainer.react';
+import CountBox from './CountBox.react';
 
 const iconButtonElement = (
-    <IconButton
-        touch={true}
-        tooltip="more"
-        tooltipPosition="bottom-left">
-        <MoreVertIcon color={Colors.deepPurple500} />
-    </IconButton>
+  <IconButton
+    touch={true}
+    tooltip="more"
+    tooltipPosition="bottom-left">
+    <MoreVertIcon color={Colors.deepPurple500} />
+  </IconButton>
 );
 
 const style1 = {
-    width: 800,
-    margin: 40,
+  width: 800,
+  margin: 40,
 };
 
 const style2 = {
-    width: 800,
+  width: 800,
 };
 
-var a = 1;
+const style3 = {
+  width: 760,
+  position:'relative',
+
+};
+
+const loadMoreStyle = {
+  marginLeft: 100
+}
+
+function validateCommentText(textComment) {
+  if(textComment.length > 200) {
+    return {
+      "error": "*comment is too long"
+    }
+  }
+  else if(textComment === "") {
+    return {
+      "error": "*comment cannot be empty"
+    }
+  }
+  else {
+    return true;
+  }
+};
+
+var commentLimitNo = 0;
 
 const ActivityList = React.createClass({
+  getInitialState: function () {
+    return {
+      opens: false,
+      commentText: '',
+      sharedResults: StatusStore.getSharedData(),
+      commentResults: CommentStore.getCommentsData(),
+      count: LikeStatusStore.getCount(),
+      liked: '',
+      open1: false,
+      open3: false,
+      open4: false,
+      open5: false,
+      likeCount: '',
+    };
+  },
 
-    deleteStatus: function () {
-        var postId = this.props.id;
-        let delete_status = {
-            PostId: postId
-        };
-        ActivityFeedActions.delete_status(delete_status);
-    },
+  componentDidMount: function () {
+    StatusStore.addChangeListener(this._onChange);
+    LikeStatusStore.addChangeListener(this._onChange);
+    CommentStore.addChangeListener(this._onChange);
 
-    addshare: function () {
-        var postId = this.props.id;
-        var email = LoginStore.getEmail();
-        var firstname = LoginStore.getFirstname();
-        let add_share = {
-            PostId: postId,
-            Email: email,
-            Fname: firstname
-        };
-        ShareActions.add_share(add_share);
-    },
+    if(!this.props.lPostId){
+      this.setState({liked: !this.state.liked});
+    } else {
+      this.setState({liked: this.state.liked});
+    }
 
-    setFocusToTextBox: function () {
-        document.getElementById("mytext").focus();
-    },
+    let commentData = {
+      postId: this.props.id,
+    };
+    ActivityfeedAction.getCommentList(commentData);
 
-    getInitialState: function () {
-        return {
-            open: false,
-            liked: LikeStatusStore.getlikes(),
-            postId: StatusStore.getStatusID(),
-        };
-    },
+    let LikedData = {
+      postId: this.props.id,
+    };
+    ActivityfeedAction.getCount(LikedData);
+  },
 
-    componentDidMount: function () {
-        LikeStatusStore.addChangeListener(this._onChange);
-        LikesActions.getlikestatus();
+  _onChange: function () {
+    this.setState({sharedResults: StatusStore.getSharedData()});  
+    this.setState({commentResults: CommentStore.getCommentsData()});
+    this.setState({count: LikeStatusStore.getCount()});
+  },
 
-        StatusStore.addChangeListener(this._onChange);
-        ActivityFeedActions.getpostId();
-    },
 
-    _onChange: function () {
-        this.setState({postId: StatusStore.getStatusID()});
-        this.setState({liked: LikeStatusStore.getlikes()});
+  _getSharedItem: function () { 
+    if(this.props.type=="shared"){
+      return(<ActivitySharedList sid={this.props.sid}
+                                 sfirstname={this.props.sfirstname}
+                                 sattachment={this.props.sattachment}
+                                 spost_text={this.props.spost_text}
+                                 screated_at={this.props.screated_at}/>)
+    }
+  },
 
-        if (LikeStatusStore.getlikes() == "false") {
-            this.setState({
-                liked: false,
-            });
+  _getLikedCount: function () {
+    let self = this;
+    return (this.state.count.map(function(val) {
+      return (val.map(function(result) {
+        if(self.props.id == result.post_id) {
+           return(<CountBox likedCount={result.likedCount}
+                            shareCount={result.shareCount}
+                            post_id={result.post_id}/>);
         }
-        if (LikeStatusStore.getlikes() == "true") {
-            this.setState({
-                liked: true,
-            });
-        }
+      }));
+    }));
+  },
+
+  _getCommentList: function () {
+      let self = this;
+      return (this.state.commentResults.map(function(comment) {
+        return (comment.map(function(comm) {
+          if(self.props.id == comm.post_id) {
+            return (<Comment ckey={comm.id} 
+                             cid={comm.id} 
+                             cfirstName={comm.firstname} 
+                             comment_txt={comm.comment_txt} />);       
+          }
+        }));
+      }));
+  },
+
+  _editStatus: function () {
+    let status = this.refs.EditBox.getValue();
+    let editData = {
+      userId: localStorage.getItem('userid'),
+      postId: this.props.id,
+      status: status,
+    };
+    ActivityfeedAction._editStatus(editData);
+    this.handleClose();
+  },
+
+  _deleteStatus: function () {
+    let deleteData = {
+      userId: localStorage.getItem('userid'),
+      postId: this.props.id,
+    };
+    ActivityfeedAction._deleteStatus(deleteData);
     },
 
-    _changeLikeState: function () {
+  _blockedStatus: function () {
+    let blockData = {
+      email: LoginStore.getEmail(),
+      userId: localStorage.getItem('userid'),
+      postId: this.props.id,
+    };
+    ActivityfeedAction._blockStatus(blockData);
+  },
 
-        var postId = this.props.id;
-        console.log(postId);
-        var email = LoginStore.getEmail();
-        var firstname = LoginStore.getFirstname();
-        let add_likes = {
-            PostId: postId,
-            Email: email,
-            Fname: firstname
-        };
+  _changeShareState:function() {
+    let shareStatus = this.refs.shareBox.getValue();
+    let shareData = {
+      email: LoginStore.getEmail(),
+      userId: localStorage.getItem('userid'),  
+      firstName: LoginStore.getFirstname(),
+      postId: this.props.id,
+      status: shareStatus,
+    };
 
-        if (!this.state.liked) {
-            console.log('like');
-            this.setState({liked: !this.state.liked});
-            LikesActions.like(add_likes);
-        }
-        else {
-            console.log('Unlike');
-            this.setState({liked: !this.state.liked});
-            LikesActions.unlike(add_likes);
-        }
-    },
+      this.setState({shared: !this.state.shared});
+      ActivityfeedAction._addShare(shareData);
+      //alert('Share successful');
+   
+    this.setState({open1: false});   
+    this.setState({open4: true});
+  },
 
-    handleOpen: function () {
-        this.setState({open: true});
-    },
+  _changeLikeState: function () {
+    let likeData = {
+      postId: this.props.id,
+      userId: localStorage.getItem('userid'), 
+      email: LoginStore.getEmail(),
+      firstName: LoginStore.getFirstname(),
+    };
 
-    handleClose: function () {
-        this.setState({open: false});
-    },
+    if (this.state.liked) {
+      this.setState({liked: !this.state.liked});
+      ActivityfeedAction.like(likeData);
+      _getLikedCount();
+    }
+    else {
+      this.setState({liked: !this.state.liked});
+      ActivityfeedAction.unlike(likeData);
+      _getLikedCount();
+    }
+  },
 
-   /* handleBoth: function () {
-        if(this._handleRegisterClickEvent()) {
-           this.setState({open: false});
-        }
-    },**/
+  _loadMoreComments: function () {
+      let commentData = {
+      postId: this.props.id,
+    };
+    ActivityfeedAction.loadMoreComment(commentData);
+  },
 
-    _handleUpdateClickEvent: function () {
+  handleOpen: function () {
+    this.setState({opens: true});
+  },
 
-        let post_text= this.refs.EditBox.getValue();
-        let postId= this.props.id;
+  handleOpenShare: function () {
+    this.setState({open1: true});
+  },
 
-        let editstatus={
-          PostId: postId,
-          Status: post_text
-          };
+  handleOpenDelete: function () {
+    this.setState({open3: true});
+  },
 
-        // swal({  title: "Are you sure?",
-        //         text: "Do you really want to update this post?",
-        //         type: "warning",
-        //         showCancelButton: true,
-        //         confirmButtonColor: "#DD6B55",
-        //         confirmButtonText: "Yes, Update!",
-        //         cancelButtonText: "No, Cancel!",
-        //         closeOnConfirm: false,
-        //         closeOnCancel: false },
-        //     function(isConfirm){
-        //         if (isConfirm) {
-        //             swal("Updated!", "This post has been updated.", "success");
-        //             ActivityFeedActions.editstatus(editstatus);
-        //             console.log('Done calling !');
-        //         } else {
-        //             swal("Cancelled", "This post isn't  still updated.", "error");
-        //         } });
-         this.handleClose();
-    },
+  handleOpenBlock: function () {
+    this.setState({open5: true});
+  },
 
-    EnterKey_comment(e) {
-        if (e.key === 'Enter') {
-            console.log();
-            console.log(this.refs.commentBox.getValue());
-            var postId = this.props.id;
-            var comment = this.refs.commentBox.getValue();
-            var email = LoginStore.getEmail();
-            var firstname = LoginStore.getFirstname();
-            let add_comment = {
-                PId: postId,
-                Comment: comment,
-                Email: email,
-                Fname: firstname
-            };
-            CommentAction.add_comment(add_comment);
-        }
-    },
+  handleClose: function () {
+    this.setState({opens: false});
+    this.setState({open3: false});
+    this.setState({open4: false});
+    this.setState({open5: false});
+  },
 
-	render: function() {
-     const actions = [
+  setFocusToTextBox: function () {
+    document.getElementById(this.props.id).focus();
+  },
+
+  EnterKey(e){
+    if (e.key ==='Enter') {
+      let val = true;
+      var comment = this.refs.commentBox.getValue();
+      let commentData={
+        postId: this.props.id,
+        userId: localStorage.getItem('userid'),  
+        comment: comment,
+        email: LoginStore.getEmail(),
+        firstName: LoginStore.getFirstname(),
+      };
+             
+      if(validateCommentText(comment).error) {
+        this.setState({
+          commentText: validateCommentText(comment).error
+        });
+        val = false;
+      }
+      else {
+        ActivityfeedAction.addComment(commentData);
+        this.setState({
+          commentText: ''
+        });
+      }
+      this.clearText();
+    }
+  },
+
+  clearText:function() {
+    var commentBoxId=this.props.id;
+    document.getElementById(commentBoxId).value = "";
+  },
+
+  render: function() {
+    const updateActions = [
       <FlatButton
         label="Update"
         primary={true}
         keyboardFocused={true}
-        onTouchTap={this._handleUpdateClickEvent}/>,
+        onTouchTap={this._editStatus}/>,
 
       <FlatButton
         label="Close"
@@ -208,60 +303,146 @@ const ActivityList = React.createClass({
         onTouchTap={this.handleClose}/>,
     ];
 
-		return (
-			<div className="col-lg-6">
-			<div >
-            <Card>
-		        <ListItem
-		          leftAvatar={<Avatar src={'img/profilepics/' + localStorage.getItem('username')} />}
-		          primaryText={this.props.firstname}
-		          secondaryText={
-		            <p>
-		              <b>{this.props.created_at}</b><br/>
-              			{this.props.post_text}
+    const confirmDeleteActions = [
+      <FlatButton
+        label="Delete"
+        primary={true}
+        keyboardFocused={true}
+        onTouchTap={this._deleteStatus}/>,
 
-                        {this.props.image ? <img src={'img/profilepics/' + 
+      <FlatButton
+        label="Cansel"
+        secondary={true}
+        onTouchTap={this.handleClose}/>,
+    ];
 
-                        localStorage.getItem('username')}/> : ''}
-		            </p>
-		          }
-		          secondaryTextLines={2}
-		          rightIconButton={
-                 <IconMenu iconButtonElement={iconButtonElement}>
+    const shareActions = [
+      <FlatButton
+        label="Post"
+        primary={true}
+        keyboardFocused={true}
+        onTouchTap={this._changeShareState}/>,
+
+      <FlatButton
+        label="Close"
+        secondary={true}
+        onTouchTap={this.handleClose}/>,
+    ];
+
+    const confirmShareActions = [
+      <FlatButton
+        label="Ok"
+        secondary={true}
+        onTouchTap={this.handleClose}/>,
+    ];
+
+    return (
+      <div style={style1}>
+        <div>
+          <Card>
+            <ListItem
+              leftAvatar={<Avatar src="https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg" />}
+              primaryText={this.props.firstName}
+              secondaryText={
+                <p>
+                  <b>{this.props.created_at}</b>
+                </p>
+              }
+              secondaryTextLines={1} 
+              rightIconButton={
+                  <IconMenu iconButtonElement={iconButtonElement}>
                     <MenuItem primaryText="Edit" onClick={this.handleOpen}/>
-                    <MenuItem primaryText="Remove" onClick={this.deleteStatus}/>
+                    <MenuItem primaryText="Remove" onClick={this.handleOpenDelete}/>
                   </IconMenu> } />
-		           	
-             
-                <IconButton onClick={this._changeLikeState} tooltip={this.state.liked ? "Unlike" : "Like"} touch={true} tooltipPosition="bottom-right">
-                  {this.state.liked ? <FavIcon onClick={this._changeLikeState} viewBox="0 0 20 30" color={Colors.red500} /> : 
-                            <FavIconBorder viewBox="0 0 20 30" color={Colors.red500} />}
-                </IconButton>
-               
-    
-          			<FlatButton label="Comment" onClick={this.setFocusToTextBox} />
-          			<FlatButton label="Share" onClick={this.addshare}/>
-		        <Divider inset={true} />	   
-            </Card>	
-                <Dialog
-                     title="Modify Your Status"
-                     actions={actions}
-                     modal={false}
-                     open={this.state.open}
-                     onRequestClose={this.handleClose}>
-                    <TextField hintText="Update your status" multiLine={false} fullWidth={true} ref="EditBox" defaultValue={this.props.post_text}/>
-                </Dialog>
-			</div>
-            <div></div>
-			<div>
-              <Paper>
-                <TextField hintText="Write a comment..." multiLine={false} fullWidth={true} onKeyPress={this.EnterKey_comment} ref="commentBox" id="mytext"/>
-              </Paper>
-            </div>
-            <br/><br/>
-			</div>
-		);
-	}
+
+              <CardText>
+                {this.props.postText}
+              </CardText>
+
+              <div>
+                {
+                  (this.props.attachment!='None') ? <div>
+                                                  <CardMedia>
+                                                    <img src={'img/activityFeedPics/'+ this.props.attachment} />
+                                                  </CardMedia>
+                                            </div> : ''
+                }
+              </div>
+
+
+              <div>
+                {this._getSharedItem()}
+              </div>
+                  
+              <IconButton onClick={this._changeLikeState} tooltip={!this.state.liked ? "Unlike" : "Like"} touch={true} tooltipPosition="bottom-right">
+                {!this.state.liked ? <FavIcon onClick={this._changeLikeState} viewBox="0 0 20 30" color={Colors.red500} /> : 
+                  <FavIconBorder viewBox="0 0 20 30" color={Colors.red500} />}
+              </IconButton>
+
+              <FlatButton label="Comment" onClick={this.setFocusToTextBox} />
+              <FlatButton label="Share" onClick={this.handleOpenShare} /> /> 
+
+          </Card> 
+
+          <div>
+            {this._getLikedCount()}
+          </div>
+
+          <Dialog
+            title="Modify Your Status"
+            actions={updateActions}
+            modal={false}
+            open={this.state.opens}
+            onRequestClose={this.handleClose}>
+            <TextField hintText="Update your status" multiLine={false} fullWidth={true} ref="EditBox" defaultValue={this.props.postText}/>
+          </Dialog>
+
+          <Dialog
+            title="Delete Post"
+            actions={confirmDeleteActions}
+            modal={false}
+            open={this.state.open3}
+            onRequestClose={this.handleClose}>
+              Are you sure you want to delete this post?" 
+          </Dialog>
+
+          <Dialog
+            title={this.props.firstName + "'s post Share on your own Activityfeed"}
+            actions={shareActions}
+            modal={false}
+            open={this.state.open1}
+            onRequestClose={this.handleClose}>
+            <TextField hintText="Say something about this..." multiLine={false} fullWidth={true} ref="shareBox" />
+          </Dialog>
+
+          <Dialog
+            title="Share Post"
+            actions={confirmShareActions}
+            modal={false}
+            open={this.state.open4}
+            onRequestClose={this.handleClose}>
+              "This has been shared to your Timeline."
+          </Dialog>
+
+        </div>
+
+        <div>
+          <Card style={style2}>
+          <FlatButton label="load more comments" onClick={this._loadMoreComments} /> 
+          </Card>
+          {this._getCommentList()}
+        </div>
+        <div>
+          <Card style={style2}>
+            <Paper zDepth={1}>
+              <div className='col-md-10'></div>
+                <TextField style={style3} className='col-md-2' fullWidth={true} hintText="Write a comment..." multiLine={false} onKeyPress={this.EnterKey} errorText={this.state.commentText} ref="commentBox" id={this.props.id} />
+            </Paper>
+          </Card>
+        </div>
+      </div>
+    );
+  }
 });
 
 export default ActivityList;

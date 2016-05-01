@@ -48,29 +48,6 @@ const PaperExampleSimple = React.createClass({
 
   },
 
-  previousMList: function () {
-        this.state.threads.map((item) => {
-       return (<ListItem
-              leftAvatar={<Avatar src="profile pic" />}
-              primaryText={item.firstname}
-              secondaryText={this.test(item)}
-              secondaryTextLines={2}
-          />
-      );
-    });
-  },
-
-  MList: function () {
-        this.state.threads.map((item) => {
-       return (<ListItem
-              leftAvatar={<Avatar src="profile pic" />}
-              primaryText={item.firstname}
-              secondaryText={this.test(item)}
-              secondaryTextLines={2}
-          />
-      );
-    });
-  },
 
   socketio: function () {
       socket.on('chat', function (data) {
@@ -128,7 +105,7 @@ const PaperExampleSimple = React.createClass({
 
         this.state.threads.map((item) => {
        return (<ListItem
-              leftAvatar={<Avatar src="profile pic" />}
+              leftAvatar={<Avatar src={'img/profilepics/'+item.username} />}
               primaryText={item.firstname}
               secondaryText={this.test(item)}
               secondaryTextLines={2}

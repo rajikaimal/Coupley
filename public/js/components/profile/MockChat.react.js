@@ -10,27 +10,9 @@ import LoginStore from '../../stores/LoginStore';
 import CommunicationChatBubble from 'material-ui/lib/svg-icons/communication/chat-bubble';
 var User1 = LoginStore.getUsername();
 
-// const ChatData = [{
-//   name: 'Tharaka',
-//   uri: 'http://images6.fanpop.com/image/photos/35600000/Tiffany-SNSD-IPKN-tiffany-hwang-35651024-720-720.png',
-// }, {
-//   name: 'Stephanie Hwang',
-//   uri: 'http://images6.fanpop.com/image/photos/35600000/Tiffany-SNSD-IPKN-tiffany-hwang-35651024-720-720.png',
-// }, {
-//   name: 'Test',
-//   uri: 'http://images6.fanpop.com/image/photos/35600000/Tiffany-SNSD-IPKN-tiffany-hwang-35651024-720-720.png',
-// }, ];
-//
-// const ChatData_2 = [{
-//   name: 'Rajika Imal',
-//   uri: 'http://images6.fanpop.com/image/photos/35600000/Tiffany-SNSD-IPKN-tiffany-hwang-35651024-720-720.png',
-// }, {
-//   name: 'Stephanie Hwang',
-//   uri: 'http://images6.fanpop.com/image/photos/35600000/Tiffany-SNSD-IPKN-tiffany-hwang-35651024-720-720.png',
-// }, ];
 
 const header={
-  
+
 };
 
 const styles = {
@@ -38,8 +20,8 @@ const styles = {
     maxWidth: 10,
   },
   toggle: {
-    marginBottom: 2,
     float: 'right',
+    marginLeft:100,
   },
 };
 
@@ -78,19 +60,6 @@ const MockChat = React.createClass({
     }
   },
 
-  // _renderPrevList: function () {
-  //   return this.state.chatitem.map((chatitem) => {
-  //     return (
-  //       <div>
-  //         <ListItem
-  //           primaryText={chatitem.firstname}
-  //           leftAvatar={<Avatar src={chatitem.uri} />}
-  //           rightIcon={<CommunicationChatBubble />} />
-  //         <Divider />
-  //       </div>
-  //     );
-  //   });
-  // },
 
   _renderChatList: function () {
     return this.state.chatitem.map((chatitem) => {
@@ -98,7 +67,7 @@ const MockChat = React.createClass({
         <div>
           <ListItem
             primaryText={chatitem.firstname}
-            leftAvatar={<Avatar src={chatitem.uri} />}
+            leftAvatar={<Avatar src={'img/profilepics/'+chatitem.username} />}
             rightIcon={<CommunicationChatBubble />} />
           <Divider />
         </div>
@@ -109,9 +78,13 @@ const MockChat = React.createClass({
   render: function () {
     return (
       <div>
+      <div className='col-xs-10'/>
+       <Toggle style={styles.toggle} onToggle={this.togglechanged} className='col-xs-2'/>
         <List subheader="Online users" subheaderStyle={this.header} style={this.liststyle}>
-        <Toggle  style={styles.toggle} onToggle={this.togglechanged}/>
+        <Divider/>
+        <List>
           {this._renderChatList()}
+        </List>
         </List>
       </div>
     );

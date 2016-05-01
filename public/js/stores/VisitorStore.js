@@ -11,6 +11,7 @@ var likedbackstatus;
 var blockstatus;
 var permission;
 var image;
+var done = false;
 
 var VisitorStore = assign({}, EventEmitter.prototype, {
   savePermission: function (data) {
@@ -33,12 +34,24 @@ var VisitorStore = assign({}, EventEmitter.prototype, {
     blockstatus = data;
   },
 
-  saveProfilePic: function(data) {
+  saveProfilePic: function (data) {
     image = data;
   },
 
-  clear: function() {
+  clear: function () {
     visitor = [];
+  },
+
+  saveDoneStatus: function (data) {
+    alert(done);
+    done = data;
+    setTimeout(function () {
+      done = false;
+    }, 1000);
+  },
+
+  getDoneStatus: function () {
+    return done;
   },
 
   getPermission: function () {
@@ -65,7 +78,7 @@ var VisitorStore = assign({}, EventEmitter.prototype, {
     visitor = {};
   },
 
-  getProfilePic: function() {
+  getProfilePic: function () {
     return image;
   },
 
@@ -110,6 +123,10 @@ AppDispatcher.register(function (payload) {
       break;
     case (ProfileConstants.CLEAR):
       VisitorStore.clear();
+      VisitorStore.emitChange();
+      break;
+    case (ProfileConstants.REPORTDONE):
+      VisitorStore.saveDoneStatus(payload.action.done);
       VisitorStore.emitChange();
       break;
   }

@@ -66,15 +66,29 @@ const Header = React.createClass({
 	    });
 	},
 	_onChangeNotification: function() {
-		this.setState({
-			notificationCount: NotificationStore.getNumber()
-		});
+		// if(NotificationStore.getNumber() == undefined) {
+		// 	this.setState({
+		// 		notificationCount: 0
+		// 	});
+		// } else {
+		// 	this.setState({
+		// 		notificationCount: NotificationStore.getNumber()
+		// 	});
+		// }
+		
+		
 	},
 	_clearNotifications: function(event) {
 		this.setState({
 	      open: !this.state.open,
 	      anchorEl: event.currentTarget,
 	    });
+	    if(!this.state.open) {
+	    	NotificationAction.clearNotifications(localStorage.getItem('username'));
+	    	this.setState({
+	    		notificationCount: 0
+	    	});
+	    }
 	},
 	handleRequestClose: function() {
 	    this.setState({
@@ -99,6 +113,7 @@ const Header = React.createClass({
 				        
 				        <li></li>
 				        <li><Link to={`/likes`}>Likes</Link></li>
+				        <li><Link to={`/visits`}>Visits</Link></li>
 				      </ul>
 				      <form className="navbar-form navbar-left">
 				        <div className="form-group">
@@ -146,7 +161,7 @@ const Header = React.createClass({
 		        </div>
 		        <Snackbar
                     open={this.state.error}
-                    message="Error occured please try again later !"
+                    message="Error occured please try again later !!!"
                     autoHideDuration={4000}
                     onRequestClose={this.handleRequestClose}
                 />

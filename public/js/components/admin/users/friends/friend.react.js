@@ -7,11 +7,9 @@ import IconButton from 'material-ui/lib/icon-button';
 import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
 import IconMenu from 'material-ui/lib/menus/icon-menu';
 import MenuItem from 'material-ui/lib/menus/menu-item';
-import injectTapEventPlugin from 'react-tap-event-plugin';
 import BlockActions from '../../../../actions/admin/blockUser';
 
-//tap-event-plugin
-injectTapEventPlugin();
+
 const path = '../../../../../../img/profilepics/';
 const iconButtonElement = (
     <IconButton

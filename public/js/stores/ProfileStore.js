@@ -10,10 +10,15 @@ var pic = '';
 var error = false;
 var done = false;
 var blocklist = [];
+var photoPaths = [];
+
+var temp;
 
 var ProfileStore = assign({}, EventEmitter.prototype, {
   saveUserData: function (data) {
-    user.push(data);
+    
+    //user.push(data);
+    temp = data;
   },
 
   saveProfilePic: function (data) {
@@ -24,18 +29,26 @@ var ProfileStore = assign({}, EventEmitter.prototype, {
     error = data;
     setTimeout(function () {
       error = false;
-    }, 6000);
+    }, 1000);
   },
 
   saveDoneStatus: function (data) {
     done = data;
     setTimeout(function () {
       done = false;
-    }, 6000);
+    }, 1000);
   },
 
   saveBlockList: function (data) {
     blocklist = data;
+  },
+
+  savePhotos: function(data) {
+    photoPaths = data;
+  },
+
+  getPhotos: function() {
+    return photoPaths;
   },
 
   getBlockList: function () {
@@ -51,25 +64,29 @@ var ProfileStore = assign({}, EventEmitter.prototype, {
   },
 
   getUserData: function () {
-    if (user.length == 0) {
-      return {
-        firstname: '',
-        lastname: '',
-        country: '',
-        username: '',
-        age: '',
-        birthday: '',
-      };
-    }
-
+    // if (user.length == 0) {
+    //   return {
+    //     firstname: '',
+    //     lastname: '',
+    //     country: '',
+    //     username: '',
+    //     age: '',
+    //     birthday: '',
+    //   };
+    // }
+    if(temp != undefined ) {
+    
     return {
-      firstname: user[0].firstname,
-      lastname: user[0].lastname,
-      country: user[0].country,
-      username: user[0].username,
-      age: user[0].age,
-      birthday: user[0].birthday,
-    };
+      firstname: temp.firstname,
+      lastname: temp.lastname,
+      country: temp.country,
+      username: temp.username,
+      age: temp.age,
+      birthday: temp.birthday,
+    };  
+    }
+    return {};
+    
   },
 
   getAll: function() {
@@ -101,6 +118,10 @@ AppDispatcher.register(function (payload) {
       break;
     case (ProfileConstants.BLOCKLIST):
       ProfileStore.saveBlockList(payload.action.list);
+      ProfileStore.emitChange();
+      break;
+    case (ProfileConstants.PROFPHOTOS):
+      ProfileStore.savePhotos(payload.action.photos);
       ProfileStore.emitChange();
       break;
     case (ProfileConstants.ERR):

@@ -18,4 +18,7 @@ module.exports = keyMirror({
   BLOCKLIST: null,
   CLEAR: null,
   SUGGESTIONS: null,
+  LOOKINGFOR: null,
+  PROFPHOTOS: null,
+  REPORTDONE: null,
 });

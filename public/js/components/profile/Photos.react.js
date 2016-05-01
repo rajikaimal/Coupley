@@ -1,24 +1,46 @@
 import React from 'react';
 import RaisedButton from 'material-ui/lib/raised-button';
-
-const client_id = 'ce95bac6c6e840eea2bb5a67b072d5b2';
-
-const buttonStyle = {
-  marginTop: 75,
-  marginLeft: 420,
-  paddingBottom: 150
-};
+import ProfileActions from '../../actions/profile/ProfileActions';
+import ProfileStore from '../../stores/ProfileStore';
+import Photo from './Photo.react';
 
 const Photos = React.createClass({
-  _requestInstagram: function() {
-    console.log('requesting');
-    $.get('https://api.instagram.com/oauth/authorize/?client_id=' + client_id + '&redirect_uri=http://localhost:3000&response_type=token');
+  getInitialState: function() {
+    return {
+      photos: []
+    }
   },
+
+  componentDidMount: function() {
+    ProfileActions.fetchPhotos();
+    ProfileStore.addChangeListener(this._onChange);
+  },
+
+  _onChange: function() {
+    console.log('changeddd');
+    this.setState({
+      photos: ProfileStore.getPhotos()
+    });
+    console.log(this.state.photos);
+  },
+
+  _renderPhotos: function() {
+    console.log('rendering');
+    return this.state.photos.map(function(path) {
+      return (
+        <Photo path={path} />
+      );
+    });
+  },
+
   render: function() {
     return (
       <div>
-        <div style={buttonStyle}>
-          <RaisedButton label="Link to Instagram" primary={true} onClick={this._requestInstagram}/>
+        Photos
+        <div >
+          {
+            this.state.photos ? this._renderPhotos() : ''
+          }
         </div>
       </div>  
     );    

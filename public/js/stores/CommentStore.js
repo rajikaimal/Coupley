@@ -21,12 +21,13 @@ var CommentStore = assign({},EventEmitter.prototype, {
    * Put results(comment data) to searchComments.
    */
   saveCommentsData: function(results) {
-    // searchComments.postID = results[0].post_id;
-    // searchComments.comments = results;
+   // searchComments = [];
     searchComments.push(results);
-    console.log('Search comments');
-    console.log(searchComments);
-    
+  },
+
+  loadMoreComments: function(data) {
+    searchComments = [];
+    searchComments.push(data);
   },
 
   emitChange: function() {
@@ -45,6 +46,10 @@ AppDispatcher.register(function(payload) {
 	switch(payload.action.actionType) {
 		case(CommentConstants.GETCOMMENT):
       CommentStore.saveCommentsData(payload.action.commentdata);
+      CommentStore.emitChange();
+      break;
+    case(CommentConstants.LOADMORE):
+      CommentStore.loadMoreComments(payload.action.commentdata);
       CommentStore.emitChange();
       break;
 	}

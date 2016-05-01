@@ -12,25 +12,26 @@ var socketList = [];
 
 var NotificationStore = assign({}, EventEmitter.prototype, {
   saveNotficationNumber: function (data) {
-    notificationNumber = data;
+    if (data == undefined) {
+      notificationNumber = 0;
+    } else {
+      notificationNumber = data;
+    }
   },
 
   saveList: function (data) {
     list = data;
-    list.concat(socketList);
   },
 
   saveSocketNotification: function (data) {
     let con = {
       content: data,
     };
-    console.log('sockeeeeet' + con);
-    socketList.push(con);
+    socketList.push(data);
   },
 
   getList: function () {
-    console.log('Getting nooooooottt');
-    console.log(list);
+
     return list;
   },
 

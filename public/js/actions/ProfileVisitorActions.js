@@ -70,6 +70,7 @@ var LoginActions = {
       gotLikedUsername: gotlikedusername,
     };
     $.post('/api/like?token=' + localStorage.getItem('apitoken'), request, function (response) {
+      alert('emiting');
       socket.emit('like', likeNotify);
     }).fail(function (error) {
 
@@ -220,7 +221,11 @@ var LoginActions = {
   reportUser: function(data) {
     $.post('/api/profile/report?token=' + localStorage.getItem('apitoken'), data, function (response) {
       if (response.status == 200) {
-        window.reload();
+        AppDispatcher.handleViewAction({
+          actionType: ProfileConstants.REPORTDONE,
+          done: true,
+        });
+//        window.location.reload(true);
       }
     }).fail(function (error) {
       AppDispatcher.handleViewAction({
@@ -232,10 +237,10 @@ var LoginActions = {
 
   visitor: function(data) {
     $.post('/api/profile/visitorcount?token=' + localStorage.getItem('apitoken'), data).fail(function (error) {
-      AppDispatcher.handleViewAction({
-        actionType: ProfileConstants.ERR,
-        error: true,
-      });
+      // AppDispatcher.handleViewAction({
+      //   actionType: ProfileConstants.ERR,
+      //   error: true,
+      // });
     });
   },
 

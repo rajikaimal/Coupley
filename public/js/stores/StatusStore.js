@@ -7,8 +7,8 @@ var CHANGE_EVENT = 'change';
 
 var searchResults = [];
 var sharedResults = [];
+var sharedUsers = [];
 var profileposts;
-var userId;
 
 var StatusStore = assign({}, EventEmitter.prototype, {
 
@@ -35,13 +35,12 @@ var StatusStore = assign({}, EventEmitter.prototype, {
     sharedResults = results;
   },
 
-  getLoggedUId: function () {
-    console.log(userId);
-    return userId;
+  getSharedUsers: function () {
+    return sharedUsers;
   },
 
-  saveLoggedUId: function (results) {
-    userId = results;
+  saveSharedUsers: function (results) {
+    sharedUsers.push(results);
   },
 
   /**
@@ -85,8 +84,8 @@ AppDispatcher.register(function (payload) {
       StatusStore.saveprofileposts(payload.action.posts);
       StatusStore.emitChange();
       break;
-    case (ActivityFeedConstants.GETLOGGEDUSERID):
-      StatusStore.saveLoggedUId(payload.action.userId);
+    case (ActivityFeedConstants.GETSHAREDUSERS):
+      StatusStore.saveSharedUsers(payload.action.sharedUsers);
       StatusStore.emitChange();
       break;
   }

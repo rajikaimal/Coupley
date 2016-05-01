@@ -42,6 +42,7 @@ class AdminNotificationController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
      * Retrieve the count of
      * unread notifications of the admin.
@@ -58,6 +59,7 @@ class AdminNotificationController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
     /**
      * Retrieve the last 5
      * notifications of the admin.

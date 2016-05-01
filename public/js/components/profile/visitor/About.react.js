@@ -15,9 +15,7 @@ import AboutActions from '../../../actions/profile/visitor/AboutActions';
 import AboutStore from '../../../stores/VisitorAboutStore';
 import ErrorStore from '../../../stores/ErrorStore';
 import Snackbar from 'material-ui/lib/snackbar';
-
-//tap-event-plugin
-injectTapEventPlugin();
+import LookingFor from './lookingfor/LookingFor.react';
 
 function validate(data) {
   if(data.length >= 100) {
@@ -96,71 +94,78 @@ const About = React.createClass({
     },
     render: function() {
         return (
-          <div>      
-            <List>
-                <ListItem key="Self summary"
-                    primaryText="Self summary"
+          <div>
+            <div className="col-lg-6">   
+                <List>
+                    <ListItem key="Self summary"
+                        primaryText="Self summary"
 
-                    secondaryText={this.state.summary}
-                    rightIconButton={<IconMenu iconButtonElement={<IconButton>
-                        
-                    </IconButton>}>
-                        
-                    </IconMenu>}
-                    leftAvatar={<Avatar color={Colors.deepPurple500} backgroundColor={Colors.transparent}
-                        style={{left: 8}}>S</Avatar>} />
-                
-                <ListItem key="What Im doing"
-                    primaryText="What I'm doing with my life ?"
-                    secondaryText={this.state.life}
-                    rightIconButton={<IconMenu iconButtonElement={<IconButton>
-                        
-                    </IconButton>}>
-                        
-                    </IconMenu>}
-                    leftAvatar={<Avatar color={Colors.deepPurple500} backgroundColor={Colors.transparent}
-                        style={{left: 8}}>W</Avatar>} />
-                
-                <ListItem key="Really good at"
-                    primaryText="I'm really good at"
-                    secondaryText={this.state.goodat}
-                    rightIconButton={<IconMenu iconButtonElement={<IconButton>
-                        
-                    </IconButton>}>
-                        
-                    </IconMenu>}
-                    leftAvatar={<Avatar color={Colors.deepPurple500} backgroundColor={Colors.transparent}
-                        style={{left: 8}}>R</Avatar>} />
-                
-                <ListItem key="I spend alot"
-                    primaryText="I spend a lot of time thinking about"
-                    secondaryText={this.state.spendtime}
-                    rightIconButton={<IconMenu iconButtonElement={<IconButton>
-                        
-                    </IconButton>}>
-                        
-                    </IconMenu>}
-                    leftAvatar={<Avatar color={Colors.deepPurple500} backgroundColor={Colors.transparent}
-                        style={{left: 8}}>I</Avatar>} />
-                
-                <ListItem key="Books food movies"
-                    primaryText="Favourite Books, Movies, Food <3"
-                    secondaryText={this.state.favs}
-                    rightIconButton={<IconMenu iconButtonElement={<IconButton>
-                        
-                    </IconButton>}>
-                        
-                    </IconMenu>}
-                    leftAvatar={<Avatar color={Colors.deepPurple500} backgroundColor={Colors.transparent}
-                        style={{left: 8}}>F</Avatar>} />
-                
-            </List>
+                        secondaryText={this.state.summary}
+                        rightIconButton={<IconMenu iconButtonElement={<IconButton>
+                            
+                        </IconButton>}>
+                            
+                        </IconMenu>}
+                        leftAvatar={<Avatar color={Colors.deepPurple500} backgroundColor={Colors.transparent}
+                            style={{left: 8}}>S</Avatar>} />
+                    
+                    <ListItem key="What Im doing"
+                        primaryText="What I'm doing with my life ?"
+                        secondaryText={this.state.life}
+                        rightIconButton={<IconMenu iconButtonElement={<IconButton>
+                            
+                        </IconButton>}>
+                            
+                        </IconMenu>}
+                        leftAvatar={<Avatar color={Colors.deepPurple500} backgroundColor={Colors.transparent}
+                            style={{left: 8}}>W</Avatar>} />
+                    
+                    <ListItem key="Really good at"
+                        primaryText="I'm really good at"
+                        secondaryText={this.state.goodat}
+                        rightIconButton={<IconMenu iconButtonElement={<IconButton>
+                            
+                        </IconButton>}>
+                            
+                        </IconMenu>}
+                        leftAvatar={<Avatar color={Colors.deepPurple500} backgroundColor={Colors.transparent}
+                            style={{left: 8}}>R</Avatar>} />
+                    
+                    <ListItem key="I spend alot"
+                        primaryText="I spend a lot of time thinking about"
+                        secondaryText={this.state.spendtime}
+                        rightIconButton={<IconMenu iconButtonElement={<IconButton>
+                            
+                        </IconButton>}>
+                            
+                        </IconMenu>}
+                        leftAvatar={<Avatar color={Colors.deepPurple500} backgroundColor={Colors.transparent}
+                            style={{left: 8}}>I</Avatar>} />
+                    
+                    <ListItem key="Books food movies"
+                        primaryText="Favourite Books, Movies, Food <3"
+                        secondaryText={this.state.favs}
+                        rightIconButton={<IconMenu iconButtonElement={<IconButton>
+                            
+                        </IconButton>}>
+                            
+                        </IconMenu>}
+                        leftAvatar={<Avatar color={Colors.deepPurple500} backgroundColor={Colors.transparent}
+                            style={{left: 8}}>F</Avatar>} />
+                    
+                </List>
             <Snackbar
                 open={this.state.error}
                 message="Something went wrong. We're working on getting this fixed as soon as we can. You may be able to try again."
                 autoHideDuration={4000}
                 onRequestClose={this.handleRequestClose} />
-          </div>  
+          </div>
+
+          <div className="col-lg-6">
+            <LookingFor />
+          </div>
+
+        </div>
         );    
     }
 

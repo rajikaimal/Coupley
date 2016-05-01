@@ -10,6 +10,7 @@ var life;
 var goodat;
 var spendtime;
 var favs;
+var lookingfor;
 
 var AboutStore = assign({}, EventEmitter.prototype, {
   saveAll: function (data) {
@@ -18,6 +19,14 @@ var AboutStore = assign({}, EventEmitter.prototype, {
     goodat = data.goodat;
     spendtime = data.thinkingof;
     favs = data.favourites;
+  },
+
+  saveLookingFor: function (data) {
+    lookingfor = data;
+  },
+
+  getLookingFor: function () {
+    return lookingfor;
   },
 
   getSummary: function () {
@@ -53,6 +62,10 @@ AppDispatcher.register(function (payload) {
   switch (payload.action.actionType) {
     case (ProfileConstants.VISITORABOUTLOAD):
       AboutStore.saveAll(payload.action.data);
+      AboutStore.emitChange();
+      break;
+    case (ProfileConstants.LOOKINGFOR):
+      AboutStore.saveLookingFor(payload.action.lookingfor);
       AboutStore.emitChange();
       break;
   }
