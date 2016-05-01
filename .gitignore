@@ -7,7 +7,6 @@ Homestead.json
 .env.*.php
 .env.php
 .env
-public/bundle.js
 public/node_modules
 .idea/
 npm-debug.log
