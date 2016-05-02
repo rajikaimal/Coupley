@@ -166,6 +166,54 @@ class ThreadController extends Controller
         }
     }
 
+    /**
+     * set offline to List of online people.
+     *
+     * @param object        $request
+     *
+     *
+     * @return void
+     */
+    public function setOfflineUsers(Request $request)
+    {
+        $user1 = $request->user1;
+        try {
+            if ($onlinelist = \DB::select(\DB::raw("
+                UPDATE users SET chatstatus='offline' WHERE username='".$user1."'
+           "))) {
+                return response()->json(['user1' => $user1, 'status' => 200], 200);
+            } else {
+                return response()->json(['status' => 505], 505);
+            }
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 200], 200);
+        }
+    }
+
+    /**
+     * set online to List of online people.
+     *
+     * @param object        $request
+     *
+     *
+     * @return void
+     */
+    public function setOnlineUsers(Request $request)
+    {
+        $user1 = $request->user1;
+        try {
+            if ($onlinelist = \DB::select(\DB::raw("
+                UPDATE users SET chatstatus='online' WHERE username='".$user1."'
+           "))) {
+                return response()->json(['user1' => $user1, 'status' => 200], 200);
+            } else {
+                return response()->json(['status' => 505], 505);
+            }
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 200], 200);
+        }
+    }
+
     public function getMessage(Request $request)
     {
         $threadId = $request->threadId;

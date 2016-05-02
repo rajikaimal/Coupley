@@ -11,6 +11,8 @@ import CommunicationChatBubble from 'material-ui/lib/svg-icons/communication/cha
 var User1 = LoginStore.getUsername();
 
 
+var intCount = 0;
+
 const header={
 
 };
@@ -36,7 +38,6 @@ var post = {
 const MockChat = React.createClass({
 
   getInitialState: function () {
-    console.log(post.user1);
     return {
       chatitem:ThreadStore.getonlineuserslist(),
     };
@@ -57,6 +58,11 @@ const MockChat = React.createClass({
    togglechanged:function (e, value) {
     if (value) {
       console.log('togle unaaaa!');
+      ThreadActions.setOfflineUsersList(post);
+
+    }else{
+    console.log('togle une naaa!');
+    ThreadActions.setOnlineUsersList(post);
     }
   },
 

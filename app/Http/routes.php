@@ -74,9 +74,12 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('getlikedusers', 'ThreadController@getLikedUserList');
     //Serch Results of Previous messages
     Route::get('getsearchconv', 'ThreadController@getSearchConv');
-    //Serch Results of Previous messages
-
+    //Return a list of online users
     Route::get('getonlineusers', 'ThreadController@getOnlineUsers');
+    //set Offline to a set of online users
+    Route::get('setoffline', 'ThreadController@setOfflineUsers');
+    //set Online to a set of online users
+    Route::get('setonline', 'ThreadController@setOnlineUsers');
 
     Route::get('getMessage', 'ThreadController@getMessage');
 

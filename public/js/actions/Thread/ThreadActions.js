@@ -129,6 +129,45 @@ getInitMessage:function (request) {
   });
 },
 
+setOfflineUsersList:function (request) {
+  $.get('/api/setoffline?user1=' + request.user1, function (response){
+    if (response.status == 200) {
+       $.get('/api/getonlineusers?user1=' +response, function (response) {
+         if (response.status == 200) {
+           AppDispatcher.handleViewAction({
+             actionType:ThreadConstants.RETRIVEONLINE,
+             onlinelist:'',
+           });
+         }else if (response.status == 200) {
+           console.log('Error 505');
+         }
+       });
+    }else if (response.status == 200) {
+      console.log('Error 505');
+    }
+  });
+},
+
+
+setOnlineUsersList:function (request) {
+  $.get('/api/setonline?user1=' + request.user1, function (response){
+    if (response.status == 200) {
+       $.get('/api/getonlineusers?user1=' +response, function (response) {
+         if (response.status == 200) {
+           AppDispatcher.handleViewAction({
+             actionType:ThreadConstants.RETRIVEONLINE,
+             onlinelist: response.onlinelist,
+           });
+         }else if (response.status == 200) {
+           console.log('Error 505');
+         }
+       });
+    }else if (response.status == 200) {
+      console.log('Error 505');
+    }
+  });
+},
+
 };
 
 module.exports = ThreadAction;
