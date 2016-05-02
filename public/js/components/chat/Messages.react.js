@@ -53,11 +53,10 @@ const PaperExampleSimple = React.createClass({
 
   },
 
-
   socketio: function () {
       socket.on('chat', function (data) {
         this.setState({ threads:data.message });
-        localStorage.setItem('chatusername', this.state.threads[0].username);
+        //localStorage.setItem('chatusername',this.state.threads[0].username);
       }.bind(this));
     },
 
