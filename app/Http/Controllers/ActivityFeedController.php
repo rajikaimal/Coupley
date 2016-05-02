@@ -8,6 +8,7 @@ use App\User;
 use App\activitypost;
 use App\activitylikes;
 use App\activityblock;
+use App\activityreport;
 
 class ActivityFeedController extends Controller
 {
@@ -38,6 +39,14 @@ class ActivityFeedController extends Controller
         }
     }
 
+    /**
+     * add an iamge to Activity feed, handles POST request.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function addImageStatus(Request $request)
     {
         $destination = 'img/activityFeedPics';
@@ -61,6 +70,14 @@ class ActivityFeedController extends Controller
         }
     }
 
+    /**
+     * share a post to Activity feed, handles POST request.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function sharedStatus(Request $request)
     {
         try {
@@ -260,6 +277,14 @@ class ActivityFeedController extends Controller
         }
     }
 
+    /**
+     * block post of a user.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function block_status(Request $request)
     {
         try {
@@ -277,6 +302,14 @@ class ActivityFeedController extends Controller
         }
     }
 
+    /**
+     * get shared users.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function getSharedUsers(Request $request)
     {
         $postId = $request->postId;
@@ -291,4 +324,31 @@ class ActivityFeedController extends Controller
             return response()->json(['status' => 505], 505);
         }
     }
+
+    /**
+     * report post of a user.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
+    public function reportPost(Request $request)
+    {
+        try {
+            $report = new activityreport;
+            $report->post_id = $request->postId;
+            $report->reasons = $request->reason;
+            $report->comments = $request->comment;
+
+            if ($report = $report->save()) {
+                return response()->json(['report' => $report, 'status' => 201], 201);
+            } else {
+                return response()->json(['status' => 404], 404);
+            }
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 505], 505);
+        }  
+    }
+
 }

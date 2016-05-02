@@ -148,111 +148,111 @@
 
 	var _NotificationContainer2 = _interopRequireDefault(_NotificationContainer);
 
-	var _LikesContainer = __webpack_require__(497);
+	var _LikesContainer = __webpack_require__(494);
 
 	var _LikesContainer2 = _interopRequireDefault(_LikesContainer);
 
-	var _activityMain5 = __webpack_require__(502);
+	var _activityMain5 = __webpack_require__(499);
 
 	var _activityMain6 = _interopRequireDefault(_activityMain5);
 
-	var _ChatCC = __webpack_require__(509);
+	var _ChatCC = __webpack_require__(506);
 
 	var _ChatCC2 = _interopRequireDefault(_ChatCC);
 
-	var _ChatPreviousContainer = __webpack_require__(511);
+	var _ChatPreviousContainer = __webpack_require__(508);
 
 	var _ChatPreviousContainer2 = _interopRequireDefault(_ChatPreviousContainer);
 
-	var _chatCard = __webpack_require__(514);
+	var _chatCard = __webpack_require__(511);
 
 	var _chatCard2 = _interopRequireDefault(_chatCard);
 
-	var _ChatTopBar = __webpack_require__(515);
+	var _ChatTopBar = __webpack_require__(512);
 
 	var _ChatTopBar2 = _interopRequireDefault(_ChatTopBar);
 
-	var _tabs = __webpack_require__(520);
+	var _tabs = __webpack_require__(517);
 
 	var _tabs2 = _interopRequireDefault(_tabs);
 
-	var _tabs3 = __webpack_require__(525);
+	var _tabs3 = __webpack_require__(522);
 
 	var _tabs4 = _interopRequireDefault(_tabs3);
 
-	var _TrendContainer = __webpack_require__(526);
+	var _TrendContainer = __webpack_require__(523);
 
 	var _TrendContainer2 = _interopRequireDefault(_TrendContainer);
 
-	var _visitcontainer = __webpack_require__(540);
+	var _visitcontainer = __webpack_require__(537);
 
 	var _visitcontainer2 = _interopRequireDefault(_visitcontainer);
 
-	var _ThreadMain = __webpack_require__(546);
+	var _ThreadMain = __webpack_require__(543);
 
 	var _ThreadMain2 = _interopRequireDefault(_ThreadMain);
 
-	var _userHome = __webpack_require__(547);
+	var _userHome = __webpack_require__(544);
 
 	var _userHome2 = _interopRequireDefault(_userHome);
 
-	var _friends = __webpack_require__(548);
+	var _friends = __webpack_require__(545);
 
 	var _friends2 = _interopRequireDefault(_friends);
 
-	var _enemies = __webpack_require__(555);
+	var _enemies = __webpack_require__(552);
 
 	var _enemies2 = _interopRequireDefault(_enemies);
 
-	var _Cards = __webpack_require__(559);
+	var _Cards = __webpack_require__(556);
 
 	var _Cards2 = _interopRequireDefault(_Cards);
 
-	var _settings = __webpack_require__(569);
+	var _settings = __webpack_require__(566);
 
 	var _settings2 = _interopRequireDefault(_settings);
 
-	var _Forgot = __webpack_require__(579);
+	var _Forgot = __webpack_require__(576);
 
 	var _Forgot2 = _interopRequireDefault(_Forgot);
 
-	var _AdminForgotPwd = __webpack_require__(580);
+	var _AdminForgotPwd = __webpack_require__(577);
 
 	var _AdminForgotPwd2 = _interopRequireDefault(_AdminForgotPwd);
 
-	var _FeedbackHome = __webpack_require__(581);
+	var _FeedbackHome = __webpack_require__(578);
 
 	var _FeedbackHome2 = _interopRequireDefault(_FeedbackHome);
 
-	var _timeline = __webpack_require__(582);
+	var _timeline = __webpack_require__(579);
 
 	var _timeline2 = _interopRequireDefault(_timeline);
 
-	var _activity = __webpack_require__(588);
+	var _activity = __webpack_require__(585);
 
 	var _activity2 = _interopRequireDefault(_activity);
 
-	var _privacy = __webpack_require__(589);
+	var _privacy = __webpack_require__(586);
 
 	var _privacy2 = _interopRequireDefault(_privacy);
 
-	var _chat = __webpack_require__(590);
+	var _chat = __webpack_require__(587);
 
 	var _chat2 = _interopRequireDefault(_chat);
 
-	var _others = __webpack_require__(591);
+	var _others = __webpack_require__(588);
 
 	var _others2 = _interopRequireDefault(_others);
 
-	var _graph = __webpack_require__(592);
+	var _graph = __webpack_require__(589);
 
 	var _graph2 = _interopRequireDefault(_graph);
 
-	var _piechart = __webpack_require__(593);
+	var _piechart = __webpack_require__(590);
 
 	var _piechart2 = _interopRequireDefault(_piechart);
 
-	var _Search3 = __webpack_require__(594);
+	var _Search3 = __webpack_require__(591);
 
 	var _Search4 = _interopRequireDefault(_Search3);
 
@@ -51677,6 +51677,18 @@
 
 	var _accountCircle2 = _interopRequireDefault(_accountCircle);
 
+	var _accountBox = __webpack_require__(596);
+
+	var _accountBox2 = _interopRequireDefault(_accountBox);
+
+	var _alarm = __webpack_require__(597);
+
+	var _alarm2 = _interopRequireDefault(_alarm);
+
+	var _room = __webpack_require__(598);
+
+	var _room2 = _interopRequireDefault(_room);
+
 	var _reactTapEventPlugin = __webpack_require__(361);
 
 	var _reactTapEventPlugin2 = _interopRequireDefault(_reactTapEventPlugin);
@@ -51956,7 +51968,7 @@
 	  },
 
 	  _settings: function _settings() {
-	    document.location = "/#/isettings/";
+	    document.location = "/#/isettings/account";
 	  },
 	  render: function render() {
 	    return _react2.default.createElement(
@@ -52044,7 +52056,18 @@
 	                'b',
 	                null,
 	                ' ',
-	                this.state.editingProfile ? '' : this.props.age,
+	                this.state.editingProfile ? '' : _react2.default.createElement(
+	                  'span',
+	                  null,
+	                  _react2.default.createElement(
+	                    _iconButton2.default,
+	                    { tooltip: 'age', tooltipPosition: 'bottom-right' },
+	                    _react2.default.createElement(_alarm2.default, { viewBox: '0 0 20 30' })
+	                  ),
+	                  ' ',
+	                  this.props.age,
+	                  ' '
+	                ),
 	                ' '
 	              ),
 	              ' '
@@ -52069,7 +52092,18 @@
 	                  { id: 'country-err', style: error },
 	                  ' '
 	                )
-	              ) : this.props.country,
+	              ) : _react2.default.createElement(
+	                'span',
+	                null,
+	                _react2.default.createElement(
+	                  _iconButton2.default,
+	                  { tooltip: 'country', tooltipPosition: 'bottom-right' },
+	                  _react2.default.createElement(_room2.default, { viewBox: '0 0 20 30' })
+	                ),
+	                ' ',
+	                this.props.country,
+	                ' '
+	              ),
 	              ' '
 	            ),
 	            this.state.editingProfile ? _react2.default.createElement(
@@ -56857,7 +56891,9 @@
 	    return {
 	      firstname: _VisitorStore2.default.getUserData().firstname,
 	      lastname: _VisitorStore2.default.getUserData().lastname,
-	      country: _VisitorStore2.default.getUserData().country
+	      country: _VisitorStore2.default.getUserData().country,
+	      gender: _VisitorStore2.default.getUserData().gender,
+	      age: _VisitorStore2.default.getUserData().age
 	    };
 	  },
 	  componentDidMount: function componentDidMount() {
@@ -56873,7 +56909,9 @@
 	    this.setState({
 	      firstname: _VisitorStore2.default.getUserData().firstname,
 	      lastname: _VisitorStore2.default.getUserData().lastname,
-	      country: _VisitorStore2.default.getUserData().country
+	      country: _VisitorStore2.default.getUserData().country,
+	      gender: _VisitorStore2.default.getUserData().gender,
+	      age: _VisitorStore2.default.getUserData().age
 	    });
 	  },
 	  _renderCountry: function _renderCountry() {
@@ -56895,7 +56933,7 @@
 	      _react2.default.createElement(
 	        'div',
 	        { className: 'panel panel-default' },
-	        _react2.default.createElement(_ProfilePic2.default, { firstname: this.state.firstname, lastname: this.state.lastname, country: this.state.country }),
+	        _react2.default.createElement(_ProfilePic2.default, { firstname: this.state.firstname, lastname: this.state.lastname, country: this.state.country, gender: this.state.gender, age: this.state.age }),
 	        _react2.default.createElement(_divider2.default, null),
 	        _react2.default.createElement(
 	          'div',
@@ -56963,6 +57001,18 @@
 	var _favoriteBorder = __webpack_require__(450);
 
 	var _favoriteBorder2 = _interopRequireDefault(_favoriteBorder);
+
+	var _accountBox = __webpack_require__(596);
+
+	var _accountBox2 = _interopRequireDefault(_accountBox);
+
+	var _alarm = __webpack_require__(597);
+
+	var _alarm2 = _interopRequireDefault(_alarm);
+
+	var _room = __webpack_require__(598);
+
+	var _room2 = _interopRequireDefault(_room);
 
 	var _colors = __webpack_require__(220);
 
@@ -57223,6 +57273,38 @@
 	              'span',
 	              null,
 	              ' ',
+	              _react2.default.createElement(
+	                _iconButton2.default,
+	                { style: iconButtonStyle, tooltip: 'age', tooltipPosition: 'bottom-right' },
+	                _react2.default.createElement(_alarm2.default, { viewBox: '0 0 20 30' })
+	              ),
+	              this.props.age,
+	              ' '
+	            ),
+	            ' ',
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement(
+	              'span',
+	              null,
+	              ' ',
+	              _react2.default.createElement(
+	                _iconButton2.default,
+	                { style: iconButtonStyle, tooltip: 'gender', tooltipPosition: 'bottom-right' },
+	                _react2.default.createElement(_accountBox2.default, { viewBox: '0 0 20 30' })
+	              ),
+	              this.props.gender,
+	              ' '
+	            ),
+	            ' ',
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement(
+	              'span',
+	              null,
+	              _react2.default.createElement(
+	                _iconButton2.default,
+	                { style: iconButtonStyle, tooltip: 'country', tooltipPosition: 'bottom-right' },
+	                _react2.default.createElement(_room2.default, { viewBox: '0 0 20 30' })
+	              ),
 	              this.props.country,
 	              ' '
 	            ),
@@ -58266,6 +58348,12 @@
 	      } else if (response.status == 505) {
 	        console.log('Error 505');
 	      }
+	    });
+	  },
+
+	  reportStatus: function reportStatus(reportData) {
+	    $.post('/api/reportPost', reportData, function (response) {}).fail(function (error) {
+	      console.log(error);
 	    });
 	  }
 	};
@@ -62662,6 +62750,14 @@
 
 	var _colors2 = _interopRequireDefault(_colors);
 
+	var _DropDownMenu = __webpack_require__(343);
+
+	var _DropDownMenu2 = _interopRequireDefault(_DropDownMenu);
+
+	var _menuItem = __webpack_require__(347);
+
+	var _menuItem2 = _interopRequireDefault(_menuItem);
+
 	var _favorite = __webpack_require__(449);
 
 	var _favorite2 = _interopRequireDefault(_favorite);
@@ -62681,10 +62777,6 @@
 	var _iconMenu = __webpack_require__(376);
 
 	var _iconMenu2 = _interopRequireDefault(_iconMenu);
-
-	var _menuItem = __webpack_require__(347);
-
-	var _menuItem2 = _interopRequireDefault(_menuItem);
 
 	var _flatButton = __webpack_require__(327);
 
@@ -62722,7 +62814,7 @@
 
 	var _CommentStore2 = _interopRequireDefault(_CommentStore);
 
-	var _Comment = __webpack_require__(494);
+	var _Comment = __webpack_require__(593);
 
 	var _Comment2 = _interopRequireDefault(_Comment);
 
@@ -62730,7 +62822,7 @@
 
 	var _LikeStatusStore2 = _interopRequireDefault(_LikeStatusStore);
 
-	var _activitySharedList = __webpack_require__(495);
+	var _activitySharedList = __webpack_require__(594);
 
 	var _activitySharedList2 = _interopRequireDefault(_activitySharedList);
 
@@ -62738,7 +62830,7 @@
 
 	var _activityContainer2 = _interopRequireDefault(_activityContainer);
 
-	var _CountBox = __webpack_require__(496);
+	var _CountBox = __webpack_require__(595);
 
 	var _CountBox2 = _interopRequireDefault(_CountBox);
 
@@ -62787,6 +62879,7 @@
 	};
 
 	var commentLimitNo = 0;
+	var reason;
 
 	var ActivityList = _react2.default.createClass({
 	  displayName: 'ActivityList',
@@ -62804,6 +62897,9 @@
 	      open3: false,
 	      open4: false,
 	      open5: false,
+	      open6: false,
+	      open7: false,
+	      value: 2,
 	      likeCount: ''
 	    };
 	  },
@@ -62921,6 +63017,30 @@
 	    _ActivityfeedAction2.default._blockStatus(blockData);
 	  },
 
+	  _reportStatus: function _reportStatus() {
+
+	    if (this.state.value == 1) {
+	      reason = "It's annoying";
+	    } else if (this.state.value == 2) {
+	      reason = "It's not interesting";
+	    } else if (this.state.value == 3) {
+	      reason = "It's Spam";
+	    } else if (this.state.value == 4) {
+	      reason = "I think it shouldn't be on Coupley";
+	    }
+
+	    var reportComment = this.refs.ReportBox.getValue();
+	    var reportData = {
+	      postId: this.props.id,
+	      comment: reportComment,
+	      reason: reason
+	    };
+	    _ActivityfeedAction2.default.reportStatus(reportData);
+	    this._blockedStatus();
+	    this.setState({ open6: false });
+	    this.setState({ open7: true });
+	  },
+
 	  _changeShareState: function _changeShareState() {
 	    var shareStatus = this.refs.shareBox.getValue();
 	    var shareData = {
@@ -62974,11 +63094,21 @@
 	    this.setState({ open5: true });
 	  },
 
+	  handleOpenReport: function handleOpenReport() {
+	    this.setState({ open6: true });
+	  },
+
+	  reportHandleChange: function reportHandleChange(event, index, value) {
+	    this.setState({ value: value });
+	  },
+
 	  handleClose: function handleClose() {
 	    this.setState({ opens: false });
 	    this.setState({ open3: false });
 	    this.setState({ open4: false });
 	    this.setState({ open5: false });
+	    this.setState({ open6: false });
+	    this.setState({ open7: false });
 	  },
 
 	  setFocusToTextBox: function setFocusToTextBox() {
@@ -63060,6 +63190,20 @@
 	      secondary: true,
 	      onTouchTap: this.handleClose })];
 
+	    var ReportActions = [_react2.default.createElement(_flatButton2.default, {
+	      label: 'Report',
+	      primary: true,
+	      keyboardFocused: true,
+	      onTouchTap: this._reportStatus }), _react2.default.createElement(_flatButton2.default, {
+	      label: 'Close',
+	      secondary: true,
+	      onTouchTap: this.handleClose })];
+
+	    var confirmReportActions = [_react2.default.createElement(_flatButton2.default, {
+	      label: 'Ok',
+	      secondary: true,
+	      onTouchTap: this.handleClose })];
+
 	    return _react2.default.createElement(
 	      'div',
 	      { style: style1 },
@@ -63087,7 +63231,8 @@
 	              { iconButtonElement: iconButtonElement },
 	              _react2.default.createElement(_menuItem2.default, { primaryText: 'Edit', onClick: this.handleOpen }),
 	              _react2.default.createElement(_menuItem2.default, { primaryText: 'Remove', onClick: this.handleOpenDelete }),
-	              _react2.default.createElement(_menuItem2.default, { primaryText: 'Block', onClick: this.handleOpenBlock })
+	              _react2.default.createElement(_menuItem2.default, { primaryText: 'Unfollow', onClick: this.handleOpenBlock }),
+	              _react2.default.createElement(_menuItem2.default, { primaryText: 'Report', onClick: this.handleOpenReport })
 	            ) }),
 	          _react2.default.createElement(
 	            _cardText2.default,
@@ -63144,7 +63289,7 @@
 	            modal: false,
 	            open: this.state.open3,
 	            onRequestClose: this.handleClose },
-	          'Are you sure you want to delete this post?"'
+	          'Are you sure you want to delete this post?'
 	        ),
 	        _react2.default.createElement(
 	          _dialog2.default,
@@ -63154,7 +63299,7 @@
 	            modal: false,
 	            open: this.state.open5,
 	            onRequestClose: this.handleClose },
-	          'Are you sure you want to block this post?"'
+	          'Are you sure you want to block this post?'
 	        ),
 	        _react2.default.createElement(
 	          _dialog2.default,
@@ -63174,7 +63319,40 @@
 	            modal: false,
 	            open: this.state.open4,
 	            onRequestClose: this.handleClose },
-	          '"This has been shared to your Timeline."'
+	          'This has been shared to your Timeline.'
+	        ),
+	        _react2.default.createElement(
+	          _dialog2.default,
+	          {
+	            title: 'Report Status',
+	            actions: ReportActions,
+	            modal: false,
+	            open: this.state.open6,
+	            onRequestClose: this.handleClose },
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Reason'
+	          ),
+	          _react2.default.createElement(
+	            _DropDownMenu2.default,
+	            { value: this.state.value, onChange: this.reportHandleChange },
+	            _react2.default.createElement(_menuItem2.default, { value: 1, primaryText: 'It\'s annoying' }),
+	            _react2.default.createElement(_menuItem2.default, { value: 2, primaryText: 'It\'s not interesting' }),
+	            _react2.default.createElement(_menuItem2.default, { value: 3, primaryText: 'It\'s Spam' }),
+	            _react2.default.createElement(_menuItem2.default, { value: 4, primaryText: 'I think it shouldn\'t be on Coupley' })
+	          ),
+	          _react2.default.createElement(_textField2.default, { hintText: 'Comment', multiLine: false, fullWidth: true, ref: 'ReportBox' })
+	        ),
+	        _react2.default.createElement(
+	          _dialog2.default,
+	          {
+	            title: 'Report Status',
+	            actions: confirmReportActions,
+	            modal: false,
+	            open: this.state.open7,
+	            onRequestClose: this.handleClose },
+	          'You have reported this post'
 	        )
 	      ),
 	      _react2.default.createElement(
@@ -63210,186 +63388,6 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _card = __webpack_require__(322);
-
-	var _card2 = _interopRequireDefault(_card);
-
-	var _listItem = __webpack_require__(295);
-
-	var _listItem2 = _interopRequireDefault(_listItem);
-
-	var _list = __webpack_require__(293);
-
-	var _list2 = _interopRequireDefault(_list);
-
-	var _divider = __webpack_require__(299);
-
-	var _divider2 = _interopRequireDefault(_divider);
-
-	var _avatar = __webpack_require__(292);
-
-	var _avatar2 = _interopRequireDefault(_avatar);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var Comment = _react2.default.createClass({
-	    displayName: 'Comment',
-
-	    render: function render() {
-	        return _react2.default.createElement(
-	            'div',
-	            null,
-	            _react2.default.createElement(
-	                _card2.default,
-	                null,
-	                _react2.default.createElement(_listItem2.default, {
-	                    leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'img/profilepics/' + this.props.cusername }),
-	                    primaryText: this.props.cfirstName,
-	                    secondaryText: _react2.default.createElement(
-	                        'p',
-	                        null,
-	                        this.props.comment_txt
-	                    ),
-	                    secondaryTextLines: 1 }),
-	                _react2.default.createElement(_divider2.default, { inset: true })
-	            )
-	        );
-	    }
-	});
-
-	exports.default = Comment;
-
-/***/ },
-/* 495 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _card = __webpack_require__(322);
-
-	var _card2 = _interopRequireDefault(_card);
-
-	var _cardMedia = __webpack_require__(461);
-
-	var _cardMedia2 = _interopRequireDefault(_cardMedia);
-
-	var _cardText = __webpack_require__(321);
-
-	var _cardText2 = _interopRequireDefault(_cardText);
-
-	var _listItem = __webpack_require__(295);
-
-	var _listItem2 = _interopRequireDefault(_listItem);
-
-	var _divider = __webpack_require__(299);
-
-	var _divider2 = _interopRequireDefault(_divider);
-
-	var _avatar = __webpack_require__(292);
-
-	var _avatar2 = _interopRequireDefault(_avatar);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var style1 = {
-	    width: 700,
-	    margin: 40
-	};
-
-	var ActivitySharedList = _react2.default.createClass({
-	    displayName: 'ActivitySharedList',
-
-	    render: function render() {
-	        return _react2.default.createElement(
-	            'div',
-	            { style: style1 },
-	            _react2.default.createElement(
-	                'div',
-	                null,
-	                _react2.default.createElement(
-	                    _card2.default,
-	                    null,
-	                    _react2.default.createElement(
-	                        'div',
-	                        null,
-	                        this.props.sid ? _react2.default.createElement(
-	                            'div',
-	                            null,
-	                            _react2.default.createElement(_listItem2.default, {
-	                                leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'img/profilepics/' + this.props.susername }),
-	                                primaryText: this.props.sfirstname,
-	                                secondaryText: _react2.default.createElement(
-	                                    'p',
-	                                    null,
-	                                    _react2.default.createElement(
-	                                        'b',
-	                                        null,
-	                                        this.props.screated_at
-	                                    )
-	                                ),
-	                                secondaryTextLines: 1 }),
-	                            _react2.default.createElement(
-	                                _cardText2.default,
-	                                null,
-	                                this.props.spost_text
-	                            ),
-	                            _react2.default.createElement(
-	                                'div',
-	                                null,
-	                                this.props.sattachment != 'None' ? _react2.default.createElement(
-	                                    'div',
-	                                    null,
-	                                    _react2.default.createElement(
-	                                        _cardMedia2.default,
-	                                        null,
-	                                        _react2.default.createElement('img', { src: 'img/activityFeedPics/' + this.props.sattachment })
-	                                    )
-	                                ) : ''
-	                            ),
-	                            _react2.default.createElement(_divider2.default, { inset: true })
-	                        ) : _react2.default.createElement(
-	                            'div',
-	                            null,
-	                            _react2.default.createElement(_listItem2.default, {
-	                                primaryText: 'Attachment Unavailable' }),
-	                            _react2.default.createElement(
-	                                _cardText2.default,
-	                                null,
-	                                'This attachment may have been removed or the person who shared it may not have permission to share it with you'
-	                            ),
-	                            _react2.default.createElement(_divider2.default, { inset: true })
-	                        )
-	                    )
-	                )
-	            )
-	        );
-	    }
-	});
-
-	exports.default = ActivitySharedList;
-
-/***/ },
-/* 496 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 
@@ -63397,251 +63395,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _card = __webpack_require__(322);
-
-	var _card2 = _interopRequireDefault(_card);
-
-	var _flatButton = __webpack_require__(327);
-
-	var _flatButton2 = _interopRequireDefault(_flatButton);
-
-	var _paper = __webpack_require__(294);
-
-	var _paper2 = _interopRequireDefault(_paper);
-
-	var _dialog = __webpack_require__(326);
-
-	var _dialog2 = _interopRequireDefault(_dialog);
-
-	var _listItem = __webpack_require__(295);
-
-	var _listItem2 = _interopRequireDefault(_listItem);
-
-	var _divider = __webpack_require__(299);
-
-	var _divider2 = _interopRequireDefault(_divider);
-
-	var _avatar = __webpack_require__(292);
-
-	var _avatar2 = _interopRequireDefault(_avatar);
-
-	var _colors = __webpack_require__(220);
-
-	var _colors2 = _interopRequireDefault(_colors);
-
-	var _raisedButton = __webpack_require__(377);
-
-	var _raisedButton2 = _interopRequireDefault(_raisedButton);
-
-	var _ActivityfeedAction = __webpack_require__(455);
-
-	var _ActivityfeedAction2 = _interopRequireDefault(_ActivityfeedAction);
-
-	var _LikeStatusStore = __webpack_require__(464);
-
-	var _LikeStatusStore2 = _interopRequireDefault(_LikeStatusStore);
-
-	var _StatusStore = __webpack_require__(459);
-
-	var _StatusStore2 = _interopRequireDefault(_StatusStore);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var style2 = {
-	  width: 800
-	};
-
-	var firstname;
-	var sfirstname;
-	var username;
-	var susername;
-
-	var CountBox = _react2.default.createClass({
-	  displayName: 'CountBox',
-
-	  getInitialState: function getInitialState() {
-	    return {
-	      likedUsers: _LikeStatusStore2.default.getLikedUsers(),
-	      sharedUsers: _StatusStore2.default.getSharedUsers(),
-	      open: false,
-	      firstname: '',
-	      sfirstname: '',
-	      username: '',
-	      susername: ''
-	    };
-	  },
-
-	  componentDidMount: function componentDidMount() {
-	    _LikeStatusStore2.default.addChangeListener(this._onChange);
-
-	    var likeData = {
-	      postId: this.props.post_id
-	    };
-	    _ActivityfeedAction2.default.getLikedUsers(likeData);
-
-	    var shareData = {
-	      postId: this.props.post_id
-	    };
-	    _ActivityfeedAction2.default.getSharedUsers(shareData);
-	  },
-
-	  _onChange: function _onChange() {
-	    this.setState({ likedUsers: _LikeStatusStore2.default.getLikedUsers() });
-	    this.setState({ sharedUsers: _StatusStore2.default.getSharedUsers() });
-	  },
-
-	  handleClose: function handleClose() {
-	    this.setState({ open: false });
-	    this.setState({ open2: false });
-	  },
-
-	  _getLikedUsers: function _getLikedUsers() {
-	    this.setState({ open: true });
-
-	    var self = this;
-	    return this.state.likedUsers.map(function (likes) {
-	      return likes.map(function (result) {
-	        if (self.props.post_id == result.post_id) {
-	          firstname = result.firstname;
-	          username = result.username;
-	          self.setState({
-	            firstname: firstname,
-	            username: username
-	          });
-	        }
-	      });
-	    });
-	  },
-
-	  _getSharedUsers: function _getSharedUsers() {
-	    this.setState({ open2: true });
-	    this.setState({ sharedUsers: _StatusStore2.default.getSharedUsers() });
-	    var self = this;
-	    return this.state.sharedUsers.map(function (shares) {
-	      return shares.map(function (result) {
-	        if (self.props.post_id == result.post_id) {
-	          firstname = result.firstname;
-	          username = result.username;
-	          self.setState({
-	            sfirstname: firstname,
-	            susername: username
-	          });
-	        }
-	      });
-	    });
-	  },
-
-	  _loadMoreComments: function _loadMoreComments() {
-	    var commentData = {
-	      postId: this.props.ckey
-	    };
-	    _ActivityfeedAction2.default.loadMoreComment(commentData);
-	  },
-
-	  render: function render() {
-	    var likeActions = [_react2.default.createElement(_flatButton2.default, {
-	      label: 'Close',
-	      secondary: true,
-	      onTouchTap: this.handleClose })];
-
-	    var sharedActions = [_react2.default.createElement(_flatButton2.default, {
-	      label: 'Close',
-	      secondary: true,
-	      onTouchTap: this.handleClose })];
-
-	    return _react2.default.createElement(
-	      'div',
-	      null,
-	      _react2.default.createElement(
-	        'div',
-	        null,
-	        this.props.likedCount ? _react2.default.createElement(
-	          'div',
-	          null,
-	          _react2.default.createElement(
-	            _card2.default,
-	            { style: style2 },
-	            _react2.default.createElement(_flatButton2.default, { label: this.props.likedCount + " Likes", onClick: this._getLikedUsers })
-	          )
-	        ) : ''
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        null,
-	        this.props.shareCount ? _react2.default.createElement(
-	          'div',
-	          null,
-	          _react2.default.createElement(
-	            _card2.default,
-	            { style: style2 },
-	            _react2.default.createElement(_flatButton2.default, { label: this.props.shareCount + " Shares", onClick: this._getSharedUsers })
-	          )
-	        ) : ''
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        null,
-	        this.props.cCount > 2 ? _react2.default.createElement(
-	          'div',
-	          null,
-	          _react2.default.createElement(
-	            _card2.default,
-	            { style: style2 },
-	            _react2.default.createElement(_flatButton2.default, { label: 'load more comments', onClick: this._loadMoreComments })
-	          )
-	        ) : ''
-	      ),
-	      _react2.default.createElement(
-	        _dialog2.default,
-	        {
-	          autoDetectWindowHeight: false,
-	          title: 'Liked Users',
-	          actions: likeActions,
-	          modal: true,
-	          open: this.state.open },
-	        _react2.default.createElement(_listItem2.default, {
-	          leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'img/profilepics/' + this.state.username }),
-	          primaryText: this.state.firstname }),
-	        _react2.default.createElement(_divider2.default, { inset: true }),
-	        _react2.default.createElement(_listItem2.default, {
-	          leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'img/profilepics/ryan' }),
-	          primaryText: 'Ryan' }),
-	        _react2.default.createElement(_divider2.default, { inset: true })
-	      ),
-	      _react2.default.createElement(
-	        _dialog2.default,
-	        {
-	          autoDetectWindowHeight: false,
-	          title: 'Shared Users',
-	          actions: sharedActions,
-	          modal: true,
-	          open: this.state.open2 },
-	        _react2.default.createElement(_listItem2.default, {
-	          leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'img/profilepics/' + this.state.susername }),
-	          primaryText: this.state.sfirstname }),
-	        _react2.default.createElement(_divider2.default, { inset: true })
-	      )
-	    );
-	  }
-	});
-
-	exports.default = CountBox;
-
-/***/ },
-/* 497 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _Like = __webpack_require__(498);
+	var _Like = __webpack_require__(495);
 
 	var _Like2 = _interopRequireDefault(_Like);
 
@@ -63649,11 +63403,11 @@
 
 	var _list2 = _interopRequireDefault(_list);
 
-	var _LikeStore = __webpack_require__(499);
+	var _LikeStore = __webpack_require__(496);
 
 	var _LikeStore2 = _interopRequireDefault(_LikeStore);
 
-	var _LikeActions = __webpack_require__(501);
+	var _LikeActions = __webpack_require__(498);
 
 	var _LikeActions2 = _interopRequireDefault(_LikeActions);
 
@@ -63818,7 +63572,7 @@
 	exports.default = ActivityFeedContainer;
 
 /***/ },
-/* 498 */
+/* 495 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63918,14 +63672,14 @@
 	exports.default = Like;
 
 /***/ },
-/* 499 */
+/* 496 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var AppDispatcher = __webpack_require__(308);
 	var EventEmitter = __webpack_require__(316).EventEmitter;
-	var LikeConstants = __webpack_require__(500);
+	var LikeConstants = __webpack_require__(497);
 	var assign = __webpack_require__(312);
 
 	var CHANGE_EVENT = 'change';
@@ -64044,7 +63798,7 @@
 	module.exports = LikeStore;
 
 /***/ },
-/* 500 */
+/* 497 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -64061,13 +63815,13 @@
 	});
 
 /***/ },
-/* 501 */
+/* 498 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var AppDispatcher = __webpack_require__(308);
-	var LikeListConstants = __webpack_require__(500);
+	var LikeListConstants = __webpack_require__(497);
 
 	var likedList = 0;
 	var likedMe = 0;
@@ -64150,7 +63904,7 @@
 	module.exports = LikeActions;
 
 /***/ },
-/* 502 */
+/* 499 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -64163,15 +63917,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _activityBox = __webpack_require__(503);
+	var _activityBox = __webpack_require__(500);
 
 	var _activityBox2 = _interopRequireDefault(_activityBox);
 
-	var _activityContainer = __webpack_require__(504);
+	var _activityContainer = __webpack_require__(501);
 
 	var _activityContainer2 = _interopRequireDefault(_activityContainer);
 
-	var _activityListComp = __webpack_require__(505);
+	var _activityListComp = __webpack_require__(502);
 
 	var _activityListComp2 = _interopRequireDefault(_activityListComp);
 
@@ -64201,7 +63955,7 @@
 	exports.default = ActivityMain;
 
 /***/ },
-/* 503 */
+/* 500 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -64477,7 +64231,7 @@
 	exports.default = StatusBox;
 
 /***/ },
-/* 504 */
+/* 501 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -64510,7 +64264,7 @@
 
 	var _StatusStore2 = _interopRequireDefault(_StatusStore);
 
-	var _activityListComp = __webpack_require__(505);
+	var _activityListComp = __webpack_require__(502);
 
 	var _activityListComp2 = _interopRequireDefault(_activityListComp);
 
@@ -64596,7 +64350,7 @@
 	exports.default = activityContainer;
 
 /***/ },
-/* 505 */
+/* 502 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -64697,7 +64451,7 @@
 
 	var _CommentStore2 = _interopRequireDefault(_CommentStore);
 
-	var _Comment = __webpack_require__(506);
+	var _Comment = __webpack_require__(503);
 
 	var _Comment2 = _interopRequireDefault(_Comment);
 
@@ -64705,15 +64459,15 @@
 
 	var _LikeStatusStore2 = _interopRequireDefault(_LikeStatusStore);
 
-	var _activitySharedList = __webpack_require__(507);
+	var _activitySharedList = __webpack_require__(504);
 
 	var _activitySharedList2 = _interopRequireDefault(_activitySharedList);
 
-	var _activityContainer = __webpack_require__(504);
+	var _activityContainer = __webpack_require__(501);
 
 	var _activityContainer2 = _interopRequireDefault(_activityContainer);
 
-	var _CountBox = __webpack_require__(508);
+	var _CountBox = __webpack_require__(505);
 
 	var _CountBox2 = _interopRequireDefault(_CountBox);
 
@@ -65148,7 +64902,7 @@
 	exports.default = ActivityList;
 
 /***/ },
-/* 506 */
+/* 503 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -65211,7 +64965,7 @@
 	exports.default = Comment;
 
 /***/ },
-/* 507 */
+/* 504 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -65309,7 +65063,7 @@
 	exports.default = ActivitySharedList;
 
 /***/ },
-/* 508 */
+/* 505 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -65507,7 +65261,7 @@
 	exports.default = CountBox;
 
 /***/ },
-/* 509 */
+/* 506 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -65540,7 +65294,7 @@
 
 	var _LoginStore2 = _interopRequireDefault(_LoginStore);
 
-	var _emojis = __webpack_require__(510);
+	var _emojis = __webpack_require__(507);
 
 	var _emojis2 = _interopRequireDefault(_emojis);
 
@@ -65659,7 +65413,7 @@
 	exports.default = CC;
 
 /***/ },
-/* 510 */
+/* 507 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -65674,7 +65428,7 @@
 	module.exports = emojis;
 
 /***/ },
-/* 511 */
+/* 508 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -65707,7 +65461,7 @@
 
 	var _iconButton2 = _interopRequireDefault(_iconButton);
 
-	var _ChatPrevious = __webpack_require__(512);
+	var _ChatPrevious = __webpack_require__(509);
 
 	var _ChatPrevious2 = _interopRequireDefault(_ChatPrevious);
 
@@ -65860,7 +65614,7 @@
 	exports.default = PreviousChatContainer;
 
 /***/ },
-/* 512 */
+/* 509 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -65917,7 +65671,7 @@
 
 	var _ThreadStore2 = _interopRequireDefault(_ThreadStore);
 
-	var _Messages = __webpack_require__(513);
+	var _Messages = __webpack_require__(510);
 
 	var _Messages2 = _interopRequireDefault(_Messages);
 
@@ -66007,7 +65761,7 @@
 	exports.default = PreviousChat;
 
 /***/ },
-/* 513 */
+/* 510 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -66040,7 +65794,7 @@
 
 	var _avatar2 = _interopRequireDefault(_avatar);
 
-	var _emojis = __webpack_require__(510);
+	var _emojis = __webpack_require__(507);
 
 	var _emojis2 = _interopRequireDefault(_emojis);
 
@@ -66169,7 +65923,7 @@
 	exports.default = PaperExampleSimple;
 
 /***/ },
-/* 514 */
+/* 511 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -66186,15 +65940,15 @@
 
 	var _paper2 = _interopRequireDefault(_paper);
 
-	var _ChatCC = __webpack_require__(509);
+	var _ChatCC = __webpack_require__(506);
 
 	var _ChatCC2 = _interopRequireDefault(_ChatCC);
 
-	var _Messages = __webpack_require__(513);
+	var _Messages = __webpack_require__(510);
 
 	var _Messages2 = _interopRequireDefault(_Messages);
 
-	var _ChatTopBar = __webpack_require__(515);
+	var _ChatTopBar = __webpack_require__(512);
 
 	var _ChatTopBar2 = _interopRequireDefault(_ChatTopBar);
 
@@ -66245,7 +65999,7 @@
 	exports.default = MainThread;
 
 /***/ },
-/* 515 */
+/* 512 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -66258,7 +66012,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _selectField = __webpack_require__(516);
+	var _selectField = __webpack_require__(513);
 
 	var _selectField2 = _interopRequireDefault(_selectField);
 
@@ -66302,7 +66056,7 @@
 
 	var _flatButton2 = _interopRequireDefault(_flatButton);
 
-	var _autoComplete = __webpack_require__(519);
+	var _autoComplete = __webpack_require__(516);
 
 	var _autoComplete2 = _interopRequireDefault(_autoComplete);
 
@@ -66524,7 +66278,7 @@
 	exports.default = SelectFieldExampleSimple;
 
 /***/ },
-/* 516 */
+/* 513 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -66533,7 +66287,7 @@
 	  value: true
 	});
 
-	var _SelectField = __webpack_require__(517);
+	var _SelectField = __webpack_require__(514);
 
 	var _SelectField2 = _interopRequireDefault(_SelectField);
 
@@ -66543,7 +66297,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 517 */
+/* 514 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -66552,7 +66306,7 @@
 	  value: true
 	});
 
-	var _SelectField = __webpack_require__(518);
+	var _SelectField = __webpack_require__(515);
 
 	var _SelectField2 = _interopRequireDefault(_SelectField);
 
@@ -66562,7 +66316,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 518 */
+/* 515 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -66864,7 +66618,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 519 */
+/* 516 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -67311,7 +67065,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 520 */
+/* 517 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -67320,19 +67074,19 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _tabs = __webpack_require__(521);
+	var _tabs = __webpack_require__(518);
 
 	var _tabs2 = _interopRequireDefault(_tabs);
 
-	var _tab = __webpack_require__(524);
+	var _tab = __webpack_require__(521);
 
 	var _tab2 = _interopRequireDefault(_tab);
 
-	var _ChatPrevious = __webpack_require__(512);
+	var _ChatPrevious = __webpack_require__(509);
 
 	var _ChatPrevious2 = _interopRequireDefault(_ChatPrevious);
 
-	var _ChatPreviousContainer = __webpack_require__(511);
+	var _ChatPreviousContainer = __webpack_require__(508);
 
 	var _ChatPreviousContainer2 = _interopRequireDefault(_ChatPreviousContainer);
 
@@ -67411,7 +67165,7 @@
 	module.exports = TabsExampleControlled;
 
 /***/ },
-/* 521 */
+/* 518 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -67430,11 +67184,11 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _tabTemplate = __webpack_require__(522);
+	var _tabTemplate = __webpack_require__(519);
 
 	var _tabTemplate2 = _interopRequireDefault(_tabTemplate);
 
-	var _inkBar = __webpack_require__(523);
+	var _inkBar = __webpack_require__(520);
 
 	var _inkBar2 = _interopRequireDefault(_inkBar);
 
@@ -67694,7 +67448,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 522 */
+/* 519 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -67743,7 +67497,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 523 */
+/* 520 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -67852,7 +67606,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 524 */
+/* 521 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68008,7 +67762,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 525 */
+/* 522 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68041,11 +67795,11 @@
 
 	var _iconButton2 = _interopRequireDefault(_iconButton);
 
-	var _tabs = __webpack_require__(521);
+	var _tabs = __webpack_require__(518);
 
 	var _tabs2 = _interopRequireDefault(_tabs);
 
-	var _tab = __webpack_require__(524);
+	var _tab = __webpack_require__(521);
 
 	var _tab2 = _interopRequireDefault(_tab);
 
@@ -68065,7 +67819,7 @@
 
 	var _raisedButton2 = _interopRequireDefault(_raisedButton);
 
-	var _ChatPrevious = __webpack_require__(512);
+	var _ChatPrevious = __webpack_require__(509);
 
 	var _ChatPrevious2 = _interopRequireDefault(_ChatPrevious);
 
@@ -68290,7 +68044,7 @@
 	exports.default = PreviousChatContainer;
 
 /***/ },
-/* 526 */
+/* 523 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68315,19 +68069,19 @@
 
 	var _textField2 = _interopRequireDefault(_textField);
 
-	var _TrendsStore = __webpack_require__(527);
+	var _TrendsStore = __webpack_require__(524);
 
 	var _TrendsStore2 = _interopRequireDefault(_TrendsStore);
 
-	var _TrendsAction = __webpack_require__(529);
+	var _TrendsAction = __webpack_require__(526);
 
 	var _TrendsAction2 = _interopRequireDefault(_TrendsAction);
 
-	var _trendbox = __webpack_require__(530);
+	var _trendbox = __webpack_require__(527);
 
 	var _trendbox2 = _interopRequireDefault(_trendbox);
 
-	var _trendactivityListComp = __webpack_require__(536);
+	var _trendactivityListComp = __webpack_require__(533);
 
 	var _trendactivityListComp2 = _interopRequireDefault(_trendactivityListComp);
 
@@ -68511,14 +68265,14 @@
 	exports.default = TrendContainer;
 
 /***/ },
-/* 527 */
+/* 524 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var AppDispatcher = __webpack_require__(308);
 	var EventEmitter = __webpack_require__(316).EventEmitter;
-	var TrendConstants = __webpack_require__(528);
+	var TrendConstants = __webpack_require__(525);
 	var assign = __webpack_require__(312);
 
 	var CHANGE_EVENT = 'change';
@@ -68597,7 +68351,7 @@
 	module.exports = TrendsStore;
 
 /***/ },
-/* 528 */
+/* 525 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68613,13 +68367,13 @@
 	});
 
 /***/ },
-/* 529 */
+/* 526 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var AppDispatcher = __webpack_require__(308);
-	var TrendConstants = __webpack_require__(528);
+	var TrendConstants = __webpack_require__(525);
 
 	var TrendsAction = {
 
@@ -68682,7 +68436,7 @@
 	module.exports = TrendsAction;
 
 /***/ },
-/* 530 */
+/* 527 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68703,23 +68457,23 @@
 
 	var _listItem2 = _interopRequireDefault(_listItem);
 
-	var _grade = __webpack_require__(531);
+	var _grade = __webpack_require__(528);
 
 	var _grade2 = _interopRequireDefault(_grade);
 
-	var _info = __webpack_require__(532);
+	var _info = __webpack_require__(529);
 
 	var _info2 = _interopRequireDefault(_info);
 
-	var _inbox = __webpack_require__(533);
+	var _inbox = __webpack_require__(530);
 
 	var _inbox2 = _interopRequireDefault(_inbox);
 
-	var _drafts = __webpack_require__(534);
+	var _drafts = __webpack_require__(531);
 
 	var _drafts2 = _interopRequireDefault(_drafts);
 
-	var _send = __webpack_require__(535);
+	var _send = __webpack_require__(532);
 
 	var _send2 = _interopRequireDefault(_send);
 
@@ -68745,7 +68499,7 @@
 	exports.default = Trends;
 
 /***/ },
-/* 531 */
+/* 528 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68786,7 +68540,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 532 */
+/* 529 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68827,7 +68581,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 533 */
+/* 530 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68868,7 +68622,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 534 */
+/* 531 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68909,7 +68663,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 535 */
+/* 532 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68950,7 +68704,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 536 */
+/* 533 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -69051,7 +68805,7 @@
 
 	var _CommentStore2 = _interopRequireDefault(_CommentStore);
 
-	var _trendComment = __webpack_require__(537);
+	var _trendComment = __webpack_require__(534);
 
 	var _trendComment2 = _interopRequireDefault(_trendComment);
 
@@ -69059,11 +68813,11 @@
 
 	var _LikeStatusStore2 = _interopRequireDefault(_LikeStatusStore);
 
-	var _trendactivitySharedList = __webpack_require__(538);
+	var _trendactivitySharedList = __webpack_require__(535);
 
 	var _trendactivitySharedList2 = _interopRequireDefault(_trendactivitySharedList);
 
-	var _trendactivityContainer = __webpack_require__(539);
+	var _trendactivityContainer = __webpack_require__(536);
 
 	var _trendactivityContainer2 = _interopRequireDefault(_trendactivityContainer);
 
@@ -69426,7 +69180,7 @@
 	exports.default = ActivityList;
 
 /***/ },
-/* 537 */
+/* 534 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -69493,7 +69247,7 @@
 	exports.default = Comment;
 
 /***/ },
-/* 538 */
+/* 535 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -69583,7 +69337,7 @@
 	exports.default = ActivitySharedList;
 
 /***/ },
-/* 539 */
+/* 536 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -69612,7 +69366,7 @@
 
 	var _StatusStore2 = _interopRequireDefault(_StatusStore);
 
-	var _trendactivityListComp = __webpack_require__(536);
+	var _trendactivityListComp = __webpack_require__(533);
 
 	var _trendactivityListComp2 = _interopRequireDefault(_trendactivityListComp);
 
@@ -69681,7 +69435,7 @@
 	exports.default = activityContainer;
 
 /***/ },
-/* 540 */
+/* 537 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -69746,11 +69500,11 @@
 
 	var _iconButton2 = _interopRequireDefault(_iconButton);
 
-	var _tabs = __webpack_require__(521);
+	var _tabs = __webpack_require__(518);
 
 	var _tabs2 = _interopRequireDefault(_tabs);
 
-	var _tab = __webpack_require__(524);
+	var _tab = __webpack_require__(521);
 
 	var _tab2 = _interopRequireDefault(_tab);
 
@@ -69758,11 +69512,11 @@
 
 	var _dialog2 = _interopRequireDefault(_dialog);
 
-	var _othersvisits = __webpack_require__(541);
+	var _othersvisits = __webpack_require__(538);
 
 	var _othersvisits2 = _interopRequireDefault(_othersvisits);
 
-	var _myvisits = __webpack_require__(542);
+	var _myvisits = __webpack_require__(539);
 
 	var _myvisits2 = _interopRequireDefault(_myvisits);
 
@@ -69770,11 +69524,11 @@
 
 	var _LoginStore2 = _interopRequireDefault(_LoginStore);
 
-	var _VisitsStore = __webpack_require__(545);
+	var _VisitsStore = __webpack_require__(542);
 
 	var _VisitsStore2 = _interopRequireDefault(_VisitsStore);
 
-	var _VisitsAction = __webpack_require__(543);
+	var _VisitsAction = __webpack_require__(540);
 
 	var _VisitsAction2 = _interopRequireDefault(_VisitsAction);
 
@@ -70020,7 +69774,7 @@
 	exports.default = VisitContainer;
 
 /***/ },
-/* 541 */
+/* 538 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -70101,11 +69855,11 @@
 
 	var _menuItem2 = _interopRequireDefault(_menuItem);
 
-	var _tabs = __webpack_require__(521);
+	var _tabs = __webpack_require__(518);
 
 	var _tabs2 = _interopRequireDefault(_tabs);
 
-	var _tab = __webpack_require__(524);
+	var _tab = __webpack_require__(521);
 
 	var _tab2 = _interopRequireDefault(_tab);
 
@@ -70214,7 +69968,7 @@
 	exports.default = othervisits;
 
 /***/ },
-/* 542 */
+/* 539 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -70279,11 +70033,11 @@
 
 	var _iconButton2 = _interopRequireDefault(_iconButton);
 
-	var _tabs = __webpack_require__(521);
+	var _tabs = __webpack_require__(518);
 
 	var _tabs2 = _interopRequireDefault(_tabs);
 
-	var _tab = __webpack_require__(524);
+	var _tab = __webpack_require__(521);
 
 	var _tab2 = _interopRequireDefault(_tab);
 
@@ -70311,7 +70065,7 @@
 
 	var _ThreadActions2 = _interopRequireDefault(_ThreadActions);
 
-	var _VisitsAction = __webpack_require__(543);
+	var _VisitsAction = __webpack_require__(540);
 
 	var _VisitsAction2 = _interopRequireDefault(_VisitsAction);
 
@@ -70413,14 +70167,14 @@
 	exports.default = myvisits;
 
 /***/ },
-/* 543 */
+/* 540 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var AppDispatcher = __webpack_require__(308);
 	var ProfileConstants = __webpack_require__(357);
-	var VisitConstants = __webpack_require__(544);
+	var VisitConstants = __webpack_require__(541);
 
 	var VisitsAction = {
 
@@ -70503,7 +70257,7 @@
 	module.exports = VisitsAction;
 
 /***/ },
-/* 544 */
+/* 541 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -70519,14 +70273,14 @@
 	});
 
 /***/ },
-/* 545 */
+/* 542 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var AppDispatcher = __webpack_require__(308);
 	var EventEmitter = __webpack_require__(316).EventEmitter;
-	var VisitConstants = __webpack_require__(544);
+	var VisitConstants = __webpack_require__(541);
 	var assign = __webpack_require__(312);
 
 	var CHANGE_EVENT = 'change';
@@ -70603,7 +70357,7 @@
 	module.exports = VisitsStore;
 
 /***/ },
-/* 546 */
+/* 543 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -70616,11 +70370,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _chatCard = __webpack_require__(514);
+	var _chatCard = __webpack_require__(511);
 
 	var _chatCard2 = _interopRequireDefault(_chatCard);
 
-	var _ChatPreviousContainer = __webpack_require__(511);
+	var _ChatPreviousContainer = __webpack_require__(508);
 
 	var _ChatPreviousContainer2 = _interopRequireDefault(_ChatPreviousContainer);
 
@@ -70653,7 +70407,7 @@
 	exports.default = ThreadMain;
 
 /***/ },
-/* 547 */
+/* 544 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -70776,7 +70530,7 @@
 	exports.default = GridListExampleSimple;
 
 /***/ },
-/* 548 */
+/* 545 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -70785,15 +70539,15 @@
 	  value: true
 	});
 
-	var _friend = __webpack_require__(549);
+	var _friend = __webpack_require__(546);
 
 	var _friend2 = _interopRequireDefault(_friend);
 
-	var _SearchStore = __webpack_require__(551);
+	var _SearchStore = __webpack_require__(548);
 
 	var _SearchStore2 = _interopRequireDefault(_SearchStore);
 
-	var _UsersActions = __webpack_require__(552);
+	var _UsersActions = __webpack_require__(549);
 
 	var _UsersActions2 = _interopRequireDefault(_UsersActions);
 
@@ -70805,7 +70559,7 @@
 
 	var _avatar2 = _interopRequireDefault(_avatar);
 
-	var _folder = __webpack_require__(554);
+	var _folder = __webpack_require__(551);
 
 	var _folder2 = _interopRequireDefault(_folder);
 
@@ -70893,7 +70647,7 @@
 	exports.default = reportedUsers;
 
 /***/ },
-/* 549 */
+/* 546 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -70938,7 +70692,7 @@
 
 	var _menuItem2 = _interopRequireDefault(_menuItem);
 
-	var _blockUser = __webpack_require__(550);
+	var _blockUser = __webpack_require__(547);
 
 	var _blockUser2 = _interopRequireDefault(_blockUser);
 
@@ -71033,7 +70787,7 @@
 	exports.default = Friend;
 
 /***/ },
-/* 550 */
+/* 547 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71065,7 +70819,7 @@
 	module.exports = BlockActions;
 
 /***/ },
-/* 551 */
+/* 548 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71114,7 +70868,7 @@
 	module.exports = SearchStore;
 
 /***/ },
-/* 552 */
+/* 549 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71124,7 +70878,7 @@
 	 */
 	var AppDispatcher = __webpack_require__(308);
 	var LoginConstants = __webpack_require__(318);
-	var SearchConstants = __webpack_require__(553);
+	var SearchConstants = __webpack_require__(550);
 
 	var UsersActions = {
 	  getsearchresults: function getsearchresults() {
@@ -71145,7 +70899,7 @@
 	module.exports = UsersActions;
 
 /***/ },
-/* 553 */
+/* 550 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71157,7 +70911,7 @@
 	});
 
 /***/ },
-/* 554 */
+/* 551 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71198,7 +70952,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 555 */
+/* 552 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71207,15 +70961,15 @@
 	  value: true
 	});
 
-	var _blockedUser = __webpack_require__(556);
+	var _blockedUser = __webpack_require__(553);
 
 	var _blockedUser2 = _interopRequireDefault(_blockedUser);
 
-	var _SearchStore = __webpack_require__(551);
+	var _SearchStore = __webpack_require__(548);
 
 	var _SearchStore2 = _interopRequireDefault(_SearchStore);
 
-	var _BlockedUsersActions = __webpack_require__(558);
+	var _BlockedUsersActions = __webpack_require__(555);
 
 	var _BlockedUsersActions2 = _interopRequireDefault(_BlockedUsersActions);
 
@@ -71227,7 +70981,7 @@
 
 	var _avatar2 = _interopRequireDefault(_avatar);
 
-	var _folder = __webpack_require__(554);
+	var _folder = __webpack_require__(551);
 
 	var _folder2 = _interopRequireDefault(_folder);
 
@@ -71311,7 +71065,7 @@
 	exports.default = AvatarExampleSimple;
 
 /***/ },
-/* 556 */
+/* 553 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71360,7 +71114,7 @@
 
 	var _reactTapEventPlugin2 = _interopRequireDefault(_reactTapEventPlugin);
 
-	var _UnblockUserActions = __webpack_require__(557);
+	var _UnblockUserActions = __webpack_require__(554);
 
 	var _UnblockUserActions2 = _interopRequireDefault(_UnblockUserActions);
 
@@ -71464,7 +71218,7 @@
 	exports.default = blocked;
 
 /***/ },
-/* 557 */
+/* 554 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71494,7 +71248,7 @@
 	module.exports = UnblockActions;
 
 /***/ },
-/* 558 */
+/* 555 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71526,7 +71280,7 @@
 	module.exports = UsersActions;
 
 /***/ },
-/* 559 */
+/* 556 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71541,23 +71295,23 @@
 
 	var _reactRouter = __webpack_require__(159);
 
-	var _tab = __webpack_require__(560);
+	var _tab = __webpack_require__(557);
 
 	var _tab2 = _interopRequireDefault(_tab);
 
-	var _customers = __webpack_require__(561);
+	var _customers = __webpack_require__(558);
 
 	var _customers2 = _interopRequireDefault(_customers);
 
-	var _pieChartCustomers = __webpack_require__(562);
+	var _pieChartCustomers = __webpack_require__(559);
 
 	var _pieChartCustomers2 = _interopRequireDefault(_pieChartCustomers);
 
-	var _GraphActions = __webpack_require__(566);
+	var _GraphActions = __webpack_require__(563);
 
 	var _GraphActions2 = _interopRequireDefault(_GraphActions);
 
-	var _GraphStore = __webpack_require__(568);
+	var _GraphStore = __webpack_require__(565);
 
 	var _GraphStore2 = _interopRequireDefault(_GraphStore);
 
@@ -71761,7 +71515,7 @@
 	exports.default = Cards;
 
 /***/ },
-/* 560 */
+/* 557 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71774,31 +71528,31 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _tabs = __webpack_require__(521);
+	var _tabs = __webpack_require__(518);
 
 	var _tabs2 = _interopRequireDefault(_tabs);
 
-	var _tab = __webpack_require__(524);
+	var _tab = __webpack_require__(521);
 
 	var _tab2 = _interopRequireDefault(_tab);
 
-	var _customers = __webpack_require__(561);
+	var _customers = __webpack_require__(558);
 
 	var _customers2 = _interopRequireDefault(_customers);
 
-	var _pieChartCustomers = __webpack_require__(562);
+	var _pieChartCustomers = __webpack_require__(559);
 
 	var _pieChartCustomers2 = _interopRequireDefault(_pieChartCustomers);
 
-	var _admin = __webpack_require__(563);
+	var _admin = __webpack_require__(560);
 
 	var _admin2 = _interopRequireDefault(_admin);
 
-	var _AdminSearchStore = __webpack_require__(564);
+	var _AdminSearchStore = __webpack_require__(561);
 
 	var _AdminSearchStore2 = _interopRequireDefault(_AdminSearchStore);
 
-	var _AdminDetailsActions = __webpack_require__(565);
+	var _AdminDetailsActions = __webpack_require__(562);
 
 	var _AdminDetailsActions2 = _interopRequireDefault(_AdminDetailsActions);
 
@@ -71903,7 +71657,7 @@
 	exports.default = DashboardTabs;
 
 /***/ },
-/* 561 */
+/* 558 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71948,7 +71702,7 @@
 	exports.default = CustomerGraphs;
 
 /***/ },
-/* 562 */
+/* 559 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72014,7 +71768,7 @@
 	exports.default = CustomerGraphs;
 
 /***/ },
-/* 563 */
+/* 560 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72175,7 +71929,7 @@
 	exports.default = Admin;
 
 /***/ },
-/* 564 */
+/* 561 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72224,7 +71978,7 @@
 	module.exports = SearchStore;
 
 /***/ },
-/* 565 */
+/* 562 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72256,7 +72010,7 @@
 	module.exports = AdminDetailsActions;
 
 /***/ },
-/* 566 */
+/* 563 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72265,7 +72019,7 @@
 	 * Created by Isuru 1 on 27/01/2016.
 	 */
 	var AppDispatcher = __webpack_require__(308);
-	var GraphConstants = __webpack_require__(567);
+	var GraphConstants = __webpack_require__(564);
 
 	var GraphActions = {
 
@@ -72313,7 +72067,7 @@
 	module.exports = GraphActions;
 
 /***/ },
-/* 567 */
+/* 564 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72325,14 +72079,14 @@
 	});
 
 /***/ },
-/* 568 */
+/* 565 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var AppDispatcher = __webpack_require__(308);
 	var EventEmitter = __webpack_require__(316).EventEmitter;
-	var GraphConstants = __webpack_require__(567);
+	var GraphConstants = __webpack_require__(564);
 	var assign = __webpack_require__(312);
 
 	var CHANGE_EVENT = 'change';
@@ -72369,7 +72123,7 @@
 	module.exports = GraphStore;
 
 /***/ },
-/* 569 */
+/* 566 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72382,23 +72136,23 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _snackbar = __webpack_require__(570);
+	var _snackbar = __webpack_require__(567);
 
 	var _snackbar2 = _interopRequireDefault(_snackbar);
 
-	var _NewAdminmodal = __webpack_require__(571);
+	var _NewAdminmodal = __webpack_require__(568);
 
 	var _NewAdminmodal2 = _interopRequireDefault(_NewAdminmodal);
 
-	var _updateAdminmodal = __webpack_require__(573);
+	var _updateAdminmodal = __webpack_require__(570);
 
 	var _updateAdminmodal2 = _interopRequireDefault(_updateAdminmodal);
 
-	var _ResetPwd = __webpack_require__(575);
+	var _ResetPwd = __webpack_require__(572);
 
 	var _ResetPwd2 = _interopRequireDefault(_ResetPwd);
 
-	var _Deactivate = __webpack_require__(577);
+	var _Deactivate = __webpack_require__(574);
 
 	var _Deactivate2 = _interopRequireDefault(_Deactivate);
 
@@ -72452,7 +72206,7 @@
 	exports.default = AdminSettings;
 
 /***/ },
-/* 570 */
+/* 567 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72519,7 +72273,7 @@
 	exports.default = SnackbarExampleSimple;
 
 /***/ },
-/* 571 */
+/* 568 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72548,7 +72302,7 @@
 
 	var _textField2 = _interopRequireDefault(_textField);
 
-	var _snackbar = __webpack_require__(570);
+	var _snackbar = __webpack_require__(567);
 
 	var _snackbar2 = _interopRequireDefault(_snackbar);
 
@@ -72612,7 +72366,7 @@
 
 	var _colors2 = _interopRequireDefault(_colors);
 
-	var _AdminRegisterActions = __webpack_require__(572);
+	var _AdminRegisterActions = __webpack_require__(569);
 
 	var _AdminRegisterActions2 = _interopRequireDefault(_AdminRegisterActions);
 
@@ -73009,7 +72763,7 @@
 	exports.default = Header;
 
 /***/ },
-/* 572 */
+/* 569 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73043,7 +72797,7 @@
 	module.exports = RegisterActions;
 
 /***/ },
-/* 573 */
+/* 570 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73072,7 +72826,7 @@
 
 	var _textField2 = _interopRequireDefault(_textField);
 
-	var _snackbar = __webpack_require__(570);
+	var _snackbar = __webpack_require__(567);
 
 	var _snackbar2 = _interopRequireDefault(_snackbar);
 
@@ -73144,7 +72898,7 @@
 
 	var _ProfileStore2 = _interopRequireDefault(_ProfileStore);
 
-	var _AdminUpdateActions = __webpack_require__(574);
+	var _AdminUpdateActions = __webpack_require__(571);
 
 	var _AdminUpdateActions2 = _interopRequireDefault(_AdminUpdateActions);
 
@@ -73605,7 +73359,7 @@
 	exports.default = Update;
 
 /***/ },
-/* 574 */
+/* 571 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73644,7 +73398,7 @@
 	module.exports = UpdateActions;
 
 /***/ },
-/* 575 */
+/* 572 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73673,7 +73427,7 @@
 
 	var _textField2 = _interopRequireDefault(_textField);
 
-	var _snackbar = __webpack_require__(570);
+	var _snackbar = __webpack_require__(567);
 
 	var _snackbar2 = _interopRequireDefault(_snackbar);
 
@@ -73745,7 +73499,7 @@
 
 	var _ProfileStore2 = _interopRequireDefault(_ProfileStore);
 
-	var _AdminPwdResetActions = __webpack_require__(576);
+	var _AdminPwdResetActions = __webpack_require__(573);
 
 	var _AdminPwdResetActions2 = _interopRequireDefault(_AdminPwdResetActions);
 
@@ -74044,7 +73798,7 @@
 	exports.default = Reset;
 
 /***/ },
-/* 576 */
+/* 573 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74076,7 +73830,7 @@
 	module.exports = PwdActions;
 
 /***/ },
-/* 577 */
+/* 574 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74153,7 +73907,7 @@
 
 	var _ProfileStore2 = _interopRequireDefault(_ProfileStore);
 
-	var _DeactivateAdminActions = __webpack_require__(578);
+	var _DeactivateAdminActions = __webpack_require__(575);
 
 	var _DeactivateAdminActions2 = _interopRequireDefault(_DeactivateAdminActions);
 
@@ -74260,7 +74014,7 @@
 	exports.default = Deactivate;
 
 /***/ },
-/* 578 */
+/* 575 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74288,7 +74042,7 @@
 	module.exports = DeactivateActions;
 
 /***/ },
-/* 579 */
+/* 576 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74427,7 +74181,7 @@
 	exports.default = ForgotPassword;
 
 /***/ },
-/* 580 */
+/* 577 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74573,7 +74327,7 @@
 	exports.default = AdminForgot;
 
 /***/ },
-/* 581 */
+/* 578 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74694,7 +74448,7 @@
 	exports.default = Feedback;
 
 /***/ },
-/* 582 */
+/* 579 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74711,7 +74465,7 @@
 
 	var _table2 = _interopRequireDefault(_table);
 
-	var _tableHeaderColumn = __webpack_require__(583);
+	var _tableHeaderColumn = __webpack_require__(580);
 
 	var _tableHeaderColumn2 = _interopRequireDefault(_tableHeaderColumn);
 
@@ -74719,7 +74473,7 @@
 
 	var _tableRow2 = _interopRequireDefault(_tableRow);
 
-	var _tableHeader = __webpack_require__(584);
+	var _tableHeader = __webpack_require__(581);
 
 	var _tableHeader2 = _interopRequireDefault(_tableHeader);
 
@@ -74731,15 +74485,15 @@
 
 	var _tableBody2 = _interopRequireDefault(_tableBody);
 
-	var _FeedbackActions = __webpack_require__(585);
+	var _FeedbackActions = __webpack_require__(582);
 
 	var _FeedbackActions2 = _interopRequireDefault(_FeedbackActions);
 
-	var _FeedbackStore = __webpack_require__(586);
+	var _FeedbackStore = __webpack_require__(583);
 
 	var _FeedbackStore2 = _interopRequireDefault(_FeedbackStore);
 
-	var _feed = __webpack_require__(587);
+	var _feed = __webpack_require__(584);
 
 	var _feed2 = _interopRequireDefault(_feed);
 
@@ -74850,7 +74604,7 @@
 	exports.default = Tables;
 
 /***/ },
-/* 583 */
+/* 580 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75012,7 +74766,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 584 */
+/* 581 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75033,7 +74787,7 @@
 
 	var _stylePropable2 = _interopRequireDefault(_stylePropable);
 
-	var _tableHeaderColumn = __webpack_require__(583);
+	var _tableHeaderColumn = __webpack_require__(580);
 
 	var _tableHeaderColumn2 = _interopRequireDefault(_tableHeaderColumn);
 
@@ -75216,7 +74970,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 585 */
+/* 582 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75226,7 +74980,7 @@
 	 */
 	var AppDispatcher = __webpack_require__(308);
 	var LoginConstants = __webpack_require__(318);
-	var FeedConstants = __webpack_require__(553);
+	var FeedConstants = __webpack_require__(550);
 
 	var FeedActions = {
 	  MarkAsDone: function MarkAsDone(credentials) {
@@ -75377,14 +75131,14 @@
 	module.exports = FeedActions;
 
 /***/ },
-/* 586 */
+/* 583 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var AppDispatcher = __webpack_require__(308);
 	var EventEmitter = __webpack_require__(316).EventEmitter;
-	var FeedConstants = __webpack_require__(553);
+	var FeedConstants = __webpack_require__(550);
 	var assign = __webpack_require__(312);
 
 	var CHANGE_EVENT = 'change';
@@ -75422,7 +75176,7 @@
 	module.exports = FeedStore;
 
 /***/ },
-/* 587 */
+/* 584 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75439,7 +75193,7 @@
 
 	var _table2 = _interopRequireDefault(_table);
 
-	var _tableHeaderColumn = __webpack_require__(583);
+	var _tableHeaderColumn = __webpack_require__(580);
 
 	var _tableHeaderColumn2 = _interopRequireDefault(_tableHeaderColumn);
 
@@ -75447,7 +75201,7 @@
 
 	var _tableRow2 = _interopRequireDefault(_tableRow);
 
-	var _tableHeader = __webpack_require__(584);
+	var _tableHeader = __webpack_require__(581);
 
 	var _tableHeader2 = _interopRequireDefault(_tableHeader);
 
@@ -75463,7 +75217,7 @@
 
 	var _raisedButton2 = _interopRequireDefault(_raisedButton);
 
-	var _FeedbackActions = __webpack_require__(585);
+	var _FeedbackActions = __webpack_require__(582);
 
 	var _FeedbackActions2 = _interopRequireDefault(_FeedbackActions);
 
@@ -75539,7 +75293,7 @@
 	exports.default = TableRaw;
 
 /***/ },
-/* 588 */
+/* 585 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75556,7 +75310,7 @@
 
 	var _table2 = _interopRequireDefault(_table);
 
-	var _tableHeaderColumn = __webpack_require__(583);
+	var _tableHeaderColumn = __webpack_require__(580);
 
 	var _tableHeaderColumn2 = _interopRequireDefault(_tableHeaderColumn);
 
@@ -75564,7 +75318,7 @@
 
 	var _tableRow2 = _interopRequireDefault(_tableRow);
 
-	var _tableHeader = __webpack_require__(584);
+	var _tableHeader = __webpack_require__(581);
 
 	var _tableHeader2 = _interopRequireDefault(_tableHeader);
 
@@ -75576,15 +75330,15 @@
 
 	var _tableBody2 = _interopRequireDefault(_tableBody);
 
-	var _FeedbackActions = __webpack_require__(585);
+	var _FeedbackActions = __webpack_require__(582);
 
 	var _FeedbackActions2 = _interopRequireDefault(_FeedbackActions);
 
-	var _FeedbackStore = __webpack_require__(586);
+	var _FeedbackStore = __webpack_require__(583);
 
 	var _FeedbackStore2 = _interopRequireDefault(_FeedbackStore);
 
-	var _feed = __webpack_require__(587);
+	var _feed = __webpack_require__(584);
 
 	var _feed2 = _interopRequireDefault(_feed);
 
@@ -75695,7 +75449,7 @@
 	exports.default = Tables;
 
 /***/ },
-/* 589 */
+/* 586 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75712,7 +75466,7 @@
 
 	var _table2 = _interopRequireDefault(_table);
 
-	var _tableHeaderColumn = __webpack_require__(583);
+	var _tableHeaderColumn = __webpack_require__(580);
 
 	var _tableHeaderColumn2 = _interopRequireDefault(_tableHeaderColumn);
 
@@ -75720,7 +75474,7 @@
 
 	var _tableRow2 = _interopRequireDefault(_tableRow);
 
-	var _tableHeader = __webpack_require__(584);
+	var _tableHeader = __webpack_require__(581);
 
 	var _tableHeader2 = _interopRequireDefault(_tableHeader);
 
@@ -75732,15 +75486,15 @@
 
 	var _tableBody2 = _interopRequireDefault(_tableBody);
 
-	var _FeedbackActions = __webpack_require__(585);
+	var _FeedbackActions = __webpack_require__(582);
 
 	var _FeedbackActions2 = _interopRequireDefault(_FeedbackActions);
 
-	var _FeedbackStore = __webpack_require__(586);
+	var _FeedbackStore = __webpack_require__(583);
 
 	var _FeedbackStore2 = _interopRequireDefault(_FeedbackStore);
 
-	var _feed = __webpack_require__(587);
+	var _feed = __webpack_require__(584);
 
 	var _feed2 = _interopRequireDefault(_feed);
 
@@ -75850,7 +75604,7 @@
 	exports.default = Tables;
 
 /***/ },
-/* 590 */
+/* 587 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -75867,7 +75621,7 @@
 
 	var _table2 = _interopRequireDefault(_table);
 
-	var _tableHeaderColumn = __webpack_require__(583);
+	var _tableHeaderColumn = __webpack_require__(580);
 
 	var _tableHeaderColumn2 = _interopRequireDefault(_tableHeaderColumn);
 
@@ -75875,7 +75629,7 @@
 
 	var _tableRow2 = _interopRequireDefault(_tableRow);
 
-	var _tableHeader = __webpack_require__(584);
+	var _tableHeader = __webpack_require__(581);
 
 	var _tableHeader2 = _interopRequireDefault(_tableHeader);
 
@@ -75887,15 +75641,15 @@
 
 	var _tableBody2 = _interopRequireDefault(_tableBody);
 
-	var _FeedbackActions = __webpack_require__(585);
+	var _FeedbackActions = __webpack_require__(582);
 
 	var _FeedbackActions2 = _interopRequireDefault(_FeedbackActions);
 
-	var _FeedbackStore = __webpack_require__(586);
+	var _FeedbackStore = __webpack_require__(583);
 
 	var _FeedbackStore2 = _interopRequireDefault(_FeedbackStore);
 
-	var _feed = __webpack_require__(587);
+	var _feed = __webpack_require__(584);
 
 	var _feed2 = _interopRequireDefault(_feed);
 
@@ -76003,7 +75757,7 @@
 	exports.default = Tables;
 
 /***/ },
-/* 591 */
+/* 588 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -76020,7 +75774,7 @@
 
 	var _table2 = _interopRequireDefault(_table);
 
-	var _tableHeaderColumn = __webpack_require__(583);
+	var _tableHeaderColumn = __webpack_require__(580);
 
 	var _tableHeaderColumn2 = _interopRequireDefault(_tableHeaderColumn);
 
@@ -76028,7 +75782,7 @@
 
 	var _tableRow2 = _interopRequireDefault(_tableRow);
 
-	var _tableHeader = __webpack_require__(584);
+	var _tableHeader = __webpack_require__(581);
 
 	var _tableHeader2 = _interopRequireDefault(_tableHeader);
 
@@ -76040,15 +75794,15 @@
 
 	var _tableBody2 = _interopRequireDefault(_tableBody);
 
-	var _FeedbackActions = __webpack_require__(585);
+	var _FeedbackActions = __webpack_require__(582);
 
 	var _FeedbackActions2 = _interopRequireDefault(_FeedbackActions);
 
-	var _FeedbackStore = __webpack_require__(586);
+	var _FeedbackStore = __webpack_require__(583);
 
 	var _FeedbackStore2 = _interopRequireDefault(_FeedbackStore);
 
-	var _feed = __webpack_require__(587);
+	var _feed = __webpack_require__(584);
 
 	var _feed2 = _interopRequireDefault(_feed);
 
@@ -76159,7 +75913,7 @@
 	exports.default = Tables;
 
 /***/ },
-/* 592 */
+/* 589 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -76174,11 +75928,11 @@
 
 	var _reactRouter = __webpack_require__(159);
 
-	var _GraphActions = __webpack_require__(566);
+	var _GraphActions = __webpack_require__(563);
 
 	var _GraphActions2 = _interopRequireDefault(_GraphActions);
 
-	var _GraphStore = __webpack_require__(568);
+	var _GraphStore = __webpack_require__(565);
 
 	var _GraphStore2 = _interopRequireDefault(_GraphStore);
 
@@ -76261,7 +76015,7 @@
 	exports.default = LineGraph;
 
 /***/ },
-/* 593 */
+/* 590 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -76276,11 +76030,11 @@
 
 	var _reactRouter = __webpack_require__(159);
 
-	var _GraphActions = __webpack_require__(566);
+	var _GraphActions = __webpack_require__(563);
 
 	var _GraphActions2 = _interopRequireDefault(_GraphActions);
 
-	var _GraphStore = __webpack_require__(568);
+	var _GraphStore = __webpack_require__(565);
 
 	var _GraphStore2 = _interopRequireDefault(_GraphStore);
 
@@ -76362,7 +76116,7 @@
 	exports.default = pieChart;
 
 /***/ },
-/* 594 */
+/* 591 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -76375,7 +76129,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _SearchItem = __webpack_require__(595);
+	var _SearchItem = __webpack_require__(592);
 
 	var _SearchItem2 = _interopRequireDefault(_SearchItem);
 
@@ -76491,7 +76245,7 @@
 	exports.default = Search;
 
 /***/ },
-/* 595 */
+/* 592 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -76592,6 +76346,553 @@
 	});
 
 	exports.default = SearchItem;
+
+/***/ },
+/* 593 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _card = __webpack_require__(322);
+
+	var _card2 = _interopRequireDefault(_card);
+
+	var _listItem = __webpack_require__(295);
+
+	var _listItem2 = _interopRequireDefault(_listItem);
+
+	var _list = __webpack_require__(293);
+
+	var _list2 = _interopRequireDefault(_list);
+
+	var _divider = __webpack_require__(299);
+
+	var _divider2 = _interopRequireDefault(_divider);
+
+	var _avatar = __webpack_require__(292);
+
+	var _avatar2 = _interopRequireDefault(_avatar);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Comment = _react2.default.createClass({
+	    displayName: 'Comment',
+
+	    render: function render() {
+	        return _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(
+	                _card2.default,
+	                null,
+	                _react2.default.createElement(_listItem2.default, {
+	                    leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'img/profilepics/' + this.props.cusername }),
+	                    primaryText: this.props.cfirstName,
+	                    secondaryText: _react2.default.createElement(
+	                        'p',
+	                        null,
+	                        this.props.comment_txt
+	                    ),
+	                    secondaryTextLines: 1 }),
+	                _react2.default.createElement(_divider2.default, { inset: true })
+	            )
+	        );
+	    }
+	});
+
+	exports.default = Comment;
+
+/***/ },
+/* 594 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _card = __webpack_require__(322);
+
+	var _card2 = _interopRequireDefault(_card);
+
+	var _cardMedia = __webpack_require__(461);
+
+	var _cardMedia2 = _interopRequireDefault(_cardMedia);
+
+	var _cardText = __webpack_require__(321);
+
+	var _cardText2 = _interopRequireDefault(_cardText);
+
+	var _listItem = __webpack_require__(295);
+
+	var _listItem2 = _interopRequireDefault(_listItem);
+
+	var _divider = __webpack_require__(299);
+
+	var _divider2 = _interopRequireDefault(_divider);
+
+	var _avatar = __webpack_require__(292);
+
+	var _avatar2 = _interopRequireDefault(_avatar);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var style1 = {
+	    width: 700,
+	    margin: 40
+	};
+
+	var ActivitySharedList = _react2.default.createClass({
+	    displayName: 'ActivitySharedList',
+
+	    render: function render() {
+	        return _react2.default.createElement(
+	            'div',
+	            { style: style1 },
+	            _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    _card2.default,
+	                    null,
+	                    _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        this.props.sid ? _react2.default.createElement(
+	                            'div',
+	                            null,
+	                            _react2.default.createElement(_listItem2.default, {
+	                                leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'img/profilepics/' + this.props.susername }),
+	                                primaryText: this.props.sfirstname,
+	                                secondaryText: _react2.default.createElement(
+	                                    'p',
+	                                    null,
+	                                    _react2.default.createElement(
+	                                        'b',
+	                                        null,
+	                                        this.props.screated_at
+	                                    )
+	                                ),
+	                                secondaryTextLines: 1 }),
+	                            _react2.default.createElement(
+	                                _cardText2.default,
+	                                null,
+	                                this.props.spost_text
+	                            ),
+	                            _react2.default.createElement(
+	                                'div',
+	                                null,
+	                                this.props.sattachment != 'None' ? _react2.default.createElement(
+	                                    'div',
+	                                    null,
+	                                    _react2.default.createElement(
+	                                        _cardMedia2.default,
+	                                        null,
+	                                        _react2.default.createElement('img', { src: 'img/activityFeedPics/' + this.props.sattachment })
+	                                    )
+	                                ) : ''
+	                            ),
+	                            _react2.default.createElement(_divider2.default, { inset: true })
+	                        ) : _react2.default.createElement(
+	                            'div',
+	                            null,
+	                            _react2.default.createElement(_listItem2.default, {
+	                                primaryText: 'Attachment Unavailable' }),
+	                            _react2.default.createElement(
+	                                _cardText2.default,
+	                                null,
+	                                'This attachment may have been removed or the person who shared it may not have permission to share it with you'
+	                            ),
+	                            _react2.default.createElement(_divider2.default, { inset: true })
+	                        )
+	                    )
+	                )
+	            )
+	        );
+	    }
+	});
+
+	exports.default = ActivitySharedList;
+
+/***/ },
+/* 595 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _card = __webpack_require__(322);
+
+	var _card2 = _interopRequireDefault(_card);
+
+	var _flatButton = __webpack_require__(327);
+
+	var _flatButton2 = _interopRequireDefault(_flatButton);
+
+	var _paper = __webpack_require__(294);
+
+	var _paper2 = _interopRequireDefault(_paper);
+
+	var _dialog = __webpack_require__(326);
+
+	var _dialog2 = _interopRequireDefault(_dialog);
+
+	var _listItem = __webpack_require__(295);
+
+	var _listItem2 = _interopRequireDefault(_listItem);
+
+	var _divider = __webpack_require__(299);
+
+	var _divider2 = _interopRequireDefault(_divider);
+
+	var _avatar = __webpack_require__(292);
+
+	var _avatar2 = _interopRequireDefault(_avatar);
+
+	var _colors = __webpack_require__(220);
+
+	var _colors2 = _interopRequireDefault(_colors);
+
+	var _raisedButton = __webpack_require__(377);
+
+	var _raisedButton2 = _interopRequireDefault(_raisedButton);
+
+	var _ActivityfeedAction = __webpack_require__(455);
+
+	var _ActivityfeedAction2 = _interopRequireDefault(_ActivityfeedAction);
+
+	var _LikeStatusStore = __webpack_require__(464);
+
+	var _LikeStatusStore2 = _interopRequireDefault(_LikeStatusStore);
+
+	var _StatusStore = __webpack_require__(459);
+
+	var _StatusStore2 = _interopRequireDefault(_StatusStore);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var style2 = {
+	  width: 800
+	};
+
+	var firstname;
+	var sfirstname;
+	var username;
+	var susername;
+
+	var CountBox = _react2.default.createClass({
+	  displayName: 'CountBox',
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      likedUsers: _LikeStatusStore2.default.getLikedUsers(),
+	      sharedUsers: _StatusStore2.default.getSharedUsers(),
+	      open: false,
+	      firstname: '',
+	      sfirstname: '',
+	      username: '',
+	      susername: ''
+	    };
+	  },
+
+	  componentDidMount: function componentDidMount() {
+	    _LikeStatusStore2.default.addChangeListener(this._onChange);
+
+	    var likeData = {
+	      postId: this.props.post_id
+	    };
+	    _ActivityfeedAction2.default.getLikedUsers(likeData);
+
+	    var shareData = {
+	      postId: this.props.post_id
+	    };
+	    _ActivityfeedAction2.default.getSharedUsers(shareData);
+	  },
+
+	  _onChange: function _onChange() {
+	    this.setState({ likedUsers: _LikeStatusStore2.default.getLikedUsers() });
+	    this.setState({ sharedUsers: _StatusStore2.default.getSharedUsers() });
+	  },
+
+	  handleClose: function handleClose() {
+	    this.setState({ open: false });
+	    this.setState({ open2: false });
+	  },
+
+	  _getLikedUsers: function _getLikedUsers() {
+	    this.setState({ open: true });
+
+	    var self = this;
+	    return this.state.likedUsers.map(function (likes) {
+	      return likes.map(function (result) {
+	        if (self.props.post_id == result.post_id) {
+	          firstname = result.firstname;
+	          username = result.username;
+	          self.setState({
+	            firstname: firstname,
+	            username: username
+	          });
+	        }
+	      });
+	    });
+	  },
+
+	  _getSharedUsers: function _getSharedUsers() {
+	    this.setState({ open2: true });
+	    this.setState({ sharedUsers: _StatusStore2.default.getSharedUsers() });
+	    var self = this;
+	    return this.state.sharedUsers.map(function (shares) {
+	      return shares.map(function (result) {
+	        if (self.props.post_id == result.post_id) {
+	          firstname = result.firstname;
+	          username = result.username;
+	          self.setState({
+	            sfirstname: firstname,
+	            susername: username
+	          });
+	        }
+	      });
+	    });
+	  },
+
+	  _loadMoreComments: function _loadMoreComments() {
+	    var commentData = {
+	      postId: this.props.ckey
+	    };
+	    _ActivityfeedAction2.default.loadMoreComment(commentData);
+	  },
+
+	  render: function render() {
+	    var likeActions = [_react2.default.createElement(_flatButton2.default, {
+	      label: 'Close',
+	      secondary: true,
+	      onTouchTap: this.handleClose })];
+
+	    var sharedActions = [_react2.default.createElement(_flatButton2.default, {
+	      label: 'Close',
+	      secondary: true,
+	      onTouchTap: this.handleClose })];
+
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        'div',
+	        null,
+	        this.props.likedCount ? _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            _card2.default,
+	            { style: style2 },
+	            _react2.default.createElement(_flatButton2.default, { label: this.props.likedCount + " Likes", onClick: this._getLikedUsers })
+	          )
+	        ) : ''
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        null,
+	        this.props.shareCount ? _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            _card2.default,
+	            { style: style2 },
+	            _react2.default.createElement(_flatButton2.default, { label: this.props.shareCount + " Shares", onClick: this._getSharedUsers })
+	          )
+	        ) : ''
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        null,
+	        this.props.cCount > 2 ? _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            _card2.default,
+	            { style: style2 },
+	            _react2.default.createElement(_flatButton2.default, { label: 'load more comments', onClick: this._loadMoreComments })
+	          )
+	        ) : ''
+	      ),
+	      _react2.default.createElement(
+	        _dialog2.default,
+	        {
+	          autoDetectWindowHeight: false,
+	          title: 'Liked Users',
+	          actions: likeActions,
+	          modal: true,
+	          open: this.state.open },
+	        _react2.default.createElement(_listItem2.default, {
+	          leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'img/profilepics/' + this.state.username }),
+	          primaryText: this.state.firstname }),
+	        _react2.default.createElement(_divider2.default, { inset: true }),
+	        _react2.default.createElement(_listItem2.default, {
+	          leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'img/profilepics/ryan' }),
+	          primaryText: 'Ryan' }),
+	        _react2.default.createElement(_divider2.default, { inset: true })
+	      ),
+	      _react2.default.createElement(
+	        _dialog2.default,
+	        {
+	          autoDetectWindowHeight: false,
+	          title: 'Shared Users',
+	          actions: sharedActions,
+	          modal: true,
+	          open: this.state.open2 },
+	        _react2.default.createElement(_listItem2.default, {
+	          leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'img/profilepics/' + this.state.susername }),
+	          primaryText: this.state.sfirstname }),
+	        _react2.default.createElement(_divider2.default, { inset: true })
+	      )
+	    );
+	  }
+	});
+
+	exports.default = CountBox;
+
+/***/ },
+/* 596 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactAddonsPureRenderMixin = __webpack_require__(270);
+
+	var _reactAddonsPureRenderMixin2 = _interopRequireDefault(_reactAddonsPureRenderMixin);
+
+	var _svgIcon = __webpack_require__(290);
+
+	var _svgIcon2 = _interopRequireDefault(_svgIcon);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var ActionAccountBox = _react2.default.createClass({
+	  displayName: 'ActionAccountBox',
+
+	  mixins: [_reactAddonsPureRenderMixin2.default],
+
+	  render: function render() {
+	    return _react2.default.createElement(
+	      _svgIcon2.default,
+	      this.props,
+	      _react2.default.createElement('path', { d: 'M3 5v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H5c-1.11 0-2 .9-2 2zm12 4c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3zm-9 8c0-2 4-3.1 6-3.1s6 1.1 6 3.1v1H6v-1z' })
+	    );
+	  }
+	});
+
+	exports.default = ActionAccountBox;
+	module.exports = exports['default'];
+
+/***/ },
+/* 597 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactAddonsPureRenderMixin = __webpack_require__(270);
+
+	var _reactAddonsPureRenderMixin2 = _interopRequireDefault(_reactAddonsPureRenderMixin);
+
+	var _svgIcon = __webpack_require__(290);
+
+	var _svgIcon2 = _interopRequireDefault(_svgIcon);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var ActionAlarm = _react2.default.createClass({
+	  displayName: 'ActionAlarm',
+
+	  mixins: [_reactAddonsPureRenderMixin2.default],
+
+	  render: function render() {
+	    return _react2.default.createElement(
+	      _svgIcon2.default,
+	      this.props,
+	      _react2.default.createElement('path', { d: 'M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z' })
+	    );
+	  }
+	});
+
+	exports.default = ActionAlarm;
+	module.exports = exports['default'];
+
+/***/ },
+/* 598 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactAddonsPureRenderMixin = __webpack_require__(270);
+
+	var _reactAddonsPureRenderMixin2 = _interopRequireDefault(_reactAddonsPureRenderMixin);
+
+	var _svgIcon = __webpack_require__(290);
+
+	var _svgIcon2 = _interopRequireDefault(_svgIcon);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var ActionRoom = _react2.default.createClass({
+	  displayName: 'ActionRoom',
+
+	  mixins: [_reactAddonsPureRenderMixin2.default],
+
+	  render: function render() {
+	    return _react2.default.createElement(
+	      _svgIcon2.default,
+	      this.props,
+	      _react2.default.createElement('path', { d: 'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z' })
+	    );
+	  }
+	});
+
+	exports.default = ActionRoom;
+	module.exports = exports['default'];
 
 /***/ }
 /******/ ]);
