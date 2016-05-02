@@ -37390,6 +37390,10 @@
 	  marginLeft: 15
 	};
 
+	var feedColor = {
+	  color: 'blue'
+	};
+
 	var Feedback = _react2.default.createClass({
 	  displayName: 'Feedback',
 
@@ -37471,7 +37475,7 @@
 	          'Have something to ',
 	          _react2.default.createElement(
 	            'span',
-	            { onClick: this._showFeedback },
+	            { style: feedColor, onClick: this._showFeedback },
 	            ' say '
 	          ),
 	          ' ?'
@@ -47505,8 +47509,8 @@
 	      val = false;
 	    }
 	    if (!validateEmail(email)) {
-	      document.getElementById('email').innerHTML = 'Invalid Email !';
 	      val = false;
+	      document.getElementById('email').innerHTML = '*invalid Email !';
 	    }
 	    if (this.state.country == 0) {
 	      val = false;
@@ -47523,8 +47527,6 @@
 	    if (validatePassword(password).error) {
 	      val = false;
 	      document.getElementById('password').innerHTML = validatePassword(password).error;
-	    } else {
-	      val = true;
 	    }
 
 	    if (this.state.gender == 1) {
@@ -57014,7 +57016,7 @@
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'div',
-	      { className: 'col-lg-6' },
+	      null,
 	      _react2.default.createElement(
 	        'h3',
 	        null,
@@ -57681,10 +57683,15 @@
 	      success: function success(response) {
 	        console.log(response);
 	        if (response.status === 200 && response.done == true) {
+	          alert('Password changed');
 	          location.reload();
-	        } else {}
+	        } else {
+	          alert('Something happened please try again');
+	        }
 	      }
-	    }).fail(function () {});
+	    }).fail(function () {
+	      alert('Something happened please try again');
+	    });
 	  }
 	};
 
@@ -62199,7 +62206,7 @@
 	      ),
 	      _react2.default.createElement(
 	        'div',
-	        { className: 'col-lg-6' },
+	        null,
 	        this.state.photos ? this._renderPhotos() : ''
 	      )
 	    );
