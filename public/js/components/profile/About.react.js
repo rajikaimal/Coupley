@@ -169,7 +169,7 @@ const About = React.createClass({
   render: function() {
     return (
       <div>
-          <div className="col-lg-6">      
+          <div className="col-lg-6">
             <List>
                 <ListItem key="Self summary"
                     primaryText="Self summary"
