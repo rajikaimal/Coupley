@@ -13,6 +13,9 @@ import FlatButton from 'material-ui/lib/flat-button';
 import AutoComplete from 'material-ui/lib/auto-complete';
 import Dialog from 'material-ui/lib/dialog';
 
+
+const users = [''];
+
 const t1 = {
   marginTop:10,
 };
@@ -77,7 +80,6 @@ const SelectFieldExampleSimple = React.createClass({
   componentDidMount: function () {
   ThreadStore.addChangeListener(this._onChange);
   ThreadActions. getlikedusers(likedusers);
-
 },
 
   _onChange: function () {
@@ -85,7 +87,6 @@ const SelectFieldExampleSimple = React.createClass({
 },
 
   LikedUsers:function () {
-
     ThreadActions.getlikedusers(likedusers);
   },
 
@@ -172,6 +173,8 @@ handleUpdateInput(text) {
   'White',
 ];
 
+
+
   //onClick={this._blockUser}
 
     return (
@@ -224,7 +227,7 @@ handleUpdateInput(text) {
       floatingLabelText="Enter Username"
       onUpdateInput={this.handleUpdateInput}
       filter={AutoComplete.caseInsensitiveFilter}
-      dataSource={colors}
+      dataSource={users}
      />
       </Dialog>
 

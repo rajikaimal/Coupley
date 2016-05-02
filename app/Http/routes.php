@@ -72,15 +72,20 @@ Route::group(['prefix' => 'api'], function () {
 
     //Return previos chats
     Route::get('getpreviousmsg', 'ThreadController@getPreviousMessage');
+    //Return initial chats
+    Route::get('getinitmsg', 'ThreadController@getInitMessage');
     //Delete Messages
     Route::post('deletemessage', 'ThreadController@deletemessage');
     //Retrive likedusers
     Route::get('getlikedusers', 'ThreadController@getLikedUserList');
     //Serch Results of Previous messages
     Route::get('getsearchconv', 'ThreadController@getSearchConv');
-    //Serch Results of Previous messages
-
+    //Return a list of online users
     Route::get('getonlineusers', 'ThreadController@getOnlineUsers');
+    //set Offline to a set of online users
+    Route::get('setoffline', 'ThreadController@setOfflineUsers');
+    //set Online to a set of online users
+    Route::get('setonline', 'ThreadController@setOnlineUsers');
 
     Route::get('getMessage', 'ThreadController@getMessage');
 
@@ -125,6 +130,7 @@ Route::group(['prefix' => 'api'], function () {
      Route::get('othervisits', 'VisitorCountController@othersVisits');
      Route::get('sothervisits', 'VisitorCountController@searchOthersVisits');
      Route::post('unfollowvisitor', 'VisitorCountController@unFollowVisitor');
+      Route::post('deleteothervisitor', 'VisitorCountController@deleteOtherVisitor');
     /////////
 
     Route::get('getonlineusers', 'ThreadController@getOnlineUsers');

@@ -78,6 +78,28 @@ var VisitsAction = {
     });
   },
 
+  deleteUserFromOthervisit: function (visitor, username) {
+    let data = {
+     visitorusername: visitor,
+     username: username,
+   };
+   console.log(data);
+    $.post('api/deleteothervisitor', data, function (response) {
+      if (response.status == 200) {
+        $.get('/api/othervisits?myusername='+response, function (response) {
+          if (response.status == 200) {
+            AppDispatcher.handleViewAction({
+                actionType:VisitConstants.OTHERSVISITSS,
+                othersVisitlist: response.oVlist,
+              });
+          }else if (response.status == 505) {
+            console.log('Error 505');
+          }
+        });
+      }
+    });
+  },
+
 
 
 

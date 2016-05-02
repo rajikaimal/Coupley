@@ -91,7 +91,7 @@ const myvisits = React.createClass({
               <div>
                   <ListItem
                      primaryText={this.props.fistname}
-                     leftAvatar={<Avatar src="images/ok-128.jpg" />}
+                     leftAvatar={<Avatar src={'img/profilepics/'+this.props.username} />}
                      rightIconButton={  <IconMenu iconButtonElement={iconButtonElement}>
                          <MenuItem onTouchTap={this.handleOpen}>Unfollow</MenuItem>
                        </IconMenu>}
