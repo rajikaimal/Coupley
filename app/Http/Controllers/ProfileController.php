@@ -846,7 +846,7 @@ class ProfileController extends Controller
             $report->user_id = $user1ID;
             $report->reported_user_id = $user2ID;
             $report->description = $description;
-            $report->status = $type;
+            $report->type = $type;
             $report->save();
 
             return response()->json(['status' => 200, 'done' => true], 200);
