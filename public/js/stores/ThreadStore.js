@@ -6,6 +6,7 @@ var assign = require('object-assign');
 var CHAT_EVENT = 'change';
 
 var Thread = [];
+var InitThread = [];
 var PreviousThread = [];
 var LikedUsers;
 var SearchList = [];
@@ -29,6 +30,19 @@ var ThreadStore = assign({}, EventEmitter.prototype, {
   savemessage: function (data) {
       Thread.push(data);
     },
+
+saveInitMessages:function (result){
+
+InitThread=result;
+
+},
+
+getInitmessages:function (){
+
+    return InitThread;
+
+},
+
 
   emitChange: function () {
       this.emit(CHAT_EVENT);
@@ -150,6 +164,10 @@ AppDispatcher.register(function (payload) {
       break;
     case (ThreadConstants.MSGLIST):
       ThreadStore.saveThreadMessages(payload.action.messagelist);
+      ThreadStore.emitChange();
+      break;
+    case (ThreadConstants.INITMSG):
+      ThreadStore.saveInitMessages(payload.action.Initmessage);
       ThreadStore.emitChange();
       break;
 

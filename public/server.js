@@ -5,7 +5,7 @@ var mysql      = require('mysql');      /*  Require HTTP module and create serve
 var connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'miyoungrae123',
+  password: '',
   database: 'Coupley',
 });
 var connectedUser = {};
@@ -78,7 +78,7 @@ io.on('connection', function (socket) {
       console.log(post.thread_id);
       connection.query("INSERT INTO messages(message,sender_un,thread_id) VALUES('" + post.message + "','" + post.sender_un + "','" + post.thread_id + "')", function (err, result) {
       console.log('error eka '+err);
-        connection.query("SELECT m.message,m.created_at,u.firstname,u.username as username,m.thread_id FROM messages m,users u WHERE m.thread_id='" + post.thread_id + "' AND u.username=m.sender_un ", function (err, result) {
+        connection.query("SELECT m.message,m.created_at,u.firstname,u.username as username,t.user1_un as reciver,t.user2_un as sender,m.thread_id FROM messages m,threads t,users u WHERE m.thread_id='" + post.thread_id + "' AND t.trd_id='" + post.thread_id + "' AND u.username=m.sender_un ", function (err, result) {
 
           io.sockets.connected[connectedUser[chat.user1]].emit('chat', { message:result });
 

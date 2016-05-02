@@ -13,14 +13,14 @@ class VisitorCountController extends Controller
         $visitorUsername = $request->visitorusername;
 
         try {
-            $user1ID = User::where('username', $username)->get()[0]->id;
-            $user2ID = User::where('username', $visitorUsername)->get()[0]->id;
 
-            $result = \DB::select(\DB::raw("INSERT INTO ProfileVisitor(prousername,visusername)
-                                    VALUES ('".$username."','".$visitorUsername."') "));
+            if($result = \DB::insert(\DB::raw("INSERT INTO  profilevisitor(prousername,visusername)
+              VALUES ('".$username."','".$visitorUsername."') "))){
+                return response()->json(['status' => 200], 200);
+              } else {
+                return response()->json(['status' => 505], 505);
+          }
 
-            //update query using model
-            //no reponse needed since callback is not used in $.post ...
         } catch (Illuminate\Database\QueryException $e) {
         }
     }
@@ -115,6 +115,23 @@ class VisitorCountController extends Controller
     }
 
     public function unFollowVisitor(Request $request)
+    {
+        $vusername = $request->visitorusername;
+        $username = $request->username;
+
+        $posts = \DB::table('ProfileVisitor')->where('visusername', '=', $vusername)->where('prousername', '=', $username);
+        try {
+            if ($posts->delete()) {
+                return response()->json(['username' => $username, 'status' => 200], 200);
+            } else {
+                return response()->json(['status' => 505], 505);
+            }
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 200], 200);
+        }
+    }
+
+    public function deleteOtherVisitor(Request $request)
     {
         $vusername = $request->visitorusername;
         $username = $request->username;
