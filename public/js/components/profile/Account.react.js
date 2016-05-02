@@ -97,6 +97,7 @@ const Register = React.createClass({
   _onChange: function() {
     var data = ProfileStore.getUserData();
     var gender;
+    alert(data.gender);
     if(data.gender == "male") {
       gender = 1;
     }
@@ -122,7 +123,6 @@ const Register = React.createClass({
       orientation: orientation,
       birthday: data.birthday,
     });
-    alert(this.state.email);
   },
   _handleSubmitEvent: function() {
     //let username = this.refs.username.getValue();
@@ -158,6 +158,10 @@ const Register = React.createClass({
       val = false;
       return false;
     }
+    if(document.getElementById('email').innerText  != "") {
+      val = false;
+      return false;
+    }
     if(this.state.orientation == 0) {
       val = false;
       document.getElementById('orientation').innerHTML = "*select an option";
@@ -171,16 +175,6 @@ const Register = React.createClass({
     else {
       val = true;
     }
-    //let birthday;
-    // if(typeof window.birthday === 'undefined') {
-    //   // birthday = this.state.birthday
-    //   // alert('done' + birthday);
-    //   alert('wahatt');
-    // } else {
-    //   birthday = window.birthday;
-    // }
-    // return false;
-
     let credentials = {
       username: localStorage.getItem('username'),
       email: email,
@@ -236,7 +230,7 @@ const Register = React.createClass({
               <TableRow hoverable={false} hovered={false} selectable={false}>
                 <TableRowColumn>Email</TableRowColumn>
                 <TableRowColumn> 
-                  <TextField 
+                  <TextField onKeyUp={this._checkEmail}
                     hintText={this.state.email} hintStyle={styles.errorStyle} fullwidth={true} ref="email"/>
               
                 <br/><span style={error} id="email"> </span>

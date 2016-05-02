@@ -80,6 +80,7 @@ var ProfileStore = assign({}, EventEmitter.prototype, {
         firstname: temp.firstname,
         lastname: temp.lastname,
         country: temp.country,
+        gender: temp.gender,
         username: temp.username,
         orientation: temp.orientation,
         age: temp.age,
