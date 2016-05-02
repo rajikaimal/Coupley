@@ -178,12 +178,7 @@ const Register = React.createClass({
     let lastname = this.refs.lastname.getValue();
     let username = this.refs.username.getValue();
     let email = this.refs.email.getValue();
-    if(this.state.gender == 1) {
-      var gender = "male";  
-    }
-    else if(this.state.gender == 2) {
-      var gender = "female";
-    }
+    alert(window.birthday);
     let password = this.refs.password.getValue();
     if(this.state.orientation == 1) {
       var orientation = "straight";
@@ -234,6 +229,17 @@ const Register = React.createClass({
     else {
       val = true;
     }
+
+    if(this.state.gender == 1) {
+      var gender = "male";  
+    }
+    else if(this.state.gender == 2) {
+      var gender = "female";
+    }
+    else {
+      return false;
+    }
+
     let credentials = {
       firstname: firstname,
       lastname: lastname,
@@ -245,7 +251,9 @@ const Register = React.createClass({
       birthday: window.birthday,
       orientation: orientation
     };
+
     if (val) {
+      
       RegisterActions.check(credentials);
     }
   },

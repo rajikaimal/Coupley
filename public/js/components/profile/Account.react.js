@@ -97,7 +97,6 @@ const Register = React.createClass({
   _onChange: function() {
     var data = ProfileStore.getUserData();
     var gender;
-    alert(data.gender);
     if(data.gender == "male") {
       gender = 1;
     }

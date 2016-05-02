@@ -47408,11 +47408,7 @@
 	    var lastname = this.refs.lastname.getValue();
 	    var username = this.refs.username.getValue();
 	    var email = this.refs.email.getValue();
-	    if (this.state.gender == 1) {
-	      var gender = "male";
-	    } else if (this.state.gender == 2) {
-	      var gender = "female";
-	    }
+	    alert(window.birthday);
 	    var password = this.refs.password.getValue();
 	    if (this.state.orientation == 1) {
 	      var orientation = "straight";
@@ -47459,6 +47455,15 @@
 	    } else {
 	      val = true;
 	    }
+
+	    if (this.state.gender == 1) {
+	      var gender = "male";
+	    } else if (this.state.gender == 2) {
+	      var gender = "female";
+	    } else {
+	      return false;
+	    }
+
 	    var credentials = {
 	      firstname: firstname,
 	      lastname: lastname,
@@ -47470,7 +47475,9 @@
 	      birthday: window.birthday,
 	      orientation: orientation
 	    };
+
 	    if (val) {
+
 	      _RegisterActions2.default.check(credentials);
 	    }
 	  },
@@ -57151,7 +57158,6 @@
 	  _onChange: function _onChange() {
 	    var data = _ProfileStore2.default.getUserData();
 	    var gender;
-	    alert(data.gender);
 	    if (data.gender == "male") {
 	      gender = 1;
 	    } else {
