@@ -10,7 +10,7 @@ var AboutActions = {
           data: response.data[0],
         });
       } else {
-
+        alert('Something happened please try again !');
       }
 
     }).fail(function () {
@@ -47,7 +47,7 @@ var AboutActions = {
             summary: summary,
           });
         } else {
-
+          alert('Something happened please try again !');
         }
       },
     }).fail(function () {
@@ -70,7 +70,7 @@ var AboutActions = {
             life: life,
           });
         } else {
-
+          alert('Something happened please try again !');
         }
       },
     }).fail(function () {
@@ -93,7 +93,7 @@ var AboutActions = {
             goodat: goodat,
           });
         } else {
-
+          alert('Something happened please try again !');
         }
       },
     }).fail(function () {
@@ -116,7 +116,7 @@ var AboutActions = {
             thinkingof: thinkingof,
           });
         } else {
-
+          alert('Something happened please try again !');
         }
       },
     }).fail(function () {
@@ -139,7 +139,7 @@ var AboutActions = {
             favs: favs,
           });
         } else {
-
+          alert('Something happened please try again !');
         }
       },
     }).fail(function () {
@@ -170,7 +170,7 @@ var AboutActions = {
             });
           });
         } else {
-
+          alert('Something happened please try again !');
         }
       },
     }).fail(function () {

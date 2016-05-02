@@ -37,7 +37,8 @@ const Profile = React.createClass({
       lastname: VisitorStore.getUserData().lastname,
       country: VisitorStore.getUserData().country,
       gender: VisitorStore.getUserData().gender,
-      age: VisitorStore.getUserData().age
+      age: VisitorStore.getUserData().age,
+      permission: VisitorStore.getPermission()
     }
 
   },
@@ -57,7 +58,8 @@ const Profile = React.createClass({
       lastname: VisitorStore.getUserData().lastname,
       country: VisitorStore.getUserData().country,
       gender: VisitorStore.getUserData().gender,
-      age: VisitorStore.getUserData().age
+      age: VisitorStore.getUserData().age,
+      permission: VisitorStore.getPermission()
     });
   },
   _renderCountry: function() {
@@ -82,7 +84,7 @@ const Profile = React.createClass({
           <div className="btn-group btn-group-justified btn-group-info">
             <Link to={'/' + visitorUsername + '/activityfeed'} className="btn ">My Activity Feed</Link>
             <Link to={'/' + visitorUsername + '/about'} className="btn ">About</Link>
-            <Link to={'/' + visitorUsername + '/photos'} className="btn ">Photos</Link>
+            {this.state.permission ? <Link to={'/' + visitorUsername + '/photos'} className="btn ">Photos</Link> : <Link to="" className="btn "></Link>}
           </div>
         </div>
         {this._renderCountry()}
