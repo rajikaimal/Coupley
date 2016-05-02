@@ -150,10 +150,18 @@ const ActivityList = React.createClass({
             return (<Comment ckey={comm.id} 
                              cid={comm.id} 
                              cfirstName={comm.firstname} 
+                             cusername={comm.username}
                              comment_txt={comm.comment_txt} />);       
           }
         }));
       }));
+  },
+
+  _loadMoreComments: function () {
+      let commentData = {
+      postId: this.props.id,
+    };
+    ActivityfeedAction.loadMoreComment(commentData);
   },
 
   _editStatus: function () {
@@ -222,13 +230,6 @@ const ActivityList = React.createClass({
       ActivityfeedAction.unlike(likeData);
       _getLikedCount();
     }
-  },
-
-  _loadMoreComments: function () {
-      let commentData = {
-      postId: this.props.id,
-    };
-    ActivityfeedAction.loadMoreComment(commentData);
   },
 
   handleOpen: function () {
@@ -357,7 +358,7 @@ const ActivityList = React.createClass({
         <div>
           <Card>
             <ListItem
-              leftAvatar={<Avatar src="https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg" />}
+              leftAvatar={<Avatar src={'img/profilepics/'+ this.props.username} />}
               primaryText={this.props.firstName}
               secondaryText={
                 <p>

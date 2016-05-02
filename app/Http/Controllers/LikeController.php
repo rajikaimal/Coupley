@@ -83,7 +83,7 @@ class LikeController extends Controller
     {
         $postId = $request->postId;
         try {
-            $posts = \DB::select('select firstname,post_id
+            $posts = \DB::select('select firstname,post_id,username
                                  from activitylikes 
                                  where post_id='.$postId.'
                                  order by created_at desc');

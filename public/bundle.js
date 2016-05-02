@@ -58198,25 +58198,25 @@
 
 	  addComment: function addComment(comment) {
 	    $.post('api/addcomment', comment, function (response) {
-	      // if (response.status == 201) {
-	      //   $.get('/api/getcomment', comment,function(response) {
-	      //     if (response.status == 200) {
-	      //         AppDispatcher.handleViewAction({
-	      //           actionType: CommentConstants.GETCOMMENT,
-	      //           commentdata: response.comments
-	      //         });
-	      //     } else if (response.status == 505) {
-	      //       console.log('Error 505');
-	      //     }
-	      //   });
-	      // } else if (response.status == 404) {
-	      //   console.log('Error 404');
-	      // }
+	      if (response.status == 201) {
+	        $.get('/api/getCurrentComment', comment, function (response) {
+	          if (response.status == 200) {
+	            AppDispatcher.handleViewAction({
+	              actionType: CommentConstants.GETCOMMENT,
+	              commentdata: response.comments
+	            });
+	          } else if (response.status == 505) {
+	            console.log('Error 505');
+	          }
+	        });
+	      } else if (response.status == 404) {
+	        console.log('Error 404');
+	      }
 	    });
 	  },
 
 	  getCommentList: function getCommentList(commentData) {
-	    commentLimitNo = commentLimitNo + 3;
+	    commentLimitNo = commentLimitNo + 2;
 	    $.get('/api/getcomment?commentLimitNo=' + commentLimitNo, commentData, function (response) {
 	      if (response.status == 200 && response.comments) {
 	        AppDispatcher.handleViewAction({
@@ -58232,7 +58232,7 @@
 	    });
 	  },
 	  loadMoreComment: function loadMoreComment(commentData) {
-	    commentLimitNo = commentLimitNo + 3;
+	    commentLimitNo = commentLimitNo + 2;
 	    $.get('/api/getcomment?commentLimitNo=' + commentLimitNo, commentData, function (response) {
 	      if (response.status == 200 && response.comments) {
 	        AppDispatcher.handleViewAction({
@@ -58294,7 +58294,8 @@
 
 	module.exports = keyMirror({
 		GETCOMMENT: null,
-		LOADMORE: null
+		LOADMORE: null,
+		GETLASTCOMMENT: null
 	});
 
 /***/ },
@@ -62547,6 +62548,7 @@
 	        id: result.id,
 	        type: result.type,
 	        firstName: result.firstname,
+	        username: result.username,
 	        postId: result.post_id,
 	        attachment: result.attachment,
 	        lPostId: result.pid,
@@ -62556,6 +62558,7 @@
 	        likesCount: result.likesCount,
 	        sid: result.sid,
 	        sfirstname: result.sfirstname,
+	        susername: result.susername,
 	        sattachment: result.sattachment,
 	        spost_text: result.spost_text,
 	        screated_at: result.screated_at });
@@ -62828,10 +62831,18 @@
 	          return _react2.default.createElement(_Comment2.default, { ckey: comm.id,
 	            cid: comm.id,
 	            cfirstName: comm.firstname,
+	            cusername: comm.username,
 	            comment_txt: comm.comment_txt });
 	        }
 	      });
 	    });
+	  },
+
+	  _loadMoreComments: function _loadMoreComments() {
+	    var commentData = {
+	      postId: this.props.id
+	    };
+	    _ActivityfeedAction2.default.loadMoreComment(commentData);
 	  },
 
 	  _editStatus: function _editStatus() {
@@ -62899,13 +62910,6 @@
 	      _ActivityfeedAction2.default.unlike(likeData);
 	      _getLikedCount();
 	    }
-	  },
-
-	  _loadMoreComments: function _loadMoreComments() {
-	    var commentData = {
-	      postId: this.props.id
-	    };
-	    _ActivityfeedAction2.default.loadMoreComment(commentData);
 	  },
 
 	  handleOpen: function handleOpen() {
@@ -63020,7 +63024,7 @@
 	          _card2.default,
 	          null,
 	          _react2.default.createElement(_listItem2.default, {
-	            leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg' }),
+	            leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'img/profilepics/' + this.props.username }),
 	            primaryText: this.props.firstName,
 	            secondaryText: _react2.default.createElement(
 	              'p',
@@ -63204,7 +63208,7 @@
 	                _card2.default,
 	                null,
 	                _react2.default.createElement(_listItem2.default, {
-	                    leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg' }),
+	                    leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'img/profilepics/' + this.props.cusername }),
 	                    primaryText: this.props.cfirstName,
 	                    secondaryText: _react2.default.createElement(
 	                        'p',
@@ -63281,11 +63285,11 @@
 	                    _react2.default.createElement(
 	                        'div',
 	                        null,
-	                        this.props.spost_text != '' ? _react2.default.createElement(
+	                        this.props.sid ? _react2.default.createElement(
 	                            'div',
 	                            null,
 	                            _react2.default.createElement(_listItem2.default, {
-	                                leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg' }),
+	                                leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'img/profilepics/' + this.props.susername }),
 	                                primaryText: this.props.sfirstname,
 	                                secondaryText: _react2.default.createElement(
 	                                    'p',
@@ -63319,11 +63323,14 @@
 	                        ) : _react2.default.createElement(
 	                            'div',
 	                            null,
+	                            _react2.default.createElement(_listItem2.default, {
+	                                primaryText: 'Attachment Unavailable' }),
 	                            _react2.default.createElement(
 	                                _cardText2.default,
 	                                null,
-	                                'Attachment Unavailable'
-	                            )
+	                                'This attachment may have been removed or the person who shared it may not have permission to share it with you'
+	                            ),
+	                            _react2.default.createElement(_divider2.default, { inset: true })
 	                        )
 	                    )
 	                )
@@ -63404,6 +63411,8 @@
 
 	var firstname;
 	var sfirstname;
+	var username;
+	var susername;
 
 	var CountBox = _react2.default.createClass({
 	  displayName: 'CountBox',
@@ -63414,7 +63423,9 @@
 	      sharedUsers: _StatusStore2.default.getSharedUsers(),
 	      open: false,
 	      firstname: '',
-	      sfirstname: ''
+	      sfirstname: '',
+	      username: '',
+	      susername: ''
 	    };
 	  },
 
@@ -63450,9 +63461,10 @@
 	      return likes.map(function (result) {
 	        if (self.props.post_id == result.post_id) {
 	          firstname = result.firstname;
-	          alert(firstname);
+	          username = result.username;
 	          self.setState({
-	            firstname: firstname
+	            firstname: firstname,
+	            username: username
 	          });
 	        }
 	      });
@@ -63467,9 +63479,10 @@
 	      return shares.map(function (result) {
 	        if (self.props.post_id == result.post_id) {
 	          firstname = result.firstname;
-	          alert(firstname);
+	          username = result.username;
 	          self.setState({
-	            sfirstname: firstname
+	            sfirstname: firstname,
+	            susername: username
 	          });
 	        }
 	      });
@@ -63509,7 +63522,7 @@
 	          modal: true,
 	          open: this.state.open },
 	        _react2.default.createElement(_listItem2.default, {
-	          leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg' }),
+	          leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'img/profilepics/' + this.state.username }),
 	          primaryText: this.state.firstname }),
 	        _react2.default.createElement(_divider2.default, { inset: true })
 	      ),
@@ -63522,7 +63535,7 @@
 	          modal: true,
 	          open: this.state.open2 },
 	        _react2.default.createElement(_listItem2.default, {
-	          leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg' }),
+	          leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'img/profilepics/' + this.state.susername }),
 	          primaryText: this.state.sfirstname }),
 	        _react2.default.createElement(_divider2.default, { inset: true })
 	      )

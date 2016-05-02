@@ -108,20 +108,22 @@ class ActivityFeedController extends Controller
                                        q.sfirstname,
                                        q.sattachment,
                                        q.spost_text,
-                                       q.screated_at
+                                       q.screated_at,
+                                       p.username,
+                                       q.susername
                                 FROM(SELECT x.id as id,x.firstname as firstname,x.type as type,x.attachment as attachment,
-                                            x.post_text as post_text,x.post_id as post_id,x.created_at as created_at,x.pid as pid,y.likesCount as likesCount
+                                            x.post_text as post_text,x.post_id as post_id,x.created_at as created_at,x.pid as pid,y.likesCount as likesCount,x.username as username
                                      FROM (select a.id as id,a.firstname as firstname,a.type as type,
-                                                    a.attachment as attachment,a.post_text as post_text,a.post_id as post_id,a.created_at as created_at,l.post_id as pid
-                                           from (select id,firstname,type,attachment,post_text,post_id,created_at  
+                                                    a.attachment as attachment,a.post_text as post_text,a.post_id as post_id,a.created_at as created_at,l.post_id as pid,a.username as username
+                                           from (select id,firstname,type,attachment,post_text,post_id,created_at,username  
                                                  from (select p.id,p.firstname,p.type,p.attachment,p.post_text,p.post_id,
-                                                                p.created_at
+                                                                p.created_at,p.username
                                                        from activityposts p, liked a
                                                        where a.gotliked='.$uId.' and a.likeback=1 and p.userId=a.likeduser 
                                          
                                                         union
                                                                            
-                                                        select p.id,p.firstname,p.type,p.attachment,p.post_text,p.post_id,p.created_at
+                                                        select p.id,p.firstname,p.type,p.attachment,p.post_text,p.post_id,p.created_at,p.username
                                                         from activityposts p
                                                         where p.userId='.$uId.' ) as t1
                                                  where id NOT IN (select post_id 
@@ -135,7 +137,7 @@ class ActivityFeedController extends Controller
                                      ON x.id = y.post_id) p
     
                                 Left Join (select id as sid,firstname as sfirstname,attachment as sattachment,
-                                                post_text as spost_text,created_at as screated_at from activityposts) q
+                                                post_text as spost_text,created_at as screated_at,username as susername from activityposts) q
                                 On p.post_id=q.sid
                                 order by p.created_at desc
                                 limit '.$pagination);
@@ -279,7 +281,7 @@ class ActivityFeedController extends Controller
     {
         $postId = $request->postId;
         try {
-            $posts = \DB::select('select firstname,post_id
+            $posts = \DB::select('select firstname,post_id,username
                                  from activityposts 
                                  where post_id='.$postId.'
                                  order by created_at desc');
