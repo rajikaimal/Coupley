@@ -51,9 +51,9 @@ class VisitorCountController extends Controller
 
             SELECT pvid,id,firstname,lastname,username,chatstatus,created_at
             FROM
-            (SELECT p.pvid,u.id,u.firstname,u.lastname,u.chatstatus,u.username,p.created_at
-            FROM profilevisitor p, users u
-            WHERE prousername='".$username."' AND u.username=p.visusername) t
+            (SELECT p.pvid,u.id,u.firstname,u.lastname,u.username,u.chatstatus,p.created_at
+              FROM ProfileVisitor p, users u
+              WHERE visusername='".$username."' AND u.username=p.prousername) t
             WHERE firstname='".$visitorUsername."'
             OR lastname='".$visitorUsername."'
             OR username='".$visitorUsername."'
@@ -95,9 +95,9 @@ class VisitorCountController extends Controller
             if ($soVlist = \DB::select(\DB::raw("
           SELECT pvid,id,firstname,lastname,username,chatstatus,created_at
           FROM
-          (SELECT p.pvid,u.id,u.firstname,u.lastname,u.username,u.chatstatus,p.created_at
-          FROM profilevisitor p, users u
-          WHERE visusername='".$username."' AND u.username=p.prousername) t
+          ( SELECT p.pvid,u.id,u.firstname,u.lastname,u.username,u.chatstatus,p.created_at
+            FROM ProfileVisitor p, users u
+            WHERE prousername='".$username."' AND u.username=p.visusername) t
           WHERE firstname='".$visitorUsername."'
           OR lastname='".$visitorUsername."'
           OR username='".$visitorUsername."'
@@ -116,7 +116,7 @@ class VisitorCountController extends Controller
         $vusername = $request->visitorusername;
         $username = $request->username;
 
-        $posts = \DB::table('ProfileVisitor')->where('visusername', '=', $vusername)->where('prousername', '=', $username);
+        $posts = \DB::table('ProfileVisitor')->where('visusername', '=', $username)->where('prousername', '=', $vusername);
         try {
             if ($posts->delete()) {
                 return response()->json(['username' => $username, 'status' => 200], 200);
@@ -133,7 +133,7 @@ class VisitorCountController extends Controller
         $vusername = $request->visitorusername;
         $username = $request->username;
 
-        $posts = \DB::table('ProfileVisitor')->where('visusername', '=', $vusername)->where('prousername', '=', $username);
+        $posts = \DB::table('ProfileVisitor')->where('visusername', '=', $username)->where('prousername', '=', $vusername);
         try {
             if ($posts->delete()) {
                 return response()->json(['username' => $username, 'status' => 200], 200);

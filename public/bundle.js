@@ -66309,6 +66309,14 @@
 
 	var _ThreadStore2 = _interopRequireDefault(_ThreadStore);
 
+	var _flatButton = __webpack_require__(327);
+
+	var _flatButton2 = _interopRequireDefault(_flatButton);
+
+	var _dialog = __webpack_require__(326);
+
+	var _dialog2 = _interopRequireDefault(_dialog);
+
 	var _Messages = __webpack_require__(516);
 
 	var _Messages2 = _interopRequireDefault(_Messages);
@@ -66332,9 +66340,18 @@
 	var PreviousChat = _react2.default.createClass({
 	  displayName: 'PreviousChat',
 
+	  handleOpen: function handleOpen() {
+	    this.setState({ open: true });
+	  },
+
+	  handleClose: function handleClose() {
+	    this.setState({ open: false });
+	  },
+
 	  getInitialState: function getInitialState() {
 	    return {
-	      results: _ThreadStore2.default.getThreadMessage()
+	      results: _ThreadStore2.default.getThreadMessage(),
+	      open: false
 	    };
 	  },
 
@@ -66368,6 +66385,18 @@
 	  },
 
 	  render: function render() {
+
+	    var actions = [_react2.default.createElement(_flatButton2.default, {
+	      label: 'No',
+	      secondary: true,
+	      onTouchTap: this.handleClose
+	    }), _react2.default.createElement(_flatButton2.default, {
+	      label: 'Yes',
+	      primary: true,
+	      keyboardFocused: true,
+	      onTouchTap: this.deleteconvo
+	    })];
+
 	    return _react2.default.createElement(
 	      _list2.default,
 	      { style: ListStyle },
@@ -66375,7 +66404,11 @@
 	        rightIconButton: _react2.default.createElement(
 	          _iconMenu2.default,
 	          { iconButtonElement: iconButtonElement },
-	          _react2.default.createElement(_menuItem2.default, { primaryText: 'Delete', onClick: this.deleteconvo })
+	          _react2.default.createElement(
+	            _menuItem2.default,
+	            { onTouchTap: this.handleOpen },
+	            'Delete'
+	          )
 	        ),
 	        onTouchTap: this.getMessage,
 	        primaryText: this.props.firstname,
@@ -66391,7 +66424,17 @@
 	          this.props.created_at
 	        ),
 	        secondaryTextLines: 2 }),
-	      _react2.default.createElement(_divider2.default, { inset: false })
+	      _react2.default.createElement(_divider2.default, { inset: false }),
+	      _react2.default.createElement(
+	        _dialog2.default,
+	        {
+	          title: 'Delete Conversation',
+	          actions: actions,
+	          modal: false,
+	          open: this.state.open,
+	          onRequestClose: this.handleClose },
+	        'Are you sure you want to delete this conversation?.'
+	      )
 	    );
 	  }
 	});
@@ -70057,6 +70100,7 @@
 	        id: result.id,
 	        type: result.type,
 	        firstName: result.firstname,
+	        username: result.username,
 	        postId: result.post_id,
 	        attachment: result.attachment,
 	        lPostId: result.pid,

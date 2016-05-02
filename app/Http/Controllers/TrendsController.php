@@ -96,7 +96,7 @@ class TrendsController extends Controller
                      SELECT *
                      FROM activityposts
                      WHERE id IN ( SELECT id
-                                   FROM (SELECT id,SUBSTRING(post_text,LOCATE('#',post_text),15) AS trend
+                                   FROM (SELECT id,username,SUBSTRING(post_text,LOCATE('#',post_text),15) AS trend
                                          FROM activityposts
                                          WHERE post_text like '%#%') t
                                    WHERE trend IN (SELECT SUBSTRING(post_text,LOCATE('#',post_text),15) AS trend FROM activityposts WHERE post_text like '%#%' HAVING MAX(id))
