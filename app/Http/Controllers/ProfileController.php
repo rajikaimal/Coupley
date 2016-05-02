@@ -164,7 +164,8 @@ class ProfileController extends Controller
                         $thread->user1_un = $likedUsername;
                         $thread->user2_un = $gotLikedUsername;
                         $thread->save();
-                    } 
+                    }
+
                     return response()->json(['status' => 200], 200);
                 } else {
                     return response()->json(['status' => 200], 200);
