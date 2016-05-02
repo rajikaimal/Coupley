@@ -24,6 +24,7 @@ class CommentController extends Controller
             $comment->UserId = $request->userId;
             $comment->email = $request->email;
             $comment->firstname = $request->firstName;
+            $comment->username = $request->userName;
             $comment->comment_txt = $request->comment;
             if ($comment->save()) {
                 return response()->json(['status' => 201], 201);
@@ -48,13 +49,51 @@ class CommentController extends Controller
         $postId = $request->postId;
         $pagination = $request->commentLimitNo;
         try {
-            $comments = \DB::select('select id,firstname,comment_txt,post_id 
+            $comments = \DB::select('select id,firstname,comment_txt,post_id,username
+                                     from activitycomments 
+                                     where post_id='.$postId.'
+                                     limit '.$pagination);
+
+            return response()->json(['status' => 200, 'comments' => $comments], 200);
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 200], 200);
+        }
+    }
+
+    /**
+     * get last comment data.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
+    public function getCurrentComment(Request $request)
+    {
+        $postId = $request->postId;
+        $pagination = 1;
+        try {
+            $comments = \DB::select('select id,firstname,comment_txt,post_id,username
                                      from activitycomments 
                                      where post_id='.$postId.'
                                      order by created_at desc
                                      limit '.$pagination);
 
             return response()->json(['status' => 200, 'comments' => $comments], 200);
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 200], 200);
+        }
+    }
+
+    public function getCommentCount(Request $request)
+    {
+        $postId = $request->postId;
+        try {
+            $commentsCount = \DB::select('select count(id) as commCount,post_id 
+                                          from activitycomments 
+                                          where post_id='.$postId);
+
+            return response()->json(['status' => 200, 'commentsCount' => $commentsCount], 200);
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 200], 200);
         }

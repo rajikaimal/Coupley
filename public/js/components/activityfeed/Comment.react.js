@@ -13,7 +13,7 @@ var Comment = React.createClass({
             <div>
                 <Card>
                     <ListItem
-                        leftAvatar={<Avatar src="https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg" />}
+                        leftAvatar={<Avatar src={'img/profilepics/'+ this.props.cusername} />}
                         primaryText={this.props.cfirstName}
                         secondaryText={<p>{this.props.comment_txt}</p>}
                         secondaryTextLines={1} />

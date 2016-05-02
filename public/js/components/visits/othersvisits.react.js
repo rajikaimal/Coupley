@@ -66,6 +66,7 @@ const othervisits = React.createClass({
 
  blockUser: function () {
  ThreadActions.block(this.props.username, localStorage.getItem('username'));
+ VisitsActions.deleteUserFromOthervisit(this.props.username, localStorage.getItem('username'));
  this.setState({ open: false });
 },
 
@@ -81,14 +82,14 @@ const othervisits = React.createClass({
               label="Yes"
               primary={true}
               keyboardFocused={true}
-              onTouchTap={this. blockUser}
+              onTouchTap={this.blockUser}
             />,
           ];
              return(
                <div>
                    <ListItem
                       primaryText={this.props.fistname}
-                      leftAvatar={<Avatar src="images/ok-128.jpg" />}
+                      leftAvatar={<Avatar src={'img/profilepics/'+this.props.username} />}
                       rightIconButton={ <IconMenu iconButtonElement={iconButtonElement}>
                           <MenuItem onTouchTap={this.handleOpen}>Block</MenuItem>
                         </IconMenu>}

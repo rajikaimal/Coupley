@@ -57,26 +57,37 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('getsharestatus', 'ShareController@getsharestatus');
     //Add a comment to the status
     Route::post('addcomment', 'CommentController@addcomment');
+    //Return current comment
+    Route::get('getCurrentComment', 'CommentController@getCurrentComment');
     //Return comments data
     Route::get('getcomment', 'CommentController@getcomments');
+    //Return comment count
+    Route::get('getCommentCount', 'CommentController@getCommentCount');
     //Delete a status
     Route::post('deleteStatus', 'ActivityFeedController@deleteStatus');
     //Edit a status
     Route::post('edit_status', 'ActivityFeedController@editStatus');
     //Block a status
     Route::post('block_status', 'ActivityFeedController@block_status');
+    //Report a status
+    Route::post('reportPost', 'ActivityFeedController@reportPost');
 
     //Return previos chats
     Route::get('getpreviousmsg', 'ThreadController@getPreviousMessage');
+    //Return initial chats
+    Route::get('getinitmsg', 'ThreadController@getInitMessage');
     //Delete Messages
     Route::post('deletemessage', 'ThreadController@deletemessage');
     //Retrive likedusers
     Route::get('getlikedusers', 'ThreadController@getLikedUserList');
     //Serch Results of Previous messages
     Route::get('getsearchconv', 'ThreadController@getSearchConv');
-    //Serch Results of Previous messages
-
+    //Return a list of online users
     Route::get('getonlineusers', 'ThreadController@getOnlineUsers');
+    //set Offline to a set of online users
+    Route::get('setoffline', 'ThreadController@setOfflineUsers');
+    //set Online to a set of online users
+    Route::get('setonline', 'ThreadController@setOnlineUsers');
 
     Route::get('getMessage', 'ThreadController@getMessage');
 
@@ -115,12 +126,13 @@ Route::group(['prefix' => 'api'], function () {
     //
 
     //Add visitor info
-     Route::post('visitorcount', 'VisitorCountController@incrementVisitorCount');
+     Route::post('profile/visitorcount', 'VisitorCountController@incrementVisitorCount');
      Route::get('myvisits', 'VisitorCountController@myVisits');
      Route::get('smyvisits', 'VisitorCountController@searchMyVisits');
      Route::get('othervisits', 'VisitorCountController@othersVisits');
      Route::get('sothervisits', 'VisitorCountController@searchOthersVisits');
      Route::post('unfollowvisitor', 'VisitorCountController@unFollowVisitor');
+      Route::post('deleteothervisitor', 'VisitorCountController@deleteOtherVisitor');
     /////////
 
     Route::get('getonlineusers', 'ThreadController@getOnlineUsers');

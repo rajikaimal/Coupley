@@ -36,7 +36,7 @@ const Photos = React.createClass({
   render: function() {
     return (
       <div>
-        Photos
+        <h3>Your Photos</h3>
         <div >
           {
             this.state.photos ? this._renderPhotos() : ''

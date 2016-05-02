@@ -129,6 +129,7 @@ const StatusBox = React.createClass({
             fd.append('email', localStorage.getItem('email'));
             fd.append('userId', localStorage.getItem('userid'));
             fd.append('firstName',LoginStore.getFirstname());
+            fd.append('username',localStorage.getItem('username'));
             fd.append('status',status);
             fd.append('token', token);
             $.ajax({
@@ -156,6 +157,7 @@ const StatusBox = React.createClass({
           let statusData = {
           email: LoginStore.getEmail(),
           userId: localStorage.getItem('userid'),
+          userName: localStorage.getItem('username'),
           firstName: LoginStore.getFirstname(),
           status: status,
           };
@@ -171,6 +173,9 @@ const StatusBox = React.createClass({
 
   clearText:function() {
     document.getElementById('txtStatus').value = "";
+  },
+  trending: function() {
+    document.location = "#/trends";
   },
 
   /**
@@ -199,7 +204,8 @@ const StatusBox = React.createClass({
               </div>
 
               <FlatButton className='col-md-1' label="Photos" onClick={this._editProfilePic}/>
-              <div className='col-md-9'></div>
+              <div className="col-md-8"> </div>
+              <FlatButton className='col-md-1' label="Trending"  rippleColor='#2196F3' onClick={this.trending}/>
               <FlatButton className='col-md-1' label="Post"  rippleColor='#2196F3' onClick={this.addStatus}/>
           </Paper>
         </Card>

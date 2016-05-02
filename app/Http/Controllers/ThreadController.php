@@ -7,6 +7,32 @@ use Illuminate\Http\Request;
 class ThreadController extends Controller
 {
     /**
+   * get previous initial conversation.
+   *
+   * @param object        $request
+   *
+   *
+   * @return json
+   */
+  public function getInitMessage(Request $request)
+  {
+      $user1 = $request->user1;
+      try {
+          if ($initmessage = \DB::select(\DB::raw("
+      SELECT m.message,m.created_at,u.firstname,u.username as username,m.thread_id
+      FROM messages m,users u WHERE u.username=m.sender_un AND m.thread_id IN
+      (SELECT thread_id FROM messages WHERE mid=(SELECT MAX(mid) from messages WHERE sender_un='".$user1."'))
+         "))) {
+              return response()->json(['initmessage' => $initmessage, 'status' => 200], 200);
+          } else {
+              return response()->json(['status' => 505], 505);
+          }
+      } catch (Illuminate\Database\QueryException $e) {
+          return response()->json(['status' => 200], 200);
+      }
+  }
+
+    /**
      * get previous conversation list of.
      *
      * @param object        $request
@@ -130,6 +156,54 @@ class ThreadController extends Controller
           SELECT username,firstname,lastname FROM users WHERE username IN (SELECT user2 FROM liked WHERE user1='".$user1."' UNION SELECT user1 FROM liked WHERE user2='".$user1."') AND chatstatus='online'
            "))) {
                 return response()->json(['onlinelist' => $onlinelist, 'status' => 200], 200);
+            } else {
+                return response()->json(['status' => 505], 505);
+            }
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 200], 200);
+        }
+    }
+
+    /**
+     * set offline to List of online people.
+     *
+     * @param object        $request
+     *
+     *
+     * @return void
+     */
+    public function setOfflineUsers(Request $request)
+    {
+        $user1 = $request->user1;
+        try {
+            if ($onlinelist = \DB::select(\DB::raw("
+                UPDATE users SET chatstatus='offline' WHERE username='".$user1."'
+           "))) {
+                return response()->json(['user1' => $user1, 'status' => 200], 200);
+            } else {
+                return response()->json(['status' => 505], 505);
+            }
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 200], 200);
+        }
+    }
+
+    /**
+     * set online to List of online people.
+     *
+     * @param object        $request
+     *
+     *
+     * @return void
+     */
+    public function setOnlineUsers(Request $request)
+    {
+        $user1 = $request->user1;
+        try {
+            if ($onlinelist = \DB::select(\DB::raw("
+                UPDATE users SET chatstatus='online' WHERE username='".$user1."'
+           "))) {
+                return response()->json(['user1' => $user1, 'status' => 200], 200);
             } else {
                 return response()->json(['status' => 505], 505);
             }

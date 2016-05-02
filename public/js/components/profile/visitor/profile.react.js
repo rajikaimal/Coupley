@@ -35,7 +35,9 @@ const Profile = React.createClass({
     return {
       firstname: VisitorStore.getUserData().firstname,
       lastname: VisitorStore.getUserData().lastname,
-      country: VisitorStore.getUserData().country
+      country: VisitorStore.getUserData().country,
+      gender: VisitorStore.getUserData().gender,
+      age: VisitorStore.getUserData().age
     }
 
   },
@@ -53,7 +55,9 @@ const Profile = React.createClass({
     this.setState({
       firstname: VisitorStore.getUserData().firstname,
       lastname: VisitorStore.getUserData().lastname,
-      country: VisitorStore.getUserData().country  
+      country: VisitorStore.getUserData().country,
+      gender: VisitorStore.getUserData().gender,
+      age: VisitorStore.getUserData().age
     });
   },
   _renderCountry: function() {
@@ -72,7 +76,7 @@ const Profile = React.createClass({
     return (
       <div>
         <div className="panel panel-default">
-        <ProfilePic firstname={this.state.firstname} lastname={this.state.lastname} country={this.state.country}/>
+        <ProfilePic firstname={this.state.firstname} lastname={this.state.lastname} country={this.state.country} gender={this.state.gender} age={this.state.age}/>
         <Divider />
         <div style={tabStyle}>
           <div className="btn-group btn-group-justified btn-group-info">

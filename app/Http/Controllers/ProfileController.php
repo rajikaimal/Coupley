@@ -22,6 +22,7 @@ use App\Post;
 use App\Reported;
 use App\activitypost;
 use App\Notification;
+use App\ThreadChats;
 
 class ProfileController extends Controller
 {
@@ -119,11 +120,11 @@ class ProfileController extends Controller
     {
         $username = $request->username;
         try {
-            if ($userDetails = User::where('username', $username)->get()) {
-                return response()->json(['user' => $userDetails, 'status' => 200], 200);
-            } else {
-                return response()->json(['user' => $userDetails, 'status' => 200], 200);
-            }
+            $userDetails = \DB::select(\DB::raw("
+                SELECT id,firstname,lastname,orientation,email,country,gender,username,profilepic,birthday,TIMESTAMPDIFF(YEAR, birthday, CURDATE()) AS age from users where username='".$username."'
+            "));
+
+            return response()->json(['user' => $userDetails, 'status' => 200], 200);
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 200], 200);
         }
@@ -156,6 +157,15 @@ class ProfileController extends Controller
                 $like->user2 = $gotLikedUsername;
                 //$like->save();
                 if ($like->save()) {
+                    $result = Likes::where('user1', $likedUsername)
+                            ->where('user2', $gotLikedUsername)->get();
+                    if (! $result->isEmpty()) {
+                        $thread = new ThreadChats;
+                        $thread->user1_un = $likedUsername;
+                        $thread->user2_un = $gotLikedUsername;
+                        $thread->save();
+                    }
+
                     return response()->json(['status' => 200], 200);
                 } else {
                     return response()->json(['status' => 200], 200);
@@ -707,10 +717,9 @@ class ProfileController extends Controller
         // \DB::raw("delete FROM users WHERE username = '$username'");
         // return $username;
         try {
+            $userId = User::where('username', $username)->get()[0]->id;
             if ($username) {
-                var_dump($username);
-                $q = 'DELETE FROM users where id = ?';
-                $status = \DB::delete($q, [17]);
+                \DB::raw("delete FROM users WHERE id = '$userId'");
 
                 return response()->json(['status' => 200, 'done' => true], 200);
             } else {
@@ -837,7 +846,7 @@ class ProfileController extends Controller
             $report->user_id = $user1ID;
             $report->reported_user_id = $user2ID;
             $report->description = $description;
-            $report->status = $type;
+            $report->type = $type;
             $report->save();
 
             return response()->json(['status' => 200, 'done' => true], 200);
