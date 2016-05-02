@@ -47408,7 +47408,6 @@
 	    var lastname = this.refs.lastname.getValue();
 	    var username = this.refs.username.getValue();
 	    var email = this.refs.email.getValue();
-	    alert(window.birthday);
 	    var password = this.refs.password.getValue();
 	    if (this.state.orientation == 1) {
 	      var orientation = "straight";
@@ -47437,10 +47436,6 @@
 	      document.getElementById('email').innerHTML = 'Invalid Email !';
 	      val = false;
 	    }
-	    if (validatePassword(password).error) {
-	      document.getElementById('password').innerHTML = validatePassword(password).error;
-	      val = false;
-	    }
 	    if (this.state.country == 0) {
 	      val = false;
 	      document.getElementById('country').innerHTML = "*select an option";
@@ -47452,6 +47447,10 @@
 	    if (this.state.gender == 0) {
 	      val = false;
 	      document.getElementById('gender').innerHTML = "*select an option";
+	    }
+	    if (validatePassword(password).error) {
+	      val = false;
+	      document.getElementById('password').innerHTML = validatePassword(password).error;
 	    } else {
 	      val = true;
 	    }
@@ -47477,8 +47476,9 @@
 	    };
 
 	    if (val) {
-
 	      _RegisterActions2.default.check(credentials);
+	    } else {
+	      return false;
 	    }
 	  },
 	  handleChangeGender: function handleChangeGender(e, index, value) {
