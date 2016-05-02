@@ -116,31 +116,31 @@
 
 	var _profile4 = _interopRequireDefault(_profile3);
 
-	var _activityMain = __webpack_require__(593);
+	var _activityMain = __webpack_require__(453);
 
 	var _activityMain2 = _interopRequireDefault(_activityMain);
 
-	var _About3 = __webpack_require__(453);
+	var _About3 = __webpack_require__(467);
 
 	var _About4 = _interopRequireDefault(_About3);
 
-	var _Photos3 = __webpack_require__(457);
+	var _Photos3 = __webpack_require__(471);
 
 	var _Photos4 = _interopRequireDefault(_Photos3);
 
-	var _Search = __webpack_require__(458);
+	var _Search = __webpack_require__(473);
 
 	var _Search2 = _interopRequireDefault(_Search);
 
-	var _dashboard = __webpack_require__(461);
+	var _dashboard = __webpack_require__(476);
 
 	var _dashboard2 = _interopRequireDefault(_dashboard);
 
-	var _login = __webpack_require__(471);
+	var _login = __webpack_require__(486);
 
 	var _login2 = _interopRequireDefault(_login);
 
-	var _activityMain3 = __webpack_require__(475);
+	var _activityMain3 = __webpack_require__(489);
 
 	var _activityMain4 = _interopRequireDefault(_activityMain3);
 
@@ -148,111 +148,111 @@
 
 	var _NotificationContainer2 = _interopRequireDefault(_NotificationContainer);
 
-	var _LikesContainer = __webpack_require__(490);
+	var _LikesContainer = __webpack_require__(497);
 
 	var _LikesContainer2 = _interopRequireDefault(_LikesContainer);
 
-	var _activityMain5 = __webpack_require__(495);
+	var _activityMain5 = __webpack_require__(502);
 
 	var _activityMain6 = _interopRequireDefault(_activityMain5);
 
-	var _ChatCC = __webpack_require__(507);
+	var _ChatCC = __webpack_require__(509);
 
 	var _ChatCC2 = _interopRequireDefault(_ChatCC);
 
-	var _ChatPreviousContainer = __webpack_require__(509);
+	var _ChatPreviousContainer = __webpack_require__(511);
 
 	var _ChatPreviousContainer2 = _interopRequireDefault(_ChatPreviousContainer);
 
-	var _chatCard = __webpack_require__(512);
+	var _chatCard = __webpack_require__(514);
 
 	var _chatCard2 = _interopRequireDefault(_chatCard);
 
-	var _ChatTopBar = __webpack_require__(513);
+	var _ChatTopBar = __webpack_require__(515);
 
 	var _ChatTopBar2 = _interopRequireDefault(_ChatTopBar);
 
-	var _tabs = __webpack_require__(518);
+	var _tabs = __webpack_require__(520);
 
 	var _tabs2 = _interopRequireDefault(_tabs);
 
-	var _tabs3 = __webpack_require__(523);
+	var _tabs3 = __webpack_require__(525);
 
 	var _tabs4 = _interopRequireDefault(_tabs3);
 
-	var _TrendContainer = __webpack_require__(524);
+	var _TrendContainer = __webpack_require__(526);
 
 	var _TrendContainer2 = _interopRequireDefault(_TrendContainer);
 
-	var _visitcontainer = __webpack_require__(538);
+	var _visitcontainer = __webpack_require__(540);
 
 	var _visitcontainer2 = _interopRequireDefault(_visitcontainer);
 
-	var _ThreadMain = __webpack_require__(544);
+	var _ThreadMain = __webpack_require__(546);
 
 	var _ThreadMain2 = _interopRequireDefault(_ThreadMain);
 
-	var _userHome = __webpack_require__(545);
+	var _userHome = __webpack_require__(547);
 
 	var _userHome2 = _interopRequireDefault(_userHome);
 
-	var _friends = __webpack_require__(546);
+	var _friends = __webpack_require__(548);
 
 	var _friends2 = _interopRequireDefault(_friends);
 
-	var _enemies = __webpack_require__(553);
+	var _enemies = __webpack_require__(555);
 
 	var _enemies2 = _interopRequireDefault(_enemies);
 
-	var _Cards = __webpack_require__(557);
+	var _Cards = __webpack_require__(559);
 
 	var _Cards2 = _interopRequireDefault(_Cards);
 
-	var _settings = __webpack_require__(566);
+	var _settings = __webpack_require__(568);
 
 	var _settings2 = _interopRequireDefault(_settings);
 
-	var _Forgot = __webpack_require__(576);
+	var _Forgot = __webpack_require__(578);
 
 	var _Forgot2 = _interopRequireDefault(_Forgot);
 
-	var _AdminForgotPwd = __webpack_require__(577);
+	var _AdminForgotPwd = __webpack_require__(579);
 
 	var _AdminForgotPwd2 = _interopRequireDefault(_AdminForgotPwd);
 
-	var _FeedbackHome = __webpack_require__(578);
+	var _FeedbackHome = __webpack_require__(580);
 
 	var _FeedbackHome2 = _interopRequireDefault(_FeedbackHome);
 
-	var _timeline = __webpack_require__(579);
+	var _timeline = __webpack_require__(581);
 
 	var _timeline2 = _interopRequireDefault(_timeline);
 
-	var _activity = __webpack_require__(585);
+	var _activity = __webpack_require__(587);
 
 	var _activity2 = _interopRequireDefault(_activity);
 
-	var _privacy = __webpack_require__(586);
+	var _privacy = __webpack_require__(588);
 
 	var _privacy2 = _interopRequireDefault(_privacy);
 
-	var _chat = __webpack_require__(587);
+	var _chat = __webpack_require__(589);
 
 	var _chat2 = _interopRequireDefault(_chat);
 
-	var _others = __webpack_require__(588);
+	var _others = __webpack_require__(590);
 
 	var _others2 = _interopRequireDefault(_others);
 
-	var _graph = __webpack_require__(589);
+	var _graph = __webpack_require__(591);
 
 	var _graph2 = _interopRequireDefault(_graph);
 
-	var _piechart = __webpack_require__(590);
+	var _piechart = __webpack_require__(592);
 
 	var _piechart2 = _interopRequireDefault(_piechart);
 
-	var _Search3 = __webpack_require__(591);
+	var _Search3 = __webpack_require__(593);
 
 	var _Search4 = _interopRequireDefault(_Search3);
 
@@ -57822,6 +57822,1792 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _activityContainer = __webpack_require__(454);
+
+	var _activityContainer2 = _interopRequireDefault(_activityContainer);
+
+	var _activityListComp = __webpack_require__(460);
+
+	var _activityListComp2 = _interopRequireDefault(_activityListComp);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var ActivityMain = _react2.default.createClass({
+	    displayName: 'ActivityMain',
+
+	    render: function render() {
+	        return _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(_activityContainer2.default, null)
+	            )
+	        );
+	    }
+	});
+
+	exports.default = ActivityMain;
+
+/***/ },
+/* 454 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _list = __webpack_require__(293);
+
+	var _list2 = _interopRequireDefault(_list);
+
+	var _listItem = __webpack_require__(295);
+
+	var _listItem2 = _interopRequireDefault(_listItem);
+
+	var _raisedButton = __webpack_require__(377);
+
+	var _raisedButton2 = _interopRequireDefault(_raisedButton);
+
+	var _ActivityfeedAction = __webpack_require__(455);
+
+	var _ActivityfeedAction2 = _interopRequireDefault(_ActivityfeedAction);
+
+	var _StatusStore = __webpack_require__(459);
+
+	var _StatusStore2 = _interopRequireDefault(_StatusStore);
+
+	var _activityListComp = __webpack_require__(460);
+
+	var _activityListComp2 = _interopRequireDefault(_activityListComp);
+
+	var _LoginStore = __webpack_require__(317);
+
+	var _LoginStore2 = _interopRequireDefault(_LoginStore);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var style = {
+	  marginLeft: 40,
+	  width: 800
+	};
+
+	var activityContainer = _react2.default.createClass({
+	  displayName: 'activityContainer',
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      results: _StatusStore2.default.getStatusData()
+	    };
+	  },
+
+	  componentDidMount: function componentDidMount() {
+	    _StatusStore2.default.addChangeListener(this._onChange);
+
+	    var data = {
+	      userId: localStorage.getItem('userid')
+	    };
+	    _ActivityfeedAction2.default._getStatusVisitor(data);
+	  },
+
+	  _onChange: function _onChange() {
+	    this.setState({ results: _StatusStore2.default.getStatusData() });
+	  },
+
+	  _loadMorePosts: function _loadMorePosts() {
+	    var data = {
+	      userId: localStorage.getItem('userid')
+	    };
+	    _ActivityfeedAction2.default._getStatus(data);
+	  },
+
+	  _renderSearchItem: function _renderSearchItem() {
+	    return this.state.results.map(function (result) {
+	      return _react2.default.createElement(_activityListComp2.default, { key: result.id,
+	        id: result.id,
+	        type: result.type,
+	        firstName: result.firstname,
+	        postId: result.post_id,
+	        attachment: result.attachment,
+	        lPostId: result.pid,
+	        postText: result.post_text,
+	        created_at: result.created_at,
+	        postid: result.postid,
+	        likesCount: result.likesCount,
+	        sid: result.sid,
+	        sfirstname: result.sfirstname,
+	        sattachment: result.sattachment,
+	        spost_text: result.spost_text,
+	        screated_at: result.screated_at });
+	    });
+	  },
+
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        'div',
+	        null,
+	        this._renderSearchItem()
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(_raisedButton2.default, { label: 'load more posts', secondary: true, style: style, onClick: this._loadMorePosts })
+	      )
+	    );
+	  }
+	});
+
+	exports.default = activityContainer;
+
+/***/ },
+/* 455 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var AppDispatcher = __webpack_require__(308);
+	var ActivityFeedConstants = __webpack_require__(456);
+	var LikeConstants = __webpack_require__(457);
+	var CommentConstants = __webpack_require__(458);
+
+	var commentLimitNo = 0;
+	var postLimitNo = 0;
+
+	var ActivityfeedAction = {
+	  _addStatus: function _addStatus(status) {
+	    $.post('api/status', status, function (response) {
+	      if (response.status == 201) {
+	        $.get('/api/getstatus?postLimitNo=' + postLimitNo, status, function (response) {
+	          if (response.status == 200) {
+	            AppDispatcher.handleViewAction({
+	              actionType: ActivityFeedConstants.GETDATA,
+	              statusdata: response.posts
+	            });
+	          } else if (response.status == 505) {
+	            console.log('Error 505');
+	          }
+	        });
+	      } else if (response.status == 404) {
+	        console.log('Error 404');
+	      }
+	    });
+	  },
+
+	  _getStatus: function _getStatus(uId) {
+	    postLimitNo = postLimitNo + 3;
+	    $.get('/api/getstatus?postLimitNo=' + postLimitNo, uId, function (response) {
+	      if (response.status == 200) {
+	        AppDispatcher.handleViewAction({
+	          actionType: ActivityFeedConstants.GETDATA,
+	          statusdata: response.posts
+	        });
+	      } else if (response.status == 505) {
+	        console.log('Error 505');
+	      }
+	    });
+	  },
+
+	  _getStatusVisitor: function _getStatusVisitor(uId) {
+	    postLimitNo = postLimitNo + 3;
+	    var str = window.location.hash;
+	    var username = str.split(/[\/?]/)[1];
+	    $.get('/api/getstatusvisitor?postLimitNo=' + postLimitNo + '&username=' + username, function (response) {
+	      if (response.status == 200) {
+	        AppDispatcher.handleViewAction({
+	          actionType: ActivityFeedConstants.GETDATA,
+	          statusdata: response.posts
+	        });
+	      } else if (response.status == 505) {
+	        console.log('Error 505');
+	      }
+	    });
+	  },
+
+	  _getStatusProfile: function _getStatusProfile() {
+	    postLimitNo = postLimitNo + 3;
+	    $.get('/api/getstatusvisitor?postLimitNo=' + postLimitNo + '&username=' + localStorage.getItem('username'), function (response) {
+	      if (response.status == 200) {
+	        AppDispatcher.handleViewAction({
+	          actionType: ActivityFeedConstants.GETDATA,
+	          statusdata: response.posts
+	        });
+	      } else if (response.status == 505) {
+	        console.log('Error 505');
+	      }
+	    });
+	  },
+
+	  _addShare: function _addShare(result) {
+	    $.post('api/sharedStatus', result, function (response) {
+	      if (response.status == 201) {
+	        $.get('/api/getstatus?postLimitNo=' + postLimitNo, result, function (response) {
+	          if (response.status == 200) {
+	            AppDispatcher.handleViewAction({
+	              actionType: ActivityFeedConstants.GETDATA,
+	              statusdata: response.posts
+	            });
+	          } else if (response.status == 505) {
+	            console.log('Error 505');
+	          }
+	        });
+	      } else if (response.status == 404) {
+	        console.log('Error 404');
+	      }
+	    });
+	  },
+
+	  addStatusProfile: function addStatusProfile(status) {
+	    $.post('api/status', status, function (response) {
+	      if (response.status == 201) {
+	        $.get('/api/getstatus', function (response) {
+	          if (response.status == 200) {
+	            AppDispatcher.handleViewAction({
+	              actionType: ActivityFeedConstants.GETPROFILEPOSTS,
+	              statusdata: response.posts
+	            });
+	          } else if (response.status == 505) {
+	            console.log('Error 505');
+	          }
+	        });
+	      } else if (response.status == 404) {
+	        console.log('Error 404');
+	      }
+	    });
+	  },
+
+	  _deleteStatus: function _deleteStatus(postId) {
+	    $.post('api/deleteStatus', postId, function (response) {
+	      if (response.status == 201) {
+	        $.get('/api/getstatus?postLimitNo=' + postLimitNo, postId, function (response) {
+	          if (response.status == 200) {
+	            AppDispatcher.handleViewAction({
+	              actionType: ActivityFeedConstants.GETDATA,
+	              statusdata: response.posts
+	            });
+	          } else if (response.status == 505) {
+	            console.log('Error 505');
+	          }
+	        });
+	      } else if (response.status == 404) {
+	        console.log('Error 404');
+	      }
+	    });
+	  },
+
+	  _editStatus: function _editStatus(txt) {
+	    $.post('api/edit_status', txt, function (response) {
+	      if (response.status == 201) {
+	        $.get('/api/getstatus?postLimitNo=' + postLimitNo, txt, function (response) {
+	          if (response.status == 200) {
+	            AppDispatcher.handleViewAction({
+	              actionType: ActivityFeedConstants.GETDATA,
+	              statusdata: response.posts
+	            });
+	          } else if (response.status == 505) {
+	            console.log('Error 505');
+	          }
+	        });
+	      } else if (response.status == 404) {
+	        console.log('Error 404');
+	      }
+	    });
+	  },
+
+	  _blockStatus: function _blockStatus(result) {
+	    $.post('api/block_status', result, function (response) {
+	      if (response.status == 201) {
+	        $.get('/api/getstatus?postLimitNo=' + postLimitNo, result, function (response) {
+	          if (response.status == 200) {
+	            AppDispatcher.handleViewAction({
+	              actionType: ActivityFeedConstants.GETDATA,
+	              statusdata: response.posts
+	            });
+	          } else if (response.status == 505) {
+	            console.log('Error 505');
+	          }
+	        });
+	      } else if (response.status == 404) {
+	        console.log('Error 404');
+	      }
+	    });
+	  },
+
+	  like: function like(request) {
+	    $.post('/api/likepost', request, function (response) {}).fail(function (error) {
+	      console.log(error);
+	    });
+	  },
+
+	  unlike: function unlike(request) {
+	    $.post('/api/unlikepost', request, function (response) {}).fail(function (error) {
+	      console.log(error);
+	    });
+	  },
+
+	  getCount: function getCount(request) {
+	    $.get('/api/getCount', request, function (response) {
+	      console.log('ssssssssssss');
+	      console.log(response);
+	      if (response.status == 200) {
+	        AppDispatcher.handleViewAction({
+	          actionType: LikeConstants.GETCOUNT,
+	          countValue: response.posts
+	        });
+	      } else if (response.status == 505) {
+	        console.log('Error 505');
+	      }
+	    });
+	  },
+
+	  getLikedUsers: function getLikedUsers(request) {
+	    $.get('/api/getLikedUsers', request, function (response) {
+	      console.log(response);
+	      if (response.status == 200) {
+	        AppDispatcher.handleViewAction({
+	          actionType: LikeConstants.GETUSERS,
+	          likedUsers: response.posts
+	        });
+	      } else if (response.status == 505) {
+	        console.log('Error 505');
+	      }
+	    });
+	  },
+
+	  getSharedUsers: function getSharedUsers(request) {
+	    $.get('/api/getSharedUsers', request, function (response) {
+	      if (response.status == 200) {
+	        AppDispatcher.handleViewAction({
+	          actionType: ActivityFeedConstants.GETSHAREDUSERS,
+	          sharedUsers: response.posts
+	        });
+	      } else if (response.status == 505) {
+	        console.log('Error 505');
+	      }
+	    });
+	  },
+
+	  addComment: function addComment(comment) {
+	    $.post('api/addcomment', comment, function (response) {
+	      // if (response.status == 201) {
+	      //   $.get('/api/getcomment', comment,function(response) {
+	      //     if (response.status == 200) {
+	      //         AppDispatcher.handleViewAction({
+	      //           actionType: CommentConstants.GETCOMMENT,
+	      //           commentdata: response.comments
+	      //         });
+	      //     } else if (response.status == 505) {
+	      //       console.log('Error 505');
+	      //     }
+	      //   });
+	      // } else if (response.status == 404) {
+	      //   console.log('Error 404');
+	      // }
+	    });
+	  },
+
+	  getCommentList: function getCommentList(commentData) {
+	    commentLimitNo = commentLimitNo + 3;
+	    $.get('/api/getcomment?commentLimitNo=' + commentLimitNo, commentData, function (response) {
+	      if (response.status == 200 && response.comments) {
+	        AppDispatcher.handleViewAction({
+	          actionType: CommentConstants.GETCOMMENT,
+	          commentdata: response.comments
+	        });
+	      } else {
+	        AppDispatcher.handleViewAction({
+	          actionType: CommentConstants.GETCOMMENT,
+	          commentdata: response.comments
+	        });
+	      }
+	    });
+	  },
+	  loadMoreComment: function loadMoreComment(commentData) {
+	    commentLimitNo = commentLimitNo + 3;
+	    $.get('/api/getcomment?commentLimitNo=' + commentLimitNo, commentData, function (response) {
+	      if (response.status == 200 && response.comments) {
+	        AppDispatcher.handleViewAction({
+	          actionType: CommentConstants.LOADMORE,
+	          commentdata: response.comments
+	        });
+	      } else {
+	        AppDispatcher.handleViewAction({
+	          actionType: CommentConstants.LOADMORE,
+	          commentdata: response.comments
+	        });
+	      }
+	    });
+	  }
+	};
+
+	module.exports = ActivityfeedAction;
+
+/***/ },
+/* 456 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var keyMirror = __webpack_require__(314);
+
+	module.exports = keyMirror({
+	    STATUS: null,
+	    EMAIL: null,
+	    GETDATA: null,
+	    CHECKSTATUS: null,
+	    GETUID: null,
+	    GETLOGGEDUSERID: null,
+	    GETPROFILEPOSTS: null,
+	    GETSHAREDDATA: null,
+	    GETSHAREDUSERS: null
+	});
+
+/***/ },
+/* 457 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var keyMirror = __webpack_require__(314);
+
+	module.exports = keyMirror({
+		GETUSERS: null,
+		GETCOUNT: null
+	});
+
+/***/ },
+/* 458 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var keyMirror = __webpack_require__(314);
+
+	module.exports = keyMirror({
+		GETCOMMENT: null,
+		LOADMORE: null
+	});
+
+/***/ },
+/* 459 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var AppDispatcher = __webpack_require__(308);
+	var EventEmitter = __webpack_require__(316).EventEmitter;
+	var ActivityFeedConstants = __webpack_require__(456);
+	var assign = __webpack_require__(312);
+
+	var CHANGE_EVENT = 'change';
+
+	var searchResults = [];
+	var sharedResults = [];
+	var sharedUsers = [];
+	var profileposts;
+
+	var StatusStore = assign({}, EventEmitter.prototype, {
+
+	  /**
+	   * Get activity feed data.
+	   * return {object}
+	   */
+	  getStatusData: function getStatusData() {
+	    return searchResults;
+	  },
+
+	  /**
+	   * Put results(activity feed data) to searchresults.
+	   */
+	  saveStatusData: function saveStatusData(results) {
+	    searchResults = results;
+	  },
+
+	  getSharedData: function getSharedData() {
+	    return sharedResults;
+	  },
+
+	  saveSharedData: function saveSharedData(results) {
+	    sharedResults = results;
+	  },
+
+	  getSharedUsers: function getSharedUsers() {
+	    return sharedUsers;
+	  },
+
+	  saveSharedUsers: function saveSharedUsers(results) {
+	    sharedUsers.push(results);
+	  },
+
+	  /**
+	   * Get profile post.
+	   * return {object}
+	   */
+	  getprofilePosts: function getprofilePosts() {
+	    return profileposts;
+	  },
+
+	  /**
+	   * Put data to profileposts.
+	   */
+	  saveprofileposts: function saveprofileposts(data) {
+	    profileposts = data;
+	  },
+
+	  emitChange: function emitChange() {
+	    this.emit(CHANGE_EVENT);
+	  },
+
+	  /**
+	   * @param {function} callback
+	   */
+	  addChangeListener: function addChangeListener(callback) {
+	    this.on(CHANGE_EVENT, callback);
+	  }
+	});
+
+	AppDispatcher.register(function (payload) {
+	  switch (payload.action.actionType) {
+	    case ActivityFeedConstants.GETDATA:
+	      StatusStore.saveStatusData(payload.action.statusdata);
+	      StatusStore.emitChange();
+	      break;
+	    case ActivityFeedConstants.GETSHAREDDATA:
+	      StatusStore.saveSharedData(payload.action.shareddata);
+	      StatusStore.emitChange();
+	      break;
+	    case ActivityFeedConstants.GETPROFILEPOSTS:
+	      StatusStore.saveprofileposts(payload.action.posts);
+	      StatusStore.emitChange();
+	      break;
+	    case ActivityFeedConstants.GETSHAREDUSERS:
+	      StatusStore.saveSharedUsers(payload.action.sharedUsers);
+	      StatusStore.emitChange();
+	      break;
+	  }
+	});
+
+	module.exports = StatusStore;
+
+/***/ },
+/* 460 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _card = __webpack_require__(322);
+
+	var _card2 = _interopRequireDefault(_card);
+
+	var _cardMedia = __webpack_require__(461);
+
+	var _cardMedia2 = _interopRequireDefault(_cardMedia);
+
+	var _cardText = __webpack_require__(321);
+
+	var _cardText2 = _interopRequireDefault(_cardText);
+
+	var _listItem = __webpack_require__(295);
+
+	var _listItem2 = _interopRequireDefault(_listItem);
+
+	var _divider = __webpack_require__(299);
+
+	var _divider2 = _interopRequireDefault(_divider);
+
+	var _avatar = __webpack_require__(292);
+
+	var _avatar2 = _interopRequireDefault(_avatar);
+
+	var _colors = __webpack_require__(220);
+
+	var _colors2 = _interopRequireDefault(_colors);
+
+	var _favorite = __webpack_require__(449);
+
+	var _favorite2 = _interopRequireDefault(_favorite);
+
+	var _favoriteBorder = __webpack_require__(450);
+
+	var _favoriteBorder2 = _interopRequireDefault(_favoriteBorder);
+
+	var _iconButton = __webpack_require__(264);
+
+	var _iconButton2 = _interopRequireDefault(_iconButton);
+
+	var _moreVert = __webpack_require__(375);
+
+	var _moreVert2 = _interopRequireDefault(_moreVert);
+
+	var _iconMenu = __webpack_require__(376);
+
+	var _iconMenu2 = _interopRequireDefault(_iconMenu);
+
+	var _menuItem = __webpack_require__(347);
+
+	var _menuItem2 = _interopRequireDefault(_menuItem);
+
+	var _flatButton = __webpack_require__(327);
+
+	var _flatButton2 = _interopRequireDefault(_flatButton);
+
+	var _dialog = __webpack_require__(326);
+
+	var _dialog2 = _interopRequireDefault(_dialog);
+
+	var _raisedButton = __webpack_require__(377);
+
+	var _raisedButton2 = _interopRequireDefault(_raisedButton);
+
+	var _textField = __webpack_require__(336);
+
+	var _textField2 = _interopRequireDefault(_textField);
+
+	var _paper = __webpack_require__(294);
+
+	var _paper2 = _interopRequireDefault(_paper);
+
+	var _LoginStore = __webpack_require__(317);
+
+	var _LoginStore2 = _interopRequireDefault(_LoginStore);
+
+	var _StatusStore = __webpack_require__(459);
+
+	var _StatusStore2 = _interopRequireDefault(_StatusStore);
+
+	var _ActivityfeedAction = __webpack_require__(455);
+
+	var _ActivityfeedAction2 = _interopRequireDefault(_ActivityfeedAction);
+
+	var _CommentStore = __webpack_require__(462);
+
+	var _CommentStore2 = _interopRequireDefault(_CommentStore);
+
+	var _Comment = __webpack_require__(463);
+
+	var _Comment2 = _interopRequireDefault(_Comment);
+
+	var _LikeStatusStore = __webpack_require__(464);
+
+	var _LikeStatusStore2 = _interopRequireDefault(_LikeStatusStore);
+
+	var _activitySharedList = __webpack_require__(465);
+
+	var _activitySharedList2 = _interopRequireDefault(_activitySharedList);
+
+	var _activityContainer = __webpack_require__(454);
+
+	var _activityContainer2 = _interopRequireDefault(_activityContainer);
+
+	var _CountBox = __webpack_require__(466);
+
+	var _CountBox2 = _interopRequireDefault(_CountBox);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var iconButtonElement = _react2.default.createElement(
+	  _iconButton2.default,
+	  {
+	    touch: true,
+	    tooltip: 'more',
+	    tooltipPosition: 'bottom-left' },
+	  _react2.default.createElement(_moreVert2.default, { color: _colors2.default.deepPurple500 })
+	);
+
+	var style1 = {
+	  width: 800,
+	  margin: 40
+	};
+
+	var style2 = {
+	  width: 800
+	};
+
+	var style3 = {
+	  width: 760,
+	  position: 'relative'
+
+	};
+
+	var loadMoreStyle = {
+	  marginLeft: 100
+	};
+
+	function validateCommentText(textComment) {
+	  if (textComment.length > 200) {
+	    return {
+	      "error": "*comment is too long"
+	    };
+	  } else if (textComment === "") {
+	    return {
+	      "error": "*comment cannot be empty"
+	    };
+	  } else {
+	    return true;
+	  }
+	};
+
+	var commentLimitNo = 0;
+
+	var ActivityList = _react2.default.createClass({
+	  displayName: 'ActivityList',
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      opens: false,
+	      commentText: '',
+	      sharedResults: _StatusStore2.default.getSharedData(),
+	      commentResults: _CommentStore2.default.getCommentsData(),
+	      count: _LikeStatusStore2.default.getCount(),
+	      liked: '',
+	      open1: false,
+	      open3: false,
+	      open4: false,
+	      open5: false,
+	      likeCount: ''
+	    };
+	  },
+
+	  componentDidMount: function componentDidMount() {
+	    _StatusStore2.default.addChangeListener(this._onChange);
+	    _LikeStatusStore2.default.addChangeListener(this._onChange);
+	    _CommentStore2.default.addChangeListener(this._onChange);
+
+	    if (!this.props.lPostId) {
+	      this.setState({ liked: !this.state.liked });
+	    } else {
+	      this.setState({ liked: this.state.liked });
+	    }
+
+	    var commentData = {
+	      postId: this.props.id
+	    };
+	    _ActivityfeedAction2.default.getCommentList(commentData);
+
+	    var LikedData = {
+	      postId: this.props.id
+	    };
+	    _ActivityfeedAction2.default.getCount(LikedData);
+	  },
+
+	  _onChange: function _onChange() {
+	    this.setState({ sharedResults: _StatusStore2.default.getSharedData() });
+	    this.setState({ commentResults: _CommentStore2.default.getCommentsData() });
+	    this.setState({ count: _LikeStatusStore2.default.getCount() });
+	  },
+
+	  _getSharedItem: function _getSharedItem() {
+	    if (this.props.type == "shared") {
+	      return _react2.default.createElement(_activitySharedList2.default, { sid: this.props.sid,
+	        sfirstname: this.props.sfirstname,
+	        sattachment: this.props.sattachment,
+	        spost_text: this.props.spost_text,
+	        screated_at: this.props.screated_at });
+	    }
+	  },
+
+	  _getLikedCount: function _getLikedCount() {
+	    var self = this;
+	    return this.state.count.map(function (val) {
+	      return val.map(function (result) {
+	        if (self.props.id == result.post_id) {
+	          return _react2.default.createElement(_CountBox2.default, { likedCount: result.likedCount,
+	            shareCount: result.shareCount,
+	            post_id: result.post_id });
+	        }
+	      });
+	    });
+	  },
+
+	  _getCommentList: function _getCommentList() {
+	    var self = this;
+	    return this.state.commentResults.map(function (comment) {
+	      return comment.map(function (comm) {
+	        if (self.props.id == comm.post_id) {
+	          return _react2.default.createElement(_Comment2.default, { ckey: comm.id,
+	            cid: comm.id,
+	            cfirstName: comm.firstname,
+	            comment_txt: comm.comment_txt });
+	        }
+	      });
+	    });
+	  },
+
+	  _editStatus: function _editStatus() {
+	    var status = this.refs.EditBox.getValue();
+	    var editData = {
+	      userId: localStorage.getItem('userid'),
+	      postId: this.props.id,
+	      status: status
+	    };
+	    _ActivityfeedAction2.default._editStatus(editData);
+	    this.handleClose();
+	  },
+
+	  _deleteStatus: function _deleteStatus() {
+	    var deleteData = {
+	      userId: localStorage.getItem('userid'),
+	      postId: this.props.id
+	    };
+	    _ActivityfeedAction2.default._deleteStatus(deleteData);
+	  },
+
+	  _blockedStatus: function _blockedStatus() {
+	    var blockData = {
+	      email: _LoginStore2.default.getEmail(),
+	      userId: localStorage.getItem('userid'),
+	      postId: this.props.id
+	    };
+	    _ActivityfeedAction2.default._blockStatus(blockData);
+	  },
+
+	  _changeShareState: function _changeShareState() {
+	    var shareStatus = this.refs.shareBox.getValue();
+	    var shareData = {
+	      email: _LoginStore2.default.getEmail(),
+	      userId: localStorage.getItem('userid'),
+	      firstName: _LoginStore2.default.getFirstname(),
+	      postId: this.props.id,
+	      status: shareStatus
+	    };
+
+	    this.setState({ shared: !this.state.shared });
+	    _ActivityfeedAction2.default._addShare(shareData);
+	    //alert('Share successful');
+
+	    this.setState({ open1: false });
+	    this.setState({ open4: true });
+	  },
+
+	  _changeLikeState: function _changeLikeState() {
+	    var likeData = {
+	      postId: this.props.id,
+	      userId: localStorage.getItem('userid'),
+	      email: _LoginStore2.default.getEmail(),
+	      firstName: _LoginStore2.default.getFirstname()
+	    };
+
+	    if (this.state.liked) {
+	      this.setState({ liked: !this.state.liked });
+	      _ActivityfeedAction2.default.like(likeData);
+	      _getLikedCount();
+	    } else {
+	      this.setState({ liked: !this.state.liked });
+	      _ActivityfeedAction2.default.unlike(likeData);
+	      _getLikedCount();
+	    }
+	  },
+
+	  _loadMoreComments: function _loadMoreComments() {
+	    var commentData = {
+	      postId: this.props.id
+	    };
+	    _ActivityfeedAction2.default.loadMoreComment(commentData);
+	  },
+
+	  handleOpen: function handleOpen() {
+	    this.setState({ opens: true });
+	  },
+
+	  handleOpenShare: function handleOpenShare() {
+	    this.setState({ open1: true });
+	  },
+
+	  handleOpenDelete: function handleOpenDelete() {
+	    this.setState({ open3: true });
+	  },
+
+	  handleOpenBlock: function handleOpenBlock() {
+	    this.setState({ open5: true });
+	  },
+
+	  handleClose: function handleClose() {
+	    this.setState({ opens: false });
+	    this.setState({ open3: false });
+	    this.setState({ open4: false });
+	    this.setState({ open5: false });
+	  },
+
+	  setFocusToTextBox: function setFocusToTextBox() {
+	    document.getElementById(this.props.id).focus();
+	  },
+
+	  EnterKey: function EnterKey(e) {
+	    if (e.key === 'Enter') {
+	      var val = true;
+	      var comment = this.refs.commentBox.getValue();
+	      var commentData = {
+	        postId: this.props.id,
+	        userId: localStorage.getItem('userid'),
+	        comment: comment,
+	        email: _LoginStore2.default.getEmail(),
+	        firstName: _LoginStore2.default.getFirstname()
+	      };
+
+	      if (validateCommentText(comment).error) {
+	        this.setState({
+	          commentText: validateCommentText(comment).error
+	        });
+	        val = false;
+	      } else {
+	        _ActivityfeedAction2.default.addComment(commentData);
+	        this.setState({
+	          commentText: ''
+	        });
+	      }
+	      this.clearText();
+	    }
+	  },
+
+	  clearText: function clearText() {
+	    var commentBoxId = this.props.id;
+	    document.getElementById(commentBoxId).value = "";
+	  },
+
+	  render: function render() {
+
+	    var confirmBlockActions = [_react2.default.createElement(_flatButton2.default, {
+	      label: 'Block',
+	      primary: true,
+	      keyboardFocused: true,
+	      onTouchTap: this._blockedStatus }), _react2.default.createElement(_flatButton2.default, {
+	      label: 'Cansel',
+	      secondary: true,
+	      onTouchTap: this.handleClose })];
+
+	    var shareActions = [_react2.default.createElement(_flatButton2.default, {
+	      label: 'Post',
+	      primary: true,
+	      keyboardFocused: true,
+	      onTouchTap: this._changeShareState }), _react2.default.createElement(_flatButton2.default, {
+	      label: 'Close',
+	      secondary: true,
+	      onTouchTap: this.handleClose })];
+
+	    var confirmShareActions = [_react2.default.createElement(_flatButton2.default, {
+	      label: 'Ok',
+	      secondary: true,
+	      onTouchTap: this.handleClose })];
+
+	    return _react2.default.createElement(
+	      'div',
+	      { style: style1 },
+	      _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          _card2.default,
+	          null,
+	          _react2.default.createElement(_listItem2.default, {
+	            leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg' }),
+	            primaryText: this.props.firstName,
+	            secondaryText: _react2.default.createElement(
+	              'p',
+	              null,
+	              _react2.default.createElement(
+	                'b',
+	                null,
+	                this.props.created_at
+	              )
+	            ),
+	            secondaryTextLines: 1,
+	            rightIconButton: _react2.default.createElement(
+	              _iconMenu2.default,
+	              { iconButtonElement: iconButtonElement },
+	              _react2.default.createElement(_menuItem2.default, { primaryText: 'Block', onClick: this.handleOpenBlock })
+	            ) }),
+	          _react2.default.createElement(
+	            _cardText2.default,
+	            null,
+	            this.props.postText
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            null,
+	            this.props.attachment != 'None' ? _react2.default.createElement(
+	              'div',
+	              null,
+	              _react2.default.createElement(
+	                _cardMedia2.default,
+	                null,
+	                _react2.default.createElement('img', { src: 'img/activityFeedPics/' + this.props.attachment })
+	              )
+	            ) : ''
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            null,
+	            this._getSharedItem()
+	          ),
+	          _react2.default.createElement(
+	            _iconButton2.default,
+	            { onClick: this._changeLikeState, tooltip: !this.state.liked ? "Unlike" : "Like", touch: true, tooltipPosition: 'bottom-right' },
+	            !this.state.liked ? _react2.default.createElement(_favorite2.default, { onClick: this._changeLikeState, viewBox: '0 0 20 30', color: _colors2.default.red500 }) : _react2.default.createElement(_favoriteBorder2.default, { viewBox: '0 0 20 30', color: _colors2.default.red500 })
+	          ),
+	          _react2.default.createElement(_flatButton2.default, { label: 'Comment', onClick: this.setFocusToTextBox }),
+	          _react2.default.createElement(_flatButton2.default, { label: 'Share', onClick: this.handleOpenShare }),
+	          ' />'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          this._getLikedCount()
+	        ),
+	        _react2.default.createElement(
+	          _dialog2.default,
+	          {
+	            title: 'Block Post',
+	            actions: confirmBlockActions,
+	            modal: false,
+	            open: this.state.open5,
+	            onRequestClose: this.handleClose },
+	          'Are you sure you want to block this post?"'
+	        ),
+	        _react2.default.createElement(
+	          _dialog2.default,
+	          {
+	            title: this.props.firstName + "'s post Share on your own Activityfeed",
+	            actions: shareActions,
+	            modal: false,
+	            open: this.state.open1,
+	            onRequestClose: this.handleClose },
+	          _react2.default.createElement(_textField2.default, { hintText: 'Say something about this...', multiLine: false, fullWidth: true, ref: 'shareBox' })
+	        ),
+	        _react2.default.createElement(
+	          _dialog2.default,
+	          {
+	            title: 'Share Post',
+	            actions: confirmShareActions,
+	            modal: false,
+	            open: this.state.open4,
+	            onRequestClose: this.handleClose },
+	          '"This has been shared to your Timeline."'
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          _card2.default,
+	          { style: style2 },
+	          _react2.default.createElement(_flatButton2.default, { label: 'load more comments', onClick: this._loadMoreComments })
+	        ),
+	        this._getCommentList()
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          _card2.default,
+	          { style: style2 },
+	          _react2.default.createElement(
+	            _paper2.default,
+	            { zDepth: 1 },
+	            _react2.default.createElement('div', { className: 'col-md-10' }),
+	            _react2.default.createElement(_textField2.default, { style: style3, className: 'col-md-2', fullWidth: true, hintText: 'Write a comment...', multiLine: false, onKeyPress: this.EnterKey, errorText: this.state.commentText, ref: 'commentBox', id: this.props.id })
+	          )
+	        )
+	      )
+	    );
+	  }
+	});
+
+	exports.default = ActivityList;
+
+/***/ },
+/* 461 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _styles = __webpack_require__(382);
+
+	var _styles2 = _interopRequireDefault(_styles);
+
+	var _stylePropable = __webpack_require__(248);
+
+	var _stylePropable2 = _interopRequireDefault(_stylePropable);
+
+	var _themeManager = __webpack_require__(225);
+
+	var _themeManager2 = _interopRequireDefault(_themeManager);
+
+	var _lightRawTheme = __webpack_require__(221);
+
+	var _lightRawTheme2 = _interopRequireDefault(_lightRawTheme);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var CardMedia = _react2.default.createClass({
+	  displayName: 'CardMedia',
+
+	  propTypes: {
+	    actAsExpander: _react2.default.PropTypes.bool,
+	    children: _react2.default.PropTypes.node,
+	    expandable: _react2.default.PropTypes.bool,
+	    mediaStyle: _react2.default.PropTypes.object,
+	    overlay: _react2.default.PropTypes.node,
+	    overlayContainerStyle: _react2.default.PropTypes.object,
+	    overlayContentStyle: _react2.default.PropTypes.object,
+	    overlayStyle: _react2.default.PropTypes.object,
+
+	    /**
+	     * Override the inline-styles of the root element.
+	     */
+	    style: _react2.default.PropTypes.object
+	  },
+
+	  contextTypes: {
+	    muiTheme: _react2.default.PropTypes.object
+	  },
+
+	  //for passing default theme context to children
+	  childContextTypes: {
+	    muiTheme: _react2.default.PropTypes.object
+	  },
+
+	  mixins: [_stylePropable2.default],
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      muiTheme: this.context.muiTheme ? this.context.muiTheme : _themeManager2.default.getMuiTheme(_lightRawTheme2.default)
+	    };
+	  },
+	  getChildContext: function getChildContext() {
+	    return {
+	      muiTheme: this.state.muiTheme
+	    };
+	  },
+
+	  //to update theme inside state whenever a new theme is passed down
+	  //from the parent / owner using context
+	  componentWillReceiveProps: function componentWillReceiveProps(nextProps, nextContext) {
+	    var newMuiTheme = nextContext.muiTheme ? nextContext.muiTheme : this.state.muiTheme;
+	    this.setState({ muiTheme: newMuiTheme });
+	  },
+	  getStyles: function getStyles() {
+	    return {
+	      root: {
+	        position: 'relative'
+	      },
+	      overlayContainer: {
+	        position: 'absolute',
+	        top: 0,
+	        bottom: 0,
+	        right: 0,
+	        left: 0
+	      },
+	      overlay: {
+	        height: '100%',
+	        position: 'relative'
+	      },
+	      overlayContent: {
+	        position: 'absolute',
+	        bottom: 0,
+	        right: 0,
+	        left: 0,
+	        paddingTop: 8,
+	        background: _styles2.default.Colors.lightBlack
+	      },
+	      media: {},
+	      mediaChild: {
+	        verticalAlign: 'top',
+	        maxWidth: '100%',
+	        minWidth: '100%',
+	        width: '100%'
+	      }
+	    };
+	  },
+	  render: function render() {
+	    var _this = this;
+
+	    var styles = this.getStyles();
+	    var rootStyle = this.prepareStyles(styles.root, this.props.style);
+	    var mediaStyle = this.prepareStyles(styles.media, this.props.mediaStyle);
+	    var overlayContainerStyle = this.prepareStyles(styles.overlayContainer, this.props.overlayContainerStyle);
+	    var overlayContentStyle = this.prepareStyles(styles.overlayContent, this.props.overlayContentStyle);
+	    var overlayStyle = this.prepareStyles(styles.overlay, this.props.overlayStyle);
+
+	    var children = _react2.default.Children.map(this.props.children, function (child) {
+	      return _react2.default.cloneElement(child, { style: _this.prepareStyles(styles.mediaChild, child.props.style) });
+	    });
+
+	    var overlayChildren = _react2.default.Children.map(this.props.overlay, function (child) {
+	      if (child.type.displayName === 'CardHeader' || child.type.displayName === 'CardTitle') {
+	        return _react2.default.cloneElement(child, {
+	          titleColor: _styles2.default.Colors.darkWhite,
+	          subtitleColor: _styles2.default.Colors.lightWhite
+	        });
+	      } else if (child.type.displayName === 'CardText') {
+	        return _react2.default.cloneElement(child, {
+	          color: _styles2.default.Colors.darkWhite
+	        });
+	      } else {
+	        return child;
+	      }
+	    });
+
+	    return _react2.default.createElement(
+	      'div',
+	      _extends({}, this.props, { style: rootStyle }),
+	      _react2.default.createElement(
+	        'div',
+	        { style: mediaStyle },
+	        children
+	      ),
+	      this.props.overlay ? _react2.default.createElement(
+	        'div',
+	        { style: overlayContainerStyle },
+	        _react2.default.createElement(
+	          'div',
+	          { style: overlayStyle },
+	          _react2.default.createElement(
+	            'div',
+	            { style: overlayContentStyle },
+	            overlayChildren
+	          )
+	        )
+	      ) : ''
+	    );
+	  }
+	});
+
+	exports.default = CardMedia;
+	module.exports = exports['default'];
+
+/***/ },
+/* 462 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var AppDispatcher = __webpack_require__(308);
+	var EventEmitter = __webpack_require__(316).EventEmitter;
+	var CommentConstants = __webpack_require__(458);
+	var assign = __webpack_require__(312);
+
+	var CHANGE_EVENT = 'change';
+
+	var searchComments = [];
+
+	var CommentStore = assign({}, EventEmitter.prototype, {
+
+	  /**
+	   * Get comment data.
+	   * return {object}
+	   */
+	  getCommentsData: function getCommentsData() {
+	    return searchComments;
+	  },
+
+	  /**
+	   * Put results(comment data) to searchComments.
+	   */
+	  saveCommentsData: function saveCommentsData(results) {
+	    // searchComments = [];
+	    searchComments.push(results);
+	  },
+
+	  loadMoreComments: function loadMoreComments(data) {
+	    searchComments = [];
+	    searchComments.push(data);
+	  },
+
+	  emitChange: function emitChange() {
+	    this.emit(CHANGE_EVENT);
+	  },
+
+	  /**
+	   * @param {function} callback
+	   */
+	  addChangeListener: function addChangeListener(callback) {
+	    this.on(CHANGE_EVENT, callback);
+	  }
+	});
+
+	AppDispatcher.register(function (payload) {
+	  switch (payload.action.actionType) {
+	    case CommentConstants.GETCOMMENT:
+	      CommentStore.saveCommentsData(payload.action.commentdata);
+	      CommentStore.emitChange();
+	      break;
+	    case CommentConstants.LOADMORE:
+	      CommentStore.loadMoreComments(payload.action.commentdata);
+	      CommentStore.emitChange();
+	      break;
+	  }
+	});
+
+	module.exports = CommentStore;
+
+/***/ },
+/* 463 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _card = __webpack_require__(322);
+
+	var _card2 = _interopRequireDefault(_card);
+
+	var _listItem = __webpack_require__(295);
+
+	var _listItem2 = _interopRequireDefault(_listItem);
+
+	var _list = __webpack_require__(293);
+
+	var _list2 = _interopRequireDefault(_list);
+
+	var _divider = __webpack_require__(299);
+
+	var _divider2 = _interopRequireDefault(_divider);
+
+	var _avatar = __webpack_require__(292);
+
+	var _avatar2 = _interopRequireDefault(_avatar);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Comment = _react2.default.createClass({
+	    displayName: 'Comment',
+
+	    render: function render() {
+	        return _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(
+	                _card2.default,
+	                null,
+	                _react2.default.createElement(_listItem2.default, {
+	                    leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg' }),
+	                    primaryText: this.props.cfirstName,
+	                    secondaryText: _react2.default.createElement(
+	                        'p',
+	                        null,
+	                        this.props.comment_txt
+	                    ),
+	                    secondaryTextLines: 1 }),
+	                _react2.default.createElement(_divider2.default, { inset: true })
+	            )
+	        );
+	    }
+	});
+
+	exports.default = Comment;
+
+/***/ },
+/* 464 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var AppDispatcher = __webpack_require__(308);
+	var EventEmitter = __webpack_require__(316).EventEmitter;
+	var LikeConstants = __webpack_require__(457);
+	var assign = __webpack_require__(312);
+
+	var CHANGE_EVENT = 'change';
+
+	var searchLikedUsers = [];
+	var searchCount = [];
+
+	var LikeStatusStore = assign({}, EventEmitter.prototype, {
+
+	  /**
+	   * Get liked usres.
+	   * return {object}
+	   */
+	  getLikedUsers: function getLikedUsers() {
+	    return searchLikedUsers;
+	  },
+
+	  /**
+	   * Put results(liked status) to searchLikedUsers.
+	   */
+	  savelikedUsers: function savelikedUsers(results) {
+	    searchLikedUsers.push(results);
+	  },
+
+	  getCount: function getCount(results) {
+	    return searchCount;
+	  },
+
+	  saveCount: function saveCount(results) {
+	    searchCount.push(results);
+	  },
+
+	  emitChange: function emitChange() {
+	    this.emit(CHANGE_EVENT);
+	  },
+
+	  /**
+	   * @param {function} callback
+	   */
+	  addChangeListener: function addChangeListener(callback) {
+	    this.on(CHANGE_EVENT, callback);
+	  }
+	});
+
+	AppDispatcher.register(function (payload) {
+	  switch (payload.action.actionType) {
+	    case LikeConstants.GETUSERS:
+	      LikeStatusStore.savelikedUsers(payload.action.likedUsers);
+	      LikeStatusStore.emitChange();
+	      break;
+	    case LikeConstants.GETCOUNT:
+	      LikeStatusStore.saveCount(payload.action.countValue);
+	      LikeStatusStore.emitChange();
+	      break;
+	  }
+	});
+
+	module.exports = LikeStatusStore;
+
+/***/ },
+/* 465 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _card = __webpack_require__(322);
+
+	var _card2 = _interopRequireDefault(_card);
+
+	var _cardMedia = __webpack_require__(461);
+
+	var _cardMedia2 = _interopRequireDefault(_cardMedia);
+
+	var _cardText = __webpack_require__(321);
+
+	var _cardText2 = _interopRequireDefault(_cardText);
+
+	var _listItem = __webpack_require__(295);
+
+	var _listItem2 = _interopRequireDefault(_listItem);
+
+	var _divider = __webpack_require__(299);
+
+	var _divider2 = _interopRequireDefault(_divider);
+
+	var _avatar = __webpack_require__(292);
+
+	var _avatar2 = _interopRequireDefault(_avatar);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var style1 = {
+	    width: 700,
+	    margin: 40
+	};
+
+	var ActivitySharedList = _react2.default.createClass({
+	    displayName: 'ActivitySharedList',
+
+	    render: function render() {
+	        return _react2.default.createElement(
+	            'div',
+	            { style: style1 },
+	            _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    _card2.default,
+	                    null,
+	                    _react2.default.createElement(_listItem2.default, {
+	                        leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg' }),
+	                        primaryText: this.props.sfirstname,
+	                        secondaryText: _react2.default.createElement(
+	                            'p',
+	                            null,
+	                            _react2.default.createElement(
+	                                'b',
+	                                null,
+	                                this.props.screated_at
+	                            )
+	                        ),
+	                        secondaryTextLines: 1 }),
+	                    _react2.default.createElement(
+	                        _cardText2.default,
+	                        null,
+	                        this.props.spost_text
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        this.props.sattachment != 'None' ? _react2.default.createElement(
+	                            'div',
+	                            null,
+	                            _react2.default.createElement(
+	                                _cardMedia2.default,
+	                                null,
+	                                _react2.default.createElement('img', { src: 'img/activityFeedPics/' + this.props.sattachment })
+	                            )
+	                        ) : ''
+	                    ),
+	                    _react2.default.createElement(_divider2.default, { inset: true })
+	                )
+	            )
+	        );
+	    }
+	});
+
+	exports.default = ActivitySharedList;
+
+/***/ },
+/* 466 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _card = __webpack_require__(322);
+
+	var _card2 = _interopRequireDefault(_card);
+
+	var _flatButton = __webpack_require__(327);
+
+	var _flatButton2 = _interopRequireDefault(_flatButton);
+
+	var _paper = __webpack_require__(294);
+
+	var _paper2 = _interopRequireDefault(_paper);
+
+	var _dialog = __webpack_require__(326);
+
+	var _dialog2 = _interopRequireDefault(_dialog);
+
+	var _listItem = __webpack_require__(295);
+
+	var _listItem2 = _interopRequireDefault(_listItem);
+
+	var _divider = __webpack_require__(299);
+
+	var _divider2 = _interopRequireDefault(_divider);
+
+	var _avatar = __webpack_require__(292);
+
+	var _avatar2 = _interopRequireDefault(_avatar);
+
+	var _colors = __webpack_require__(220);
+
+	var _colors2 = _interopRequireDefault(_colors);
+
+	var _raisedButton = __webpack_require__(377);
+
+	var _raisedButton2 = _interopRequireDefault(_raisedButton);
+
+	var _ActivityfeedAction = __webpack_require__(455);
+
+	var _ActivityfeedAction2 = _interopRequireDefault(_ActivityfeedAction);
+
+	var _LikeStatusStore = __webpack_require__(464);
+
+	var _LikeStatusStore2 = _interopRequireDefault(_LikeStatusStore);
+
+	var _StatusStore = __webpack_require__(459);
+
+	var _StatusStore2 = _interopRequireDefault(_StatusStore);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var style2 = {
+	  width: 800
+	};
+
+	var firstname;
+	var sfirstname;
+
+	var CountBox = _react2.default.createClass({
+	  displayName: 'CountBox',
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      likedUsers: _LikeStatusStore2.default.getLikedUsers(),
+	      sharedUsers: _StatusStore2.default.getSharedUsers(),
+	      open: false,
+	      firstname: '',
+	      sfirstname: ''
+	    };
+	  },
+
+	  componentDidMount: function componentDidMount() {
+	    _LikeStatusStore2.default.addChangeListener(this._onChange);
+
+	    var likeData = {
+	      postId: this.props.post_id
+	    };
+	    _ActivityfeedAction2.default.getLikedUsers(likeData);
+
+	    var shareData = {
+	      postId: this.props.post_id
+	    };
+	    _ActivityfeedAction2.default.getSharedUsers(shareData);
+	  },
+
+	  _onChange: function _onChange() {
+	    this.setState({ likedUsers: _LikeStatusStore2.default.getLikedUsers() });
+	    this.setState({ sharedUsers: _StatusStore2.default.getSharedUsers() });
+	  },
+
+	  handleClose: function handleClose() {
+	    this.setState({ open: false });
+	    this.setState({ open2: false });
+	  },
+
+	  _getLikedUsers: function _getLikedUsers() {
+	    this.setState({ open: true });
+
+	    var self = this;
+	    return this.state.likedUsers.map(function (likes) {
+	      return likes.map(function (result) {
+	        if (self.props.post_id == result.post_id) {
+	          firstname = result.firstname;
+	          alert(firstname);
+	          self.setState({
+	            firstname: firstname
+	          });
+	        }
+	      });
+	    });
+	  },
+
+	  _getSharedUsers: function _getSharedUsers() {
+	    this.setState({ open2: true });
+	    this.setState({ sharedUsers: _StatusStore2.default.getSharedUsers() });
+	    var self = this;
+	    return this.state.sharedUsers.map(function (shares) {
+	      return shares.map(function (result) {
+	        if (self.props.post_id == result.post_id) {
+	          firstname = result.firstname;
+	          alert(firstname);
+	          self.setState({
+	            sfirstname: firstname
+	          });
+	        }
+	      });
+	    });
+	  },
+
+	  render: function render() {
+	    var likeActions = [_react2.default.createElement(_flatButton2.default, {
+	      label: 'Close',
+	      secondary: true,
+	      onTouchTap: this.handleClose })];
+
+	    var sharedActions = [_react2.default.createElement(_flatButton2.default, {
+	      label: 'Close',
+	      secondary: true,
+	      onTouchTap: this.handleClose })];
+
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        _card2.default,
+	        { style: style2 },
+	        _react2.default.createElement(
+	          _paper2.default,
+	          { zDepth: 1 },
+	          _react2.default.createElement(_flatButton2.default, { label: this.props.likedCount + " Likes", onClick: this._getLikedUsers }),
+	          _react2.default.createElement(_flatButton2.default, { label: this.props.shareCount + " Shares", onClick: this._getSharedUsers })
+	        )
+	      ),
+	      _react2.default.createElement(
+	        _dialog2.default,
+	        {
+	          autoDetectWindowHeight: false,
+	          title: 'Liked Users',
+	          actions: likeActions,
+	          modal: true,
+	          open: this.state.open },
+	        _react2.default.createElement(_listItem2.default, {
+	          leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg' }),
+	          primaryText: this.state.firstname }),
+	        _react2.default.createElement(_divider2.default, { inset: true })
+	      ),
+	      _react2.default.createElement(
+	        _dialog2.default,
+	        {
+	          autoDetectWindowHeight: false,
+	          title: 'Shared Users',
+	          actions: sharedActions,
+	          modal: true,
+	          open: this.state.open2 },
+	        _react2.default.createElement(_listItem2.default, {
+	          leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg' }),
+	          primaryText: this.state.sfirstname }),
+	        _react2.default.createElement(_divider2.default, { inset: true })
+	      )
+	    );
+	  }
+	});
+
+	exports.default = CountBox;
+
+/***/ },
+/* 467 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
 	var _list = __webpack_require__(293);
 
 	var _list2 = _interopRequireDefault(_list);
@@ -57870,11 +59656,11 @@
 
 	var _flatButton2 = _interopRequireDefault(_flatButton);
 
-	var _AboutActions = __webpack_require__(454);
+	var _AboutActions = __webpack_require__(468);
 
 	var _AboutActions2 = _interopRequireDefault(_AboutActions);
 
-	var _VisitorAboutStore = __webpack_require__(455);
+	var _VisitorAboutStore = __webpack_require__(469);
 
 	var _VisitorAboutStore2 = _interopRequireDefault(_VisitorAboutStore);
 
@@ -57886,7 +59672,7 @@
 
 	var _snackbar2 = _interopRequireDefault(_snackbar);
 
-	var _LookingFor = __webpack_require__(456);
+	var _LookingFor = __webpack_require__(470);
 
 	var _LookingFor2 = _interopRequireDefault(_LookingFor);
 
@@ -58060,7 +59846,7 @@
 	exports.default = About;
 
 /***/ },
-/* 454 */
+/* 468 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58105,7 +59891,7 @@
 	module.exports = AboutActions;
 
 /***/ },
-/* 455 */
+/* 469 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58186,7 +59972,7 @@
 	module.exports = AboutStore;
 
 /***/ },
-/* 456 */
+/* 470 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58267,11 +60053,11 @@
 
 	var _datePicker2 = _interopRequireDefault(_datePicker);
 
-	var _AboutActions = __webpack_require__(454);
+	var _AboutActions = __webpack_require__(468);
 
 	var _AboutActions2 = _interopRequireDefault(_AboutActions);
 
-	var _VisitorAboutStore = __webpack_require__(455);
+	var _VisitorAboutStore = __webpack_require__(469);
 
 	var _VisitorAboutStore2 = _interopRequireDefault(_VisitorAboutStore);
 
@@ -58602,7 +60388,7 @@
 	exports.default = LookingFor;
 
 /***/ },
-/* 457 */
+/* 471 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58627,7 +60413,7 @@
 
 	var _ProfileStore2 = _interopRequireDefault(_ProfileStore);
 
-	var _Photo = __webpack_require__(599);
+	var _Photo = __webpack_require__(472);
 
 	var _Photo2 = _interopRequireDefault(_Photo);
 
@@ -58680,7 +60466,88 @@
 	exports.default = Photos;
 
 /***/ },
-/* 458 */
+/* 472 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _divider = __webpack_require__(299);
+
+	var _divider2 = _interopRequireDefault(_divider);
+
+	var _avatar = __webpack_require__(292);
+
+	var _avatar2 = _interopRequireDefault(_avatar);
+
+	var _paper = __webpack_require__(294);
+
+	var _paper2 = _interopRequireDefault(_paper);
+
+	var _gridList = __webpack_require__(365);
+
+	var _gridList2 = _interopRequireDefault(_gridList);
+
+	var _gridTile = __webpack_require__(366);
+
+	var _gridTile2 = _interopRequireDefault(_gridTile);
+
+	var _iconButton = __webpack_require__(264);
+
+	var _iconButton2 = _interopRequireDefault(_iconButton);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var styles = {
+	  root: {
+	    marginRight: "40"
+	  },
+	  gridList: {
+	    width: 500,
+	    height: 225
+	  }
+	};
+
+	var Photo = _react2.default.createClass({
+	  displayName: 'Photo',
+
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'col-lg-3', style: styles.root },
+	        _react2.default.createElement(
+	          _gridList2.default,
+	          {
+	            cellHeight: 200,
+	            style: styles.gridList
+	          },
+	          _react2.default.createElement(
+	            _gridTile2.default,
+	            {
+	              key: this.props.path
+	            },
+	            _react2.default.createElement('img', { src: 'img/activityFeedPics/' + this.props.path })
+	          )
+	        )
+	      )
+	    );
+	  }
+	});
+
+	exports.default = Photo;
+
+/***/ },
+/* 473 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58693,11 +60560,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _SearchItem = __webpack_require__(459);
+	var _SearchItem = __webpack_require__(474);
 
 	var _SearchItem2 = _interopRequireDefault(_SearchItem);
 
-	var _SearchStore = __webpack_require__(460);
+	var _SearchStore = __webpack_require__(475);
 
 	var _SearchStore2 = _interopRequireDefault(_SearchStore);
 
@@ -58802,7 +60669,7 @@
 	exports.default = Search;
 
 /***/ },
-/* 459 */
+/* 474 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58901,7 +60768,7 @@
 	exports.default = SearchItem;
 
 /***/ },
-/* 460 */
+/* 475 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58955,7 +60822,7 @@
 	module.exports = SearchStore;
 
 /***/ },
-/* 461 */
+/* 476 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58968,19 +60835,19 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Header = __webpack_require__(462);
+	var _Header = __webpack_require__(477);
 
 	var _Header2 = _interopRequireDefault(_Header);
 
-	var _Sidebar = __webpack_require__(466);
+	var _Sidebar = __webpack_require__(481);
 
 	var _Sidebar2 = _interopRequireDefault(_Sidebar);
 
-	var _Settings = __webpack_require__(467);
+	var _Settings = __webpack_require__(482);
 
 	var _Settings2 = _interopRequireDefault(_Settings);
 
-	var _path = __webpack_require__(468);
+	var _path = __webpack_require__(483);
 
 	var _path2 = _interopRequireDefault(_path);
 
@@ -59031,7 +60898,7 @@
 	exports.default = Admin;
 
 /***/ },
-/* 462 */
+/* 477 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59054,15 +60921,15 @@
 
 	var _HeaderActions2 = _interopRequireDefault(_HeaderActions);
 
-	var _ProfileActions = __webpack_require__(463);
+	var _ProfileActions = __webpack_require__(478);
 
 	var _ProfileActions2 = _interopRequireDefault(_ProfileActions);
 
-	var _ProfileStore = __webpack_require__(464);
+	var _ProfileStore = __webpack_require__(479);
 
 	var _ProfileStore2 = _interopRequireDefault(_ProfileStore);
 
-	var _AdminNotificationActions = __webpack_require__(465);
+	var _AdminNotificationActions = __webpack_require__(480);
 
 	var _AdminNotificationActions2 = _interopRequireDefault(_AdminNotificationActions);
 
@@ -59348,7 +61215,7 @@
 	exports.default = Header;
 
 /***/ },
-/* 463 */
+/* 478 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59402,7 +61269,7 @@
 	module.exports = ProfileActions;
 
 /***/ },
-/* 464 */
+/* 479 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59468,7 +61335,7 @@
 	module.exports = ProfileStore;
 
 /***/ },
-/* 465 */
+/* 480 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59538,7 +61405,7 @@
 	module.exports = NotificationActions;
 
 /***/ },
-/* 466 */
+/* 481 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59557,11 +61424,11 @@
 
 	var _textField2 = _interopRequireDefault(_textField);
 
-	var _ProfileActions = __webpack_require__(463);
+	var _ProfileActions = __webpack_require__(478);
 
 	var _ProfileActions2 = _interopRequireDefault(_ProfileActions);
 
-	var _ProfileStore = __webpack_require__(464);
+	var _ProfileStore = __webpack_require__(479);
 
 	var _ProfileStore2 = _interopRequireDefault(_ProfileStore);
 
@@ -59736,7 +61603,7 @@
 	exports.default = Sidebar;
 
 /***/ },
-/* 467 */
+/* 482 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59786,7 +61653,7 @@
 	exports.default = Settings;
 
 /***/ },
-/* 468 */
+/* 483 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59801,7 +61668,7 @@
 
 	var _reactRouter = __webpack_require__(159);
 
-	var _PathStore = __webpack_require__(469);
+	var _PathStore = __webpack_require__(484);
 
 	var _PathStore2 = _interopRequireDefault(_PathStore);
 
@@ -59868,14 +61735,14 @@
 	exports.default = Path;
 
 /***/ },
-/* 469 */
+/* 484 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var AppDispatcher = __webpack_require__(308);
 	var EventEmitter = __webpack_require__(316).EventEmitter;
-	var PathConstants = __webpack_require__(470);
+	var PathConstants = __webpack_require__(485);
 	var assign = __webpack_require__(312);
 
 	var CHANGE_EVENT = 'change';
@@ -59912,7 +61779,7 @@
 	module.exports = PathStore;
 
 /***/ },
-/* 470 */
+/* 485 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59924,7 +61791,7 @@
 	});
 
 /***/ },
-/* 471 */
+/* 486 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59953,7 +61820,7 @@
 
 	var _cardHeader2 = _interopRequireDefault(_cardHeader);
 
-	var _cardMedia = __webpack_require__(472);
+	var _cardMedia = __webpack_require__(461);
 
 	var _cardMedia2 = _interopRequireDefault(_cardMedia);
 
@@ -59977,11 +61844,11 @@
 
 	var _raisedButton2 = _interopRequireDefault(_raisedButton);
 
-	var _LoginActions = __webpack_require__(473);
+	var _LoginActions = __webpack_require__(487);
 
 	var _LoginActions2 = _interopRequireDefault(_LoginActions);
 
-	var _LoginStore = __webpack_require__(474);
+	var _LoginStore = __webpack_require__(488);
 
 	var _LoginStore2 = _interopRequireDefault(_LoginStore);
 
@@ -60111,178 +61978,7 @@
 	exports.default = Adminlogin;
 
 /***/ },
-/* 472 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _styles = __webpack_require__(382);
-
-	var _styles2 = _interopRequireDefault(_styles);
-
-	var _stylePropable = __webpack_require__(248);
-
-	var _stylePropable2 = _interopRequireDefault(_stylePropable);
-
-	var _themeManager = __webpack_require__(225);
-
-	var _themeManager2 = _interopRequireDefault(_themeManager);
-
-	var _lightRawTheme = __webpack_require__(221);
-
-	var _lightRawTheme2 = _interopRequireDefault(_lightRawTheme);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var CardMedia = _react2.default.createClass({
-	  displayName: 'CardMedia',
-
-	  propTypes: {
-	    actAsExpander: _react2.default.PropTypes.bool,
-	    children: _react2.default.PropTypes.node,
-	    expandable: _react2.default.PropTypes.bool,
-	    mediaStyle: _react2.default.PropTypes.object,
-	    overlay: _react2.default.PropTypes.node,
-	    overlayContainerStyle: _react2.default.PropTypes.object,
-	    overlayContentStyle: _react2.default.PropTypes.object,
-	    overlayStyle: _react2.default.PropTypes.object,
-
-	    /**
-	     * Override the inline-styles of the root element.
-	     */
-	    style: _react2.default.PropTypes.object
-	  },
-
-	  contextTypes: {
-	    muiTheme: _react2.default.PropTypes.object
-	  },
-
-	  //for passing default theme context to children
-	  childContextTypes: {
-	    muiTheme: _react2.default.PropTypes.object
-	  },
-
-	  mixins: [_stylePropable2.default],
-
-	  getInitialState: function getInitialState() {
-	    return {
-	      muiTheme: this.context.muiTheme ? this.context.muiTheme : _themeManager2.default.getMuiTheme(_lightRawTheme2.default)
-	    };
-	  },
-	  getChildContext: function getChildContext() {
-	    return {
-	      muiTheme: this.state.muiTheme
-	    };
-	  },
-
-	  //to update theme inside state whenever a new theme is passed down
-	  //from the parent / owner using context
-	  componentWillReceiveProps: function componentWillReceiveProps(nextProps, nextContext) {
-	    var newMuiTheme = nextContext.muiTheme ? nextContext.muiTheme : this.state.muiTheme;
-	    this.setState({ muiTheme: newMuiTheme });
-	  },
-	  getStyles: function getStyles() {
-	    return {
-	      root: {
-	        position: 'relative'
-	      },
-	      overlayContainer: {
-	        position: 'absolute',
-	        top: 0,
-	        bottom: 0,
-	        right: 0,
-	        left: 0
-	      },
-	      overlay: {
-	        height: '100%',
-	        position: 'relative'
-	      },
-	      overlayContent: {
-	        position: 'absolute',
-	        bottom: 0,
-	        right: 0,
-	        left: 0,
-	        paddingTop: 8,
-	        background: _styles2.default.Colors.lightBlack
-	      },
-	      media: {},
-	      mediaChild: {
-	        verticalAlign: 'top',
-	        maxWidth: '100%',
-	        minWidth: '100%',
-	        width: '100%'
-	      }
-	    };
-	  },
-	  render: function render() {
-	    var _this = this;
-
-	    var styles = this.getStyles();
-	    var rootStyle = this.prepareStyles(styles.root, this.props.style);
-	    var mediaStyle = this.prepareStyles(styles.media, this.props.mediaStyle);
-	    var overlayContainerStyle = this.prepareStyles(styles.overlayContainer, this.props.overlayContainerStyle);
-	    var overlayContentStyle = this.prepareStyles(styles.overlayContent, this.props.overlayContentStyle);
-	    var overlayStyle = this.prepareStyles(styles.overlay, this.props.overlayStyle);
-
-	    var children = _react2.default.Children.map(this.props.children, function (child) {
-	      return _react2.default.cloneElement(child, { style: _this.prepareStyles(styles.mediaChild, child.props.style) });
-	    });
-
-	    var overlayChildren = _react2.default.Children.map(this.props.overlay, function (child) {
-	      if (child.type.displayName === 'CardHeader' || child.type.displayName === 'CardTitle') {
-	        return _react2.default.cloneElement(child, {
-	          titleColor: _styles2.default.Colors.darkWhite,
-	          subtitleColor: _styles2.default.Colors.lightWhite
-	        });
-	      } else if (child.type.displayName === 'CardText') {
-	        return _react2.default.cloneElement(child, {
-	          color: _styles2.default.Colors.darkWhite
-	        });
-	      } else {
-	        return child;
-	      }
-	    });
-
-	    return _react2.default.createElement(
-	      'div',
-	      _extends({}, this.props, { style: rootStyle }),
-	      _react2.default.createElement(
-	        'div',
-	        { style: mediaStyle },
-	        children
-	      ),
-	      this.props.overlay ? _react2.default.createElement(
-	        'div',
-	        { style: overlayContainerStyle },
-	        _react2.default.createElement(
-	          'div',
-	          { style: overlayStyle },
-	          _react2.default.createElement(
-	            'div',
-	            { style: overlayContentStyle },
-	            overlayChildren
-	          )
-	        )
-	      ) : ''
-	    );
-	  }
-	});
-
-	exports.default = CardMedia;
-	module.exports = exports['default'];
-
-/***/ },
-/* 473 */
+/* 487 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -60329,7 +62025,7 @@
 	module.exports = AdminLoginActions;
 
 /***/ },
-/* 474 */
+/* 488 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -60398,7 +62094,7 @@
 	module.exports = LoginStore;
 
 /***/ },
-/* 475 */
+/* 489 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -60411,15 +62107,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _activityBox = __webpack_require__(476);
+	var _activityBox = __webpack_require__(490);
 
 	var _activityBox2 = _interopRequireDefault(_activityBox);
 
-	var _activityContainer = __webpack_require__(483);
+	var _activityContainer = __webpack_require__(492);
 
 	var _activityContainer2 = _interopRequireDefault(_activityContainer);
 
-	var _activityListComp = __webpack_require__(484);
+	var _activityListComp = __webpack_require__(493);
 
 	var _activityListComp2 = _interopRequireDefault(_activityListComp);
 
@@ -60449,7 +62145,7 @@
 	exports.default = ActivityMain;
 
 /***/ },
-/* 476 */
+/* 490 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -60482,11 +62178,11 @@
 
 	var _fontIcon2 = _interopRequireDefault(_fontIcon);
 
-	var _android = __webpack_require__(477);
+	var _android = __webpack_require__(491);
 
 	var _android2 = _interopRequireDefault(_android);
 
-	var _ActivityfeedAction = __webpack_require__(478);
+	var _ActivityfeedAction = __webpack_require__(455);
 
 	var _ActivityfeedAction2 = _interopRequireDefault(_ActivityfeedAction);
 
@@ -60494,7 +62190,1968 @@
 
 	var _LoginStore2 = _interopRequireDefault(_LoginStore);
 
-	var _StatusStore = __webpack_require__(482);
+	var _StatusStore = __webpack_require__(459);
+
+	var _StatusStore2 = _interopRequireDefault(_StatusStore);
+
+	var _raisedButton = __webpack_require__(377);
+
+	var _raisedButton2 = _interopRequireDefault(_raisedButton);
+
+	var _reactDropzone = __webpack_require__(420);
+
+	var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
+
+	var _gridTile = __webpack_require__(366);
+
+	var _gridTile2 = _interopRequireDefault(_gridTile);
+
+	var _gridList = __webpack_require__(365);
+
+	var _gridList2 = _interopRequireDefault(_gridList);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var style = {
+	  width: 800,
+	  marginLeft: 40,
+	  position: 'relative'
+
+	};
+
+	var style1 = {
+	  width: 760,
+	  position: 'relative'
+	};
+
+	var cardStyle = {
+	  width: 800,
+	  height: 200,
+	  marginLeft: 40,
+	  position: 'relative'
+	};
+
+	var previewStyle = {
+	  width: 196
+	};
+
+	var buttonStyle = {
+	  marginTop: 22,
+	  width: 200
+	};
+
+	function validateStatusText(textStatus) {
+	  if (textStatus.length > 250) {
+	    return {
+	      "error": "*status is too long"
+	    };
+	  } else if (textStatus === "") {
+	    return {
+	      "error": "*status cannot be empty"
+	    };
+	  } else {
+	    return true;
+	  }
+	};
+
+	var StatusBox = _react2.default.createClass({
+	  displayName: 'StatusBox',
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      statusText: '',
+	      editingPic: false,
+	      preview: '',
+	      files: {}
+	    };
+	  },
+
+	  _editProfilePic: function _editProfilePic() {
+	    this.setState({
+	      editingPic: !this.state.editingPic
+	    });
+	  },
+
+	  onDrop: function onDrop(files) {
+	    console.log(files);
+	    this.setState({
+	      files: files,
+	      preview: files[0].preview
+	    });
+	  },
+
+	  _cancelEdit: function _cancelEdit() {
+	    this.setState({
+	      editingPic: false,
+	      preview: '',
+	      files: ''
+	    });
+	  },
+
+	  renderSave: function renderSave() {
+	    return this.state.preview ? _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(_raisedButton2.default, { label: 'Cancel', onClick: this._cancelEdit, style: buttonStyle })
+	    ) : '';
+	  },
+
+	  _showUpload: function _showUpload() {
+	    this.setState({
+	      mouseover: true
+	    });
+	  },
+
+	  _hideUpload: function _hideUpload() {
+	    this.setState({
+	      mouseover: false
+	    });
+	  },
+
+	  addStatus: function addStatus() {
+	    var val = true;
+	    var status = this.refs.statusBox.getValue();
+
+	    if (validateStatusText(status).error) {
+	      this.setState({
+	        statusText: validateStatusText(status).error
+	      });
+	      val = false;
+	    } else {
+
+	      if (this.state.editingPic) {
+	        var fd = new FormData();
+	        var self = this;
+	        var token = Math.random();
+	        fd.append('file', this.state.files[0]);
+	        fd.append('email', localStorage.getItem('email'));
+	        fd.append('userId', localStorage.getItem('userid'));
+	        fd.append('firstName', _LoginStore2.default.getFirstname());
+	        fd.append('username', localStorage.getItem('username'));
+	        fd.append('status', status);
+	        fd.append('token', token);
+	        $.ajax({
+	          type: 'POST',
+	          url: '/api/imageStatus',
+	          data: fd,
+	          contentType: false,
+	          processData: false,
+	          success: function success(data) {
+	            console.log("success");
+	            console.log(data);
+
+	            _ActivityfeedAction2.default._getStatus(11);
+	            location.reload();
+	          },
+	          error: function error(data) {
+	            console.log("error");
+	            console.log(data);
+	          }
+	        });
+	        {
+	          this._cancelEdit;
+	        }
+	      } else {
+	        var statusData = {
+	          email: _LoginStore2.default.getEmail(),
+	          userId: localStorage.getItem('userid'),
+	          userName: localStorage.getItem('username'),
+	          firstName: _LoginStore2.default.getFirstname(),
+	          status: status
+	        };
+	        _ActivityfeedAction2.default._addStatus(statusData);
+	      }
+
+	      this.setState({
+	        statusText: ''
+	      });
+	    }
+	    this.clearText();
+	  },
+
+	  clearText: function clearText() {
+	    document.getElementById('txtStatus').value = "";
+	  },
+
+	  /**
+	   * @return {object}
+	   */
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        _card2.default,
+	        { style: style },
+	        _react2.default.createElement(
+	          _paper2.default,
+	          { zDepth: 1 },
+	          _react2.default.createElement('div', { className: 'col-md-10' }),
+	          _react2.default.createElement(_textField2.default, { style: style1, className: 'col-md-2', fullWidth: true, hintText: 'What\'s new with you? ', multiLine: true, errorText: this.state.statusText, ref: 'statusBox', id: 'txtStatus' }),
+	          _react2.default.createElement(
+	            'div',
+	            null,
+	            this.state.editingPic ? _react2.default.createElement(
+	              _card2.default,
+	              { style: cardStyle },
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'col-sm-3 col-md-3 col-lg-3' },
+	                _react2.default.createElement(
+	                  _reactDropzone2.default,
+	                  { onDrop: this.onDrop, multiple: false, accept: 'image/*' },
+	                  _react2.default.createElement(
+	                    'div',
+	                    null,
+	                    'Try dropping some images here, or click to select images to upload.'
+	                  ),
+	                  _react2.default.createElement('img', { style: previewStyle, src: this.state.preview })
+	                ),
+	                this.renderSave()
+	              )
+	            ) : ''
+	          ),
+	          _react2.default.createElement(_flatButton2.default, { className: 'col-md-1', label: 'Photos', onClick: this._editProfilePic }),
+	          _react2.default.createElement('div', { className: 'col-md-9' }),
+	          _react2.default.createElement(_flatButton2.default, { className: 'col-md-1', label: 'Post', rippleColor: '#2196F3', onClick: this.addStatus })
+	        )
+	      )
+	    );
+	  }
+	});
+
+	exports.default = StatusBox;
+
+/***/ },
+/* 491 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactAddonsPureRenderMixin = __webpack_require__(270);
+
+	var _reactAddonsPureRenderMixin2 = _interopRequireDefault(_reactAddonsPureRenderMixin);
+
+	var _svgIcon = __webpack_require__(290);
+
+	var _svgIcon2 = _interopRequireDefault(_svgIcon);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var ActionAndroid = _react2.default.createClass({
+	  displayName: 'ActionAndroid',
+
+	  mixins: [_reactAddonsPureRenderMixin2.default],
+
+	  render: function render() {
+	    return _react2.default.createElement(
+	      _svgIcon2.default,
+	      this.props,
+	      _react2.default.createElement('path', { d: 'M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V8H6v10zM3.5 8C2.67 8 2 8.67 2 9.5v7c0 .83.67 1.5 1.5 1.5S5 17.33 5 16.5v-7C5 8.67 4.33 8 3.5 8zm17 0c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5zm-4.97-5.84l1.3-1.3c.2-.2.2-.51 0-.71-.2-.2-.51-.2-.71 0l-1.48 1.48C13.85 1.23 12.95 1 12 1c-.96 0-1.86.23-2.66.63L7.85.15c-.2-.2-.51-.2-.71 0-.2.2-.2.51 0 .71l1.31 1.31C6.97 3.26 6 5.01 6 7h12c0-1.99-.97-3.75-2.47-4.84zM10 5H9V4h1v1zm5 0h-1V4h1v1z' })
+	    );
+	  }
+	});
+
+	exports.default = ActionAndroid;
+	module.exports = exports['default'];
+
+/***/ },
+/* 492 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _list = __webpack_require__(293);
+
+	var _list2 = _interopRequireDefault(_list);
+
+	var _listItem = __webpack_require__(295);
+
+	var _listItem2 = _interopRequireDefault(_listItem);
+
+	var _raisedButton = __webpack_require__(377);
+
+	var _raisedButton2 = _interopRequireDefault(_raisedButton);
+
+	var _ActivityfeedAction = __webpack_require__(455);
+
+	var _ActivityfeedAction2 = _interopRequireDefault(_ActivityfeedAction);
+
+	var _StatusStore = __webpack_require__(459);
+
+	var _StatusStore2 = _interopRequireDefault(_StatusStore);
+
+	var _activityListComp = __webpack_require__(493);
+
+	var _activityListComp2 = _interopRequireDefault(_activityListComp);
+
+	var _LoginStore = __webpack_require__(317);
+
+	var _LoginStore2 = _interopRequireDefault(_LoginStore);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var style = {
+	  marginLeft: 40,
+	  width: 800
+	};
+
+	var activityContainer = _react2.default.createClass({
+	  displayName: 'activityContainer',
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      results: _StatusStore2.default.getStatusData()
+	    };
+	  },
+
+	  componentDidMount: function componentDidMount() {
+	    _StatusStore2.default.addChangeListener(this._onChange);
+
+	    var data = {
+	      userId: localStorage.getItem('userid')
+	    };
+	    _ActivityfeedAction2.default._getStatus(data);
+	  },
+
+	  _onChange: function _onChange() {
+	    this.setState({ results: _StatusStore2.default.getStatusData() });
+	  },
+
+	  _loadMorePosts: function _loadMorePosts() {
+	    var data = {
+	      userId: localStorage.getItem('userid')
+	    };
+	    _ActivityfeedAction2.default._getStatus(data);
+	  },
+
+	  _renderSearchItem: function _renderSearchItem() {
+	    return this.state.results.map(function (result) {
+	      return _react2.default.createElement(_activityListComp2.default, { key: result.id,
+	        id: result.id,
+	        type: result.type,
+	        firstName: result.firstname,
+	        postId: result.post_id,
+	        attachment: result.attachment,
+	        lPostId: result.pid,
+	        postText: result.post_text,
+	        created_at: result.created_at,
+	        postid: result.postid,
+	        likesCount: result.likesCount,
+	        sid: result.sid,
+	        sfirstname: result.sfirstname,
+	        sattachment: result.sattachment,
+	        spost_text: result.spost_text,
+	        screated_at: result.screated_at });
+	    });
+	  },
+
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        'div',
+	        null,
+	        this._renderSearchItem()
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(_raisedButton2.default, { label: 'load more posts', secondary: true, style: style, onClick: this._loadMorePosts })
+	      )
+	    );
+	  }
+	});
+
+	exports.default = activityContainer;
+
+/***/ },
+/* 493 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _card = __webpack_require__(322);
+
+	var _card2 = _interopRequireDefault(_card);
+
+	var _cardMedia = __webpack_require__(461);
+
+	var _cardMedia2 = _interopRequireDefault(_cardMedia);
+
+	var _cardText = __webpack_require__(321);
+
+	var _cardText2 = _interopRequireDefault(_cardText);
+
+	var _listItem = __webpack_require__(295);
+
+	var _listItem2 = _interopRequireDefault(_listItem);
+
+	var _divider = __webpack_require__(299);
+
+	var _divider2 = _interopRequireDefault(_divider);
+
+	var _avatar = __webpack_require__(292);
+
+	var _avatar2 = _interopRequireDefault(_avatar);
+
+	var _colors = __webpack_require__(220);
+
+	var _colors2 = _interopRequireDefault(_colors);
+
+	var _favorite = __webpack_require__(449);
+
+	var _favorite2 = _interopRequireDefault(_favorite);
+
+	var _favoriteBorder = __webpack_require__(450);
+
+	var _favoriteBorder2 = _interopRequireDefault(_favoriteBorder);
+
+	var _iconButton = __webpack_require__(264);
+
+	var _iconButton2 = _interopRequireDefault(_iconButton);
+
+	var _moreVert = __webpack_require__(375);
+
+	var _moreVert2 = _interopRequireDefault(_moreVert);
+
+	var _iconMenu = __webpack_require__(376);
+
+	var _iconMenu2 = _interopRequireDefault(_iconMenu);
+
+	var _menuItem = __webpack_require__(347);
+
+	var _menuItem2 = _interopRequireDefault(_menuItem);
+
+	var _flatButton = __webpack_require__(327);
+
+	var _flatButton2 = _interopRequireDefault(_flatButton);
+
+	var _dialog = __webpack_require__(326);
+
+	var _dialog2 = _interopRequireDefault(_dialog);
+
+	var _raisedButton = __webpack_require__(377);
+
+	var _raisedButton2 = _interopRequireDefault(_raisedButton);
+
+	var _textField = __webpack_require__(336);
+
+	var _textField2 = _interopRequireDefault(_textField);
+
+	var _paper = __webpack_require__(294);
+
+	var _paper2 = _interopRequireDefault(_paper);
+
+	var _LoginStore = __webpack_require__(317);
+
+	var _LoginStore2 = _interopRequireDefault(_LoginStore);
+
+	var _StatusStore = __webpack_require__(459);
+
+	var _StatusStore2 = _interopRequireDefault(_StatusStore);
+
+	var _ActivityfeedAction = __webpack_require__(455);
+
+	var _ActivityfeedAction2 = _interopRequireDefault(_ActivityfeedAction);
+
+	var _CommentStore = __webpack_require__(462);
+
+	var _CommentStore2 = _interopRequireDefault(_CommentStore);
+
+	var _Comment = __webpack_require__(494);
+
+	var _Comment2 = _interopRequireDefault(_Comment);
+
+	var _LikeStatusStore = __webpack_require__(464);
+
+	var _LikeStatusStore2 = _interopRequireDefault(_LikeStatusStore);
+
+	var _activitySharedList = __webpack_require__(495);
+
+	var _activitySharedList2 = _interopRequireDefault(_activitySharedList);
+
+	var _activityContainer = __webpack_require__(492);
+
+	var _activityContainer2 = _interopRequireDefault(_activityContainer);
+
+	var _CountBox = __webpack_require__(496);
+
+	var _CountBox2 = _interopRequireDefault(_CountBox);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var iconButtonElement = _react2.default.createElement(
+	  _iconButton2.default,
+	  {
+	    touch: true,
+	    tooltip: 'more',
+	    tooltipPosition: 'bottom-left' },
+	  _react2.default.createElement(_moreVert2.default, { color: _colors2.default.deepPurple500 })
+	);
+
+	var style1 = {
+	  width: 800,
+	  margin: 40
+	};
+
+	var style2 = {
+	  width: 800
+	};
+
+	var style3 = {
+	  width: 760,
+	  position: 'relative'
+
+	};
+
+	var loadMoreStyle = {
+	  marginLeft: 100
+	};
+
+	function validateCommentText(textComment) {
+	  if (textComment.length > 200) {
+	    return {
+	      "error": "*comment is too long"
+	    };
+	  } else if (textComment === "") {
+	    return {
+	      "error": "*comment cannot be empty"
+	    };
+	  } else {
+	    return true;
+	  }
+	};
+
+	var commentLimitNo = 0;
+
+	var ActivityList = _react2.default.createClass({
+	  displayName: 'ActivityList',
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      opens: false,
+	      commentText: '',
+	      sharedResults: _StatusStore2.default.getSharedData(),
+	      commentResults: _CommentStore2.default.getCommentsData(),
+	      count: _LikeStatusStore2.default.getCount(),
+	      liked: '',
+	      open1: false,
+	      open3: false,
+	      open4: false,
+	      open5: false,
+	      likeCount: ''
+	    };
+	  },
+
+	  componentDidMount: function componentDidMount() {
+	    _StatusStore2.default.addChangeListener(this._onChange);
+	    _LikeStatusStore2.default.addChangeListener(this._onChange);
+	    _CommentStore2.default.addChangeListener(this._onChange);
+
+	    if (!this.props.lPostId) {
+	      this.setState({ liked: !this.state.liked });
+	    } else {
+	      this.setState({ liked: this.state.liked });
+	    }
+
+	    var commentData = {
+	      postId: this.props.id
+	    };
+	    _ActivityfeedAction2.default.getCommentList(commentData);
+
+	    var LikedData = {
+	      postId: this.props.id
+	    };
+	    _ActivityfeedAction2.default.getCount(LikedData);
+	  },
+
+	  _onChange: function _onChange() {
+	    this.setState({ sharedResults: _StatusStore2.default.getSharedData() });
+	    this.setState({ commentResults: _CommentStore2.default.getCommentsData() });
+	    this.setState({ count: _LikeStatusStore2.default.getCount() });
+	  },
+
+	  _getSharedItem: function _getSharedItem() {
+	    if (this.props.type == "shared") {
+	      return _react2.default.createElement(_activitySharedList2.default, { sid: this.props.sid,
+	        sfirstname: this.props.sfirstname,
+	        sattachment: this.props.sattachment,
+	        spost_text: this.props.spost_text,
+	        screated_at: this.props.screated_at });
+	    }
+	  },
+
+	  _getLikedCount: function _getLikedCount() {
+	    var self = this;
+	    return this.state.count.map(function (val) {
+	      return val.map(function (result) {
+	        if (self.props.id == result.post_id) {
+	          return _react2.default.createElement(_CountBox2.default, { likedCount: result.likedCount,
+	            shareCount: result.shareCount,
+	            post_id: result.post_id });
+	        }
+	      });
+	    });
+	  },
+
+	  _getCommentList: function _getCommentList() {
+	    var self = this;
+	    return this.state.commentResults.map(function (comment) {
+	      return comment.map(function (comm) {
+	        if (self.props.id == comm.post_id) {
+	          return _react2.default.createElement(_Comment2.default, { ckey: comm.id,
+	            cid: comm.id,
+	            cfirstName: comm.firstname,
+	            comment_txt: comm.comment_txt });
+	        }
+	      });
+	    });
+	  },
+
+	  _editStatus: function _editStatus() {
+	    var status = this.refs.EditBox.getValue();
+	    var editData = {
+	      userId: localStorage.getItem('userid'),
+	      postId: this.props.id,
+	      status: status
+	    };
+	    _ActivityfeedAction2.default._editStatus(editData);
+	    this.handleClose();
+	  },
+
+	  _deleteStatus: function _deleteStatus() {
+	    var deleteData = {
+	      userId: localStorage.getItem('userid'),
+	      postId: this.props.id
+	    };
+	    _ActivityfeedAction2.default._deleteStatus(deleteData);
+	  },
+
+	  _blockedStatus: function _blockedStatus() {
+	    var blockData = {
+	      email: _LoginStore2.default.getEmail(),
+	      userId: localStorage.getItem('userid'),
+	      postId: this.props.id
+	    };
+	    _ActivityfeedAction2.default._blockStatus(blockData);
+	  },
+
+	  _changeShareState: function _changeShareState() {
+	    var shareStatus = this.refs.shareBox.getValue();
+	    var shareData = {
+	      email: _LoginStore2.default.getEmail(),
+	      userId: localStorage.getItem('userid'),
+	      userName: localStorage.getItem('username'),
+	      firstName: _LoginStore2.default.getFirstname(),
+	      postId: this.props.id,
+	      status: shareStatus
+	    };
+
+	    this.setState({ shared: !this.state.shared });
+	    _ActivityfeedAction2.default._addShare(shareData);
+	    //alert('Share successful');
+
+	    this.setState({ open1: false });
+	    this.setState({ open4: true });
+	  },
+
+	  _changeLikeState: function _changeLikeState() {
+	    var likeData = {
+	      postId: this.props.id,
+	      userId: localStorage.getItem('userid'),
+	      email: _LoginStore2.default.getEmail(),
+	      firstName: _LoginStore2.default.getFirstname(),
+	      userName: localStorage.getItem('username')
+	    };
+
+	    if (this.state.liked) {
+	      this.setState({ liked: !this.state.liked });
+	      _ActivityfeedAction2.default.like(likeData);
+	      _getLikedCount();
+	    } else {
+	      this.setState({ liked: !this.state.liked });
+	      _ActivityfeedAction2.default.unlike(likeData);
+	      _getLikedCount();
+	    }
+	  },
+
+	  _loadMoreComments: function _loadMoreComments() {
+	    var commentData = {
+	      postId: this.props.id
+	    };
+	    _ActivityfeedAction2.default.loadMoreComment(commentData);
+	  },
+
+	  handleOpen: function handleOpen() {
+	    this.setState({ opens: true });
+	  },
+
+	  handleOpenShare: function handleOpenShare() {
+	    this.setState({ open1: true });
+	  },
+
+	  handleOpenDelete: function handleOpenDelete() {
+	    this.setState({ open3: true });
+	  },
+
+	  handleOpenBlock: function handleOpenBlock() {
+	    this.setState({ open5: true });
+	  },
+
+	  handleClose: function handleClose() {
+	    this.setState({ opens: false });
+	    this.setState({ open3: false });
+	    this.setState({ open4: false });
+	    this.setState({ open5: false });
+	  },
+
+	  setFocusToTextBox: function setFocusToTextBox() {
+	    document.getElementById(this.props.id).focus();
+	  },
+
+	  EnterKey: function EnterKey(e) {
+	    if (e.key === 'Enter') {
+	      var val = true;
+	      var comment = this.refs.commentBox.getValue();
+	      var commentData = {
+	        postId: this.props.id,
+	        userId: localStorage.getItem('userid'),
+	        comment: comment,
+	        email: _LoginStore2.default.getEmail(),
+	        firstName: _LoginStore2.default.getFirstname(),
+	        userName: localStorage.getItem('username')
+	      };
+
+	      if (validateCommentText(comment).error) {
+	        this.setState({
+	          commentText: validateCommentText(comment).error
+	        });
+	        val = false;
+	      } else {
+	        _ActivityfeedAction2.default.addComment(commentData);
+	        this.setState({
+	          commentText: ''
+	        });
+	      }
+	      this.clearText();
+	    }
+	  },
+
+	  clearText: function clearText() {
+	    var commentBoxId = this.props.id;
+	    document.getElementById(commentBoxId).value = "";
+	  },
+
+	  render: function render() {
+	    var updateActions = [_react2.default.createElement(_flatButton2.default, {
+	      label: 'Update',
+	      primary: true,
+	      keyboardFocused: true,
+	      onTouchTap: this._editStatus }), _react2.default.createElement(_flatButton2.default, {
+	      label: 'Close',
+	      secondary: true,
+	      onTouchTap: this.handleClose })];
+
+	    var confirmDeleteActions = [_react2.default.createElement(_flatButton2.default, {
+	      label: 'Delete',
+	      primary: true,
+	      keyboardFocused: true,
+	      onTouchTap: this._deleteStatus }), _react2.default.createElement(_flatButton2.default, {
+	      label: 'Cansel',
+	      secondary: true,
+	      onTouchTap: this.handleClose })];
+
+	    var confirmBlockActions = [_react2.default.createElement(_flatButton2.default, {
+	      label: 'Block',
+	      primary: true,
+	      keyboardFocused: true,
+	      onTouchTap: this._blockedStatus }), _react2.default.createElement(_flatButton2.default, {
+	      label: 'Cansel',
+	      secondary: true,
+	      onTouchTap: this.handleClose })];
+
+	    var shareActions = [_react2.default.createElement(_flatButton2.default, {
+	      label: 'Post',
+	      primary: true,
+	      keyboardFocused: true,
+	      onTouchTap: this._changeShareState }), _react2.default.createElement(_flatButton2.default, {
+	      label: 'Close',
+	      secondary: true,
+	      onTouchTap: this.handleClose })];
+
+	    var confirmShareActions = [_react2.default.createElement(_flatButton2.default, {
+	      label: 'Ok',
+	      secondary: true,
+	      onTouchTap: this.handleClose })];
+
+	    return _react2.default.createElement(
+	      'div',
+	      { style: style1 },
+	      _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          _card2.default,
+	          null,
+	          _react2.default.createElement(_listItem2.default, {
+	            leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg' }),
+	            primaryText: this.props.firstName,
+	            secondaryText: _react2.default.createElement(
+	              'p',
+	              null,
+	              _react2.default.createElement(
+	                'b',
+	                null,
+	                this.props.created_at
+	              )
+	            ),
+	            secondaryTextLines: 1,
+	            rightIconButton: _react2.default.createElement(
+	              _iconMenu2.default,
+	              { iconButtonElement: iconButtonElement },
+	              _react2.default.createElement(_menuItem2.default, { primaryText: 'Edit', onClick: this.handleOpen }),
+	              _react2.default.createElement(_menuItem2.default, { primaryText: 'Remove', onClick: this.handleOpenDelete }),
+	              _react2.default.createElement(_menuItem2.default, { primaryText: 'Block', onClick: this.handleOpenBlock })
+	            ) }),
+	          _react2.default.createElement(
+	            _cardText2.default,
+	            null,
+	            this.props.postText
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            null,
+	            this.props.attachment != 'None' ? _react2.default.createElement(
+	              'div',
+	              null,
+	              _react2.default.createElement(
+	                _cardMedia2.default,
+	                null,
+	                _react2.default.createElement('img', { src: 'img/activityFeedPics/' + this.props.attachment })
+	              )
+	            ) : ''
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            null,
+	            this._getSharedItem()
+	          ),
+	          _react2.default.createElement(
+	            _iconButton2.default,
+	            { onClick: this._changeLikeState, tooltip: !this.state.liked ? "Unlike" : "Like", touch: true, tooltipPosition: 'bottom-right' },
+	            !this.state.liked ? _react2.default.createElement(_favorite2.default, { onClick: this._changeLikeState, viewBox: '0 0 20 30', color: _colors2.default.red500 }) : _react2.default.createElement(_favoriteBorder2.default, { viewBox: '0 0 20 30', color: _colors2.default.red500 })
+	          ),
+	          _react2.default.createElement(_flatButton2.default, { label: 'Comment', onClick: this.setFocusToTextBox }),
+	          _react2.default.createElement(_flatButton2.default, { label: 'Share', onClick: this.handleOpenShare }),
+	          ' />'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          this._getLikedCount()
+	        ),
+	        _react2.default.createElement(
+	          _dialog2.default,
+	          {
+	            title: 'Modify Your Status',
+	            actions: updateActions,
+	            modal: false,
+	            open: this.state.opens,
+	            onRequestClose: this.handleClose },
+	          _react2.default.createElement(_textField2.default, { hintText: 'Update your status', multiLine: false, fullWidth: true, ref: 'EditBox', defaultValue: this.props.postText })
+	        ),
+	        _react2.default.createElement(
+	          _dialog2.default,
+	          {
+	            title: 'Delete Post',
+	            actions: confirmDeleteActions,
+	            modal: false,
+	            open: this.state.open3,
+	            onRequestClose: this.handleClose },
+	          'Are you sure you want to delete this post?"'
+	        ),
+	        _react2.default.createElement(
+	          _dialog2.default,
+	          {
+	            title: 'Block Post',
+	            actions: confirmBlockActions,
+	            modal: false,
+	            open: this.state.open5,
+	            onRequestClose: this.handleClose },
+	          'Are you sure you want to block this post?"'
+	        ),
+	        _react2.default.createElement(
+	          _dialog2.default,
+	          {
+	            title: this.props.firstName + "'s post Share on your own Activityfeed",
+	            actions: shareActions,
+	            modal: false,
+	            open: this.state.open1,
+	            onRequestClose: this.handleClose },
+	          _react2.default.createElement(_textField2.default, { hintText: 'Say something about this...', multiLine: false, fullWidth: true, ref: 'shareBox' })
+	        ),
+	        _react2.default.createElement(
+	          _dialog2.default,
+	          {
+	            title: 'Share Post',
+	            actions: confirmShareActions,
+	            modal: false,
+	            open: this.state.open4,
+	            onRequestClose: this.handleClose },
+	          '"This has been shared to your Timeline."'
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          _card2.default,
+	          { style: style2 },
+	          _react2.default.createElement(_flatButton2.default, { label: 'load more comments', onClick: this._loadMoreComments })
+	        ),
+	        this._getCommentList()
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          _card2.default,
+	          { style: style2 },
+	          _react2.default.createElement(
+	            _paper2.default,
+	            { zDepth: 1 },
+	            _react2.default.createElement('div', { className: 'col-md-10' }),
+	            _react2.default.createElement(_textField2.default, { style: style3, className: 'col-md-2', fullWidth: true, hintText: 'Write a comment...', multiLine: false, onKeyPress: this.EnterKey, errorText: this.state.commentText, ref: 'commentBox', id: this.props.id })
+	          )
+	        )
+	      )
+	    );
+	  }
+	});
+
+	exports.default = ActivityList;
+
+/***/ },
+/* 494 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _card = __webpack_require__(322);
+
+	var _card2 = _interopRequireDefault(_card);
+
+	var _listItem = __webpack_require__(295);
+
+	var _listItem2 = _interopRequireDefault(_listItem);
+
+	var _list = __webpack_require__(293);
+
+	var _list2 = _interopRequireDefault(_list);
+
+	var _divider = __webpack_require__(299);
+
+	var _divider2 = _interopRequireDefault(_divider);
+
+	var _avatar = __webpack_require__(292);
+
+	var _avatar2 = _interopRequireDefault(_avatar);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Comment = _react2.default.createClass({
+	    displayName: 'Comment',
+
+	    render: function render() {
+	        return _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(
+	                _card2.default,
+	                null,
+	                _react2.default.createElement(_listItem2.default, {
+	                    leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg' }),
+	                    primaryText: this.props.cfirstName,
+	                    secondaryText: _react2.default.createElement(
+	                        'p',
+	                        null,
+	                        this.props.comment_txt
+	                    ),
+	                    secondaryTextLines: 1 }),
+	                _react2.default.createElement(_divider2.default, { inset: true })
+	            )
+	        );
+	    }
+	});
+
+	exports.default = Comment;
+
+/***/ },
+/* 495 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _card = __webpack_require__(322);
+
+	var _card2 = _interopRequireDefault(_card);
+
+	var _cardMedia = __webpack_require__(461);
+
+	var _cardMedia2 = _interopRequireDefault(_cardMedia);
+
+	var _cardText = __webpack_require__(321);
+
+	var _cardText2 = _interopRequireDefault(_cardText);
+
+	var _listItem = __webpack_require__(295);
+
+	var _listItem2 = _interopRequireDefault(_listItem);
+
+	var _divider = __webpack_require__(299);
+
+	var _divider2 = _interopRequireDefault(_divider);
+
+	var _avatar = __webpack_require__(292);
+
+	var _avatar2 = _interopRequireDefault(_avatar);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var style1 = {
+	    width: 700,
+	    margin: 40
+	};
+
+	var ActivitySharedList = _react2.default.createClass({
+	    displayName: 'ActivitySharedList',
+
+	    render: function render() {
+	        return _react2.default.createElement(
+	            'div',
+	            { style: style1 },
+	            _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    _card2.default,
+	                    null,
+	                    _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        this.props.spost_text != '' ? _react2.default.createElement(
+	                            'div',
+	                            null,
+	                            _react2.default.createElement(_listItem2.default, {
+	                                leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg' }),
+	                                primaryText: this.props.sfirstname,
+	                                secondaryText: _react2.default.createElement(
+	                                    'p',
+	                                    null,
+	                                    _react2.default.createElement(
+	                                        'b',
+	                                        null,
+	                                        this.props.screated_at
+	                                    )
+	                                ),
+	                                secondaryTextLines: 1 }),
+	                            _react2.default.createElement(
+	                                _cardText2.default,
+	                                null,
+	                                this.props.spost_text
+	                            ),
+	                            _react2.default.createElement(
+	                                'div',
+	                                null,
+	                                this.props.sattachment != 'None' ? _react2.default.createElement(
+	                                    'div',
+	                                    null,
+	                                    _react2.default.createElement(
+	                                        _cardMedia2.default,
+	                                        null,
+	                                        _react2.default.createElement('img', { src: 'img/activityFeedPics/' + this.props.sattachment })
+	                                    )
+	                                ) : ''
+	                            ),
+	                            _react2.default.createElement(_divider2.default, { inset: true })
+	                        ) : _react2.default.createElement(
+	                            'div',
+	                            null,
+	                            _react2.default.createElement(
+	                                _cardText2.default,
+	                                null,
+	                                'Attachment Unavailable'
+	                            )
+	                        )
+	                    )
+	                )
+	            )
+	        );
+	    }
+	});
+
+	exports.default = ActivitySharedList;
+
+/***/ },
+/* 496 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _card = __webpack_require__(322);
+
+	var _card2 = _interopRequireDefault(_card);
+
+	var _flatButton = __webpack_require__(327);
+
+	var _flatButton2 = _interopRequireDefault(_flatButton);
+
+	var _paper = __webpack_require__(294);
+
+	var _paper2 = _interopRequireDefault(_paper);
+
+	var _dialog = __webpack_require__(326);
+
+	var _dialog2 = _interopRequireDefault(_dialog);
+
+	var _listItem = __webpack_require__(295);
+
+	var _listItem2 = _interopRequireDefault(_listItem);
+
+	var _divider = __webpack_require__(299);
+
+	var _divider2 = _interopRequireDefault(_divider);
+
+	var _avatar = __webpack_require__(292);
+
+	var _avatar2 = _interopRequireDefault(_avatar);
+
+	var _colors = __webpack_require__(220);
+
+	var _colors2 = _interopRequireDefault(_colors);
+
+	var _raisedButton = __webpack_require__(377);
+
+	var _raisedButton2 = _interopRequireDefault(_raisedButton);
+
+	var _ActivityfeedAction = __webpack_require__(455);
+
+	var _ActivityfeedAction2 = _interopRequireDefault(_ActivityfeedAction);
+
+	var _LikeStatusStore = __webpack_require__(464);
+
+	var _LikeStatusStore2 = _interopRequireDefault(_LikeStatusStore);
+
+	var _StatusStore = __webpack_require__(459);
+
+	var _StatusStore2 = _interopRequireDefault(_StatusStore);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var style2 = {
+	  width: 800
+	};
+
+	var firstname;
+	var sfirstname;
+
+	var CountBox = _react2.default.createClass({
+	  displayName: 'CountBox',
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      likedUsers: _LikeStatusStore2.default.getLikedUsers(),
+	      sharedUsers: _StatusStore2.default.getSharedUsers(),
+	      open: false,
+	      firstname: '',
+	      sfirstname: ''
+	    };
+	  },
+
+	  componentDidMount: function componentDidMount() {
+	    _LikeStatusStore2.default.addChangeListener(this._onChange);
+
+	    var likeData = {
+	      postId: this.props.post_id
+	    };
+	    _ActivityfeedAction2.default.getLikedUsers(likeData);
+
+	    var shareData = {
+	      postId: this.props.post_id
+	    };
+	    _ActivityfeedAction2.default.getSharedUsers(shareData);
+	  },
+
+	  _onChange: function _onChange() {
+	    this.setState({ likedUsers: _LikeStatusStore2.default.getLikedUsers() });
+	    this.setState({ sharedUsers: _StatusStore2.default.getSharedUsers() });
+	  },
+
+	  handleClose: function handleClose() {
+	    this.setState({ open: false });
+	    this.setState({ open2: false });
+	  },
+
+	  _getLikedUsers: function _getLikedUsers() {
+	    this.setState({ open: true });
+
+	    var self = this;
+	    return this.state.likedUsers.map(function (likes) {
+	      return likes.map(function (result) {
+	        if (self.props.post_id == result.post_id) {
+	          firstname = result.firstname;
+	          alert(firstname);
+	          self.setState({
+	            firstname: firstname
+	          });
+	        }
+	      });
+	    });
+	  },
+
+	  _getSharedUsers: function _getSharedUsers() {
+	    this.setState({ open2: true });
+	    this.setState({ sharedUsers: _StatusStore2.default.getSharedUsers() });
+	    var self = this;
+	    return this.state.sharedUsers.map(function (shares) {
+	      return shares.map(function (result) {
+	        if (self.props.post_id == result.post_id) {
+	          firstname = result.firstname;
+	          alert(firstname);
+	          self.setState({
+	            sfirstname: firstname
+	          });
+	        }
+	      });
+	    });
+	  },
+
+	  render: function render() {
+	    var likeActions = [_react2.default.createElement(_flatButton2.default, {
+	      label: 'Close',
+	      secondary: true,
+	      onTouchTap: this.handleClose })];
+
+	    var sharedActions = [_react2.default.createElement(_flatButton2.default, {
+	      label: 'Close',
+	      secondary: true,
+	      onTouchTap: this.handleClose })];
+
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        _card2.default,
+	        { style: style2 },
+	        _react2.default.createElement(
+	          _paper2.default,
+	          { zDepth: 1 },
+	          _react2.default.createElement(_flatButton2.default, { label: this.props.likedCount + " Likes", onClick: this._getLikedUsers }),
+	          _react2.default.createElement(_flatButton2.default, { label: this.props.shareCount + " Shares", onClick: this._getSharedUsers })
+	        )
+	      ),
+	      _react2.default.createElement(
+	        _dialog2.default,
+	        {
+	          autoDetectWindowHeight: false,
+	          title: 'Liked Users',
+	          actions: likeActions,
+	          modal: true,
+	          open: this.state.open },
+	        _react2.default.createElement(_listItem2.default, {
+	          leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg' }),
+	          primaryText: this.state.firstname }),
+	        _react2.default.createElement(_divider2.default, { inset: true })
+	      ),
+	      _react2.default.createElement(
+	        _dialog2.default,
+	        {
+	          autoDetectWindowHeight: false,
+	          title: 'Shared Users',
+	          actions: sharedActions,
+	          modal: true,
+	          open: this.state.open2 },
+	        _react2.default.createElement(_listItem2.default, {
+	          leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg' }),
+	          primaryText: this.state.sfirstname }),
+	        _react2.default.createElement(_divider2.default, { inset: true })
+	      )
+	    );
+	  }
+	});
+
+	exports.default = CountBox;
+
+/***/ },
+/* 497 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Like = __webpack_require__(498);
+
+	var _Like2 = _interopRequireDefault(_Like);
+
+	var _list = __webpack_require__(293);
+
+	var _list2 = _interopRequireDefault(_list);
+
+	var _LikeStore = __webpack_require__(499);
+
+	var _LikeStore2 = _interopRequireDefault(_LikeStore);
+
+	var _LikeActions = __webpack_require__(501);
+
+	var _LikeActions2 = _interopRequireDefault(_LikeActions);
+
+	var _textField = __webpack_require__(336);
+
+	var _textField2 = _interopRequireDefault(_textField);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var loadMoreStyle = {
+	  marginLeft: 100
+	};
+
+	var textStyle = {
+	  marginLeft: 20
+	};
+
+	var ActivityFeedContainer = _react2.default.createClass({
+	  displayName: 'ActivityFeedContainer',
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      list: _LikeStore2.default.getList(),
+	      listMe: _LikeStore2.default.getListMe(),
+	      listLikedBack: _LikeStore2.default.getLikedBackList()
+	    };
+	  },
+	  componentDidMount: function componentDidMount() {
+	    _LikeStore2.default.addChangeListener(this._onChange);
+	    _LikeActions2.default.getList();
+	    _LikeActions2.default.getListLikedMe();
+	    _LikeActions2.default.getLikedBackList();
+	  },
+	  _onChange: function _onChange() {
+	    console.log(_LikeStore2.default.getList());
+	    this.setState({
+	      list: _LikeStore2.default.getList(),
+	      listMe: _LikeStore2.default.getListMe(),
+	      listLikedBack: _LikeStore2.default.getLikedBackList()
+	    });
+	  },
+	  _handleEdit: function _handleEdit(id) {
+	    console.log(id);
+	  },
+	  _handleRemove: function _handleRemove(username) {
+	    console.log(username);
+	    _LikeActions2.default.unblock(username);
+	  },
+	  _loadMoreLiked: function _loadMoreLiked() {
+	    _LikeActions2.default.getList();
+	  },
+	  _loadMoreGotLiked: function _loadMoreGotLiked() {
+	    _LikeActions2.default.getListLikedMe();
+	  },
+	  _loadMoreLikedBack: function _loadMoreLikedBack() {
+	    _LikeActions2.default.getLikedBackList();
+	  },
+	  _handleSearchliked: function _handleSearchliked() {
+	    var searchVal = this.refs.iliked.getValue();
+	    _LikeActions2.default.searchLikedMe(searchVal);
+	  },
+	  _handleSearchlikedMe: function _handleSearchlikedMe() {
+	    var searchVal = this.refs.likedme.getValue();
+	    _LikeActions2.default.searchGotLiked(searchVal);
+	  },
+	  _handleSearchlikedBack: function _handleSearchlikedBack() {
+	    var searchVal = this.refs.likedback.getValue();
+	    _LikeActions2.default.searchLikedBack(searchVal);
+	  },
+	  _renderILike: function _renderILike() {
+	    var _this = this;
+
+	    return this.state.list.map(function (item) {
+	      return _react2.default.createElement(_Like2.default, { key: item.id, onEdit: _this._handleEdit, onRemove: _this._handleRemove, id: item.id,
+	        username: item.username,
+	        firstname: item.firstname,
+	        lastname: item.lastname,
+	        image: '/img/profilepics/' + item.profilepic
+	      });
+	    });
+	  },
+	  _renderWhoLikedMe: function _renderWhoLikedMe() {
+	    var _this2 = this;
+
+	    return this.state.listMe.map(function (item) {
+	      return _react2.default.createElement(_Like2.default, { key: item.id, onEdit: _this2._handleEdit, onRemove: _this2._handleRemove, id: item.id,
+	        username: item.username,
+	        firstname: item.firstname,
+	        lastname: item.lastname,
+	        image: '/img/profilepics/' + item.profilepic
+	      });
+	    });
+	  },
+	  _renderBackList: function _renderBackList() {
+	    var _this3 = this;
+
+	    return this.state.listLikedBack.map(function (item) {
+	      return _react2.default.createElement(_Like2.default, { key: item.id, onEdit: _this3._handleEdit, onRemove: _this3._handleRemove, id: item.id,
+	        username: item.username,
+	        firstname: item.firstname,
+	        lastname: item.lastname,
+	        image: '/img/profilepics/' + item.profilepic
+	      });
+	    });
+	  },
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'col-lg-4' },
+	        _react2.default.createElement(
+	          _list2.default,
+	          { subheader: 'You have liked ...' },
+	          _react2.default.createElement(_textField2.default, {
+	            ref: 'iliked', hintText: 'search ...', onKeyUp: this._handleSearchliked, style: textStyle }),
+	          this._renderILike()
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { onClick: this._loadMoreLiked, style: loadMoreStyle },
+	          ' load more '
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'col-lg-4' },
+	        _react2.default.createElement(
+	          _list2.default,
+	          { subheader: 'You got liked by ...' },
+	          _react2.default.createElement(_textField2.default, {
+	            ref: 'likedme', hintText: 'search ...', onKeyUp: this._handleSearchlikedMe, style: textStyle }),
+	          this._renderWhoLikedMe()
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { onClick: this._loadMoreGotLiked, style: loadMoreStyle },
+	          ' load more '
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'col-lg-4' },
+	        _react2.default.createElement(
+	          _list2.default,
+	          { subheader: 'Who liked back you ...' },
+	          _react2.default.createElement(_textField2.default, {
+	            ref: 'likedback', hintText: 'search ...', onKeyUp: this._handleSearchlikedBack, style: textStyle }),
+	          this._renderBackList()
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { onClick: this._loadMoreLikedBack, style: loadMoreStyle },
+	          ' load more '
+	        )
+	      )
+	    );
+	  }
+	});
+
+	exports.default = ActivityFeedContainer;
+
+/***/ },
+/* 498 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _listItem = __webpack_require__(295);
+
+	var _listItem2 = _interopRequireDefault(_listItem);
+
+	var _divider = __webpack_require__(299);
+
+	var _divider2 = _interopRequireDefault(_divider);
+
+	var _avatar = __webpack_require__(292);
+
+	var _avatar2 = _interopRequireDefault(_avatar);
+
+	var _colors = __webpack_require__(220);
+
+	var _colors2 = _interopRequireDefault(_colors);
+
+	var _iconButton = __webpack_require__(264);
+
+	var _iconButton2 = _interopRequireDefault(_iconButton);
+
+	var _moreVert = __webpack_require__(375);
+
+	var _moreVert2 = _interopRequireDefault(_moreVert);
+
+	var _iconMenu = __webpack_require__(376);
+
+	var _iconMenu2 = _interopRequireDefault(_iconMenu);
+
+	var _menuItem = __webpack_require__(347);
+
+	var _menuItem2 = _interopRequireDefault(_menuItem);
+
+	var _textField = __webpack_require__(336);
+
+	var _textField2 = _interopRequireDefault(_textField);
+
+	var _flatButton = __webpack_require__(327);
+
+	var _flatButton2 = _interopRequireDefault(_flatButton);
+
+	var _reactTapEventPlugin = __webpack_require__(361);
+
+	var _reactTapEventPlugin2 = _interopRequireDefault(_reactTapEventPlugin);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var iconButtonElement = _react2.default.createElement(
+		_iconButton2.default,
+		{
+			touch: true,
+			tooltip: 'more',
+			tooltipPosition: 'bottom-left' },
+		_react2.default.createElement(_moreVert2.default, { color: _colors2.default.deepPurple500 })
+	);
+
+	var textStyle = {
+		marginLeft: "15"
+	};
+
+	var Like = _react2.default.createClass({
+		displayName: 'Like',
+
+		_remove: function _remove() {
+			this.props.onRemove(this.props.username);
+		},
+		_gotoProfile: function _gotoProfile() {
+			console.log('Click lickckak');
+			window.location = "/#/" + this.props.username + "/about";
+		},
+		render: function render() {
+			return _react2.default.createElement(
+				'div',
+				null,
+				_react2.default.createElement(_listItem2.default, {
+					leftAvatar: _react2.default.createElement(_avatar2.default, { src: this.props.image }),
+					primaryText: this.props.firstname + " " + this.props.lastname,
+					secondaryTextLines: 2,
+					onTouchTap: this._gotoProfile
+				}),
+				_react2.default.createElement(_divider2.default, { inset: true })
+			);
+		}
+	});
+
+	exports.default = Like;
+
+/***/ },
+/* 499 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var AppDispatcher = __webpack_require__(308);
+	var EventEmitter = __webpack_require__(316).EventEmitter;
+	var LikeConstants = __webpack_require__(500);
+	var assign = __webpack_require__(312);
+
+	var CHANGE_EVENT = 'change';
+
+	var list = [];
+	var listMe = [];
+	var backList = [];
+
+	var tempList = [];
+	var tempListMe = [];
+	var tempBackList = [];
+
+	var LikeStore = assign({}, EventEmitter.prototype, {
+	  saveList: function saveList(data) {
+	    console.log('saving list' + data);
+	    list = data;
+	    tempList = data;
+	  },
+
+	  saveListMe: function saveListMe(data) {
+	    console.log('<><>saving likeme list' + data);
+	    listMe = data;
+	    tempListMe = data;
+	  },
+
+	  saveBackList: function saveBackList(data) {
+	    backList = data;
+	    tempBackList = data;
+	  },
+
+	  searchLikedMe: function searchLikedMe(value) {
+	    list = [];
+	    tempList.map(function (item) {
+	      var fullname = item.firstname + ' ' + item.lastname;
+	      if (item.firstname.toLowerCase().startsWith(value.toLowerCase()) || item.lastname.toLowerCase().startsWith(value.toLowerCase()) || fullname.toLowerCase().startsWith(value.toLowerCase())) {
+	        list.push(item);
+	      }
+	    });
+	  },
+
+	  searchGotLiked: function searchGotLiked(value) {
+	    listMe = [];
+	    tempListMe.map(function (item) {
+	      var fullname = item.firstname + ' ' + item.lastname;
+	      if (item.firstname.toLowerCase().startsWith(value.toLowerCase()) || item.lastname.toLowerCase().startsWith(value.toLowerCase()) || fullname.toLowerCase().startsWith(value.toLowerCase())) {
+	        console.log('Found one ');
+	        listMe.push(item);
+	      }
+	    });
+	  },
+
+	  searchLikedBack: function searchLikedBack(value) {
+	    backList = [];
+	    tempBackList.map(function (item) {
+	      var fullname = item.firstname + ' ' + item.lastname;
+	      if (item.firstname.toLowerCase().startsWith(value.toLowerCase()) || item.lastname.toLowerCase().startsWith(value.toLowerCase()) || fullname.toLowerCase().startsWith(value.toLowerCase())) {
+	        backList.push(item);
+	      }
+	    });
+	  },
+
+	  getLikedBackList: function getLikedBackList() {
+	    return backList;
+	  },
+
+	  getListMe: function getListMe() {
+	    return listMe;
+	  },
+
+	  getList: function getList() {
+	    return list;
+	  },
+
+	  emitChange: function emitChange() {
+	    this.emit(CHANGE_EVENT);
+	  },
+
+	  addChangeListener: function addChangeListener(callback) {
+	    this.on(CHANGE_EVENT, callback);
+	  }
+	});
+
+	AppDispatcher.register(function (payload) {
+	  console.log('payload');
+	  console.log(payload);
+	  switch (payload.action.actionType) {
+	    case LikeConstants.LIKESLIST:
+	      LikeStore.saveList(payload.action.likeslist);
+	      LikeStore.emitChange();
+	      break;
+	    case LikeConstants.LIKESLISTME:
+	      console.log('Saving like me list !!!');
+	      console.log('Saving like list me stuff !');
+	      LikeStore.saveListMe(payload.action.likeslist);
+	      LikeStore.emitChange();
+	      break;
+	    case LikeConstants.LIKEDBACKLIST:
+	      LikeStore.saveBackList(payload.action.likeslist);
+	      LikeStore.emitChange();
+	      break;
+	    case LikeConstants.SEARCHLIKEDME:
+	      LikeStore.searchLikedMe(payload.action.search);
+	      LikeStore.emitChange();
+	      break;
+	    case LikeConstants.SEARCHGOTLIKED:
+	      LikeStore.searchGotLiked(payload.action.search);
+	      LikeStore.emitChange();
+	      break;
+	    case LikeConstants.SEARCHLIKEDBACK:
+	      LikeStore.searchLikedBack(payload.action.search);
+	      LikeStore.emitChange();
+	      break;
+	  }
+	});
+
+	module.exports = LikeStore;
+
+/***/ },
+/* 500 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var keyMirror = __webpack_require__(314);
+
+	module.exports = keyMirror({
+	  LIKESLIST: null,
+	  LIKESLISTME: null,
+	  LIKEDBACKLIST: null,
+	  SEARCHLIKEDME: null,
+	  SEARCHGOTLIKED: null,
+	  SEARCHLIKEDBACK: null
+	});
+
+/***/ },
+/* 501 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var AppDispatcher = __webpack_require__(308);
+	var LikeListConstants = __webpack_require__(500);
+
+	var likedList = 0;
+	var likedMe = 0;
+	var likeBack = 0;
+
+	var LikeActions = {
+	  getList: function getList() {
+	    likedList = likedList + 5;
+	    $.get('/api/profile/likedlist?token=' + localStorage.getItem('apitoken') + '&username=' + localStorage.getItem('username') + '&pagination=' + likedList, function (response) {
+	      if (response.status == 200 && response.list) {
+	        AppDispatcher.handleViewAction({
+	          actionType: LikeListConstants.LIKESLIST,
+	          likeslist: response.list
+	        });
+	      } else {
+	        AppDispatcher.handleViewAction({
+	          actionType: LikeListConstants.LIKESLIST,
+	          likeslist: response.list
+	        });
+	      }
+	    });
+	  },
+
+	  getListLikedMe: function getListLikedMe() {
+	    likedMe = likedMe + 5;
+	    $.get('/api/profile/likedlistme?token=' + localStorage.getItem('apitoken') + '&username=' + localStorage.getItem('username') + '&pagination=' + likedMe, function (response) {
+	      if (response.status == 200 && response.list) {
+	        AppDispatcher.handleViewAction({
+	          actionType: LikeListConstants.LIKESLISTME,
+	          likeslist: response.list
+	        });
+	      } else {
+	        AppDispatcher.handleViewAction({
+	          actionType: LikeListConstants.LIKESLISTME,
+	          likeslist: response.list
+	        });
+	      }
+	    });
+	  },
+
+	  getLikedBackList: function getLikedBackList() {
+	    likeBack = likeBack + 5;
+	    $.get('/api/profile/likedbacklist?token=' + localStorage.getItem('apitoken') + '&username=' + localStorage.getItem('username') + '&pagination=' + likeBack, function (response) {
+	      if (response.status == 200 && response.list) {
+	        AppDispatcher.handleViewAction({
+	          actionType: LikeListConstants.LIKEDBACKLIST,
+	          likeslist: response.list
+	        });
+	      } else {
+	        AppDispatcher.handleViewAction({
+	          actionType: LikeListConstants.LIKEDBACKLIST,
+	          likeslist: response.list
+	        });
+	      }
+	    });
+	  },
+
+	  searchLikedMe: function searchLikedMe(value) {
+	    AppDispatcher.handleViewAction({
+	      actionType: LikeListConstants.SEARCHLIKEDME,
+	      search: value
+	    });
+	  },
+
+	  searchGotLiked: function searchGotLiked(value) {
+	    AppDispatcher.handleViewAction({
+	      actionType: LikeListConstants.SEARCHGOTLIKED,
+	      search: value
+	    });
+	  },
+
+	  searchLikedBack: function searchLikedBack(value) {
+	    AppDispatcher.handleViewAction({
+	      actionType: LikeListConstants.SEARCHLIKEDBACK,
+	      search: value
+	    });
+	  }
+	};
+
+	module.exports = LikeActions;
+
+/***/ },
+/* 502 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _activityBox = __webpack_require__(503);
+
+	var _activityBox2 = _interopRequireDefault(_activityBox);
+
+	var _activityContainer = __webpack_require__(504);
+
+	var _activityContainer2 = _interopRequireDefault(_activityContainer);
+
+	var _activityListComp = __webpack_require__(505);
+
+	var _activityListComp2 = _interopRequireDefault(_activityListComp);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var ActivityMain = _react2.default.createClass({
+	    displayName: 'ActivityMain',
+
+	    render: function render() {
+	        return _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(_activityBox2.default, null)
+	            ),
+	            _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(_activityContainer2.default, null)
+	            )
+	        );
+	    }
+	});
+
+	exports.default = ActivityMain;
+
+/***/ },
+/* 503 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _card = __webpack_require__(322);
+
+	var _card2 = _interopRequireDefault(_card);
+
+	var _textField = __webpack_require__(336);
+
+	var _textField2 = _interopRequireDefault(_textField);
+
+	var _paper = __webpack_require__(294);
+
+	var _paper2 = _interopRequireDefault(_paper);
+
+	var _flatButton = __webpack_require__(327);
+
+	var _flatButton2 = _interopRequireDefault(_flatButton);
+
+	var _fontIcon = __webpack_require__(287);
+
+	var _fontIcon2 = _interopRequireDefault(_fontIcon);
+
+	var _android = __webpack_require__(491);
+
+	var _android2 = _interopRequireDefault(_android);
+
+	var _ActivityfeedAction = __webpack_require__(455);
+
+	var _ActivityfeedAction2 = _interopRequireDefault(_ActivityfeedAction);
+
+	var _LoginStore = __webpack_require__(317);
+
+	var _LoginStore2 = _interopRequireDefault(_LoginStore);
+
+	var _StatusStore = __webpack_require__(459);
 
 	var _StatusStore2 = _interopRequireDefault(_StatusStore);
 
@@ -60725,477 +64382,7 @@
 	exports.default = StatusBox;
 
 /***/ },
-/* 477 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactAddonsPureRenderMixin = __webpack_require__(270);
-
-	var _reactAddonsPureRenderMixin2 = _interopRequireDefault(_reactAddonsPureRenderMixin);
-
-	var _svgIcon = __webpack_require__(290);
-
-	var _svgIcon2 = _interopRequireDefault(_svgIcon);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var ActionAndroid = _react2.default.createClass({
-	  displayName: 'ActionAndroid',
-
-	  mixins: [_reactAddonsPureRenderMixin2.default],
-
-	  render: function render() {
-	    return _react2.default.createElement(
-	      _svgIcon2.default,
-	      this.props,
-	      _react2.default.createElement('path', { d: 'M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V8H6v10zM3.5 8C2.67 8 2 8.67 2 9.5v7c0 .83.67 1.5 1.5 1.5S5 17.33 5 16.5v-7C5 8.67 4.33 8 3.5 8zm17 0c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5zm-4.97-5.84l1.3-1.3c.2-.2.2-.51 0-.71-.2-.2-.51-.2-.71 0l-1.48 1.48C13.85 1.23 12.95 1 12 1c-.96 0-1.86.23-2.66.63L7.85.15c-.2-.2-.51-.2-.71 0-.2.2-.2.51 0 .71l1.31 1.31C6.97 3.26 6 5.01 6 7h12c0-1.99-.97-3.75-2.47-4.84zM10 5H9V4h1v1zm5 0h-1V4h1v1z' })
-	    );
-	  }
-	});
-
-	exports.default = ActionAndroid;
-	module.exports = exports['default'];
-
-/***/ },
-/* 478 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var AppDispatcher = __webpack_require__(308);
-	var ActivityFeedConstants = __webpack_require__(479);
-	var LikeConstants = __webpack_require__(480);
-	var CommentConstants = __webpack_require__(481);
-
-	var commentLimitNo = 0;
-	var postLimitNo = 0;
-
-	var ActivityfeedAction = {
-	  _addStatus: function _addStatus(status) {
-	    $.post('api/status', status, function (response) {
-	      if (response.status == 201) {
-	        $.get('/api/getstatus?postLimitNo=' + postLimitNo, status, function (response) {
-	          if (response.status == 200) {
-	            AppDispatcher.handleViewAction({
-	              actionType: ActivityFeedConstants.GETDATA,
-	              statusdata: response.posts
-	            });
-	          } else if (response.status == 505) {
-	            console.log('Error 505');
-	          }
-	        });
-	      } else if (response.status == 404) {
-	        console.log('Error 404');
-	      }
-	    });
-	  },
-
-	  _getStatus: function _getStatus(uId) {
-	    postLimitNo = postLimitNo + 3;
-	    $.get('/api/getstatus?postLimitNo=' + postLimitNo, uId, function (response) {
-	      if (response.status == 200) {
-	        AppDispatcher.handleViewAction({
-	          actionType: ActivityFeedConstants.GETDATA,
-	          statusdata: response.posts
-	        });
-	      } else if (response.status == 505) {
-	        console.log('Error 505');
-	      }
-	    });
-	  },
-
-	  _getStatusVisitor: function _getStatusVisitor(uId) {
-	    postLimitNo = postLimitNo + 3;
-	    var str = window.location.hash;
-	    var username = str.split(/[\/?]/)[1];
-	    $.get('/api/getstatusvisitor?postLimitNo=' + postLimitNo + '&username=' + username, function (response) {
-	      if (response.status == 200) {
-	        AppDispatcher.handleViewAction({
-	          actionType: ActivityFeedConstants.GETDATA,
-	          statusdata: response.posts
-	        });
-	      } else if (response.status == 505) {
-	        console.log('Error 505');
-	      }
-	    });
-	  },
-
-	  _getStatusProfile: function _getStatusProfile() {
-	    postLimitNo = postLimitNo + 3;
-	    $.get('/api/getstatusvisitor?postLimitNo=' + postLimitNo + '&username=' + localStorage.getItem('username'), function (response) {
-	      if (response.status == 200) {
-	        AppDispatcher.handleViewAction({
-	          actionType: ActivityFeedConstants.GETDATA,
-	          statusdata: response.posts
-	        });
-	      } else if (response.status == 505) {
-	        console.log('Error 505');
-	      }
-	    });
-	  },
-
-	  _addShare: function _addShare(result) {
-	    $.post('api/sharedStatus', result, function (response) {
-	      if (response.status == 201) {
-	        $.get('/api/getstatus?postLimitNo=' + postLimitNo, result, function (response) {
-	          if (response.status == 200) {
-	            AppDispatcher.handleViewAction({
-	              actionType: ActivityFeedConstants.GETDATA,
-	              statusdata: response.posts
-	            });
-	          } else if (response.status == 505) {
-	            console.log('Error 505');
-	          }
-	        });
-	      } else if (response.status == 404) {
-	        console.log('Error 404');
-	      }
-	    });
-	  },
-
-	  addStatusProfile: function addStatusProfile(status) {
-	    $.post('api/status', status, function (response) {
-	      if (response.status == 201) {
-	        $.get('/api/getstatus', function (response) {
-	          if (response.status == 200) {
-	            AppDispatcher.handleViewAction({
-	              actionType: ActivityFeedConstants.GETPROFILEPOSTS,
-	              statusdata: response.posts
-	            });
-	          } else if (response.status == 505) {
-	            console.log('Error 505');
-	          }
-	        });
-	      } else if (response.status == 404) {
-	        console.log('Error 404');
-	      }
-	    });
-	  },
-
-	  _deleteStatus: function _deleteStatus(postId) {
-	    $.post('api/deleteStatus', postId, function (response) {
-	      if (response.status == 201) {
-	        $.get('/api/getstatus?postLimitNo=' + postLimitNo, postId, function (response) {
-	          if (response.status == 200) {
-	            AppDispatcher.handleViewAction({
-	              actionType: ActivityFeedConstants.GETDATA,
-	              statusdata: response.posts
-	            });
-	          } else if (response.status == 505) {
-	            console.log('Error 505');
-	          }
-	        });
-	      } else if (response.status == 404) {
-	        console.log('Error 404');
-	      }
-	    });
-	  },
-
-	  _editStatus: function _editStatus(txt) {
-	    $.post('api/edit_status', txt, function (response) {
-	      if (response.status == 201) {
-	        $.get('/api/getstatus?postLimitNo=' + postLimitNo, txt, function (response) {
-	          if (response.status == 200) {
-	            AppDispatcher.handleViewAction({
-	              actionType: ActivityFeedConstants.GETDATA,
-	              statusdata: response.posts
-	            });
-	          } else if (response.status == 505) {
-	            console.log('Error 505');
-	          }
-	        });
-	      } else if (response.status == 404) {
-	        console.log('Error 404');
-	      }
-	    });
-	  },
-
-	  _blockStatus: function _blockStatus(result) {
-	    $.post('api/block_status', result, function (response) {
-	      if (response.status == 201) {
-	        $.get('/api/getstatus?postLimitNo=' + postLimitNo, result, function (response) {
-	          if (response.status == 200) {
-	            AppDispatcher.handleViewAction({
-	              actionType: ActivityFeedConstants.GETDATA,
-	              statusdata: response.posts
-	            });
-	          } else if (response.status == 505) {
-	            console.log('Error 505');
-	          }
-	        });
-	      } else if (response.status == 404) {
-	        console.log('Error 404');
-	      }
-	    });
-	  },
-
-	  like: function like(request) {
-	    $.post('/api/likepost', request, function (response) {}).fail(function (error) {
-	      console.log(error);
-	    });
-	  },
-
-	  unlike: function unlike(request) {
-	    $.post('/api/unlikepost', request, function (response) {}).fail(function (error) {
-	      console.log(error);
-	    });
-	  },
-
-	  getCount: function getCount(request) {
-	    $.get('/api/getCount', request, function (response) {
-	      console.log('ssssssssssss');
-	      console.log(response);
-	      if (response.status == 200) {
-	        AppDispatcher.handleViewAction({
-	          actionType: LikeConstants.GETCOUNT,
-	          countValue: response.posts
-	        });
-	      } else if (response.status == 505) {
-	        console.log('Error 505');
-	      }
-	    });
-	  },
-
-	  getLikedUsers: function getLikedUsers(request) {
-	    $.get('/api/getLikedUsers', request, function (response) {
-	      console.log(response);
-	      if (response.status == 200) {
-	        AppDispatcher.handleViewAction({
-	          actionType: LikeConstants.GETUSERS,
-	          likedUsers: response.posts
-	        });
-	      } else if (response.status == 505) {
-	        console.log('Error 505');
-	      }
-	    });
-	  },
-
-	  getSharedUsers: function getSharedUsers(request) {
-	    $.get('/api/getSharedUsers', request, function (response) {
-	      if (response.status == 200) {
-	        AppDispatcher.handleViewAction({
-	          actionType: ActivityFeedConstants.GETSHAREDUSERS,
-	          sharedUsers: response.posts
-	        });
-	      } else if (response.status == 505) {
-	        console.log('Error 505');
-	      }
-	    });
-	  },
-
-	  addComment: function addComment(comment) {
-	    $.post('api/addcomment', comment, function (response) {
-	      // if (response.status == 201) {
-	      //   $.get('/api/getcomment', comment,function(response) {
-	      //     if (response.status == 200) {
-	      //         AppDispatcher.handleViewAction({
-	      //           actionType: CommentConstants.GETCOMMENT,
-	      //           commentdata: response.comments
-	      //         });
-	      //     } else if (response.status == 505) {
-	      //       console.log('Error 505');
-	      //     }
-	      //   });
-	      // } else if (response.status == 404) {
-	      //   console.log('Error 404');
-	      // }
-	    });
-	  },
-
-	  getCommentList: function getCommentList(commentData) {
-	    commentLimitNo = commentLimitNo + 3;
-	    $.get('/api/getcomment?commentLimitNo=' + commentLimitNo, commentData, function (response) {
-	      if (response.status == 200 && response.comments) {
-	        AppDispatcher.handleViewAction({
-	          actionType: CommentConstants.GETCOMMENT,
-	          commentdata: response.comments
-	        });
-	      } else {
-	        AppDispatcher.handleViewAction({
-	          actionType: CommentConstants.GETCOMMENT,
-	          commentdata: response.comments
-	        });
-	      }
-	    });
-	  },
-	  loadMoreComment: function loadMoreComment(commentData) {
-	    commentLimitNo = commentLimitNo + 3;
-	    $.get('/api/getcomment?commentLimitNo=' + commentLimitNo, commentData, function (response) {
-	      if (response.status == 200 && response.comments) {
-	        AppDispatcher.handleViewAction({
-	          actionType: CommentConstants.LOADMORE,
-	          commentdata: response.comments
-	        });
-	      } else {
-	        AppDispatcher.handleViewAction({
-	          actionType: CommentConstants.LOADMORE,
-	          commentdata: response.comments
-	        });
-	      }
-	    });
-	  }
-	};
-
-	module.exports = ActivityfeedAction;
-
-/***/ },
-/* 479 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var keyMirror = __webpack_require__(314);
-
-	module.exports = keyMirror({
-	    STATUS: null,
-	    EMAIL: null,
-	    GETDATA: null,
-	    CHECKSTATUS: null,
-	    GETUID: null,
-	    GETLOGGEDUSERID: null,
-	    GETPROFILEPOSTS: null,
-	    GETSHAREDDATA: null,
-	    GETSHAREDUSERS: null
-	});
-
-/***/ },
-/* 480 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var keyMirror = __webpack_require__(314);
-
-	module.exports = keyMirror({
-		GETUSERS: null,
-		GETCOUNT: null
-	});
-
-/***/ },
-/* 481 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var keyMirror = __webpack_require__(314);
-
-	module.exports = keyMirror({
-		GETCOMMENT: null,
-		LOADMORE: null
-	});
-
-/***/ },
-/* 482 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var AppDispatcher = __webpack_require__(308);
-	var EventEmitter = __webpack_require__(316).EventEmitter;
-	var ActivityFeedConstants = __webpack_require__(479);
-	var assign = __webpack_require__(312);
-
-	var CHANGE_EVENT = 'change';
-
-	var searchResults = [];
-	var sharedResults = [];
-	var sharedUsers = [];
-	var profileposts;
-
-	var StatusStore = assign({}, EventEmitter.prototype, {
-
-	  /**
-	   * Get activity feed data.
-	   * return {object}
-	   */
-	  getStatusData: function getStatusData() {
-	    return searchResults;
-	  },
-
-	  /**
-	   * Put results(activity feed data) to searchresults.
-	   */
-	  saveStatusData: function saveStatusData(results) {
-	    searchResults = results;
-	  },
-
-	  getSharedData: function getSharedData() {
-	    return sharedResults;
-	  },
-
-	  saveSharedData: function saveSharedData(results) {
-	    sharedResults = results;
-	  },
-
-	  getSharedUsers: function getSharedUsers() {
-	    return sharedUsers;
-	  },
-
-	  saveSharedUsers: function saveSharedUsers(results) {
-	    sharedUsers.push(results);
-	  },
-
-	  /**
-	   * Get profile post.
-	   * return {object}
-	   */
-	  getprofilePosts: function getprofilePosts() {
-	    return profileposts;
-	  },
-
-	  /**
-	   * Put data to profileposts.
-	   */
-	  saveprofileposts: function saveprofileposts(data) {
-	    profileposts = data;
-	  },
-
-	  emitChange: function emitChange() {
-	    this.emit(CHANGE_EVENT);
-	  },
-
-	  /**
-	   * @param {function} callback
-	   */
-	  addChangeListener: function addChangeListener(callback) {
-	    this.on(CHANGE_EVENT, callback);
-	  }
-	});
-
-	AppDispatcher.register(function (payload) {
-	  switch (payload.action.actionType) {
-	    case ActivityFeedConstants.GETDATA:
-	      StatusStore.saveStatusData(payload.action.statusdata);
-	      StatusStore.emitChange();
-	      break;
-	    case ActivityFeedConstants.GETSHAREDDATA:
-	      StatusStore.saveSharedData(payload.action.shareddata);
-	      StatusStore.emitChange();
-	      break;
-	    case ActivityFeedConstants.GETPROFILEPOSTS:
-	      StatusStore.saveprofileposts(payload.action.posts);
-	      StatusStore.emitChange();
-	      break;
-	    case ActivityFeedConstants.GETSHAREDUSERS:
-	      StatusStore.saveSharedUsers(payload.action.sharedUsers);
-	      StatusStore.emitChange();
-	      break;
-	  }
-	});
-
-	module.exports = StatusStore;
-
-/***/ },
-/* 483 */
+/* 504 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -61220,1773 +64407,15 @@
 
 	var _raisedButton2 = _interopRequireDefault(_raisedButton);
 
-	var _ActivityfeedAction = __webpack_require__(478);
+	var _ActivityfeedAction = __webpack_require__(455);
 
 	var _ActivityfeedAction2 = _interopRequireDefault(_ActivityfeedAction);
 
-	var _StatusStore = __webpack_require__(482);
+	var _StatusStore = __webpack_require__(459);
 
 	var _StatusStore2 = _interopRequireDefault(_StatusStore);
 
-	var _activityListComp = __webpack_require__(484);
-
-	var _activityListComp2 = _interopRequireDefault(_activityListComp);
-
-	var _LoginStore = __webpack_require__(317);
-
-	var _LoginStore2 = _interopRequireDefault(_LoginStore);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var style = {
-	  marginLeft: 40,
-	  width: 800
-	};
-
-	var activityContainer = _react2.default.createClass({
-	  displayName: 'activityContainer',
-
-	  getInitialState: function getInitialState() {
-	    return {
-	      results: _StatusStore2.default.getStatusData()
-	    };
-	  },
-
-	  componentDidMount: function componentDidMount() {
-	    _StatusStore2.default.addChangeListener(this._onChange);
-
-	    var data = {
-	      userId: localStorage.getItem('userid')
-	    };
-	    _ActivityfeedAction2.default._getStatus(data);
-	  },
-
-	  _onChange: function _onChange() {
-	    this.setState({ results: _StatusStore2.default.getStatusData() });
-	  },
-
-	  _loadMorePosts: function _loadMorePosts() {
-	    var data = {
-	      userId: localStorage.getItem('userid')
-	    };
-	    _ActivityfeedAction2.default._getStatus(data);
-	  },
-
-	  _renderSearchItem: function _renderSearchItem() {
-	    return this.state.results.map(function (result) {
-	      return _react2.default.createElement(_activityListComp2.default, { key: result.id,
-	        id: result.id,
-	        type: result.type,
-	        firstName: result.firstname,
-	        postId: result.post_id,
-	        attachment: result.attachment,
-	        lPostId: result.pid,
-	        postText: result.post_text,
-	        created_at: result.created_at,
-	        postid: result.postid,
-	        likesCount: result.likesCount,
-	        sid: result.sid,
-	        sfirstname: result.sfirstname,
-	        sattachment: result.sattachment,
-	        spost_text: result.spost_text,
-	        screated_at: result.screated_at });
-	    });
-	  },
-
-	  render: function render() {
-	    return _react2.default.createElement(
-	      'div',
-	      null,
-	      _react2.default.createElement(
-	        'div',
-	        null,
-	        this._renderSearchItem()
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(_raisedButton2.default, { label: 'load more posts', secondary: true, style: style, onClick: this._loadMorePosts })
-	      )
-	    );
-	  }
-	});
-
-	exports.default = activityContainer;
-
-/***/ },
-/* 484 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _card = __webpack_require__(322);
-
-	var _card2 = _interopRequireDefault(_card);
-
-	var _cardMedia = __webpack_require__(472);
-
-	var _cardMedia2 = _interopRequireDefault(_cardMedia);
-
-	var _cardText = __webpack_require__(321);
-
-	var _cardText2 = _interopRequireDefault(_cardText);
-
-	var _listItem = __webpack_require__(295);
-
-	var _listItem2 = _interopRequireDefault(_listItem);
-
-	var _divider = __webpack_require__(299);
-
-	var _divider2 = _interopRequireDefault(_divider);
-
-	var _avatar = __webpack_require__(292);
-
-	var _avatar2 = _interopRequireDefault(_avatar);
-
-	var _colors = __webpack_require__(220);
-
-	var _colors2 = _interopRequireDefault(_colors);
-
-	var _favorite = __webpack_require__(449);
-
-	var _favorite2 = _interopRequireDefault(_favorite);
-
-	var _favoriteBorder = __webpack_require__(450);
-
-	var _favoriteBorder2 = _interopRequireDefault(_favoriteBorder);
-
-	var _iconButton = __webpack_require__(264);
-
-	var _iconButton2 = _interopRequireDefault(_iconButton);
-
-	var _moreVert = __webpack_require__(375);
-
-	var _moreVert2 = _interopRequireDefault(_moreVert);
-
-	var _iconMenu = __webpack_require__(376);
-
-	var _iconMenu2 = _interopRequireDefault(_iconMenu);
-
-	var _menuItem = __webpack_require__(347);
-
-	var _menuItem2 = _interopRequireDefault(_menuItem);
-
-	var _flatButton = __webpack_require__(327);
-
-	var _flatButton2 = _interopRequireDefault(_flatButton);
-
-	var _dialog = __webpack_require__(326);
-
-	var _dialog2 = _interopRequireDefault(_dialog);
-
-	var _raisedButton = __webpack_require__(377);
-
-	var _raisedButton2 = _interopRequireDefault(_raisedButton);
-
-	var _textField = __webpack_require__(336);
-
-	var _textField2 = _interopRequireDefault(_textField);
-
-	var _paper = __webpack_require__(294);
-
-	var _paper2 = _interopRequireDefault(_paper);
-
-	var _LoginStore = __webpack_require__(317);
-
-	var _LoginStore2 = _interopRequireDefault(_LoginStore);
-
-	var _StatusStore = __webpack_require__(482);
-
-	var _StatusStore2 = _interopRequireDefault(_StatusStore);
-
-	var _ActivityfeedAction = __webpack_require__(478);
-
-	var _ActivityfeedAction2 = _interopRequireDefault(_ActivityfeedAction);
-
-	var _CommentStore = __webpack_require__(485);
-
-	var _CommentStore2 = _interopRequireDefault(_CommentStore);
-
-	var _Comment = __webpack_require__(486);
-
-	var _Comment2 = _interopRequireDefault(_Comment);
-
-	var _LikeStatusStore = __webpack_require__(487);
-
-	var _LikeStatusStore2 = _interopRequireDefault(_LikeStatusStore);
-
-	var _activitySharedList = __webpack_require__(488);
-
-	var _activitySharedList2 = _interopRequireDefault(_activitySharedList);
-
-	var _activityContainer = __webpack_require__(483);
-
-	var _activityContainer2 = _interopRequireDefault(_activityContainer);
-
-	var _CountBox = __webpack_require__(489);
-
-	var _CountBox2 = _interopRequireDefault(_CountBox);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var iconButtonElement = _react2.default.createElement(
-	  _iconButton2.default,
-	  {
-	    touch: true,
-	    tooltip: 'more',
-	    tooltipPosition: 'bottom-left' },
-	  _react2.default.createElement(_moreVert2.default, { color: _colors2.default.deepPurple500 })
-	);
-
-	var style1 = {
-	  width: 800,
-	  margin: 40
-	};
-
-	var style2 = {
-	  width: 800
-	};
-
-	var style3 = {
-	  width: 760,
-	  position: 'relative'
-
-	};
-
-	var loadMoreStyle = {
-	  marginLeft: 100
-	};
-
-	function validateCommentText(textComment) {
-	  if (textComment.length > 200) {
-	    return {
-	      "error": "*comment is too long"
-	    };
-	  } else if (textComment === "") {
-	    return {
-	      "error": "*comment cannot be empty"
-	    };
-	  } else {
-	    return true;
-	  }
-	};
-
-	var commentLimitNo = 0;
-
-	var ActivityList = _react2.default.createClass({
-	  displayName: 'ActivityList',
-
-	  getInitialState: function getInitialState() {
-	    return {
-	      opens: false,
-	      commentText: '',
-	      sharedResults: _StatusStore2.default.getSharedData(),
-	      commentResults: _CommentStore2.default.getCommentsData(),
-	      count: _LikeStatusStore2.default.getCount(),
-	      liked: '',
-	      open1: false,
-	      open3: false,
-	      open4: false,
-	      open5: false,
-	      likeCount: ''
-	    };
-	  },
-
-	  componentDidMount: function componentDidMount() {
-	    _StatusStore2.default.addChangeListener(this._onChange);
-	    _LikeStatusStore2.default.addChangeListener(this._onChange);
-	    _CommentStore2.default.addChangeListener(this._onChange);
-
-	    if (!this.props.lPostId) {
-	      this.setState({ liked: !this.state.liked });
-	    } else {
-	      this.setState({ liked: this.state.liked });
-	    }
-
-	    var commentData = {
-	      postId: this.props.id
-	    };
-	    _ActivityfeedAction2.default.getCommentList(commentData);
-
-	    var LikedData = {
-	      postId: this.props.id
-	    };
-	    _ActivityfeedAction2.default.getCount(LikedData);
-	  },
-
-	  _onChange: function _onChange() {
-	    this.setState({ sharedResults: _StatusStore2.default.getSharedData() });
-	    this.setState({ commentResults: _CommentStore2.default.getCommentsData() });
-	    this.setState({ count: _LikeStatusStore2.default.getCount() });
-	  },
-
-	  _getSharedItem: function _getSharedItem() {
-	    if (this.props.type == "shared") {
-	      return _react2.default.createElement(_activitySharedList2.default, { sid: this.props.sid,
-	        sfirstname: this.props.sfirstname,
-	        sattachment: this.props.sattachment,
-	        spost_text: this.props.spost_text,
-	        screated_at: this.props.screated_at });
-	    }
-	  },
-
-	  _getLikedCount: function _getLikedCount() {
-	    var self = this;
-	    return this.state.count.map(function (val) {
-	      return val.map(function (result) {
-	        if (self.props.id == result.post_id) {
-	          return _react2.default.createElement(_CountBox2.default, { likedCount: result.likedCount,
-	            shareCount: result.shareCount,
-	            post_id: result.post_id });
-	        }
-	      });
-	    });
-	  },
-
-	  _getCommentList: function _getCommentList() {
-	    var self = this;
-	    return this.state.commentResults.map(function (comment) {
-	      return comment.map(function (comm) {
-	        if (self.props.id == comm.post_id) {
-	          return _react2.default.createElement(_Comment2.default, { ckey: comm.id,
-	            cid: comm.id,
-	            cfirstName: comm.firstname,
-	            comment_txt: comm.comment_txt });
-	        }
-	      });
-	    });
-	  },
-
-	  _editStatus: function _editStatus() {
-	    var status = this.refs.EditBox.getValue();
-	    var editData = {
-	      userId: localStorage.getItem('userid'),
-	      postId: this.props.id,
-	      status: status
-	    };
-	    _ActivityfeedAction2.default._editStatus(editData);
-	    this.handleClose();
-	  },
-
-	  _deleteStatus: function _deleteStatus() {
-	    var deleteData = {
-	      userId: localStorage.getItem('userid'),
-	      postId: this.props.id
-	    };
-	    _ActivityfeedAction2.default._deleteStatus(deleteData);
-	  },
-
-	  _blockedStatus: function _blockedStatus() {
-	    var blockData = {
-	      email: _LoginStore2.default.getEmail(),
-	      userId: localStorage.getItem('userid'),
-	      postId: this.props.id
-	    };
-	    _ActivityfeedAction2.default._blockStatus(blockData);
-	  },
-
-	  _changeShareState: function _changeShareState() {
-	    var shareStatus = this.refs.shareBox.getValue();
-	    var shareData = {
-	      email: _LoginStore2.default.getEmail(),
-	      userId: localStorage.getItem('userid'),
-	      firstName: _LoginStore2.default.getFirstname(),
-	      postId: this.props.id,
-	      status: shareStatus
-	    };
-
-	    this.setState({ shared: !this.state.shared });
-	    _ActivityfeedAction2.default._addShare(shareData);
-	    //alert('Share successful');
-
-	    this.setState({ open1: false });
-	    this.setState({ open4: true });
-	  },
-
-	  _changeLikeState: function _changeLikeState() {
-	    var likeData = {
-	      postId: this.props.id,
-	      userId: localStorage.getItem('userid'),
-	      email: _LoginStore2.default.getEmail(),
-	      firstName: _LoginStore2.default.getFirstname()
-	    };
-
-	    if (this.state.liked) {
-	      this.setState({ liked: !this.state.liked });
-	      _ActivityfeedAction2.default.like(likeData);
-	      _getLikedCount();
-	    } else {
-	      this.setState({ liked: !this.state.liked });
-	      _ActivityfeedAction2.default.unlike(likeData);
-	      _getLikedCount();
-	    }
-	  },
-
-	  _loadMoreComments: function _loadMoreComments() {
-	    var commentData = {
-	      postId: this.props.id
-	    };
-	    _ActivityfeedAction2.default.loadMoreComment(commentData);
-	  },
-
-	  handleOpen: function handleOpen() {
-	    this.setState({ opens: true });
-	  },
-
-	  handleOpenShare: function handleOpenShare() {
-	    this.setState({ open1: true });
-	  },
-
-	  handleOpenDelete: function handleOpenDelete() {
-	    this.setState({ open3: true });
-	  },
-
-	  handleOpenBlock: function handleOpenBlock() {
-	    this.setState({ open5: true });
-	  },
-
-	  handleClose: function handleClose() {
-	    this.setState({ opens: false });
-	    this.setState({ open3: false });
-	    this.setState({ open4: false });
-	    this.setState({ open5: false });
-	  },
-
-	  setFocusToTextBox: function setFocusToTextBox() {
-	    document.getElementById(this.props.id).focus();
-	  },
-
-	  EnterKey: function EnterKey(e) {
-	    if (e.key === 'Enter') {
-	      var val = true;
-	      var comment = this.refs.commentBox.getValue();
-	      var commentData = {
-	        postId: this.props.id,
-	        userId: localStorage.getItem('userid'),
-	        comment: comment,
-	        email: _LoginStore2.default.getEmail(),
-	        firstName: _LoginStore2.default.getFirstname()
-	      };
-
-	      if (validateCommentText(comment).error) {
-	        this.setState({
-	          commentText: validateCommentText(comment).error
-	        });
-	        val = false;
-	      } else {
-	        _ActivityfeedAction2.default.addComment(commentData);
-	        this.setState({
-	          commentText: ''
-	        });
-	      }
-	      this.clearText();
-	    }
-	  },
-
-	  clearText: function clearText() {
-	    var commentBoxId = this.props.id;
-	    document.getElementById(commentBoxId).value = "";
-	  },
-
-	  render: function render() {
-	    var updateActions = [_react2.default.createElement(_flatButton2.default, {
-	      label: 'Update',
-	      primary: true,
-	      keyboardFocused: true,
-	      onTouchTap: this._editStatus }), _react2.default.createElement(_flatButton2.default, {
-	      label: 'Close',
-	      secondary: true,
-	      onTouchTap: this.handleClose })];
-
-	    var confirmDeleteActions = [_react2.default.createElement(_flatButton2.default, {
-	      label: 'Delete',
-	      primary: true,
-	      keyboardFocused: true,
-	      onTouchTap: this._deleteStatus }), _react2.default.createElement(_flatButton2.default, {
-	      label: 'Cansel',
-	      secondary: true,
-	      onTouchTap: this.handleClose })];
-
-	    var confirmBlockActions = [_react2.default.createElement(_flatButton2.default, {
-	      label: 'Block',
-	      primary: true,
-	      keyboardFocused: true,
-	      onTouchTap: this._blockedStatus }), _react2.default.createElement(_flatButton2.default, {
-	      label: 'Cansel',
-	      secondary: true,
-	      onTouchTap: this.handleClose })];
-
-	    var shareActions = [_react2.default.createElement(_flatButton2.default, {
-	      label: 'Post',
-	      primary: true,
-	      keyboardFocused: true,
-	      onTouchTap: this._changeShareState }), _react2.default.createElement(_flatButton2.default, {
-	      label: 'Close',
-	      secondary: true,
-	      onTouchTap: this.handleClose })];
-
-	    var confirmShareActions = [_react2.default.createElement(_flatButton2.default, {
-	      label: 'Ok',
-	      secondary: true,
-	      onTouchTap: this.handleClose })];
-
-	    return _react2.default.createElement(
-	      'div',
-	      { style: style1 },
-	      _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          _card2.default,
-	          null,
-	          _react2.default.createElement(_listItem2.default, {
-	            leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg' }),
-	            primaryText: this.props.firstName,
-	            secondaryText: _react2.default.createElement(
-	              'p',
-	              null,
-	              _react2.default.createElement(
-	                'b',
-	                null,
-	                this.props.created_at
-	              )
-	            ),
-	            secondaryTextLines: 1,
-	            rightIconButton: _react2.default.createElement(
-	              _iconMenu2.default,
-	              { iconButtonElement: iconButtonElement },
-	              _react2.default.createElement(_menuItem2.default, { primaryText: 'Edit', onClick: this.handleOpen }),
-	              _react2.default.createElement(_menuItem2.default, { primaryText: 'Remove', onClick: this.handleOpenDelete }),
-	              _react2.default.createElement(_menuItem2.default, { primaryText: 'Block', onClick: this.handleOpenBlock })
-	            ) }),
-	          _react2.default.createElement(
-	            _cardText2.default,
-	            null,
-	            this.props.postText
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            null,
-	            this.props.attachment != 'None' ? _react2.default.createElement(
-	              'div',
-	              null,
-	              _react2.default.createElement(
-	                _cardMedia2.default,
-	                null,
-	                _react2.default.createElement('img', { src: 'img/activityFeedPics/' + this.props.attachment })
-	              )
-	            ) : ''
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            null,
-	            this._getSharedItem()
-	          ),
-	          _react2.default.createElement(
-	            _iconButton2.default,
-	            { onClick: this._changeLikeState, tooltip: !this.state.liked ? "Unlike" : "Like", touch: true, tooltipPosition: 'bottom-right' },
-	            !this.state.liked ? _react2.default.createElement(_favorite2.default, { onClick: this._changeLikeState, viewBox: '0 0 20 30', color: _colors2.default.red500 }) : _react2.default.createElement(_favoriteBorder2.default, { viewBox: '0 0 20 30', color: _colors2.default.red500 })
-	          ),
-	          _react2.default.createElement(_flatButton2.default, { label: 'Comment', onClick: this.setFocusToTextBox }),
-	          _react2.default.createElement(_flatButton2.default, { label: 'Share', onClick: this.handleOpenShare }),
-	          ' />'
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          null,
-	          this._getLikedCount()
-	        ),
-	        _react2.default.createElement(
-	          _dialog2.default,
-	          {
-	            title: 'Modify Your Status',
-	            actions: updateActions,
-	            modal: false,
-	            open: this.state.opens,
-	            onRequestClose: this.handleClose },
-	          _react2.default.createElement(_textField2.default, { hintText: 'Update your status', multiLine: false, fullWidth: true, ref: 'EditBox', defaultValue: this.props.postText })
-	        ),
-	        _react2.default.createElement(
-	          _dialog2.default,
-	          {
-	            title: 'Delete Post',
-	            actions: confirmDeleteActions,
-	            modal: false,
-	            open: this.state.open3,
-	            onRequestClose: this.handleClose },
-	          'Are you sure you want to delete this post?"'
-	        ),
-	        _react2.default.createElement(
-	          _dialog2.default,
-	          {
-	            title: 'Block Post',
-	            actions: confirmBlockActions,
-	            modal: false,
-	            open: this.state.open5,
-	            onRequestClose: this.handleClose },
-	          'Are you sure you want to block this post?"'
-	        ),
-	        _react2.default.createElement(
-	          _dialog2.default,
-	          {
-	            title: this.props.firstName + "'s post Share on your own Activityfeed",
-	            actions: shareActions,
-	            modal: false,
-	            open: this.state.open1,
-	            onRequestClose: this.handleClose },
-	          _react2.default.createElement(_textField2.default, { hintText: 'Say something about this...', multiLine: false, fullWidth: true, ref: 'shareBox' })
-	        ),
-	        _react2.default.createElement(
-	          _dialog2.default,
-	          {
-	            title: 'Share Post',
-	            actions: confirmShareActions,
-	            modal: false,
-	            open: this.state.open4,
-	            onRequestClose: this.handleClose },
-	          '"This has been shared to your Timeline."'
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          _card2.default,
-	          { style: style2 },
-	          _react2.default.createElement(_flatButton2.default, { label: 'load more comments', onClick: this._loadMoreComments })
-	        ),
-	        this._getCommentList()
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          _card2.default,
-	          { style: style2 },
-	          _react2.default.createElement(
-	            _paper2.default,
-	            { zDepth: 1 },
-	            _react2.default.createElement('div', { className: 'col-md-10' }),
-	            _react2.default.createElement(_textField2.default, { style: style3, className: 'col-md-2', fullWidth: true, hintText: 'Write a comment...', multiLine: false, onKeyPress: this.EnterKey, errorText: this.state.commentText, ref: 'commentBox', id: this.props.id })
-	          )
-	        )
-	      )
-	    );
-	  }
-	});
-
-	exports.default = ActivityList;
-
-/***/ },
-/* 485 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var AppDispatcher = __webpack_require__(308);
-	var EventEmitter = __webpack_require__(316).EventEmitter;
-	var CommentConstants = __webpack_require__(481);
-	var assign = __webpack_require__(312);
-
-	var CHANGE_EVENT = 'change';
-
-	var searchComments = [];
-
-	var CommentStore = assign({}, EventEmitter.prototype, {
-
-	  /**
-	   * Get comment data.
-	   * return {object}
-	   */
-	  getCommentsData: function getCommentsData() {
-	    return searchComments;
-	  },
-
-	  /**
-	   * Put results(comment data) to searchComments.
-	   */
-	  saveCommentsData: function saveCommentsData(results) {
-	    // searchComments = [];
-	    searchComments.push(results);
-	  },
-
-	  loadMoreComments: function loadMoreComments(data) {
-	    searchComments = [];
-	    searchComments.push(data);
-	  },
-
-	  emitChange: function emitChange() {
-	    this.emit(CHANGE_EVENT);
-	  },
-
-	  /**
-	   * @param {function} callback
-	   */
-	  addChangeListener: function addChangeListener(callback) {
-	    this.on(CHANGE_EVENT, callback);
-	  }
-	});
-
-	AppDispatcher.register(function (payload) {
-	  switch (payload.action.actionType) {
-	    case CommentConstants.GETCOMMENT:
-	      CommentStore.saveCommentsData(payload.action.commentdata);
-	      CommentStore.emitChange();
-	      break;
-	    case CommentConstants.LOADMORE:
-	      CommentStore.loadMoreComments(payload.action.commentdata);
-	      CommentStore.emitChange();
-	      break;
-	  }
-	});
-
-	module.exports = CommentStore;
-
-/***/ },
-/* 486 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _card = __webpack_require__(322);
-
-	var _card2 = _interopRequireDefault(_card);
-
-	var _listItem = __webpack_require__(295);
-
-	var _listItem2 = _interopRequireDefault(_listItem);
-
-	var _list = __webpack_require__(293);
-
-	var _list2 = _interopRequireDefault(_list);
-
-	var _divider = __webpack_require__(299);
-
-	var _divider2 = _interopRequireDefault(_divider);
-
-	var _avatar = __webpack_require__(292);
-
-	var _avatar2 = _interopRequireDefault(_avatar);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var Comment = _react2.default.createClass({
-	    displayName: 'Comment',
-
-	    render: function render() {
-	        return _react2.default.createElement(
-	            'div',
-	            null,
-	            _react2.default.createElement(
-	                _card2.default,
-	                null,
-	                _react2.default.createElement(_listItem2.default, {
-	                    leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg' }),
-	                    primaryText: this.props.cfirstName,
-	                    secondaryText: _react2.default.createElement(
-	                        'p',
-	                        null,
-	                        this.props.comment_txt
-	                    ),
-	                    secondaryTextLines: 1 }),
-	                _react2.default.createElement(_divider2.default, { inset: true })
-	            )
-	        );
-	    }
-	});
-
-	exports.default = Comment;
-
-/***/ },
-/* 487 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var AppDispatcher = __webpack_require__(308);
-	var EventEmitter = __webpack_require__(316).EventEmitter;
-	var LikeConstants = __webpack_require__(480);
-	var assign = __webpack_require__(312);
-
-	var CHANGE_EVENT = 'change';
-
-	var searchLikedUsers = [];
-	var searchCount = [];
-
-	var LikeStatusStore = assign({}, EventEmitter.prototype, {
-
-	  /**
-	   * Get liked usres.
-	   * return {object}
-	   */
-	  getLikedUsers: function getLikedUsers() {
-	    return searchLikedUsers;
-	  },
-
-	  /**
-	   * Put results(liked status) to searchLikedUsers.
-	   */
-	  savelikedUsers: function savelikedUsers(results) {
-	    searchLikedUsers.push(results);
-	  },
-
-	  getCount: function getCount(results) {
-	    return searchCount;
-	  },
-
-	  saveCount: function saveCount(results) {
-	    searchCount.push(results);
-	  },
-
-	  emitChange: function emitChange() {
-	    this.emit(CHANGE_EVENT);
-	  },
-
-	  /**
-	   * @param {function} callback
-	   */
-	  addChangeListener: function addChangeListener(callback) {
-	    this.on(CHANGE_EVENT, callback);
-	  }
-	});
-
-	AppDispatcher.register(function (payload) {
-	  switch (payload.action.actionType) {
-	    case LikeConstants.GETUSERS:
-	      LikeStatusStore.savelikedUsers(payload.action.likedUsers);
-	      LikeStatusStore.emitChange();
-	      break;
-	    case LikeConstants.GETCOUNT:
-	      LikeStatusStore.saveCount(payload.action.countValue);
-	      LikeStatusStore.emitChange();
-	      break;
-	  }
-	});
-
-	module.exports = LikeStatusStore;
-
-/***/ },
-/* 488 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _card = __webpack_require__(322);
-
-	var _card2 = _interopRequireDefault(_card);
-
-	var _cardMedia = __webpack_require__(472);
-
-	var _cardMedia2 = _interopRequireDefault(_cardMedia);
-
-	var _cardText = __webpack_require__(321);
-
-	var _cardText2 = _interopRequireDefault(_cardText);
-
-	var _listItem = __webpack_require__(295);
-
-	var _listItem2 = _interopRequireDefault(_listItem);
-
-	var _divider = __webpack_require__(299);
-
-	var _divider2 = _interopRequireDefault(_divider);
-
-	var _avatar = __webpack_require__(292);
-
-	var _avatar2 = _interopRequireDefault(_avatar);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var style1 = {
-	    width: 700,
-	    margin: 40
-	};
-
-	var ActivitySharedList = _react2.default.createClass({
-	    displayName: 'ActivitySharedList',
-
-	    render: function render() {
-	        return _react2.default.createElement(
-	            'div',
-	            { style: style1 },
-	            _react2.default.createElement(
-	                'div',
-	                null,
-	                _react2.default.createElement(
-	                    _card2.default,
-	                    null,
-	                    _react2.default.createElement(_listItem2.default, {
-	                        leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg' }),
-	                        primaryText: this.props.sfirstname,
-	                        secondaryText: _react2.default.createElement(
-	                            'p',
-	                            null,
-	                            _react2.default.createElement(
-	                                'b',
-	                                null,
-	                                this.props.screated_at
-	                            )
-	                        ),
-	                        secondaryTextLines: 1 }),
-	                    _react2.default.createElement(
-	                        _cardText2.default,
-	                        null,
-	                        this.props.spost_text
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        null,
-	                        this.props.sattachment != 'None' ? _react2.default.createElement(
-	                            'div',
-	                            null,
-	                            _react2.default.createElement(
-	                                _cardMedia2.default,
-	                                null,
-	                                _react2.default.createElement('img', { src: 'img/activityFeedPics/' + this.props.sattachment })
-	                            )
-	                        ) : ''
-	                    ),
-	                    _react2.default.createElement(_divider2.default, { inset: true })
-	                )
-	            )
-	        );
-	    }
-	});
-
-	exports.default = ActivitySharedList;
-
-/***/ },
-/* 489 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _card = __webpack_require__(322);
-
-	var _card2 = _interopRequireDefault(_card);
-
-	var _flatButton = __webpack_require__(327);
-
-	var _flatButton2 = _interopRequireDefault(_flatButton);
-
-	var _paper = __webpack_require__(294);
-
-	var _paper2 = _interopRequireDefault(_paper);
-
-	var _dialog = __webpack_require__(326);
-
-	var _dialog2 = _interopRequireDefault(_dialog);
-
-	var _listItem = __webpack_require__(295);
-
-	var _listItem2 = _interopRequireDefault(_listItem);
-
-	var _divider = __webpack_require__(299);
-
-	var _divider2 = _interopRequireDefault(_divider);
-
-	var _avatar = __webpack_require__(292);
-
-	var _avatar2 = _interopRequireDefault(_avatar);
-
-	var _colors = __webpack_require__(220);
-
-	var _colors2 = _interopRequireDefault(_colors);
-
-	var _raisedButton = __webpack_require__(377);
-
-	var _raisedButton2 = _interopRequireDefault(_raisedButton);
-
-	var _ActivityfeedAction = __webpack_require__(478);
-
-	var _ActivityfeedAction2 = _interopRequireDefault(_ActivityfeedAction);
-
-	var _LikeStatusStore = __webpack_require__(487);
-
-	var _LikeStatusStore2 = _interopRequireDefault(_LikeStatusStore);
-
-	var _StatusStore = __webpack_require__(482);
-
-	var _StatusStore2 = _interopRequireDefault(_StatusStore);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var style2 = {
-	  width: 800
-	};
-
-	var firstname;
-	var sfirstname;
-
-	var CountBox = _react2.default.createClass({
-	  displayName: 'CountBox',
-
-	  getInitialState: function getInitialState() {
-	    return {
-	      likedUsers: _LikeStatusStore2.default.getLikedUsers(),
-	      sharedUsers: _StatusStore2.default.getSharedUsers(),
-	      open: false,
-	      firstname: '',
-	      sfirstname: ''
-	    };
-	  },
-
-	  componentDidMount: function componentDidMount() {
-	    _LikeStatusStore2.default.addChangeListener(this._onChange);
-
-	    var likeData = {
-	      postId: this.props.post_id
-	    };
-	    _ActivityfeedAction2.default.getLikedUsers(likeData);
-
-	    var shareData = {
-	      postId: this.props.post_id
-	    };
-	    _ActivityfeedAction2.default.getSharedUsers(shareData);
-	  },
-
-	  _onChange: function _onChange() {
-	    this.setState({ likedUsers: _LikeStatusStore2.default.getLikedUsers() });
-	    this.setState({ sharedUsers: _StatusStore2.default.getSharedUsers() });
-	  },
-
-	  handleClose: function handleClose() {
-	    this.setState({ open: false });
-	    this.setState({ open2: false });
-	  },
-
-	  _getLikedUsers: function _getLikedUsers() {
-	    this.setState({ open: true });
-
-	    var self = this;
-	    return this.state.likedUsers.map(function (likes) {
-	      return likes.map(function (result) {
-	        if (self.props.post_id == result.post_id) {
-	          firstname = result.firstname;
-	          alert(firstname);
-	          self.setState({
-	            firstname: firstname
-	          });
-	        }
-	      });
-	    });
-	  },
-
-	  _getSharedUsers: function _getSharedUsers() {
-	    this.setState({ open2: true });
-	    this.setState({ sharedUsers: _StatusStore2.default.getSharedUsers() });
-	    var self = this;
-	    return this.state.sharedUsers.map(function (shares) {
-	      return shares.map(function (result) {
-	        if (self.props.post_id == result.post_id) {
-	          firstname = result.firstname;
-	          alert(firstname);
-	          self.setState({
-	            sfirstname: firstname
-	          });
-	        }
-	      });
-	    });
-	  },
-
-	  render: function render() {
-	    var likeActions = [_react2.default.createElement(_flatButton2.default, {
-	      label: 'Close',
-	      secondary: true,
-	      onTouchTap: this.handleClose })];
-
-	    var sharedActions = [_react2.default.createElement(_flatButton2.default, {
-	      label: 'Close',
-	      secondary: true,
-	      onTouchTap: this.handleClose })];
-
-	    return _react2.default.createElement(
-	      'div',
-	      null,
-	      _react2.default.createElement(
-	        _card2.default,
-	        { style: style2 },
-	        _react2.default.createElement(
-	          _paper2.default,
-	          { zDepth: 1 },
-	          _react2.default.createElement(_flatButton2.default, { label: this.props.likedCount + " Likes", onClick: this._getLikedUsers }),
-	          _react2.default.createElement(_flatButton2.default, { label: this.props.shareCount + " Shares", onClick: this._getSharedUsers })
-	        )
-	      ),
-	      _react2.default.createElement(
-	        _dialog2.default,
-	        {
-	          autoDetectWindowHeight: false,
-	          title: 'Liked Users',
-	          actions: likeActions,
-	          modal: true,
-	          open: this.state.open },
-	        _react2.default.createElement(_listItem2.default, {
-	          leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg' }),
-	          primaryText: this.state.firstname }),
-	        _react2.default.createElement(_divider2.default, { inset: true })
-	      ),
-	      _react2.default.createElement(
-	        _dialog2.default,
-	        {
-	          autoDetectWindowHeight: false,
-	          title: 'Shared Users',
-	          actions: sharedActions,
-	          modal: true,
-	          open: this.state.open2 },
-	        _react2.default.createElement(_listItem2.default, {
-	          leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg' }),
-	          primaryText: this.state.sfirstname }),
-	        _react2.default.createElement(_divider2.default, { inset: true })
-	      )
-	    );
-	  }
-	});
-
-	exports.default = CountBox;
-
-/***/ },
-/* 490 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _Like = __webpack_require__(491);
-
-	var _Like2 = _interopRequireDefault(_Like);
-
-	var _list = __webpack_require__(293);
-
-	var _list2 = _interopRequireDefault(_list);
-
-	var _LikeStore = __webpack_require__(492);
-
-	var _LikeStore2 = _interopRequireDefault(_LikeStore);
-
-	var _LikeActions = __webpack_require__(494);
-
-	var _LikeActions2 = _interopRequireDefault(_LikeActions);
-
-	var _textField = __webpack_require__(336);
-
-	var _textField2 = _interopRequireDefault(_textField);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var loadMoreStyle = {
-	  marginLeft: 100
-	};
-
-	var textStyle = {
-	  marginLeft: 20
-	};
-
-	var ActivityFeedContainer = _react2.default.createClass({
-	  displayName: 'ActivityFeedContainer',
-
-	  getInitialState: function getInitialState() {
-	    return {
-	      list: _LikeStore2.default.getList(),
-	      listMe: _LikeStore2.default.getListMe(),
-	      listLikedBack: _LikeStore2.default.getLikedBackList()
-	    };
-	  },
-	  componentDidMount: function componentDidMount() {
-	    _LikeStore2.default.addChangeListener(this._onChange);
-	    _LikeActions2.default.getList();
-	    _LikeActions2.default.getListLikedMe();
-	    _LikeActions2.default.getLikedBackList();
-	  },
-	  _onChange: function _onChange() {
-	    console.log(_LikeStore2.default.getList());
-	    this.setState({
-	      list: _LikeStore2.default.getList(),
-	      listMe: _LikeStore2.default.getListMe(),
-	      listLikedBack: _LikeStore2.default.getLikedBackList()
-	    });
-	  },
-	  _handleEdit: function _handleEdit(id) {
-	    console.log(id);
-	  },
-	  _handleRemove: function _handleRemove(username) {
-	    console.log(username);
-	    _LikeActions2.default.unblock(username);
-	  },
-	  _loadMoreLiked: function _loadMoreLiked() {
-	    _LikeActions2.default.getList();
-	  },
-	  _loadMoreGotLiked: function _loadMoreGotLiked() {
-	    _LikeActions2.default.getListLikedMe();
-	  },
-	  _loadMoreLikedBack: function _loadMoreLikedBack() {
-	    _LikeActions2.default.getLikedBackList();
-	  },
-	  _handleSearchliked: function _handleSearchliked() {
-	    var searchVal = this.refs.iliked.getValue();
-	    _LikeActions2.default.searchLikedMe(searchVal);
-	  },
-	  _handleSearchlikedMe: function _handleSearchlikedMe() {
-	    var searchVal = this.refs.likedme.getValue();
-	    _LikeActions2.default.searchGotLiked(searchVal);
-	  },
-	  _handleSearchlikedBack: function _handleSearchlikedBack() {
-	    var searchVal = this.refs.likedback.getValue();
-	    _LikeActions2.default.searchLikedBack(searchVal);
-	  },
-	  _renderILike: function _renderILike() {
-	    var _this = this;
-
-	    return this.state.list.map(function (item) {
-	      return _react2.default.createElement(_Like2.default, { key: item.id, onEdit: _this._handleEdit, onRemove: _this._handleRemove, id: item.id,
-	        username: item.username,
-	        firstname: item.firstname,
-	        lastname: item.lastname,
-	        image: '/img/profilepics/' + item.profilepic
-	      });
-	    });
-	  },
-	  _renderWhoLikedMe: function _renderWhoLikedMe() {
-	    var _this2 = this;
-
-	    return this.state.listMe.map(function (item) {
-	      return _react2.default.createElement(_Like2.default, { key: item.id, onEdit: _this2._handleEdit, onRemove: _this2._handleRemove, id: item.id,
-	        username: item.username,
-	        firstname: item.firstname,
-	        lastname: item.lastname,
-	        image: '/img/profilepics/' + item.profilepic
-	      });
-	    });
-	  },
-	  _renderBackList: function _renderBackList() {
-	    var _this3 = this;
-
-	    return this.state.listLikedBack.map(function (item) {
-	      return _react2.default.createElement(_Like2.default, { key: item.id, onEdit: _this3._handleEdit, onRemove: _this3._handleRemove, id: item.id,
-	        username: item.username,
-	        firstname: item.firstname,
-	        lastname: item.lastname,
-	        image: '/img/profilepics/' + item.profilepic
-	      });
-	    });
-	  },
-	  render: function render() {
-	    return _react2.default.createElement(
-	      'div',
-	      null,
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'col-lg-4' },
-	        _react2.default.createElement(
-	          _list2.default,
-	          { subheader: 'You have liked ...' },
-	          _react2.default.createElement(_textField2.default, {
-	            ref: 'iliked', hintText: 'search ...', onKeyUp: this._handleSearchliked, style: textStyle }),
-	          this._renderILike()
-	        ),
-	        _react2.default.createElement(
-	          'button',
-	          { onClick: this._loadMoreLiked, style: loadMoreStyle },
-	          ' load more '
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'col-lg-4' },
-	        _react2.default.createElement(
-	          _list2.default,
-	          { subheader: 'You got liked by ...' },
-	          _react2.default.createElement(_textField2.default, {
-	            ref: 'likedme', hintText: 'search ...', onKeyUp: this._handleSearchlikedMe, style: textStyle }),
-	          this._renderWhoLikedMe()
-	        ),
-	        _react2.default.createElement(
-	          'button',
-	          { onClick: this._loadMoreGotLiked, style: loadMoreStyle },
-	          ' load more '
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'col-lg-4' },
-	        _react2.default.createElement(
-	          _list2.default,
-	          { subheader: 'Who liked back you ...' },
-	          _react2.default.createElement(_textField2.default, {
-	            ref: 'likedback', hintText: 'search ...', onKeyUp: this._handleSearchlikedBack, style: textStyle }),
-	          this._renderBackList()
-	        ),
-	        _react2.default.createElement(
-	          'button',
-	          { onClick: this._loadMoreLikedBack, style: loadMoreStyle },
-	          ' load more '
-	        )
-	      )
-	    );
-	  }
-	});
-
-	exports.default = ActivityFeedContainer;
-
-/***/ },
-/* 491 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _listItem = __webpack_require__(295);
-
-	var _listItem2 = _interopRequireDefault(_listItem);
-
-	var _divider = __webpack_require__(299);
-
-	var _divider2 = _interopRequireDefault(_divider);
-
-	var _avatar = __webpack_require__(292);
-
-	var _avatar2 = _interopRequireDefault(_avatar);
-
-	var _colors = __webpack_require__(220);
-
-	var _colors2 = _interopRequireDefault(_colors);
-
-	var _iconButton = __webpack_require__(264);
-
-	var _iconButton2 = _interopRequireDefault(_iconButton);
-
-	var _moreVert = __webpack_require__(375);
-
-	var _moreVert2 = _interopRequireDefault(_moreVert);
-
-	var _iconMenu = __webpack_require__(376);
-
-	var _iconMenu2 = _interopRequireDefault(_iconMenu);
-
-	var _menuItem = __webpack_require__(347);
-
-	var _menuItem2 = _interopRequireDefault(_menuItem);
-
-	var _textField = __webpack_require__(336);
-
-	var _textField2 = _interopRequireDefault(_textField);
-
-	var _flatButton = __webpack_require__(327);
-
-	var _flatButton2 = _interopRequireDefault(_flatButton);
-
-	var _reactTapEventPlugin = __webpack_require__(361);
-
-	var _reactTapEventPlugin2 = _interopRequireDefault(_reactTapEventPlugin);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var iconButtonElement = _react2.default.createElement(
-		_iconButton2.default,
-		{
-			touch: true,
-			tooltip: 'more',
-			tooltipPosition: 'bottom-left' },
-		_react2.default.createElement(_moreVert2.default, { color: _colors2.default.deepPurple500 })
-	);
-
-	var textStyle = {
-		marginLeft: "15"
-	};
-
-	var Like = _react2.default.createClass({
-		displayName: 'Like',
-
-		_remove: function _remove() {
-			this.props.onRemove(this.props.username);
-		},
-		_gotoProfile: function _gotoProfile() {
-			console.log('Click lickckak');
-			window.location = "/#/" + this.props.username + "/about";
-		},
-		render: function render() {
-			return _react2.default.createElement(
-				'div',
-				null,
-				_react2.default.createElement(_listItem2.default, {
-					leftAvatar: _react2.default.createElement(_avatar2.default, { src: this.props.image }),
-					primaryText: this.props.firstname + " " + this.props.lastname,
-					secondaryTextLines: 2,
-					onTouchTap: this._gotoProfile
-				}),
-				_react2.default.createElement(_divider2.default, { inset: true })
-			);
-		}
-	});
-
-	exports.default = Like;
-
-/***/ },
-/* 492 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var AppDispatcher = __webpack_require__(308);
-	var EventEmitter = __webpack_require__(316).EventEmitter;
-	var LikeConstants = __webpack_require__(493);
-	var assign = __webpack_require__(312);
-
-	var CHANGE_EVENT = 'change';
-
-	var list = [];
-	var listMe = [];
-	var backList = [];
-
-	var tempList = [];
-	var tempListMe = [];
-	var tempBackList = [];
-
-	var LikeStore = assign({}, EventEmitter.prototype, {
-	  saveList: function saveList(data) {
-	    console.log('saving list' + data);
-	    list = data;
-	    tempList = data;
-	  },
-
-	  saveListMe: function saveListMe(data) {
-	    console.log('<><>saving likeme list' + data);
-	    listMe = data;
-	    tempListMe = data;
-	  },
-
-	  saveBackList: function saveBackList(data) {
-	    backList = data;
-	    tempBackList = data;
-	  },
-
-	  searchLikedMe: function searchLikedMe(value) {
-	    list = [];
-	    tempList.map(function (item) {
-	      var fullname = item.firstname + ' ' + item.lastname;
-	      if (item.firstname.toLowerCase().startsWith(value.toLowerCase()) || item.lastname.toLowerCase().startsWith(value.toLowerCase()) || fullname.toLowerCase().startsWith(value.toLowerCase())) {
-	        list.push(item);
-	      }
-	    });
-	  },
-
-	  searchGotLiked: function searchGotLiked(value) {
-	    listMe = [];
-	    tempListMe.map(function (item) {
-	      var fullname = item.firstname + ' ' + item.lastname;
-	      if (item.firstname.toLowerCase().startsWith(value.toLowerCase()) || item.lastname.toLowerCase().startsWith(value.toLowerCase()) || fullname.toLowerCase().startsWith(value.toLowerCase())) {
-	        console.log('Found one ');
-	        listMe.push(item);
-	      }
-	    });
-	  },
-
-	  searchLikedBack: function searchLikedBack(value) {
-	    backList = [];
-	    tempBackList.map(function (item) {
-	      var fullname = item.firstname + ' ' + item.lastname;
-	      if (item.firstname.toLowerCase().startsWith(value.toLowerCase()) || item.lastname.toLowerCase().startsWith(value.toLowerCase()) || fullname.toLowerCase().startsWith(value.toLowerCase())) {
-	        backList.push(item);
-	      }
-	    });
-	  },
-
-	  getLikedBackList: function getLikedBackList() {
-	    return backList;
-	  },
-
-	  getListMe: function getListMe() {
-	    return listMe;
-	  },
-
-	  getList: function getList() {
-	    return list;
-	  },
-
-	  emitChange: function emitChange() {
-	    this.emit(CHANGE_EVENT);
-	  },
-
-	  addChangeListener: function addChangeListener(callback) {
-	    this.on(CHANGE_EVENT, callback);
-	  }
-	});
-
-	AppDispatcher.register(function (payload) {
-	  console.log('payload');
-	  console.log(payload);
-	  switch (payload.action.actionType) {
-	    case LikeConstants.LIKESLIST:
-	      LikeStore.saveList(payload.action.likeslist);
-	      LikeStore.emitChange();
-	      break;
-	    case LikeConstants.LIKESLISTME:
-	      console.log('Saving like me list !!!');
-	      console.log('Saving like list me stuff !');
-	      LikeStore.saveListMe(payload.action.likeslist);
-	      LikeStore.emitChange();
-	      break;
-	    case LikeConstants.LIKEDBACKLIST:
-	      LikeStore.saveBackList(payload.action.likeslist);
-	      LikeStore.emitChange();
-	      break;
-	    case LikeConstants.SEARCHLIKEDME:
-	      LikeStore.searchLikedMe(payload.action.search);
-	      LikeStore.emitChange();
-	      break;
-	    case LikeConstants.SEARCHGOTLIKED:
-	      LikeStore.searchGotLiked(payload.action.search);
-	      LikeStore.emitChange();
-	      break;
-	    case LikeConstants.SEARCHLIKEDBACK:
-	      LikeStore.searchLikedBack(payload.action.search);
-	      LikeStore.emitChange();
-	      break;
-	  }
-	});
-
-	module.exports = LikeStore;
-
-/***/ },
-/* 493 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var keyMirror = __webpack_require__(314);
-
-	module.exports = keyMirror({
-	  LIKESLIST: null,
-	  LIKESLISTME: null,
-	  LIKEDBACKLIST: null,
-	  SEARCHLIKEDME: null,
-	  SEARCHGOTLIKED: null,
-	  SEARCHLIKEDBACK: null
-	});
-
-/***/ },
-/* 494 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var AppDispatcher = __webpack_require__(308);
-	var LikeListConstants = __webpack_require__(493);
-
-	var likedList = 0;
-	var likedMe = 0;
-	var likeBack = 0;
-
-	var LikeActions = {
-	  getList: function getList() {
-	    likedList = likedList + 5;
-	    $.get('/api/profile/likedlist?token=' + localStorage.getItem('apitoken') + '&username=' + localStorage.getItem('username') + '&pagination=' + likedList, function (response) {
-	      if (response.status == 200 && response.list) {
-	        AppDispatcher.handleViewAction({
-	          actionType: LikeListConstants.LIKESLIST,
-	          likeslist: response.list
-	        });
-	      } else {
-	        AppDispatcher.handleViewAction({
-	          actionType: LikeListConstants.LIKESLIST,
-	          likeslist: response.list
-	        });
-	      }
-	    });
-	  },
-
-	  getListLikedMe: function getListLikedMe() {
-	    likedMe = likedMe + 5;
-	    $.get('/api/profile/likedlistme?token=' + localStorage.getItem('apitoken') + '&username=' + localStorage.getItem('username') + '&pagination=' + likedMe, function (response) {
-	      if (response.status == 200 && response.list) {
-	        AppDispatcher.handleViewAction({
-	          actionType: LikeListConstants.LIKESLISTME,
-	          likeslist: response.list
-	        });
-	      } else {
-	        AppDispatcher.handleViewAction({
-	          actionType: LikeListConstants.LIKESLISTME,
-	          likeslist: response.list
-	        });
-	      }
-	    });
-	  },
-
-	  getLikedBackList: function getLikedBackList() {
-	    likeBack = likeBack + 5;
-	    $.get('/api/profile/likedbacklist?token=' + localStorage.getItem('apitoken') + '&username=' + localStorage.getItem('username') + '&pagination=' + likeBack, function (response) {
-	      if (response.status == 200 && response.list) {
-	        AppDispatcher.handleViewAction({
-	          actionType: LikeListConstants.LIKEDBACKLIST,
-	          likeslist: response.list
-	        });
-	      } else {
-	        AppDispatcher.handleViewAction({
-	          actionType: LikeListConstants.LIKEDBACKLIST,
-	          likeslist: response.list
-	        });
-	      }
-	    });
-	  },
-
-	  searchLikedMe: function searchLikedMe(value) {
-	    AppDispatcher.handleViewAction({
-	      actionType: LikeListConstants.SEARCHLIKEDME,
-	      search: value
-	    });
-	  },
-
-	  searchGotLiked: function searchGotLiked(value) {
-	    AppDispatcher.handleViewAction({
-	      actionType: LikeListConstants.SEARCHGOTLIKED,
-	      search: value
-	    });
-	  },
-
-	  searchLikedBack: function searchLikedBack(value) {
-	    AppDispatcher.handleViewAction({
-	      actionType: LikeListConstants.SEARCHLIKEDBACK,
-	      search: value
-	    });
-	  }
-	};
-
-	module.exports = LikeActions;
-
-/***/ },
-/* 495 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _activityBox = __webpack_require__(600);
-
-	var _activityBox2 = _interopRequireDefault(_activityBox);
-
-	var _activityContainer = __webpack_require__(498);
-
-	var _activityContainer2 = _interopRequireDefault(_activityContainer);
-
-	var _activityListComp = __webpack_require__(499);
-
-	var _activityListComp2 = _interopRequireDefault(_activityListComp);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var ActivityMain = _react2.default.createClass({
-	    displayName: 'ActivityMain',
-
-	    render: function render() {
-	        return _react2.default.createElement(
-	            'div',
-	            null,
-	            _react2.default.createElement(
-	                'div',
-	                null,
-	                _react2.default.createElement(_activityBox2.default, null)
-	            ),
-	            _react2.default.createElement(
-	                'div',
-	                null,
-	                _react2.default.createElement(_activityContainer2.default, null)
-	            )
-	        );
-	    }
-	});
-
-	exports.default = ActivityMain;
-
-/***/ },
-/* 496 */,
-/* 497 */,
-/* 498 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _list = __webpack_require__(293);
-
-	var _list2 = _interopRequireDefault(_list);
-
-	var _listItem = __webpack_require__(295);
-
-	var _listItem2 = _interopRequireDefault(_listItem);
-
-	var _raisedButton = __webpack_require__(377);
-
-	var _raisedButton2 = _interopRequireDefault(_raisedButton);
-
-	var _ActivityfeedAction = __webpack_require__(478);
-
-	var _ActivityfeedAction2 = _interopRequireDefault(_ActivityfeedAction);
-
-	var _StatusStore = __webpack_require__(482);
-
-	var _StatusStore2 = _interopRequireDefault(_StatusStore);
-
-	var _activityListComp = __webpack_require__(499);
+	var _activityListComp = __webpack_require__(505);
 
 	var _activityListComp2 = _interopRequireDefault(_activityListComp);
 
@@ -63072,7 +64501,7 @@
 	exports.default = activityContainer;
 
 /***/ },
-/* 499 */
+/* 505 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63089,7 +64518,7 @@
 
 	var _card2 = _interopRequireDefault(_card);
 
-	var _cardMedia = __webpack_require__(472);
+	var _cardMedia = __webpack_require__(461);
 
 	var _cardMedia2 = _interopRequireDefault(_cardMedia);
 
@@ -63161,35 +64590,35 @@
 
 	var _LoginStore2 = _interopRequireDefault(_LoginStore);
 
-	var _StatusStore = __webpack_require__(482);
+	var _StatusStore = __webpack_require__(459);
 
 	var _StatusStore2 = _interopRequireDefault(_StatusStore);
 
-	var _ActivityfeedAction = __webpack_require__(478);
+	var _ActivityfeedAction = __webpack_require__(455);
 
 	var _ActivityfeedAction2 = _interopRequireDefault(_ActivityfeedAction);
 
-	var _CommentStore = __webpack_require__(485);
+	var _CommentStore = __webpack_require__(462);
 
 	var _CommentStore2 = _interopRequireDefault(_CommentStore);
 
-	var _Comment = __webpack_require__(601);
+	var _Comment = __webpack_require__(506);
 
 	var _Comment2 = _interopRequireDefault(_Comment);
 
-	var _LikeStatusStore = __webpack_require__(487);
+	var _LikeStatusStore = __webpack_require__(464);
 
 	var _LikeStatusStore2 = _interopRequireDefault(_LikeStatusStore);
 
-	var _activitySharedList = __webpack_require__(602);
+	var _activitySharedList = __webpack_require__(507);
 
 	var _activitySharedList2 = _interopRequireDefault(_activitySharedList);
 
-	var _activityContainer = __webpack_require__(498);
+	var _activityContainer = __webpack_require__(504);
 
 	var _activityContainer2 = _interopRequireDefault(_activityContainer);
 
-	var _CountBox = __webpack_require__(603);
+	var _CountBox = __webpack_require__(508);
 
 	var _CountBox2 = _interopRequireDefault(_CountBox);
 
@@ -63624,14 +65053,366 @@
 	exports.default = ActivityList;
 
 /***/ },
-/* 500 */,
-/* 501 */,
-/* 502 */,
-/* 503 */,
-/* 504 */,
-/* 505 */,
-/* 506 */,
+/* 506 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _card = __webpack_require__(322);
+
+	var _card2 = _interopRequireDefault(_card);
+
+	var _listItem = __webpack_require__(295);
+
+	var _listItem2 = _interopRequireDefault(_listItem);
+
+	var _list = __webpack_require__(293);
+
+	var _list2 = _interopRequireDefault(_list);
+
+	var _divider = __webpack_require__(299);
+
+	var _divider2 = _interopRequireDefault(_divider);
+
+	var _avatar = __webpack_require__(292);
+
+	var _avatar2 = _interopRequireDefault(_avatar);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Comment = _react2.default.createClass({
+	    displayName: 'Comment',
+
+	    render: function render() {
+	        return _react2.default.createElement(
+	            'div',
+	            null,
+	            _react2.default.createElement(
+	                _card2.default,
+	                null,
+	                _react2.default.createElement(_listItem2.default, {
+	                    leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg' }),
+	                    primaryText: this.props.cfirstName,
+	                    secondaryText: _react2.default.createElement(
+	                        'p',
+	                        null,
+	                        this.props.comment_txt
+	                    ),
+	                    secondaryTextLines: 1 }),
+	                _react2.default.createElement(_divider2.default, { inset: true })
+	            )
+	        );
+	    }
+	});
+
+	exports.default = Comment;
+
+/***/ },
 /* 507 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _card = __webpack_require__(322);
+
+	var _card2 = _interopRequireDefault(_card);
+
+	var _cardMedia = __webpack_require__(461);
+
+	var _cardMedia2 = _interopRequireDefault(_cardMedia);
+
+	var _cardText = __webpack_require__(321);
+
+	var _cardText2 = _interopRequireDefault(_cardText);
+
+	var _listItem = __webpack_require__(295);
+
+	var _listItem2 = _interopRequireDefault(_listItem);
+
+	var _divider = __webpack_require__(299);
+
+	var _divider2 = _interopRequireDefault(_divider);
+
+	var _avatar = __webpack_require__(292);
+
+	var _avatar2 = _interopRequireDefault(_avatar);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var style1 = {
+	    width: 700,
+	    margin: 40
+	};
+
+	var ActivitySharedList = _react2.default.createClass({
+	    displayName: 'ActivitySharedList',
+
+	    render: function render() {
+	        return _react2.default.createElement(
+	            'div',
+	            { style: style1 },
+	            _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    _card2.default,
+	                    null,
+	                    _react2.default.createElement(_listItem2.default, {
+	                        leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg' }),
+	                        primaryText: this.props.sfirstname,
+	                        secondaryText: _react2.default.createElement(
+	                            'p',
+	                            null,
+	                            _react2.default.createElement(
+	                                'b',
+	                                null,
+	                                this.props.screated_at
+	                            )
+	                        ),
+	                        secondaryTextLines: 1 }),
+	                    _react2.default.createElement(
+	                        _cardText2.default,
+	                        null,
+	                        this.props.spost_text
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        null,
+	                        this.props.sattachment != 'None' ? _react2.default.createElement(
+	                            'div',
+	                            null,
+	                            _react2.default.createElement(
+	                                _cardMedia2.default,
+	                                null,
+	                                _react2.default.createElement('img', { src: 'img/activityFeedPics/' + this.props.sattachment })
+	                            )
+	                        ) : ''
+	                    ),
+	                    _react2.default.createElement(_divider2.default, { inset: true })
+	                )
+	            )
+	        );
+	    }
+	});
+
+	exports.default = ActivitySharedList;
+
+/***/ },
+/* 508 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _card = __webpack_require__(322);
+
+	var _card2 = _interopRequireDefault(_card);
+
+	var _flatButton = __webpack_require__(327);
+
+	var _flatButton2 = _interopRequireDefault(_flatButton);
+
+	var _paper = __webpack_require__(294);
+
+	var _paper2 = _interopRequireDefault(_paper);
+
+	var _dialog = __webpack_require__(326);
+
+	var _dialog2 = _interopRequireDefault(_dialog);
+
+	var _listItem = __webpack_require__(295);
+
+	var _listItem2 = _interopRequireDefault(_listItem);
+
+	var _divider = __webpack_require__(299);
+
+	var _divider2 = _interopRequireDefault(_divider);
+
+	var _avatar = __webpack_require__(292);
+
+	var _avatar2 = _interopRequireDefault(_avatar);
+
+	var _colors = __webpack_require__(220);
+
+	var _colors2 = _interopRequireDefault(_colors);
+
+	var _raisedButton = __webpack_require__(377);
+
+	var _raisedButton2 = _interopRequireDefault(_raisedButton);
+
+	var _ActivityfeedAction = __webpack_require__(455);
+
+	var _ActivityfeedAction2 = _interopRequireDefault(_ActivityfeedAction);
+
+	var _LikeStatusStore = __webpack_require__(464);
+
+	var _LikeStatusStore2 = _interopRequireDefault(_LikeStatusStore);
+
+	var _StatusStore = __webpack_require__(459);
+
+	var _StatusStore2 = _interopRequireDefault(_StatusStore);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var style2 = {
+	  width: 800
+	};
+
+	var firstname;
+	var sfirstname;
+
+	var CountBox = _react2.default.createClass({
+	  displayName: 'CountBox',
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      likedUsers: _LikeStatusStore2.default.getLikedUsers(),
+	      sharedUsers: _StatusStore2.default.getSharedUsers(),
+	      open: false,
+	      firstname: '',
+	      sfirstname: ''
+	    };
+	  },
+
+	  componentDidMount: function componentDidMount() {
+	    _LikeStatusStore2.default.addChangeListener(this._onChange);
+
+	    var likeData = {
+	      postId: this.props.post_id
+	    };
+	    _ActivityfeedAction2.default.getLikedUsers(likeData);
+
+	    var shareData = {
+	      postId: this.props.post_id
+	    };
+	    _ActivityfeedAction2.default.getSharedUsers(shareData);
+	  },
+
+	  _onChange: function _onChange() {
+	    this.setState({ likedUsers: _LikeStatusStore2.default.getLikedUsers() });
+	    this.setState({ sharedUsers: _StatusStore2.default.getSharedUsers() });
+	  },
+
+	  handleClose: function handleClose() {
+	    this.setState({ open: false });
+	    this.setState({ open2: false });
+	  },
+
+	  _getLikedUsers: function _getLikedUsers() {
+	    this.setState({ open: true });
+
+	    var self = this;
+	    return this.state.likedUsers.map(function (likes) {
+	      return likes.map(function (result) {
+	        if (self.props.post_id == result.post_id) {
+	          firstname = result.firstname;
+	          alert(firstname);
+	          self.setState({
+	            firstname: firstname
+	          });
+	        }
+	      });
+	    });
+	  },
+
+	  _getSharedUsers: function _getSharedUsers() {
+	    this.setState({ open2: true });
+	    this.setState({ sharedUsers: _StatusStore2.default.getSharedUsers() });
+	    var self = this;
+	    return this.state.sharedUsers.map(function (shares) {
+	      return shares.map(function (result) {
+	        if (self.props.post_id == result.post_id) {
+	          firstname = result.firstname;
+	          alert(firstname);
+	          self.setState({
+	            sfirstname: firstname
+	          });
+	        }
+	      });
+	    });
+	  },
+
+	  render: function render() {
+	    var likeActions = [_react2.default.createElement(_flatButton2.default, {
+	      label: 'Close',
+	      secondary: true,
+	      onTouchTap: this.handleClose })];
+
+	    var sharedActions = [_react2.default.createElement(_flatButton2.default, {
+	      label: 'Close',
+	      secondary: true,
+	      onTouchTap: this.handleClose })];
+
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        _card2.default,
+	        { style: style2 },
+	        _react2.default.createElement(
+	          _paper2.default,
+	          { zDepth: 1 },
+	          _react2.default.createElement(_flatButton2.default, { label: this.props.likedCount + " Likes", onClick: this._getLikedUsers }),
+	          _react2.default.createElement(_flatButton2.default, { label: this.props.shareCount + " Shares", onClick: this._getSharedUsers })
+	        )
+	      ),
+	      _react2.default.createElement(
+	        _dialog2.default,
+	        {
+	          autoDetectWindowHeight: false,
+	          title: 'Liked Users',
+	          actions: likeActions,
+	          modal: true,
+	          open: this.state.open },
+	        _react2.default.createElement(_listItem2.default, {
+	          leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg' }),
+	          primaryText: this.state.firstname }),
+	        _react2.default.createElement(_divider2.default, { inset: true })
+	      ),
+	      _react2.default.createElement(
+	        _dialog2.default,
+	        {
+	          autoDetectWindowHeight: false,
+	          title: 'Shared Users',
+	          actions: sharedActions,
+	          modal: true,
+	          open: this.state.open2 },
+	        _react2.default.createElement(_listItem2.default, {
+	          leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg' }),
+	          primaryText: this.state.sfirstname }),
+	        _react2.default.createElement(_divider2.default, { inset: true })
+	      )
+	    );
+	  }
+	});
+
+	exports.default = CountBox;
+
+/***/ },
+/* 509 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63664,7 +65445,7 @@
 
 	var _LoginStore2 = _interopRequireDefault(_LoginStore);
 
-	var _emojis = __webpack_require__(508);
+	var _emojis = __webpack_require__(510);
 
 	var _emojis2 = _interopRequireDefault(_emojis);
 
@@ -63783,7 +65564,7 @@
 	exports.default = CC;
 
 /***/ },
-/* 508 */
+/* 510 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -63798,7 +65579,7 @@
 	module.exports = emojis;
 
 /***/ },
-/* 509 */
+/* 511 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -63831,7 +65612,7 @@
 
 	var _iconButton2 = _interopRequireDefault(_iconButton);
 
-	var _ChatPrevious = __webpack_require__(510);
+	var _ChatPrevious = __webpack_require__(512);
 
 	var _ChatPrevious2 = _interopRequireDefault(_ChatPrevious);
 
@@ -63984,7 +65765,7 @@
 	exports.default = PreviousChatContainer;
 
 /***/ },
-/* 510 */
+/* 512 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -64041,7 +65822,7 @@
 
 	var _ThreadStore2 = _interopRequireDefault(_ThreadStore);
 
-	var _Messages = __webpack_require__(511);
+	var _Messages = __webpack_require__(513);
 
 	var _Messages2 = _interopRequireDefault(_Messages);
 
@@ -64131,7 +65912,7 @@
 	exports.default = PreviousChat;
 
 /***/ },
-/* 511 */
+/* 513 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -64164,7 +65945,7 @@
 
 	var _avatar2 = _interopRequireDefault(_avatar);
 
-	var _emojis = __webpack_require__(508);
+	var _emojis = __webpack_require__(510);
 
 	var _emojis2 = _interopRequireDefault(_emojis);
 
@@ -64293,7 +66074,7 @@
 	exports.default = PaperExampleSimple;
 
 /***/ },
-/* 512 */
+/* 514 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -64310,15 +66091,15 @@
 
 	var _paper2 = _interopRequireDefault(_paper);
 
-	var _ChatCC = __webpack_require__(507);
+	var _ChatCC = __webpack_require__(509);
 
 	var _ChatCC2 = _interopRequireDefault(_ChatCC);
 
-	var _Messages = __webpack_require__(511);
+	var _Messages = __webpack_require__(513);
 
 	var _Messages2 = _interopRequireDefault(_Messages);
 
-	var _ChatTopBar = __webpack_require__(513);
+	var _ChatTopBar = __webpack_require__(515);
 
 	var _ChatTopBar2 = _interopRequireDefault(_ChatTopBar);
 
@@ -64369,7 +66150,7 @@
 	exports.default = MainThread;
 
 /***/ },
-/* 513 */
+/* 515 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -64382,7 +66163,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _selectField = __webpack_require__(514);
+	var _selectField = __webpack_require__(516);
 
 	var _selectField2 = _interopRequireDefault(_selectField);
 
@@ -64426,7 +66207,7 @@
 
 	var _flatButton2 = _interopRequireDefault(_flatButton);
 
-	var _autoComplete = __webpack_require__(517);
+	var _autoComplete = __webpack_require__(519);
 
 	var _autoComplete2 = _interopRequireDefault(_autoComplete);
 
@@ -64648,45 +66429,45 @@
 	exports.default = SelectFieldExampleSimple;
 
 /***/ },
-/* 514 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _SelectField = __webpack_require__(515);
-
-	var _SelectField2 = _interopRequireDefault(_SelectField);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = _SelectField2.default;
-	module.exports = exports['default'];
-
-/***/ },
-/* 515 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _SelectField = __webpack_require__(516);
-
-	var _SelectField2 = _interopRequireDefault(_SelectField);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = _SelectField2.default;
-	module.exports = exports['default'];
-
-/***/ },
 /* 516 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _SelectField = __webpack_require__(517);
+
+	var _SelectField2 = _interopRequireDefault(_SelectField);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _SelectField2.default;
+	module.exports = exports['default'];
+
+/***/ },
+/* 517 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _SelectField = __webpack_require__(518);
+
+	var _SelectField2 = _interopRequireDefault(_SelectField);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _SelectField2.default;
+	module.exports = exports['default'];
+
+/***/ },
+/* 518 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -64988,7 +66769,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 517 */
+/* 519 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -65435,7 +67216,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 518 */
+/* 520 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -65444,19 +67225,19 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _tabs = __webpack_require__(519);
+	var _tabs = __webpack_require__(521);
 
 	var _tabs2 = _interopRequireDefault(_tabs);
 
-	var _tab = __webpack_require__(522);
+	var _tab = __webpack_require__(524);
 
 	var _tab2 = _interopRequireDefault(_tab);
 
-	var _ChatPrevious = __webpack_require__(510);
+	var _ChatPrevious = __webpack_require__(512);
 
 	var _ChatPrevious2 = _interopRequireDefault(_ChatPrevious);
 
-	var _ChatPreviousContainer = __webpack_require__(509);
+	var _ChatPreviousContainer = __webpack_require__(511);
 
 	var _ChatPreviousContainer2 = _interopRequireDefault(_ChatPreviousContainer);
 
@@ -65535,7 +67316,7 @@
 	module.exports = TabsExampleControlled;
 
 /***/ },
-/* 519 */
+/* 521 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -65554,11 +67335,11 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _tabTemplate = __webpack_require__(520);
+	var _tabTemplate = __webpack_require__(522);
 
 	var _tabTemplate2 = _interopRequireDefault(_tabTemplate);
 
-	var _inkBar = __webpack_require__(521);
+	var _inkBar = __webpack_require__(523);
 
 	var _inkBar2 = _interopRequireDefault(_inkBar);
 
@@ -65818,7 +67599,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 520 */
+/* 522 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -65867,7 +67648,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 521 */
+/* 523 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -65976,7 +67757,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 522 */
+/* 524 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -66132,7 +67913,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 523 */
+/* 525 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -66165,11 +67946,11 @@
 
 	var _iconButton2 = _interopRequireDefault(_iconButton);
 
-	var _tabs = __webpack_require__(519);
+	var _tabs = __webpack_require__(521);
 
 	var _tabs2 = _interopRequireDefault(_tabs);
 
-	var _tab = __webpack_require__(522);
+	var _tab = __webpack_require__(524);
 
 	var _tab2 = _interopRequireDefault(_tab);
 
@@ -66189,7 +67970,7 @@
 
 	var _raisedButton2 = _interopRequireDefault(_raisedButton);
 
-	var _ChatPrevious = __webpack_require__(510);
+	var _ChatPrevious = __webpack_require__(512);
 
 	var _ChatPrevious2 = _interopRequireDefault(_ChatPrevious);
 
@@ -66414,7 +68195,7 @@
 	exports.default = PreviousChatContainer;
 
 /***/ },
-/* 524 */
+/* 526 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -66439,19 +68220,19 @@
 
 	var _textField2 = _interopRequireDefault(_textField);
 
-	var _TrendsStore = __webpack_require__(525);
+	var _TrendsStore = __webpack_require__(527);
 
 	var _TrendsStore2 = _interopRequireDefault(_TrendsStore);
 
-	var _TrendsAction = __webpack_require__(527);
+	var _TrendsAction = __webpack_require__(529);
 
 	var _TrendsAction2 = _interopRequireDefault(_TrendsAction);
 
-	var _trendbox = __webpack_require__(528);
+	var _trendbox = __webpack_require__(530);
 
 	var _trendbox2 = _interopRequireDefault(_trendbox);
 
-	var _trendactivityListComp = __webpack_require__(534);
+	var _trendactivityListComp = __webpack_require__(536);
 
 	var _trendactivityListComp2 = _interopRequireDefault(_trendactivityListComp);
 
@@ -66635,14 +68416,14 @@
 	exports.default = TrendContainer;
 
 /***/ },
-/* 525 */
+/* 527 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var AppDispatcher = __webpack_require__(308);
 	var EventEmitter = __webpack_require__(316).EventEmitter;
-	var TrendConstants = __webpack_require__(526);
+	var TrendConstants = __webpack_require__(528);
 	var assign = __webpack_require__(312);
 
 	var CHANGE_EVENT = 'change';
@@ -66721,7 +68502,7 @@
 	module.exports = TrendsStore;
 
 /***/ },
-/* 526 */
+/* 528 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -66737,13 +68518,13 @@
 	});
 
 /***/ },
-/* 527 */
+/* 529 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var AppDispatcher = __webpack_require__(308);
-	var TrendConstants = __webpack_require__(526);
+	var TrendConstants = __webpack_require__(528);
 
 	var TrendsAction = {
 
@@ -66806,7 +68587,7 @@
 	module.exports = TrendsAction;
 
 /***/ },
-/* 528 */
+/* 530 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -66827,23 +68608,23 @@
 
 	var _listItem2 = _interopRequireDefault(_listItem);
 
-	var _grade = __webpack_require__(529);
+	var _grade = __webpack_require__(531);
 
 	var _grade2 = _interopRequireDefault(_grade);
 
-	var _info = __webpack_require__(530);
+	var _info = __webpack_require__(532);
 
 	var _info2 = _interopRequireDefault(_info);
 
-	var _inbox = __webpack_require__(531);
+	var _inbox = __webpack_require__(533);
 
 	var _inbox2 = _interopRequireDefault(_inbox);
 
-	var _drafts = __webpack_require__(532);
+	var _drafts = __webpack_require__(534);
 
 	var _drafts2 = _interopRequireDefault(_drafts);
 
-	var _send = __webpack_require__(533);
+	var _send = __webpack_require__(535);
 
 	var _send2 = _interopRequireDefault(_send);
 
@@ -66869,7 +68650,7 @@
 	exports.default = Trends;
 
 /***/ },
-/* 529 */
+/* 531 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -66910,7 +68691,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 530 */
+/* 532 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -66951,7 +68732,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 531 */
+/* 533 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -66992,7 +68773,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 532 */
+/* 534 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -67033,7 +68814,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 533 */
+/* 535 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -67074,7 +68855,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 534 */
+/* 536 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -67091,7 +68872,7 @@
 
 	var _card2 = _interopRequireDefault(_card);
 
-	var _cardMedia = __webpack_require__(472);
+	var _cardMedia = __webpack_require__(461);
 
 	var _cardMedia2 = _interopRequireDefault(_cardMedia);
 
@@ -67163,31 +68944,31 @@
 
 	var _LoginStore2 = _interopRequireDefault(_LoginStore);
 
-	var _StatusStore = __webpack_require__(482);
+	var _StatusStore = __webpack_require__(459);
 
 	var _StatusStore2 = _interopRequireDefault(_StatusStore);
 
-	var _ActivityfeedAction = __webpack_require__(478);
+	var _ActivityfeedAction = __webpack_require__(455);
 
 	var _ActivityfeedAction2 = _interopRequireDefault(_ActivityfeedAction);
 
-	var _CommentStore = __webpack_require__(485);
+	var _CommentStore = __webpack_require__(462);
 
 	var _CommentStore2 = _interopRequireDefault(_CommentStore);
 
-	var _trendComment = __webpack_require__(535);
+	var _trendComment = __webpack_require__(537);
 
 	var _trendComment2 = _interopRequireDefault(_trendComment);
 
-	var _LikeStatusStore = __webpack_require__(487);
+	var _LikeStatusStore = __webpack_require__(464);
 
 	var _LikeStatusStore2 = _interopRequireDefault(_LikeStatusStore);
 
-	var _trendactivitySharedList = __webpack_require__(536);
+	var _trendactivitySharedList = __webpack_require__(538);
 
 	var _trendactivitySharedList2 = _interopRequireDefault(_trendactivitySharedList);
 
-	var _trendactivityContainer = __webpack_require__(537);
+	var _trendactivityContainer = __webpack_require__(539);
 
 	var _trendactivityContainer2 = _interopRequireDefault(_trendactivityContainer);
 
@@ -67550,7 +69331,7 @@
 	exports.default = ActivityList;
 
 /***/ },
-/* 535 */
+/* 537 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -67617,7 +69398,7 @@
 	exports.default = Comment;
 
 /***/ },
-/* 536 */
+/* 538 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -67634,7 +69415,7 @@
 
 	var _card2 = _interopRequireDefault(_card);
 
-	var _cardMedia = __webpack_require__(472);
+	var _cardMedia = __webpack_require__(461);
 
 	var _cardMedia2 = _interopRequireDefault(_cardMedia);
 
@@ -67707,7 +69488,7 @@
 	exports.default = ActivitySharedList;
 
 /***/ },
-/* 537 */
+/* 539 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -67728,15 +69509,15 @@
 
 	var _listItem2 = _interopRequireDefault(_listItem);
 
-	var _ActivityfeedAction = __webpack_require__(478);
+	var _ActivityfeedAction = __webpack_require__(455);
 
 	var _ActivityfeedAction2 = _interopRequireDefault(_ActivityfeedAction);
 
-	var _StatusStore = __webpack_require__(482);
+	var _StatusStore = __webpack_require__(459);
 
 	var _StatusStore2 = _interopRequireDefault(_StatusStore);
 
-	var _trendactivityListComp = __webpack_require__(534);
+	var _trendactivityListComp = __webpack_require__(536);
 
 	var _trendactivityListComp2 = _interopRequireDefault(_trendactivityListComp);
 
@@ -67805,7 +69586,7 @@
 	exports.default = activityContainer;
 
 /***/ },
-/* 538 */
+/* 540 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -67834,7 +69615,7 @@
 
 	var _cardHeader2 = _interopRequireDefault(_cardHeader);
 
-	var _cardMedia = __webpack_require__(472);
+	var _cardMedia = __webpack_require__(461);
 
 	var _cardMedia2 = _interopRequireDefault(_cardMedia);
 
@@ -67870,11 +69651,11 @@
 
 	var _iconButton2 = _interopRequireDefault(_iconButton);
 
-	var _tabs = __webpack_require__(519);
+	var _tabs = __webpack_require__(521);
 
 	var _tabs2 = _interopRequireDefault(_tabs);
 
-	var _tab = __webpack_require__(522);
+	var _tab = __webpack_require__(524);
 
 	var _tab2 = _interopRequireDefault(_tab);
 
@@ -67882,11 +69663,11 @@
 
 	var _dialog2 = _interopRequireDefault(_dialog);
 
-	var _othersvisits = __webpack_require__(539);
+	var _othersvisits = __webpack_require__(541);
 
 	var _othersvisits2 = _interopRequireDefault(_othersvisits);
 
-	var _myvisits = __webpack_require__(540);
+	var _myvisits = __webpack_require__(542);
 
 	var _myvisits2 = _interopRequireDefault(_myvisits);
 
@@ -67894,11 +69675,11 @@
 
 	var _LoginStore2 = _interopRequireDefault(_LoginStore);
 
-	var _VisitsStore = __webpack_require__(543);
+	var _VisitsStore = __webpack_require__(545);
 
 	var _VisitsStore2 = _interopRequireDefault(_VisitsStore);
 
-	var _VisitsAction = __webpack_require__(541);
+	var _VisitsAction = __webpack_require__(543);
 
 	var _VisitsAction2 = _interopRequireDefault(_VisitsAction);
 
@@ -68144,7 +69925,7 @@
 	exports.default = VisitContainer;
 
 /***/ },
-/* 539 */
+/* 541 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68173,7 +69954,7 @@
 
 	var _cardHeader2 = _interopRequireDefault(_cardHeader);
 
-	var _cardMedia = __webpack_require__(472);
+	var _cardMedia = __webpack_require__(461);
 
 	var _cardMedia2 = _interopRequireDefault(_cardMedia);
 
@@ -68225,11 +70006,11 @@
 
 	var _menuItem2 = _interopRequireDefault(_menuItem);
 
-	var _tabs = __webpack_require__(519);
+	var _tabs = __webpack_require__(521);
 
 	var _tabs2 = _interopRequireDefault(_tabs);
 
-	var _tab = __webpack_require__(522);
+	var _tab = __webpack_require__(524);
 
 	var _tab2 = _interopRequireDefault(_tab);
 
@@ -68338,7 +70119,7 @@
 	exports.default = othervisits;
 
 /***/ },
-/* 540 */
+/* 542 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68367,7 +70148,7 @@
 
 	var _cardHeader2 = _interopRequireDefault(_cardHeader);
 
-	var _cardMedia = __webpack_require__(472);
+	var _cardMedia = __webpack_require__(461);
 
 	var _cardMedia2 = _interopRequireDefault(_cardMedia);
 
@@ -68403,11 +70184,11 @@
 
 	var _iconButton2 = _interopRequireDefault(_iconButton);
 
-	var _tabs = __webpack_require__(519);
+	var _tabs = __webpack_require__(521);
 
 	var _tabs2 = _interopRequireDefault(_tabs);
 
-	var _tab = __webpack_require__(522);
+	var _tab = __webpack_require__(524);
 
 	var _tab2 = _interopRequireDefault(_tab);
 
@@ -68435,7 +70216,7 @@
 
 	var _ThreadActions2 = _interopRequireDefault(_ThreadActions);
 
-	var _VisitsAction = __webpack_require__(541);
+	var _VisitsAction = __webpack_require__(543);
 
 	var _VisitsAction2 = _interopRequireDefault(_VisitsAction);
 
@@ -68537,14 +70318,14 @@
 	exports.default = myvisits;
 
 /***/ },
-/* 541 */
+/* 543 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var AppDispatcher = __webpack_require__(308);
 	var ProfileConstants = __webpack_require__(357);
-	var VisitConstants = __webpack_require__(542);
+	var VisitConstants = __webpack_require__(544);
 
 	var VisitsAction = {
 
@@ -68627,7 +70408,7 @@
 	module.exports = VisitsAction;
 
 /***/ },
-/* 542 */
+/* 544 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68643,14 +70424,14 @@
 	});
 
 /***/ },
-/* 543 */
+/* 545 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var AppDispatcher = __webpack_require__(308);
 	var EventEmitter = __webpack_require__(316).EventEmitter;
-	var VisitConstants = __webpack_require__(542);
+	var VisitConstants = __webpack_require__(544);
 	var assign = __webpack_require__(312);
 
 	var CHANGE_EVENT = 'change';
@@ -68727,7 +70508,7 @@
 	module.exports = VisitsStore;
 
 /***/ },
-/* 544 */
+/* 546 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68740,11 +70521,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _chatCard = __webpack_require__(512);
+	var _chatCard = __webpack_require__(514);
 
 	var _chatCard2 = _interopRequireDefault(_chatCard);
 
-	var _ChatPreviousContainer = __webpack_require__(509);
+	var _ChatPreviousContainer = __webpack_require__(511);
 
 	var _ChatPreviousContainer2 = _interopRequireDefault(_ChatPreviousContainer);
 
@@ -68777,7 +70558,7 @@
 	exports.default = ThreadMain;
 
 /***/ },
-/* 545 */
+/* 547 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68810,7 +70591,7 @@
 
 	var _divider2 = _interopRequireDefault(_divider);
 
-	var _PathStore = __webpack_require__(469);
+	var _PathStore = __webpack_require__(484);
 
 	var _PathStore2 = _interopRequireDefault(_PathStore);
 
@@ -68900,7 +70681,7 @@
 	exports.default = GridListExampleSimple;
 
 /***/ },
-/* 546 */
+/* 548 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -68909,15 +70690,15 @@
 	  value: true
 	});
 
-	var _friend = __webpack_require__(547);
+	var _friend = __webpack_require__(549);
 
 	var _friend2 = _interopRequireDefault(_friend);
 
-	var _SearchStore = __webpack_require__(549);
+	var _SearchStore = __webpack_require__(551);
 
 	var _SearchStore2 = _interopRequireDefault(_SearchStore);
 
-	var _UsersActions = __webpack_require__(550);
+	var _UsersActions = __webpack_require__(552);
 
 	var _UsersActions2 = _interopRequireDefault(_UsersActions);
 
@@ -68929,7 +70710,7 @@
 
 	var _avatar2 = _interopRequireDefault(_avatar);
 
-	var _folder = __webpack_require__(552);
+	var _folder = __webpack_require__(554);
 
 	var _folder2 = _interopRequireDefault(_folder);
 
@@ -69017,7 +70798,7 @@
 	exports.default = reportedUsers;
 
 /***/ },
-/* 547 */
+/* 549 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -69062,7 +70843,7 @@
 
 	var _menuItem2 = _interopRequireDefault(_menuItem);
 
-	var _blockUser = __webpack_require__(548);
+	var _blockUser = __webpack_require__(550);
 
 	var _blockUser2 = _interopRequireDefault(_blockUser);
 
@@ -69157,7 +70938,7 @@
 	exports.default = Friend;
 
 /***/ },
-/* 548 */
+/* 550 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -69189,7 +70970,7 @@
 	module.exports = BlockActions;
 
 /***/ },
-/* 549 */
+/* 551 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -69238,7 +71019,7 @@
 	module.exports = SearchStore;
 
 /***/ },
-/* 550 */
+/* 552 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -69248,7 +71029,7 @@
 	 */
 	var AppDispatcher = __webpack_require__(308);
 	var LoginConstants = __webpack_require__(318);
-	var SearchConstants = __webpack_require__(551);
+	var SearchConstants = __webpack_require__(553);
 
 	var UsersActions = {
 	  getsearchresults: function getsearchresults() {
@@ -69269,7 +71050,7 @@
 	module.exports = UsersActions;
 
 /***/ },
-/* 551 */
+/* 553 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -69281,7 +71062,7 @@
 	});
 
 /***/ },
-/* 552 */
+/* 554 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -69322,7 +71103,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 553 */
+/* 555 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -69331,15 +71112,15 @@
 	  value: true
 	});
 
-	var _blockedUser = __webpack_require__(554);
+	var _blockedUser = __webpack_require__(556);
 
 	var _blockedUser2 = _interopRequireDefault(_blockedUser);
 
-	var _SearchStore = __webpack_require__(549);
+	var _SearchStore = __webpack_require__(551);
 
 	var _SearchStore2 = _interopRequireDefault(_SearchStore);
 
-	var _BlockedUsersActions = __webpack_require__(556);
+	var _BlockedUsersActions = __webpack_require__(558);
 
 	var _BlockedUsersActions2 = _interopRequireDefault(_BlockedUsersActions);
 
@@ -69351,7 +71132,7 @@
 
 	var _avatar2 = _interopRequireDefault(_avatar);
 
-	var _folder = __webpack_require__(552);
+	var _folder = __webpack_require__(554);
 
 	var _folder2 = _interopRequireDefault(_folder);
 
@@ -69435,7 +71216,7 @@
 	exports.default = AvatarExampleSimple;
 
 /***/ },
-/* 554 */
+/* 556 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -69484,7 +71265,7 @@
 
 	var _reactTapEventPlugin2 = _interopRequireDefault(_reactTapEventPlugin);
 
-	var _UnblockUserActions = __webpack_require__(555);
+	var _UnblockUserActions = __webpack_require__(557);
 
 	var _UnblockUserActions2 = _interopRequireDefault(_UnblockUserActions);
 
@@ -69588,7 +71369,7 @@
 	exports.default = blocked;
 
 /***/ },
-/* 555 */
+/* 557 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -69618,7 +71399,7 @@
 	module.exports = UnblockActions;
 
 /***/ },
-/* 556 */
+/* 558 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -69650,7 +71431,7 @@
 	module.exports = UsersActions;
 
 /***/ },
-/* 557 */
+/* 559 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -69665,27 +71446,27 @@
 
 	var _reactRouter = __webpack_require__(159);
 
-	var _tab = __webpack_require__(558);
+	var _tab = __webpack_require__(560);
 
 	var _tab2 = _interopRequireDefault(_tab);
 
-	var _customers = __webpack_require__(559);
+	var _customers = __webpack_require__(561);
 
 	var _customers2 = _interopRequireDefault(_customers);
 
-	var _pieChartCustomers = __webpack_require__(560);
+	var _pieChartCustomers = __webpack_require__(562);
 
 	var _pieChartCustomers2 = _interopRequireDefault(_pieChartCustomers);
 
-	var _GraphActions = __webpack_require__(563);
+	var _GraphActions = __webpack_require__(565);
 
 	var _GraphActions2 = _interopRequireDefault(_GraphActions);
 
-	var _GraphStore = __webpack_require__(565);
+	var _GraphStore = __webpack_require__(567);
 
 	var _GraphStore2 = _interopRequireDefault(_GraphStore);
 
-	var _PathStore = __webpack_require__(469);
+	var _PathStore = __webpack_require__(484);
 
 	var _PathStore2 = _interopRequireDefault(_PathStore);
 
@@ -69885,7 +71666,7 @@
 	exports.default = Cards;
 
 /***/ },
-/* 558 */
+/* 560 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -69898,31 +71679,31 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _tabs = __webpack_require__(519);
+	var _tabs = __webpack_require__(521);
 
 	var _tabs2 = _interopRequireDefault(_tabs);
 
-	var _tab = __webpack_require__(522);
+	var _tab = __webpack_require__(524);
 
 	var _tab2 = _interopRequireDefault(_tab);
 
-	var _customers = __webpack_require__(559);
+	var _customers = __webpack_require__(561);
 
 	var _customers2 = _interopRequireDefault(_customers);
 
-	var _pieChartCustomers = __webpack_require__(560);
+	var _pieChartCustomers = __webpack_require__(562);
 
 	var _pieChartCustomers2 = _interopRequireDefault(_pieChartCustomers);
 
-	var _admin = __webpack_require__(561);
+	var _admin = __webpack_require__(563);
 
 	var _admin2 = _interopRequireDefault(_admin);
 
-	var _SearchStore = __webpack_require__(549);
+	var _SearchStore = __webpack_require__(551);
 
 	var _SearchStore2 = _interopRequireDefault(_SearchStore);
 
-	var _AdminDetailsActions = __webpack_require__(562);
+	var _AdminDetailsActions = __webpack_require__(564);
 
 	var _AdminDetailsActions2 = _interopRequireDefault(_AdminDetailsActions);
 
@@ -70027,7 +71808,7 @@
 	exports.default = DashboardTabs;
 
 /***/ },
-/* 559 */
+/* 561 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -70072,7 +71853,7 @@
 	exports.default = CustomerGraphs;
 
 /***/ },
-/* 560 */
+/* 562 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -70138,7 +71919,7 @@
 	exports.default = CustomerGraphs;
 
 /***/ },
-/* 561 */
+/* 563 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -70299,7 +72080,7 @@
 	exports.default = Admin;
 
 /***/ },
-/* 562 */
+/* 564 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -70331,7 +72112,7 @@
 	module.exports = AdminDetailsActions;
 
 /***/ },
-/* 563 */
+/* 565 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -70340,7 +72121,7 @@
 	 * Created by Isuru 1 on 27/01/2016.
 	 */
 	var AppDispatcher = __webpack_require__(308);
-	var GraphConstants = __webpack_require__(564);
+	var GraphConstants = __webpack_require__(566);
 
 	var GraphActions = {
 
@@ -70388,7 +72169,7 @@
 	module.exports = GraphActions;
 
 /***/ },
-/* 564 */
+/* 566 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -70400,14 +72181,14 @@
 	});
 
 /***/ },
-/* 565 */
+/* 567 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var AppDispatcher = __webpack_require__(308);
 	var EventEmitter = __webpack_require__(316).EventEmitter;
-	var GraphConstants = __webpack_require__(564);
+	var GraphConstants = __webpack_require__(566);
 	var assign = __webpack_require__(312);
 
 	var CHANGE_EVENT = 'change';
@@ -70444,7 +72225,7 @@
 	module.exports = GraphStore;
 
 /***/ },
-/* 566 */
+/* 568 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -70457,23 +72238,23 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _snackbar = __webpack_require__(567);
+	var _snackbar = __webpack_require__(569);
 
 	var _snackbar2 = _interopRequireDefault(_snackbar);
 
-	var _NewAdminmodal = __webpack_require__(568);
+	var _NewAdminmodal = __webpack_require__(570);
 
 	var _NewAdminmodal2 = _interopRequireDefault(_NewAdminmodal);
 
-	var _updateAdminmodal = __webpack_require__(570);
+	var _updateAdminmodal = __webpack_require__(572);
 
 	var _updateAdminmodal2 = _interopRequireDefault(_updateAdminmodal);
 
-	var _ResetPwd = __webpack_require__(572);
+	var _ResetPwd = __webpack_require__(574);
 
 	var _ResetPwd2 = _interopRequireDefault(_ResetPwd);
 
-	var _Deactivate = __webpack_require__(574);
+	var _Deactivate = __webpack_require__(576);
 
 	var _Deactivate2 = _interopRequireDefault(_Deactivate);
 
@@ -70481,7 +72262,7 @@
 
 	var _divider2 = _interopRequireDefault(_divider);
 
-	var _PathStore = __webpack_require__(469);
+	var _PathStore = __webpack_require__(484);
 
 	var _PathStore2 = _interopRequireDefault(_PathStore);
 
@@ -70527,7 +72308,7 @@
 	exports.default = AdminSettings;
 
 /***/ },
-/* 567 */
+/* 569 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -70594,7 +72375,7 @@
 	exports.default = SnackbarExampleSimple;
 
 /***/ },
-/* 568 */
+/* 570 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -70623,7 +72404,7 @@
 
 	var _textField2 = _interopRequireDefault(_textField);
 
-	var _snackbar = __webpack_require__(567);
+	var _snackbar = __webpack_require__(569);
 
 	var _snackbar2 = _interopRequireDefault(_snackbar);
 
@@ -70687,7 +72468,7 @@
 
 	var _colors2 = _interopRequireDefault(_colors);
 
-	var _AdminRegisterActions = __webpack_require__(569);
+	var _AdminRegisterActions = __webpack_require__(571);
 
 	var _AdminRegisterActions2 = _interopRequireDefault(_AdminRegisterActions);
 
@@ -71084,7 +72865,7 @@
 	exports.default = Header;
 
 /***/ },
-/* 569 */
+/* 571 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71118,7 +72899,7 @@
 	module.exports = RegisterActions;
 
 /***/ },
-/* 570 */
+/* 572 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71147,7 +72928,7 @@
 
 	var _textField2 = _interopRequireDefault(_textField);
 
-	var _snackbar = __webpack_require__(567);
+	var _snackbar = __webpack_require__(569);
 
 	var _snackbar2 = _interopRequireDefault(_snackbar);
 
@@ -71211,15 +72992,15 @@
 
 	var _colors2 = _interopRequireDefault(_colors);
 
-	var _ProfileActions = __webpack_require__(463);
+	var _ProfileActions = __webpack_require__(478);
 
 	var _ProfileActions2 = _interopRequireDefault(_ProfileActions);
 
-	var _ProfileStore = __webpack_require__(464);
+	var _ProfileStore = __webpack_require__(479);
 
 	var _ProfileStore2 = _interopRequireDefault(_ProfileStore);
 
-	var _AdminUpdateActions = __webpack_require__(571);
+	var _AdminUpdateActions = __webpack_require__(573);
 
 	var _AdminUpdateActions2 = _interopRequireDefault(_AdminUpdateActions);
 
@@ -71680,7 +73461,7 @@
 	exports.default = Update;
 
 /***/ },
-/* 571 */
+/* 573 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71719,7 +73500,7 @@
 	module.exports = UpdateActions;
 
 /***/ },
-/* 572 */
+/* 574 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -71748,7 +73529,7 @@
 
 	var _textField2 = _interopRequireDefault(_textField);
 
-	var _snackbar = __webpack_require__(567);
+	var _snackbar = __webpack_require__(569);
 
 	var _snackbar2 = _interopRequireDefault(_snackbar);
 
@@ -71812,15 +73593,15 @@
 
 	var _colors2 = _interopRequireDefault(_colors);
 
-	var _ProfileActions = __webpack_require__(463);
+	var _ProfileActions = __webpack_require__(478);
 
 	var _ProfileActions2 = _interopRequireDefault(_ProfileActions);
 
-	var _ProfileStore = __webpack_require__(464);
+	var _ProfileStore = __webpack_require__(479);
 
 	var _ProfileStore2 = _interopRequireDefault(_ProfileStore);
 
-	var _AdminPwdResetActions = __webpack_require__(573);
+	var _AdminPwdResetActions = __webpack_require__(575);
 
 	var _AdminPwdResetActions2 = _interopRequireDefault(_AdminPwdResetActions);
 
@@ -72119,7 +73900,7 @@
 	exports.default = Reset;
 
 /***/ },
-/* 573 */
+/* 575 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72151,7 +73932,7 @@
 	module.exports = PwdActions;
 
 /***/ },
-/* 574 */
+/* 576 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72220,15 +74001,15 @@
 
 	var _colors2 = _interopRequireDefault(_colors);
 
-	var _ProfileActions = __webpack_require__(463);
+	var _ProfileActions = __webpack_require__(478);
 
 	var _ProfileActions2 = _interopRequireDefault(_ProfileActions);
 
-	var _ProfileStore = __webpack_require__(464);
+	var _ProfileStore = __webpack_require__(479);
 
 	var _ProfileStore2 = _interopRequireDefault(_ProfileStore);
 
-	var _DeactivateAdminActions = __webpack_require__(575);
+	var _DeactivateAdminActions = __webpack_require__(577);
 
 	var _DeactivateAdminActions2 = _interopRequireDefault(_DeactivateAdminActions);
 
@@ -72335,7 +74116,7 @@
 	exports.default = Deactivate;
 
 /***/ },
-/* 575 */
+/* 577 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72363,7 +74144,7 @@
 	module.exports = DeactivateActions;
 
 /***/ },
-/* 576 */
+/* 578 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72392,7 +74173,7 @@
 
 	var _cardHeader2 = _interopRequireDefault(_cardHeader);
 
-	var _cardMedia = __webpack_require__(472);
+	var _cardMedia = __webpack_require__(461);
 
 	var _cardMedia2 = _interopRequireDefault(_cardMedia);
 
@@ -72502,7 +74283,7 @@
 	exports.default = ForgotPassword;
 
 /***/ },
-/* 577 */
+/* 579 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72531,7 +74312,7 @@
 
 	var _cardHeader2 = _interopRequireDefault(_cardHeader);
 
-	var _cardMedia = __webpack_require__(472);
+	var _cardMedia = __webpack_require__(461);
 
 	var _cardMedia2 = _interopRequireDefault(_cardMedia);
 
@@ -72555,7 +74336,7 @@
 
 	var _raisedButton2 = _interopRequireDefault(_raisedButton);
 
-	var _LoginActions = __webpack_require__(473);
+	var _LoginActions = __webpack_require__(487);
 
 	var _LoginActions2 = _interopRequireDefault(_LoginActions);
 
@@ -72648,7 +74429,7 @@
 	exports.default = AdminForgot;
 
 /***/ },
-/* 578 */
+/* 580 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72769,7 +74550,7 @@
 	exports.default = Feedback;
 
 /***/ },
-/* 579 */
+/* 581 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -72786,7 +74567,7 @@
 
 	var _table2 = _interopRequireDefault(_table);
 
-	var _tableHeaderColumn = __webpack_require__(580);
+	var _tableHeaderColumn = __webpack_require__(582);
 
 	var _tableHeaderColumn2 = _interopRequireDefault(_tableHeaderColumn);
 
@@ -72794,7 +74575,7 @@
 
 	var _tableRow2 = _interopRequireDefault(_tableRow);
 
-	var _tableHeader = __webpack_require__(581);
+	var _tableHeader = __webpack_require__(583);
 
 	var _tableHeader2 = _interopRequireDefault(_tableHeader);
 
@@ -72806,15 +74587,15 @@
 
 	var _tableBody2 = _interopRequireDefault(_tableBody);
 
-	var _FeedbackActions = __webpack_require__(582);
+	var _FeedbackActions = __webpack_require__(584);
 
 	var _FeedbackActions2 = _interopRequireDefault(_FeedbackActions);
 
-	var _FeedbackStore = __webpack_require__(583);
+	var _FeedbackStore = __webpack_require__(585);
 
 	var _FeedbackStore2 = _interopRequireDefault(_FeedbackStore);
 
-	var _feed = __webpack_require__(584);
+	var _feed = __webpack_require__(586);
 
 	var _feed2 = _interopRequireDefault(_feed);
 
@@ -72925,7 +74706,7 @@
 	exports.default = Tables;
 
 /***/ },
-/* 580 */
+/* 582 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73087,7 +74868,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 581 */
+/* 583 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73108,7 +74889,7 @@
 
 	var _stylePropable2 = _interopRequireDefault(_stylePropable);
 
-	var _tableHeaderColumn = __webpack_require__(580);
+	var _tableHeaderColumn = __webpack_require__(582);
 
 	var _tableHeaderColumn2 = _interopRequireDefault(_tableHeaderColumn);
 
@@ -73291,7 +75072,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 582 */
+/* 584 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73301,7 +75082,7 @@
 	 */
 	var AppDispatcher = __webpack_require__(308);
 	var LoginConstants = __webpack_require__(318);
-	var FeedConstants = __webpack_require__(551);
+	var FeedConstants = __webpack_require__(553);
 
 	var FeedActions = {
 	  MarkAsDone: function MarkAsDone(credentials) {
@@ -73452,14 +75233,14 @@
 	module.exports = FeedActions;
 
 /***/ },
-/* 583 */
+/* 585 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var AppDispatcher = __webpack_require__(308);
 	var EventEmitter = __webpack_require__(316).EventEmitter;
-	var FeedConstants = __webpack_require__(551);
+	var FeedConstants = __webpack_require__(553);
 	var assign = __webpack_require__(312);
 
 	var CHANGE_EVENT = 'change';
@@ -73498,7 +75279,7 @@
 	module.exports = FeedStore;
 
 /***/ },
-/* 584 */
+/* 586 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73515,7 +75296,7 @@
 
 	var _table2 = _interopRequireDefault(_table);
 
-	var _tableHeaderColumn = __webpack_require__(580);
+	var _tableHeaderColumn = __webpack_require__(582);
 
 	var _tableHeaderColumn2 = _interopRequireDefault(_tableHeaderColumn);
 
@@ -73523,7 +75304,7 @@
 
 	var _tableRow2 = _interopRequireDefault(_tableRow);
 
-	var _tableHeader = __webpack_require__(581);
+	var _tableHeader = __webpack_require__(583);
 
 	var _tableHeader2 = _interopRequireDefault(_tableHeader);
 
@@ -73539,7 +75320,7 @@
 
 	var _raisedButton2 = _interopRequireDefault(_raisedButton);
 
-	var _FeedbackActions = __webpack_require__(582);
+	var _FeedbackActions = __webpack_require__(584);
 
 	var _FeedbackActions2 = _interopRequireDefault(_FeedbackActions);
 
@@ -73615,7 +75396,7 @@
 	exports.default = TableRaw;
 
 /***/ },
-/* 585 */
+/* 587 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73632,7 +75413,7 @@
 
 	var _table2 = _interopRequireDefault(_table);
 
-	var _tableHeaderColumn = __webpack_require__(580);
+	var _tableHeaderColumn = __webpack_require__(582);
 
 	var _tableHeaderColumn2 = _interopRequireDefault(_tableHeaderColumn);
 
@@ -73640,7 +75421,7 @@
 
 	var _tableRow2 = _interopRequireDefault(_tableRow);
 
-	var _tableHeader = __webpack_require__(581);
+	var _tableHeader = __webpack_require__(583);
 
 	var _tableHeader2 = _interopRequireDefault(_tableHeader);
 
@@ -73652,15 +75433,15 @@
 
 	var _tableBody2 = _interopRequireDefault(_tableBody);
 
-	var _FeedbackActions = __webpack_require__(582);
+	var _FeedbackActions = __webpack_require__(584);
 
 	var _FeedbackActions2 = _interopRequireDefault(_FeedbackActions);
 
-	var _FeedbackStore = __webpack_require__(583);
+	var _FeedbackStore = __webpack_require__(585);
 
 	var _FeedbackStore2 = _interopRequireDefault(_FeedbackStore);
 
-	var _feed = __webpack_require__(584);
+	var _feed = __webpack_require__(586);
 
 	var _feed2 = _interopRequireDefault(_feed);
 
@@ -73771,7 +75552,7 @@
 	exports.default = Tables;
 
 /***/ },
-/* 586 */
+/* 588 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73788,7 +75569,7 @@
 
 	var _table2 = _interopRequireDefault(_table);
 
-	var _tableHeaderColumn = __webpack_require__(580);
+	var _tableHeaderColumn = __webpack_require__(582);
 
 	var _tableHeaderColumn2 = _interopRequireDefault(_tableHeaderColumn);
 
@@ -73796,7 +75577,7 @@
 
 	var _tableRow2 = _interopRequireDefault(_tableRow);
 
-	var _tableHeader = __webpack_require__(581);
+	var _tableHeader = __webpack_require__(583);
 
 	var _tableHeader2 = _interopRequireDefault(_tableHeader);
 
@@ -73808,15 +75589,15 @@
 
 	var _tableBody2 = _interopRequireDefault(_tableBody);
 
-	var _FeedbackActions = __webpack_require__(582);
+	var _FeedbackActions = __webpack_require__(584);
 
 	var _FeedbackActions2 = _interopRequireDefault(_FeedbackActions);
 
-	var _FeedbackStore = __webpack_require__(583);
+	var _FeedbackStore = __webpack_require__(585);
 
 	var _FeedbackStore2 = _interopRequireDefault(_FeedbackStore);
 
-	var _feed = __webpack_require__(584);
+	var _feed = __webpack_require__(586);
 
 	var _feed2 = _interopRequireDefault(_feed);
 
@@ -73926,7 +75707,7 @@
 	exports.default = Tables;
 
 /***/ },
-/* 587 */
+/* 589 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -73943,7 +75724,7 @@
 
 	var _table2 = _interopRequireDefault(_table);
 
-	var _tableHeaderColumn = __webpack_require__(580);
+	var _tableHeaderColumn = __webpack_require__(582);
 
 	var _tableHeaderColumn2 = _interopRequireDefault(_tableHeaderColumn);
 
@@ -73951,7 +75732,7 @@
 
 	var _tableRow2 = _interopRequireDefault(_tableRow);
 
-	var _tableHeader = __webpack_require__(581);
+	var _tableHeader = __webpack_require__(583);
 
 	var _tableHeader2 = _interopRequireDefault(_tableHeader);
 
@@ -73963,15 +75744,15 @@
 
 	var _tableBody2 = _interopRequireDefault(_tableBody);
 
-	var _FeedbackActions = __webpack_require__(582);
+	var _FeedbackActions = __webpack_require__(584);
 
 	var _FeedbackActions2 = _interopRequireDefault(_FeedbackActions);
 
-	var _FeedbackStore = __webpack_require__(583);
+	var _FeedbackStore = __webpack_require__(585);
 
 	var _FeedbackStore2 = _interopRequireDefault(_FeedbackStore);
 
-	var _feed = __webpack_require__(584);
+	var _feed = __webpack_require__(586);
 
 	var _feed2 = _interopRequireDefault(_feed);
 
@@ -74079,7 +75860,7 @@
 	exports.default = Tables;
 
 /***/ },
-/* 588 */
+/* 590 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74096,7 +75877,7 @@
 
 	var _table2 = _interopRequireDefault(_table);
 
-	var _tableHeaderColumn = __webpack_require__(580);
+	var _tableHeaderColumn = __webpack_require__(582);
 
 	var _tableHeaderColumn2 = _interopRequireDefault(_tableHeaderColumn);
 
@@ -74104,7 +75885,7 @@
 
 	var _tableRow2 = _interopRequireDefault(_tableRow);
 
-	var _tableHeader = __webpack_require__(581);
+	var _tableHeader = __webpack_require__(583);
 
 	var _tableHeader2 = _interopRequireDefault(_tableHeader);
 
@@ -74116,15 +75897,15 @@
 
 	var _tableBody2 = _interopRequireDefault(_tableBody);
 
-	var _FeedbackActions = __webpack_require__(582);
+	var _FeedbackActions = __webpack_require__(584);
 
 	var _FeedbackActions2 = _interopRequireDefault(_FeedbackActions);
 
-	var _FeedbackStore = __webpack_require__(583);
+	var _FeedbackStore = __webpack_require__(585);
 
 	var _FeedbackStore2 = _interopRequireDefault(_FeedbackStore);
 
-	var _feed = __webpack_require__(584);
+	var _feed = __webpack_require__(586);
 
 	var _feed2 = _interopRequireDefault(_feed);
 
@@ -74235,7 +76016,7 @@
 	exports.default = Tables;
 
 /***/ },
-/* 589 */
+/* 591 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74250,11 +76031,11 @@
 
 	var _reactRouter = __webpack_require__(159);
 
-	var _GraphActions = __webpack_require__(563);
+	var _GraphActions = __webpack_require__(565);
 
 	var _GraphActions2 = _interopRequireDefault(_GraphActions);
 
-	var _GraphStore = __webpack_require__(565);
+	var _GraphStore = __webpack_require__(567);
 
 	var _GraphStore2 = _interopRequireDefault(_GraphStore);
 
@@ -74337,7 +76118,7 @@
 	exports.default = LineGraph;
 
 /***/ },
-/* 590 */
+/* 592 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74352,11 +76133,11 @@
 
 	var _reactRouter = __webpack_require__(159);
 
-	var _GraphActions = __webpack_require__(563);
+	var _GraphActions = __webpack_require__(565);
 
 	var _GraphActions2 = _interopRequireDefault(_GraphActions);
 
-	var _GraphStore = __webpack_require__(565);
+	var _GraphStore = __webpack_require__(567);
 
 	var _GraphStore2 = _interopRequireDefault(_GraphStore);
 
@@ -74438,7 +76219,7 @@
 	exports.default = pieChart;
 
 /***/ },
-/* 591 */
+/* 593 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74451,11 +76232,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _SearchItem = __webpack_require__(592);
+	var _SearchItem = __webpack_require__(594);
 
 	var _SearchItem2 = _interopRequireDefault(_SearchItem);
 
-	var _SearchStore = __webpack_require__(460);
+	var _SearchStore = __webpack_require__(475);
 
 	var _SearchStore2 = _interopRequireDefault(_SearchStore);
 
@@ -74567,7 +76348,7 @@
 	exports.default = Search;
 
 /***/ },
-/* 592 */
+/* 594 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -74668,1775 +76449,6 @@
 	});
 
 	exports.default = SearchItem;
-
-/***/ },
-/* 593 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _activityContainer = __webpack_require__(594);
-
-	var _activityContainer2 = _interopRequireDefault(_activityContainer);
-
-	var _activityListComp = __webpack_require__(595);
-
-	var _activityListComp2 = _interopRequireDefault(_activityListComp);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var ActivityMain = _react2.default.createClass({
-	    displayName: 'ActivityMain',
-
-	    render: function render() {
-	        return _react2.default.createElement(
-	            'div',
-	            null,
-	            _react2.default.createElement(
-	                'div',
-	                null,
-	                _react2.default.createElement(_activityContainer2.default, null)
-	            )
-	        );
-	    }
-	});
-
-	exports.default = ActivityMain;
-
-/***/ },
-/* 594 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _list = __webpack_require__(293);
-
-	var _list2 = _interopRequireDefault(_list);
-
-	var _listItem = __webpack_require__(295);
-
-	var _listItem2 = _interopRequireDefault(_listItem);
-
-	var _raisedButton = __webpack_require__(377);
-
-	var _raisedButton2 = _interopRequireDefault(_raisedButton);
-
-	var _ActivityfeedAction = __webpack_require__(478);
-
-	var _ActivityfeedAction2 = _interopRequireDefault(_ActivityfeedAction);
-
-	var _StatusStore = __webpack_require__(482);
-
-	var _StatusStore2 = _interopRequireDefault(_StatusStore);
-
-	var _activityListComp = __webpack_require__(595);
-
-	var _activityListComp2 = _interopRequireDefault(_activityListComp);
-
-	var _LoginStore = __webpack_require__(317);
-
-	var _LoginStore2 = _interopRequireDefault(_LoginStore);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var style = {
-	  marginLeft: 40,
-	  width: 800
-	};
-
-	var activityContainer = _react2.default.createClass({
-	  displayName: 'activityContainer',
-
-	  getInitialState: function getInitialState() {
-	    return {
-	      results: _StatusStore2.default.getStatusData()
-	    };
-	  },
-
-	  componentDidMount: function componentDidMount() {
-	    _StatusStore2.default.addChangeListener(this._onChange);
-
-	    var data = {
-	      userId: localStorage.getItem('userid')
-	    };
-	    _ActivityfeedAction2.default._getStatusVisitor(data);
-	  },
-
-	  _onChange: function _onChange() {
-	    this.setState({ results: _StatusStore2.default.getStatusData() });
-	  },
-
-	  _loadMorePosts: function _loadMorePosts() {
-	    var data = {
-	      userId: localStorage.getItem('userid')
-	    };
-	    _ActivityfeedAction2.default._getStatus(data);
-	  },
-
-	  _renderSearchItem: function _renderSearchItem() {
-	    return this.state.results.map(function (result) {
-	      return _react2.default.createElement(_activityListComp2.default, { key: result.id,
-	        id: result.id,
-	        type: result.type,
-	        firstName: result.firstname,
-	        postId: result.post_id,
-	        attachment: result.attachment,
-	        lPostId: result.pid,
-	        postText: result.post_text,
-	        created_at: result.created_at,
-	        postid: result.postid,
-	        likesCount: result.likesCount,
-	        sid: result.sid,
-	        sfirstname: result.sfirstname,
-	        sattachment: result.sattachment,
-	        spost_text: result.spost_text,
-	        screated_at: result.screated_at });
-	    });
-	  },
-
-	  render: function render() {
-	    return _react2.default.createElement(
-	      'div',
-	      null,
-	      _react2.default.createElement(
-	        'div',
-	        null,
-	        this._renderSearchItem()
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(_raisedButton2.default, { label: 'load more posts', secondary: true, style: style, onClick: this._loadMorePosts })
-	      )
-	    );
-	  }
-	});
-
-	exports.default = activityContainer;
-
-/***/ },
-/* 595 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _card = __webpack_require__(322);
-
-	var _card2 = _interopRequireDefault(_card);
-
-	var _cardMedia = __webpack_require__(472);
-
-	var _cardMedia2 = _interopRequireDefault(_cardMedia);
-
-	var _cardText = __webpack_require__(321);
-
-	var _cardText2 = _interopRequireDefault(_cardText);
-
-	var _listItem = __webpack_require__(295);
-
-	var _listItem2 = _interopRequireDefault(_listItem);
-
-	var _divider = __webpack_require__(299);
-
-	var _divider2 = _interopRequireDefault(_divider);
-
-	var _avatar = __webpack_require__(292);
-
-	var _avatar2 = _interopRequireDefault(_avatar);
-
-	var _colors = __webpack_require__(220);
-
-	var _colors2 = _interopRequireDefault(_colors);
-
-	var _favorite = __webpack_require__(449);
-
-	var _favorite2 = _interopRequireDefault(_favorite);
-
-	var _favoriteBorder = __webpack_require__(450);
-
-	var _favoriteBorder2 = _interopRequireDefault(_favoriteBorder);
-
-	var _iconButton = __webpack_require__(264);
-
-	var _iconButton2 = _interopRequireDefault(_iconButton);
-
-	var _moreVert = __webpack_require__(375);
-
-	var _moreVert2 = _interopRequireDefault(_moreVert);
-
-	var _iconMenu = __webpack_require__(376);
-
-	var _iconMenu2 = _interopRequireDefault(_iconMenu);
-
-	var _menuItem = __webpack_require__(347);
-
-	var _menuItem2 = _interopRequireDefault(_menuItem);
-
-	var _flatButton = __webpack_require__(327);
-
-	var _flatButton2 = _interopRequireDefault(_flatButton);
-
-	var _dialog = __webpack_require__(326);
-
-	var _dialog2 = _interopRequireDefault(_dialog);
-
-	var _raisedButton = __webpack_require__(377);
-
-	var _raisedButton2 = _interopRequireDefault(_raisedButton);
-
-	var _textField = __webpack_require__(336);
-
-	var _textField2 = _interopRequireDefault(_textField);
-
-	var _paper = __webpack_require__(294);
-
-	var _paper2 = _interopRequireDefault(_paper);
-
-	var _LoginStore = __webpack_require__(317);
-
-	var _LoginStore2 = _interopRequireDefault(_LoginStore);
-
-	var _StatusStore = __webpack_require__(482);
-
-	var _StatusStore2 = _interopRequireDefault(_StatusStore);
-
-	var _ActivityfeedAction = __webpack_require__(478);
-
-	var _ActivityfeedAction2 = _interopRequireDefault(_ActivityfeedAction);
-
-	var _CommentStore = __webpack_require__(485);
-
-	var _CommentStore2 = _interopRequireDefault(_CommentStore);
-
-	var _Comment = __webpack_require__(596);
-
-	var _Comment2 = _interopRequireDefault(_Comment);
-
-	var _LikeStatusStore = __webpack_require__(487);
-
-	var _LikeStatusStore2 = _interopRequireDefault(_LikeStatusStore);
-
-	var _activitySharedList = __webpack_require__(597);
-
-	var _activitySharedList2 = _interopRequireDefault(_activitySharedList);
-
-	var _activityContainer = __webpack_require__(594);
-
-	var _activityContainer2 = _interopRequireDefault(_activityContainer);
-
-	var _CountBox = __webpack_require__(598);
-
-	var _CountBox2 = _interopRequireDefault(_CountBox);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var iconButtonElement = _react2.default.createElement(
-	  _iconButton2.default,
-	  {
-	    touch: true,
-	    tooltip: 'more',
-	    tooltipPosition: 'bottom-left' },
-	  _react2.default.createElement(_moreVert2.default, { color: _colors2.default.deepPurple500 })
-	);
-
-	var style1 = {
-	  width: 800,
-	  margin: 40
-	};
-
-	var style2 = {
-	  width: 800
-	};
-
-	var style3 = {
-	  width: 760,
-	  position: 'relative'
-
-	};
-
-	var loadMoreStyle = {
-	  marginLeft: 100
-	};
-
-	function validateCommentText(textComment) {
-	  if (textComment.length > 200) {
-	    return {
-	      "error": "*comment is too long"
-	    };
-	  } else if (textComment === "") {
-	    return {
-	      "error": "*comment cannot be empty"
-	    };
-	  } else {
-	    return true;
-	  }
-	};
-
-	var commentLimitNo = 0;
-
-	var ActivityList = _react2.default.createClass({
-	  displayName: 'ActivityList',
-
-	  getInitialState: function getInitialState() {
-	    return {
-	      opens: false,
-	      commentText: '',
-	      sharedResults: _StatusStore2.default.getSharedData(),
-	      commentResults: _CommentStore2.default.getCommentsData(),
-	      count: _LikeStatusStore2.default.getCount(),
-	      liked: '',
-	      open1: false,
-	      open3: false,
-	      open4: false,
-	      open5: false,
-	      likeCount: ''
-	    };
-	  },
-
-	  componentDidMount: function componentDidMount() {
-	    _StatusStore2.default.addChangeListener(this._onChange);
-	    _LikeStatusStore2.default.addChangeListener(this._onChange);
-	    _CommentStore2.default.addChangeListener(this._onChange);
-
-	    if (!this.props.lPostId) {
-	      this.setState({ liked: !this.state.liked });
-	    } else {
-	      this.setState({ liked: this.state.liked });
-	    }
-
-	    var commentData = {
-	      postId: this.props.id
-	    };
-	    _ActivityfeedAction2.default.getCommentList(commentData);
-
-	    var LikedData = {
-	      postId: this.props.id
-	    };
-	    _ActivityfeedAction2.default.getCount(LikedData);
-	  },
-
-	  _onChange: function _onChange() {
-	    this.setState({ sharedResults: _StatusStore2.default.getSharedData() });
-	    this.setState({ commentResults: _CommentStore2.default.getCommentsData() });
-	    this.setState({ count: _LikeStatusStore2.default.getCount() });
-	  },
-
-	  _getSharedItem: function _getSharedItem() {
-	    if (this.props.type == "shared") {
-	      return _react2.default.createElement(_activitySharedList2.default, { sid: this.props.sid,
-	        sfirstname: this.props.sfirstname,
-	        sattachment: this.props.sattachment,
-	        spost_text: this.props.spost_text,
-	        screated_at: this.props.screated_at });
-	    }
-	  },
-
-	  _getLikedCount: function _getLikedCount() {
-	    var self = this;
-	    return this.state.count.map(function (val) {
-	      return val.map(function (result) {
-	        if (self.props.id == result.post_id) {
-	          return _react2.default.createElement(_CountBox2.default, { likedCount: result.likedCount,
-	            shareCount: result.shareCount,
-	            post_id: result.post_id });
-	        }
-	      });
-	    });
-	  },
-
-	  _getCommentList: function _getCommentList() {
-	    var self = this;
-	    return this.state.commentResults.map(function (comment) {
-	      return comment.map(function (comm) {
-	        if (self.props.id == comm.post_id) {
-	          return _react2.default.createElement(_Comment2.default, { ckey: comm.id,
-	            cid: comm.id,
-	            cfirstName: comm.firstname,
-	            comment_txt: comm.comment_txt });
-	        }
-	      });
-	    });
-	  },
-
-	  _editStatus: function _editStatus() {
-	    var status = this.refs.EditBox.getValue();
-	    var editData = {
-	      userId: localStorage.getItem('userid'),
-	      postId: this.props.id,
-	      status: status
-	    };
-	    _ActivityfeedAction2.default._editStatus(editData);
-	    this.handleClose();
-	  },
-
-	  _deleteStatus: function _deleteStatus() {
-	    var deleteData = {
-	      userId: localStorage.getItem('userid'),
-	      postId: this.props.id
-	    };
-	    _ActivityfeedAction2.default._deleteStatus(deleteData);
-	  },
-
-	  _blockedStatus: function _blockedStatus() {
-	    var blockData = {
-	      email: _LoginStore2.default.getEmail(),
-	      userId: localStorage.getItem('userid'),
-	      postId: this.props.id
-	    };
-	    _ActivityfeedAction2.default._blockStatus(blockData);
-	  },
-
-	  _changeShareState: function _changeShareState() {
-	    var shareStatus = this.refs.shareBox.getValue();
-	    var shareData = {
-	      email: _LoginStore2.default.getEmail(),
-	      userId: localStorage.getItem('userid'),
-	      firstName: _LoginStore2.default.getFirstname(),
-	      postId: this.props.id,
-	      status: shareStatus
-	    };
-
-	    this.setState({ shared: !this.state.shared });
-	    _ActivityfeedAction2.default._addShare(shareData);
-	    //alert('Share successful');
-
-	    this.setState({ open1: false });
-	    this.setState({ open4: true });
-	  },
-
-	  _changeLikeState: function _changeLikeState() {
-	    var likeData = {
-	      postId: this.props.id,
-	      userId: localStorage.getItem('userid'),
-	      email: _LoginStore2.default.getEmail(),
-	      firstName: _LoginStore2.default.getFirstname()
-	    };
-
-	    if (this.state.liked) {
-	      this.setState({ liked: !this.state.liked });
-	      _ActivityfeedAction2.default.like(likeData);
-	      _getLikedCount();
-	    } else {
-	      this.setState({ liked: !this.state.liked });
-	      _ActivityfeedAction2.default.unlike(likeData);
-	      _getLikedCount();
-	    }
-	  },
-
-	  _loadMoreComments: function _loadMoreComments() {
-	    var commentData = {
-	      postId: this.props.id
-	    };
-	    _ActivityfeedAction2.default.loadMoreComment(commentData);
-	  },
-
-	  handleOpen: function handleOpen() {
-	    this.setState({ opens: true });
-	  },
-
-	  handleOpenShare: function handleOpenShare() {
-	    this.setState({ open1: true });
-	  },
-
-	  handleOpenDelete: function handleOpenDelete() {
-	    this.setState({ open3: true });
-	  },
-
-	  handleOpenBlock: function handleOpenBlock() {
-	    this.setState({ open5: true });
-	  },
-
-	  handleClose: function handleClose() {
-	    this.setState({ opens: false });
-	    this.setState({ open3: false });
-	    this.setState({ open4: false });
-	    this.setState({ open5: false });
-	  },
-
-	  setFocusToTextBox: function setFocusToTextBox() {
-	    document.getElementById(this.props.id).focus();
-	  },
-
-	  EnterKey: function EnterKey(e) {
-	    if (e.key === 'Enter') {
-	      var val = true;
-	      var comment = this.refs.commentBox.getValue();
-	      var commentData = {
-	        postId: this.props.id,
-	        userId: localStorage.getItem('userid'),
-	        comment: comment,
-	        email: _LoginStore2.default.getEmail(),
-	        firstName: _LoginStore2.default.getFirstname()
-	      };
-
-	      if (validateCommentText(comment).error) {
-	        this.setState({
-	          commentText: validateCommentText(comment).error
-	        });
-	        val = false;
-	      } else {
-	        _ActivityfeedAction2.default.addComment(commentData);
-	        this.setState({
-	          commentText: ''
-	        });
-	      }
-	      this.clearText();
-	    }
-	  },
-
-	  clearText: function clearText() {
-	    var commentBoxId = this.props.id;
-	    document.getElementById(commentBoxId).value = "";
-	  },
-
-	  render: function render() {
-
-	    var confirmBlockActions = [_react2.default.createElement(_flatButton2.default, {
-	      label: 'Block',
-	      primary: true,
-	      keyboardFocused: true,
-	      onTouchTap: this._blockedStatus }), _react2.default.createElement(_flatButton2.default, {
-	      label: 'Cansel',
-	      secondary: true,
-	      onTouchTap: this.handleClose })];
-
-	    var shareActions = [_react2.default.createElement(_flatButton2.default, {
-	      label: 'Post',
-	      primary: true,
-	      keyboardFocused: true,
-	      onTouchTap: this._changeShareState }), _react2.default.createElement(_flatButton2.default, {
-	      label: 'Close',
-	      secondary: true,
-	      onTouchTap: this.handleClose })];
-
-	    var confirmShareActions = [_react2.default.createElement(_flatButton2.default, {
-	      label: 'Ok',
-	      secondary: true,
-	      onTouchTap: this.handleClose })];
-
-	    return _react2.default.createElement(
-	      'div',
-	      { style: style1 },
-	      _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          _card2.default,
-	          null,
-	          _react2.default.createElement(_listItem2.default, {
-	            leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg' }),
-	            primaryText: this.props.firstName,
-	            secondaryText: _react2.default.createElement(
-	              'p',
-	              null,
-	              _react2.default.createElement(
-	                'b',
-	                null,
-	                this.props.created_at
-	              )
-	            ),
-	            secondaryTextLines: 1,
-	            rightIconButton: _react2.default.createElement(
-	              _iconMenu2.default,
-	              { iconButtonElement: iconButtonElement },
-	              _react2.default.createElement(_menuItem2.default, { primaryText: 'Block', onClick: this.handleOpenBlock })
-	            ) }),
-	          _react2.default.createElement(
-	            _cardText2.default,
-	            null,
-	            this.props.postText
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            null,
-	            this.props.attachment != 'None' ? _react2.default.createElement(
-	              'div',
-	              null,
-	              _react2.default.createElement(
-	                _cardMedia2.default,
-	                null,
-	                _react2.default.createElement('img', { src: 'img/activityFeedPics/' + this.props.attachment })
-	              )
-	            ) : ''
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            null,
-	            this._getSharedItem()
-	          ),
-	          _react2.default.createElement(
-	            _iconButton2.default,
-	            { onClick: this._changeLikeState, tooltip: !this.state.liked ? "Unlike" : "Like", touch: true, tooltipPosition: 'bottom-right' },
-	            !this.state.liked ? _react2.default.createElement(_favorite2.default, { onClick: this._changeLikeState, viewBox: '0 0 20 30', color: _colors2.default.red500 }) : _react2.default.createElement(_favoriteBorder2.default, { viewBox: '0 0 20 30', color: _colors2.default.red500 })
-	          ),
-	          _react2.default.createElement(_flatButton2.default, { label: 'Comment', onClick: this.setFocusToTextBox }),
-	          _react2.default.createElement(_flatButton2.default, { label: 'Share', onClick: this.handleOpenShare }),
-	          ' />'
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          null,
-	          this._getLikedCount()
-	        ),
-	        _react2.default.createElement(
-	          _dialog2.default,
-	          {
-	            title: 'Block Post',
-	            actions: confirmBlockActions,
-	            modal: false,
-	            open: this.state.open5,
-	            onRequestClose: this.handleClose },
-	          'Are you sure you want to block this post?"'
-	        ),
-	        _react2.default.createElement(
-	          _dialog2.default,
-	          {
-	            title: this.props.firstName + "'s post Share on your own Activityfeed",
-	            actions: shareActions,
-	            modal: false,
-	            open: this.state.open1,
-	            onRequestClose: this.handleClose },
-	          _react2.default.createElement(_textField2.default, { hintText: 'Say something about this...', multiLine: false, fullWidth: true, ref: 'shareBox' })
-	        ),
-	        _react2.default.createElement(
-	          _dialog2.default,
-	          {
-	            title: 'Share Post',
-	            actions: confirmShareActions,
-	            modal: false,
-	            open: this.state.open4,
-	            onRequestClose: this.handleClose },
-	          '"This has been shared to your Timeline."'
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          _card2.default,
-	          { style: style2 },
-	          _react2.default.createElement(_flatButton2.default, { label: 'load more comments', onClick: this._loadMoreComments })
-	        ),
-	        this._getCommentList()
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          _card2.default,
-	          { style: style2 },
-	          _react2.default.createElement(
-	            _paper2.default,
-	            { zDepth: 1 },
-	            _react2.default.createElement('div', { className: 'col-md-10' }),
-	            _react2.default.createElement(_textField2.default, { style: style3, className: 'col-md-2', fullWidth: true, hintText: 'Write a comment...', multiLine: false, onKeyPress: this.EnterKey, errorText: this.state.commentText, ref: 'commentBox', id: this.props.id })
-	          )
-	        )
-	      )
-	    );
-	  }
-	});
-
-	exports.default = ActivityList;
-
-/***/ },
-/* 596 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _card = __webpack_require__(322);
-
-	var _card2 = _interopRequireDefault(_card);
-
-	var _listItem = __webpack_require__(295);
-
-	var _listItem2 = _interopRequireDefault(_listItem);
-
-	var _list = __webpack_require__(293);
-
-	var _list2 = _interopRequireDefault(_list);
-
-	var _divider = __webpack_require__(299);
-
-	var _divider2 = _interopRequireDefault(_divider);
-
-	var _avatar = __webpack_require__(292);
-
-	var _avatar2 = _interopRequireDefault(_avatar);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var Comment = _react2.default.createClass({
-	    displayName: 'Comment',
-
-	    render: function render() {
-	        return _react2.default.createElement(
-	            'div',
-	            null,
-	            _react2.default.createElement(
-	                _card2.default,
-	                null,
-	                _react2.default.createElement(_listItem2.default, {
-	                    leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg' }),
-	                    primaryText: this.props.cfirstName,
-	                    secondaryText: _react2.default.createElement(
-	                        'p',
-	                        null,
-	                        this.props.comment_txt
-	                    ),
-	                    secondaryTextLines: 1 }),
-	                _react2.default.createElement(_divider2.default, { inset: true })
-	            )
-	        );
-	    }
-	});
-
-	exports.default = Comment;
-
-/***/ },
-/* 597 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _card = __webpack_require__(322);
-
-	var _card2 = _interopRequireDefault(_card);
-
-	var _cardMedia = __webpack_require__(472);
-
-	var _cardMedia2 = _interopRequireDefault(_cardMedia);
-
-	var _cardText = __webpack_require__(321);
-
-	var _cardText2 = _interopRequireDefault(_cardText);
-
-	var _listItem = __webpack_require__(295);
-
-	var _listItem2 = _interopRequireDefault(_listItem);
-
-	var _divider = __webpack_require__(299);
-
-	var _divider2 = _interopRequireDefault(_divider);
-
-	var _avatar = __webpack_require__(292);
-
-	var _avatar2 = _interopRequireDefault(_avatar);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var style1 = {
-	    width: 700,
-	    margin: 40
-	};
-
-	var ActivitySharedList = _react2.default.createClass({
-	    displayName: 'ActivitySharedList',
-
-	    render: function render() {
-	        return _react2.default.createElement(
-	            'div',
-	            { style: style1 },
-	            _react2.default.createElement(
-	                'div',
-	                null,
-	                _react2.default.createElement(
-	                    _card2.default,
-	                    null,
-	                    _react2.default.createElement(_listItem2.default, {
-	                        leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg' }),
-	                        primaryText: this.props.sfirstname,
-	                        secondaryText: _react2.default.createElement(
-	                            'p',
-	                            null,
-	                            _react2.default.createElement(
-	                                'b',
-	                                null,
-	                                this.props.screated_at
-	                            )
-	                        ),
-	                        secondaryTextLines: 1 }),
-	                    _react2.default.createElement(
-	                        _cardText2.default,
-	                        null,
-	                        this.props.spost_text
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        null,
-	                        this.props.sattachment != 'None' ? _react2.default.createElement(
-	                            'div',
-	                            null,
-	                            _react2.default.createElement(
-	                                _cardMedia2.default,
-	                                null,
-	                                _react2.default.createElement('img', { src: 'img/activityFeedPics/' + this.props.sattachment })
-	                            )
-	                        ) : ''
-	                    ),
-	                    _react2.default.createElement(_divider2.default, { inset: true })
-	                )
-	            )
-	        );
-	    }
-	});
-
-	exports.default = ActivitySharedList;
-
-/***/ },
-/* 598 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _card = __webpack_require__(322);
-
-	var _card2 = _interopRequireDefault(_card);
-
-	var _flatButton = __webpack_require__(327);
-
-	var _flatButton2 = _interopRequireDefault(_flatButton);
-
-	var _paper = __webpack_require__(294);
-
-	var _paper2 = _interopRequireDefault(_paper);
-
-	var _dialog = __webpack_require__(326);
-
-	var _dialog2 = _interopRequireDefault(_dialog);
-
-	var _listItem = __webpack_require__(295);
-
-	var _listItem2 = _interopRequireDefault(_listItem);
-
-	var _divider = __webpack_require__(299);
-
-	var _divider2 = _interopRequireDefault(_divider);
-
-	var _avatar = __webpack_require__(292);
-
-	var _avatar2 = _interopRequireDefault(_avatar);
-
-	var _colors = __webpack_require__(220);
-
-	var _colors2 = _interopRequireDefault(_colors);
-
-	var _raisedButton = __webpack_require__(377);
-
-	var _raisedButton2 = _interopRequireDefault(_raisedButton);
-
-	var _ActivityfeedAction = __webpack_require__(478);
-
-	var _ActivityfeedAction2 = _interopRequireDefault(_ActivityfeedAction);
-
-	var _LikeStatusStore = __webpack_require__(487);
-
-	var _LikeStatusStore2 = _interopRequireDefault(_LikeStatusStore);
-
-	var _StatusStore = __webpack_require__(482);
-
-	var _StatusStore2 = _interopRequireDefault(_StatusStore);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var style2 = {
-	  width: 800
-	};
-
-	var firstname;
-	var sfirstname;
-
-	var CountBox = _react2.default.createClass({
-	  displayName: 'CountBox',
-
-	  getInitialState: function getInitialState() {
-	    return {
-	      likedUsers: _LikeStatusStore2.default.getLikedUsers(),
-	      sharedUsers: _StatusStore2.default.getSharedUsers(),
-	      open: false,
-	      firstname: '',
-	      sfirstname: ''
-	    };
-	  },
-
-	  componentDidMount: function componentDidMount() {
-	    _LikeStatusStore2.default.addChangeListener(this._onChange);
-
-	    var likeData = {
-	      postId: this.props.post_id
-	    };
-	    _ActivityfeedAction2.default.getLikedUsers(likeData);
-
-	    var shareData = {
-	      postId: this.props.post_id
-	    };
-	    _ActivityfeedAction2.default.getSharedUsers(shareData);
-	  },
-
-	  _onChange: function _onChange() {
-	    this.setState({ likedUsers: _LikeStatusStore2.default.getLikedUsers() });
-	    this.setState({ sharedUsers: _StatusStore2.default.getSharedUsers() });
-	  },
-
-	  handleClose: function handleClose() {
-	    this.setState({ open: false });
-	    this.setState({ open2: false });
-	  },
-
-	  _getLikedUsers: function _getLikedUsers() {
-	    this.setState({ open: true });
-
-	    var self = this;
-	    return this.state.likedUsers.map(function (likes) {
-	      return likes.map(function (result) {
-	        if (self.props.post_id == result.post_id) {
-	          firstname = result.firstname;
-	          alert(firstname);
-	          self.setState({
-	            firstname: firstname
-	          });
-	        }
-	      });
-	    });
-	  },
-
-	  _getSharedUsers: function _getSharedUsers() {
-	    this.setState({ open2: true });
-	    this.setState({ sharedUsers: _StatusStore2.default.getSharedUsers() });
-	    var self = this;
-	    return this.state.sharedUsers.map(function (shares) {
-	      return shares.map(function (result) {
-	        if (self.props.post_id == result.post_id) {
-	          firstname = result.firstname;
-	          alert(firstname);
-	          self.setState({
-	            sfirstname: firstname
-	          });
-	        }
-	      });
-	    });
-	  },
-
-	  render: function render() {
-	    var likeActions = [_react2.default.createElement(_flatButton2.default, {
-	      label: 'Close',
-	      secondary: true,
-	      onTouchTap: this.handleClose })];
-
-	    var sharedActions = [_react2.default.createElement(_flatButton2.default, {
-	      label: 'Close',
-	      secondary: true,
-	      onTouchTap: this.handleClose })];
-
-	    return _react2.default.createElement(
-	      'div',
-	      null,
-	      _react2.default.createElement(
-	        _card2.default,
-	        { style: style2 },
-	        _react2.default.createElement(
-	          _paper2.default,
-	          { zDepth: 1 },
-	          _react2.default.createElement(_flatButton2.default, { label: this.props.likedCount + " Likes", onClick: this._getLikedUsers }),
-	          _react2.default.createElement(_flatButton2.default, { label: this.props.shareCount + " Shares", onClick: this._getSharedUsers })
-	        )
-	      ),
-	      _react2.default.createElement(
-	        _dialog2.default,
-	        {
-	          autoDetectWindowHeight: false,
-	          title: 'Liked Users',
-	          actions: likeActions,
-	          modal: true,
-	          open: this.state.open },
-	        _react2.default.createElement(_listItem2.default, {
-	          leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg' }),
-	          primaryText: this.state.firstname }),
-	        _react2.default.createElement(_divider2.default, { inset: true })
-	      ),
-	      _react2.default.createElement(
-	        _dialog2.default,
-	        {
-	          autoDetectWindowHeight: false,
-	          title: 'Shared Users',
-	          actions: sharedActions,
-	          modal: true,
-	          open: this.state.open2 },
-	        _react2.default.createElement(_listItem2.default, {
-	          leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg' }),
-	          primaryText: this.state.sfirstname }),
-	        _react2.default.createElement(_divider2.default, { inset: true })
-	      )
-	    );
-	  }
-	});
-
-	exports.default = CountBox;
-
-/***/ },
-/* 599 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _divider = __webpack_require__(299);
-
-	var _divider2 = _interopRequireDefault(_divider);
-
-	var _avatar = __webpack_require__(292);
-
-	var _avatar2 = _interopRequireDefault(_avatar);
-
-	var _paper = __webpack_require__(294);
-
-	var _paper2 = _interopRequireDefault(_paper);
-
-	var _gridList = __webpack_require__(365);
-
-	var _gridList2 = _interopRequireDefault(_gridList);
-
-	var _gridTile = __webpack_require__(366);
-
-	var _gridTile2 = _interopRequireDefault(_gridTile);
-
-	var _iconButton = __webpack_require__(264);
-
-	var _iconButton2 = _interopRequireDefault(_iconButton);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var styles = {
-	  root: {
-	    marginRight: "40"
-	  },
-	  gridList: {
-	    width: 500,
-	    height: 225
-	  }
-	};
-
-	var Photo = _react2.default.createClass({
-	  displayName: 'Photo',
-
-	  render: function render() {
-	    return _react2.default.createElement(
-	      'div',
-	      null,
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'col-lg-3', style: styles.root },
-	        _react2.default.createElement(
-	          _gridList2.default,
-	          {
-	            cellHeight: 200,
-	            style: styles.gridList
-	          },
-	          _react2.default.createElement(
-	            _gridTile2.default,
-	            {
-	              key: this.props.path
-	            },
-	            _react2.default.createElement('img', { src: 'img/activityFeedPics/' + this.props.path })
-	          )
-	        )
-	      )
-	    );
-	  }
-	});
-
-	exports.default = Photo;
-
-/***/ },
-/* 600 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _card = __webpack_require__(322);
-
-	var _card2 = _interopRequireDefault(_card);
-
-	var _textField = __webpack_require__(336);
-
-	var _textField2 = _interopRequireDefault(_textField);
-
-	var _paper = __webpack_require__(294);
-
-	var _paper2 = _interopRequireDefault(_paper);
-
-	var _flatButton = __webpack_require__(327);
-
-	var _flatButton2 = _interopRequireDefault(_flatButton);
-
-	var _fontIcon = __webpack_require__(287);
-
-	var _fontIcon2 = _interopRequireDefault(_fontIcon);
-
-	var _android = __webpack_require__(477);
-
-	var _android2 = _interopRequireDefault(_android);
-
-	var _ActivityfeedAction = __webpack_require__(478);
-
-	var _ActivityfeedAction2 = _interopRequireDefault(_ActivityfeedAction);
-
-	var _LoginStore = __webpack_require__(317);
-
-	var _LoginStore2 = _interopRequireDefault(_LoginStore);
-
-	var _StatusStore = __webpack_require__(482);
-
-	var _StatusStore2 = _interopRequireDefault(_StatusStore);
-
-	var _raisedButton = __webpack_require__(377);
-
-	var _raisedButton2 = _interopRequireDefault(_raisedButton);
-
-	var _reactDropzone = __webpack_require__(420);
-
-	var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
-
-	var _gridTile = __webpack_require__(366);
-
-	var _gridTile2 = _interopRequireDefault(_gridTile);
-
-	var _gridList = __webpack_require__(365);
-
-	var _gridList2 = _interopRequireDefault(_gridList);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var style = {
-	  width: 800,
-	  marginLeft: 40,
-	  position: 'relative'
-
-	};
-
-	var style1 = {
-	  width: 760,
-	  position: 'relative'
-	};
-
-	var cardStyle = {
-	  width: 800,
-	  height: 200,
-	  marginLeft: 40,
-	  position: 'relative'
-	};
-
-	var previewStyle = {
-	  width: 196
-	};
-
-	var buttonStyle = {
-	  marginTop: 22,
-	  width: 200
-	};
-
-	function validateStatusText(textStatus) {
-	  if (textStatus.length > 250) {
-	    return {
-	      "error": "*status is too long"
-	    };
-	  } else if (textStatus === "") {
-	    return {
-	      "error": "*status cannot be empty"
-	    };
-	  } else {
-	    return true;
-	  }
-	};
-
-	var StatusBox = _react2.default.createClass({
-	  displayName: 'StatusBox',
-
-	  getInitialState: function getInitialState() {
-	    return {
-	      statusText: '',
-	      editingPic: false,
-	      preview: '',
-	      files: {}
-	    };
-	  },
-
-	  _editProfilePic: function _editProfilePic() {
-	    this.setState({
-	      editingPic: !this.state.editingPic
-	    });
-	  },
-
-	  onDrop: function onDrop(files) {
-	    console.log(files);
-	    this.setState({
-	      files: files,
-	      preview: files[0].preview
-	    });
-	  },
-
-	  _cancelEdit: function _cancelEdit() {
-	    this.setState({
-	      editingPic: false,
-	      preview: '',
-	      files: ''
-	    });
-	  },
-
-	  renderSave: function renderSave() {
-	    return this.state.preview ? _react2.default.createElement(
-	      'div',
-	      null,
-	      _react2.default.createElement(_raisedButton2.default, { label: 'Cancel', onClick: this._cancelEdit, style: buttonStyle })
-	    ) : '';
-	  },
-
-	  _showUpload: function _showUpload() {
-	    this.setState({
-	      mouseover: true
-	    });
-	  },
-
-	  _hideUpload: function _hideUpload() {
-	    this.setState({
-	      mouseover: false
-	    });
-	  },
-
-	  addStatus: function addStatus() {
-	    var val = true;
-	    var status = this.refs.statusBox.getValue();
-
-	    if (validateStatusText(status).error) {
-	      this.setState({
-	        statusText: validateStatusText(status).error
-	      });
-	      val = false;
-	    } else {
-
-	      if (this.state.editingPic) {
-	        var fd = new FormData();
-	        var self = this;
-	        var token = Math.random();
-	        fd.append('file', this.state.files[0]);
-	        fd.append('email', localStorage.getItem('email'));
-	        fd.append('userId', localStorage.getItem('userid'));
-	        fd.append('firstName', _LoginStore2.default.getFirstname());
-	        fd.append('status', status);
-	        fd.append('token', token);
-	        $.ajax({
-	          type: 'POST',
-	          url: '/api/imageStatus',
-	          data: fd,
-	          contentType: false,
-	          processData: false,
-	          success: function success(data) {
-	            console.log("success");
-	            console.log(data);
-
-	            _ActivityfeedAction2.default._getStatus(11);
-	            location.reload();
-	          },
-	          error: function error(data) {
-	            console.log("error");
-	            console.log(data);
-	          }
-	        });
-	        {
-	          this._cancelEdit;
-	        }
-	      } else {
-	        var statusData = {
-	          email: _LoginStore2.default.getEmail(),
-	          userId: localStorage.getItem('userid'),
-	          firstName: _LoginStore2.default.getFirstname(),
-	          status: status
-	        };
-	        _ActivityfeedAction2.default._addStatus(statusData);
-	      }
-
-	      this.setState({
-	        statusText: ''
-	      });
-	    }
-	    this.clearText();
-	  },
-
-	  clearText: function clearText() {
-	    document.getElementById('txtStatus').value = "";
-	  },
-
-	  /**
-	   * @return {object}
-	   */
-	  render: function render() {
-	    return _react2.default.createElement(
-	      'div',
-	      null,
-	      _react2.default.createElement(
-	        _card2.default,
-	        { style: style },
-	        _react2.default.createElement(
-	          _paper2.default,
-	          { zDepth: 1 },
-	          _react2.default.createElement('div', { className: 'col-md-10' }),
-	          _react2.default.createElement(_textField2.default, { style: style1, className: 'col-md-2', fullWidth: true, hintText: 'What\'s new with you? ', multiLine: true, errorText: this.state.statusText, ref: 'statusBox', id: 'txtStatus' }),
-	          _react2.default.createElement(
-	            'div',
-	            null,
-	            this.state.editingPic ? _react2.default.createElement(
-	              _card2.default,
-	              { style: cardStyle },
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'col-sm-3 col-md-3 col-lg-3' },
-	                _react2.default.createElement(
-	                  _reactDropzone2.default,
-	                  { onDrop: this.onDrop, multiple: false, accept: 'image/*' },
-	                  _react2.default.createElement(
-	                    'div',
-	                    null,
-	                    'Try dropping some images here, or click to select images to upload.'
-	                  ),
-	                  _react2.default.createElement('img', { style: previewStyle, src: this.state.preview })
-	                ),
-	                this.renderSave()
-	              )
-	            ) : ''
-	          ),
-	          _react2.default.createElement(_flatButton2.default, { className: 'col-md-1', label: 'Photos', onClick: this._editProfilePic }),
-	          _react2.default.createElement('div', { className: 'col-md-9' }),
-	          _react2.default.createElement(_flatButton2.default, { className: 'col-md-1', label: 'Post', rippleColor: '#2196F3', onClick: this.addStatus })
-	        )
-	      )
-	    );
-	  }
-	});
-
-	exports.default = StatusBox;
-
-/***/ },
-/* 601 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _card = __webpack_require__(322);
-
-	var _card2 = _interopRequireDefault(_card);
-
-	var _listItem = __webpack_require__(295);
-
-	var _listItem2 = _interopRequireDefault(_listItem);
-
-	var _list = __webpack_require__(293);
-
-	var _list2 = _interopRequireDefault(_list);
-
-	var _divider = __webpack_require__(299);
-
-	var _divider2 = _interopRequireDefault(_divider);
-
-	var _avatar = __webpack_require__(292);
-
-	var _avatar2 = _interopRequireDefault(_avatar);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var Comment = _react2.default.createClass({
-	    displayName: 'Comment',
-
-	    render: function render() {
-	        return _react2.default.createElement(
-	            'div',
-	            null,
-	            _react2.default.createElement(
-	                _card2.default,
-	                null,
-	                _react2.default.createElement(_listItem2.default, {
-	                    leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg' }),
-	                    primaryText: this.props.cfirstName,
-	                    secondaryText: _react2.default.createElement(
-	                        'p',
-	                        null,
-	                        this.props.comment_txt
-	                    ),
-	                    secondaryTextLines: 1 }),
-	                _react2.default.createElement(_divider2.default, { inset: true })
-	            )
-	        );
-	    }
-	});
-
-	exports.default = Comment;
-
-/***/ },
-/* 602 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _card = __webpack_require__(322);
-
-	var _card2 = _interopRequireDefault(_card);
-
-	var _cardMedia = __webpack_require__(472);
-
-	var _cardMedia2 = _interopRequireDefault(_cardMedia);
-
-	var _cardText = __webpack_require__(321);
-
-	var _cardText2 = _interopRequireDefault(_cardText);
-
-	var _listItem = __webpack_require__(295);
-
-	var _listItem2 = _interopRequireDefault(_listItem);
-
-	var _divider = __webpack_require__(299);
-
-	var _divider2 = _interopRequireDefault(_divider);
-
-	var _avatar = __webpack_require__(292);
-
-	var _avatar2 = _interopRequireDefault(_avatar);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var style1 = {
-	    width: 700,
-	    margin: 40
-	};
-
-	var ActivitySharedList = _react2.default.createClass({
-	    displayName: 'ActivitySharedList',
-
-	    render: function render() {
-	        return _react2.default.createElement(
-	            'div',
-	            { style: style1 },
-	            _react2.default.createElement(
-	                'div',
-	                null,
-	                _react2.default.createElement(
-	                    _card2.default,
-	                    null,
-	                    _react2.default.createElement(_listItem2.default, {
-	                        leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg' }),
-	                        primaryText: this.props.sfirstname,
-	                        secondaryText: _react2.default.createElement(
-	                            'p',
-	                            null,
-	                            _react2.default.createElement(
-	                                'b',
-	                                null,
-	                                this.props.screated_at
-	                            )
-	                        ),
-	                        secondaryTextLines: 1 }),
-	                    _react2.default.createElement(
-	                        _cardText2.default,
-	                        null,
-	                        this.props.spost_text
-	                    ),
-	                    _react2.default.createElement(
-	                        'div',
-	                        null,
-	                        this.props.sattachment != 'None' ? _react2.default.createElement(
-	                            'div',
-	                            null,
-	                            _react2.default.createElement(
-	                                _cardMedia2.default,
-	                                null,
-	                                _react2.default.createElement('img', { src: 'img/activityFeedPics/' + this.props.sattachment })
-	                            )
-	                        ) : ''
-	                    ),
-	                    _react2.default.createElement(_divider2.default, { inset: true })
-	                )
-	            )
-	        );
-	    }
-	});
-
-	exports.default = ActivitySharedList;
-
-/***/ },
-/* 603 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _card = __webpack_require__(322);
-
-	var _card2 = _interopRequireDefault(_card);
-
-	var _flatButton = __webpack_require__(327);
-
-	var _flatButton2 = _interopRequireDefault(_flatButton);
-
-	var _paper = __webpack_require__(294);
-
-	var _paper2 = _interopRequireDefault(_paper);
-
-	var _dialog = __webpack_require__(326);
-
-	var _dialog2 = _interopRequireDefault(_dialog);
-
-	var _listItem = __webpack_require__(295);
-
-	var _listItem2 = _interopRequireDefault(_listItem);
-
-	var _divider = __webpack_require__(299);
-
-	var _divider2 = _interopRequireDefault(_divider);
-
-	var _avatar = __webpack_require__(292);
-
-	var _avatar2 = _interopRequireDefault(_avatar);
-
-	var _colors = __webpack_require__(220);
-
-	var _colors2 = _interopRequireDefault(_colors);
-
-	var _raisedButton = __webpack_require__(377);
-
-	var _raisedButton2 = _interopRequireDefault(_raisedButton);
-
-	var _ActivityfeedAction = __webpack_require__(478);
-
-	var _ActivityfeedAction2 = _interopRequireDefault(_ActivityfeedAction);
-
-	var _LikeStatusStore = __webpack_require__(487);
-
-	var _LikeStatusStore2 = _interopRequireDefault(_LikeStatusStore);
-
-	var _StatusStore = __webpack_require__(482);
-
-	var _StatusStore2 = _interopRequireDefault(_StatusStore);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var style2 = {
-	  width: 800
-	};
-
-	var firstname;
-	var sfirstname;
-
-	var CountBox = _react2.default.createClass({
-	  displayName: 'CountBox',
-
-	  getInitialState: function getInitialState() {
-	    return {
-	      likedUsers: _LikeStatusStore2.default.getLikedUsers(),
-	      sharedUsers: _StatusStore2.default.getSharedUsers(),
-	      open: false,
-	      firstname: '',
-	      sfirstname: ''
-	    };
-	  },
-
-	  componentDidMount: function componentDidMount() {
-	    _LikeStatusStore2.default.addChangeListener(this._onChange);
-
-	    var likeData = {
-	      postId: this.props.post_id
-	    };
-	    _ActivityfeedAction2.default.getLikedUsers(likeData);
-
-	    var shareData = {
-	      postId: this.props.post_id
-	    };
-	    _ActivityfeedAction2.default.getSharedUsers(shareData);
-	  },
-
-	  _onChange: function _onChange() {
-	    this.setState({ likedUsers: _LikeStatusStore2.default.getLikedUsers() });
-	    this.setState({ sharedUsers: _StatusStore2.default.getSharedUsers() });
-	  },
-
-	  handleClose: function handleClose() {
-	    this.setState({ open: false });
-	    this.setState({ open2: false });
-	  },
-
-	  _getLikedUsers: function _getLikedUsers() {
-	    this.setState({ open: true });
-
-	    var self = this;
-	    return this.state.likedUsers.map(function (likes) {
-	      return likes.map(function (result) {
-	        if (self.props.post_id == result.post_id) {
-	          firstname = result.firstname;
-	          alert(firstname);
-	          self.setState({
-	            firstname: firstname
-	          });
-	        }
-	      });
-	    });
-	  },
-
-	  _getSharedUsers: function _getSharedUsers() {
-	    this.setState({ open2: true });
-	    this.setState({ sharedUsers: _StatusStore2.default.getSharedUsers() });
-	    var self = this;
-	    return this.state.sharedUsers.map(function (shares) {
-	      return shares.map(function (result) {
-	        if (self.props.post_id == result.post_id) {
-	          firstname = result.firstname;
-	          alert(firstname);
-	          self.setState({
-	            sfirstname: firstname
-	          });
-	        }
-	      });
-	    });
-	  },
-
-	  render: function render() {
-	    var likeActions = [_react2.default.createElement(_flatButton2.default, {
-	      label: 'Close',
-	      secondary: true,
-	      onTouchTap: this.handleClose })];
-
-	    var sharedActions = [_react2.default.createElement(_flatButton2.default, {
-	      label: 'Close',
-	      secondary: true,
-	      onTouchTap: this.handleClose })];
-
-	    return _react2.default.createElement(
-	      'div',
-	      null,
-	      _react2.default.createElement(
-	        _card2.default,
-	        { style: style2 },
-	        _react2.default.createElement(
-	          _paper2.default,
-	          { zDepth: 1 },
-	          _react2.default.createElement(_flatButton2.default, { label: this.props.likedCount + " Likes", onClick: this._getLikedUsers }),
-	          _react2.default.createElement(_flatButton2.default, { label: this.props.shareCount + " Shares", onClick: this._getSharedUsers })
-	        )
-	      ),
-	      _react2.default.createElement(
-	        _dialog2.default,
-	        {
-	          autoDetectWindowHeight: false,
-	          title: 'Liked Users',
-	          actions: likeActions,
-	          modal: true,
-	          open: this.state.open },
-	        _react2.default.createElement(_listItem2.default, {
-	          leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg' }),
-	          primaryText: this.state.firstname }),
-	        _react2.default.createElement(_divider2.default, { inset: true })
-	      ),
-	      _react2.default.createElement(
-	        _dialog2.default,
-	        {
-	          autoDetectWindowHeight: false,
-	          title: 'Shared Users',
-	          actions: sharedActions,
-	          modal: true,
-	          open: this.state.open2 },
-	        _react2.default.createElement(_listItem2.default, {
-	          leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg' }),
-	          primaryText: this.state.sfirstname }),
-	        _react2.default.createElement(_divider2.default, { inset: true })
-	      )
-	    );
-	  }
-	});
-
-	exports.default = CountBox;
 
 /***/ }
 /******/ ]);

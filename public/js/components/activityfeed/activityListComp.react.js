@@ -188,7 +188,8 @@ const ActivityList = React.createClass({
     let shareStatus = this.refs.shareBox.getValue();
     let shareData = {
       email: LoginStore.getEmail(),
-      userId: localStorage.getItem('userid'),  
+      userId: localStorage.getItem('userid'), 
+      userName: localStorage.getItem('username'),
       firstName: LoginStore.getFirstname(),
       postId: this.props.id,
       status: shareStatus,
@@ -208,6 +209,7 @@ const ActivityList = React.createClass({
       userId: localStorage.getItem('userid'), 
       email: LoginStore.getEmail(),
       firstName: LoginStore.getFirstname(),
+      userName: localStorage.getItem('username'),
     };
 
     if (this.state.liked) {
@@ -266,6 +268,7 @@ const ActivityList = React.createClass({
         comment: comment,
         email: LoginStore.getEmail(),
         firstName: LoginStore.getFirstname(),
+        userName: localStorage.getItem('username'),
       };
              
       if(validateCommentText(comment).error) {

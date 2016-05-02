@@ -26,6 +26,7 @@ class ActivityFeedController extends Controller
             $post->email = $request->email;
             $post->userId = $request->userId;
             $post->firstname = $request->firstName;
+            $post->username = $request->userName;
             $post->post_text = $request->status;
             if ($posts = $post->save()) {
                 return response()->json(['posts' => $posts, 'status' => 201], 201);
@@ -67,6 +68,7 @@ class ActivityFeedController extends Controller
             $post->email = $request->email;
             $post->userId = $request->userId;
             $post->firstname = $request->firstName;
+            $post->username = $request->userName;
             $post->type = 'shared';
             $post->post_id = $request->postId;
             $post->post_text = $request->status;

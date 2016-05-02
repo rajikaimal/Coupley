@@ -24,6 +24,7 @@ class LikeController extends Controller
             $like->UserId = $request->userId;
             $like->email = $request->email;
             $like->firstname = $request->firstName;
+            $like->username = $request->userName;
             if ($like->save()) {
                 return response()->json(['status' => 201], 201);
             } else {

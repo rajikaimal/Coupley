@@ -18,6 +18,7 @@ class StatusFeedComments extends Migration
             $table->integer('UserId');
             $table->string('email');
             $table->string('firstname');
+            $table->string('username');
             $table->string('comment_txt');
             $table->timestamps();
             });

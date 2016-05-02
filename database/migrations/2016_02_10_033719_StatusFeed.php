@@ -17,6 +17,7 @@ class StatusFeed extends Migration
             $table->string('email');
             $table->integer('userId');
             $table->string('firstname');
+            $table->string('username');
             $table->string('type')->default('posted');
             $table->integer('post_id')->default('0');
             $table->string('post_text');
