@@ -252,6 +252,9 @@ Route::group(['prefix' => 'admin-api'], function () {
     //unblock certain user
     Route::post('unblockuser', 'UsersController@Unblock');
 
+    //Return userslist for search
+    Route::get('searches', 'AdminSearchController@search');
+
     //Register new admins with RegisterConroller@register
     Route::post('registerAdmin', 'AdminRegisterController@checks');
     //Update admins
