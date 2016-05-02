@@ -95,7 +95,7 @@ const Register = React.createClass({
     ProfileStore.addChangeListener(this._onChange);
   },
   _onChange: function() {
-    var data = ProfileStore.getAll();
+    var data = ProfileStore.getUserData();
     var gender;
     if(data.gender == "male") {
       gender = 1;
@@ -122,6 +122,7 @@ const Register = React.createClass({
       orientation: orientation,
       birthday: data.birthday,
     });
+    alert(this.state.email);
   },
   _handleSubmitEvent: function() {
     //let username = this.refs.username.getValue();

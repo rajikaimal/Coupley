@@ -76,20 +76,23 @@ var ProfileStore = assign({}, EventEmitter.prototype, {
     // }
     if(temp != undefined ) {
     
-    return {
-      firstname: temp.firstname,
-      lastname: temp.lastname,
-      country: temp.country,
-      username: temp.username,
-      age: temp.age,
-      birthday: temp.birthday,
-    };  
+      return {
+        firstname: temp.firstname,
+        lastname: temp.lastname,
+        country: temp.country,
+        username: temp.username,
+        orientation: temp.orientation,
+        age: temp.age,
+        birthday: temp.birthday,
+      };  
     }
     return {};
     
   },
 
   getAll: function() {
+    console.
+    console.log(user[0])
     return user[0];
   },
 

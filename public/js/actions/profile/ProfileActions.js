@@ -3,7 +3,7 @@ var ProfileConstants = require('../../constants/ProfileConstants');
 
 var ProfileActions = {
   getProfileData: function (email) {
-
+    alert('getting data');
     $.get('/api/profile?token=' + localStorage.getItem('apitoken') + '&email=' + localStorage.getItem('email'), function (response) {
       if (response) {
         AppDispatcher.handleViewAction({
