@@ -130,4 +130,21 @@ class VisitorCountController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
+    public function deleteOtherVisitor(Request $request)
+    {
+        $vusername = $request->visitorusername;
+        $username = $request->username;
+
+        $posts = \DB::table('ProfileVisitor')->where('visusername', '=', $vusername)->where('prousername', '=', $username);
+        try {
+            if ($posts->delete()) {
+                return response()->json(['username' => $username, 'status' => 200], 200);
+            } else {
+                return response()->json(['status' => 505], 505);
+            }
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 200], 200);
+        }
+    }
 }
