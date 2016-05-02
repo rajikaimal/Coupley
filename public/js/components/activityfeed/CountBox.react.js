@@ -118,12 +118,25 @@ const CountBox = React.createClass({
 
         return (
             <div>
-                <Card style={style2}>
-                    <Paper zDepth={1}>
-                       <FlatButton label={this.props.likedCount + " Likes"} onClick={this._getLikedUsers}/>
-                       <FlatButton label={this.props.shareCount + " Shares"} onClick={this._getSharedUsers}/>
-                    </Paper>
-                </Card>
+                <div>
+                  {
+                    (this.props.likedCount) ? <div>
+                                                <Card style={style2}>
+                                                  <FlatButton label={this.props.likedCount + " Likes"} onClick={this._getLikedUsers}/>
+                                                </Card>
+                                              </div> : ''
+                  }
+                </div>
+
+                <div>
+                  {
+                    (this.props.shareCount) ? <div>
+                                                <Card style={style2}>
+                                                   <FlatButton label={this.props.shareCount + " Shares"} onClick={this._getSharedUsers}/>
+                                                </Card>
+                                              </div> : ''
+                  }
+                </div>
 
                 <div>
                   {
@@ -132,7 +145,7 @@ const CountBox = React.createClass({
                                                   <FlatButton label="load more comments" onClick={this._loadMoreComments} /> 
                                                   </Card>
                                               </div> : ''
-                }
+                  }
                 </div>
 
                 <Dialog
@@ -145,7 +158,11 @@ const CountBox = React.createClass({
                        <ListItem 
                         leftAvatar={<Avatar src={'img/profilepics/'+ this.state.username}/>}
                         primaryText={this.state.firstname} />
-                      <Divider inset={true} />  
+                      <Divider inset={true} /> 
+                      <ListItem 
+                        leftAvatar={<Avatar src={'img/profilepics/ryan'}/>}
+                        primaryText="Ryan" />
+                      <Divider inset={true} />   
                 </Dialog>
 
                 <Dialog

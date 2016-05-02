@@ -63547,14 +63547,30 @@
 	      'div',
 	      null,
 	      _react2.default.createElement(
-	        _card2.default,
-	        { style: style2 },
-	        _react2.default.createElement(
-	          _paper2.default,
-	          { zDepth: 1 },
-	          _react2.default.createElement(_flatButton2.default, { label: this.props.likedCount + " Likes", onClick: this._getLikedUsers }),
-	          _react2.default.createElement(_flatButton2.default, { label: this.props.shareCount + " Shares", onClick: this._getSharedUsers })
-	        )
+	        'div',
+	        null,
+	        this.props.likedCount ? _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            _card2.default,
+	            { style: style2 },
+	            _react2.default.createElement(_flatButton2.default, { label: this.props.likedCount + " Likes", onClick: this._getLikedUsers })
+	          )
+	        ) : ''
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        null,
+	        this.props.shareCount ? _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            _card2.default,
+	            { style: style2 },
+	            _react2.default.createElement(_flatButton2.default, { label: this.props.shareCount + " Shares", onClick: this._getSharedUsers })
+	          )
+	        ) : ''
 	      ),
 	      _react2.default.createElement(
 	        'div',
@@ -63580,6 +63596,10 @@
 	        _react2.default.createElement(_listItem2.default, {
 	          leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'img/profilepics/' + this.state.username }),
 	          primaryText: this.state.firstname }),
+	        _react2.default.createElement(_divider2.default, { inset: true }),
+	        _react2.default.createElement(_listItem2.default, {
+	          leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'img/profilepics/ryan' }),
+	          primaryText: 'Ryan' }),
 	        _react2.default.createElement(_divider2.default, { inset: true })
 	      ),
 	      _react2.default.createElement(
