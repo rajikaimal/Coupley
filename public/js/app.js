@@ -140,7 +140,7 @@ ReactDOM.render((
     <Route path="/Visits" component={Visits}/>
       <Route path="/search" component={Search} />
       <Route path="activity" component={MainActivity}/>
-        <Route path="trends" components={Trends}/>
+      <Route path="trends" components={Trends}/>
       <Route path="/likes" component={Likes} />
 
       <Route path="profile" component={Profile} >

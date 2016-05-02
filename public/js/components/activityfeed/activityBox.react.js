@@ -174,6 +174,9 @@ const StatusBox = React.createClass({
   clearText:function() {
     document.getElementById('txtStatus').value = "";
   },
+  trending: function() {
+    document.location = "#/trends";
+  },
 
   /**
    * @return {object}
@@ -201,7 +204,8 @@ const StatusBox = React.createClass({
               </div>
 
               <FlatButton className='col-md-1' label="Photos" onClick={this._editProfilePic}/>
-              <div className='col-md-9'></div>
+              <div className="col-md-8"> </div>
+              <FlatButton className='col-md-1' label="Trending"  rippleColor='#2196F3' onClick={this.trending}/>
               <FlatButton className='col-md-1' label="Post"  rippleColor='#2196F3' onClick={this.addStatus}/>
           </Paper>
         </Card>
