@@ -22,7 +22,7 @@ Route::get('/api/login', function () {
 });
 Route::group(['prefix' => 'api'], function () {
     //authenticate users with AuthenticateController
-    Route::resource('authenticate',['middleware' => 'cors', 'AuthenticateController', ['only' => ['index']]]);
+    Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
     Route::post('authenticate', 'AuthenticateController@authenticate');
     //Register new users with RegisterConroller@register
     Route::post('register', 'RegisterController@check');
