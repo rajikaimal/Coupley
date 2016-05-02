@@ -40,6 +40,36 @@ var ActivityfeedAction = {
     });
   },
 
+  _getStatusVisitor: function (uId) {
+    postLimitNo = postLimitNo + 3;
+    let str = window.location.hash;
+    let username = str.split(/[\/?]/)[1];
+    $.get('/api/getstatusvisitor?postLimitNo=' + postLimitNo + '&username=' + username , function (response) {
+      if (response.status == 200) {
+        AppDispatcher.handleViewAction({
+          actionType: ActivityFeedConstants.GETDATA,
+          statusdata: response.posts,
+        });
+      } else if (response.status == 505) {
+        console.log('Error 505');
+      }
+    });
+  },
+
+  _getStatusProfile: function() {
+    postLimitNo = postLimitNo + 3;
+    $.get('/api/getstatusvisitor?postLimitNo=' + postLimitNo + '&username=' + localStorage.getItem('username') , function (response) {
+      if (response.status == 200) {
+        AppDispatcher.handleViewAction({
+          actionType: ActivityFeedConstants.GETDATA,
+          statusdata: response.posts,
+        });
+      } else if (response.status == 505) {
+        console.log('Error 505');
+      }
+    });
+  },
+
   _addShare: function (result) {
     $.post('api/sharedStatus', result, function (response) {
         if (response.status == 201) {
@@ -193,25 +223,25 @@ var ActivityfeedAction = {
 
   addComment: function(comment){
     $.post('api/addcomment', comment, function(response) {
-      // if (response.status == 201) {
-      //   $.get('/api/getcomment', comment,function(response) {
-      //     if (response.status == 200) {
-      //         AppDispatcher.handleViewAction({
-      //           actionType: CommentConstants.GETCOMMENT,
-      //           commentdata: response.comments
-      //         });
-      //     } else if (response.status == 505) {
-      //       console.log('Error 505');
-      //     }
-      //   });
-      // } else if (response.status == 404) {
-      //   console.log('Error 404');
-      // }
+      if(response.status == 201){
+        $.get('/api/getCurrentComment',comment,function(response) {
+          if(response.status == 200) {
+            AppDispatcher.handleViewAction({
+                actionType: CommentConstants.GETCOMMENT,
+                commentdata: response.comments
+              });
+          } else if (response.status == 505) {
+            console.log('Error 505');
+          } 
+        });
+      } else if (response.status == 404) {
+        console.log('Error 404');
+      } 
     });
   },
 
   getCommentList: function(commentData) {
-    commentLimitNo = commentLimitNo + 3;
+    commentLimitNo = commentLimitNo + 2;
     $.get('/api/getcomment?commentLimitNo=' + commentLimitNo , commentData,function(response) {
       if (response.status == 200 && response.comments) {
           AppDispatcher.handleViewAction({
@@ -226,11 +256,11 @@ var ActivityfeedAction = {
       }
     });
   },
+
   loadMoreComment: function(commentData) {
-    commentLimitNo = commentLimitNo + 3;
+    commentLimitNo = commentLimitNo + 2;
     $.get('/api/getcomment?commentLimitNo=' + commentLimitNo , commentData,function(response) {
       if (response.status == 200 && response.comments) {
-          alert('sds');
           AppDispatcher.handleViewAction({
             actionType: CommentConstants.LOADMORE,
             commentdata: response.comments
@@ -243,6 +273,20 @@ var ActivityfeedAction = {
       }
     });
   },
+
+  getCommentCount: function(commentdata) {
+    $.get('/api/getCommentCount', commentdata, function (response) {
+      console.log(response);
+      if (response.status == 200) {
+        AppDispatcher.handleViewAction({
+          actionType: CommentConstants.GETCOMMENTCOUNT,
+          commentCount: response.commentsCount,
+        });
+      } else if (response.status == 505) {
+        console.log('Error 505');
+      }
+    });
+  }
 };
 
 module.exports = ActivityfeedAction;

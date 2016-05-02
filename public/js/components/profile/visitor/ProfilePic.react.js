@@ -4,6 +4,9 @@ import MenuItem from 'material-ui/lib/menus/menu-item';
 import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
 import FavIcon from 'material-ui/lib/svg-icons/action/favorite';
 import FavIconBorder from 'material-ui/lib/svg-icons/action/favorite-border';
+import Gender from 'material-ui/lib/svg-icons/action/account-box';
+import Age from 'material-ui/lib/svg-icons/action/alarm';
+import Country from 'material-ui/lib/svg-icons/action/room';
 import Colors from 'material-ui/lib/styles/colors';
 import IconButton from 'material-ui/lib/icon-button';
 import FlatButton from 'material-ui/lib/flat-button';
@@ -170,6 +173,9 @@ const ProfilePic = React.createClass({
       comment: comment
     };
     ProfileVisitorActions.reportUser(data);
+    this.setState({
+      openDialog: false
+    });
   },
   render: function() {
     const actions = [
@@ -214,13 +220,22 @@ const ProfilePic = React.createClass({
             </div>
             <div className="col-lg-3">
               <h3> {this.props.firstname} {this.props.lastname} </h3>
-              <span> {this.props.country} </span>
+              <span> <IconButton style={iconButtonStyle} tooltip="age" tooltipPosition="bottom-right">
+                            <Age viewBox="0 0 20 30" />
+                </IconButton>{this.props.age} </span> <br/>
+              <span> <IconButton style={iconButtonStyle} tooltip="gender" tooltipPosition="bottom-right">
+                            <Gender viewBox="0 0 20 30" />
+                </IconButton>{this.props.gender} </span> <br/>
+              <span><IconButton style={iconButtonStyle} tooltip="country" tooltipPosition="bottom-right">
+                            <Country viewBox="0 0 20 30" />
+                </IconButton>{this.props.country} </span>
               {this.state.permission ?  
                 <IconButton style={iconButtonStyle} onClick={this._changeLikeState} tooltip={this.state.liked ? "Unlike" : "Like"} touch={true} tooltipPosition="bottom-right">
                   {this.state.liked ? <FavIcon onClick={this._changeLikeState} viewBox="0 0 20 30" color={Colors.red500} /> : 
                             <FavIconBorder viewBox="0 0 20 30" color={Colors.red500} />}
                 </IconButton>
-              : ''}
+              : ''
+              }
               
               <br/>
               {

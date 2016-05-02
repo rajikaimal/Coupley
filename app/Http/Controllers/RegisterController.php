@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\About;
+use App\LookingFor;
 
 class RegisterController extends Controller
 {
@@ -22,6 +23,7 @@ class RegisterController extends Controller
                 $user->email = $request->email;
                 $user->gender = $request->gender;
                 $user->country = $request->country;
+                $user->birthday = $request->birthday;
                 $user->password = \Hash::make($request->password);
                 $user->orientation = $request->orientation;
                 $user->role = 'user';
@@ -29,7 +31,9 @@ class RegisterController extends Controller
                 if ($user->save()) {
                     $about = new About;
                     $about->user_id = User::where('email', $email)->get(['id'])[0]->id;
-                    if ($about->save()) {
+                    $lookingFor = new LookingFor;
+                    $lookingFor->user_id = User::where('email', $email)->get(['id'])[0]->id;
+                    if ($about->save() && $lookingFor->save()) {
                         return response()->json(['status' => 201], 201);
                     }
                 } else {

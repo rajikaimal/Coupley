@@ -12,9 +12,13 @@ var done = false;
 var blocklist = [];
 var photoPaths = [];
 
+var temp;
+
 var ProfileStore = assign({}, EventEmitter.prototype, {
   saveUserData: function (data) {
-    user.push(data);
+    
+    //user.push(data);
+    temp = data;
   },
 
   saveProfilePic: function (data) {
@@ -60,28 +64,36 @@ var ProfileStore = assign({}, EventEmitter.prototype, {
   },
 
   getUserData: function () {
-    if (user.length == 0) {
+    // if (user.length == 0) {
+    //   return {
+    //     firstname: '',
+    //     lastname: '',
+    //     country: '',
+    //     username: '',
+    //     age: '',
+    //     birthday: '',
+    //   };
+    // }
+    if(temp != undefined ) {
+    
       return {
-        firstname: '',
-        lastname: '',
-        country: '',
-        username: '',
-        age: '',
-        birthday: '',
-      };
+        firstname: temp.firstname,
+        lastname: temp.lastname,
+        country: temp.country,
+        gender: temp.gender,
+        username: temp.username,
+        orientation: temp.orientation,
+        age: temp.age,
+        birthday: temp.birthday,
+      };  
     }
-
-    return {
-      firstname: user[0].firstname,
-      lastname: user[0].lastname,
-      country: user[0].country,
-      username: user[0].username,
-      age: user[0].age,
-      birthday: user[0].birthday,
-    };
+    return {};
+    
   },
 
   getAll: function() {
+    console.
+    console.log(user[0])
     return user[0];
   },
 

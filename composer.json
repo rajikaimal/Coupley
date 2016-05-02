@@ -9,7 +9,8 @@
         "laravel/framework": "5.2.*",
         "predis/predis": "~1.1@dev",
         "guzzlehttp/guzzle": "~5.3|~6.0",
-        "phpmailer/phpmailer": "^5.2"
+        "phpmailer/phpmailer": "^5.2",
+        "tymon/jwt-auth": "0.5.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -38,10 +39,6 @@
         ],
         "post-create-project-cmd": [
             "php artisan key:generate"
-        ],
-        "post-install-cmd": [
-            "php artisan clear-compiled",
-            "php artisan optimize"
         ],
         "pre-update-cmd": [
             "php artisan clear-compiled"

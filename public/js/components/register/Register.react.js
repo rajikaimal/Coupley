@@ -178,12 +178,6 @@ const Register = React.createClass({
     let lastname = this.refs.lastname.getValue();
     let username = this.refs.username.getValue();
     let email = this.refs.email.getValue();
-    if(this.state.gender == 1) {
-      var gender = "male";  
-    }
-    else if(this.state.gender == 2) {
-      var gender = "female";
-    }
     let password = this.refs.password.getValue();
     if(this.state.orientation == 1) {
       var orientation = "straight";
@@ -215,10 +209,6 @@ const Register = React.createClass({
       document.getElementById('email').innerHTML = 'Invalid Email !';
       val = false;
     }
-    if(validatePassword(password).error) {
-      document.getElementById('password').innerHTML = validatePassword(password).error; 
-      val = false;
-    }
     if(this.state.country == 0) {
       val = false;
       document.getElementById('country').innerHTML = "*select an option";
@@ -231,9 +221,24 @@ const Register = React.createClass({
       val = false;
       document.getElementById('gender').innerHTML = "*select an option";
     }
+    if(validatePassword(password).error) {
+      val = false;
+      document.getElementById('password').innerHTML = validatePassword(password).error; 
+    }
     else {
       val = true;
     }
+
+    if(this.state.gender == 1) {
+      var gender = "male";  
+    }
+    else if(this.state.gender == 2) {
+      var gender = "female";
+    }
+    else {
+      return false;
+    }
+
     let credentials = {
       firstname: firstname,
       lastname: lastname,
@@ -245,8 +250,12 @@ const Register = React.createClass({
       birthday: window.birthday,
       orientation: orientation
     };
+
     if (val) {
       RegisterActions.check(credentials);
+    }
+    else {
+      return false;  
     }
   },
   handleChangeGender: function(e, index, value){

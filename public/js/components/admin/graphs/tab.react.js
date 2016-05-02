@@ -9,7 +9,7 @@ import PieGraph from './pieChartCustomers.react';
 
 import Item from './../graphs/adminPanel/admin.react';
 
-import SearchStore from '../../../stores/admin/SearchStore';
+import SearchStore from '../../../stores/admin/AdminSearchStore';
 import AdminActions from '../../../actions/admin/AdminDetailsActions';
 
 //tap-event-plugin

@@ -1,49 +1,76 @@
 import React from 'react';
 import List from 'material-ui/lib/lists/list';
 import ListItem from 'material-ui/lib/lists/list-item';
-import ActivityFeedActions from '../../../actions/ActivityFeed/ActivityFeedActions';
+import RaisedButton from 'material-ui/lib/raised-button';
+import ActivityfeedAction from '../../../actions/ActivityFeed/ActivityfeedAction';
 import StatusStore from '../../../stores/StatusStore';
 import ActivityList from './activityListComp.react';
-import RaisedButton from 'material-ui/lib/raised-button';
+import LoginStore from '../../../stores/LoginStore';
+
+const style = {
+  marginLeft: 40,
+  width: 800,
+};
 
 const activityContainer = React.createClass({
-
   getInitialState: function() {
     return {
-      posts: StatusStore.getprofilePosts()
+      results: StatusStore.getStatusData(),
     }
   },
+
   componentDidMount: function() {
     StatusStore.addChangeListener(this._onChange);
-    ActivityFeedActions.loadPosts(localStorage.getItem('username'));
+
+    let data = {
+      userId: localStorage.getItem('userid'),
+    };
+    ActivityfeedAction._getStatusProfile();
+
   },
-  _onChange: function() {
-    if(this.state.result) {
-      this.setState({posts: StatusStore.getPaginationResults()});
-    } else {
-      this.setState({posts: StatusStore.getprofilePosts()});
-    }
+
+  _onChange: function () {
+    this.setState({results: StatusStore.getStatusData()});
   },
-  _renderActivity: function () {
-        if(this.state.posts) {
-          return this.state.posts.map((result) => {
-              return (<ActivityList key={result.id} id={result.id} firstname={result.firstname} post_text={result.post_text} created_at={result.created_at} image={result.attachment} />);
-          });
-        }
+
+  _loadMorePosts: function () {
+    let data = {
+      userId: localStorage.getItem('userid'),
+    };
+    ActivityfeedAction._getStatus(data);
   },
-  _loadMore: function() {
-    let username = localStorage.getItem('username');
-    this.setState({
-      posts: StatusStore.getPaginationResults()
+
+  _renderSearchItem: function () { 
+    return this.state.results.map((result) => {
+      return (<ActivityList key={result.id} 
+                            id={result.id} 
+                            type={result.type} 
+                            firstName={result.firstname} 
+                            postId={result.post_id} 
+                            attachment={result.attachment} 
+                            lPostId={result.pid} 
+                            postText={result.post_text} 
+                            created_at={result.created_at}
+                            postid={result.postid}
+                            likesCount={result.likesCount}
+                            sid={result.sid}
+                            sfirstname={result.sfirstname}
+                            sattachment={result.sattachment}
+                            spost_text={result.spost_text}
+                            screated_at={result.screated_at}/>);     
     });
   },
 
   render: function() {
     return (
-     <div>
-      {this._renderActivity()}
-      <RaisedButton label="load more" primary={true} onClick={this._loadMore}/>  
-     </div>
+      <div>
+        <div>
+          {this._renderSearchItem()}
+        </div>
+        <div>
+          <RaisedButton label="load more posts" secondary={true} style={style} onClick={this._loadMorePosts} />
+        </div>
+      </div>
     );
   }
 });

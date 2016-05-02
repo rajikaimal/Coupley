@@ -70,6 +70,8 @@ const Search = React.createClass({
 			  	<Paper zDepth={1}>
 			  		<span style={suggStyle}> Suggested partners </span>
 					{this._renderSuggestion()}
+
+					<img src="img/ads.jpeg" width="275"/>
 				</Paper>
 				{this.state.results ? <button style={loadMoreStyle} onClick={this._loadMore}> Load more </button>  : ''}
 				{this.state.erropen ? <Snackbar

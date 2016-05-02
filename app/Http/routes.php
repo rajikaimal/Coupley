@@ -37,6 +37,8 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('imageStatus', 'ActivityFeedController@addImageStatus');
     //Return status
     Route::get('getstatus', 'ActivityFeedController@getStatus');
+    //Get statuses for visiting profile
+    Route::get('getstatusvisitor', 'ActivityFeedController@getStatusVisitor');
     //Add a like to the status
     Route::post('likepost', 'LikeController@like');
     //Unlike the status
@@ -55,8 +57,12 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('getsharestatus', 'ShareController@getsharestatus');
     //Add a comment to the status
     Route::post('addcomment', 'CommentController@addcomment');
+    //Return current comment
+    Route::get('getCurrentComment', 'CommentController@getCurrentComment');
     //Return comments data
     Route::get('getcomment', 'CommentController@getcomments');
+    //Return comment count
+    Route::get('getCommentCount', 'CommentController@getCommentCount');
     //Delete a status
     Route::post('deleteStatus', 'ActivityFeedController@deleteStatus');
     //Edit a status
@@ -207,6 +213,8 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('profile/notificationlist', 'NotificationController@getNotificationList');
     //load more notifications based on client request
     Route::get('profile/notificationlistmore', 'NotificationController@getNotificationListMore');
+    //clear notifications
+    Route::post('profile/notifications/clear', 'NotificationController@clearNotifications');
     //retrives liked list of a certain user
     Route::get('profile/likedlist', 'LikeListController@getLikedList');
 
@@ -253,6 +261,9 @@ Route::group(['prefix' => 'admin-api'], function () {
     Route::post('blockuser', 'UsersController@block');
     //unblock certain user
     Route::post('unblockuser', 'UsersController@Unblock');
+
+    //Return userslist for search
+    Route::get('searches', 'AdminSearchController@search');
 
     //Register new admins with RegisterConroller@register
     Route::post('registerAdmin', 'AdminRegisterController@checks');

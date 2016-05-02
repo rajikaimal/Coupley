@@ -26,6 +26,7 @@ class ActivityFeedController extends Controller
             $post->email = $request->email;
             $post->userId = $request->userId;
             $post->firstname = $request->firstName;
+            $post->username = $request->userName;
             $post->post_text = $request->status;
             if ($posts = $post->save()) {
                 return response()->json(['posts' => $posts, 'status' => 201], 201);
@@ -67,6 +68,7 @@ class ActivityFeedController extends Controller
             $post->email = $request->email;
             $post->userId = $request->userId;
             $post->firstname = $request->firstName;
+            $post->username = $request->userName;
             $post->type = 'shared';
             $post->post_id = $request->postId;
             $post->post_text = $request->status;
@@ -91,6 +93,73 @@ class ActivityFeedController extends Controller
     public function getStatus(Request $request)
     {
         $uId = $request->userId;
+        $pagination = $request->postLimitNo;
+        try {
+            $posts = \DB::select('SELECT p.id,
+                                       p.firstname,
+                                       p.type,
+                                       p.attachment,
+                                       p.post_text,
+                                       p.post_id,
+                                       p.created_at,
+                                       p.pid,
+                                       p.likesCount,
+                                       q.sid,
+                                       q.sfirstname,
+                                       q.sattachment,
+                                       q.spost_text,
+                                       q.screated_at,
+                                       p.username,
+                                       q.susername
+                                FROM(SELECT x.id as id,x.firstname as firstname,x.type as type,x.attachment as attachment,
+                                            x.post_text as post_text,x.post_id as post_id,x.created_at as created_at,x.pid as pid,y.likesCount as likesCount,x.username as username
+                                     FROM (select a.id as id,a.firstname as firstname,a.type as type,
+                                                    a.attachment as attachment,a.post_text as post_text,a.post_id as post_id,a.created_at as created_at,l.post_id as pid,a.username as username
+                                           from (select id,firstname,type,attachment,post_text,post_id,created_at,username  
+                                                 from (select p.id,p.firstname,p.type,p.attachment,p.post_text,p.post_id,
+                                                                p.created_at,p.username
+                                                       from activityposts p, liked a
+                                                       where a.gotliked='.$uId.' and a.likeback=1 and p.userId=a.likeduser 
+                                         
+                                                        union
+                                                                           
+                                                        select p.id,p.firstname,p.type,p.attachment,p.post_text,p.post_id,p.created_at,p.username
+                                                        from activityposts p
+                                                        where p.userId='.$uId.' ) as t1
+                                                 where id NOT IN (select post_id 
+                                                                  from activityblocks
+                                                                  where userId='.$uId.' ) ) a
+                
+                                           Left JOIN (SELECT post_id FROM activitylikes WHERE UserId='.$uId.') l
+                                           ON a.id=l.post_id) x
+             
+                                     Left JOIN (SELECT post_id,count(UserId) as likesCount FROM activitylikes) y
+                                     ON x.id = y.post_id) p
+    
+                                Left Join (select id as sid,firstname as sfirstname,attachment as sattachment,
+                                                post_text as spost_text,created_at as screated_at,username as susername from activityposts) q
+                                On p.post_id=q.sid
+                                order by p.created_at desc
+                                limit '.$pagination);
+
+            return response()->json(['posts' => $posts, 'status' => 200], 200);
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 505], 505);
+        }
+    }
+
+    /**
+     * get activity feed of a user.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
+    public function getStatusVisitor(Request $request)
+    {
+        $username = $request->username;
+        $uId = User::where('username', $username)->get()[0]->id;
         $pagination = $request->postLimitNo;
         try {
             $posts = \DB::select('SELECT p.id,
@@ -212,7 +281,7 @@ class ActivityFeedController extends Controller
     {
         $postId = $request->postId;
         try {
-            $posts = \DB::select('select firstname,post_id
+            $posts = \DB::select('select firstname,post_id,username
                                  from activityposts 
                                  where post_id='.$postId.'
                                  order by created_at desc');

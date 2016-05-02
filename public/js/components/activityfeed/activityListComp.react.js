@@ -80,6 +80,7 @@ const ActivityList = React.createClass({
       commentText: '',
       sharedResults: StatusStore.getSharedData(),
       commentResults: CommentStore.getCommentsData(),
+      commentCount: CommentStore.getCommentCount(),
       count: LikeStatusStore.getCount(),
       liked: '',
       open1: false,
@@ -110,11 +111,17 @@ const ActivityList = React.createClass({
       postId: this.props.id,
     };
     ActivityfeedAction.getCount(LikedData);
+
+    let CommentedData = {
+      postId: this.props.id,
+    };
+    ActivityfeedAction.getCommentCount(CommentedData);
   },
 
   _onChange: function () {
     this.setState({sharedResults: StatusStore.getSharedData()});  
     this.setState({commentResults: CommentStore.getCommentsData()});
+    this.setState({commentCount: CommentStore.getCommentCount()});
     this.setState({count: LikeStatusStore.getCount()});
   },
 
@@ -123,6 +130,7 @@ const ActivityList = React.createClass({
     if(this.props.type=="shared"){
       return(<ActivitySharedList sid={this.props.sid}
                                  sfirstname={this.props.sfirstname}
+                                 susername={this.props.susername}
                                  sattachment={this.props.sattachment}
                                  spost_text={this.props.spost_text}
                                  screated_at={this.props.screated_at}/>)
@@ -150,7 +158,20 @@ const ActivityList = React.createClass({
             return (<Comment ckey={comm.id} 
                              cid={comm.id} 
                              cfirstName={comm.firstname} 
+                             cusername={comm.username}
                              comment_txt={comm.comment_txt} />);       
+          }
+        }));
+      }));
+  },
+
+  _getCommentCount: function () {
+    let self = this;
+      return (this.state.commentCount.map(function(comment) {
+        return (comment.map(function(comm) {
+          if(self.props.id == comm.post_id) {
+            return (<CountBox ckey={comm.post_id} 
+                              cCount={comm.commCount} />);       
           }
         }));
       }));
@@ -188,7 +209,8 @@ const ActivityList = React.createClass({
     let shareStatus = this.refs.shareBox.getValue();
     let shareData = {
       email: LoginStore.getEmail(),
-      userId: localStorage.getItem('userid'),  
+      userId: localStorage.getItem('userid'), 
+      userName: localStorage.getItem('username'),
       firstName: LoginStore.getFirstname(),
       postId: this.props.id,
       status: shareStatus,
@@ -208,25 +230,17 @@ const ActivityList = React.createClass({
       userId: localStorage.getItem('userid'), 
       email: LoginStore.getEmail(),
       firstName: LoginStore.getFirstname(),
+      userName: localStorage.getItem('username'),
     };
 
     if (this.state.liked) {
       this.setState({liked: !this.state.liked});
       ActivityfeedAction.like(likeData);
-      _getLikedCount();
     }
     else {
       this.setState({liked: !this.state.liked});
       ActivityfeedAction.unlike(likeData);
-      _getLikedCount();
     }
-  },
-
-  _loadMoreComments: function () {
-      let commentData = {
-      postId: this.props.id,
-    };
-    ActivityfeedAction.loadMoreComment(commentData);
   },
 
   handleOpen: function () {
@@ -266,6 +280,7 @@ const ActivityList = React.createClass({
         comment: comment,
         email: LoginStore.getEmail(),
         firstName: LoginStore.getFirstname(),
+        userName: localStorage.getItem('username'),
       };
              
       if(validateCommentText(comment).error) {
@@ -354,7 +369,7 @@ const ActivityList = React.createClass({
         <div>
           <Card>
             <ListItem
-              leftAvatar={<Avatar src="https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg" />}
+              leftAvatar={<Avatar src={'img/profilepics/'+ this.props.username} />}
               primaryText={this.props.firstName}
               secondaryText={
                 <p>
@@ -450,9 +465,7 @@ const ActivityList = React.createClass({
         </div>
 
         <div>
-          <Card style={style2}>
-          <FlatButton label="load more comments" onClick={this._loadMoreComments} /> 
-          </Card>
+          {this._getCommentCount()}
           {this._getCommentList()}
         </div>
         <div>

@@ -12,6 +12,16 @@ var connectedUser = {};
 var Likedusers = [];
 var ThisUserEmail;
 
+function twoDigits(d) {
+    if(0 <= d && d < 10) return "0" + d.toString();
+    if(-10 < d && d < 0) return "-0" + (-1*d).toString();
+    return d.toString();
+}
+
+Date.prototype.toMysqlFormat = function() {
+    return this.getUTCFullYear() + "-" + twoDigits(1 + this.getUTCMonth()) + "-" + twoDigits(this.getUTCDate()) + " " + twoDigits(this.getUTCHours()) + ":" + twoDigits(this.getUTCMinutes()) + ":" + twoDigits(this.getUTCSeconds());
+};
+
 connection.connect();
 
 /*  listen to port 8081 */
@@ -62,7 +72,8 @@ io.on('connection', function (socket) {
         };
         var content = 'like';
         console.log('Query ...' + user1Id + ' ' + user2Id);
-
+        var date = new Date().toMysqlFormat();
+        console.log(date);
         connection.query('insert into notification (user_id1, user_id2, content, readnotification) values (' + user1Id + ',' + user2Id + ",'" + 'like' + "', 0)", function (err, result) {
           console.log('Here is the user of got liked !' + like.gotLikedUsername);
           socket.broadcast.to(connectedUser[like.gotLikedUsername]).emit('notifylike', { message: content });
