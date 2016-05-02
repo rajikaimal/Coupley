@@ -30,7 +30,7 @@ class EmailController extends Controller
             $mail->SMTPAuth = true;                               // Enable SMTP authentication
             $mail->Username = 'coupleyteam@gmail.com';            // SMTP username
             $mail->Password = 'COUPLEY123';                       // SMTP password
-            //$mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+            $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
             $mail->Port = 465;                                    // TCP port to connect to
             $mail->From = 'coupleyteam@gmail.com';
             $mail->FromName = 'COUPLEY';
