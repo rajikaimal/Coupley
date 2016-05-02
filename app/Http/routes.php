@@ -69,6 +69,8 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('edit_status', 'ActivityFeedController@editStatus');
     //Block a status
     Route::post('block_status', 'ActivityFeedController@block_status');
+    //Report a status
+    Route::post('reportPost','ActivityFeedController@reportPost');
 
     //Return previos chats
     Route::get('getpreviousmsg', 'ThreadController@getPreviousMessage');

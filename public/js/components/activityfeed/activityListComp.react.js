@@ -6,12 +6,13 @@ import ListItem from 'material-ui/lib/lists/list-item';
 import Divider from 'material-ui/lib/divider';
 import Avatar from 'material-ui/lib/avatar';
 import Colors from 'material-ui/lib/styles/colors';
+import DropDownMenu from 'material-ui/lib/DropDownMenu';
+import MenuItem from 'material-ui/lib/menus/menu-item';
 import FavIcon from 'material-ui/lib/svg-icons/action/favorite';
 import FavIconBorder from 'material-ui/lib/svg-icons/action/favorite-border';
 import IconButton from 'material-ui/lib/icon-button';
 import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
 import IconMenu from 'material-ui/lib/menus/icon-menu';
-import MenuItem from 'material-ui/lib/menus/menu-item';
 import FlatButton from 'material-ui/lib/flat-button';
 import Dialog from 'material-ui/lib/dialog';
 import RaisedButton from 'material-ui/lib/raised-button';
@@ -72,6 +73,7 @@ function validateCommentText(textComment) {
 };
 
 var commentLimitNo = 0;
+var reason;
 
 const ActivityList = React.createClass({
   getInitialState: function () {
@@ -87,6 +89,9 @@ const ActivityList = React.createClass({
       open3: false,
       open4: false,
       open5: false,
+      open6: false,
+      open7: false,
+      value: 2,
       likeCount: '',
     };
   },
@@ -205,6 +210,30 @@ const ActivityList = React.createClass({
     ActivityfeedAction._blockStatus(blockData);
   },
 
+  _reportStatus: function () {
+
+    if (this.state.value==1){
+      reason = "It's annoying";
+    } else if (this.state.value==2) {
+      reason = "It's not interesting";
+    } else if (this.state.value==3) {
+      reason = "It's Spam";
+    } else if (this.state.value==4) {
+      reason = "I think it shouldn't be on Coupley";
+    } 
+
+    var reportComment = this.refs.ReportBox.getValue();
+    let reportData = {
+      postId: this.props.id,
+      comment: reportComment,
+      reason: reason,
+    };
+    ActivityfeedAction.reportStatus(reportData);
+    this._blockedStatus();
+    this.setState({open6: false});
+    this.setState({open7: true});
+  },
+
   _changeShareState:function() {
     let shareStatus = this.refs.shareBox.getValue();
     let shareData = {
@@ -259,11 +288,21 @@ const ActivityList = React.createClass({
     this.setState({open5: true});
   },
 
+  handleOpenReport: function () {
+    this.setState({open6: true});
+  },
+
+  reportHandleChange: function (event, index, value) {
+    this.setState({value: value});
+  },
+
   handleClose: function () {
     this.setState({opens: false});
     this.setState({open3: false});
     this.setState({open4: false});
     this.setState({open5: false});
+    this.setState({open6: false});
+    this.setState({open7: false});
   },
 
   setFocusToTextBox: function () {
@@ -364,6 +403,26 @@ const ActivityList = React.createClass({
         onTouchTap={this.handleClose}/>,
     ];
 
+    const ReportActions = [
+      <FlatButton
+        label="Report"
+        primary={true}
+        keyboardFocused={true}
+        onTouchTap={this._reportStatus}/>,
+
+      <FlatButton
+        label="Close"
+        secondary={true}
+        onTouchTap={this.handleClose}/>,
+    ];
+
+    const confirmReportActions = [
+      <FlatButton
+        label="Ok"
+        secondary={true}
+        onTouchTap={this.handleClose}/>,
+    ];
+
     return (
       <div style={style1}>
         <div>
@@ -381,7 +440,8 @@ const ActivityList = React.createClass({
                   <IconMenu iconButtonElement={iconButtonElement}>
                     <MenuItem primaryText="Edit" onClick={this.handleOpen}/>
                     <MenuItem primaryText="Remove" onClick={this.handleOpenDelete}/>
-                    <MenuItem primaryText="Block" onClick={this.handleOpenBlock}/>
+                    <MenuItem primaryText="Unfollow" onClick={this.handleOpenBlock}/>
+                    <MenuItem primaryText="Report" onClick={this.handleOpenReport}/>
                   </IconMenu> } />
 
               <CardText>
@@ -432,7 +492,7 @@ const ActivityList = React.createClass({
             modal={false}
             open={this.state.open3}
             onRequestClose={this.handleClose}>
-              Are you sure you want to delete this post?" 
+              Are you sure you want to delete this post? 
           </Dialog>
 
           <Dialog
@@ -441,7 +501,7 @@ const ActivityList = React.createClass({
             modal={false}
             open={this.state.open5}
             onRequestClose={this.handleClose}>
-              Are you sure you want to block this post?" 
+              Are you sure you want to block this post? 
           </Dialog>
 
           <Dialog
@@ -459,7 +519,32 @@ const ActivityList = React.createClass({
             modal={false}
             open={this.state.open4}
             onRequestClose={this.handleClose}>
-              "This has been shared to your Timeline."
+              This has been shared to your Timeline.
+          </Dialog>
+
+          <Dialog
+            title="Report Status"
+            actions={ReportActions}
+            modal={false}
+            open={this.state.open6}
+            onRequestClose={this.handleClose}>
+              <label>Reason</label>
+                <DropDownMenu value={this.state.value} onChange={this.reportHandleChange}>
+                  <MenuItem value={1} primaryText="It's annoying"/>
+                  <MenuItem value={2} primaryText="It's not interesting"/>
+                  <MenuItem value={3} primaryText="It's Spam"/>
+                  <MenuItem value={4} primaryText="I think it shouldn't be on Coupley"/>
+                </DropDownMenu>
+            <TextField hintText="Comment" multiLine={false} fullWidth={true} ref="ReportBox" />
+          </Dialog>
+
+          <Dialog
+            title="Report Status"
+            actions={confirmReportActions}
+            modal={false}
+            open={this.state.open7}
+            onRequestClose={this.handleClose}>
+              You have reported this post 
           </Dialog>
 
         </div>
