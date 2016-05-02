@@ -256,6 +256,7 @@ var ActivityfeedAction = {
       }
     });
   },
+  
   loadMoreComment: function(commentData) {
     commentLimitNo = commentLimitNo + 2;
     $.get('/api/getcomment?commentLimitNo=' + commentLimitNo , commentData,function(response) {
@@ -272,6 +273,20 @@ var ActivityfeedAction = {
       }
     });
   },
+
+  getCommentCount: function(commentdata) {
+    $.get('/api/getCommentCount', commentdata, function (response) {
+      console.log(response);
+      if (response.status == 200) {
+        AppDispatcher.handleViewAction({
+          actionType: CommentConstants.GETCOMMENTCOUNT,
+          commentCount: response.commentsCount,
+        });
+      } else if (response.status == 505) {
+        console.log('Error 505');
+      }
+    });
+  }
 };
 
 module.exports = ActivityfeedAction;

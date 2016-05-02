@@ -80,6 +80,7 @@ const ActivityList = React.createClass({
       commentText: '',
       sharedResults: StatusStore.getSharedData(),
       commentResults: CommentStore.getCommentsData(),
+      commentCount: CommentStore.getCommentCount(),
       count: LikeStatusStore.getCount(),
       liked: '',
       open1: false,
@@ -110,11 +111,17 @@ const ActivityList = React.createClass({
       postId: this.props.id,
     };
     ActivityfeedAction.getCount(LikedData);
+
+    let CommentedData = {
+      postId: this.props.id,
+    };
+    ActivityfeedAction.getCommentCount(CommentedData);
   },
 
   _onChange: function () {
     this.setState({sharedResults: StatusStore.getSharedData()});  
     this.setState({commentResults: CommentStore.getCommentsData()});
+    this.setState({commentCount: CommentStore.getCommentCount()});
     this.setState({count: LikeStatusStore.getCount()});
   },
 
@@ -123,6 +130,7 @@ const ActivityList = React.createClass({
     if(this.props.type=="shared"){
       return(<ActivitySharedList sid={this.props.sid}
                                  sfirstname={this.props.sfirstname}
+                                 susername={this.props.susername}
                                  sattachment={this.props.sattachment}
                                  spost_text={this.props.spost_text}
                                  screated_at={this.props.screated_at}/>)
@@ -157,11 +165,16 @@ const ActivityList = React.createClass({
       }));
   },
 
-  _loadMoreComments: function () {
-      let commentData = {
-      postId: this.props.id,
-    };
-    ActivityfeedAction.loadMoreComment(commentData);
+  _getCommentCount: function () {
+    let self = this;
+      return (this.state.commentCount.map(function(comment) {
+        return (comment.map(function(comm) {
+          if(self.props.id == comm.post_id) {
+            return (<CountBox ckey={comm.post_id} 
+                              cCount={comm.commCount} />);       
+          }
+        }));
+      }));
   },
 
   _editStatus: function () {
@@ -223,12 +236,10 @@ const ActivityList = React.createClass({
     if (this.state.liked) {
       this.setState({liked: !this.state.liked});
       ActivityfeedAction.like(likeData);
-      _getLikedCount();
     }
     else {
       this.setState({liked: !this.state.liked});
       ActivityfeedAction.unlike(likeData);
-      _getLikedCount();
     }
   },
 
@@ -454,9 +465,7 @@ const ActivityList = React.createClass({
         </div>
 
         <div>
-          <Card style={style2}>
-          <FlatButton label="load more comments" onClick={this._loadMoreComments} /> 
-          </Card>
+          {this._getCommentCount()}
           {this._getCommentList()}
         </div>
         <div>

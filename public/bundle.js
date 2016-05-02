@@ -58231,6 +58231,7 @@
 	      }
 	    });
 	  },
+
 	  loadMoreComment: function loadMoreComment(commentData) {
 	    commentLimitNo = commentLimitNo + 2;
 	    $.get('/api/getcomment?commentLimitNo=' + commentLimitNo, commentData, function (response) {
@@ -58244,6 +58245,20 @@
 	          actionType: CommentConstants.LOADMORE,
 	          commentdata: response.comments
 	        });
+	      }
+	    });
+	  },
+
+	  getCommentCount: function getCommentCount(commentdata) {
+	    $.get('/api/getCommentCount', commentdata, function (response) {
+	      console.log(response);
+	      if (response.status == 200) {
+	        AppDispatcher.handleViewAction({
+	          actionType: CommentConstants.GETCOMMENTCOUNT,
+	          commentCount: response.commentsCount
+	        });
+	      } else if (response.status == 505) {
+	        console.log('Error 505');
 	      }
 	    });
 	  }
@@ -58295,7 +58310,8 @@
 	module.exports = keyMirror({
 		GETCOMMENT: null,
 		LOADMORE: null,
-		GETLASTCOMMENT: null
+		GETLASTCOMMENT: null,
+		GETCOMMENTCOUNT: null
 	});
 
 /***/ },
@@ -59117,6 +59133,7 @@
 	var CHANGE_EVENT = 'change';
 
 	var searchComments = [];
+	var commentCount = [];
 
 	var CommentStore = assign({}, EventEmitter.prototype, {
 
@@ -59141,6 +59158,14 @@
 	    searchComments.push(data);
 	  },
 
+	  getCommentCount: function getCommentCount(result) {
+	    return commentCount;
+	  },
+
+	  saveCommentCount: function saveCommentCount(result) {
+	    commentCount.push(result);
+	  },
+
 	  emitChange: function emitChange() {
 	    this.emit(CHANGE_EVENT);
 	  },
@@ -59161,6 +59186,10 @@
 	      break;
 	    case CommentConstants.LOADMORE:
 	      CommentStore.loadMoreComments(payload.action.commentdata);
+	      CommentStore.emitChange();
+	      break;
+	    case CommentConstants.GETCOMMENTCOUNT:
+	      CommentStore.saveCommentCount(payload.action.commentCount);
 	      CommentStore.emitChange();
 	      break;
 	  }
@@ -62762,6 +62791,7 @@
 	      commentText: '',
 	      sharedResults: _StatusStore2.default.getSharedData(),
 	      commentResults: _CommentStore2.default.getCommentsData(),
+	      commentCount: _CommentStore2.default.getCommentCount(),
 	      count: _LikeStatusStore2.default.getCount(),
 	      liked: '',
 	      open1: false,
@@ -62792,11 +62822,17 @@
 	      postId: this.props.id
 	    };
 	    _ActivityfeedAction2.default.getCount(LikedData);
+
+	    var CommentedData = {
+	      postId: this.props.id
+	    };
+	    _ActivityfeedAction2.default.getCommentCount(CommentedData);
 	  },
 
 	  _onChange: function _onChange() {
 	    this.setState({ sharedResults: _StatusStore2.default.getSharedData() });
 	    this.setState({ commentResults: _CommentStore2.default.getCommentsData() });
+	    this.setState({ commentCount: _CommentStore2.default.getCommentCount() });
 	    this.setState({ count: _LikeStatusStore2.default.getCount() });
 	  },
 
@@ -62804,6 +62840,7 @@
 	    if (this.props.type == "shared") {
 	      return _react2.default.createElement(_activitySharedList2.default, { sid: this.props.sid,
 	        sfirstname: this.props.sfirstname,
+	        susername: this.props.susername,
 	        sattachment: this.props.sattachment,
 	        spost_text: this.props.spost_text,
 	        screated_at: this.props.screated_at });
@@ -62838,11 +62875,16 @@
 	    });
 	  },
 
-	  _loadMoreComments: function _loadMoreComments() {
-	    var commentData = {
-	      postId: this.props.id
-	    };
-	    _ActivityfeedAction2.default.loadMoreComment(commentData);
+	  _getCommentCount: function _getCommentCount() {
+	    var self = this;
+	    return this.state.commentCount.map(function (comment) {
+	      return comment.map(function (comm) {
+	        if (self.props.id == comm.post_id) {
+	          return _react2.default.createElement(_CountBox2.default, { ckey: comm.post_id,
+	            cCount: comm.commCount });
+	        }
+	      });
+	    });
 	  },
 
 	  _editStatus: function _editStatus() {
@@ -62904,11 +62946,9 @@
 	    if (this.state.liked) {
 	      this.setState({ liked: !this.state.liked });
 	      _ActivityfeedAction2.default.like(likeData);
-	      _getLikedCount();
 	    } else {
 	      this.setState({ liked: !this.state.liked });
 	      _ActivityfeedAction2.default.unlike(likeData);
-	      _getLikedCount();
 	    }
 	  },
 
@@ -63134,11 +63174,7 @@
 	      _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(
-	          _card2.default,
-	          { style: style2 },
-	          _react2.default.createElement(_flatButton2.default, { label: 'load more comments', onClick: this._loadMoreComments })
-	        ),
+	        this._getCommentCount(),
 	        this._getCommentList()
 	      ),
 	      _react2.default.createElement(
@@ -63489,6 +63525,13 @@
 	    });
 	  },
 
+	  _loadMoreComments: function _loadMoreComments() {
+	    var commentData = {
+	      postId: this.props.ckey
+	    };
+	    _ActivityfeedAction2.default.loadMoreComment(commentData);
+	  },
+
 	  render: function render() {
 	    var likeActions = [_react2.default.createElement(_flatButton2.default, {
 	      label: 'Close',
@@ -63512,6 +63555,19 @@
 	          _react2.default.createElement(_flatButton2.default, { label: this.props.likedCount + " Likes", onClick: this._getLikedUsers }),
 	          _react2.default.createElement(_flatButton2.default, { label: this.props.shareCount + " Shares", onClick: this._getSharedUsers })
 	        )
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        null,
+	        this.props.cCount > 2 ? _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            _card2.default,
+	            { style: style2 },
+	            _react2.default.createElement(_flatButton2.default, { label: 'load more comments', onClick: this._loadMoreComments })
+	          )
+	        ) : ''
 	      ),
 	      _react2.default.createElement(
 	        _dialog2.default,

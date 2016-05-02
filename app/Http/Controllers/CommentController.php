@@ -84,4 +84,18 @@ class CommentController extends Controller
             return response()->json(['status' => 200], 200);
         }
     }
+
+    public function getCommentCount(Request $request)
+    {
+        $postId = $request->postId;
+        try {
+            $commentsCount = \DB::select('select count(id) as commCount,post_id 
+                                          from activitycomments 
+                                          where post_id='.$postId);
+
+            return response()->json(['status' => 200, 'commentsCount' => $commentsCount], 200);
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 200], 200);
+        }
+    }
 }

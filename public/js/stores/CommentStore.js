@@ -6,6 +6,7 @@ var assign = require('object-assign');
 var CHANGE_EVENT = 'change';
 
 var searchComments = []; 
+var commentCount=[]; 
 
 var CommentStore = assign({},EventEmitter.prototype, {
 
@@ -30,6 +31,14 @@ var CommentStore = assign({},EventEmitter.prototype, {
     searchComments.push(data);
   },
 
+  getCommentCount: function(result) {
+    return commentCount;
+  },
+
+  saveCommentCount: function(result) {
+    commentCount.push(result);
+  },
+
   emitChange: function() {
     this.emit(CHANGE_EVENT);
   },
@@ -50,6 +59,10 @@ AppDispatcher.register(function(payload) {
       break;
     case(CommentConstants.LOADMORE):
       CommentStore.loadMoreComments(payload.action.commentdata);
+      CommentStore.emitChange();
+      break;
+    case (CommentConstants.GETCOMMENTCOUNT):
+      CommentStore.saveCommentCount(payload.action.commentCount);
       CommentStore.emitChange();
       break;
 	}

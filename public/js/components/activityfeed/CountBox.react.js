@@ -94,6 +94,13 @@ const CountBox = React.createClass({
     }));
   },
 
+  _loadMoreComments: function () {
+      let commentData = {
+      postId: this.props.ckey,
+    };
+    ActivityfeedAction.loadMoreComment(commentData);
+  },
+
     render: function () {
         const likeActions = [
           <FlatButton
@@ -117,6 +124,16 @@ const CountBox = React.createClass({
                        <FlatButton label={this.props.shareCount + " Shares"} onClick={this._getSharedUsers}/>
                     </Paper>
                 </Card>
+
+                <div>
+                  {
+                    (this.props.cCount > 2) ? <div>
+                                                <Card style={style2}>
+                                                  <FlatButton label="load more comments" onClick={this._loadMoreComments} /> 
+                                                  </Card>
+                                              </div> : ''
+                }
+                </div>
 
                 <Dialog
                     autoDetectWindowHeight={false}
