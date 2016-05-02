@@ -173,6 +173,9 @@ const ProfilePic = React.createClass({
       comment: comment
     };
     ProfileVisitorActions.reportUser(data);
+    this.setState({
+      openDialog: false
+    });
   },
   render: function() {
     const actions = [

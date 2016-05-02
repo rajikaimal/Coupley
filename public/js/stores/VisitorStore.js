@@ -43,7 +43,6 @@ var VisitorStore = assign({}, EventEmitter.prototype, {
   },
 
   saveDoneStatus: function (data) {
-    alert(done);
     done = data;
     setTimeout(function () {
       done = false;

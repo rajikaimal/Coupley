@@ -70,7 +70,7 @@ var LoginActions = {
       gotLikedUsername: gotlikedusername,
     };
     $.post('/api/like?token=' + localStorage.getItem('apitoken'), request, function (response) {
-      alert('emiting');
+      
       socket.emit('like', likeNotify);
     }).fail(function (error) {
 
@@ -237,7 +237,7 @@ var LoginActions = {
 
   visitor: function(data) {
     $.post('/api/profile/visitorcount?token=' + localStorage.getItem('apitoken'), data, function(response) {
-      alert(response);
+      
     }).fail(function (error) {
       // AppDispatcher.handleViewAction({
       //   actionType: ProfileConstants.ERR,
