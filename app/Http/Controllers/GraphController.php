@@ -16,12 +16,15 @@ class GraphController extends Controller
     public function userStatus()
     {
         try {
-            if ($users = \DB::select('SELECT deactive,active from(
+            if ($users = \DB::select('SELECT deactive,active,rogue from(
                               (SELECT count(*) as deactive FROM users  where status="deactive"
                               and role="user") as t
                               join
                               (SELECT count(*) as active FROM users  where status="active"
-                              and role="user") as t2)')) {
+                              and role="user") as t2
+                              join
+                              (SELECT count(*) as rogue FROM users  where status="rogue"
+                              and role="user") as t3)')) {
                 return response()->json(['users' => $users, 'status' => 200], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
