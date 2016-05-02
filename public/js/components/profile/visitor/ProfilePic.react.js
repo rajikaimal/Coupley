@@ -80,7 +80,8 @@ const ProfilePic = React.createClass({
 
     let data = {
       visitorusername: visitorUsername,
-      username: username
+      username: username,
+      token: localStorage.getItem('apitoken')
     };
     ProfileVisitorActions.visitor(data);
   },

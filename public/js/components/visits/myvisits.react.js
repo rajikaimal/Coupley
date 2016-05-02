@@ -61,6 +61,7 @@ const myvisits = React.createClass({
  },
 
  getInitialState: function () {
+    alert('ads');
    return {
      open: false,
    };
