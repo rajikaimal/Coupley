@@ -20,9 +20,9 @@ Route::get('/', function () {
 Route::get('/api/login', function () {
     return 'Done';
 });
-Route::group(['prefix' => 'api'], ['middleware' => 'cors', function () {
+Route::group(['prefix' => 'api'], function () {
     //authenticate users with AuthenticateController
-    Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
+    Route::resource('authenticate',['middleware' => 'cors', 'AuthenticateController', ['only' => ['index']]]);
     Route::post('authenticate', 'AuthenticateController@authenticate');
     //Register new users with RegisterConroller@register
     Route::post('register', 'RegisterController@check');
@@ -229,7 +229,7 @@ Route::group(['prefix' => 'api'], ['middleware' => 'cors', function () {
 
     //return lookingfor data of a certain user
     Route::get('profile/lookingfor', 'LookingForController@getLookingFor');
-}]);
+});
 Route::get('socket', 'SocketController@index');
 Route::post('sendmessage', 'SocketController@sendMessage');
 Route::get('writemessage', 'SocketController@writemessage');
