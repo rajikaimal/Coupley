@@ -75393,7 +75393,6 @@
 
 	var FeedStore = assign({}, EventEmitter.prototype, {
 	  getresults: function getresults() {
-	    alert(FeedResults + 'hy feed from store');
 	    return FeedResults;
 	  },
 
