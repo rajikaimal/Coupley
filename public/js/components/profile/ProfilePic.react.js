@@ -244,6 +244,7 @@ const ProfilePic = React.createClass({
 
       if(val) {
         ProfileActions.updateChanges(data);  
+        location.reload();
       }
     },
 

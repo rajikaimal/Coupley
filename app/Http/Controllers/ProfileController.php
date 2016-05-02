@@ -22,6 +22,7 @@ use App\Post;
 use App\Reported;
 use App\activitypost;
 use App\Notification;
+use App\ThreadChats;
 
 class ProfileController extends Controller
 {
@@ -156,6 +157,14 @@ class ProfileController extends Controller
                 $like->user2 = $gotLikedUsername;
                 //$like->save();
                 if ($like->save()) {
+                    $result = Likes::where('user1', $likedUsername)
+                            ->where('user2', $gotLikedUsername)->get();
+                    if (! $result->isEmpty()) {
+                        $thread = new ThreadChats;
+                        $thread->user1_un = $likedUsername;
+                        $thread->user2_un = $gotLikedUsername;
+                        $thread->save();
+                    } 
                     return response()->json(['status' => 200], 200);
                 } else {
                     return response()->json(['status' => 200], 200);
@@ -196,7 +205,6 @@ class ProfileController extends Controller
                         ->where('user_id2', $user_id2)
                         ->where('content', 'like')
                         ->delete();
-                
 
                 return response()->json(['status' => 200], 200);
             } else {
