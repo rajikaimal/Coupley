@@ -34,7 +34,7 @@ class VisitorCountController extends Controller
             if ($myVlist = \DB::select(\DB::raw("
           SELECT p.pvid,u.id,u.firstname,u.lastname,u.username,u.chatstatus,p.created_at
           FROM ProfileVisitor p, users u
-          WHERE prousername='".$username."' AND u.username=p.visusername
+          WHERE visusername='".$username."' AND u.username=p.prousername
          "))) {
                 return response()->json(['myVlist' => $myVlist, 'status' => 200], 200);
             } else {
@@ -77,9 +77,9 @@ class VisitorCountController extends Controller
 
         try {
             if ($oVlist = \DB::select(\DB::raw("
-          SELECT p.pvid,u.id,u.firstname,u.lastname,u.username,u.chatstatus,p.created_at
-          FROM ProfileVisitor p, users u
-          WHERE visusername='".$username."' AND u.username=p.prousername
+            SELECT p.pvid,u.id,u.firstname,u.lastname,u.username,u.chatstatus,p.created_at
+            FROM ProfileVisitor p, users u
+            WHERE prousername='".$username."' AND u.username=p.visusername
          "))) {
                 return response()->json(['oVlist' => $oVlist, 'status' => 200], 200);
             } else {
