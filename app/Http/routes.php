@@ -124,7 +124,7 @@ Route::group(['prefix' => 'api'], function () {
     //
 
     //Add visitor info
-     Route::post('visitorcount', 'VisitorCountController@incrementVisitorCount');
+     Route::post('profile/visitorcount', 'VisitorCountController@incrementVisitorCount');
      Route::get('myvisits', 'VisitorCountController@myVisits');
      Route::get('smyvisits', 'VisitorCountController@searchMyVisits');
      Route::get('othervisits', 'VisitorCountController@othersVisits');

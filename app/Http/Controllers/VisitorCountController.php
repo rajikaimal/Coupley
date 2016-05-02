@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Visitor;
 
 class VisitorCountController extends Controller
 {
@@ -11,15 +12,15 @@ class VisitorCountController extends Controller
     {
         $username = $request->username;
         $visitorUsername = $request->visitorusername;
-
+        //return $username;
         try {
 
-            if($result = \DB::insert(\DB::raw("INSERT INTO  profilevisitor(prousername,visusername)
+              if($result = \DB::insert(\DB::raw("INSERT INTO  ProfileVisitor(prousername,visusername)
               VALUES ('".$username."','".$visitorUsername."') "))){
                 return response()->json(['status' => 200], 200);
               } else {
                 return response()->json(['status' => 505], 505);
-          }
+              }
 
         } catch (Illuminate\Database\QueryException $e) {
         }
@@ -32,8 +33,8 @@ class VisitorCountController extends Controller
         try {
             if ($myVlist = \DB::select(\DB::raw("
           SELECT p.pvid,u.id,u.firstname,u.lastname,u.username,u.chatstatus,p.created_at
-          FROM profilevisitor p, users u
-          WHERE prousername='".$username."' AND u.username=p.visusername
+          FROM ProfileVisitor p, users u
+          WHERE visusername='".$username."' AND u.username=p.prousername
          "))) {
                 return response()->json(['myVlist' => $myVlist, 'status' => 200], 200);
             } else {
@@ -77,7 +78,7 @@ class VisitorCountController extends Controller
         try {
             if ($oVlist = \DB::select(\DB::raw("
           SELECT p.pvid,u.id,u.firstname,u.lastname,u.username,u.chatstatus,p.created_at
-          FROM profilevisitor p, users u
+          FROM ProfileVisitor p, users u
           WHERE visusername='".$username."' AND u.username=p.prousername
          "))) {
                 return response()->json(['oVlist' => $oVlist, 'status' => 200], 200);
