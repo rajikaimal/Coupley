@@ -291,4 +291,5 @@ class ActivityFeedController extends Controller
             return response()->json(['status' => 505], 505);
         }
     }
+
 }

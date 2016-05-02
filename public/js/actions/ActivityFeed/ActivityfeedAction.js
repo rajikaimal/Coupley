@@ -256,7 +256,7 @@ var ActivityfeedAction = {
       }
     });
   },
-  
+
   loadMoreComment: function(commentData) {
     commentLimitNo = commentLimitNo + 2;
     $.get('/api/getcomment?commentLimitNo=' + commentLimitNo , commentData,function(response) {
