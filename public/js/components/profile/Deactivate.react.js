@@ -64,7 +64,9 @@ const Deactivate = React.createClass({
     ];
     return (
       <div>
-          <FlatButton label="Delete account" primary={true} onClick={this._handleDelete}/>
+          <h3> Deactivate profile </h3>
+          Deactivating your profile will make you inactive within Coupley, Other users won't be able to send messages to you over coupley.
+          Feel free to come back at any time, it'll be always free. <br/>
           <FlatButton label="Deactivate account" secondary={true} onClick={this._handleDeactivate}/>
           
           <div>
@@ -79,7 +81,6 @@ const Deactivate = React.createClass({
               If you proceed ...
               <ul>
                 <li> You won't be able to recover any profile data again </li>
-                <li> You'll all your contacts in coupley</li>
                 <li> You won't be able to login with the credentials </li>
               </ul>
           </Dialog>
