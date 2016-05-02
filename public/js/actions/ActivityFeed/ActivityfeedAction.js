@@ -286,6 +286,13 @@ var ActivityfeedAction = {
         console.log('Error 505');
       }
     });
+  },
+
+  reportStatus: function(reportData) {
+   $.post('/api/reportPost', reportData ,function(response){
+    }).fail(function(error) {
+      console.log(error);
+    });
   }
 };
 

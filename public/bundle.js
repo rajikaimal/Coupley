@@ -59968,6 +59968,12 @@
 	        console.log('Error 505');
 	      }
 	    });
+	  },
+
+	  reportStatus: function reportStatus(reportData) {
+	    $.post('/api/reportPost', reportData, function (response) {}).fail(function (error) {
+	      console.log(error);
+	    });
 	  }
 	};
 
@@ -64375,6 +64381,14 @@
 
 	var _colors2 = _interopRequireDefault(_colors);
 
+	var _DropDownMenu = __webpack_require__(348);
+
+	var _DropDownMenu2 = _interopRequireDefault(_DropDownMenu);
+
+	var _menuItem = __webpack_require__(351);
+
+	var _menuItem2 = _interopRequireDefault(_menuItem);
+
 	var _favorite = __webpack_require__(457);
 
 	var _favorite2 = _interopRequireDefault(_favorite);
@@ -64394,10 +64408,6 @@
 	var _iconMenu = __webpack_require__(380);
 
 	var _iconMenu2 = _interopRequireDefault(_iconMenu);
-
-	var _menuItem = __webpack_require__(351);
-
-	var _menuItem2 = _interopRequireDefault(_menuItem);
 
 	var _flatButton = __webpack_require__(333);
 
@@ -64500,6 +64510,7 @@
 	};
 
 	var commentLimitNo = 0;
+	var reason;
 
 	var ActivityList = _react2.default.createClass({
 	  displayName: 'ActivityList',
@@ -64517,6 +64528,9 @@
 	      open3: false,
 	      open4: false,
 	      open5: false,
+	      open6: false,
+	      open7: false,
+	      value: 2,
 	      likeCount: ''
 	    };
 	  },
@@ -64634,6 +64648,30 @@
 	    _ActivityfeedAction2.default._blockStatus(blockData);
 	  },
 
+	  _reportStatus: function _reportStatus() {
+
+	    if (this.state.value == 1) {
+	      reason = "It's annoying";
+	    } else if (this.state.value == 2) {
+	      reason = "It's not interesting";
+	    } else if (this.state.value == 3) {
+	      reason = "It's Spam";
+	    } else if (this.state.value == 4) {
+	      reason = "I think it shouldn't be on Coupley";
+	    }
+
+	    var reportComment = this.refs.ReportBox.getValue();
+	    var reportData = {
+	      postId: this.props.id,
+	      comment: reportComment,
+	      reason: reason
+	    };
+	    _ActivityfeedAction2.default.reportStatus(reportData);
+	    this._blockedStatus();
+	    this.setState({ open6: false });
+	    this.setState({ open7: true });
+	  },
+
 	  _changeShareState: function _changeShareState() {
 	    var shareStatus = this.refs.shareBox.getValue();
 	    var shareData = {
@@ -64687,11 +64725,21 @@
 	    this.setState({ open5: true });
 	  },
 
+	  handleOpenReport: function handleOpenReport() {
+	    this.setState({ open6: true });
+	  },
+
+	  reportHandleChange: function reportHandleChange(event, index, value) {
+	    this.setState({ value: value });
+	  },
+
 	  handleClose: function handleClose() {
 	    this.setState({ opens: false });
 	    this.setState({ open3: false });
 	    this.setState({ open4: false });
 	    this.setState({ open5: false });
+	    this.setState({ open6: false });
+	    this.setState({ open7: false });
 	  },
 
 	  setFocusToTextBox: function setFocusToTextBox() {
@@ -64774,6 +64822,20 @@
 	      secondary: true,
 	      onTouchTap: this.handleClose })];
 
+	    var ReportActions = [_react2.default.createElement(_flatButton2.default, {
+	      label: 'Report',
+	      primary: true,
+	      keyboardFocused: true,
+	      onTouchTap: this._reportStatus }), _react2.default.createElement(_flatButton2.default, {
+	      label: 'Close',
+	      secondary: true,
+	      onTouchTap: this.handleClose })];
+
+	    var confirmReportActions = [_react2.default.createElement(_flatButton2.default, {
+	      label: 'Ok',
+	      secondary: true,
+	      onTouchTap: this.handleClose })];
+
 	    return _react2.default.createElement(
 	      'div',
 	      { style: style1 },
@@ -64801,7 +64863,8 @@
 	              { iconButtonElement: iconButtonElement },
 	              _react2.default.createElement(_menuItem2.default, { primaryText: 'Edit', onClick: this.handleOpen }),
 	              _react2.default.createElement(_menuItem2.default, { primaryText: 'Remove', onClick: this.handleOpenDelete }),
-	              _react2.default.createElement(_menuItem2.default, { primaryText: 'Block', onClick: this.handleOpenBlock })
+	              _react2.default.createElement(_menuItem2.default, { primaryText: 'Unfollow', onClick: this.handleOpenBlock }),
+	              _react2.default.createElement(_menuItem2.default, { primaryText: 'Report', onClick: this.handleOpenReport })
 	            ) }),
 	          _react2.default.createElement(
 	            _cardText2.default,
@@ -64858,7 +64921,7 @@
 	            modal: false,
 	            open: this.state.open3,
 	            onRequestClose: this.handleClose },
-	          'Are you sure you want to delete this post?"'
+	          'Are you sure you want to delete this post?'
 	        ),
 	        _react2.default.createElement(
 	          _dialog2.default,
@@ -64868,7 +64931,7 @@
 	            modal: false,
 	            open: this.state.open5,
 	            onRequestClose: this.handleClose },
-	          'Are you sure you want to block this post?"'
+	          'Are you sure you want to block this post?'
 	        ),
 	        _react2.default.createElement(
 	          _dialog2.default,
@@ -64888,7 +64951,40 @@
 	            modal: false,
 	            open: this.state.open4,
 	            onRequestClose: this.handleClose },
-	          '"This has been shared to your Timeline."'
+	          'This has been shared to your Timeline.'
+	        ),
+	        _react2.default.createElement(
+	          _dialog2.default,
+	          {
+	            title: 'Report Status',
+	            actions: ReportActions,
+	            modal: false,
+	            open: this.state.open6,
+	            onRequestClose: this.handleClose },
+	          _react2.default.createElement(
+	            'label',
+	            null,
+	            'Reason'
+	          ),
+	          _react2.default.createElement(
+	            _DropDownMenu2.default,
+	            { value: this.state.value, onChange: this.reportHandleChange },
+	            _react2.default.createElement(_menuItem2.default, { value: 1, primaryText: 'It\'s annoying' }),
+	            _react2.default.createElement(_menuItem2.default, { value: 2, primaryText: 'It\'s not interesting' }),
+	            _react2.default.createElement(_menuItem2.default, { value: 3, primaryText: 'It\'s Spam' }),
+	            _react2.default.createElement(_menuItem2.default, { value: 4, primaryText: 'I think it shouldn\'t be on Coupley' })
+	          ),
+	          _react2.default.createElement(_textField2.default, { hintText: 'Comment', multiLine: false, fullWidth: true, ref: 'ReportBox' })
+	        ),
+	        _react2.default.createElement(
+	          _dialog2.default,
+	          {
+	            title: 'Report Status',
+	            actions: confirmReportActions,
+	            modal: false,
+	            open: this.state.open7,
+	            onRequestClose: this.handleClose },
+	          'You have reported this post'
 	        )
 	      ),
 	      _react2.default.createElement(
