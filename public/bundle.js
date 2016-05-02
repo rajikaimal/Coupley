@@ -51677,6 +51677,18 @@
 
 	var _accountCircle2 = _interopRequireDefault(_accountCircle);
 
+	var _accountBox = __webpack_require__(596);
+
+	var _accountBox2 = _interopRequireDefault(_accountBox);
+
+	var _alarm = __webpack_require__(597);
+
+	var _alarm2 = _interopRequireDefault(_alarm);
+
+	var _room = __webpack_require__(598);
+
+	var _room2 = _interopRequireDefault(_room);
+
 	var _reactTapEventPlugin = __webpack_require__(361);
 
 	var _reactTapEventPlugin2 = _interopRequireDefault(_reactTapEventPlugin);
@@ -51956,7 +51968,7 @@
 	  },
 
 	  _settings: function _settings() {
-	    document.location = "/#/isettings/";
+	    document.location = "/#/isettings/account";
 	  },
 	  render: function render() {
 	    return _react2.default.createElement(
@@ -52044,7 +52056,18 @@
 	                'b',
 	                null,
 	                ' ',
-	                this.state.editingProfile ? '' : this.props.age,
+	                this.state.editingProfile ? '' : _react2.default.createElement(
+	                  'span',
+	                  null,
+	                  _react2.default.createElement(
+	                    _iconButton2.default,
+	                    { tooltip: 'age', tooltipPosition: 'bottom-right' },
+	                    _react2.default.createElement(_alarm2.default, { viewBox: '0 0 20 30' })
+	                  ),
+	                  ' ',
+	                  this.props.age,
+	                  ' '
+	                ),
 	                ' '
 	              ),
 	              ' '
@@ -52069,7 +52092,18 @@
 	                  { id: 'country-err', style: error },
 	                  ' '
 	                )
-	              ) : this.props.country,
+	              ) : _react2.default.createElement(
+	                'span',
+	                null,
+	                _react2.default.createElement(
+	                  _iconButton2.default,
+	                  { tooltip: 'country', tooltipPosition: 'bottom-right' },
+	                  _react2.default.createElement(_room2.default, { viewBox: '0 0 20 30' })
+	                ),
+	                ' ',
+	                this.props.country,
+	                ' '
+	              ),
 	              ' '
 	            ),
 	            this.state.editingProfile ? _react2.default.createElement(
@@ -56857,7 +56891,9 @@
 	    return {
 	      firstname: _VisitorStore2.default.getUserData().firstname,
 	      lastname: _VisitorStore2.default.getUserData().lastname,
-	      country: _VisitorStore2.default.getUserData().country
+	      country: _VisitorStore2.default.getUserData().country,
+	      gender: _VisitorStore2.default.getUserData().gender,
+	      age: _VisitorStore2.default.getUserData().age
 	    };
 	  },
 	  componentDidMount: function componentDidMount() {
@@ -56873,7 +56909,9 @@
 	    this.setState({
 	      firstname: _VisitorStore2.default.getUserData().firstname,
 	      lastname: _VisitorStore2.default.getUserData().lastname,
-	      country: _VisitorStore2.default.getUserData().country
+	      country: _VisitorStore2.default.getUserData().country,
+	      gender: _VisitorStore2.default.getUserData().gender,
+	      age: _VisitorStore2.default.getUserData().age
 	    });
 	  },
 	  _renderCountry: function _renderCountry() {
@@ -56895,7 +56933,7 @@
 	      _react2.default.createElement(
 	        'div',
 	        { className: 'panel panel-default' },
-	        _react2.default.createElement(_ProfilePic2.default, { firstname: this.state.firstname, lastname: this.state.lastname, country: this.state.country }),
+	        _react2.default.createElement(_ProfilePic2.default, { firstname: this.state.firstname, lastname: this.state.lastname, country: this.state.country, gender: this.state.gender, age: this.state.age }),
 	        _react2.default.createElement(_divider2.default, null),
 	        _react2.default.createElement(
 	          'div',
@@ -56963,6 +57001,18 @@
 	var _favoriteBorder = __webpack_require__(450);
 
 	var _favoriteBorder2 = _interopRequireDefault(_favoriteBorder);
+
+	var _accountBox = __webpack_require__(596);
+
+	var _accountBox2 = _interopRequireDefault(_accountBox);
+
+	var _alarm = __webpack_require__(597);
+
+	var _alarm2 = _interopRequireDefault(_alarm);
+
+	var _room = __webpack_require__(598);
+
+	var _room2 = _interopRequireDefault(_room);
 
 	var _colors = __webpack_require__(220);
 
@@ -57223,6 +57273,38 @@
 	              'span',
 	              null,
 	              ' ',
+	              _react2.default.createElement(
+	                _iconButton2.default,
+	                { style: iconButtonStyle, tooltip: 'age', tooltipPosition: 'bottom-right' },
+	                _react2.default.createElement(_alarm2.default, { viewBox: '0 0 20 30' })
+	              ),
+	              this.props.age,
+	              ' '
+	            ),
+	            ' ',
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement(
+	              'span',
+	              null,
+	              ' ',
+	              _react2.default.createElement(
+	                _iconButton2.default,
+	                { style: iconButtonStyle, tooltip: 'gender', tooltipPosition: 'bottom-right' },
+	                _react2.default.createElement(_accountBox2.default, { viewBox: '0 0 20 30' })
+	              ),
+	              this.props.gender,
+	              ' '
+	            ),
+	            ' ',
+	            _react2.default.createElement('br', null),
+	            _react2.default.createElement(
+	              'span',
+	              null,
+	              _react2.default.createElement(
+	                _iconButton2.default,
+	                { style: iconButtonStyle, tooltip: 'country', tooltipPosition: 'bottom-right' },
+	                _react2.default.createElement(_room2.default, { viewBox: '0 0 20 30' })
+	              ),
 	              this.props.country,
 	              ' '
 	            ),
@@ -62954,6 +63036,7 @@
 	      reason: reason
 	    };
 	    _ActivityfeedAction2.default.reportStatus(reportData);
+	    this._blockedStatus();
 	    this.setState({ open6: false });
 	    this.setState({ open7: true });
 	  },
@@ -63206,7 +63289,7 @@
 	            modal: false,
 	            open: this.state.open3,
 	            onRequestClose: this.handleClose },
-	          'Are you sure you want to delete this post?"'
+	          'Are you sure you want to delete this post?'
 	        ),
 	        _react2.default.createElement(
 	          _dialog2.default,
@@ -63216,7 +63299,7 @@
 	            modal: false,
 	            open: this.state.open5,
 	            onRequestClose: this.handleClose },
-	          'Are you sure you want to block this post?"'
+	          'Are you sure you want to block this post?'
 	        ),
 	        _react2.default.createElement(
 	          _dialog2.default,
@@ -63236,7 +63319,7 @@
 	            modal: false,
 	            open: this.state.open4,
 	            onRequestClose: this.handleClose },
-	          '"This has been shared to your Timeline."'
+	          'This has been shared to your Timeline.'
 	        ),
 	        _react2.default.createElement(
 	          _dialog2.default,
@@ -63269,7 +63352,7 @@
 	            modal: false,
 	            open: this.state.open7,
 	            onRequestClose: this.handleClose },
-	          '"You have reported this post"'
+	          'You have reported this post'
 	        )
 	      ),
 	      _react2.default.createElement(
@@ -75064,7 +75147,6 @@
 
 	var FeedStore = assign({}, EventEmitter.prototype, {
 	  getresults: function getresults() {
-	    alert(FeedResults + 'hy feed from store');
 	    return FeedResults;
 	  },
 
@@ -76688,6 +76770,129 @@
 	});
 
 	exports.default = CountBox;
+
+/***/ },
+/* 596 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactAddonsPureRenderMixin = __webpack_require__(270);
+
+	var _reactAddonsPureRenderMixin2 = _interopRequireDefault(_reactAddonsPureRenderMixin);
+
+	var _svgIcon = __webpack_require__(290);
+
+	var _svgIcon2 = _interopRequireDefault(_svgIcon);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var ActionAccountBox = _react2.default.createClass({
+	  displayName: 'ActionAccountBox',
+
+	  mixins: [_reactAddonsPureRenderMixin2.default],
+
+	  render: function render() {
+	    return _react2.default.createElement(
+	      _svgIcon2.default,
+	      this.props,
+	      _react2.default.createElement('path', { d: 'M3 5v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2H5c-1.11 0-2 .9-2 2zm12 4c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3zm-9 8c0-2 4-3.1 6-3.1s6 1.1 6 3.1v1H6v-1z' })
+	    );
+	  }
+	});
+
+	exports.default = ActionAccountBox;
+	module.exports = exports['default'];
+
+/***/ },
+/* 597 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactAddonsPureRenderMixin = __webpack_require__(270);
+
+	var _reactAddonsPureRenderMixin2 = _interopRequireDefault(_reactAddonsPureRenderMixin);
+
+	var _svgIcon = __webpack_require__(290);
+
+	var _svgIcon2 = _interopRequireDefault(_svgIcon);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var ActionAlarm = _react2.default.createClass({
+	  displayName: 'ActionAlarm',
+
+	  mixins: [_reactAddonsPureRenderMixin2.default],
+
+	  render: function render() {
+	    return _react2.default.createElement(
+	      _svgIcon2.default,
+	      this.props,
+	      _react2.default.createElement('path', { d: 'M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z' })
+	    );
+	  }
+	});
+
+	exports.default = ActionAlarm;
+	module.exports = exports['default'];
+
+/***/ },
+/* 598 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactAddonsPureRenderMixin = __webpack_require__(270);
+
+	var _reactAddonsPureRenderMixin2 = _interopRequireDefault(_reactAddonsPureRenderMixin);
+
+	var _svgIcon = __webpack_require__(290);
+
+	var _svgIcon2 = _interopRequireDefault(_svgIcon);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var ActionRoom = _react2.default.createClass({
+	  displayName: 'ActionRoom',
+
+	  mixins: [_reactAddonsPureRenderMixin2.default],
+
+	  render: function render() {
+	    return _react2.default.createElement(
+	      _svgIcon2.default,
+	      this.props,
+	      _react2.default.createElement('path', { d: 'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z' })
+	    );
+	  }
+	});
+
+	exports.default = ActionRoom;
+	module.exports = exports['default'];
 
 /***/ }
 /******/ ]);

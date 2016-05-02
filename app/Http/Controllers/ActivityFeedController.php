@@ -39,6 +39,14 @@ class ActivityFeedController extends Controller
         }
     }
 
+    /**
+     * add an iamge to Activity feed, handles POST request.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function addImageStatus(Request $request)
     {
         $destination = 'img/activityFeedPics';
@@ -62,6 +70,14 @@ class ActivityFeedController extends Controller
         }
     }
 
+    /**
+     * share a post to Activity feed, handles POST request.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function sharedStatus(Request $request)
     {
         try {
@@ -261,6 +277,14 @@ class ActivityFeedController extends Controller
         }
     }
 
+    /**
+     * block post of a user.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function block_status(Request $request)
     {
         try {
@@ -278,6 +302,14 @@ class ActivityFeedController extends Controller
         }
     }
 
+    /**
+     * get shared users.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function getSharedUsers(Request $request)
     {
         $postId = $request->postId;
@@ -293,6 +325,14 @@ class ActivityFeedController extends Controller
         }
     }
 
+    /**
+     * report post of a user.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function reportPost(Request $request)
     {
         try {

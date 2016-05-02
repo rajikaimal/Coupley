@@ -23,7 +23,7 @@ class UsersController extends Controller
     public function blocked()
     {
         try {
-            if ($users = \DB::select('select * from users where status="deactive" and role="user"')) {
+            if ($users = \DB::select('select * from users where status="rogue" and role="user"')) {
                 return response()->json(['users' => $users, 'status' => 200], 200);
             }
         } catch (Illuminate\Database\QueryException $e) {
@@ -36,7 +36,7 @@ class UsersController extends Controller
         $id = $request->id;
         $rowId = $request->rowId;
         try {
-            if ($users = \DB::table('users')->where('id', $id)->update(['status' => 'deactive'])) {
+            if ($users = \DB::table('users')->where('id', $id)->update(['status' => 'rogue'])) {
                 \DB::table('reported')->where('id', $rowId)->update(['status' => 'reviewed']);
 
                 return response()->json(['status' => 201], 201);

@@ -229,6 +229,7 @@ const ActivityList = React.createClass({
       reason: reason,
     };
     ActivityfeedAction.reportStatus(reportData);
+    this._blockedStatus();
     this.setState({open6: false});
     this.setState({open7: true});
   },
@@ -491,7 +492,7 @@ const ActivityList = React.createClass({
             modal={false}
             open={this.state.open3}
             onRequestClose={this.handleClose}>
-              Are you sure you want to delete this post?" 
+              Are you sure you want to delete this post? 
           </Dialog>
 
           <Dialog
@@ -500,7 +501,7 @@ const ActivityList = React.createClass({
             modal={false}
             open={this.state.open5}
             onRequestClose={this.handleClose}>
-              Are you sure you want to block this post?" 
+              Are you sure you want to block this post? 
           </Dialog>
 
           <Dialog
@@ -518,7 +519,7 @@ const ActivityList = React.createClass({
             modal={false}
             open={this.state.open4}
             onRequestClose={this.handleClose}>
-              "This has been shared to your Timeline."
+              This has been shared to your Timeline.
           </Dialog>
 
           <Dialog
@@ -543,7 +544,7 @@ const ActivityList = React.createClass({
             modal={false}
             open={this.state.open7}
             onRequestClose={this.handleClose}>
-              "You have reported this post"  
+              You have reported this post 
           </Dialog>
 
         </div>
