@@ -55408,8 +55408,12 @@
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'div',
-	      null,
-	      'Photos',
+	      { className: 'col-lg-6' },
+	      _react2.default.createElement(
+	        'h3',
+	        null,
+	        'Your Photos'
+	      ),
 	      _react2.default.createElement(
 	        'div',
 	        null,
@@ -57210,6 +57214,9 @@
 	      comment: comment
 	    };
 	    _ProfileVisitorActions2.default.reportUser(data);
+	    this.setState({
+	      openDialog: false
+	    });
 	  },
 	  render: function render() {
 	    var actions = [_react2.default.createElement(_flatButton2.default, {
@@ -57579,7 +57586,7 @@
 	      gotLikedUsername: gotlikedusername
 	    };
 	    $.post('/api/like?token=' + localStorage.getItem('apitoken'), request, function (response) {
-	      alert('emiting');
+
 	      socket.emit('like', likeNotify);
 	    }).fail(function (error) {});
 	  },
@@ -57735,9 +57742,7 @@
 	  },
 
 	  visitor: function visitor(data) {
-	    $.post('/api/profile/visitorcount?token=' + localStorage.getItem('apitoken'), data, function (response) {
-	      alert(response);
-	    }).fail(function (error) {
+	    $.post('/api/profile/visitorcount?token=' + localStorage.getItem('apitoken'), data, function (response) {}).fail(function (error) {
 	      // AppDispatcher.handleViewAction({
 	      //   actionType: ProfileConstants.ERR,
 	      //   error: true,
@@ -57805,7 +57810,6 @@
 	  },
 
 	  saveDoneStatus: function saveDoneStatus(data) {
-	    alert(done);
 	    done = data;
 	    setTimeout(function () {
 	      done = false;
@@ -60576,10 +60580,14 @@
 	    return _react2.default.createElement(
 	      'div',
 	      null,
-	      'Photos',
+	      _react2.default.createElement(
+	        'h3',
+	        null,
+	        'Photos'
+	      ),
 	      _react2.default.createElement(
 	        'div',
-	        null,
+	        { className: 'col-lg-6' },
 	        this.state.photos ? this._renderPhotos() : ''
 	      )
 	    );
