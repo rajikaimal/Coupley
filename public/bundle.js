@@ -58734,7 +58734,8 @@
 
 	    var data = {
 	      visitorusername: visitorUsername,
-	      username: username
+	      username: username,
+	      token: localStorage.getItem('apitoken')
 	    };
 	    _ProfileVisitorActions2.default.visitor(data);
 	  },
@@ -59354,7 +59355,9 @@
 	  },
 
 	  visitor: function visitor(data) {
-	    $.post('/api/profile/visitorcount?token=' + localStorage.getItem('apitoken'), data, function (response) {}).fail(function (error) {
+	    $.post('/api/profile/visitorcount?token=' + localStorage.getItem('apitoken'), data, function (response) {
+	      alert(reponse);
+	    }).fail(function (error) {
 	      // AppDispatcher.handleViewAction({
 	      //   actionType: ProfileConstants.ERR,
 	      //   error: true,
@@ -72243,6 +72246,7 @@
 	  },
 
 	  getInitialState: function getInitialState() {
+	    alert('ads');
 	    return {
 	      open: false
 	    };
