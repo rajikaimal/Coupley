@@ -8,6 +8,7 @@ use App\User;
 use App\activitypost;
 use App\activitylikes;
 use App\activityblock;
+use App\activityreport;
 
 class ActivityFeedController extends Controller
 {
@@ -290,6 +291,24 @@ class ActivityFeedController extends Controller
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 505], 505);
         }
+    }
+
+    public function reportPost(Request $request)
+    {
+        try {
+            $report = new activityreport;
+            $report->post_id = $request->postId;
+            $report->reasons = $request->reason;
+            $report->comments = $request->comment;
+
+            if ($report = $report->save()) {
+                return response()->json(['report' => $report, 'status' => 201], 201);
+            } else {
+                return response()->json(['status' => 404], 404);
+            }
+        } catch (Illuminate\Database\QueryException $e) {
+            return response()->json(['status' => 505], 505);
+        }  
     }
 
 }
