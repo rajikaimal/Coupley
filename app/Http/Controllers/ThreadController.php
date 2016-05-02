@@ -6,9 +6,7 @@ use Illuminate\Http\Request;
 
 class ThreadController extends Controller
 {
-
-
-  /**
+    /**
    * get previous initial conversation.
    *
    * @param object        $request
