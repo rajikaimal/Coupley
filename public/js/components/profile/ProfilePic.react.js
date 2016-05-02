@@ -5,6 +5,9 @@ import IconButton from 'material-ui/lib/icon-button';
 import RaisedButton from 'material-ui/lib/raised-button';
 import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
 import UsernameIcon from 'material-ui/lib/svg-icons/action/account-circle';
+import Gender from 'material-ui/lib/svg-icons/action/account-box';
+import Age from 'material-ui/lib/svg-icons/action/alarm';
+import Country from 'material-ui/lib/svg-icons/action/room';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import ProfileActions from '../../actions/profile/ProfileActions';
 import ProfileStore from '../../stores/ProfileStore';
@@ -261,7 +264,7 @@ const ProfilePic = React.createClass({
     },
 
     _settings: function() {
-      document.location = "/#/isettings/";
+      document.location = "/#/isettings/account";
     },
   render: function() {
     return (
@@ -307,7 +310,9 @@ const ProfilePic = React.createClass({
               <span> <b>{ this.state.editingProfile ? ''
                        : '@' + this.props.username} </b> </span> <br/>
 
-              <span> <b> { this.state.editingProfile ? '' : this.props.age } </b> </span>
+              <span> <b> { this.state.editingProfile ? '' : <span><IconButton  tooltip="age" tooltipPosition="bottom-right">
+                            <Age viewBox="0 0 20 30" />
+                </IconButton> {this.props.age} </span> } </b> </span>
               <br />
 
               <span> {this.state.editingProfile ? 
@@ -324,7 +329,9 @@ const ProfilePic = React.createClass({
 
                        <span id="country-err" style={error}> </span>
                     </div>
-                     : this.props.country} </span>
+                     : <span><IconButton  tooltip="country" tooltipPosition="bottom-right">
+                            <Country viewBox="0 0 20 30" />
+                </IconButton> {this.props.country} </span>} </span>
                      {
                       this.state.editingProfile ? 
                         <div>
