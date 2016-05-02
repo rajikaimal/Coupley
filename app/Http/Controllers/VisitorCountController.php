@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
 
 class VisitorCountController extends Controller
 {
@@ -13,14 +12,12 @@ class VisitorCountController extends Controller
         $visitorUsername = $request->visitorusername;
 
         try {
-
-            if($result = \DB::insert(\DB::raw("INSERT INTO  profilevisitor(prousername,visusername)
-              VALUES ('".$username."','".$visitorUsername."') "))){
+            if ($result = \DB::insert(\DB::raw("INSERT INTO  profilevisitor(prousername,visusername)
+              VALUES ('".$username."','".$visitorUsername."') "))) {
                 return response()->json(['status' => 200], 200);
-              } else {
+            } else {
                 return response()->json(['status' => 505], 505);
-          }
-
+            }
         } catch (Illuminate\Database\QueryException $e) {
         }
     }

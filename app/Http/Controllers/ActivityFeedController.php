@@ -348,7 +348,6 @@ class ActivityFeedController extends Controller
             }
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 505], 505);
-        }  
+        }
     }
-
 }

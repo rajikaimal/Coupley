@@ -123,6 +123,7 @@ class ProfileController extends Controller
             $userDetails = \DB::select(\DB::raw("
                 SELECT id,firstname,lastname,orientation,email,country,gender,username,profilepic,birthday,TIMESTAMPDIFF(YEAR, birthday, CURDATE()) AS age from users where username='".$username."'
             "));
+
             return response()->json(['user' => $userDetails, 'status' => 200], 200);
         } catch (Illuminate\Database\QueryException $e) {
             return response()->json(['status' => 200], 200);
