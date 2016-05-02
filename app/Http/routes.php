@@ -203,7 +203,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('profile/notificationlist', 'NotificationController@getNotificationList');
     //load more notifications based on client request
     Route::get('profile/notificationlistmore', 'NotificationController@getNotificationListMore');
-    //clear notifications    
+    //clear notifications
     Route::post('profile/notifications/clear', 'NotificationController@clearNotifications');
     //retrives liked list of a certain user
     Route::get('profile/likedlist', 'LikeListController@getLikedList');
@@ -251,6 +251,9 @@ Route::group(['prefix' => 'admin-api'], function () {
     Route::post('blockuser', 'UsersController@block');
     //unblock certain user
     Route::post('unblockuser', 'UsersController@Unblock');
+
+    //Return userslist for search
+    Route::get('searches', 'AdminSearchController@search');
 
     //Register new admins with RegisterConroller@register
     Route::post('registerAdmin', 'AdminRegisterController@checks');

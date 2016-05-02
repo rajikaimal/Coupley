@@ -205,7 +205,6 @@ class ProfileController extends Controller
                         ->where('user_id2', $user_id2)
                         ->where('content', 'like')
                         ->delete();
-                
 
                 return response()->json(['status' => 200], 200);
             } else {
