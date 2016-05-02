@@ -18,6 +18,7 @@ class StatusFeedLikes extends Migration
             $table->integer('UserId');
             $table->string('email');
             $table->string('firstname');
+            $table->string('username');
             $table->timestamps();
             });
     }

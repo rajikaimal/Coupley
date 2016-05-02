@@ -18,6 +18,8 @@ const style2 = {
 
 var firstname;
 var sfirstname;
+var username;
+var susername;
 
 const CountBox = React.createClass({
    getInitialState: function () {
@@ -27,6 +29,8 @@ const CountBox = React.createClass({
       open: false,
       firstname: '',
       sfirstname: '',
+      username: '',
+      susername: '',
     };
   },
 
@@ -62,10 +66,11 @@ const CountBox = React.createClass({
       return (likes.map(function(result) {
         if(self.props.post_id == result.post_id) {
             firstname=result.firstname;
-             alert(firstname);
-                self.setState({
-                  firstname: firstname
-                });
+            username=result.username;
+            self.setState({
+                firstname: firstname,
+                username: username
+            });
           }
       }));
     }));
@@ -79,13 +84,21 @@ const CountBox = React.createClass({
       return (shares.map(function(result) {
         if(self.props.post_id == result.post_id) {
                 firstname=result.firstname;
-                alert(firstname);
+                username=result.username;
                 self.setState({
-                  sfirstname: firstname
+                  sfirstname: firstname,
+                  susername: username
                 });
           }
       }));
     }));
+  },
+
+  _loadMoreComments: function () {
+      let commentData = {
+      postId: this.props.ckey,
+    };
+    ActivityfeedAction.loadMoreComment(commentData);
   },
 
     render: function () {
@@ -105,12 +118,35 @@ const CountBox = React.createClass({
 
         return (
             <div>
-                <Card style={style2}>
-                    <Paper zDepth={1}>
-                       <FlatButton label={this.props.likedCount + " Likes"} onClick={this._getLikedUsers}/>
-                       <FlatButton label={this.props.shareCount + " Shares"} onClick={this._getSharedUsers}/>
-                    </Paper>
-                </Card>
+                <div>
+                  {
+                    (this.props.likedCount) ? <div>
+                                                <Card style={style2}>
+                                                  <FlatButton label={this.props.likedCount + " Likes"} onClick={this._getLikedUsers}/>
+                                                </Card>
+                                              </div> : ''
+                  }
+                </div>
+
+                <div>
+                  {
+                    (this.props.shareCount) ? <div>
+                                                <Card style={style2}>
+                                                   <FlatButton label={this.props.shareCount + " Shares"} onClick={this._getSharedUsers}/>
+                                                </Card>
+                                              </div> : ''
+                  }
+                </div>
+
+                <div>
+                  {
+                    (this.props.cCount > 2) ? <div>
+                                                <Card style={style2}>
+                                                  <FlatButton label="load more comments" onClick={this._loadMoreComments} /> 
+                                                  </Card>
+                                              </div> : ''
+                  }
+                </div>
 
                 <Dialog
                     autoDetectWindowHeight={false}
@@ -120,9 +156,13 @@ const CountBox = React.createClass({
                     open={this.state.open}>
                        
                        <ListItem 
-                        leftAvatar={<Avatar src="https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg" />}
+                        leftAvatar={<Avatar src={'img/profilepics/'+ this.state.username}/>}
                         primaryText={this.state.firstname} />
-                      <Divider inset={true} />  
+                      <Divider inset={true} /> 
+                      <ListItem 
+                        leftAvatar={<Avatar src={'img/profilepics/ryan'}/>}
+                        primaryText="Ryan" />
+                      <Divider inset={true} />   
                 </Dialog>
 
                 <Dialog
@@ -133,7 +173,7 @@ const CountBox = React.createClass({
                     open={this.state.open2}>
                        
                       <ListItem 
-                        leftAvatar={<Avatar src="https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg" />}
+                        leftAvatar={<Avatar src={'img/profilepics/'+ this.state.susername} />}
                         primaryText={this.state.sfirstname} />
                       <Divider inset={true} />
                 </Dialog>

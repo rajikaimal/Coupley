@@ -129,6 +129,7 @@ const StatusBox = React.createClass({
             fd.append('email', localStorage.getItem('email'));
             fd.append('userId', localStorage.getItem('userid'));
             fd.append('firstName',LoginStore.getFirstname());
+            fd.append('username',localStorage.getItem('username'));
             fd.append('status',status);
             fd.append('token', token);
             $.ajax({
@@ -156,6 +157,7 @@ const StatusBox = React.createClass({
           let statusData = {
           email: LoginStore.getEmail(),
           userId: localStorage.getItem('userid'),
+          userName: localStorage.getItem('username'),
           firstName: LoginStore.getFirstname(),
           status: status,
           };

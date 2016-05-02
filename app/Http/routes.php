@@ -57,8 +57,12 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('getsharestatus', 'ShareController@getsharestatus');
     //Add a comment to the status
     Route::post('addcomment', 'CommentController@addcomment');
+    //Return current comment
+    Route::get('getCurrentComment','CommentController@getCurrentComment');
     //Return comments data
     Route::get('getcomment', 'CommentController@getcomments');
+    //Return comment count
+    Route::get('getCommentCount','CommentController@getCommentCount');
     //Delete a status
     Route::post('deleteStatus', 'ActivityFeedController@deleteStatus');
     //Edit a status

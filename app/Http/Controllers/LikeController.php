@@ -24,6 +24,7 @@ class LikeController extends Controller
             $like->UserId = $request->userId;
             $like->email = $request->email;
             $like->firstname = $request->firstName;
+            $like->username = $request->userName;
             if ($like->save()) {
                 return response()->json(['status' => 201], 201);
             } else {
@@ -82,7 +83,7 @@ class LikeController extends Controller
     {
         $postId = $request->postId;
         try {
-            $posts = \DB::select('select firstname,post_id
+            $posts = \DB::select('select firstname,post_id,username
                                  from activitylikes 
                                  where post_id='.$postId.'
                                  order by created_at desc');

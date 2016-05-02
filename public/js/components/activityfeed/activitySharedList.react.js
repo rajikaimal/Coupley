@@ -17,30 +17,41 @@ const ActivitySharedList = React.createClass({
             <div style={style1}>
                 <div>
                     <Card>
-                        <ListItem
-                            leftAvatar={<Avatar src="https://s-media-cache-ak0.pinimg.com/236x/dc/15/f2/dc15f28faef36bc55e64560d000e871c.jpg" />}
-                            primaryText={this.props.sfirstname}
-                            secondaryText={
-                                <p>
-                                <b>{this.props.screated_at}</b>
-                                </p>
-                            }
-                            secondaryTextLines={1}  />
-
-                        <CardText>
-                            {this.props.spost_text}
-                        </CardText>
-
                         <div>
-                            {
-                            (this.props.sattachment!='None') ? <div>
-                                                                <CardMedia>
-                                                                <img src={'img/activityFeedPics/'+ this.props.sattachment} />
-                                                                </CardMedia>
-                                                              </div> : ''
-                        }
-                      </div>
-                        <Divider inset={true} />
+                            {(this.props.sid) ? <div>
+                                                    <ListItem
+                                                        leftAvatar={<Avatar src={'img/profilepics/'+ this.props.susername} />}
+                                                        primaryText={this.props.sfirstname}
+                                                        secondaryText={
+                                                            <p>
+                                                            <b>{this.props.screated_at}</b>
+                                                            </p>
+                                                        }
+                                                        secondaryTextLines={1}  />
+
+                                                        <CardText>
+                                                            {this.props.spost_text}
+                                                        </CardText>
+
+                                                        <div>
+                                                            {
+                                                            (this.props.sattachment!='None') ? <div>
+                                                                                                    <CardMedia>
+                                                                                                        <img src={'img/activityFeedPics/'+ this.props.sattachment} />
+                                                                                                    </CardMedia>
+                                                                                                </div> : ''
+                                                            }
+                                                            </div>
+                                                            <Divider inset={true} />
+                                                    </div> : <div>
+                                                                <ListItem
+                                                                    primaryText="Attachment Unavailable"/>
+                                                                    <CardText>
+                                                                        This attachment may have been removed or the person who shared it may not have permission to share it with you
+                                                                    </CardText>
+                                                                <Divider inset={true} />
+                                                             </div>}
+                        </div>
                     </Card>   
                   </div>
             </div>
