@@ -18,8 +18,9 @@ var LoginActions = {
         });
 
         //document.location = "/";
+      } else if (response.status == 201) {
+        document.getElementById('server-error').innerHTML = 'Sorry,You are blocked out of the System.';
       } else {
-        alert(response);
         return false;
       }
     }).fail(function () {
