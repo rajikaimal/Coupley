@@ -70209,7 +70209,7 @@
 
 	var _othersvisits2 = _interopRequireDefault(_othersvisits);
 
-	var _myvisits = __webpack_require__(545);
+	var _myvisits = __webpack_require__(547);
 
 	var _myvisits2 = _interopRequireDefault(_myvisits);
 
@@ -70221,7 +70221,7 @@
 
 	var _VisitsStore2 = _interopRequireDefault(_VisitsStore);
 
-	var _VisitsAction = __webpack_require__(546);
+	var _VisitsAction = __webpack_require__(545);
 
 	var _VisitsAction2 = _interopRequireDefault(_VisitsAction);
 
@@ -70564,6 +70564,10 @@
 
 	var _ThreadActions2 = _interopRequireDefault(_ThreadActions);
 
+	var _VisitsAction = __webpack_require__(545);
+
+	var _VisitsAction2 = _interopRequireDefault(_VisitsAction);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var iconButtonElement = _react2.default.createElement(
@@ -70610,7 +70614,7 @@
 
 	  blockUser: function blockUser() {
 	    _ThreadActions2.default.block(this.props.username, localStorage.getItem('username'));
-	    VisitsActions.deleteUserFromOthervisit(this.props.username, localStorage.getItem('username'));
+	    _VisitsAction2.default.deleteUserFromOthervisit(this.props.username, localStorage.getItem('username'));
 	    this.setState({ open: false });
 	  },
 
@@ -70667,209 +70671,9 @@
 
 	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _card = __webpack_require__(322);
-
-	var _card2 = _interopRequireDefault(_card);
-
-	var _avatar = __webpack_require__(292);
-
-	var _avatar2 = _interopRequireDefault(_avatar);
-
-	var _cardActions = __webpack_require__(386);
-
-	var _cardActions2 = _interopRequireDefault(_cardActions);
-
-	var _cardHeader = __webpack_require__(416);
-
-	var _cardHeader2 = _interopRequireDefault(_cardHeader);
-
-	var _cardMedia = __webpack_require__(464);
-
-	var _cardMedia2 = _interopRequireDefault(_cardMedia);
-
-	var _cardTitle = __webpack_require__(381);
-
-	var _cardTitle2 = _interopRequireDefault(_cardTitle);
-
-	var _flatButton = __webpack_require__(327);
-
-	var _flatButton2 = _interopRequireDefault(_flatButton);
-
-	var _cardText = __webpack_require__(321);
-
-	var _cardText2 = _interopRequireDefault(_cardText);
-
-	var _list = __webpack_require__(293);
-
-	var _list2 = _interopRequireDefault(_list);
-
-	var _listItem = __webpack_require__(295);
-
-	var _listItem2 = _interopRequireDefault(_listItem);
-
-	var _textField = __webpack_require__(336);
-
-	var _textField2 = _interopRequireDefault(_textField);
-
-	var _divider = __webpack_require__(299);
-
-	var _divider2 = _interopRequireDefault(_divider);
-
-	var _iconButton = __webpack_require__(264);
-
-	var _iconButton2 = _interopRequireDefault(_iconButton);
-
-	var _tabs = __webpack_require__(524);
-
-	var _tabs2 = _interopRequireDefault(_tabs);
-
-	var _tab = __webpack_require__(527);
-
-	var _tab2 = _interopRequireDefault(_tab);
-
-	var _moreVert = __webpack_require__(375);
-
-	var _moreVert2 = _interopRequireDefault(_moreVert);
-
-	var _iconMenu = __webpack_require__(376);
-
-	var _iconMenu2 = _interopRequireDefault(_iconMenu);
-
-	var _menuItem = __webpack_require__(347);
-
-	var _menuItem2 = _interopRequireDefault(_menuItem);
-
-	var _colors = __webpack_require__(220);
-
-	var _colors2 = _interopRequireDefault(_colors);
-
-	var _dialog = __webpack_require__(326);
-
-	var _dialog2 = _interopRequireDefault(_dialog);
-
-	var _ThreadActions = __webpack_require__(307);
-
-	var _ThreadActions2 = _interopRequireDefault(_ThreadActions);
-
-	var _VisitsAction = __webpack_require__(546);
-
-	var _VisitsAction2 = _interopRequireDefault(_VisitsAction);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var iconButtonElement = _react2.default.createElement(
-	  _iconButton2.default,
-	  {
-	    touch: true,
-	    tooltip: 'more',
-	    tooltipPosition: 'bottom-left'
-	  },
-	  _react2.default.createElement(_moreVert2.default, { color: _colors2.default.grey400 })
-	);
-
-	var rightIconMenu = _react2.default.createElement(
-	  _iconMenu2.default,
-	  { iconButtonElement: iconButtonElement },
-	  _react2.default.createElement(
-	    _menuItem2.default,
-	    null,
-	    'Unfollow'
-	  )
-	);
-
-	var myvisits = _react2.default.createClass({
-	  displayName: 'myvisits',
-
-	  handleOpen: function handleOpen() {
-	    this.setState({ open: true });
-	  },
-
-	  handleClose: function handleClose() {
-	    this.setState({ open: false });
-	  },
-
-	  deletemyfollow: function deletemyfollow() {
-
-	    console.log('follower deleted!');
-	  },
-
-	  getInitialState: function getInitialState() {
-	    alert('ads');
-	    return {
-	      open: false
-	    };
-	  },
-
-	  unFollow: function unFollow() {
-	    console.log(localStorage.getItem('username'));
-	    console.log(this.props.username);
-	    _VisitsAction2.default.unfollowUser(this.props.username, localStorage.getItem('username'));
-	    this.setState({ open: false });
-	  },
-
-	  render: function render() {
-	    var actions = [_react2.default.createElement(_flatButton2.default, {
-	      label: 'No',
-	      secondary: true,
-	      onTouchTap: this.handleClose
-	    }), _react2.default.createElement(_flatButton2.default, {
-	      label: 'Yes',
-	      primary: true,
-	      keyboardFocused: true,
-	      onTouchTap: this.unFollow
-	    })];
-	    return _react2.default.createElement(
-	      'div',
-	      null,
-	      _react2.default.createElement(_listItem2.default, {
-	        primaryText: this.props.fistname,
-	        leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'img/profilepics/' + this.props.username }),
-	        rightIconButton: _react2.default.createElement(
-	          _iconMenu2.default,
-	          { iconButtonElement: iconButtonElement },
-	          _react2.default.createElement(
-	            _menuItem2.default,
-	            { onTouchTap: this.handleOpen },
-	            'Unfollow'
-	          )
-	        )
-	      }),
-	      _react2.default.createElement(_divider2.default, null),
-	      _react2.default.createElement(
-	        _dialog2.default,
-	        {
-	          title: 'Unfollow your user',
-	          actions: actions,
-	          modal: false,
-	          open: this.state.open,
-	          onRequestClose: this.handleClose
-	        },
-	        'Are you sure you want to Unfollow this user?.'
-	      )
-	    );
-	  }
-
-	});
-
-	exports.default = myvisits;
-
-/***/ },
-/* 546 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
 	var AppDispatcher = __webpack_require__(308);
 	var ProfileConstants = __webpack_require__(357);
-	var VisitConstants = __webpack_require__(547);
+	var VisitConstants = __webpack_require__(546);
 
 	var VisitsAction = {
 
@@ -70974,7 +70778,7 @@
 	module.exports = VisitsAction;
 
 /***/ },
-/* 547 */
+/* 546 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -70990,6 +70794,206 @@
 	});
 
 /***/ },
+/* 547 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _card = __webpack_require__(322);
+
+	var _card2 = _interopRequireDefault(_card);
+
+	var _avatar = __webpack_require__(292);
+
+	var _avatar2 = _interopRequireDefault(_avatar);
+
+	var _cardActions = __webpack_require__(386);
+
+	var _cardActions2 = _interopRequireDefault(_cardActions);
+
+	var _cardHeader = __webpack_require__(416);
+
+	var _cardHeader2 = _interopRequireDefault(_cardHeader);
+
+	var _cardMedia = __webpack_require__(464);
+
+	var _cardMedia2 = _interopRequireDefault(_cardMedia);
+
+	var _cardTitle = __webpack_require__(381);
+
+	var _cardTitle2 = _interopRequireDefault(_cardTitle);
+
+	var _flatButton = __webpack_require__(327);
+
+	var _flatButton2 = _interopRequireDefault(_flatButton);
+
+	var _cardText = __webpack_require__(321);
+
+	var _cardText2 = _interopRequireDefault(_cardText);
+
+	var _list = __webpack_require__(293);
+
+	var _list2 = _interopRequireDefault(_list);
+
+	var _listItem = __webpack_require__(295);
+
+	var _listItem2 = _interopRequireDefault(_listItem);
+
+	var _textField = __webpack_require__(336);
+
+	var _textField2 = _interopRequireDefault(_textField);
+
+	var _divider = __webpack_require__(299);
+
+	var _divider2 = _interopRequireDefault(_divider);
+
+	var _iconButton = __webpack_require__(264);
+
+	var _iconButton2 = _interopRequireDefault(_iconButton);
+
+	var _tabs = __webpack_require__(524);
+
+	var _tabs2 = _interopRequireDefault(_tabs);
+
+	var _tab = __webpack_require__(527);
+
+	var _tab2 = _interopRequireDefault(_tab);
+
+	var _moreVert = __webpack_require__(375);
+
+	var _moreVert2 = _interopRequireDefault(_moreVert);
+
+	var _iconMenu = __webpack_require__(376);
+
+	var _iconMenu2 = _interopRequireDefault(_iconMenu);
+
+	var _menuItem = __webpack_require__(347);
+
+	var _menuItem2 = _interopRequireDefault(_menuItem);
+
+	var _colors = __webpack_require__(220);
+
+	var _colors2 = _interopRequireDefault(_colors);
+
+	var _dialog = __webpack_require__(326);
+
+	var _dialog2 = _interopRequireDefault(_dialog);
+
+	var _ThreadActions = __webpack_require__(307);
+
+	var _ThreadActions2 = _interopRequireDefault(_ThreadActions);
+
+	var _VisitsAction = __webpack_require__(545);
+
+	var _VisitsAction2 = _interopRequireDefault(_VisitsAction);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var iconButtonElement = _react2.default.createElement(
+	  _iconButton2.default,
+	  {
+	    touch: true,
+	    tooltip: 'more',
+	    tooltipPosition: 'bottom-left'
+	  },
+	  _react2.default.createElement(_moreVert2.default, { color: _colors2.default.grey400 })
+	);
+
+	var rightIconMenu = _react2.default.createElement(
+	  _iconMenu2.default,
+	  { iconButtonElement: iconButtonElement },
+	  _react2.default.createElement(
+	    _menuItem2.default,
+	    null,
+	    'Unfollow'
+	  )
+	);
+
+	var myvisits = _react2.default.createClass({
+	  displayName: 'myvisits',
+
+	  handleOpen: function handleOpen() {
+	    this.setState({ open: true });
+	  },
+
+	  handleClose: function handleClose() {
+	    this.setState({ open: false });
+	  },
+
+	  deletemyfollow: function deletemyfollow() {
+
+	    console.log('follower deleted!');
+	  },
+
+	  getInitialState: function getInitialState() {
+	    alert('ads');
+	    return {
+	      open: false
+	    };
+	  },
+
+	  unFollow: function unFollow() {
+	    console.log(localStorage.getItem('username'));
+	    console.log(this.props.username);
+	    _VisitsAction2.default.unfollowUser(this.props.username, localStorage.getItem('username'));
+	    this.setState({ open: false });
+	  },
+
+	  render: function render() {
+	    var actions = [_react2.default.createElement(_flatButton2.default, {
+	      label: 'No',
+	      secondary: true,
+	      onTouchTap: this.handleClose
+	    }), _react2.default.createElement(_flatButton2.default, {
+	      label: 'Yes',
+	      primary: true,
+	      keyboardFocused: true,
+	      onTouchTap: this.unFollow
+	    })];
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(_listItem2.default, {
+	        primaryText: this.props.fistname,
+	        leftAvatar: _react2.default.createElement(_avatar2.default, { src: 'img/profilepics/' + this.props.username }),
+	        rightIconButton: _react2.default.createElement(
+	          _iconMenu2.default,
+	          { iconButtonElement: iconButtonElement },
+	          _react2.default.createElement(
+	            _menuItem2.default,
+	            { onTouchTap: this.handleOpen },
+	            'Unfollow'
+	          )
+	        )
+	      }),
+	      _react2.default.createElement(_divider2.default, null),
+	      _react2.default.createElement(
+	        _dialog2.default,
+	        {
+	          title: 'Unfollow your user',
+	          actions: actions,
+	          modal: false,
+	          open: this.state.open,
+	          onRequestClose: this.handleClose
+	        },
+	        'Are you sure you want to Unfollow this user?.'
+	      )
+	    );
+	  }
+
+	});
+
+	exports.default = myvisits;
+
+/***/ },
 /* 548 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -70997,7 +71001,7 @@
 
 	var AppDispatcher = __webpack_require__(308);
 	var EventEmitter = __webpack_require__(316).EventEmitter;
-	var VisitConstants = __webpack_require__(547);
+	var VisitConstants = __webpack_require__(546);
 	var assign = __webpack_require__(312);
 
 	var CHANGE_EVENT = 'change';
