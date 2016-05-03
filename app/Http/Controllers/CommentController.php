@@ -85,6 +85,14 @@ class CommentController extends Controller
         }
     }
 
+    /**
+     * get comment count.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function getCommentCount(Request $request)
     {
         $postId = $request->postId;
