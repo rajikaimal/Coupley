@@ -717,10 +717,9 @@ class ProfileController extends Controller
         // \DB::raw("delete FROM users WHERE username = '$username'");
         // return $username;
         try {
+            $userId = User::where('username', $username)->get()[0]->id;
             if ($username) {
-                var_dump($username);
-                $q = 'DELETE FROM users where id = ?';
-                $status = \DB::delete($q, [17]);
+                \DB::raw("delete FROM users WHERE id = '$userId'");
 
                 return response()->json(['status' => 200, 'done' => true], 200);
             } else {
@@ -847,7 +846,7 @@ class ProfileController extends Controller
             $report->user_id = $user1ID;
             $report->reported_user_id = $user2ID;
             $report->description = $description;
-            $report->status = $type;
+            $report->type = $type;
             $report->save();
 
             return response()->json(['status' => 200, 'done' => true], 200);

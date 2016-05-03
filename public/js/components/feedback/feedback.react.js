@@ -32,6 +32,10 @@ const textStyle = {
   marginLeft: 15
 };
 
+const feedColor = {
+  color: 'blue'
+};
+
 const Feedback = React.createClass({
   getInitialState: function() {
     return {
@@ -106,7 +110,7 @@ const Feedback = React.createClass({
       <div>
         <Card style={signupStyle}>
           <CardText>
-            Have something to <span onClick={this._showFeedback}> say </span> ?
+            Have something to <span style={feedColor} onClick={this._showFeedback}> say </span> ?
           </CardText>
         </Card>
         <Dialog

@@ -36692,6 +36692,10 @@
 	  marginLeft: 15
 	};
 
+	var feedColor = {
+	  color: 'blue'
+	};
+
 	var Feedback = _react2.default.createClass({
 	  displayName: 'Feedback',
 
@@ -36773,7 +36777,7 @@
 	          'Have something to ',
 	          _react2.default.createElement(
 	            'span',
-	            { onClick: this._showFeedback },
+	            { style: feedColor, onClick: this._showFeedback },
 	            ' say '
 	          ),
 	          ' ?'
@@ -46549,8 +46553,8 @@
 	      val = false;
 	    }
 	    if (!validateEmail(email)) {
-	      document.getElementById('email').innerHTML = 'Invalid Email !';
 	      val = false;
+	      document.getElementById('email').innerHTML = '*invalid Email !';
 	    }
 	    if (this.state.country == 0) {
 	      val = false;
@@ -46567,8 +46571,6 @@
 	    if (validatePassword(password).error) {
 	      val = false;
 	      document.getElementById('password').innerHTML = validatePassword(password).error;
-	    } else {
-	      val = true;
 	    }
 
 	    if (this.state.gender == 1) {
@@ -46912,6 +46914,7 @@
 	      } else if (response.status === 201) {
 	        var email = credentials.email;
 	        localStorage.setItem('email', email);
+	        alert('Registration successfull !');
 	        document.location.href = '/#/login';
 	      }
 	    });
@@ -54623,7 +54626,9 @@
 	          actionType: AboutConstants.FETCH,
 	          data: response.data[0]
 	        });
-	      } else {}
+	      } else {
+	        alert('Something happened please try again !');
+	      }
 	    }).fail(function () {
 	      AppDispatcher.handleViewAction({
 	        actionType: AboutConstants.FETCH,
@@ -54657,7 +54662,9 @@
 	            actionType: AboutConstants.SUMMARY,
 	            summary: summary
 	          });
-	        } else {}
+	        } else {
+	          alert('Something happened please try again !');
+	        }
 	      }
 	    }).fail(function () {
 	      AppDispatcher.handleViewAction({
@@ -54678,7 +54685,9 @@
 	            actionType: AboutConstants.LIFE,
 	            life: life
 	          });
-	        } else {}
+	        } else {
+	          alert('Something happened please try again !');
+	        }
 	      }
 	    }).fail(function () {
 	      AppDispatcher.handleViewAction({
@@ -54699,7 +54708,9 @@
 	            actionType: AboutConstants.GOODAT,
 	            goodat: goodat
 	          });
-	        } else {}
+	        } else {
+	          alert('Something happened please try again !');
+	        }
 	      }
 	    }).fail(function () {
 	      AppDispatcher.handleViewAction({
@@ -54720,7 +54731,9 @@
 	            actionType: AboutConstants.THINKING,
 	            thinkingof: thinkingof
 	          });
-	        } else {}
+	        } else {
+	          alert('Something happened please try again !');
+	        }
 	      }
 	    }).fail(function () {
 	      AppDispatcher.handleViewAction({
@@ -54741,7 +54754,9 @@
 	            actionType: AboutConstants.FAVS,
 	            favs: favs
 	          });
-	        } else {}
+	        } else {
+	          alert('Something happened please try again !');
+	        }
 	      }
 	    }).fail(function () {
 	      AppDispatcher.handleViewAction({
@@ -54770,7 +54785,9 @@
 	              error: true
 	            });
 	          });
-	        } else {}
+	        } else {
+	          alert('Something happened please try again !');
+	        }
 	      }
 	    }).fail(function () {
 	      AppDispatcher.handleViewAction({
@@ -55603,7 +55620,7 @@
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'div',
-	      { className: 'col-lg-6' },
+	      null,
 	      _react2.default.createElement(
 	        'h3',
 	        null,
@@ -56270,10 +56287,15 @@
 	      success: function success(response) {
 	        console.log(response);
 	        if (response.status === 200 && response.done == true) {
+	          alert('Password changed');
 	          location.reload();
-	        } else {}
+	        } else {
+	          alert('Something happened please try again');
+	        }
 	      }
-	    }).fail(function () {});
+	    }).fail(function () {
+	      alert('Something happened please try again');
+	    });
 	  }
 	};
 
@@ -56935,7 +56957,13 @@
 	    return _react2.default.createElement(
 	      'div',
 	      null,
-	      _react2.default.createElement(_flatButton2.default, { label: 'Delete account', primary: true, onClick: this._handleDelete }),
+	      _react2.default.createElement(
+	        'h3',
+	        null,
+	        ' Deactivate profile '
+	      ),
+	      'Deactivating your profile will make you inactive within Coupley, Other users won\'t be able to send messages to you over coupley. Feel free to come back at any time, it\'ll be always free. ',
+	      _react2.default.createElement('br', null),
 	      _react2.default.createElement(_flatButton2.default, { label: 'Deactivate account', secondary: true, onClick: this._handleDeactivate }),
 	      _react2.default.createElement(
 	        'div',
@@ -56957,11 +56985,6 @@
 	              'li',
 	              null,
 	              ' You won\'t be able to recover any profile data again '
-	            ),
-	            _react2.default.createElement(
-	              'li',
-	              null,
-	              ' You\'ll all your contacts in coupley'
 	            ),
 	            _react2.default.createElement(
 	              'li',
@@ -57092,7 +57115,8 @@
 	      lastname: _VisitorStore2.default.getUserData().lastname,
 	      country: _VisitorStore2.default.getUserData().country,
 	      gender: _VisitorStore2.default.getUserData().gender,
-	      age: _VisitorStore2.default.getUserData().age
+	      age: _VisitorStore2.default.getUserData().age,
+	      permission: _VisitorStore2.default.getPermission()
 	    };
 	  },
 	  componentDidMount: function componentDidMount() {
@@ -57110,7 +57134,8 @@
 	      lastname: _VisitorStore2.default.getUserData().lastname,
 	      country: _VisitorStore2.default.getUserData().country,
 	      gender: _VisitorStore2.default.getUserData().gender,
-	      age: _VisitorStore2.default.getUserData().age
+	      age: _VisitorStore2.default.getUserData().age,
+	      permission: _VisitorStore2.default.getPermission()
 	    });
 	  },
 	  _renderCountry: function _renderCountry() {
@@ -57150,11 +57175,11 @@
 	              { to: '/' + visitorUsername + '/about', className: 'btn ' },
 	              'About'
 	            ),
-	            _react2.default.createElement(
+	            this.state.permission ? _react2.default.createElement(
 	              _reactRouter.Link,
 	              { to: '/' + visitorUsername + '/photos', className: 'btn ' },
 	              'Photos'
-	            )
+	            ) : _react2.default.createElement(_reactRouter.Link, { to: '', className: 'btn ' })
 	          )
 	        ),
 	        this._renderCountry()
@@ -57795,7 +57820,9 @@
 	      gotunLikedUsername: gotunlikedusername,
 	      token: localStorage.getItem('apitoken')
 	    };
-	    $.post('/api/unlike?token=' + localStorage.getItem('apitoken'), request, function (response) {}).fail(function (error) {});
+	    $.post('/api/unlike?token=' + localStorage.getItem('apitoken'), request, function (response) {}).fail(function (error) {
+	      alert('Something happened please try again !');
+	    });
 	  },
 
 	  getLikedbackStatus: function getLikedbackStatus() {
@@ -57941,10 +57968,7 @@
 	    $.post('/api/profile/visitorcount?token=' + localStorage.getItem('apitoken'), data, function (response) {
 	      alert(reponse);
 	    }).fail(function (error) {
-	      // AppDispatcher.handleViewAction({
-	      //   actionType: ProfileConstants.ERR,
-	      //   error: true,
-	      // });
+	      alert('Something happened please try again !');
 	    });
 	  },
 
@@ -60785,7 +60809,7 @@
 	      ),
 	      _react2.default.createElement(
 	        'div',
-	        { className: 'col-lg-6' },
+	        null,
 	        this.state.photos ? this._renderPhotos() : ''
 	      )
 	    );
