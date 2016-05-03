@@ -10,6 +10,8 @@ import IconMenu from 'material-ui/lib/menus/icon-menu';
 import MenuItem from 'material-ui/lib/menus/menu-item';
 import ThreadActions from '../../actions/Thread/ThreadActions';
 import ThreadStore from '../../stores/ThreadStore';
+import FlatButton from 'material-ui/lib/flat-button';
+import Dialog from 'material-ui/lib/dialog';
 import PaperExampleSimple from './Messages.react';
 
 const iconButtonElement = (
@@ -28,9 +30,19 @@ const ListStyle = {
 
 const PreviousChat = React.createClass({
 
+  handleOpen: function () {
+    this.setState({ open: true });
+
+  },
+
+  handleClose: function () {
+    this.setState({ open: false });
+  },
+
   getInitialState: function () {
     return {
       results:ThreadStore.getThreadMessage(),
+        open: false,
     };
   },
 
@@ -64,12 +76,26 @@ const PreviousChat = React.createClass({
   },
 
   render:function () {
+
+    const actions = [
+        <FlatButton
+          label="No"
+          secondary={true}
+          onTouchTap={this.handleClose}
+        />,
+        <FlatButton
+          label="Yes"
+          primary={true}
+          keyboardFocused={true}
+          onTouchTap={this.deleteconvo}
+        />,
+      ];
+
           return (
              <List style={ListStyle}>
                  <ListItem leftAvatar={<Avatar src={'img/profilepics/'+this.props.username} /> }
-                   rightIconButton={
-                     <IconMenu iconButtonElement={iconButtonElement}>
-                       <MenuItem primaryText="Delete" onClick={this.deleteconvo}/>
+                   rightIconButton={<IconMenu iconButtonElement={iconButtonElement}>
+                       <MenuItem onTouchTap={this.handleOpen}>Delete</MenuItem>
                      </IconMenu>
                    }
                   onTouchTap={this.getMessage}
@@ -83,7 +109,17 @@ const PreviousChat = React.createClass({
               secondaryTextLines={2}/>
 
      <Divider inset={false} />
+
+                 <Dialog
+                   title="Delete Conversation"
+                   actions={actions}
+                   modal={false}
+                   open={this.state.open}
+                   onRequestClose={this.handleClose}>
+                   Are you sure you want to delete this conversation?.
+                 </Dialog>
             </List>
+
           );
         },
 });
