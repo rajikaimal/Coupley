@@ -60,6 +60,14 @@ class LikeController extends Controller
         }
     }
 
+    /**
+     * get liked users count.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function getCount(Request $request)
     {
         $postId = $request->postId;
@@ -79,6 +87,15 @@ class LikeController extends Controller
         }
     }
 
+
+    /**
+     * get liked users.
+     *
+     * @param object        $request
+     *
+     *
+     * @return json
+     */
     public function getLikedUsers(Request $request)
     {
         $postId = $request->postId;

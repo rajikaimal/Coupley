@@ -21,24 +21,38 @@ var StatusStore = assign({}, EventEmitter.prototype, {
   },
 
   /**
-   * Put results(activity feed data) to searchresults.
+   * Put results(activity feed data) to searchResults.
    */
   saveStatusData: function (results) {
     searchResults = results;
   },
 
+  /**
+   * Get shared data.
+   * return {object}
+   */
   getSharedData: function () {
     return sharedResults;
   },
 
+  /**
+   * Put results(shared data) to searchResults.
+   */
   saveSharedData: function (results) {
     sharedResults = results;
   },
 
+  /**
+   * Get shared users.
+   * return {object}
+   */
   getSharedUsers: function () {
     return sharedUsers;
   },
 
+  /**
+   * Put results(shared users) to sharedUsers.
+   */
   saveSharedUsers: function (results) {
     sharedUsers.push(results);
   },
