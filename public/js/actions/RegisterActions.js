@@ -13,6 +13,7 @@ var RegisterActions = {
       } else if (response.status === 201) {
         let email = credentials.email;
         localStorage.setItem('email', email);
+        alert('Registration successfull !');
         document.location.href = '/#/login';
       }
     });

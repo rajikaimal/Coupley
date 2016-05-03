@@ -35,7 +35,7 @@ const Photos = React.createClass({
 
   render: function() {
     return (
-      <div className="col-lg-6">
+      <div>
         <h3>Your Photos</h3>
         <div >
           {

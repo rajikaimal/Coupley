@@ -35,13 +35,14 @@ var UpdateInfo = {
       success: function (response) {
         console.log(response);
         if (response.status === 200 && response.done == true) {
+          alert('Password changed');
           location.reload();
         } else {
-
+          alert('Something happened please try again');
         }
       },
     }).fail(function () {
-      
+      alert('Something happened please try again');
     });
   },
 };

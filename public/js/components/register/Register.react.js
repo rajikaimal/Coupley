@@ -206,8 +206,8 @@ const Register = React.createClass({
       val = false;
     }
     if(! validateEmail(email)) {
-      document.getElementById('email').innerHTML = 'Invalid Email !';
       val = false;
+      document.getElementById('email').innerHTML = '*invalid Email !';
     }
     if(this.state.country == 0) {
       val = false;
@@ -224,9 +224,6 @@ const Register = React.createClass({
     if(validatePassword(password).error) {
       val = false;
       document.getElementById('password').innerHTML = validatePassword(password).error; 
-    }
-    else {
-      val = true;
     }
 
     if(this.state.gender == 1) {

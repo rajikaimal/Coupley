@@ -21,6 +21,7 @@ import Tab from 'material-ui/lib/tabs/tab';
 import Dialog from 'material-ui/lib/dialog';
 
 import ThreadActions from '../../actions/Thread/ThreadActions';
+import VisitsActions from '../../actions/VisitsAction';
 
 const iconButtonElement = (
   <IconButton

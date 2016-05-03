@@ -88,7 +88,7 @@ var LoginActions = {
     $.post('/api/unlike?token=' + localStorage.getItem('apitoken'), request, function (response) {
 
     }).fail(function (error) {
-
+      alert('Something happened please try again !');
     });
   },
 
@@ -239,10 +239,7 @@ var LoginActions = {
     $.post('/api/profile/visitorcount?token=' + localStorage.getItem('apitoken'), data, function(response) {
       alert(reponse);
     }).fail(function (error) {
-      // AppDispatcher.handleViewAction({
-      //   actionType: ProfileConstants.ERR,
-      //   error: true,
-      // });
+      alert('Something happened please try again !');
     });
   },
 
