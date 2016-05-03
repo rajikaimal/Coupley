@@ -84,8 +84,11 @@ class AuthenticateController extends Controller
 
     public function authenticate(Request $request)
     {
+        $email = $request->email;
         $credentials = $request->only('email', 'password');
-
+        $rogue = \DB::select('select * from users where role="user"
+                              and status="rogue" and email = "'.$email.'"');
+        //verify whether user is not blocked out of the system.
         try {
             // verify the credentials and create a token for the user
             if (! $token = JWTAuth::attempt($credentials)) {
@@ -97,6 +100,11 @@ class AuthenticateController extends Controller
         }
 
         // if no errors are encountered we can return a JWT
+        if(!$rogue){
         return response()->json(compact('token'));
+        }
+        else{
+            return response()->json(['error' => 'you_are_blocked_outOf_system','status'=>'201'], 201);
+        }
     }
 }

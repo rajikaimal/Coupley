@@ -37,6 +37,7 @@ const activityContainer = React.createClass({
                             id={result.id}
                             type={result.type}
                             firstName={result.firstname}
+                            username={result.username}
                             postId={result.post_id}
                             attachment={result.attachment}
                             lPostId={result.pid}
