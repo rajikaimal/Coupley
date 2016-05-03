@@ -100,11 +100,10 @@ class AuthenticateController extends Controller
         }
 
         // if no errors are encountered we can return a JWT
-        if(!$rogue){
-        return response()->json(compact('token'));
-        }
-        else{
-            return response()->json(['error' => 'you_are_blocked_outOf_system','status'=>'201'], 201);
+        if (! $rogue) {
+            return response()->json(compact('token'));
+        } else {
+            return response()->json(['error' => 'you_are_blocked_outOf_system', 'status' => '201'], 201);
         }
     }
 }
