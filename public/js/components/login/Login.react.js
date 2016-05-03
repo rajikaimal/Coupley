@@ -102,7 +102,7 @@ const Login = React.createClass({
   componentDidMount: function() {
     LoginStore.addChangeListener(this._onChange);
     if(this.state.apitoken) {
-      document.location = "/#/";
+      document.location = "/#/activity";
     }
     else {
       document.location = "/#/login";

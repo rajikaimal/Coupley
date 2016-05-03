@@ -46563,7 +46563,7 @@
 	  componentDidMount: function componentDidMount() {
 	    _LoginStore2.default.addChangeListener(this._onChange);
 	    if (this.state.apitoken) {
-	      document.location = "/#/";
+	      document.location = "/#/activity";
 	    } else {
 	      document.location = "/#/login";
 	    }
@@ -78409,10 +78409,12 @@
 	    for (var i in this.state.status) {
 	      var deactive = this.state.status[i].deactive; //Deactive key's value
 	      var active = this.state.status[i].active; //Active key's value
+	      var rogue = this.state.status[i].rogue; //Rogue key's value
 	    }
 
 	    active = parseInt(active);
 	    deactive = parseInt(deactive);
+	    rogue = parseInt(rogue);
 
 	    var chart = new CanvasJS.Chart('chartContainer1', {
 	      title: {
@@ -78437,7 +78439,7 @@
 	        toolTipContent: '{y} {name}',
 	        indexLabel: '#percent %',
 	        showInLegend: true,
-	        dataPoints: [{ y: active, name: 'Active Users', legendMarkerType: 'square' }, { y: deactive, name: 'Deactivated Users', legendMarkerType: 'square' }]
+	        dataPoints: [{ y: active, name: 'Active Users', legendMarkerType: 'square' }, { y: deactive, name: 'Deactivated Users', legendMarkerType: 'square' }, { y: rogue, name: 'Users Blocked Out of the System', legendMarkerType: 'square' }]
 	      }]
 	    });
 	    chart.render();
