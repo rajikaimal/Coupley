@@ -11,4 +11,4 @@ $ cd public
 $ npm install
 $ npm start
 ```
-<img src="https://i.imgur.com/81TjNZR.png"/>
+<img src="http://i.imgur.com/z3onyL1.png"/>
