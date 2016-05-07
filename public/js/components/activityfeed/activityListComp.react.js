@@ -297,6 +297,7 @@ const ActivityList = React.createClass({
   },
 
   handleClose: function () {
+    this.setState({open1: false});
     this.setState({opens: false});
     this.setState({open3: false});
     this.setState({open4: false});

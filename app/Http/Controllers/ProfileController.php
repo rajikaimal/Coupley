@@ -155,6 +155,7 @@ class ProfileController extends Controller
                 $like->gotliked = $user2ID[0]->id;
                 $like->user1 = $likedUsername;
                 $like->user2 = $gotLikedUsername;
+                $like->likeback = 1;
                 //$like->save();
                 if ($like->save()) {
                     $result = Likes::where('user1', $likedUsername)

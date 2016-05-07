@@ -26,6 +26,10 @@ const styles = {
   },
 };
 
+const MyStyle = {
+  marginTop: '150'
+}
+
 var DashboardTabs = React.createClass({
   getInitialState: function () {
     return {
@@ -65,7 +69,7 @@ var DashboardTabs = React.createClass({
 
   render: function () {
     return (
-        <div>
+        <div style={MyStyle}>
           <Tabs>
             <Tab label="ANALYTICS">
               <div style={styles.slide}>

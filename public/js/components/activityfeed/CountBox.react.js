@@ -159,10 +159,7 @@ const CountBox = React.createClass({
                         leftAvatar={<Avatar src={'img/profilepics/'+ this.state.username}/>}
                         primaryText={this.state.firstname} />
                       <Divider inset={true} /> 
-                      <ListItem 
-                        leftAvatar={<Avatar src={'img/profilepics/ryan'}/>}
-                        primaryText="Ryan" />
-                      <Divider inset={true} />   
+
                 </Dialog>
 
                 <Dialog
