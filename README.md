@@ -1,7 +1,7 @@
 # Coupley
 Matchmaking Web application
 
-[![Build Status](https://travis-ci.org/rajikaimal/Coupley.svg?branch=master)](https://travis-ci.org/rajikaimal/Coupley) [![StyleCI](https://styleci.io/repos/49663074/shield)](https://styleci.io/repos/49663074)
+[![Build Status](https://travis-ci.org/rajikaimal/Coupley.svg?branch=master)](https://travis-ci.org/rajikaimal/Coupley) [![StyleCI](https://styleci.io/repos/49663074/shield)](https://styleci.io/repos/49663074) [![Greenkeeper badge](https://badges.greenkeeper.io/rajikaimal/Coupley.svg)](https://greenkeeper.io/)
 
 Start dev-server 
 ```
