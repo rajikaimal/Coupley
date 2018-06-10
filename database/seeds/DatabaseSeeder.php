@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Feedback;
+use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Model;
 
 class DatabaseSeeder extends Seeder
 {
@@ -33,10 +33,10 @@ class DatabaseSeeder extends Seeder
                     ['firstname' => 'Isuru', 'lastname' => ' Dilhan', 'email' => 'isuru.dilhan@yahoo.com', 'job' => 'Web developer', 'superAdmin' => 'yes', 'role' => 'admin', 'password' => Hash::make('Secret123/')],
             ];
 
-            // Loop through each user above and create the record for them in the database
-            foreach ($users as $user) {
-                User::create($user);
-            }
+        // Loop through each user above and create the record for them in the database
+        foreach ($users as $user) {
+            User::create($user);
+        }
         $feedbacks = [
             ['user' => 'Ryan', 'category' => 'timeline', 'description' => 'Awsome'],
             ['user' => 'Chris', 'category' => 'activity', 'description' => 'Superb'],

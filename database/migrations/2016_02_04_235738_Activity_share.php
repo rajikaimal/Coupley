@@ -18,7 +18,7 @@ class ActivityShare extends Migration
             $table->string('email');
             $table->string('firstname');
             $table->timestamps();
-            });
+        });
     }
 
     /**

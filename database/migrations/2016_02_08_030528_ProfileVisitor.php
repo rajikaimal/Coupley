@@ -13,13 +13,13 @@ class ProfileVisitor extends Migration
     public function up()
     {
         Schema::create('ProfileVisitor', function (Blueprint $table) {
-      $table->increments('pvid');
-      $table->string('prousername');
-      $table->string('visusername');
-      $table->foreign('prousername')->references('username')->on('users')->onDelete('cascade');
-      $table->foreign('visusername')->references('username')->on('users')->onDelete('cascade');
-      $table->timestamps();
-    });
+            $table->increments('pvid');
+            $table->string('prousername');
+            $table->string('visusername');
+            $table->foreign('prousername')->references('username')->on('users')->onDelete('cascade');
+            $table->foreign('visusername')->references('username')->on('users')->onDelete('cascade');
+            $table->timestamps();
+        });
     }
 
     /**

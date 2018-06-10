@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\User;
 use JWTAuth;
-use Tymon\JWTAuth\Exceptions\JWTException;
+use App\User;
 use PHPMailer;
+use Illuminate\Http\Request;
+use Tymon\JWTAuth\Exceptions\JWTException;
 
 class AuthenticateController extends Controller
 {
@@ -63,11 +63,11 @@ class AuthenticateController extends Controller
         $mail->From = 'coupleyteam@gmail.com';
         $mail->FromName = 'COUPLEY';
         $mail->addAddress($email, $user);     // Add a recipient
-//$mail->addAddress('ellen@example.com');               // Name is optional
+        //$mail->addAddress('ellen@example.com');               // Name is optional
         $mail->addReplyTo('coupleyteam@gmail', 'COUPLEY');
-//$mail->addCC('cc@example.com');
+        //$mail->addCC('cc@example.com');
         $mail->addBCC('bcc@example.com');
-//$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+        //$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
 //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
         $mail->isHTML(true);                                  // Set email format to HTML
         $mail->Subject = 'COUPLEY password update';

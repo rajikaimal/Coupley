@@ -13,12 +13,12 @@ class ThreadThreads extends Migration
     public function up()
     {
         Schema::create('threads', function (Blueprint $table) {
-          $table->increments('trd_id');
-          $table->string('user1_un');
-          $table->string('user2_un');
-          $table->foreign('user1_un')->references('username')->on('users')->onDelete('cascade');
-          $table->foreign('user2_un')->references('username')->on('users')->onDelete('cascade');
-          $table->timestamps();
+            $table->increments('trd_id');
+            $table->string('user1_un');
+            $table->string('user2_un');
+            $table->foreign('user1_un')->references('username')->on('users')->onDelete('cascade');
+            $table->foreign('user2_un')->references('username')->on('users')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 

@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Post;
 use App\User;
 use App\activitypost;
-use App\activitylikes;
 use App\activityblock;
+use App\activitylikes;
 use App\activityreport;
+use Illuminate\Http\Request;
 
 class ActivityFeedController extends Controller
 {

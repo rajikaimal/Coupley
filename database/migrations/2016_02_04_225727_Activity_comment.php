@@ -19,7 +19,7 @@ class ActivityComment extends Migration
             $table->string('firstname');
             $table->string('comment_txt');
             $table->timestamps();
-            });
+        });
     }
 
     /**

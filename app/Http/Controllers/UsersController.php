@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\User;
 use PHPMailer;
 use App\Feedback;
+use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
@@ -83,7 +83,7 @@ class UsersController extends Controller
     {
         $str = '';
         $max = mb_strlen($keyspace, '8bit') - 1;
-        for ($i = 0; $i < $length; ++$i) {
+        for ($i = 0; $i < $length; $i++) {
             $str .= $keyspace[random_int(0, $max)];
         }
 

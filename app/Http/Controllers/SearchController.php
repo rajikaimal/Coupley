@@ -12,9 +12,9 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
-use App\User;
 
 class SearchController extends Controller
 {

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Http\Request;
 
 class LikeListController extends Controller
 {

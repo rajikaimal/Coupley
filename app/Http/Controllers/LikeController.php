@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Like;
 use App\activitylike;
+use Illuminate\Http\Request;
 
 class LikeController extends Controller
 {

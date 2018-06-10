@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Admin;
-use App\User;
 use JWTAuth;
+use App\User;
+use App\Admin;
+use Illuminate\Http\Request;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
 class AdminAuthenticateController extends Controller
