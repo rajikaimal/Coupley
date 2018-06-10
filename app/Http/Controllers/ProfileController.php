@@ -12,17 +12,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Post;
 use App\User;
+use App\About;
 use App\Likes;
 use App\Blocks;
-use App\ActivityFeed;
-use App\About;
-use App\Post;
 use App\Reported;
+use App\ThreadChats;
+use App\ActivityFeed;
 use App\activitypost;
 use App\Notification;
-use App\ThreadChats;
+use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
@@ -97,7 +97,7 @@ class ProfileController extends Controller
         try {
             $result = Likes::where('user1', $visitorUsername)
                     ->where('user2', $username)->get();
-        //return "false";
+            //return "false";
             if ($result->isEmpty()) {
                 return 'false';
             } else {

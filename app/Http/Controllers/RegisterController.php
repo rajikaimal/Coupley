@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\User;
 use App\About;
 use App\LookingFor;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {

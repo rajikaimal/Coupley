@@ -118,7 +118,7 @@ Route::group(['prefix' => 'api'], function () {
     //    //Edit a status
     //    Route::post('edit_status', 'ActivityFeedController@editStatus');
 
-   //Retrive Trendslist
+    //Retrive Trendslist
     Route::get('gettrendslist', 'TrendsController@gettrends');
     Route::get('gettrendssearchlist', 'TrendsController@getsearchtrends');
     Route::get('gettrendsinitialsearchpost', 'TrendsController@getInitPosttrends');
@@ -126,13 +126,13 @@ Route::group(['prefix' => 'api'], function () {
     //
 
     //Add visitor info
-     Route::post('profile/visitorcount', 'VisitorCountController@incrementVisitorCount');
-     Route::get('myvisits', 'VisitorCountController@myVisits');
-     Route::get('smyvisits', 'VisitorCountController@searchMyVisits');
-     Route::get('othervisits', 'VisitorCountController@othersVisits');
-     Route::get('sothervisits', 'VisitorCountController@searchOthersVisits');
-     Route::post('unfollowvisitor', 'VisitorCountController@unFollowVisitor');
-     Route::post('deleteothervisitor', 'VisitorCountController@deleteOtherVisitor');
+    Route::post('profile/visitorcount', 'VisitorCountController@incrementVisitorCount');
+    Route::get('myvisits', 'VisitorCountController@myVisits');
+    Route::get('smyvisits', 'VisitorCountController@searchMyVisits');
+    Route::get('othervisits', 'VisitorCountController@othersVisits');
+    Route::get('sothervisits', 'VisitorCountController@searchOthersVisits');
+    Route::post('unfollowvisitor', 'VisitorCountController@unFollowVisitor');
+    Route::post('deleteothervisitor', 'VisitorCountController@deleteOtherVisitor');
     /////////
 
     Route::get('getonlineusers', 'ThreadController@getOnlineUsers');
@@ -306,7 +306,6 @@ Route::group(['prefix' => 'admin-api'], function () {
     Route::get('notificationlist', 'AdminNotificationController@getNotificationList');
     //sets notifications to read notifications
     Route::get('readNotifications', 'AdminNotificationController@setOne');
-
 });
 
 Route::get('/feeds', function () {

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use LRedis;
+use Illuminate\Http\Request;
 
 class SocketController extends Controller
 {

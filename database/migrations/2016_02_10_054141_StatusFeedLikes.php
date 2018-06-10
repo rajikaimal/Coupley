@@ -20,7 +20,7 @@ class StatusFeedLikes extends Migration
             $table->string('firstname');
             $table->string('username');
             $table->timestamps();
-            });
+        });
     }
 
     /**

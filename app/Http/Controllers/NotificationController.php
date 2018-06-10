@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Notification;
 use App\User;
+use App\Notification;
+use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 
 class NotificationController extends Controller

@@ -19,7 +19,7 @@ class ActivityLike extends Migration
             $table->string('firstname');
             $table->integer('status')->default('0');
             $table->timestamps();
-            });
+        });
     }
 
     /**

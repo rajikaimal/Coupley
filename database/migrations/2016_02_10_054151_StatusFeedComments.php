@@ -21,7 +21,7 @@ class StatusFeedComments extends Migration
             $table->string('username');
             $table->string('comment_txt');
             $table->timestamps();
-            });
+        });
     }
 
     /**

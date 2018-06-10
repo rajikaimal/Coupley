@@ -5,6 +5,7 @@
  * Date: 3/19/16
  * Time: 8:10 AM.
  */
+
 namespace App\Http\Controllers;
 
 use PHPMailer;
