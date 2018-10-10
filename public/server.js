@@ -98,12 +98,22 @@ io.on('connection', function (socket) {
   /*
      Fires when client disconnects.
      **/
-  socket.on('disconnect', function () {
+    socket.on("disconnect",  function () {
+   
+      delete connectedUser[socket.username];
+      connection.query("UPDATE users SET chatstatus='offline' WHERE username='" + socket.username + "' ", function (err, result) {});
+      socket.broadcast.emit("offline", {
+        username: socket.name
+      });
+  console.log("disconnect");
+});
 
-    connection.query("UPDATE users SET chatstatus='offline' WHERE username='" + socket.username + "' ", function (err, result) {});
 
-    console.log(socket.username + ' Disonnected!');
-
+   /*
+   Retrive loged user count.
+   **/
+  socket.on('LoggedCount', function (data) {
+     io.sockets.emit('loggedusers',{count:connectedUser.length,users:{...connectedUser}} );
   });
 
 
